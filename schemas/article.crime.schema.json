@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://news-intel.local/schemas/article.crime.schema.json",
+  "title": "Crime article (police-crime-news-pipeline)",
+  "type": "object",
+  "required": ["article_id", "agency", "source", "meta", "content", "crime_insights"],
+  "properties": {
+    "article_id": { "type": "string", "minLength": 1 },
+    "agency": {
+      "type": "object",
+      "required": ["parent", "name", "registry_key"],
+      "properties": {
+        "parent": { "type": "string" },
+        "name": { "type": "string" },
+        "registry_key": { "type": "string" },
+        "official_url": { "type": "string" }
+      }
+    },
+    "source": {
+      "type": "object",
+      "required": ["url", "type", "origin"],
+      "properties": {
+        "url": { "type": "string", "format": "uri" },
+        "type": { "enum": ["official", "aggregator"] },
+        "origin": { "enum": ["direct", "indirect", "line_curated"] },
+        "fetch_priority_used": { "type": "string" }
+      }
+    },
+    "corroborating_sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "url": { "type": "string" }
+        }
+      }
+    },
+    "verification": {
+      "enum": ["official_confirmed", "media_only", "single_source"]
+    },
+    "fetch": { "type": "object" },
+    "meta": {
+      "type": "object",
+      "required": ["target_date", "batch", "category_label", "tags_struct"],
+      "properties": {
+        "published_at": { "type": "string" },
+        "target_date": { "type": "string" },
+        "within_24h": { "type": "boolean" },
+        "status": { "enum": ["scraped", "published"] },
+        "batch": { "enum": ["L", "A", "B", "C", "D"] },
+        "priority": { "enum": ["A", "B", "C"] },
+        "original_language": { "enum": ["th", "en"] },
+        "is_clarification": { "type": "boolean" },
+        "category_label": { "type": "string" },
+        "tags": { "type": "array", "items": { "type": "string" }, "maxItems": 10 },
+        "tags_struct": { "type": "object" }
+      }
+    },
+    "content": {
+      "type": "object",
+      "required": ["title", "slug", "summary_1", "language"],
+      "properties": {
+        "title": { "type": "string" },
+        "slug": { "type": "string" },
+        "summary_1": { "type": "string" },
+        "language": { "enum": ["th"] }
+      }
+    },
+    "crime_insights": { "type": "object" },
+    "social_media": { "type": "object" }
+  }
+}

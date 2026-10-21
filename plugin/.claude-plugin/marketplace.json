@@ -1,0 +1,13 @@
+{
+  "name": "news-intel-local",
+  "owner": {
+    "name": "L"
+  },
+  "plugins": [
+    {
+      "name": "news-intel",
+      "source": "./news-intel",
+      "description": "ข่าวอาชญากรรม/ตำรวจ + กฎหมายเทคโนโลยีภาครัฐ + ลิงก์จาก LINE → news-hub → Obsidian"
+    }
+  ]
+}

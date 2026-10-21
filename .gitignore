@@ -1,0 +1,40 @@
+# secrets & local runtime
+.env
+.env.*
+!.env.example
+*.sqlite
+*.sqlite-*
+data/*.sqlite
+logs/**
+!logs/.gitkeep
+exports/**
+!exports/.gitkeep
+backup/**
+!backup/.gitkeep
+
+# node
+node_modules/
+server/dist/
+server/node_modules/
+*.log
+npm-debug.log*
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+Desktop.ini
+.vscode/
+.idea/
+
+# Obsidian local vault (keep template only)
+ข่าวตำรวจ/
+**/workspace.json
+**/workspace-mobile.json
+**/cache/
+
+# build / temp
+*.tmp
+*.temp
+Document/
+News/
+github-pages/
