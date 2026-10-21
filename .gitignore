@@ -12,10 +12,13 @@ exports/**
 backup/**
 !backup/.gitkeep
 
-# node
+# node / server runtime
 node_modules/
 server/dist/
 server/node_modules/
+server/data/
+server/exports/
+server/.env
 *.log
 npm-debug.log*
 
@@ -37,4 +40,11 @@ Desktop.ini
 *.temp
 Document/
 News/
-github-pages/
+
+# github-pages: เก็บ source + manifest ว่าง + sample
+# ถ้าไม่ต้องการ commit ไฟล์ข่าวนำเข้าจริง ให้ uncomment บรรทัดด้านล่าง
+# github-pages/data/*_crime.json
+# github-pages/data/*_hotspots.json
+# github-pages/data/*_alerts.json
+# github-pages/data/*_trends.json
+# !github-pages/data/sample/

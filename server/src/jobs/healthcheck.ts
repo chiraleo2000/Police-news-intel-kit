@@ -1,3 +1,5 @@
-/** Job 08:15 — watchdog for Claude tasks + LINE webhook + disk */
-console.error("[job:healthcheck] skeleton — not implemented");
-process.exit(1);
+import { getDb } from "../db/index.js";
+import { todayIct } from "../line/url.js";
+
+getDb();
+console.log(JSON.stringify({ ok: true, today_ict: todayIct() }));

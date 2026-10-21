@@ -1,6 +1,6 @@
 # news-intel-kit — ชุดติดตั้งไปป์ไลน์ข่าวรายวัน (LINE → Claude → Obsidian)
 
-ชุดนี้รวมทุกอย่างที่ต้องมีเพื่อรันตามเวลาทุกวัน ยกเว้น **โค้ดของ news-hub server** (ดูหัวข้อ "สิ่งที่ยังไม่อยู่ในชุดนี้")
+ชุดนี้รวม prompts, plugin, GitHub Pages และ **news-hub (LINE webhook → SQLite → export Excel/JSON + MCP)** — ดู `docs/05-line-webhook-setup.md`
 
 ## 1) คำตอบเรื่อง Obsidian: ควรเพิ่ม — ถ้าใช้เป็น "ชั้นแสดงผลและสำรวจความสัมพันธ์"
 
@@ -23,18 +23,12 @@
 ## 2) สถาปัตยกรรม
 
 ```
-LINE กลุ่ม ─▶ LINE OA (bot) ─▶ /line/webhook ─┐
-                                              ▼
-                              ┌────────── news-hub server (Node + SQLite) ──────────┐
-                              │ line_links · articles · cases · entities · relations │
-                              │ jobs: export-links · vault-build · healthcheck · backup │
-                              └──────▲────────────────────────────┬─────────────────┘
-        REST + bearer                │                            │ เขียนโน้ต Markdown (เฉพาะ server)
-   ┌──────────────┐  stdio  ┌────────┴────────┐                   ▼
-   │ Claude tasks │◀───────▶│ mcp-stdio shim  │            Obsidian vault (กราฟ/Bases)
-   │ (plugin      │         └─────────────────┘            └─ ซิงก์ไปเครื่องคุณ (ทางเลือก)
-   │  news-intel) │──▶ เว็บ/แหล่งข่าว (WebSearch/WebFetch)
-   └──────────────┘
+LINE กลุ่ม → Bot → /line/webhook → DB (แหล่งจริง)
+                                      ├─ export Excel/JSON 05:00 (ตรวจดู)
+                                      └─ MCP news-hub
+                                              ▲        │ อ่าน/เขียน
+                   Scheduled Task (Claude) ───┘        ▼
+              [plugin skills] → raw → merge → enrich → publish → web / A2A
 ```
 
 ## 3) ตารางเวลารายวัน (Asia/Bangkok)
@@ -43,11 +37,10 @@ LINE กลุ่ม ─▶ LINE OA (bot) ─▶ /line/webhook ─┐
 | --- | --- | --- |
 | 05:00 | `export-links` ส่งออกลิงก์ LINE เป็น `.xlsx` + `.json` | server (Windows Task Scheduler) |
 | 06:00 | Task 1 ข่าวกฎหมายเทคโนโลยีภาครัฐ | Claude scheduled task |
-| 06:40 | Task 2 ข่าวอาชญากรรม/ตำรวจ + ลิงก์ LINE | Claude scheduled task |
+| 06:40 | Task 2 ข่าวอาชญากรรม/ตำรวจ จาก LINE (MCP/DB) | Claude scheduled task |
 | ต่อเนื่อง | `vault-build` แบบเพิ่มส่วน (debounce 2 นาที หลังได้ entities) | server |
 | 07:45 | `vault-build` เต็มรูปแบบ (ประกันความถูกต้อง) | server |
 | 08:15 | `healthcheck` + แจ้งเตือนถ้าผิดปกติ | server |
-| อาทิตย์ 20:00 | Task 3 ทบทวน Second Brain | Claude scheduled task |
 | 23:30 | `backup` DB + vault | server |
 
 **หลักสำคัญ:** server คือ "ผู้เฝ้า" (watchdog) — ถ้า Claude task ไม่รัน (เครื่องหลับ/แอปปิด/เน็ตหลุด) server จะเห็นว่าไม่มี `run_status` แล้วแจ้งเตือน
@@ -61,23 +54,23 @@ docs/02-news-hub-spec.md          ← สเปกของ server: DB, REST, MC
 docs/03-obsidian-vault.md         ← โครง vault, รูปแบบโน้ต, ปลั๊กอิน, คิวรีกราฟ/Bases, ความเป็นส่วนตัว
 docs/04-operations-runbook.md     ← ปฏิบัติการรายวัน, แจ้งเตือน, แก้ปัญหา, สำรอง/กู้คืน, ความปลอดภัย
 
-prompts/                          ← แหล่งความจริงของ prompt ตั้งเวลา (แก้ที่นี่ก่อน)
-scheduled-tasks/                  ← packages พร้อมวางใน Claude Scheduled Task / ~/.claude/scheduled-tasks/
-  daily-gov-tech-law-news/SKILL.md
-  daily-crime-news/SKILL.md
-  weekly-brain-review/SKILL.md
+prompts/   (มีแค่ 2 ไฟล์ — ไม่มี task-3)
+  task-1-police-crime-news-pipeline.md      ← 06:00 กวาดออนไลน์ registry 55
+  task-2-LINE-Message-Extract-crime-news.md ← 06:40 LINE via MCP/DB (Excel = export)
+docs/05-line-webhook-setup.md     ← ตั้งค่า LINE OA + webhook + export + MCP
+reference/   ← งบดิจิทัลปี 2570 สำหรับขั้นวิเคราะห์ BD ใน task 1 และ 2
+scheduled-tasks/
 
 plugin/                           ← ปลั๊กอิน news-intel (skills, commands, agent, .mcp.json)
-  news-intel/skills/
-    police-crime-news-pipeline/   ← จาก police-crime-news-pipeline.md + v1.2 MCP addendum
-    gov-tech-law-news/
-    line-link-intake/             ← Batch L (ลิงก์ LINE)
-    news-enrich/
-    second-brain-update/
-  news-intel/.mcp.json            ← ชี้ MCP news-hub
+  news-intel/.mcp.json            ← ชี้ MCP news-hub (stdio → SQLite)
 
-server/                           ← skeleton news-hub (ดู docs/02; ยังไม่รันได้)
+server/                           ← news-hub ใช้งานได้แล้วสำหรับเส้น LINE
+  src/index.ts                    ← Fastify: /line/webhook + /v1/line_links*
+  src/mcp-stdio.ts                ← MCP tools: line_links_get/mark, run_status_*
+  src/jobs/export-links.ts        ← 05:00 → exports/{DATE}_line_links.{xlsx,json}
 schemas/                          ← JSON Schema + สรุป MCP tools
+github-pages/                     ← เว็บ static (HTML/CSS/JS) อ่าน data/*.json
+  index.html · css/ · js/ · data/manifest.json · data/sample/
 vault-template/_system/           ← README ของ vault + canonical-entities.md
 ops/setup-windows.bat             ← สร้างโฟลเดอร์ runtime + Task Scheduler
 data/ exports/ logs/ backup/      ← runtime placeholders (.gitkeep)
@@ -93,7 +86,7 @@ police-crime-news-pipeline.md     ← เอกสารต้นทาง skill
 | 2 | Task 2 (อาชญากรรม) รันมือด้วย `/crime-news` | ได้ article/รายงาน/infographic เข้า news-hub |
 | 3 | ตั้ง schedule Task 1, 2 + healthcheck | 3 วันติดต่อกัน `complete` ทุกวัน |
 | 4 | เปิด vault + Bases/กราฟ | เห็นคดีของวันและความเชื่อมโยงใน Obsidian |
-| 5 | Task 3 รายสัปดาห์, เว็บ GitHub Pages, A2A/Engagement | ตามแผนภาพของคุณ |
+| 5 | Task 3 รายสัปดาห์, เติม JSON เข้า `github-pages/data/`, A2A/Engagement | เว็บขึ้นบน Pages และมีข่าวจริงอย่างน้อย 3 วัน |
 
 ## 6) Claude schedules — วิธีใช้ repo นี้
 

@@ -1,8 +1,8 @@
 {
   "name": "news-hub",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
-  "description": "news-hub: LINE webhook + SQLite state + MCP stdio shim (skeleton)",
+  "description": "news-hub: LINE webhook → SQLite → export Excel/JSON + MCP for Claude schedules",
   "type": "module",
   "engines": {
     "node": ">=22"
@@ -12,15 +12,19 @@
     "build": "tsc -p tsconfig.json",
     "start": "node dist/index.js",
     "mcp": "node dist/mcp-stdio.js",
-    "job:export-links": "node dist/jobs/export-links.js",
-    "job:vault-build": "node dist/jobs/vault-build.js",
-    "job:healthcheck": "node dist/jobs/healthcheck.js",
-    "job:backup": "node dist/jobs/backup.js"
+    "job:export-links": "tsx src/jobs/export-links.ts",
+    "job:vault-build": "tsx src/jobs/vault-build.ts",
+    "job:healthcheck": "tsx src/jobs/healthcheck.ts",
+    "job:backup": "tsx src/jobs/backup.ts",
+    "test:url": "tsx src/line/url.test.ts"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.12.0",
     "better-sqlite3": "^11.9.0",
-    "fastify": "^5.2.0"
+    "dotenv": "^16.4.7",
+    "exceljs": "^4.4.0",
+    "fastify": "^5.2.0",
+    "zod": "^3.24.2"
   },
   "devDependencies": {
     "@types/better-sqlite3": "^7.6.12",

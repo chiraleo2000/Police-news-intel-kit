@@ -1,0 +1,15 @@
+{
+  "baseline": "insufficient",
+  "window_days": 7,
+  "by_crime_type": [
+    {
+      "type": "อาชญากรรมไซเบอร์และออนไลน์",
+      "today": 1,
+      "avg_prev_7d": 0,
+      "delta_pct": 0,
+      "surge": false
+    }
+  ],
+  "by_mo": [],
+  "by_province": []
+}

@@ -1,3 +1,2 @@
-/** Job — write Obsidian notes from DB (incremental / full) */
-console.error("[job:vault-build] skeleton — not implemented");
-process.exit(1);
+console.log("vault-build: stub — wire after enrich/publish pipeline");
+process.exit(0);
