@@ -487,6 +487,11 @@ body::before {
 }
 
 /* Posts */
+.posts-panel {
+  border: 1px solid rgba(26, 107, 92, 0.18);
+  box-shadow: 0 14px 44px rgba(11, 28, 44, 0.1);
+}
+
 .posts-head {
   display: flex;
   align-items: center;

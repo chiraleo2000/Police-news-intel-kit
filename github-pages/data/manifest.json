@@ -1,19 +1,20 @@
 {
-  "generated_at": "2026-10-22T08:40:00+07:00",
-  "days": [
+ "generated_at": "2026-10-22T04:02:28.234Z",
+ "schema_version": 1,
+ "default_range": "all",
+ "days": [
+  {
+   "date": "2026-10-22",
+   "status": "published",
+   "total": 7,
+   "crime_file": "2026-10-22_crime.json",
+   "downloads": [
     {
-      "date": "2026-10-22",
-      "status": "published",
-      "total": 7,
-      "path": "2026-10-22_crime.json",
-      "run": "partial",
-      "downloads": [
-        {
-          "label": "JSON ข่าวรายวัน",
-          "path": "2026-10-22_crime.json",
-          "kind": "json"
-        }
-      ]
+     "label": "JSON ข่าว 2026-10-22",
+     "path": "2026-10-22_crime.json",
+     "kind": "json"
     }
-  ]
+   ]
+  }
+ ]
 }

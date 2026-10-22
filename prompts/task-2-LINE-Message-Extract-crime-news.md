@@ -99,6 +99,7 @@ LINE กลุ่ม → Bot → Webhook → SQLite → line_intake_continuous.{
   {"label": "Infographic LINE", "path": "downloads/{DATE}_infographic_line.png", "kind": "image"}
 ]
 ```
+หลัง copy ไฟล์เว็บ **บังคับรัน** `node ops/rebuild-pages-feed.js` เพื่ออัปเดต `github-pages/data/feed.json` (UI อ่าน feed เป็นหลัก)
 
 ### 2) Obsidian — 1 เหตุการณ์ = 1 โน้ต (รวมแหล่ง ไม่แยกตามลิงก์ LINE)
 **ห้าม** สร้าง/พึ่ง `vault/10_Daily/{DATE}_line.md` เป็นผลลัพธ์หลัก  

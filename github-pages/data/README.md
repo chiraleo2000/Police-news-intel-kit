@@ -1,45 +1,71 @@
-# `data/` — ไฟล์ที่ไปป์ไลน์คัดลอกเข้ามา
+# `data/` — โครงสร้างที่หน้าเว็บอ่านจริง
 
-## ที่หน้า production อ่าน
+หน้า GitHub Pages โหลดตามลำดับนี้:
 
-| ไฟล์ | จำเป็น |
+1. **`feed.json`** (แนะนำ) — รวมทุกโพสต์พร้อม `_date` → แสดงข่าวทันที  
+2. **`manifest.json`** — รายการวัน + ชื่อไฟล์รายวัน + downloads  
+3. **`{DATE}_crime.json`** — fallback ถ้ารายวันยังไม่มีใน feed  
+
+## ไฟล์บังคับให้เว็บมีข่าว
+
+| ไฟล์ | บทบาท |
 | --- | --- |
-| `manifest.json` | ใช่ — รายการวันที่ที่มีสรุป |
-| `{DATE}_crime.json` | ใช่ — ข่าว + KPI |
-| `{DATE}_hotspots.json` หรือ `_hotspots.json` | ไม่บังคับ |
-| `{DATE}_alerts.json` หรือ `_alerts.json` | ไม่บังคับ |
-| `{DATE}_trends.json` หรือ `_trends.json` | ไม่บังคับ |
+| `feed.json` | รายการข่าวรวม (UX หลัก) |
+| `manifest.json` | ช่วงวัน / ดาวน์โหลด / ไฟล์ประกอบ |
+| `{DATE}_crime.json` | แหล่งความจริงรายวัน + KPI |
 
-รูปแบบ `manifest.json`:
+ทางเลือก: `{DATE}_hotspots.json`, `{DATE}_alerts.json`, `downloads/*`
+
+## `manifest.json`
 
 ```json
 {
-  "generated_at": "2026-10-21T08:00:00+07:00",
+  "generated_at": "2026-10-22T08:40:00+07:00",
+  "schema_version": 1,
+  "default_range": "all",
   "days": [
-    { "date": "2026-10-21", "articles_total": 12, "alerts": 3 }
+    {
+      "date": "2026-10-22",
+      "status": "published",
+      "total": 7,
+      "crime_file": "2026-10-22_crime.json",
+      "downloads": [
+        { "label": "JSON ข่าวรายวัน", "path": "2026-10-22_crime.json", "kind": "json" }
+      ]
+    }
   ]
 }
 ```
 
-`days` เรียงใหม่→เก่าก็ได้ หน้าเว็บจะ sort เอง
-
-## ทดสอบ UI ด้วยตัวอย่าง
-
-```bat
-copy data\sample\2026-10-21_*.json data\
-```
-
-แล้วแก้ `manifest.json`:
+## `feed.json`
 
 ```json
 {
-  "generated_at": "2026-10-21T12:00:00+07:00",
-  "days": [{ "date": "2026-10-21", "articles_total": 2, "alerts": 1 }]
+  "generated_at": "2026-10-22T08:40:00+07:00",
+  "schema_version": 1,
+  "days": [{ "date": "2026-10-22", "total": 7, "crime_file": "2026-10-22_crime.json" }],
+  "posts": [
+    {
+      "id": "…",
+      "title": "…",
+      "topic": "ชื่อประเภทภาษาไทย",
+      "agency": "…",
+      "content": "…",
+      "source_url": "https://…",
+      "corroborating_sources": [{ "name": "…", "url": "https://…" }],
+      "tags": ["…"],
+      "_date": "2026-10-22"
+    }
+  ]
 }
 ```
 
-เปิดด้วย static server (อย่า double-click `index.html` เพราะ `fetch` โดน CORS):
+**ทุกโพสต์ต้องมี `_date` (YYYY-MM-DD)** ไม่งั้นช่วงวันจะกรองไม่เจอ
+
+## สร้าง feed จากไฟล์รายวัน (บนเครื่อง)
 
 ```bat
-npx --yes serve github-pages
+node ops/rebuild-pages-feed.js
 ```
+
+จากนั้น commit + push → Actions จะอัปเดต Pages อัตโนมัติ

@@ -117,10 +117,11 @@ manifest อ่านไม่ได้ → หยุด `PREFLIGHT_FAILED` · �
 
 ### ช่องทางผลลัพธ์ (บังคับครบ 3)
 1. **JSON รายวันสำหรับเว็บ (GitHub Pages)** — copy ไป `github-pages/data/` (file copy เท่านั้น ห้าม git push)  
-   ไฟล์หลัก `{DATE}_crime.json` ต้องตรง schema ตัวอย่าง (`date`, `generated_at`, `stats`, `posts[]`)  
-   แต่ละ `posts[]` ต้องมี `source_url` + `corroborating_sources[]` (ลิสต์แหล่งรวมหลัง merge) + `tags[]` + `topic`  
+   ไฟล์หลัก `{DATE}_crime.json` ต้องตรง schema (`date`, `generated_at`, `stats`, `posts[]`)  
+   แต่ละ `posts[]` ต้องมี `source_url` + `corroborating_sources[]` + `tags[]` + `topic`  
    พร้อม `{DATE}_hotspots.json`, `{DATE}_alerts.json`, `{DATE}_trends.json`, `{DATE}_bd_leads.json`  
-   อัปเดต `manifest.json` (add-only) และใส่ `downloads[]` ชี้ไฟล์ PDF/PNG ใน `github-pages/data/downloads/`
+   อัปเดต `manifest.json` (add-only) + `downloads[]`  
+   **บังคับรัน** `node ops/rebuild-pages-feed.js` หลัง copy เพื่อสร้าง/อัปเดต `feed.json` (หน้าเว็บอ่านไฟล์นี้เป็นหลัก — ไม่มี feed จะดูเหมือนไม่มีข่าว)
 2. **Obsidian — 1 คดี = 1 โน้ต (รวมแหล่ง ไม่แยกตามสื่อ)**  
    - `vault/20_Cases/{case_id}.md` = 1 เหตุการณ์ / 1 โน้ต (`generated: true`) · frontmatter `sources:` เป็นลิสต์ URL ทั้งหมด  
    - `vault/40_CrimeTypes/{ชื่อประเภท}.md` = อัปเดตหน้ารวมประเภทที่มีข่าววันนี้  

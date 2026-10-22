@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="สรุปข่าวอาชญากรรมและการปฏิบัติหน้าที่ตำรวจ — รวมแหล่งสาธารณะรายวัน พร้อมดาวน์โหลด PDF" />
+  <meta name="description" content="สรุปข่าวอาชญากรรมและการปฏิบัติหน้าที่ตำรวจ — รวมแหล่งสาธารณะ พร้อมดาวน์โหลด" />
   <title>Police News Briefing — ข่าวตำรวจ</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -15,7 +15,7 @@
 
   <header class="site-header">
     <div class="wrap header-inner">
-      <a class="brand" href="#/">
+      <a class="brand" href="#/r/all">
         <span class="brand-mark" aria-hidden="true"></span>
         <span class="brand-text">
           <strong>Police News Briefing</strong>
@@ -23,9 +23,9 @@
         </span>
       </a>
       <div class="header-stats" id="header-stats" aria-live="polite">
-        <span class="stat-pill" id="stat-posts">0 ข่าว</span>
-        <span class="stat-pill" id="stat-types">0 ประเภท</span>
-        <span class="stat-pill" id="stat-alerts">0 เตือนภัย</span>
+        <span class="stat-pill" id="stat-posts">…</span>
+        <span class="stat-pill" id="stat-types">…</span>
+        <span class="stat-pill" id="stat-alerts">…</span>
       </div>
     </div>
   </header>
@@ -37,16 +37,14 @@
 
   <main id="main" class="wrap">
     <section id="view-news">
-      <section id="hero" class="hero" aria-labelledby="hero-title">
-        <p class="hero-kicker" id="hero-kicker">รอไฟล์ JSON จากไปป์ไลน์</p>
-        <h1 id="hero-title">ยังไม่มีสรุปข่าวในคลัง</h1>
-        <p class="hero-lead" id="hero-lead">
-          เมื่อ task ส่งไฟล์เข้า <code>data/</code> หน้านี้จะแสดงข่าวที่รวมแหล่งซ้ำแล้ว กรองตามประเภท/แท็ก และลิงก์ต้นทาง
-        </p>
+      <section class="hero hero-compact" aria-labelledby="hero-title">
+        <p class="hero-kicker" id="hero-kicker">กำลังโหลด…</p>
+        <h1 id="hero-title">Police News Briefing</h1>
+        <p class="hero-lead" id="hero-lead">ดึงสรุปข่าวจากคลัง JSON อัตโนมัติ</p>
         <p class="hero-meta" id="hero-meta" hidden></p>
       </section>
 
-      <div class="toolbar" id="toolbar" hidden>
+      <div class="toolbar" id="toolbar">
         <div class="chip-row" id="topic-chips" aria-label="กรองประเภทอาชญากรรม"></div>
         <div class="toolbar-row">
           <label class="filter range-picker">
@@ -54,11 +52,11 @@
             <select id="range-select">
               <option value="1">วันนี้</option>
               <option value="3">3 วัน</option>
-              <option value="7" selected>7 วัน</option>
+              <option value="7">7 วัน</option>
               <option value="14">14 วัน</option>
               <option value="30">30 วัน</option>
               <option value="90">90 วัน</option>
-              <option value="all">ทั้งหมด</option>
+              <option value="all" selected>ทั้งหมด</option>
             </select>
           </label>
           <label class="filter">
@@ -74,7 +72,20 @@
         </div>
       </div>
 
-      <section id="kpi" class="kpi" hidden aria-label="ตัวชี้วัดประจำวัน"></section>
+      <!-- รายการข่าวขึ้นก่อน — UX หลักเหมือน gov-news -->
+      <section id="posts" class="panel posts-panel">
+        <div class="posts-head">
+          <h2>รายการข่าว</h2>
+          <p class="muted" id="filter-note">กำลังโหลด…</p>
+        </div>
+        <ul id="post-list" class="post-list">
+          <li><p class="muted">กำลังโหลดข่าว…</p></li>
+        </ul>
+      </section>
+
+      <article id="post-detail" class="post-detail panel" hidden></article>
+
+      <section id="kpi" class="kpi" hidden aria-label="ตัวชี้วัด"></section>
 
       <section id="alerts" class="panel" hidden>
         <h2>เตือนภัยประชาชน</h2>
@@ -91,23 +102,13 @@
           <div id="hotspots" class="bars"></div>
         </section>
       </div>
-
-      <section id="posts" class="panel" hidden>
-        <div class="posts-head">
-          <h2>รายการข่าว (รวมแหล่งซ้ำแล้ว)</h2>
-          <p class="muted" id="filter-note"></p>
-        </div>
-        <ul id="post-list" class="post-list"></ul>
-      </section>
-
-      <article id="post-detail" class="post-detail panel" hidden></article>
     </section>
 
     <section id="view-downloads" hidden>
       <section class="hero hero-compact">
         <p class="hero-kicker">ไฟล์รายวัน</p>
         <h1>ดาวน์โหลดสรุปข่าว</h1>
-        <p class="hero-lead">PDF / Infographic ที่ไปป์ไลน์สร้างในแต่ละวัน (ถ้ามีใน <code>data/downloads/</code>)</p>
+        <p class="hero-lead">PDF / Infographic / JSON ตามช่วงวันที่เลือก</p>
       </section>
       <section class="panel">
         <div class="downloads-toolbar toolbar-row">
@@ -116,26 +117,26 @@
             <select id="download-range-select">
               <option value="1">วันนี้</option>
               <option value="3">3 วัน</option>
-              <option value="7" selected>7 วัน</option>
+              <option value="7">7 วัน</option>
               <option value="14">14 วัน</option>
               <option value="30">30 วัน</option>
               <option value="90">90 วัน</option>
-              <option value="all">ทั้งหมด</option>
+              <option value="all" selected>ทั้งหมด</option>
             </select>
           </label>
         </div>
         <ul id="download-list" class="download-list"></ul>
-        <p class="muted" id="download-empty">ยังไม่มีไฟล์ดาวน์โหลดสำหรับวันที่เลือก</p>
+        <p class="muted" id="download-empty">กำลังตรวจสอบไฟล์…</p>
       </section>
     </section>
 
-    <p id="status" class="status" role="status"></p>
+    <p id="status" class="status" role="status">กำลังโหลด…</p>
   </main>
 
   <footer class="site-footer">
     <div class="wrap">
       <p>ข้อมูลรวบรวมจากแหล่งข่าวสาธารณะ ผู้ต้องหายังถือเป็นผู้บริสุทธิ์จนกว่าศาลจะมีคำพิพากษา</p>
-      <p class="muted">Police News Briefing · GitHub Pages · ไม่เก็บข้อมูลผู้ส่งลิงก์จาก LINE</p>
+      <p class="muted">Police News Briefing · GitHub Pages · อัปเดตอัตโนมัติเมื่อมี JSON ใหม่</p>
     </div>
   </footer>
 
