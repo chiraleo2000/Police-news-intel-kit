@@ -59,6 +59,8 @@ LINE กลุ่ม → Bot → Webhook → SQLite → line_intake_continuous.{
 - **Event-level merge (บังคับ):** ประเมินว่าหัวข้อ/เหตุการณ์เดียวกันหรือไม่ก่อนสร้างโพสต์
   รวมเป็น 1 post ต่อเหตุการณ์ · แหล่งอื่นทั้งหมดอยู่ใน `corroborating_sources[]`
   ถ้าตรงกับคดีใน Task 1 ของวันเดียวกัน → merge แหล่งเข้า post/case เดิม ห้ามสร้าง blog ซ้ำ
+- **Tags:** ตาม Task 1 — `meta.tags` เหลือ **3–5 หัวข้อสำคัญเท่านั้น** (ห้ามยัดจังหวัด/หน่วย/คำทั่วไป)
+  จังหวัด·หน่วย·MO เก็บใน `tags_struct`; ใช้ taxonomy ชุดเดียวกับ Task 1 (รวม GAMBLE/ENV/PUBLIC)
 - add-only ต่อเหตุการณ์ · จริยธรรมคดีครบ
 - `summary_1` 80–150 คำ สำนวนเอง · `content` ใน publish ≥350 คำจากข้อเท็จจริงแหล่ง
 - PDF + Infographic บังคับ (THSarabun) + copy ไป `github-pages/data/downloads/`
