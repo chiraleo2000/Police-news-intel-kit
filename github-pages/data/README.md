@@ -14,7 +14,25 @@
 | `manifest.json` | ช่วงวัน / ดาวน์โหลด / ไฟล์ประกอบ |
 | `{DATE}_crime.json` | แหล่งความจริงรายวัน + KPI |
 
-ทางเลือก: `{DATE}_hotspots.json`, `{DATE}_alerts.json`, `downloads/*`
+ทางเลือก: `{DATE}_hotspots.json`, `{DATE}_alerts.json`
+
+## ดาวน์โหลด (แท็บ PDF)
+
+วางไฟล์สรุปรายวันที่นี่ (ไม่ใช่ JSON):
+
+| ไฟล์ | ใช้ทำอะไร |
+| --- | --- |
+| `downloads/{DATE}_crime.pdf` | **PDF สรุปข่าวของวันนั้น** (หลัก) |
+| `downloads/{DATE}_infographic.png` | Infographic |
+| `downloads/{DATE}_crime_line.pdf` | PDF จาก Task 2 (LINE) |
+
+หลังไปป์ไลน์สร้างไฟล์ใน `Document/{DATE}_Crime/` ให้รัน:
+
+```bat
+node ops/rebuild-pages-feed.js
+```
+
+สคริปต์จะ copy PDF/PNG เข้า `data/downloads/` และอัปเดต `manifest.downloads` อัตโนมัติ
 
 ## `manifest.json`
 
