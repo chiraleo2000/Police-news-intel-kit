@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Anuphan:wght@400;500;600;700&family=Sarabun:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/site.css?v=20261022e" />
+  <link rel="stylesheet" href="css/site.css?v=20261022f" />
 </head>
 <body>
   <a class="skip-link" href="#main">ข้ามไปเนื้อหา</a>
@@ -106,41 +106,108 @@
     </section>
 
     <section id="view-brain" hidden>
-      <section class="hero hero-compact">
+      <section class="hero hero-compact brain-hero">
         <p class="hero-kicker">Obsidian vault → knowledge graph</p>
         <h1>Second Brain</h1>
-        <p class="hero-lead">กราฟจาก wikilinks ในคลัง Obsidian (คดี · เอนทิตี · ประเภทอาชญากรรม)</p>
+        <p class="hero-lead">กราฟโต้ตอบจาก wikilinks — คดี · เอนทิตี · ประเภทอาชญากรรม · ซูม/ลาก/กรองได้</p>
         <p class="hero-meta" id="brain-status"></p>
+        <div class="brain-stats" id="brain-stats" aria-live="polite"></div>
       </section>
-      <section class="panel brain-panel">
-        <div class="brain-toolbar toolbar-row">
-          <label class="filter">
-            <span class="sr-only">กรองชนิดโน้ต</span>
-            <select id="brain-kind-filter">
-              <option value="">ทุกชนิด</option>
-              <option value="case">คดี</option>
-              <option value="entity">เอนทิตี</option>
-              <option value="crime_type">ประเภทอาชญากรรม</option>
-              <option value="daily">รายวัน</option>
-              <option value="unresolved">ลิงก์ค้าง</option>
-            </select>
-          </label>
-          <label class="search">
-            <span class="sr-only">ค้นหาใน brain</span>
-            <input id="brain-search" type="search" placeholder="ค้นหาโน้ต แท็ก ประเภท…" />
-          </label>
-          <button type="button" class="btn-ghost" id="brain-reset">รีเซ็ตมุมมอง</button>
-          <span class="muted" id="brain-meta"></span>
+
+      <section class="panel brain-panel brain-panel-wide">
+        <div class="brain-layout">
+          <aside class="brain-sidebar" aria-label="คำอธิบายและตัวกรอง">
+            <details class="brain-help-box" open>
+              <summary>คำอธิบายกราฟ</summary>
+              <div id="brain-help" class="brain-help"></div>
+            </details>
+
+            <div class="brain-filters">
+              <h3>ตัวกรอง</h3>
+              <label class="brain-field">
+                <span>ค้นหา</span>
+                <input id="brain-search" type="search" placeholder="ชื่อโน้ต แท็ก ประเภท…" />
+              </label>
+
+              <fieldset class="brain-fieldset">
+                <legend>ชนิดโน้ต</legend>
+                <div id="brain-kind-checks" class="brain-checks">
+                  <label><input type="checkbox" data-kind-check="case" checked /> คดี</label>
+                  <label><input type="checkbox" data-kind-check="entity" checked /> เอนทิตี</label>
+                  <label><input type="checkbox" data-kind-check="crime_type" checked /> ประเภทอาชญากรรม</label>
+                  <label><input type="checkbox" data-kind-check="daily" checked /> รายวัน</label>
+                  <label><input type="checkbox" data-kind-check="unresolved" checked /> ลิงก์ค้าง</label>
+                </div>
+              </fieldset>
+
+              <label class="brain-field">
+                <span>กลุ่มเอนทิตี</span>
+                <select id="brain-entity-group">
+                  <option value="">ทุกกลุ่มเอนทิตี</option>
+                </select>
+              </label>
+
+              <label class="brain-field">
+                <span>ลิงก์ขั้นต่ำ (degree)</span>
+                <input id="brain-min-degree" type="number" min="0" max="50" value="0" />
+              </label>
+
+              <div class="brain-date-row">
+                <label class="brain-field">
+                  <span>ตั้งแต่</span>
+                  <input id="brain-date-from" type="date" />
+                </label>
+                <label class="brain-field">
+                  <span>ถึง</span>
+                  <input id="brain-date-to" type="date" />
+                </label>
+              </div>
+
+              <label class="brain-field">
+                <span>ป้ายชื่อบนกราฟ</span>
+                <select id="brain-labels">
+                  <option value="auto" selected>อัตโนมัติ (โหนดสำคัญ)</option>
+                  <option value="all">แสดงทั้งหมด</option>
+                  <option value="none">ซ่อน</option>
+                </select>
+              </label>
+
+              <label class="brain-check">
+                <input type="checkbox" id="brain-hide-orphans" />
+                ซ่อนโหนดไม่มีลิงก์
+              </label>
+              <label class="brain-check">
+                <input type="checkbox" id="brain-isolate" />
+                โฟกัสเฉพาะเพื่อนบ้านของโหนดที่เลือก
+              </label>
+
+              <div class="brain-filter-actions">
+                <button type="button" class="btn-ghost" id="brain-reset">รีเซ็ตทั้งหมด</button>
+              </div>
+            </div>
+          </aside>
+
+          <div class="brain-main">
+            <div class="brain-toolbar">
+              <div class="brain-legend" id="brain-legend" aria-label="คำอธิบายสี — คลิกเพื่อโฟกัสชนิด"></div>
+              <div class="brain-zoom-btns">
+                <button type="button" class="btn-ghost" id="brain-zoom-out" title="ซูมออก">−</button>
+                <button type="button" class="btn-ghost" id="brain-zoom-fit" title="พอดีจอ">พอดี</button>
+                <button type="button" class="btn-ghost" id="brain-zoom-in" title="ซูมเข้า">+</button>
+                <span class="muted" id="brain-meta"></span>
+              </div>
+            </div>
+            <div class="brain-stage">
+              <canvas id="brain-canvas" width="1200" height="720" aria-label="กราฟ Second Brain"></canvas>
+              <aside id="brain-detail" class="brain-detail" aria-live="polite"></aside>
+            </div>
+            <p class="muted brain-hint">ลากพื้นหลัง = เลื่อน · สกอร์ล = ซูม · คลิกจุด = รายละเอียด · ดับเบิลคลิก = โฟกัสเพื่อนบ้าน</p>
+            <p class="muted" id="brain-empty" hidden>
+              ยังไม่มี <code>data/graph.json</code> — รัน
+              <code>node ops/build-obsidian-graph.js</code> แล้ว publish
+            </p>
+          </div>
         </div>
-        <div class="brain-legend" id="brain-legend" aria-label="คำอธิบายสี"></div>
-        <div class="brain-stage">
-          <canvas id="brain-canvas" width="960" height="560" aria-label="กราฟ Second Brain"></canvas>
-          <aside id="brain-detail" class="brain-detail" hidden></aside>
-        </div>
-        <p class="muted" id="brain-empty" hidden>
-          ยังไม่มี <code>data/graph.json</code> — บนเครื่องที่มี vault ให้รัน
-          <code>node ops/build-obsidian-graph.js</code> แล้ว publish
-        </p>
       </section>
     </section>
 
@@ -180,8 +247,8 @@
     </div>
   </footer>
 
-  <script src="js/format.js?v=20261022e" defer></script>
-  <script src="js/graph.js?v=20261022e" defer></script>
-  <script src="js/app.js?v=20261022e" defer></script>
+  <script src="js/format.js?v=20261022f" defer></script>
+  <script src="js/graph.js?v=20261022f" defer></script>
+  <script src="js/app.js?v=20261022f" defer></script>
 </body>
 </html>

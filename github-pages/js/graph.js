@@ -1,6 +1,6 @@
 /**
- * Second Brain graph viewer — force layout over data/graph.json
- * Obsidian-like: nodes = notes, edges = [[wikilinks]]
+ * Second Brain graph viewer — interactive force layout over data/graph.json
+ * Zoom / pan / hover / isolate · multi filters · help copy (TH)
  */
 (() => {
   const KIND_COLOR = {
@@ -19,20 +19,37 @@
     unresolved: "ลิงก์ค้าง",
     other: "อื่น",
   };
+  const KIND_HELP = {
+    case: "โน้ตคดีใน vault/20_Cases — หนึ่งเหตุการณ์ต่อหนึ่งโหนด",
+    entity: "หน่วย / จังหวัด / กฎหมาย / MO ใน vault/30_Entities",
+    crime_type: "หน้ารวมประเภทอาชญากรรมใน vault/40_CrimeTypes",
+    daily: "สรุปรายวัน (ไม่ใช่ผลหลัก)",
+    unresolved: "[[ลิงก์]] ที่ยังไม่มีโน้ตปลายทาง — ควรแก้ชื่อหรือสร้างโน้ต",
+    other: "โน้ตอื่นในคลัง",
+  };
 
   let graph = null;
   let sim = null;
   let raf = 0;
   let selectedId = null;
-  let filterKind = "";
-  let query = "";
-  let drag = null;
+  let hoverId = null;
+  let drag = null; // { mode:'node'|'pan', id?, x,y, startX,startY, moved }
+  let camera = { x: 0, y: 0, scale: 1 };
+  let filters = {
+    kinds: new Set(["case", "entity", "crime_type", "daily", "unresolved", "other"]),
+    q: "",
+    minDegree: 0,
+    dateFrom: "",
+    dateTo: "",
+    entityGroup: "",
+    hideOrphans: false,
+    isolate: false,
+    showLabels: "auto", // auto | all | none
+  };
+  let bound = false;
 
   const els = {};
-
-  function $(id) {
-    return document.getElementById(id);
-  }
+  const $ = (id) => document.getElementById(id);
 
   function escapeHtml(s) {
     return String(s ?? "")
@@ -48,57 +65,89 @@
     return res.json();
   }
 
-  function visibleNodes() {
-    if (!graph) return [];
-    const q = query.trim().toLowerCase();
-    return graph.nodes.filter((n) => {
-      if (filterKind && n.kind !== filterKind) return false;
-      if (!q) return true;
-      const hay = `${n.title} ${n.id} ${(n.tags || []).join(" ")} ${n.crime_type || ""}`.toLowerCase();
-      return hay.includes(q);
-    });
+  function neighborIds(id) {
+    const set = new Set([id]);
+    for (const e of graph?.edges || []) {
+      if (e.source === id) set.add(e.target);
+      if (e.target === id) set.add(e.source);
+    }
+    return set;
   }
 
-  function visibleSet(nodes) {
-    return new Set(nodes.map((n) => n.id));
+  function passesBaseFilters(n) {
+    if (!filters.kinds.has(n.kind)) return false;
+    if ((n.degree || 0) < filters.minDegree) return false;
+    if (filters.hideOrphans && (n.degree || 0) === 0 && n.kind !== "unresolved") return false;
+    if (filters.entityGroup && n.kind === "entity" && n.entity_group !== filters.entityGroup) {
+      return false;
+    }
+    if (filters.entityGroup && n.kind !== "entity" && n.kind !== "case" && n.kind !== "crime_type") {
+      /* keep cases/types when filtering entity group — cases may link to them */
+    }
+    if (filters.dateFrom && n.date && n.date < filters.dateFrom) return false;
+    if (filters.dateTo && n.date && n.date > filters.dateTo) return false;
+    const q = filters.q.trim().toLowerCase();
+    if (q) {
+      const hay = `${n.title} ${n.id} ${(n.tags || []).join(" ")} ${n.crime_type || ""} ${n.entity_group || ""}`.toLowerCase();
+      if (!hay.includes(q)) return false;
+    }
+    return true;
+  }
+
+  function visibleNodes() {
+    if (!graph) return [];
+    let nodes = graph.nodes.filter(passesBaseFilters);
+    if (filters.isolate && selectedId) {
+      const keep = neighborIds(selectedId);
+      nodes = nodes.filter((n) => keep.has(n.id));
+    }
+    return nodes;
   }
 
   function visibleEdges(ids) {
-    if (!graph) return [];
-    return graph.edges.filter((e) => ids.has(e.source) && ids.has(e.target));
+    return (graph?.edges || []).filter((e) => ids.has(e.source) && ids.has(e.target));
+  }
+
+  function worldFromEvent(ev) {
+    const r = els.canvas.getBoundingClientRect();
+    const sx = ev.clientX - r.left;
+    const sy = ev.clientY - r.top;
+    return {
+      sx,
+      sy,
+      x: (sx - camera.x) / camera.scale,
+      y: (sy - camera.y) / camera.scale,
+    };
   }
 
   function initSim(nodes, edges) {
     const canvas = els.canvas;
-    const w = canvas.clientWidth || 800;
-    const h = canvas.clientHeight || 520;
-    canvas.width = w * devicePixelRatio;
-    canvas.height = h * devicePixelRatio;
+    const w = Math.max(640, canvas.clientWidth || 960);
+    const h = Math.max(480, canvas.clientHeight || 640);
+    canvas.width = Math.floor(w * devicePixelRatio);
+    canvas.height = Math.floor(h * devicePixelRatio);
     const ctx = canvas.getContext("2d");
     ctx.setTransform(devicePixelRatio, 0, 0, devicePixelRatio, 0, 0);
 
     const byId = new Map(nodes.map((n) => [n.id, n]));
     for (const n of nodes) {
-      if (n.x == null) n.x = w / 2 + (Math.random() - 0.5) * w * 0.5;
-      if (n.y == null) n.y = h / 2 + (Math.random() - 0.5) * h * 0.5;
+      if (n.x == null) n.x = w / 2 + (Math.random() - 0.5) * w * 0.55;
+      if (n.y == null) n.y = h / 2 + (Math.random() - 0.5) * h * 0.55;
       n.vx = n.vx || 0;
       n.vy = n.vy || 0;
     }
+    const links = edges
+      .map((e) => ({ source: byId.get(e.source), target: byId.get(e.target) }))
+      .filter((l) => l.source && l.target);
 
-    const linkForce = edges.map((e) => ({
-      source: byId.get(e.source),
-      target: byId.get(e.target),
-    })).filter((l) => l.source && l.target);
-
-    return { nodes, links: linkForce, w, h, ctx, alpha: 1 };
+    return { nodes, links, w, h, ctx, alpha: 1 };
   }
 
   function tick(state) {
     const { nodes, links, w, h } = state;
-    if (state.alpha < 0.02 && !drag) return false;
-    state.alpha *= 0.985;
+    if (state.alpha < 0.015 && !drag) return false;
+    state.alpha *= 0.988;
 
-    // repulsion
     for (let i = 0; i < nodes.length; i++) {
       for (let j = i + 1; j < nodes.length; j++) {
         const a = nodes[i];
@@ -106,9 +155,9 @@
         let dx = a.x - b.x;
         let dy = a.y - b.y;
         let dist = Math.hypot(dx, dy) || 0.01;
-        const min = 36;
-        if (dist < min * 4) {
-          const f = ((min * min) / (dist * dist)) * 0.35 * state.alpha;
+        const min = 42;
+        if (dist < min * 5) {
+          const f = ((min * min) / (dist * dist)) * 0.4 * state.alpha;
           dx = (dx / dist) * f;
           dy = (dy / dist) * f;
           a.vx += dx;
@@ -119,53 +168,63 @@
       }
     }
 
-    // links
     for (const l of links) {
       const dx = l.target.x - l.source.x;
       const dy = l.target.y - l.source.y;
       const dist = Math.hypot(dx, dy) || 0.01;
-      const ideal = 90;
-      const f = ((dist - ideal) / dist) * 0.02 * state.alpha;
-      const fx = dx * f;
-      const fy = dy * f;
-      l.source.vx += fx;
-      l.source.vy += fy;
-      l.target.vx -= fx;
-      l.target.vy -= fy;
+      const ideal = 110;
+      const f = ((dist - ideal) / dist) * 0.022 * state.alpha;
+      l.source.vx += dx * f;
+      l.source.vy += dy * f;
+      l.target.vx -= dx * f;
+      l.target.vy -= dy * f;
     }
 
-    // center gravity
     for (const n of nodes) {
-      n.vx += (w / 2 - n.x) * 0.0015 * state.alpha;
-      n.vy += (h / 2 - n.y) * 0.0015 * state.alpha;
-      if (drag && drag.id === n.id) {
+      n.vx += (w / 2 - n.x) * 0.0012 * state.alpha;
+      n.vy += (h / 2 - n.y) * 0.0012 * state.alpha;
+      if (drag?.mode === "node" && drag.id === n.id) {
         n.x = drag.x;
         n.y = drag.y;
         n.vx = 0;
         n.vy = 0;
       } else {
-        n.vx *= 0.85;
-        n.vy *= 0.85;
+        n.vx *= 0.86;
+        n.vy *= 0.86;
         n.x += n.vx;
         n.y += n.vy;
-        n.x = Math.max(18, Math.min(w - 18, n.x));
-        n.y = Math.max(18, Math.min(h - 18, n.y));
+        n.x = Math.max(24, Math.min(w - 24, n.x));
+        n.y = Math.max(24, Math.min(h - 24, n.y));
       }
     }
     return true;
   }
 
+  function nodeRadius(n) {
+    const base = n.kind === "crime_type" ? 9 : n.kind === "case" ? 8 : 6;
+    return base + Math.min(6, Math.sqrt(n.degree || 0));
+  }
+
   function draw(state) {
     const { ctx, w, h, nodes, links } = state;
     ctx.clearRect(0, 0, w, h);
+    ctx.save();
+    ctx.translate(camera.x, camera.y);
+    ctx.scale(camera.scale, camera.scale);
 
-    ctx.strokeStyle = "rgba(11,28,44,0.18)";
-    ctx.lineWidth = 1;
+    const focus = selectedId || hoverId;
+    const neigh = focus ? neighborIds(focus) : null;
+
     for (const l of links) {
       const hot =
-        selectedId && (l.source.id === selectedId || l.target.id === selectedId);
-      ctx.strokeStyle = hot ? "rgba(26,107,92,0.55)" : "rgba(11,28,44,0.14)";
-      ctx.lineWidth = hot ? 1.6 : 1;
+        focus && (l.source.id === focus || l.target.id === focus);
+      const dim = focus && !hot;
+      ctx.strokeStyle = hot
+        ? "rgba(26,107,92,0.7)"
+        : dim
+          ? "rgba(11,28,44,0.05)"
+          : "rgba(11,28,44,0.16)";
+      ctx.lineWidth = (hot ? 2.2 : 1) / camera.scale;
       ctx.beginPath();
       ctx.moveTo(l.source.x, l.source.y);
       ctx.lineTo(l.target.x, l.target.y);
@@ -173,29 +232,42 @@
     }
 
     for (const n of nodes) {
-      const r = n.kind === "case" ? 7 : n.kind === "crime_type" ? 8 : 5.5;
+      const r = nodeRadius(n);
       const selected = n.id === selectedId;
+      const hovered = n.id === hoverId;
+      const dim = neigh && !neigh.has(n.id);
       ctx.beginPath();
-      ctx.arc(n.x, n.y, selected ? r + 2 : r, 0, Math.PI * 2);
+      ctx.arc(n.x, n.y, selected || hovered ? r + 2.5 : r, 0, Math.PI * 2);
+      ctx.globalAlpha = dim ? 0.22 : 1;
       ctx.fillStyle = KIND_COLOR[n.kind] || KIND_COLOR.other;
       ctx.fill();
-      if (selected) {
+      if (selected || hovered) {
         ctx.strokeStyle = "#0b1c2c";
-        ctx.lineWidth = 2;
+        ctx.lineWidth = 2 / camera.scale;
         ctx.stroke();
       }
+      ctx.globalAlpha = 1;
     }
 
-    // labels for selected + high-degree
-    ctx.font = "12px Sarabun, Anuphan, sans-serif";
-    ctx.fillStyle = "rgba(11,28,44,0.85)";
-    const labeled = nodes
-      .filter((n) => n.id === selectedId || (n.degree || 0) >= 4)
-      .slice(0, 40);
-    for (const n of labeled) {
-      const label = n.title.length > 28 ? n.title.slice(0, 27) + "…" : n.title;
-      ctx.fillText(label, n.x + 10, n.y + 4);
+    const showAll = filters.showLabels === "all";
+    const showNone = filters.showLabels === "none";
+    if (!showNone) {
+      ctx.font = `${13 / camera.scale}px Sarabun, Anuphan, sans-serif`;
+      ctx.fillStyle = "rgba(11,28,44,0.9)";
+      const labeled = nodes.filter((n) => {
+        if (showAll) return true;
+        if (n.id === selectedId || n.id === hoverId) return true;
+        if (neigh && neigh.has(n.id) && (n.degree || 0) >= 2) return true;
+        return (n.degree || 0) >= 5;
+      });
+      const cap = showAll ? 120 : 50;
+      for (const n of labeled.slice(0, cap)) {
+        if (neigh && !neigh.has(n.id) && n.id !== selectedId && n.id !== hoverId) continue;
+        const label = n.title.length > 32 ? n.title.slice(0, 31) + "…" : n.title;
+        ctx.fillText(label, n.x + nodeRadius(n) + 6, n.y + 4);
+      }
     }
+    ctx.restore();
   }
 
   function loop() {
@@ -206,12 +278,31 @@
     else raf = 0;
   }
 
-  function restartSim() {
+  function bump() {
+    if (sim) sim.alpha = Math.max(sim.alpha, 0.25);
+    if (!raf) raf = requestAnimationFrame(loop);
+  }
+
+  function updateMeta(nodes, edges) {
+    if (els.meta) {
+      els.meta.textContent = `${nodes.length} โน้ตที่แสดง · ${edges.length} ลิงก์ · ซูม ${Math.round(camera.scale * 100)}%`;
+    }
+    if (els.statsBar && graph?.stats) {
+      const s = graph.stats;
+      els.statsBar.innerHTML = `
+        <span><strong>${s.nodes}</strong> โน้ตทั้งหมด</span>
+        <span><strong>${s.edges}</strong> ลิงก์</span>
+        <span><strong>${s.unresolved || 0}</strong> ลิงก์ค้าง</span>
+        <span>อัปเดต ${escapeHtml((graph.generated_at || "").replace("T", " ").slice(0, 16))}</span>
+      `;
+    }
+  }
+
+  function restartSim(preserveCam = true) {
     if (raf) cancelAnimationFrame(raf);
     const nodes = visibleNodes();
-    const ids = visibleSet(nodes);
+    const ids = new Set(nodes.map((n) => n.id));
     const edges = visibleEdges(ids);
-    // preserve positions from previous nodes when possible
     if (sim) {
       const prev = new Map(sim.nodes.map((n) => [n.id, n]));
       for (const n of nodes) {
@@ -219,21 +310,25 @@
         if (p) {
           n.x = p.x;
           n.y = p.y;
+          n.vx = p.vx;
+          n.vy = p.vy;
         }
       }
     }
+    if (!preserveCam) camera = { x: 0, y: 0, scale: 1 };
     sim = initSim(nodes, edges);
-    els.meta.textContent = `${nodes.length} โน้ต · ${edges.length} ลิงก์`;
+    updateMeta(nodes, edges);
     raf = requestAnimationFrame(loop);
   }
 
-  function hitTest(x, y) {
+  function hitTest(wx, wy) {
     if (!sim) return null;
     let best = null;
-    let bestD = 14;
+    let bestD = 16 / camera.scale;
     for (const n of sim.nodes) {
-      const d = Math.hypot(n.x - x, n.y - y);
-      if (d < bestD) {
+      const d = Math.hypot(n.x - wx, n.y - wy);
+      const thresh = nodeRadius(n) + 4 / camera.scale;
+      if (d < Math.max(bestD, thresh) && d <= thresh + 2) {
         bestD = d;
         best = n;
       }
@@ -243,34 +338,47 @@
 
   function showDetail(node) {
     selectedId = node ? node.id : null;
+    if (!els.detail) return;
     if (!node) {
-      els.detail.hidden = true;
-      els.detail.innerHTML = "";
-      if (sim && !raf) raf = requestAnimationFrame(loop);
+      els.detail.innerHTML = `
+        <div class="brain-detail-placeholder">
+          <p class="brain-kind">เลือกโหนด</p>
+          <h3>คลิกจุดบนกราฟ</h3>
+          <p class="muted">จะแสดงคำอธิบายคดี/เอนทิตี ลิงก์เข้า–ออก และแท็กจาก Obsidian</p>
+        </div>`;
+      bump();
       return;
     }
     const incoming = (graph.edges || []).filter((e) => e.target === node.id);
     const outgoing = (graph.edges || []).filter((e) => e.source === node.id);
     const nameOf = (id) => graph.nodes.find((n) => n.id === id)?.title || id;
 
-    els.detail.hidden = false;
     els.detail.innerHTML = `
       <p class="brain-kind">${escapeHtml(KIND_LABEL[node.kind] || node.kind)}</p>
       <h3>${escapeHtml(node.title)}</h3>
+      <p class="brain-help-inline">${escapeHtml(KIND_HELP[node.kind] || "")}</p>
       <p class="muted brain-path">${escapeHtml(node.path || node.id)}</p>
-      ${node.date ? `<p class="muted">วันที่: ${escapeHtml(node.date)}</p>` : ""}
-      ${node.crime_type ? `<p>ประเภท: <strong>${escapeHtml(node.crime_type)}</strong></p>` : ""}
+      <dl class="brain-dl">
+        ${node.date ? `<div><dt>วันที่</dt><dd>${escapeHtml(node.date)}</dd></div>` : ""}
+        ${node.crime_type ? `<div><dt>ประเภท</dt><dd>${escapeHtml(node.crime_type)}</dd></div>` : ""}
+        ${node.entity_group ? `<div><dt>กลุ่มเอนทิตี</dt><dd>${escapeHtml(node.entity_group)}</dd></div>` : ""}
+        <div><dt>องศาลิงก์</dt><dd>${node.degree || 0}</dd></div>
+      </dl>
       ${
         (node.tags || []).length
           ? `<p class="brain-tags">${node.tags.map((t) => `<span>${escapeHtml(t)}</span>`).join("")}</p>`
           : ""
       }
       ${node.excerpt ? `<p class="brain-excerpt">${escapeHtml(node.excerpt)}</p>` : ""}
+      <div class="brain-detail-actions">
+        <button type="button" class="btn-ghost" data-action="isolate">${filters.isolate ? "แสดงทั้งกราฟ" : "โฟกัสเพื่อนบ้าน"}</button>
+        <button type="button" class="btn-ghost" data-action="center">จัดกลาง</button>
+      </div>
       <div class="brain-links">
-        <div><strong>ออก (${outgoing.length})</strong><ul>${
+        <div><strong>ลิงก์ออก (${outgoing.length})</strong><ul>${
           outgoing.length
             ? outgoing
-                .slice(0, 12)
+                .slice(0, 16)
                 .map(
                   (e) =>
                     `<li><button type="button" data-goto="${escapeHtml(e.target)}">${escapeHtml(nameOf(e.target))}</button></li>`
@@ -278,10 +386,10 @@
                 .join("")
             : "<li class='muted'>—</li>"
         }</ul></div>
-        <div><strong>เข้า (${incoming.length})</strong><ul>${
+        <div><strong>ลิงก์เข้า (${incoming.length})</strong><ul>${
           incoming.length
             ? incoming
-                .slice(0, 12)
+                .slice(0, 16)
                 .map(
                   (e) =>
                     `<li><button type="button" data-goto="${escapeHtml(e.source)}">${escapeHtml(nameOf(e.source))}</button></li>`
@@ -291,70 +399,237 @@
         }</ul></div>
       </div>
     `;
-    if (sim && !raf) raf = requestAnimationFrame(loop);
+    bump();
   }
 
   function selectById(id) {
     const node = graph?.nodes.find((n) => n.id === id);
     if (!node) return;
-    if (filterKind && node.kind !== filterKind) {
-      filterKind = "";
-      els.kindFilter.value = "";
+    if (!filters.kinds.has(node.kind)) {
+      filters.kinds.add(node.kind);
+      syncKindChecks();
     }
     showDetail(node);
-    restartSim();
+    restartSim(true);
     if (sim) {
       const n = sim.nodes.find((x) => x.id === id);
       if (n) {
-        n.x = sim.w / 2;
-        n.y = sim.h / 2;
+        // center camera on node
+        const r = els.canvas.getBoundingClientRect();
+        camera.x = r.width / 2 - n.x * camera.scale;
+        camera.y = r.height / 2 - n.y * camera.scale;
       }
     }
+    bump();
+  }
+
+  function syncKindChecks() {
+    document.querySelectorAll("[data-kind-check]").forEach((el) => {
+      el.checked = filters.kinds.has(el.getAttribute("data-kind-check"));
+    });
+    renderLegend();
   }
 
   function renderLegend() {
+    if (!els.legend) return;
     const counts = graph?.stats?.by_kind || {};
     els.legend.innerHTML = Object.keys(KIND_LABEL)
-      .filter((k) => counts[k] || k === "unresolved")
-      .map(
-        (k) =>
-          `<button type="button" class="brain-legend-item ${filterKind === k ? "is-active" : ""}" data-kind="${k}">
-            <i style="background:${KIND_COLOR[k]}"></i>${KIND_LABEL[k]} <span>${counts[k] || 0}</span>
-          </button>`
-      )
+      .filter((k) => counts[k] != null || k === "unresolved")
+      .map((k) => {
+        const on = filters.kinds.has(k);
+        return `<button type="button" class="brain-legend-item ${on ? "is-active" : ""}" data-kind="${k}" title="${escapeHtml(KIND_HELP[k] || "")}">
+          <i style="background:${KIND_COLOR[k]}"></i>${KIND_LABEL[k]} <span>${counts[k] || 0}</span>
+        </button>`;
+      })
       .join("");
   }
 
-  function bindCanvas() {
-    const canvas = els.canvas;
-    const pos = (ev) => {
-      const r = canvas.getBoundingClientRect();
-      return { x: ev.clientX - r.left, y: ev.clientY - r.top };
+  function fillEntityGroups() {
+    const sel = $("brain-entity-group");
+    if (!sel || !graph) return;
+    const groups = [
+      ...new Set(
+        graph.nodes.filter((n) => n.kind === "entity" && n.entity_group).map((n) => n.entity_group)
+      ),
+    ].sort();
+    const cur = filters.entityGroup;
+    sel.innerHTML =
+      `<option value="">ทุกกลุ่มเอนทิตี</option>` +
+      groups.map((g) => `<option value="${escapeHtml(g)}">${escapeHtml(g)}</option>`).join("");
+    sel.value = cur;
+  }
+
+  function renderHelp() {
+    if (!els.help) return;
+    els.help.innerHTML = `
+      <h3>กราฟนี้คืออะไร?</h3>
+      <p>ดึงจากคลัง <strong>Obsidian</strong> (<code>vault/</code>) — แต่ละจุดคือโน้ต
+      เส้นคือ <code>[[wikilink]]</code> ระหว่างคดี · ประเภทอาชญากรรม · หน่วย/จังหวัด</p>
+      <h3>วิธีใช้</h3>
+      <ul>
+        <li><strong>คลิก</strong> จุด = เปิดรายละเอียด</li>
+        <li><strong>ลากจุด</strong> = จัดตำแหน่ง</li>
+        <li><strong>ลากพื้นหลัง</strong> = เลื่อนมุมมอง (pan)</li>
+        <li><strong>สกอร์ล</strong> = ซูมเข้า/ออก</li>
+        <li><strong>ดับเบิลคลิก</strong> = โฟกัสเพื่อนบ้านของโหนด</li>
+      </ul>
+      <h3>สีโหนด</h3>
+      <ul class="brain-help-colors">
+        ${Object.keys(KIND_LABEL)
+          .map(
+            (k) =>
+              `<li><i style="background:${KIND_COLOR[k]}"></i><span><strong>${KIND_LABEL[k]}</strong> — ${KIND_HELP[k]}</span></li>`
+          )
+          .join("")}
+      </ul>
+    `;
+  }
+
+  function applyFiltersFromDom() {
+    filters.q = $("brain-search")?.value || "";
+    filters.minDegree = Number($("brain-min-degree")?.value || 0);
+    filters.dateFrom = $("brain-date-from")?.value || "";
+    filters.dateTo = $("brain-date-to")?.value || "";
+    filters.entityGroup = $("brain-entity-group")?.value || "";
+    filters.hideOrphans = Boolean($("brain-hide-orphans")?.checked);
+    filters.showLabels = $("brain-labels")?.value || "auto";
+    const kinds = new Set();
+    document.querySelectorAll("[data-kind-check]:checked").forEach((el) => {
+      kinds.add(el.getAttribute("data-kind-check"));
+    });
+    if (kinds.size) filters.kinds = kinds;
+    showDetail(selectedId ? graph.nodes.find((n) => n.id === selectedId) : null);
+    restartSim(true);
+  }
+
+  function resetAll() {
+    filters = {
+      kinds: new Set(["case", "entity", "crime_type", "daily", "unresolved", "other"]),
+      q: "",
+      minDegree: 0,
+      dateFrom: "",
+      dateTo: "",
+      entityGroup: "",
+      hideOrphans: false,
+      isolate: false,
+      showLabels: "auto",
     };
+    camera = { x: 0, y: 0, scale: 1 };
+    selectedId = null;
+    hoverId = null;
+    if ($("brain-search")) $("brain-search").value = "";
+    if ($("brain-min-degree")) $("brain-min-degree").value = "0";
+    if ($("brain-date-from")) $("brain-date-from").value = "";
+    if ($("brain-date-to")) $("brain-date-to").value = "";
+    if ($("brain-entity-group")) $("brain-entity-group").value = "";
+    if ($("brain-hide-orphans")) $("brain-hide-orphans").checked = false;
+    if ($("brain-isolate")) $("brain-isolate").checked = false;
+    if ($("brain-labels")) $("brain-labels").value = "auto";
+    syncKindChecks();
+    if (sim) {
+      for (const n of sim.nodes) {
+        n.x = undefined;
+        n.y = undefined;
+      }
+    }
+    showDetail(null);
+    restartSim(false);
+  }
+
+  function bindCanvas() {
+    if (bound || !els.canvas) return;
+    bound = true;
+    const canvas = els.canvas;
+
+    canvas.addEventListener(
+      "wheel",
+      (ev) => {
+        ev.preventDefault();
+        const p = worldFromEvent(ev);
+        const factor = ev.deltaY < 0 ? 1.12 : 1 / 1.12;
+        const next = Math.min(3.5, Math.max(0.35, camera.scale * factor));
+        camera.x = p.sx - p.x * next;
+        camera.y = p.sy - p.y * next;
+        camera.scale = next;
+        updateMeta(sim?.nodes || [], sim?.links || []);
+        bump();
+      },
+      { passive: false }
+    );
 
     canvas.addEventListener("pointerdown", (ev) => {
-      const p = pos(ev);
+      const p = worldFromEvent(ev);
       const hit = hitTest(p.x, p.y);
       if (hit) {
-        drag = { id: hit.id, x: p.x, y: p.y };
-        canvas.setPointerCapture(ev.pointerId);
+        drag = {
+          mode: "node",
+          id: hit.id,
+          x: p.x,
+          y: p.y,
+          startX: p.sx,
+          startY: p.sy,
+          moved: false,
+        };
         showDetail(hit);
-        if (!raf) raf = requestAnimationFrame(loop);
+      } else {
+        drag = {
+          mode: "pan",
+          startX: p.sx,
+          startY: p.sy,
+          camX: camera.x,
+          camY: camera.y,
+          moved: false,
+        };
       }
+      canvas.setPointerCapture(ev.pointerId);
+      bump();
     });
+
     canvas.addEventListener("pointermove", (ev) => {
-      if (!drag) return;
-      const p = pos(ev);
-      drag.x = p.x;
-      drag.y = p.y;
-      if (sim) sim.alpha = Math.max(sim.alpha, 0.3);
-      if (!raf) raf = requestAnimationFrame(loop);
+      const p = worldFromEvent(ev);
+      if (!drag) {
+        const hit = hitTest(p.x, p.y);
+        const nid = hit?.id || null;
+        if (nid !== hoverId) {
+          hoverId = nid;
+          canvas.style.cursor = hit ? "pointer" : "grab";
+          bump();
+        }
+        return;
+      }
+      drag.moved =
+        drag.moved ||
+        Math.hypot(p.sx - (drag.startX || 0), p.sy - (drag.startY || 0)) > 4;
+      if (drag.mode === "node") {
+        drag.x = p.x;
+        drag.y = p.y;
+      } else {
+        camera.x = drag.camX + (p.sx - drag.startX);
+        camera.y = drag.camY + (p.sy - drag.startY);
+      }
+      bump();
     });
-    canvas.addEventListener("pointerup", () => {
+
+    const endDrag = () => {
       drag = null;
-    });
-    canvas.addEventListener("pointerleave", () => {
-      drag = null;
+      bump();
+    };
+    canvas.addEventListener("pointerup", endDrag);
+    canvas.addEventListener("pointercancel", endDrag);
+
+    canvas.addEventListener("dblclick", (ev) => {
+      const p = worldFromEvent(ev);
+      const hit = hitTest(p.x, p.y);
+      if (!hit) {
+        camera = { x: 0, y: 0, scale: 1 };
+        bump();
+        return;
+      }
+      filters.isolate = true;
+      if ($("brain-isolate")) $("brain-isolate").checked = true;
+      showDetail(hit);
+      restartSim(true);
+      selectById(hit.id);
     });
   }
 
@@ -363,82 +638,118 @@
     els.meta = $("brain-meta");
     els.detail = $("brain-detail");
     els.legend = $("brain-legend");
-    els.kindFilter = $("brain-kind-filter");
-    els.search = $("brain-search");
     els.status = $("brain-status");
     els.empty = $("brain-empty");
+    els.help = $("brain-help");
+    els.statsBar = $("brain-stats");
     if (!els.canvas) return;
 
     try {
-      els.status.textContent = "กำลังโหลด Second Brain…";
+      if (els.status) els.status.textContent = "กำลังโหลด Second Brain…";
       graph = await loadGraph();
       const n = graph.stats?.nodes || graph.nodes?.length || 0;
       if (!n) {
-        els.empty.hidden = false;
-        els.status.textContent = "ยังไม่มีกราฟ — รัน build-obsidian-graph.js หลังเขียน vault";
+        if (els.empty) els.empty.hidden = false;
+        if (els.status) els.status.textContent = "ยังไม่มีกราฟ";
         return;
       }
-      els.empty.hidden = true;
-      els.status.textContent = `อัปเดต ${graph.generated_at || ""}`;
+      if (els.empty) els.empty.hidden = true;
+      if (els.status) {
+        els.status.textContent = "กราฟความรู้จาก Obsidian · ซูม/ลาก/กรองได้";
+      }
+      renderHelp();
+      fillEntityGroups();
       renderLegend();
-      restartSim();
+      syncKindChecks();
+      showDetail(null);
+      restartSim(false);
       bindCanvas();
     } catch (e) {
-      els.empty.hidden = false;
-      els.status.textContent = e.message || String(e);
+      if (els.empty) els.empty.hidden = false;
+      if (els.status) els.status.textContent = e.message || String(e);
     }
   }
 
   function wireOnce() {
     if (els._wired) return;
     els._wired = true;
-    $("brain-kind-filter")?.addEventListener("change", (e) => {
-      filterKind = e.target.value;
-      renderLegend();
-      showDetail(null);
-      restartSim();
+
+    const onFilter = () => applyFiltersFromDom();
+    ["brain-search", "brain-min-degree", "brain-date-from", "brain-date-to", "brain-entity-group", "brain-labels"].forEach(
+      (id) => {
+        $(id)?.addEventListener("change", onFilter);
+        $(id)?.addEventListener("input", () => {
+          if (id === "brain-search") {
+            clearTimeout(els._st);
+            els._st = setTimeout(onFilter, 160);
+          }
+        });
+      }
+    );
+    $("brain-hide-orphans")?.addEventListener("change", onFilter);
+    $("brain-isolate")?.addEventListener("change", (e) => {
+      filters.isolate = e.target.checked;
+      restartSim(true);
+      showDetail(selectedId ? graph.nodes.find((n) => n.id === selectedId) : null);
     });
-    let t;
-    $("brain-search")?.addEventListener("input", (e) => {
-      clearTimeout(t);
-      t = setTimeout(() => {
-        query = e.target.value;
-        restartSim();
-      }, 140);
-    });
+
+    $("brain-kind-checks")?.addEventListener("change", onFilter);
+
     $("brain-legend")?.addEventListener("click", (e) => {
       const btn = e.target.closest("[data-kind]");
       if (!btn) return;
       const k = btn.getAttribute("data-kind");
-      filterKind = filterKind === k ? "" : k;
-      if ($("brain-kind-filter")) $("brain-kind-filter").value = filterKind;
-      renderLegend();
-      showDetail(null);
-      restartSim();
-    });
-    $("brain-detail")?.addEventListener("click", (e) => {
-      const btn = e.target.closest("[data-goto]");
-      if (!btn) return;
-      selectById(btn.getAttribute("data-goto"));
-    });
-    $("brain-reset")?.addEventListener("click", () => {
-      filterKind = "";
-      query = "";
-      if ($("brain-kind-filter")) $("brain-kind-filter").value = "";
-      if ($("brain-search")) $("brain-search").value = "";
-      showDetail(null);
-      if (sim) {
-        for (const n of sim.nodes) {
-          n.x = undefined;
-          n.y = undefined;
-        }
+      if (filters.kinds.has(k) && filters.kinds.size === 1) {
+        filters.kinds = new Set(["case", "entity", "crime_type", "daily", "unresolved", "other"]);
+      } else if (filters.kinds.has(k) && filters.kinds.size > 1) {
+        // solo this kind
+        filters.kinds = new Set([k]);
+      } else {
+        filters.kinds = new Set([k]);
       }
-      renderLegend();
-      restartSim();
+      syncKindChecks();
+      showDetail(null);
+      restartSim(true);
     });
+
+    $("brain-detail")?.addEventListener("click", (e) => {
+      const goto = e.target.closest("[data-goto]");
+      if (goto) {
+        selectById(goto.getAttribute("data-goto"));
+        return;
+      }
+      const act = e.target.closest("[data-action]");
+      if (!act) return;
+      const a = act.getAttribute("data-action");
+      if (a === "isolate") {
+        filters.isolate = !filters.isolate;
+        if ($("brain-isolate")) $("brain-isolate").checked = filters.isolate;
+        restartSim(true);
+        showDetail(selectedId ? graph.nodes.find((n) => n.id === selectedId) : null);
+      }
+      if (a === "center" && selectedId) selectById(selectedId);
+    });
+
+    $("brain-reset")?.addEventListener("click", resetAll);
+    $("brain-zoom-in")?.addEventListener("click", () => {
+      camera.scale = Math.min(3.5, camera.scale * 1.2);
+      bump();
+      updateMeta(sim?.nodes || [], sim?.links || []);
+    });
+    $("brain-zoom-out")?.addEventListener("click", () => {
+      camera.scale = Math.max(0.35, camera.scale / 1.2);
+      bump();
+      updateMeta(sim?.nodes || [], sim?.links || []);
+    });
+    $("brain-zoom-fit")?.addEventListener("click", () => {
+      camera = { x: 0, y: 0, scale: 1 };
+      bump();
+      updateMeta(sim?.nodes || [], sim?.links || []);
+    });
+
     window.addEventListener("resize", () => {
       if ($("view-brain")?.hidden) return;
-      restartSim();
+      restartSim(true);
     });
   }
 
@@ -450,15 +761,17 @@
         meta: $("brain-meta"),
         detail: $("brain-detail"),
         legend: $("brain-legend"),
-        kindFilter: $("brain-kind-filter"),
-        search: $("brain-search"),
         status: $("brain-status"),
         empty: $("brain-empty"),
+        help: $("brain-help"),
+        statsBar: $("brain-stats"),
       });
       if (!graph) await mount();
       else {
+        renderHelp();
+        fillEntityGroups();
         renderLegend();
-        restartSim();
+        restartSim(true);
       }
     },
     select(id) {
@@ -466,6 +779,7 @@
     },
     refresh() {
       graph = null;
+      bound = false;
       return mount();
     },
   };
