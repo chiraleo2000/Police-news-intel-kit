@@ -47,14 +47,20 @@
       </section>
 
       <div class="toolbar" id="toolbar" hidden>
-        <label class="date-picker">
-          <span class="sr-only">เลือกวันที่</span>
-          <select id="date-select" disabled>
-            <option value="">ยังไม่มีข้อมูล</option>
-          </select>
-        </label>
         <div class="chip-row" id="topic-chips" aria-label="กรองประเภทอาชญากรรม"></div>
         <div class="toolbar-row">
+          <label class="filter range-picker">
+            <span class="sr-only">ช่วงวัน</span>
+            <select id="range-select">
+              <option value="1">วันนี้</option>
+              <option value="3">3 วัน</option>
+              <option value="7" selected>7 วัน</option>
+              <option value="14">14 วัน</option>
+              <option value="30">30 วัน</option>
+              <option value="90">90 วัน</option>
+              <option value="all">ทั้งหมด</option>
+            </select>
+          </label>
           <label class="filter">
             <span class="sr-only">กรองแท็ก</span>
             <select id="tag-filter">
@@ -104,11 +110,17 @@
         <p class="hero-lead">PDF / Infographic ที่ไปป์ไลน์สร้างในแต่ละวัน (ถ้ามีใน <code>data/downloads/</code>)</p>
       </section>
       <section class="panel">
-        <div class="downloads-toolbar">
-          <label class="date-picker">
-            <span class="sr-only">วันที่ดาวน์โหลด</span>
-            <select id="download-date-select" disabled>
-              <option value="">ยังไม่มีข้อมูล</option>
+        <div class="downloads-toolbar toolbar-row">
+          <label class="filter range-picker">
+            <span class="sr-only">ช่วงวันดาวน์โหลด</span>
+            <select id="download-range-select">
+              <option value="1">วันนี้</option>
+              <option value="3">3 วัน</option>
+              <option value="7" selected>7 วัน</option>
+              <option value="14">14 วัน</option>
+              <option value="30">30 วัน</option>
+              <option value="90">90 วัน</option>
+              <option value="all">ทั้งหมด</option>
             </select>
           </label>
         </div>

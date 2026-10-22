@@ -4,10 +4,11 @@
 
 | หน้า | URL |
 | --- | --- |
-| หน้าแรก | https://chiraleo2000.github.io/Police-news-intel-kit/ |
-| ข่าวรายวัน | https://chiraleo2000.github.io/Police-news-intel-kit/#/YYYY-MM-DD |
-| ตัวอย่าง (22 ต.ค. 69) | https://chiraleo2000.github.io/Police-news-intel-kit/#/2026-10-22 |
-| ดาวน์โหลด PDF | https://chiraleo2000.github.io/Police-news-intel-kit/#/downloads/2026-10-22 |
+| หน้าแรก (ช่วง 7 วัน) | https://chiraleo2000.github.io/Police-news-intel-kit/ |
+| วันนี้ | https://chiraleo2000.github.io/Police-news-intel-kit/#/r/1 |
+| 3 / 7 / 14 / 30 / 90 วัน | `…/#/r/3` · `…/#/r/7` · `…/#/r/14` · `…/#/r/30` · `…/#/r/90` |
+| ทั้งหมด | https://chiraleo2000.github.io/Police-news-intel-kit/#/r/all |
+| ดาวน์โหลด (ช่วงวัน) | https://chiraleo2000.github.io/Police-news-intel-kit/#/downloads/r/7 |
 | โพสต์หนึ่งข่าว | `…/#/2026-10-22/<postId>` |
 
 Repo: https://github.com/chiraleo2000/Police-news-intel-kit (public)  
@@ -39,7 +40,7 @@ github-pages/
     {DATE}_trends.json
 ```
 
-Route: `#/` · `#/YYYY-MM-DD` · `#/YYYY-MM-DD/<postId>` · `#/downloads` · `#/downloads/YYYY-MM-DD`
+Route: `#/r/{1\|3\|7\|14\|30\|90\|all}` · `#/YYYY-MM-DD/<postId>` · `#/downloads/r/{range}`
 
 ## ดูบนเครื่อง
 

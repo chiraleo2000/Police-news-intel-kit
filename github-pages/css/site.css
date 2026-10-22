@@ -245,14 +245,25 @@ body::before {
 
 .date-picker select,
 .filter select,
+.range-picker select,
 .search input {
   font: inherit;
   color: var(--ink);
   background: #fff;
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  padding: 0.45rem 0.7rem;
+  padding: 0.55rem 0.75rem;
   min-width: 10rem;
+}
+
+.range-picker {
+  flex: 0 0 auto;
+}
+
+.range-picker select {
+  min-width: 8.5rem;
+  font-family: var(--font-display);
+  font-weight: 600;
 }
 
 .search {
@@ -263,6 +274,11 @@ body::before {
 .search input {
   width: 100%;
   min-width: 0;
+}
+
+.toolbar-row .filter,
+.toolbar-row .search {
+  display: flex;
 }
 
 .hero-compact {
