@@ -1,12 +1,12 @@
 {
- "generated_at": "2026-10-22T05:06:03.779Z",
+ "generated_at": "2026-10-22T07:25:25.704Z",
  "schema_version": 1,
  "default_range": "all",
  "days": [
   {
    "date": "2026-10-22",
    "status": "published",
-   "total": 40,
+   "total": 49,
    "crime_file": "2026-10-22_crime.json",
    "downloads": [
     {
@@ -15,8 +15,18 @@
      "kind": "pdf"
     },
     {
+     "label": "PDF จาก LINE 2026-10-22",
+     "path": "downloads/2026-10-22_crime_line.pdf",
+     "kind": "pdf"
+    },
+    {
      "label": "Infographic 2026-10-22",
      "path": "downloads/2026-10-22_infographic.png",
+     "kind": "image"
+    },
+    {
+     "label": "Infographic LINE 2026-10-22",
+     "path": "downloads/2026-10-22_infographic_line.png",
      "kind": "image"
     }
    ]

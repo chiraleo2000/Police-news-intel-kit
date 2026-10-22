@@ -1,0 +1,80 @@
+{
+ "date": "2026-10-22",
+ "source": "reference/budget-fy2570-police-related.json",
+ "note": "จับคู่ตามหมวดเทคโนโลยี/หน่วยงานเท่านั้น ไม่ใช่การยืนยันความต้องการของหน่วยงาน",
+ "leads": [
+  {
+   "project": "โครงการพัฒนาระบบดิจิทัลเพื่อป้องกันภัยจากไซเบอร์สำหรับประชาชน CyberTH : Thailand Digital Platformfor Cybercrime Protection บก.ตอท.",
+   "budget_thb": 27266600,
+   "tech": "Cybersecurity",
+   "relevance": "สูง",
+   "news_ids": [
+    "20261022-line-econ-amata-investment-fraud",
+    "20261022-line-cyber-samui-crypto-fraud",
+    "20261022-line-cyber-australia-job-scam-complaint"
+   ],
+   "rationale": "ข่าวหลอกลงทุน/หลอกงานผ่านโซเชียลและบัญชีม้า สะท้อนความต้องการระบบป้องกันภัยไซเบอร์สำหรับประชาชน (จับคู่ตามหมวดเทคโนโลยี)"
+  },
+  {
+   "project": "โครงการปรับปรุงประสิทธิภาพระบบและเครื่องมือศูนย์ตรวจพิสูจน์พยานหลักฐานดิจิทัล บก.ตอท.",
+   "budget_thb": 98000000,
+   "tech": "IT/ดิจิทัล",
+   "relevance": "กลาง",
+   "news_ids": [
+    "20261022-gamble-udon-vipgt289",
+    "20261022-line-econ-amata-investment-fraud",
+    "20261022-line-cyber-samui-crypto-fraud"
+   ],
+   "rationale": "คดีเว็บพนัน/คริปโต/บัญชีม้าต้องใช้การตรวจพิสูจน์หลักฐานดิจิทัลและเส้นทางการเงิน (จับคู่ตามหมวดเทคโนโลยี)"
+  },
+  {
+   "project": "โครงการพัฒนาระบบเฝ้าระวังและจัดการภัยคุกคามทางไซเบอร์ของคอมพิวเตอร์แม่ข่ายสำนักงานตำรวจแห่งชาติ บก.สสท.แขวงปทุมวัน เขตปทุมวัน กรุงเทพมหานคร",
+   "budget_thb": 47300000,
+   "tech": "Cybersecurity",
+   "relevance": "สูง",
+   "news_ids": [
+    "20261022-gamble-udon-vipgt289",
+    "20261022-line-econ-amata-investment-fraud"
+   ],
+   "rationale": "เครือข่ายออนไลน์ผิดกฎหมายขนาดใหญ่ชี้ความเสี่ยงด้านไซเบอร์ (จับคู่ตามหมวดเทคโนโลยี)"
+  },
+  {
+   "project": "ระบบติดตามเป้าหมายเครือข่ายยาเสพติด เพื่อการสืบสวนปราบปรามยาเสพติด บก.ขส.",
+   "budget_thb": 90250000,
+   "tech": "Software/ระบบ",
+   "relevance": "กลาง",
+   "news_ids": [
+    "20261022-drug-hatyai-etomidate",
+    "20261022-line-tourist-hatyai-chinese-smuggling",
+    "20261022-line-drug-tak-yaba-750k",
+    "20261022-line-drug-chiangmai-yaba-1m"
+   ],
+   "rationale": "คดียาบ้าลำเลียงกว่า 1.7 ล้านเม็ดในภาคเหนือและเครือข่ายพอตซอมบี้ ต้องการเครื่องมือติดตามเครือข่ายยาเสพติด (จับคู่ตามหมวดเทคโนโลยี)"
+  },
+  {
+   "project": "โครงการจัดทำระบบฐานข้อมูลชายแดน กองบัญชาการตำรวจตระเวนชายแดน ระยะที่ 1 บช.ตชด.",
+   "budget_thb": 84367000,
+   "tech": "Software/ระบบ",
+   "relevance": "สูง",
+   "news_ids": [
+    "20261022-human-sakaeo-nrm",
+    "20261022-line-tourist-hatyai-chinese-smuggling",
+    "20261022-line-human-nakhonphanom-karaoke-labor",
+    "20261022-line-drug-chiangmai-yaba-1m"
+   ],
+   "rationale": "คดีชายแดน (ลำเลียงยา คัดกรอง NRM ลักลอบเข้าเมือง แรงงานต่างด้าว) เชื่อมโยงกับฐานข้อมูลชายแดน (จับคู่ตามหมวดเทคโนโลยี)"
+  },
+  {
+   "project": "โครงการพัฒนาระบบวิเคราะห์ข่าวกรองโดยใช้ปัญญาประดิษฐ์ บช.ส.แขวงทุ่งสองห้อง เขตหลักสี่ กรุงเทพมหานคร",
+   "budget_thb": 35800000,
+   "tech": "AI",
+   "relevance": "สูง",
+   "news_ids": [
+    "20261022-line-econ-amata-investment-fraud",
+    "20261022-line-tourist-hatyai-chinese-smuggling",
+    "20261022-line-transnat-chinese-insurance-fraud-fugitive"
+   ],
+   "rationale": "ผู้ต้องหาข้ามชาติและเครือข่ายฉ้อโกงต้องใช้การวิเคราะห์ข่าวกรองเชิงเชื่อมโยง (จับคู่ตามหมวดเทคโนโลยี)"
+  }
+ ]
+}

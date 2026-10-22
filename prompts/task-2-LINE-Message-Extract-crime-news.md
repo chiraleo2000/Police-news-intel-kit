@@ -2,8 +2,8 @@
 name: task-2-LINE-Message-Extract-crime-news
 description: >
   รายวัน 06:40 (Asia/Bangkok) — ดึงลิงก์จาก LINE continuous export (RUN_DATE)
-  → กรองเฉพาะข่าวตำรวจ/อาชญากรรมก่อน (ประหยัด token) → fetch เฉพาะที่ผ่าน
-  → taxonomy/tags → วิเคราะห์ → JSON/Obsidian/PDF
+  → กรองตำรวจ/อาชญากรรม/ประชาสัมพันธ์ ตร. → ตรวจซ้ำกับ Task 1 + ผลที่มีอยู่
+  → fetch เฉพาะใหม่หรือลิงก์เพิ่มแหล่ง → merge/append → JSON/Obsidian/PDF
   ⛔ NO GIT · ห้ามกวาด registry 55 แหล่ง (นั่นคือ Task 1)
 schedule: "CRON_TZ=Asia/Bangkok 40 6 * * *"
 trigger:
@@ -45,18 +45,19 @@ LINE กลุ่ม → Bot → Webhook → SQLite → line_intake_continuous.{
 
 **ผ่านชั้น 1 (candidate)** ถ้าอย่างน้อย 1 ข้อ:
 - โดเมนทางการตำรวจ/ยุติธรรม: `.go.th` ที่เกี่ยวกับ ตร. ตม. ปปส. ปปง. DSI อัยการ ราชทัณฑ์ หรือใน registry หน่วยบังคับใช้กฎหมาย
+- **ประชาสัมพันธ์ตำรวจ (บังคับ KEEP):** หน้าข่าว/แถลง/กิจกรรม/PR ของเว็บ ตร. หรือหน่วยในสังกัด  
+  (คำสัญญาณ: `ประชาสัมพันธ์` `แถลงข่าว` `แถลง` `ผลงาน` `กิจกรรม` + หน่วยตำรวจ)
 - โดเมนสื่อ + path/หมวดอาชญากรรม/โรงพัก/ยุติธรรม (เช่น `/crime`, `/local/crime`, ข่าวอาชญากรรม)
 - URL / slug / ชื่อโดเมน หรือข้อความพ่วงลิงก์ (ถ้ามีใน export) มีคำสัญญาณ เช่น  
   `ตำรวจ` `ตร.` `จับกุม` `ผู้ต้องหา` `อาชญากรรม` `ยาเสพติด` `ค้ามนุษย์` `มิจฉาชีพ` `คอลเซ็นเตอร์`  
   `หมายจับ` `ยึดของกลาง` `บช.` `บก.` `สน.` `ตม.` `ปปส.` `ไซเบอร์` `หลอกลวง` `ปล้น` `ฆาตกรรม`  
-  `police` `arrest` `scam` `narcotics` `crime` `fraud`
-- เป็นเว็บประชาสัมพันธ์/ข่าวของหน่วยตำรวจ (PR ตร.)
+  `ประชาสัมพันธ์` `แถลงข่าว` `police` `arrest` `scam` `narcotics` `crime` `fraud`
 
 ### ชั้น 2 — peek ถูก (title + 200–400 ตัวอักษรแรกเท่านั้น)
 ใช้เฉพาะ candidate ที่ยังไม่ชัดจากชั้น 1:
 - ดึงแค่ title + excerpt สั้น **ห้าม** ดึงทั้งบทความมาใส่ context
-- **KEEP** ถ้าเกี่ยวกับ: การปฏิบัติหน้าที่ตำรวจ · คดีอาญา/อาชญากรรม · ยาเสพติด · ไซเบอร์หลอกลวง ·  
-  ค้ามนุษย์ · เศรษฐกิจผิดกฎหมายที่มีแถลง ตร. · เตือนภัยมิจฉาชีพ · ประชาสัมพันธ์ ตร./จับกุม/แถลง
+- **KEEP** ถ้าเกี่ยวกับ: การปฏิบัติหน้าที่ตำรวจ · **ประชาสัมพันธ์/แถลงของ ตร.** · คดีอาญา/อาชญากรรม ·  
+  ยาเสพติด · ไซเบอร์หลอกลวง · ค้ามนุษย์ · เศรษฐกิจผิดกฎหมายที่มีแถลง ตร. · เตือนภัยมิจฉาชีพ
 - **DROP** ถ้าเป็นข่าวทั่วไป การเมืองที่ไม่ใช่คดี เศรษฐกิจมหภาค กีฬา บันเทิง สุขภาพ ไม่มีหน่วยตำรวจ/ข้อหา
 
 หลัง KEEP เท่านั้นจึง `web_fetch` เต็ม + สร้าง article + taxonomy + วิเคราะห์  
@@ -89,18 +90,30 @@ DROP → บันทึกใน Completion Report อย่างเดีย�
 - Git: ห้าม add/commit/push
 - Facebook/โซเชียล = reference only ห้ามเปิด · `fetchable=false` → skipped
 - pass = HTTP 200 + title + body ≥300 ตัวอักษร · อ่านวันที่ พ.ศ.
-- **Event-level merge (บังคับ):** ประเมินว่าหัวข้อ/เหตุการณ์เดียวกันหรือไม่ก่อนสร้างโพสต์
-  รวมเป็น 1 post ต่อเหตุการณ์ · แหล่งอื่นทั้งหมดอยู่ใน `corroborating_sources[]`
-  ถ้าตรงกับคดีใน Task 1 ของวันเดียวกัน → merge แหล่งเข้า post/case เดิม ห้ามสร้าง blog ซ้ำ
-- **Tags:** ตาม Task 1 — `meta.tags` เหลือ **3–5 หัวข้อสำคัญเท่านั้น** (ห้ามยัดจังหวัด/หน่วย/คำทั่วไป)
-  จังหวัด·หน่วย·MO เก็บใน `tags_struct`; ใช้ taxonomy ชุดเดียวกับ Task 1 (รวม GAMBLE/ENV/PUBLIC)
+- **ตรวจซ้ำก่อนสร้างโพสต์ใหม่ (บังคับ — ประหยัด token + ไม่ซ้ำ blog):**  
+  อ่านผลที่มีอยู่ของ `RUN_DATE` ก่อน fetch/เขียนยาว:
+  1. `github-pages/data/{DATE}_crime.json` + `{DATE}_crime_line.json` + `feed.json` (posts ที่ `_date=RUN_DATE`)
+  2. `Document/{DATE}_Crime/` และ `Document/{DATE}_CrimeLine/` ถ้ามี
+  3. `vault/20_Cases/` โน้ตที่ `date: RUN_DATE` (หรือชื่อไฟล์ขึ้นต้นด้วยวันที่)
+  เทียบแต่ละลิงก์ KEEP กับคลังด้วย: `canonical_url` / `source_url` ตรงกัน **หรือ** event-key เดียวกัน  
+  (≥3 ใน 4: จังหวัด, วันเกิดเหตุ/จับ, ประเภทคดี, ตัวเลข/ผู้ต้องหา สำคัญ) หรือ title similarity ≥85% + จังหวัด+ประเภทตรง
+- **ผลจากการตรวจซ้ำ — 3 ทาง (เลือกอย่างใดอย่างหนึ่งต่อลิงก์):**
+  | ผล | ทำอะไร | Token |
+  | --- | --- | --- |
+  | **DUP_EXACT** URL มีอยู่แล้วในแหล่งใดแหล่งหนึ่ง | ข้าม — นับ `links_skipped.already_have_url` | ไม่ fetch เต็ม |
+  | **DUP_EVENT** เหตุการณ์เดียวกัน แต่ URL ใหม่ | **append เท่านั้น** — ใส่ URL เข้า `corroborating_sources[]` ของ post/case เดิม (Task 1 หรือ line) · อัปเดต `vault/20_Cases/{id}.md` `sources:` · **ห้าม** สร้าง post/id ใหม่ · ตั้ง `is_police_pr` ถ้าเป็น PR ตร. | fetch เฉพาะเมื่อต้องการยืนยันชื่อแหล่ง; ห้ามเขียน content ใหม่ทั้งก้อน |
+  | **NEW** | สร้าง article/post ตามปกติ แล้วค่อย event-merge รอบท้าย | fetch เต็ม |
+- **Event-level merge (ท้ายรอบ):** รวมเหตุการณ์ซ้ำในชุด LINE เอง + กับ Task 1 อีกครั้งหลังสร้าง NEW  
+  1 post / 1 case · แหล่งรองทั้งหมดใน `corroborating_sources[]`
+- **Tags:** ตาม Task 1 — `meta.tags` **3–5 หัวข้อสำคัญ**; PR ตร. ตั้ง `tags_struct.is_police_pr = true`  
+  taxonomy รวม POLICE (ประชาสัมพันธ์) / GAMBLE / ENV / PUBLIC
 - add-only ต่อเหตุการณ์ · จริยธรรมคดีครบ
-- `summary_1` 80–150 คำ สำนวนเอง · `content` ใน publish ≥350 คำจากข้อเท็จจริงแหล่ง
-- PDF + Infographic บังคับ (THSarabun) + copy ไป `github-pages/data/downloads/`
+- `summary_1` 80–150 คำ · `content` ≥350 คำ **เฉพาะ NEW** (ของ DUP_EVENT ไม่เขียน content ทับ)
+- PDF + Infographic บังคับเมื่อมี posts ใหม่หรือมีการ append แหล่ง · copy ไป `github-pages/data/downloads/`
 - schema publish เหมือน Task 1 แต่ตั้ง:
   - `source.origin = "line_curated"`
   - `meta.batch = "L"`
-  - ไฟล์เว็บชื่อ `{DATE}_crime_line.json` (ไม่ทับ Task 1) · UI จะรวมกับ Task 1 และ merge แหล่งซ้ำอัตโนมัติ
+  - ไฟล์เว็บ `{DATE}_crime_line.json` (ไม่ทับไฟล์ Task 1) · UI รวมกับ Task 1 อัตโนมัติ
 
 ### วิเคราะห์ในรอบนี้ (บังคับ — เฉพาะข่าวที่ผ่านเกณฑ์แล้ว)
 หลัง merge **เฉพาะ posts ที่ KEEP** ก่อนสร้างไฟล์เผยแพร่:
@@ -162,16 +175,17 @@ Frontmatter คดีต้องมี: `type: case`, `date`, `crime_type`, `se
 0. Preflight: `run_status_get` → `run_status_put(..., running)` ถ้าต้องรัน
 1. โหลด continuous JSON (หรือ xlsx) → **กรองเฉพาะ RUN_DATE + kind=url**
 2. กรองพื้นฐาน: social/fetchable=false → skipped; น่าสงสัย → skipped; ≤40 URL
-3. **Token gate — กรองตำรวจ/อาชญากรรม (ชั้น 1 → ชั้น 2)**  
-   KEEP เท่านั้นที่ไปต่อ · DROP นับใน `not_crime_or_police` · **ห้าม** ใส่เนื้อหา DROP ใน context ยาว
-4. Fetch เต็มเฉพาะ KEEP (≤25) เรียง official ตร./PR → สื่ออาชญากรรม → อื่น ตามกฎ pipeline
-5. สร้าง article + taxonomy/tags (3–5 หัวข้อสำคัญ) · high-severity ยืนยันจำกัด ≤3 search / ≤8 fetch เพิ่ม
-6. **Event-merge:** รวมเหตุการณ์ซ้ำ · merge กับ Task 1 ของวันเดียวกันได้ — **ห้าม scrape Batch A–D**
-7. Trend 7 วันจาก manifest (ข้ามได้ถ้า posts ว่าง)
-8. วิเคราะห์ → `_brain_daily.md` + `_bd_leads.json` (**เฉพาะเมื่อมี posts**)
-9. Publish 3 ช่องทางตามรูปแบบด้านบน (posts ว่างได้)
-10. ปิดงาน: MCP `line_links_mark` ถ้ามี; บันทึก `links_used` / `links_skipped` ใน Completion Report
-11. Completion Report + **พิมพ์ลิงก์ GitHub Pages** · ไม่ git push
+3. **Token gate — กรองตำรวจ/อาชญากรรม/ประชาสัมพันธ์ ตร. (ชั้น 1 → ชั้น 2)**  
+   KEEP เท่านั้น · DROP → `not_crime_or_police`
+4. **โหลดคลังที่มีอยู่** (Task 1 + line + vault + Document ของ RUN_DATE) → จัดดัชนี URL / event-key
+5. แยก KEEP เป็น `DUP_EXACT` / `DUP_EVENT` / `NEW` ตามตารางตรวจซ้ำ
+6. Fetch เต็มเฉพาะ **NEW** (และ peek สั้นสำหรับ DUP_EVENT ถ้าจำเป็น) ≤25 · เรียง official PR ตร. → สื่อ
+7. สร้าง article เฉพาะ NEW + taxonomy/tags · **DUP_EVENT = append ลิงก์เข้า post/case เดิมเท่านั้น**
+8. **Event-merge ท้ายรอบ** กับ Task 1 อีกครั้ง — **ห้าม scrape Batch A–D** · ห้าม blog ซ้ำ
+9. Trend 7 วัน (ข้ามได้ถ้าไม่มี NEW และไม่มี append)
+10. วิเคราะห์ brain/BD **เมื่อมี NEW หรือมีการ append แหล่ง** (ไม่รันถ้ามีแต่ DUP_EXACT)
+11. Publish 3 ช่องทาง + `node ops/rebuild-pages-feed.js`
+12. Completion Report + ลิงก์ Pages · ไม่ git push
 
 ## Document output tree (Task 2)
 ```
@@ -201,7 +215,7 @@ vault/30_Entities/...
   "run_date": "",
   "target_date": "",
   "task": "2-line-continuous",
-  "pipeline": "task-2-LINE-Message-Extract-crime-news-1.1",
+  "pipeline": "task-2-LINE-Message-Extract-crime-news-1.2",
   "input_file": "server/exports/line_intake_continuous.json",
   "links_attempted": 0,
   "links_used": 0,
@@ -210,10 +224,19 @@ vault/30_Entities/...
     "older_than_24h": 0,
     "not_news": 0,
     "suspicious": 0,
-    "not_crime_or_police": 0
+    "not_crime_or_police": 0,
+    "already_have_url": 0
   },
-  "token_gate": {"candidates_after_layer1": 0, "kept_after_layer2": 0, "full_fetch": 0},
+  "token_gate": {
+    "candidates_after_layer1": 0,
+    "kept_after_layer2": 0,
+    "dup_exact": 0,
+    "dup_event_appended": 0,
+    "new": 0,
+    "full_fetch": 0
+  },
   "articles_total": 0,
+  "sources_appended_to_existing": 0,
   "bd_leads_count": 0,
   "brain_entities_touched": 0,
   "obsidian_cases": 0,
@@ -245,5 +268,7 @@ vault/30_Entities/...
 - ห้ามเดาข้อมูลลิงก์หรืองบประมาณ
 - ห้ามใช้ลิงก์จากวันอื่นใน continuous export
 - ห้ามทำ Obsidian แบบสรุปรายวันเป็นผลลัพธ์หลัก
-- **ห้าม fetch เต็ม / สรุปยาว / วิเคราะห์ brain·BD กับลิงก์ที่ยังไม่ผ่านเกณฑ์ตำรวจหรืออาชญากรรม**
+- **ห้าม fetch เต็ม / สรุปยาว / วิเคราะห์ brain·BD กับลิงก์ที่ยังไม่ผ่านเกณฑ์ตำรวจหรืออาชญากรรม/PR ตร.**
 - ห้ามยัดข่าวที่ไม่เกี่ยวเข้า `posts[]` เพื่อให้ตัวเลขดูเยอะ
+- **ห้ามสร้าง post/case ใหม่เมื่อเหตุการณ์มีอยู่แล้วใน Task 1 หรือคลังวันนั้น** — ให้ append ลิงก์เท่านั้น
+- ห้ามข้ามข่าวประชาสัมพันธ์ ตร. ที่ผ่านเกณฑ์ (ถือว่าอยู่ในขอบเขต Task 2)

@@ -1,0 +1,184 @@
+[
+ {
+  "province": "กรุงเทพมหานคร",
+  "region": "กรุงเทพฯ และปริมณฑล",
+  "count": 3,
+  "top_crime_types": [
+   "อาชญากรรมไซเบอร์และออนไลน์",
+   "อาชญากรรมที่เกี่ยวข้องกับนักท่องเที่ยวและชาวต่างชาติ",
+   "อาชญากรรมข้ามชาติและความร่วมมือระหว่างประเทศ"
+  ],
+  "post_ids": [
+   "20261022-line-cyber-australia-job-scam-complaint",
+   "20261022-line-tourist-hatyai-chinese-smuggling",
+   "20261022-line-transnat-chinese-insurance-fraud-fugitive"
+  ]
+ },
+ {
+  "province": "สงขลา",
+  "region": "ภาคใต้",
+  "count": 2,
+  "top_crime_types": [
+   "ยาเสพติด",
+   "อาชญากรรมที่เกี่ยวข้องกับนักท่องเที่ยวและชาวต่างชาติ"
+  ],
+  "post_ids": [
+   "20261022-drug-hatyai-etomidate",
+   "20261022-line-tourist-hatyai-chinese-smuggling"
+  ]
+ },
+ {
+  "province": "อุดรธานี",
+  "region": "ภาคตะวันออกเฉียงเหนือ",
+  "count": 1,
+  "top_crime_types": [
+   "พนันและบ่อนผิดกฎหมาย"
+  ],
+  "post_ids": [
+   "20261022-gamble-udon-vipgt289"
+  ]
+ },
+ {
+  "province": "สระแก้ว",
+  "region": "ภาคตะวันออก",
+  "count": 1,
+  "top_crime_types": [
+   "ค้ามนุษย์ แรงงานผิดกฎหมาย และคุ้มครองเด็ก"
+  ],
+  "post_ids": [
+   "20261022-human-sakaeo-nrm"
+  ]
+ },
+ {
+  "province": "นนทบุรี",
+  "region": "กรุงเทพฯ และปริมณฑล",
+  "count": 1,
+  "top_crime_types": [
+   "คดีเศรษฐกิจ การเงิน และฟอกเงิน"
+  ],
+  "post_ids": [
+   "20261022-line-econ-amata-investment-fraud"
+  ]
+ },
+ {
+  "province": "กาญจนบุรี",
+  "region": "ภาคกลาง",
+  "count": 1,
+  "top_crime_types": [
+   "คดีเศรษฐกิจ การเงิน และฟอกเงิน"
+  ],
+  "post_ids": [
+   "20261022-line-econ-amata-investment-fraud"
+  ]
+ },
+ {
+  "province": "ปราจีนบุรี",
+  "region": "ภาคตะวันออก",
+  "count": 1,
+  "top_crime_types": [
+   "คดีเศรษฐกิจ การเงิน และฟอกเงิน"
+  ],
+  "post_ids": [
+   "20261022-line-econ-amata-investment-fraud"
+  ]
+ },
+ {
+  "province": "ระยอง",
+  "region": "กรุงเทพฯ และปริมณฑล",
+  "count": 1,
+  "top_crime_types": [
+   "คดีเศรษฐกิจ การเงิน และฟอกเงิน"
+  ],
+  "post_ids": [
+   "20261022-line-econ-amata-investment-fraud"
+  ]
+ },
+ {
+  "province": "สุราษฎร์ธานี",
+  "region": "ภาคใต้",
+  "count": 1,
+  "top_crime_types": [
+   "อาชญากรรมไซเบอร์และออนไลน์"
+  ],
+  "post_ids": [
+   "20261022-line-cyber-samui-crypto-fraud"
+  ]
+ },
+ {
+  "province": "ปทุมธานี",
+  "region": "กรุงเทพฯ และปริมณฑล",
+  "count": 1,
+  "top_crime_types": [
+   "อาชญากรรมไซเบอร์และออนไลน์"
+  ],
+  "post_ids": [
+   "20261022-line-cyber-australia-job-scam-complaint"
+  ]
+ },
+ {
+  "province": "นครปฐม",
+  "region": "ภาคกลาง",
+  "count": 1,
+  "top_crime_types": [
+   "คุ้มครองผู้บริโภคและสินค้าผิดกฎหมาย"
+  ],
+  "post_ids": [
+   "20261022-line-consumer-fake-helmets-nakhonpathom"
+  ]
+ },
+ {
+  "province": "ตาก",
+  "region": "ภาคเหนือ",
+  "count": 1,
+  "top_crime_types": [
+   "ยาเสพติด"
+  ],
+  "post_ids": [
+   "20261022-line-drug-tak-yaba-750k"
+  ]
+ },
+ {
+  "province": "เพชรบูรณ์",
+  "region": "ภาคเหนือ",
+  "count": 1,
+  "top_crime_types": [
+   "ยาเสพติด"
+  ],
+  "post_ids": [
+   "20261022-line-drug-tak-yaba-750k"
+  ]
+ },
+ {
+  "province": "กำแพงเพชร",
+  "region": "ภาคเหนือ",
+  "count": 1,
+  "top_crime_types": [
+   "ยาเสพติด"
+  ],
+  "post_ids": [
+   "20261022-line-drug-tak-yaba-750k"
+  ]
+ },
+ {
+  "province": "นครพนม",
+  "region": "ภาคตะวันออกเฉียงเหนือ",
+  "count": 1,
+  "top_crime_types": [
+   "ค้ามนุษย์ แรงงานผิดกฎหมาย และคุ้มครองเด็ก"
+  ],
+  "post_ids": [
+   "20261022-line-human-nakhonphanom-karaoke-labor"
+  ]
+ },
+ {
+  "province": "เชียงใหม่",
+  "region": "ภาคเหนือ",
+  "count": 1,
+  "top_crime_types": [
+   "ยาเสพติด"
+  ],
+  "post_ids": [
+   "20261022-line-drug-chiangmai-yaba-1m"
+  ]
+ }
+]
