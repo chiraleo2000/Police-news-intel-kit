@@ -27,8 +27,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      # enablement: true — auto-create/repair Pages site if missing
+      # (fixes first-run "Get Pages site failed / Not Found")
       - name: Setup Pages
         uses: actions/configure-pages@v5
+        with:
+          enablement: true
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

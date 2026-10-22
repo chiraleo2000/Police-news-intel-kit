@@ -1,10 +1,9 @@
 ---
 name: task-2-LINE-Message-Extract-crime-news
 description: >
-  รายวัน 06:40 (Asia/Bangkok) — ดึงลิงก์จาก exports ต่อเนื่องของ LINE
-  (line_intake_continuous.json/.xlsx กรองเฉพาะ RUN_DATE)
-  → fetch เนื้อหา → จัดกลุ่ม/แท็กตามกฎ police-crime-news-pipeline →
-  วิเคราะห์ (Second Brain + BD×งบ 2570) → JSON รายวันเว็บ · โน้ต Obsidian แยกหัวข้อ · PDF+Infographic
+  รายวัน 06:40 (Asia/Bangkok) — ดึงลิงก์จาก LINE continuous export (RUN_DATE)
+  → กรองเฉพาะข่าวตำรวจ/อาชญากรรมก่อน (ประหยัด token) → fetch เฉพาะที่ผ่าน
+  → taxonomy/tags → วิเคราะห์ → JSON/Obsidian/PDF
   ⛔ NO GIT · ห้ามกวาด registry 55 แหล่ง (นั่นคือ Task 1)
 schedule: "CRON_TZ=Asia/Bangkok 40 6 * * *"
 trigger:
@@ -25,11 +24,45 @@ trigger:
 ไหลต้นทาง:
 ```
 LINE กลุ่ม → Bot → Webhook → SQLite → line_intake_continuous.{json,xlsx}
-                                              ↓ Task 2 (กรองวันที่)
-                                    fetch → JSON รายวัน + Obsidian ตามหัวข้อ
+                                              ↓ Task 2
+                         กรองวันที่ → กรองตำรวจ/อาชญากรรม (cheap)
+                                              ↓ เฉพาะที่ผ่าน
+                                    fetch → merge → publish
 ```
 
-**Scheduled task เริ่ม session ใหม่ทุกครั้ง** — ห้ามพึ่ง memory; อ่านไฟล์ export + `run_status_get` เสมอ
+**Scheduled task เริ่ม session ใหม่ทุกครั้ง** — ห้ามพึ่ง memory; อ่านไฟล์ export + `run_status_get` เสมอ  
+**ประหยัด token:** ห้าม fetch เต็ม / ห้ามเขียน summary·tags·brain·BD จนกว่าลิงก์จะผ่านเกณฑ์ "เกี่ยวข้องกับตำรวจหรืออาชญากรรม"
+
+## เกณฑ์คัดกรองก่อนวิเคราะห์ (บังคับ — ทำก่อน fetch เต็ม)
+
+ทำเป็น 2 ชั้นถูก→แพง หยุดชั้นแรกได้เลยถ้าตัดทิ้งชัดเจน
+
+### ชั้น 1 — ไม่เปิดหน้า / ไม่ใช้ LLM (ถูกมาก)
+ตัดทิ้งทันที (`links_skipped.not_crime_or_police`) ถ้าเข้าเงื่อนไขใดข้อหนึ่ง:
+- `domain_type=social` / `fetchable=false`
+- โดเมนบันเทิง กีฬา ช้อปปิ้ง สุขภาพทั่วไป ท่องเที่ยวรีวิว เทคโนโลยี gadget ที่ URL ไม่มีสัญญาณคดี
+- path/title/URL มีแต่หัวข้อชัดเจนว่าไม่เกี่ยว เช่น สูตรอาหาร ดารา หวย (ที่ไม่ใช่บ่อนผิดกฎหมาย) โปรโมชันสินค้า
+
+**ผ่านชั้น 1 (candidate)** ถ้าอย่างน้อย 1 ข้อ:
+- โดเมนทางการตำรวจ/ยุติธรรม: `.go.th` ที่เกี่ยวกับ ตร. ตม. ปปส. ปปง. DSI อัยการ ราชทัณฑ์ หรือใน registry หน่วยบังคับใช้กฎหมาย
+- โดเมนสื่อ + path/หมวดอาชญากรรม/โรงพัก/ยุติธรรม (เช่น `/crime`, `/local/crime`, ข่าวอาชญากรรม)
+- URL / slug / ชื่อโดเมน หรือข้อความพ่วงลิงก์ (ถ้ามีใน export) มีคำสัญญาณ เช่น  
+  `ตำรวจ` `ตร.` `จับกุม` `ผู้ต้องหา` `อาชญากรรม` `ยาเสพติด` `ค้ามนุษย์` `มิจฉาชีพ` `คอลเซ็นเตอร์`  
+  `หมายจับ` `ยึดของกลาง` `บช.` `บก.` `สน.` `ตม.` `ปปส.` `ไซเบอร์` `หลอกลวง` `ปล้น` `ฆาตกรรม`  
+  `police` `arrest` `scam` `narcotics` `crime` `fraud`
+- เป็นเว็บประชาสัมพันธ์/ข่าวของหน่วยตำรวจ (PR ตร.)
+
+### ชั้น 2 — peek ถูก (title + 200–400 ตัวอักษรแรกเท่านั้น)
+ใช้เฉพาะ candidate ที่ยังไม่ชัดจากชั้น 1:
+- ดึงแค่ title + excerpt สั้น **ห้าม** ดึงทั้งบทความมาใส่ context
+- **KEEP** ถ้าเกี่ยวกับ: การปฏิบัติหน้าที่ตำรวจ · คดีอาญา/อาชญากรรม · ยาเสพติด · ไซเบอร์หลอกลวง ·  
+  ค้ามนุษย์ · เศรษฐกิจผิดกฎหมายที่มีแถลง ตร. · เตือนภัยมิจฉาชีพ · ประชาสัมพันธ์ ตร./จับกุม/แถลง
+- **DROP** ถ้าเป็นข่าวทั่วไป การเมืองที่ไม่ใช่คดี เศรษฐกิจมหภาค กีฬา บันเทิง สุขภาพ ไม่มีหน่วยตำรวจ/ข้อหา
+
+หลัง KEEP เท่านั้นจึง `web_fetch` เต็ม + สร้าง article + taxonomy + วิเคราะห์  
+DROP → บันทึกใน Completion Report อย่างเดียว **ห้าม** สรุปเนื้อหายาว
+
+เพดาน: ≤40 URL เข้าชั้น 1; หลังกรองแล้ว fetch เต็ม ≤25 ลิงก์/รอบ (เรียง official ตร. → สื่ออาชญากรรม → อื่น)
 
 ## Run params
 `RUN_DATE` / `TARGET_DATE` = วันนี้ (Asia/Bangkok). Window = รายการที่ `received_at` อยู่ในวันนั้นเท่านั้น  
@@ -69,12 +102,13 @@ LINE กลุ่ม → Bot → Webhook → SQLite → line_intake_continuous.{
   - `meta.batch = "L"`
   - ไฟล์เว็บชื่อ `{DATE}_crime_line.json` (ไม่ทับ Task 1) · UI จะรวมกับ Task 1 และ merge แหล่งซ้ำอัตโนมัติ
 
-### วิเคราะห์ในรอบนี้ (บังคับ)
-หลัง merge ก่อนสร้างไฟล์เผยแพร่:
+### วิเคราะห์ในรอบนี้ (บังคับ — เฉพาะข่าวที่ผ่านเกณฑ์แล้ว)
+หลัง merge **เฉพาะ posts ที่ KEEP** ก่อนสร้างไฟล์เผยแพร่:
 1. **Second Brain** → `_brain_daily.md` (entities / timeline / merge_proposal = proposed เท่านั้น)
 2. **BD × งบ 2570** → `_bd_leads.json` จาก `reference/budget-fy2570-police-related.json` เท่านั้น
 3. ใส่บทวิเคราะห์ใน PDF และในโน้ต Obsidian ที่เกี่ยวข้อง
-4. ห้ามแตะโน้ตที่ `generated: false`
+4. ห้ามแตะโน้ตที่ `generated: false`  
+ถ้าหลังกรองแล้ว **0 ข่าว** → ข้าม brain/BD/PDF เนื้อหาเต็มได้ รายงาน `status=complete` พร้อม `links_skipped` + ไฟล์ JSON ว่าง/`posts:[]` ขั้นต่ำ (ประหยัด token)
 
 ## ช่องทางผลลัพธ์ (บังคับครบ 3 + รูปแบบ)
 
@@ -127,15 +161,17 @@ Frontmatter คดีต้องมี: `type: case`, `date`, `crime_type`, `se
 
 0. Preflight: `run_status_get` → `run_status_put(..., running)` ถ้าต้องรัน
 1. โหลด continuous JSON (หรือ xlsx) → **กรองเฉพาะ RUN_DATE + kind=url**
-2. กรอง: social/fetchable=false → skipped; ไม่ใช่ข่าว/น่าสงสัย → skipped; เรียง official→media→unknown; ≤40 URL/รอบ
-3. Fetch ตามกฎ pipeline
-4. สร้าง article + taxonomy/tags · severity=high ยืนยันจำกัด ≤3 search / ≤8 fetch เพิ่ม
-5. **Event-merge:** รวมลิงก์ LINE ที่เป็นเหตุการณ์เดียวกันเป็น 1 post · อ่าน Task 1 ของวันเดียวกันแล้ว merge แหล่งเข้า post/case เดิมถ้าเหตุการณ์ตรง — **ห้าม scrape Batch A–D** · ห้ามแยก blog ซ้ำ
-6. Trend 7 วันจาก manifest
-7. วิเคราะห์ → `_brain_daily.md` + `_bd_leads.json`
-8. Publish 3 ช่องทางตามรูปแบบด้านบน
-9. ปิดงาน: ถ้ามี MCP ให้ `line_links_mark`; ถ้ามีแค่ไฟล์ continuous ให้บันทึกสถานะใน Completion Report (`links_used` / `links_skipped`) ไม่ต้องเขียนทับ continuous เป็น source of truth คนละชั้นกับ DB
-10. Completion Report + **พิมพ์ลิงก์ GitHub Pages** · ไม่ git push
+2. กรองพื้นฐาน: social/fetchable=false → skipped; น่าสงสัย → skipped; ≤40 URL
+3. **Token gate — กรองตำรวจ/อาชญากรรม (ชั้น 1 → ชั้น 2)**  
+   KEEP เท่านั้นที่ไปต่อ · DROP นับใน `not_crime_or_police` · **ห้าม** ใส่เนื้อหา DROP ใน context ยาว
+4. Fetch เต็มเฉพาะ KEEP (≤25) เรียง official ตร./PR → สื่ออาชญากรรม → อื่น ตามกฎ pipeline
+5. สร้าง article + taxonomy/tags (3–5 หัวข้อสำคัญ) · high-severity ยืนยันจำกัด ≤3 search / ≤8 fetch เพิ่ม
+6. **Event-merge:** รวมเหตุการณ์ซ้ำ · merge กับ Task 1 ของวันเดียวกันได้ — **ห้าม scrape Batch A–D**
+7. Trend 7 วันจาก manifest (ข้ามได้ถ้า posts ว่าง)
+8. วิเคราะห์ → `_brain_daily.md` + `_bd_leads.json` (**เฉพาะเมื่อมี posts**)
+9. Publish 3 ช่องทางตามรูปแบบด้านบน (posts ว่างได้)
+10. ปิดงาน: MCP `line_links_mark` ถ้ามี; บันทึก `links_used` / `links_skipped` ใน Completion Report
+11. Completion Report + **พิมพ์ลิงก์ GitHub Pages** · ไม่ git push
 
 ## Document output tree (Task 2)
 ```
@@ -169,7 +205,14 @@ vault/30_Entities/...
   "input_file": "server/exports/line_intake_continuous.json",
   "links_attempted": 0,
   "links_used": 0,
-  "links_skipped": {"social_reference_only": 0, "older_than_24h": 0, "not_news": 0, "suspicious": 0},
+  "links_skipped": {
+    "social_reference_only": 0,
+    "older_than_24h": 0,
+    "not_news": 0,
+    "suspicious": 0,
+    "not_crime_or_police": 0
+  },
+  "token_gate": {"candidates_after_layer1": 0, "kept_after_layer2": 0, "full_fetch": 0},
   "articles_total": 0,
   "bd_leads_count": 0,
   "brain_entities_touched": 0,
@@ -202,3 +245,5 @@ vault/30_Entities/...
 - ห้ามเดาข้อมูลลิงก์หรืองบประมาณ
 - ห้ามใช้ลิงก์จากวันอื่นใน continuous export
 - ห้ามทำ Obsidian แบบสรุปรายวันเป็นผลลัพธ์หลัก
+- **ห้าม fetch เต็ม / สรุปยาว / วิเคราะห์ brain·BD กับลิงก์ที่ยังไม่ผ่านเกณฑ์ตำรวจหรืออาชญากรรม**
+- ห้ามยัดข่าวที่ไม่เกี่ยวเข้า `posts[]` เพื่อให้ตัวเลขดูเยอะ
