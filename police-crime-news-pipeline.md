@@ -22,7 +22,7 @@ trigger:
 4. เพิ่มกฎจริยธรรมการรายงานข่าวคดี กฎอ่านวันที่ พ.ศ. และ registry health check
 
 ## Run params
-`RUN_DATE` / `TARGET_DATE` = วันนี้ (Asia/Bangkok). Window = 24 ชั่วโมงก่อน RUN_DATE.
+`RUN_DATE` / `TARGET_DATE` = วันนี้ (Asia/Bangkok). Window = 00:00 ของเมื่อวาน (TARGET_DATE-1) ถึงเวลารัน (เมื่อวาน+วันนี้) — ดู v1.2 ท้ายไฟล์.
 
 ## Global rules (ใช้ทุกขั้น)
 
@@ -56,7 +56,7 @@ trigger:
 - ข้อความ "13 ชั่วโมงที่แล้ว" / "เมื่อวาน" ให้คำนวณจาก RUN_DATE; ถ้าคลุมเครือใช้กฎ top-3 ของหน้า "ล่าสุด"
 
 ### Window & dedupe
-- เก็บเฉพาะข่าวที่เผยแพร่ในช่วง 24 ชม.; ถ้าไม่เห็นวันที่ ให้เก็บเฉพาะรายการ top-3 ของหน้า "ล่าสุด" มิฉะนั้นข้าม
+- เก็บเฉพาะข่าวที่เผยแพร่ตั้งแต่ 00:00 ของเมื่อวานถึงปัจจุบัน; ถ้าไม่เห็นวันที่ ให้เก็บเฉพาะรายการ top-3 ของหน้า "ล่าสุด" มิฉะนั้นข้าม
 - **Case-level merge:** คดีเดียวกันมักถูกรายงานหลายสื่อ ถือว่าเป็นคดีเดียวกันเมื่อ ≥3 ใน 4 ตรงกัน:
   สถานที่/จังหวัด, วันเกิดเหตุหรือวันจับกุม, ประเภทคดี, ผู้ต้องหา/ตัวเลขสำคัญ
   → รวมเป็น **1 article** ใช้แหล่งทางการเป็น `source.url` หลัก ส่วนแหล่งอื่นใส่ `corroborating_sources[]`
@@ -422,3 +422,48 @@ github-pages/data/{DATE}_crime.json, _hotspots.json, _alerts.json, _trends.json,
 | 55 | Reuters | Legal & Law Enforcement | https://www.reuters.com/legal/ | U — เช่นเดียวกัน; paywall → rendered mode หรือข้าม ไม่หลบ paywall |
 
 ข่าวต่างประเทศที่ไม่เกี่ยวกับไทยหรือภูมิภาคให้ข้าม (นับเป็น `skipped_out_of_scope`).
+
+
+---
+
+## v1.2 — แก้ไขหลังรอบ 2026-10-22 (บังคับ ทับกฎเดิมเมื่อขัดกัน)
+
+### ช่วงเวลาข่าว (แก้)
+- Window = **00:00 ของเมื่อวาน (TARGET_DATE-1) ถึงเวลารัน** (Asia/Bangkok) — ครอบคลุม "เมื่อวานทั้งวัน + วันนี้" ไม่ใช่แค่ 24 ชม.ย้อนหลังนับจาก 06:00
+- ข่าวที่เหตุเกิดก่อนหน้าต่างแต่เผยแพร่ในหน้าต่าง ให้เก็บได้ (ใช้วันเผยแพร่) · ข่าวต่างประเทศที่ไม่เกี่ยวกับไทย → `skipped_out_of_scope`
+
+### วินัยการกวาด (แก้ปัญหาดึงน้อย)
+1. **ห้ามปิดงานก่อนทุกแถว registry มีสถานะใน `source_health`** (`ok|empty|blocked|no_listing|search_only|error|not_attempted`) — `not_attempted` ต้องไม่มี; ถ้าไม่ทัน ให้รายงาน `status: partial` พร้อมเหตุผล ไม่ใช่ข้ามเงียบ ๆ
+2. ลำดับ: (ก) เปิดหน้า listing ทุกแหล่งก่อนเพื่อรวบรวมรายการ+วันที่+permalink (ข) แล้วค่อย fetch เนื้อหาบทความทั้งหมดในหน้าต่าง (ค) ค่อย search เติม
+3. แหล่งที่ fetch ล้มเหลว: ลอง path อื่น 1 ครั้ง แล้ว `web_search` ด้วย `allowed_domains` ของโดเมนนั้น (เช่น `["oncb.go.th"]`) **ห้ามใช้ web_search แบบไม่จำกัดโดเมนค้นหาข่าวรายวัน** (ได้ผลไม่มีวันที่)
+4. ต้องเปิดหน้า listing ที่มีวันที่ของสื่อทุกสำนักใน Batch C/D อย่างน้อย 2 หน้า (หน้า 1 + หน้า 2 หรือ "ข่าวล่าสุด") เพื่อไม่ตกข่าวช่วงเช้ามืดของเมื่อวาน
+5. ขั้นต่ำ: fetch ≥ 100 ครั้ง/รอบ · `articles_scraped_pass` ≥ 35 · `official_pr_articles` ≥ 8 (ถ้าไม่ถึงต้องอธิบายรายแหล่งใน Completion Report)
+
+### Registry fixes (จากการทดสอบจริง 2026-10-22)
+| แหล่ง | ผล | วิธีใช้ที่ถูก |
+| --- | --- | --- |
+| royalthaipolice.go.th | หน้าแรกแสดงข่าวปี 2563 | ไม่ใช้หน้าแรก; ค้น `allowed_domains=["royalthaipolice.go.th"]` หรือหา path ข่าวปัจจุบัน แล้วบันทึกใน `discovered_paths` |
+| cib.go.th | client_error (/ และ /news) | ค้น allowed_domains ["cib.go.th"] |
+| csd.go.th | มีแต่ประกาศจัดซื้อ | ถือเป็น `empty` ถ้าไม่มีข่าว |
+| ccid1.ccib.go.th | ข่าวเก่า/ลิงก์ Facebook | `ok-stale` |
+| touristpolice.go.th | **ใช้ `/tpb-news`** (permalink `/post/tpbnews{YYYYMMDD}{NN}`) | ✅ ใช้ได้ มีวันที่ |
+| immigration.go.th | client_error | ค้น allowed_domains ["immigration.go.th"] (มี sub-site ตม.จว.) |
+| dsi.go.th | **`/th/Type/Mission-News` ใช้ได้ มีวันที่+เวลา** | ✅ official |
+| oncb.go.th | `/news` = 404 | ค้น allowed_domains ["oncb.go.th"] → permalink `or{N}.oncb.go.th/news/{id}` |
+| amlo.go.th / sec.or.th / ocpb.go.th | หน้าแรกไม่มี listing | ค้น allowed_domains |
+| pacc.go.th | หน้าแรกเป็น splash | ใช้ `https://www.pacc.go.th/home1` |
+| nacc.go.th / isranews / bangkokbiznews | client_error | ค้น allowed_domains |
+| ago.go.th | ✅ มีวันที่ | ข่าวคดีเฉพาะ `/press…` |
+| correct.go.th / news.ch7.com | robots_disallowed | ตั้ง `blocked` ไม่หลบ |
+| thaipoliceonline.go.th | ต้องใช้ JavaScript | ใช้ browser render หรือตั้ง `blocked` (ห้ามกรอกฟอร์ม) |
+| mdes.go.th | **`/news` ใช้ได้ มีวันที่** (เตือนภัย/แอบอ้าง) | ✅ official |
+| thaicert.or.th | ✅ หน้าแรกมี 6 ประกาศพร้อมวันที่ | ✅ official |
+| thethaiger.com | **ใช้ `/th/news` (มีวันที่)** + `/hot-news/crime` (EN) | ✅ |
+| thairath / dailynews / matichon / amarintv | ✅ listing มีวันที่/เวลา | ดูหน้า 2 ด้วย (`/crime/page/2/`) |
+| mgronline /crime | ไม่มีวันที่ใน listing | เปิด permalink ตรวจวันที่ |
+| naewna / khaosodenglish / thephuketnews / thaipbsworld | listing ไม่มีวันที่ | ตรวจวันที่ใน permalink |
+| thaipost / khaosod / komchadluek | error/ว่าง | ค้น allowed_domains |
+
+### ข้อควรระวัง
+- Thaiger ฉบับไทยมีข่าวคดีต่างประเทศ (สหรัฐฯ สหราชอาณาจักร สิงคโปร์) → out_of_scope
+- ข่าวเตือนแอบอ้างตำรวจ: ใช้ช่องทางที่ **แหล่งข่าวนั้นระบุ** (เช่น ดีอีระบุ 1111 กด 87) และอ้างอิง 1441/thaipoliceonline เฉพาะเมื่อมีแหล่งปัจจุบันยืนยัน

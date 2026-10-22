@@ -1,0 +1,13 @@
+{
+ "generated_at": "2026-10-22T11:58:35+07:00",
+ "days": [
+  {
+   "date": "2026-10-22",
+   "status": "published",
+   "total": 40,
+   "path": "2026-10-22_Crime/2026-10-22_crime.json",
+   "run": "partial",
+   "note": "window 21-22 ต.ค.; official PR 5/8 — เว็บตำรวจหลายแห่งไม่มีข่าว/ดึงไม่ได้ (ดู _index.json source_health)"
+  }
+ ]
+}

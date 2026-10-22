@@ -61,11 +61,24 @@ vault/
 **/workspace-mobile.json
 **/cache/
 
-# build / temp / generated news trees
+# build / temp
 *.tmp
 *.temp
-Document/
+
+# raw scrape trees (ใหญ่เกิน / ชั่วคราว)
 News/
+
+# Document reports: เก็บผลรายวัน + วิเคราะห์ (ไม่เก็บฟอนต์ซ้ำ)
+Document/**
+!Document/manifest.json
+!Document/*_Crime/
+!Document/*_Crime/**
+!Document/*_CrimeLine/
+!Document/*_CrimeLine/**
+Document/**/fonts/
+
+# junk / local scratch
+_to_delete/
 
 # github-pages: เก็บ source + manifest + sample
 # ถ้าไม่ต้องการ commit ไฟล์ข่าวนำเข้าจริง ให้ uncomment บรรทัดด้านล่าง
