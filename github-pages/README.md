@@ -1,7 +1,25 @@
 # GitHub Pages — ข่าวตำรวจ (static)
 
+## ลิงก์ใช้งาน (live)
+
+| หน้า | URL |
+| --- | --- |
+| หน้าแรก | https://chiraleo2000.github.io/Police-news-intel-kit/ |
+| ข่าวรายวัน | https://chiraleo2000.github.io/Police-news-intel-kit/#/YYYY-MM-DD |
+| ตัวอย่าง (22 ต.ค. 69) | https://chiraleo2000.github.io/Police-news-intel-kit/#/2026-10-22 |
+| ดาวน์โหลด PDF | https://chiraleo2000.github.io/Police-news-intel-kit/#/downloads/2026-10-22 |
+| โพสต์หนึ่งข่าว | `…/#/2026-10-22/<postId>` |
+
+Repo: https://github.com/chiraleo2000/Police-news-intel-kit (public)  
+Deploy: GitHub Actions → workflow `Deploy GitHub Pages` (โฟลเดอร์ `github-pages/`)
+
+ตั้ง `GITHUB_PAGES_BASE_URL=https://chiraleo2000.github.io/Police-news-intel-kit` ใน `server/.env`  
+ให้ Completion Report ของ Task 1/2 พิมพ์ลิงก์เต็มอัตโนมัติ
+
+---
+
 เว็บอ่านอย่างเดียว ดึง JSON จาก `data/` ไม่มี backend  
-ไปป์ไลน์ (Claude / news-hub) เป็นคน **copy ไฟล์เข้า `data/`** แล้วคนหรือ CI เป็นคน `git push` (skill ห้ามให้ Claude push เอง)
+ไปป์ไลน์ (Claude / news-hub) **copy ไฟล์เข้า `data/`** แล้วคนหรือ CI เป็นคน `git push` (skill ห้ามให้ Claude push เอง)
 
 ## โครง
 
@@ -12,38 +30,26 @@ github-pages/
   js/app.js
   js/format.js
   data/
-    manifest.json          ← รายการวันที่ (ตอนนี้ days: [])
-    sample/                ← JSON ตัวอย่างสำหรับทดสอบ UI
-    {DATE}_crime.json      ← มาทีหลังจากไปป์ไลน์
+    manifest.json
+    sample/
+    downloads/             ← PDF / PNG รายวัน
+    {DATE}_crime.json
     {DATE}_hotspots.json
     {DATE}_alerts.json
     {DATE}_trends.json
 ```
 
-Route: `#/` · `#/YYYY-MM-DD` · `#/YYYY-MM-DD/<postId>`
+Route: `#/` · `#/YYYY-MM-DD` · `#/YYYY-MM-DD/<postId>` · `#/downloads` · `#/downloads/YYYY-MM-DD`
 
 ## ดูบนเครื่อง
 
 ```bat
-cd /d D:\ข่าวตำรวจ
+cd /d path\to\police-news-intel-kit
 npx --yes serve github-pages
 ```
 
-เปิด URL ที่พิมพ์ออกมา ถ้ายังไม่มี JSON จะขึ้นหน้า “ยังไม่มีสรุปข่าวในคลัง”
-
-## เปิด GitHub Pages
-
-1. Push โฟลเดอร์นี้เป็น root ของ repo แยก หรือตั้ง Pages จาก `/github-pages` ของ monorepo
-2. Settings → Pages → Deploy from branch → โฟลเดอร์ `/` (ถ้าแยก repo) หรือ `/github-pages`
-3. หลังมีไฟล์ข่าว: อัปเดต `data/` แล้ว push
-
 ## เชื่อมกับ skill
 
-`police-crime-news-pipeline` / Task prompts ขั้น publish คัดลอกไป:
-
-- Task 1: `github-pages/data/{DATE}_crime.json` (+ hotspots / alerts / trends / bd_leads)
-- Task 2 (LINE): `github-pages/data/{DATE}_crime_line.json` (+ `*_line` companions)
-- อัปเดต `github-pages/data/manifest.json` (prepend, add-only)
-
-เปิดดู: `{BASE}/#/{DATE}` หรือโพสต์ `{BASE}/#/{DATE}/{postId}`  
-ตั้ง `GITHUB_PAGES_BASE_URL` ใน `server/.env` เพื่อให้ Completion Report พิมพ์ลิงก์เต็ม
+- Task 1: `github-pages/data/{DATE}_crime.json` (+ hotspots / alerts / trends / bd_leads) + PDF ใน `data/downloads/`
+- Task 2 (LINE): `github-pages/data/{DATE}_crime_line.json` (+ `*_line`) + PDF line
+- อัปเดต `github-pages/data/manifest.json` (prepend, add-only) รวม `downloads[]`
