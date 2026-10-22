@@ -9,7 +9,7 @@ import fs from "node:fs";
 import path from "node:path";
 import ExcelJS from "exceljs";
 import { config } from "../config.js";
-import { getDb, listLineLinks, purgeOldLinks, audit } from "../db/index.js";
+import { getDb, listLineLinks, purgeOldFiles, purgeOldLinks, audit } from "../db/index.js";
 import { todayIct } from "../line/url.js";
 
 function parseDateArg(): string {
@@ -72,7 +72,12 @@ async function main() {
   await wb.xlsx.writeFile(`${base}.xlsx`);
 
   const purged = purgeOldLinks(config.retentionLinksDays);
-  audit("job:export-links", "export", `${date} count=${rows.length} purged=${purged}`);
+  const purgedFiles = purgeOldFiles(config.retentionLinksDays);
+  audit(
+    "job:export-links",
+    "export",
+    `${date} count=${rows.length} purged=${purged} purged_files=${purgedFiles}`,
+  );
 
   console.log(
     JSON.stringify(
@@ -83,6 +88,7 @@ async function main() {
         json: `${base}.json`,
         xlsx: `${base}.xlsx`,
         purged_old_links: purged,
+        purged_old_files: purgedFiles,
       },
       null,
       2,

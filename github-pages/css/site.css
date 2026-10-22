@@ -148,8 +148,104 @@ body::before {
   color: var(--slate);
 }
 
+.header-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  justify-content: flex-end;
+}
+
+.stat-pill {
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(11, 28, 44, 0.08);
+  color: var(--ink-soft);
+}
+
+.top-tabs {
+  display: flex;
+  gap: 0.35rem;
+  padding: 0.85rem 0 0;
+  border-bottom: 1px solid rgba(11, 28, 44, 0.08);
+  margin-bottom: 0.25rem;
+}
+
+.top-tab {
+  font: inherit;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.95rem;
+  border: 0;
+  background: transparent;
+  color: var(--slate);
+  padding: 0.65rem 1rem 0.75rem;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+}
+
+.top-tab:hover {
+  color: var(--ink);
+}
+
+.top-tab.is-active {
+  color: var(--teal);
+  border-bottom-color: var(--teal);
+}
+
+.toolbar {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin: 0.5rem 0 1.25rem;
+  animation: rise 0.55s ease both;
+}
+
+.toolbar-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  align-items: center;
+}
+
+.chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.chip-btn {
+  font: inherit;
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  font-weight: 600;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.85);
+  color: var(--ink-soft);
+  border-radius: 999px;
+  padding: 0.35rem 0.75rem;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.chip-btn:hover {
+  border-color: var(--teal);
+  color: var(--teal);
+}
+
+.chip-btn.is-active {
+  background: var(--teal);
+  border-color: var(--teal);
+  color: #fff;
+}
+
 .date-picker select,
-.filter select {
+.filter select,
+.search input {
   font: inherit;
   color: var(--ink);
   background: #fff;
@@ -157,6 +253,25 @@ body::before {
   border-radius: var(--radius);
   padding: 0.45rem 0.7rem;
   min-width: 10rem;
+}
+
+.search {
+  flex: 1;
+  min-width: 12rem;
+}
+
+.search input {
+  width: 100%;
+  min-width: 0;
+}
+
+.hero-compact {
+  padding-top: 2rem;
+  padding-bottom: 1.25rem;
+}
+
+.hero-compact h1 {
+  max-width: none;
 }
 
 /* Hero */
@@ -494,6 +609,97 @@ body::before {
   font-weight: 600;
 }
 
+.source-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-top: 0.45rem;
+}
+
+.source-chip {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--teal);
+  text-decoration: none;
+  background: var(--teal-soft);
+  padding: 0.12rem 0.45rem;
+  border-radius: 4px;
+}
+
+.source-chip:hover {
+  text-decoration: underline;
+}
+
+.sources-block {
+  margin-top: 1.25rem;
+  padding: 0.9rem 1rem;
+  background: var(--mist);
+  border-radius: var(--radius);
+}
+
+.sources-block strong {
+  display: block;
+  font-family: var(--font-display);
+  margin-bottom: 0.45rem;
+}
+
+.source-list {
+  margin: 0;
+  padding-left: 1.15rem;
+}
+
+.source-list li {
+  margin: 0.25rem 0;
+}
+
+.download-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.download-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.85rem 0;
+  border-top: 1px solid rgba(11, 28, 44, 0.08);
+}
+
+.download-item:first-child {
+  border-top: 0;
+  padding-top: 0.25rem;
+}
+
+.download-item .muted {
+  margin: 0.2rem 0 0;
+  word-break: break-all;
+}
+
+.download-btn {
+  flex-shrink: 0;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-decoration: none;
+  color: #fff;
+  background: var(--teal);
+  padding: 0.55rem 0.95rem;
+  border-radius: var(--radius);
+}
+
+.download-btn:hover {
+  background: var(--ink-soft);
+}
+
+.downloads-toolbar {
+  margin-bottom: 1rem;
+}
+
 .status {
   text-align: center;
   color: var(--slate);
@@ -536,8 +742,18 @@ body::before {
     flex-wrap: wrap;
   }
 
+  .header-stats {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
   .hero h1 {
     max-width: none;
+  }
+
+  .download-item {
+    flex-direction: column;
+    align-items: stretch;
   }
 }
 

@@ -39,10 +39,11 @@ npx --yes serve github-pages
 
 ## เชื่อมกับ skill
 
-`police-crime-news-pipeline` ขั้น publish คัดลอกไป:
+`police-crime-news-pipeline` / Task prompts ขั้น publish คัดลอกไป:
 
-- `github-pages/data/{DATE}_crime.json`
-- `github-pages/data/{DATE}_hotspots.json` (หรือ `_hotspots.json`)
-- `github-pages/data/{DATE}_alerts.json`
-- `github-pages/data/{DATE}_trends.json`
+- Task 1: `github-pages/data/{DATE}_crime.json` (+ hotspots / alerts / trends / bd_leads)
+- Task 2 (LINE): `github-pages/data/{DATE}_crime_line.json` (+ `*_line` companions)
 - อัปเดต `github-pages/data/manifest.json` (prepend, add-only)
+
+เปิดดู: `{BASE}/#/{DATE}` หรือโพสต์ `{BASE}/#/{DATE}/{postId}`  
+ตั้ง `GITHUB_PAGES_BASE_URL` ใน `server/.env` เพื่อให้ Completion Report พิมพ์ลิงก์เต็ม

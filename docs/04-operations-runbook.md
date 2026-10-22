@@ -18,7 +18,13 @@
 ## 2) ถ้าเครื่องหลับ/ดับ/เน็ตหลุด
 
 Claude scheduled task อาจถูกข้ามได้ — งานที่ถูกข้ามไม่รันย้อนหลังอัตโนมัติเสมอไป (พฤติกรรมตามเอกสารของ Anthropic ที่พบขัดกัน ต้องทดสอบเฟส 0)
-**แนวป้องกัน:** (1) ปิด sleep/hibernate ตอนเสียบปลั๊ก (.bat ทำให้แล้ว) (2) เปิด auto-login + ตั้งให้ Claude Desktop เปิดตอนเริ่มระบบ (3) UPS/ไฟสำรองถ้าเป็นไปได้ (4) healthcheck 08:15 เป็นผู้เฝ้า
+**แนวป้องกัน:** (1) ปิด sleep/hibernate ตอนเสียบปลั๊ก (`ops\register-line-webhook-task.ps1` หรือ `.bat`) (2) เปิด auto-login + ตั้งให้ Claude Desktop เปิดตอนเริ่มระบบ (3) UPS/ไฟสำรองถ้าเป็นไปได้ (4) healthcheck 08:15 เป็นผู้เฝ้า
+
+งาน **NewsIntel-LineWebhook** รันทุก 5 นาที — ซ่อม news-hub/ngrok และถ้า URL ของ ngrok-free เปลี่ยน จะอัปเดต `PUBLIC_BASE_URL` แล้ว `PUT` webhook ของ LINE ให้ชี้โฮสต์ใหม่
+
+งาน **NewsIntel-LineWebhookWake** รันตอนล็อกอินและหลัง sleep/hibernate (`-Wake`) — บังคับออก tunnel ใหม่ (URL ephemeral เปลี่ยนได้) แล้วอัปเดต LINE ทันที ระหว่าง hibernate LINE เรียกถึงไม่ได้ จนกว่าเครื่องจะตื่น ดู `logs\webhook-watch.log` และ `logs\webhook-tunnel-state.json`
+
+งาน **NewsIntel-LineExcel** เขียน `exports\line_intake_continuous.xlsx` ใหม่จาก DB ทุก 5 นาที (เฉพาะ URL และไฟล์อัปโหลด) ลงทะเบียนด้วย `ops\register-line-webhook-task.ps1`
 
 **รันชดเชยด้วยมือ:** ในแชตสั่ง `/news-intel:crime-news` (หรือ `gov-tech-law`) — ถ้ารอบนั้น complete แล้ว skill จะตอบ `ALREADY_COMPLETE` และไม่ทำซ้ำ; ใช้คำว่า `force` ท้ายคำสั่งเมื่อต้องการรันใหม่ทั้งที่ complete แล้ว
 
@@ -31,7 +37,7 @@ Claude scheduled task อาจถูกข้ามได้ — งานท�
 | `PREFLIGHT_FAILED` | เรียก news-hub ไม่ได้ | `curl http://localhost:8080/health`; ตรวจ server รัน, `NEWSHUB_URL/TOKEN`, ปิด-เปิด Claude Desktop |
 | MCP `news-hub` ไม่ connected | `NEWSINTEL_HOME` ไม่ถูกตั้ง/ไม่มี `dist\mcp-stdio.js` | `echo %NEWSINTEL_HOME%` ในหน้าต่างใหม่; build ใหม่; เปิดแอปใหม่ |
 | 401 จาก `/api` | โทเค็นผิด/หมุนแล้วแต่ไม่ได้ตั้งใหม่ | ตรวจ `.env` เทียบ `NEWSHUB_TOKEN`; `setx` ใหม่ แล้วเปิดแอปใหม่ |
-| ลิงก์ LINE ไม่เข้า | webhook ปิด/URL เปลี่ยน/tunnel ตาย/ลายเซ็นผิด/ groupId ไม่อยู่ใน allowlist | LINE Console → Verify; ดู `logs\server.log`; ตรวจ cloudflared service |
+| ลิงก์ LINE ไม่เข้า | webhook ปิด/URL เปลี่ยน/tunnel ตาย/ลายเซ็นผิด/ groupId ไม่อยู่ใน allowlist | ดู `logs\webhook-watch.log`; รัน `ops\ensure-line-webhook.ps1`; ตรวจว่า Use webhook เปิดอยู่ |
 | ลิงก์เข้าแต่ไม่ถูกใช้ | โดเมน social หรือเก่ากว่า 24 ชม. หรือ unknown | ดู `reason` ใน export; ถ้าเป็นข่าวจริงให้เปลี่ยนเป็น `new` ด้วยมือ |
 | ข่าวน้อยผิดปกติ | แหล่งเปลี่ยนโครงสร้าง/บล็อก/Search ติดขัด | ดู `registry_issues` ในรายงาน; รันมือซ้ำ; ตรวจ URL ที่ขึ้นสถานะ U/? |
 | โน้ตใน vault ไม่ขึ้น | `vault-build` ล้ม/โน้ตถูกกันด้วยตัวกรองจริยธรรม | `logs\vault-build.log` ดู `needs_review`; แก้ที่ข้อมูลต้นทาง แล้วรัน `--full` |

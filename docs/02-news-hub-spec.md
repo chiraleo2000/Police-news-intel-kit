@@ -153,10 +153,11 @@ export function verifyLineSignature(raw: Buffer, signature: string | undefined, 
 - ตรวจลายเซ็นไม่ผ่าน → ตอบ 401 และไม่ประมวลผล; ผ่าน → **ตอบ 200 ทันที** แล้วประมวลผลต่อแบบ async
 - คำขอที่ไม่มี event (LINE อาจส่งเพื่อทดสอบการเชื่อมต่อ) → ตอบ 200
 - event ที่ประมวลผล:
-  - `message` ชนิด `text` จาก `source.type = group` (และ `room` ถ้าต้องการ) ที่ `groupId` อยู่ใน allowlist → สกัด URL ด้วย regex แล้วบันทึก; **ไม่เก็บข้อความอื่น ไม่เก็บ userId**
-  - `unsend` → ลบแถว `line_links` ที่ `line_message_id` ตรงกัน
+  - `message` ชนิด `text` จาก `source.type = group` (และ `room` ถ้าต้องการ) ที่ `groupId` อยู่ใน allowlist → สกัด URL ด้วย regex แล้วบันทึก; **ข้อความที่ไม่มี URL ไม่เก็บ ไม่เก็บ userId**
+  - `message` ชนิด `file` / `image` / `video` / `audio` จากกลุ่มใน allowlist → บันทึก metadata ที่ `line_files` และดาวน์โหลดไบต์จาก Content API (`api-data.line.me`) เมื่อมี channel access token; ไม่ดึง URL ของ `contentProvider.type=external`; นามสกุล executable ไม่เขียนลงดิสก์
+  - `unsend` → ลบแถว `line_links` และ `line_files` ที่ `line_message_id` ตรงกัน รวมไฟล์บนดิสก์
   - `join` → log `groupId` (ใช้ตอนตั้งค่า) แต่ไม่รับลิงก์จนกว่าจะอยู่ใน allowlist
-  - ชนิดอื่น (รูป วิดีโอ สติกเกอร์ ไฟล์) → ละทิ้ง
+  - ชนิดอื่น (สติกเกอร์, location, ข้อความไม่มีลิงก์) → ละทิ้ง
 - กันซ้ำด้วย `event_id` (webhookEventId) และ `UNIQUE(canonical_url, วันที่)`
 - ตรวจชื่อ field ของ event ตามเอกสาร LINE Messaging API ที่ใช้อยู่ก่อนเขียนโค้ด
 

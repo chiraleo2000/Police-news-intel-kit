@@ -12,6 +12,17 @@ function assert(cond: boolean, msg: string) {
 const urls = extractUrls("ดู https://bit.ly/abc และ https://www.thairath.co.th/news/1?utm_source=x");
 assert(urls.length === 2, "extract 2 urls");
 
+const four = extractUrls(
+  [
+    "https://www.facebook.com/share/p/1GiXT4YLe9/",
+    "https://www.facebook.com/share/p/2AbCdEfGhI/",
+    "www.thairath.co.th/news/1",
+    "https://www.matichon.co.th/news/2",
+  ].join("\n"),
+);
+assert(four.length === 4, `extract 4 urls got ${four.length}`);
+assert(four.some((u) => u.startsWith("https://www.thairath")), "www. upgraded to https");
+
 const cleaned = stripTracking("https://x.com/a?utm_source=t&fbclid=1&q=2");
 assert(!cleaned.includes("utm_"), "strip utm");
 assert(!cleaned.includes("fbclid"), "strip fbclid");

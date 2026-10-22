@@ -1,4 +1,19 @@
 {
-  "generated_at": "",
-  "days": []
+  "generated_at": "2026-10-22T08:40:00+07:00",
+  "days": [
+    {
+      "date": "2026-10-22",
+      "status": "published",
+      "total": 7,
+      "path": "2026-10-22_crime.json",
+      "run": "partial",
+      "downloads": [
+        {
+          "label": "JSON ข่าวรายวัน",
+          "path": "2026-10-22_crime.json",
+          "kind": "json"
+        }
+      ]
+    }
+  ]
 }

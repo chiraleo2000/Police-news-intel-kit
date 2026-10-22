@@ -72,13 +72,19 @@ const SOCIAL_HOSTS = new Set([
   "page.line.me",
 ]);
 
-const URL_RE = /https?:\/\/[^\s<>"')\]]+/gi;
+/** http(s) or bare www. — LINE paste sometimes omits the scheme. */
+const URL_RE = /(?:https?:\/\/|www\.)[^\s<>"'））」』\]]+/gi;
 
 export type DomainType = "official" | "media" | "social" | "unknown";
 
 export function extractUrls(text: string): string[] {
   const found = text.match(URL_RE) ?? [];
-  return [...new Set(found.map((u) => u.replace(/[.,;:!?)]+$/, "")))];
+  const normalized = found.map((raw) => {
+    let u = raw.replace(/[.,;:!?。、）)」』\]]+$/g, "");
+    if (/^www\./i.test(u)) u = `https://${u}`;
+    return u;
+  });
+  return [...new Set(normalized)];
 }
 
 export function hostnameOf(url: string): string {

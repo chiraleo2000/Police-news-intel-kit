@@ -14,16 +14,29 @@ function opt(name: string, fallback = ""): string {
 }
 
 const home = opt("NEWSINTEL_HOME", process.cwd());
+const exportPath = opt("EXPORT_PATH", path.join(home, "exports"));
 
 export const config = {
   port: Number(opt("PORT", "8080")),
   tz: opt("TZ", "Asia/Bangkok"),
   publicBaseUrl: opt("PUBLIC_BASE_URL", "http://localhost:8080"),
   dbPath: opt("DB_PATH", path.join(home, "data", "newshub.sqlite")),
-  exportPath: opt("EXPORT_PATH", path.join(home, "exports")),
+  exportPath,
+  continuousXlsxPath: opt(
+    "CONTINUOUS_XLSX_PATH",
+    path.join(exportPath, "line_intake_continuous.xlsx"),
+  ),
+  continuousJsonPath: opt(
+    "CONTINUOUS_JSON_PATH",
+    path.join(exportPath, "line_intake_continuous.json"),
+  ),
   vaultPath: opt("VAULT_PATH", path.join(home, "vault")),
   backupPath: opt("BACKUP_PATH", path.join(home, "backup")),
   lineChannelSecret: opt("LINE_CHANNEL_SECRET"),
+  /** Long-lived channel access token. Required only to download file/image/video/audio bytes. */
+  lineChannelAccessToken: opt("LINE_CHANNEL_ACCESS_TOKEN"),
+  lineFilesPath: opt("LINE_FILES_PATH", path.join(home, "data", "line-files")),
+  lineFileMaxBytes: Number(opt("LINE_FILE_MAX_BYTES", "20000000")) || 20_000_000,
   lineAllowedGroupIds: opt("LINE_ALLOWED_GROUP_IDS")
     .split(",")
     .map((s) => s.trim())

@@ -1,0 +1,70 @@
+[
+ {
+  "province": "กรุงเทพมหานคร",
+  "region": "กรุงเทพฯ และปริมณฑล",
+  "count": 2,
+  "top_crime_types": [
+   "อาชญากรรมที่เกี่ยวข้องกับนักท่องเที่ยวและชาวต่างชาติ",
+   "คุ้มครองผู้บริโภคและสินค้าผิดกฎหมาย"
+  ],
+  "post_ids": [
+   "20261022-tourist-dsi-nominee",
+   "20261022-consumer-n2o-latphrao"
+  ]
+ },
+ {
+  "province": "พิษณุโลก",
+  "region": "ภาคเหนือ",
+  "count": 1,
+  "top_crime_types": [
+   "คดีเศรษฐกิจ การเงิน และฟอกเงิน"
+  ],
+  "post_ids": [
+   "20261022-econ-loanshark-phitsanulok"
+  ]
+ },
+ {
+  "province": "ชลบุรี",
+  "region": "ภาคตะวันออก",
+  "count": 1,
+  "top_crime_types": [
+   "อาชญากรรมข้ามชาติและความร่วมมือระหว่างประเทศ"
+  ],
+  "post_ids": [
+   "20261022-transnat-pattaya-redcnotice"
+  ]
+ },
+ {
+  "province": "เพชรบุรี",
+  "region": "ภาคตะวันตก",
+  "count": 1,
+  "top_crime_types": [
+   "ยาเสพติด"
+  ],
+  "post_ids": [
+   "20261022-drug-phetchaburi-ice"
+  ]
+ },
+ {
+  "province": "หนองคาย",
+  "region": "ภาคตะวันออกเฉียงเหนือ",
+  "count": 1,
+  "top_crime_types": [
+   "ค้ามนุษย์ แรงงานผิดกฎหมาย และคุ้มครองเด็ก"
+  ],
+  "post_ids": [
+   "20261022-human-nongkhai-crossing"
+  ]
+ },
+ {
+  "province": "สมุทรปราการ",
+  "region": "กรุงเทพฯ และปริมณฑล",
+  "count": 1,
+  "top_crime_types": [
+   "อาชญากรรมข้ามชาติและความร่วมมือระหว่างประเทศ"
+  ],
+  "post_ids": [
+   "20261022-transnat-norwegian-redcotice"
+  ]
+ }
+]

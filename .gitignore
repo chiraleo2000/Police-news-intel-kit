@@ -30,6 +30,7 @@ Desktop.ini
 .idea/
 
 # Obsidian local vault (keep template only)
+vault/
 ข่าวตำรวจ/
 **/workspace.json
 **/workspace-mobile.json

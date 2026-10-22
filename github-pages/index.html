@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="สรุปข่าวอาชญากรรมและการปฏิบัติหน้าที่ตำรวจ — รวบรวมจากแหล่งสาธารณะรายวัน" />
-  <title>ข่าวตำรวจ · สรุปรายวัน</title>
+  <meta name="description" content="สรุปข่าวอาชญากรรมและการปฏิบัติหน้าที่ตำรวจ — รวมแหล่งสาธารณะรายวัน พร้อมดาวน์โหลด PDF" />
+  <title>Police News Briefing — ข่าวตำรวจ</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Anuphan:wght@400;500;600;700&family=Sarabun:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet" />
@@ -18,79 +18,112 @@
       <a class="brand" href="#/">
         <span class="brand-mark" aria-hidden="true"></span>
         <span class="brand-text">
-          <strong>ข่าวตำรวจ</strong>
-          <span>สรุปรายวัน · แหล่งสาธารณะ</span>
+          <strong>Police News Briefing</strong>
+          <span>ข่าวตำรวจ · แหล่งสาธารณะ</span>
         </span>
       </a>
-      <label class="date-picker">
-        <span class="sr-only">เลือกวันที่</span>
-        <select id="date-select" disabled>
-          <option value="">ยังไม่มีข้อมูล</option>
-        </select>
-      </label>
+      <div class="header-stats" id="header-stats" aria-live="polite">
+        <span class="stat-pill" id="stat-posts">0 ข่าว</span>
+        <span class="stat-pill" id="stat-types">0 ประเภท</span>
+        <span class="stat-pill" id="stat-alerts">0 เตือนภัย</span>
+      </div>
     </div>
   </header>
 
+  <nav class="top-tabs wrap" aria-label="ส่วนหลัก">
+    <button type="button" class="top-tab is-active" data-tab="news" id="tab-news">รายการข่าว</button>
+    <button type="button" class="top-tab" data-tab="downloads" id="tab-downloads">ดาวน์โหลด PDF</button>
+  </nav>
+
   <main id="main" class="wrap">
-    <!-- First viewport: brand-led empty / day hero -->
-    <section id="hero" class="hero" aria-labelledby="hero-title">
-      <p class="hero-kicker" id="hero-kicker">รอไฟล์ JSON จากไปป์ไลน์</p>
-      <h1 id="hero-title">ยังไม่มีสรุปข่าวในคลัง</h1>
-      <p class="hero-lead" id="hero-lead">
-        เมื่อ server หรือ Claude task ส่งไฟล์เข้า <code>data/</code> หน้านี้จะแสดง KPI เตือนภัย และรายการข่าวอัตโนมัติ
-      </p>
-      <p class="hero-meta" id="hero-meta" hidden></p>
-    </section>
-
-    <section id="kpi" class="kpi" hidden aria-label="ตัวชี้วัดประจำวัน"></section>
-
-    <section id="alerts" class="panel" hidden>
-      <h2>เตือนภัยประชาชน</h2>
-      <div id="alerts-body" class="alerts-body"></div>
-    </section>
-
-    <div class="grid-two" id="insights" hidden>
-      <section class="panel">
-        <h2>ประเภทอาชญากรรม</h2>
-        <div id="by-type" class="bars"></div>
+    <section id="view-news">
+      <section id="hero" class="hero" aria-labelledby="hero-title">
+        <p class="hero-kicker" id="hero-kicker">รอไฟล์ JSON จากไปป์ไลน์</p>
+        <h1 id="hero-title">ยังไม่มีสรุปข่าวในคลัง</h1>
+        <p class="hero-lead" id="hero-lead">
+          เมื่อ task ส่งไฟล์เข้า <code>data/</code> หน้านี้จะแสดงข่าวที่รวมแหล่งซ้ำแล้ว กรองตามประเภท/แท็ก และลิงก์ต้นทาง
+        </p>
+        <p class="hero-meta" id="hero-meta" hidden></p>
       </section>
-      <section class="panel">
-        <h2>จังหวัดที่พบมาก (hotspot)</h2>
-        <div id="hotspots" class="bars"></div>
-      </section>
-    </div>
 
-    <section id="trends" class="panel" hidden>
-      <h2>แนวโน้มเทียบ 7 วัน</h2>
-      <p id="trends-note" class="muted"></p>
-      <div id="trends-body" class="bars"></div>
-    </section>
-
-    <section id="posts" class="panel" hidden>
-      <div class="posts-head">
-        <h2>รายการข่าว</h2>
-        <label class="filter">
-          <span class="sr-only">กรองประเภท</span>
-          <select id="topic-filter">
-            <option value="">ทุกประเภท</option>
+      <div class="toolbar" id="toolbar" hidden>
+        <label class="date-picker">
+          <span class="sr-only">เลือกวันที่</span>
+          <select id="date-select" disabled>
+            <option value="">ยังไม่มีข้อมูล</option>
           </select>
         </label>
+        <div class="chip-row" id="topic-chips" aria-label="กรองประเภทอาชญากรรม"></div>
+        <div class="toolbar-row">
+          <label class="filter">
+            <span class="sr-only">กรองแท็ก</span>
+            <select id="tag-filter">
+              <option value="">ทุกแท็ก</option>
+            </select>
+          </label>
+          <label class="search">
+            <span class="sr-only">ค้นหา</span>
+            <input id="search-input" type="search" placeholder="ค้นหาหัวข้อ หน่วยงาน จังหวัด…" />
+          </label>
+        </div>
       </div>
-      <ul id="post-list" class="post-list"></ul>
+
+      <section id="kpi" class="kpi" hidden aria-label="ตัวชี้วัดประจำวัน"></section>
+
+      <section id="alerts" class="panel" hidden>
+        <h2>เตือนภัยประชาชน</h2>
+        <div id="alerts-body" class="alerts-body"></div>
+      </section>
+
+      <div class="grid-two" id="insights" hidden>
+        <section class="panel">
+          <h2>ประเภทอาชญากรรม</h2>
+          <div id="by-type" class="bars"></div>
+        </section>
+        <section class="panel">
+          <h2>จังหวัดที่พบมาก</h2>
+          <div id="hotspots" class="bars"></div>
+        </section>
+      </div>
+
+      <section id="posts" class="panel" hidden>
+        <div class="posts-head">
+          <h2>รายการข่าว (รวมแหล่งซ้ำแล้ว)</h2>
+          <p class="muted" id="filter-note"></p>
+        </div>
+        <ul id="post-list" class="post-list"></ul>
+      </section>
+
+      <article id="post-detail" class="post-detail panel" hidden></article>
     </section>
 
-    <article id="post-detail" class="post-detail panel" hidden></article>
+    <section id="view-downloads" hidden>
+      <section class="hero hero-compact">
+        <p class="hero-kicker">ไฟล์รายวัน</p>
+        <h1>ดาวน์โหลดสรุปข่าว</h1>
+        <p class="hero-lead">PDF / Infographic ที่ไปป์ไลน์สร้างในแต่ละวัน (ถ้ามีใน <code>data/downloads/</code>)</p>
+      </section>
+      <section class="panel">
+        <div class="downloads-toolbar">
+          <label class="date-picker">
+            <span class="sr-only">วันที่ดาวน์โหลด</span>
+            <select id="download-date-select" disabled>
+              <option value="">ยังไม่มีข้อมูล</option>
+            </select>
+          </label>
+        </div>
+        <ul id="download-list" class="download-list"></ul>
+        <p class="muted" id="download-empty">ยังไม่มีไฟล์ดาวน์โหลดสำหรับวันที่เลือก</p>
+      </section>
+    </section>
 
     <p id="status" class="status" role="status"></p>
   </main>
 
   <footer class="site-footer">
     <div class="wrap">
-      <p>
-        ข้อมูลรวบรวมจากแหล่งข่าวสาธารณะ
-        ผู้ต้องหายังถือเป็นผู้บริสุทธิ์จนกว่าศาลจะมีคำพิพากษา
-      </p>
-      <p class="muted">news-intel · GitHub Pages · ไม่เก็บข้อมูลผู้ส่งลิงก์จาก LINE</p>
+      <p>ข้อมูลรวบรวมจากแหล่งข่าวสาธารณะ ผู้ต้องหายังถือเป็นผู้บริสุทธิ์จนกว่าศาลจะมีคำพิพากษา</p>
+      <p class="muted">Police News Briefing · GitHub Pages · ไม่เก็บข้อมูลผู้ส่งลิงก์จาก LINE</p>
     </div>
   </footer>
 

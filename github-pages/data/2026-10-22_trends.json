@@ -1,0 +1,51 @@
+{
+ "baseline": "insufficient",
+ "window_days": 7,
+ "note": "ยังไม่มี manifest/ข้อมูลย้อนหลัง ≥3 วัน จึงไม่อ้างแนวโน้ม",
+ "by_crime_type": [
+  {
+   "type": "คดีเศรษฐกิจ การเงิน และฟอกเงิน",
+   "today": 1,
+   "avg_prev_7d": null,
+   "delta_pct": null,
+   "surge": false
+  },
+  {
+   "type": "อาชญากรรมข้ามชาติและความร่วมมือระหว่างประเทศ",
+   "today": 2,
+   "avg_prev_7d": null,
+   "delta_pct": null,
+   "surge": false
+  },
+  {
+   "type": "อาชญากรรมที่เกี่ยวข้องกับนักท่องเที่ยวและชาวต่างชาติ",
+   "today": 1,
+   "avg_prev_7d": null,
+   "delta_pct": null,
+   "surge": false
+  },
+  {
+   "type": "คุ้มครองผู้บริโภคและสินค้าผิดกฎหมาย",
+   "today": 1,
+   "avg_prev_7d": null,
+   "delta_pct": null,
+   "surge": false
+  },
+  {
+   "type": "ยาเสพติด",
+   "today": 1,
+   "avg_prev_7d": null,
+   "delta_pct": null,
+   "surge": false
+  },
+  {
+   "type": "ค้ามนุษย์ แรงงานผิดกฎหมาย และคุ้มครองเด็ก",
+   "today": 1,
+   "avg_prev_7d": null,
+   "delta_pct": null,
+   "surge": false
+  }
+ ],
+ "by_mo": [],
+ "by_province": []
+}

@@ -2,6 +2,7 @@ import Database from "better-sqlite3";
 import fs from "node:fs";
 import path from "node:path";
 import { config } from "../config.js";
+import { unlinkStoredFile } from "../line/content.js";
 import { SCHEMA_SQL } from "./schema.js";
 
 let db: Database.Database | null = null;
@@ -72,11 +73,132 @@ export function insertLineLink(input: {
   }
 }
 
+export type LineFileStatus = "saved" | "metadata_only" | "failed";
+
+export type LineFileRow = {
+  id: number;
+  event_id: string | null;
+  line_message_id: string | null;
+  received_at: string;
+  group_alias: string;
+  message_type: "file" | "image" | "video" | "audio";
+  file_name: string | null;
+  file_size: number | null;
+  content_provider: "line" | "external";
+  source_url: string | null;
+  stored_path: string | null;
+  status: LineFileStatus;
+  reason: string | null;
+};
+
+export function insertLineFile(input: {
+  eventId?: string | null;
+  lineMessageId?: string | null;
+  receivedAt: string;
+  groupAlias: string;
+  messageType: LineFileRow["message_type"];
+  fileName?: string | null;
+  fileSize?: number | null;
+  contentProvider: "line" | "external";
+  sourceUrl?: string | null;
+  storedPath?: string | null;
+  status: LineFileStatus;
+  reason?: string | null;
+}): { inserted: boolean; id?: number; reason?: string } {
+  const database = getDb();
+  const receivedDate = input.receivedAt.slice(0, 10);
+  try {
+    const info = database
+      .prepare(
+        `INSERT INTO line_files
+        (event_id, line_message_id, received_at, received_date, group_alias, message_type, file_name, file_size, content_provider, source_url, stored_path, status, reason)
+        VALUES (@event_id, @line_message_id, @received_at, @received_date, @group_alias, @message_type, @file_name, @file_size, @content_provider, @source_url, @stored_path, @status, @reason)`,
+      )
+      .run({
+        event_id: input.eventId ?? null,
+        line_message_id: input.lineMessageId ?? null,
+        received_at: input.receivedAt,
+        received_date: receivedDate,
+        group_alias: input.groupAlias,
+        message_type: input.messageType,
+        file_name: input.fileName ?? null,
+        file_size: input.fileSize ?? null,
+        content_provider: input.contentProvider,
+        source_url: input.sourceUrl ?? null,
+        stored_path: input.storedPath ?? null,
+        status: input.status,
+        reason: input.reason ?? null,
+      });
+    return { inserted: true, id: Number(info.lastInsertRowid) };
+  } catch (e: unknown) {
+    const msg = e instanceof Error ? e.message : String(e);
+    if (msg.includes("UNIQUE")) {
+      return { inserted: false, reason: "duplicate" };
+    }
+    throw e;
+  }
+}
+
+export function listLineFiles(date: string): LineFileRow[] {
+  return getDb()
+    .prepare(
+      `SELECT id, event_id, line_message_id, received_at, group_alias, message_type, file_name, file_size, content_provider, source_url, stored_path, status, reason
+       FROM line_files
+       WHERE received_date = ?
+       ORDER BY received_at ASC`,
+    )
+    .all(date) as LineFileRow[];
+}
+
+/** All URL rows (plain text without URLs is never stored). */
+export function listAllLineLinks(): LineLinkRow[] {
+  return getDb()
+    .prepare(
+      `SELECT id, event_id, line_message_id, received_at, group_alias, url, canonical_url, domain, domain_type, fetchable, status, reason, article_id
+       FROM line_links
+       ORDER BY received_at ASC, id ASC`,
+    )
+    .all() as LineLinkRow[];
+}
+
+/** All upload rows (file/image/video/audio only). */
+export function listAllLineFiles(): LineFileRow[] {
+  return getDb()
+    .prepare(
+      `SELECT id, event_id, line_message_id, received_at, group_alias, message_type, file_name, file_size, content_provider, source_url, stored_path, status, reason
+       FROM line_files
+       ORDER BY received_at ASC, id ASC`,
+    )
+    .all() as LineFileRow[];
+}
+
 export function deleteByMessageId(lineMessageId: string): number {
-  const r = getDb()
+  const database = getDb();
+  const files = database
+    .prepare(`SELECT stored_path FROM line_files WHERE line_message_id = ?`)
+    .all(lineMessageId) as Array<{ stored_path: string | null }>;
+  const links = database
     .prepare(`DELETE FROM line_links WHERE line_message_id = ?`)
     .run(lineMessageId);
-  return r.changes;
+  const uploads = database
+    .prepare(`DELETE FROM line_files WHERE line_message_id = ?`)
+    .run(lineMessageId);
+  for (const f of files) unlinkStoredFile(f.stored_path);
+  return links.changes + uploads.changes;
+}
+
+export function purgeOldFiles(days: number): number {
+  const database = getDb();
+  const modifier = `-${days} days`;
+  const files = database
+    .prepare(
+      `SELECT stored_path FROM line_files WHERE received_date < date('now', ?)`,
+    )
+    .all(modifier) as Array<{ stored_path: string | null }>;
+  for (const f of files) unlinkStoredFile(f.stored_path);
+  return database
+    .prepare(`DELETE FROM line_files WHERE received_date < date('now', ?)`)
+    .run(modifier).changes;
 }
 
 export function listLineLinks(date: string, status?: string): LineLinkRow[] {

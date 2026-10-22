@@ -63,14 +63,20 @@ manifest อ่านไม่ได้ → หยุด `PREFLIGHT_FAILED` · �
 - ปี พ.ศ. = ปี ค.ศ. + 543; พ.ศ. 2 หลักให้ตีความเป็น 25xx
 - ข้อความ "13 ชั่วโมงที่แล้ว" / "เมื่อวาน" ให้คำนวณจาก RUN_DATE; ถ้าคลุมเครือใช้กฎ top-3 ของหน้า "ล่าสุด"
 
-### Window & dedupe
+### Window & dedupe / Event-level merge (บังคับ — ห้ามแยก blog ซ้ำ)
 - เก็บเฉพาะข่าวที่เผยแพร่ในช่วง 24 ชม.; ถ้าไม่เห็นวันที่ ให้เก็บเฉพาะรายการ top-3 ของหน้า "ล่าสุด" มิฉะนั้นข้าม
-- **Case-level merge:** คดีเดียวกันมักถูกรายงานหลายสื่อ ถือว่าเป็นคดีเดียวกันเมื่อ ≥3 ใน 4 ตรงกัน:
-  สถานที่/จังหวัด, วันเกิดเหตุหรือวันจับกุม, ประเภทคดี, ผู้ต้องหา/ตัวเลขสำคัญ
-  → รวมเป็น **1 article** ใช้แหล่งทางการเป็น `source.url` หลัก ส่วนแหล่งอื่นใส่ `corroborating_sources[]`
-- Same-day rerun: dedupe ด้วย `source.url`, title similarity ≥90% และ case-key ข้างต้น
-  **Add-only** — ห้ามลบ/เขียนทับ article หรือ manifest entry เดิม
-  ก่อนรายงาน "completed" ให้สแกนโฟลเดอร์วันที่เป้าหมายและลบรายการซ้ำที่เพิ่งสร้าง (เก็บอันเก่า)
+- **ประเมินก่อนสร้างโพสต์ใหม่ทุกครั้ง:** หัวข้อข่าวเดียวกัน / เนื้อหาเหตุการณ์เดียวกันหรือไม่
+  ถือว่าเป็น**เหตุการณ์เดียวกัน**เมื่ออย่างน้อยหนึ่งข้อต่อไปนี้เป็นจริง:
+  1. ≥3 ใน 4 ตรงกัน: สถานที่/จังหวัด, วันเกิดเหตุหรือวันจับกุม, ประเภทคดี, ผู้ต้องหา/ตัวเลขสำคัญ
+  2. หัวข้อคล้าย ≥85% **และ** จังหวัด + ประเภทคดีตรงกัน
+  3. URL ต่างกันแต่ permalink ชี้เหตุการณ์เดียวกัน (หน่วยงานเดียวกัน / ตัวเลขจับกุมเดียวกัน)
+- → รวมเป็น **1 post / 1 case note เท่านั้น** — ห้ามสร้าง blog/article แยกต่อแหล่ง
+  - `source_url` = แหล่งหลัก (official มาก่อน แล้วจึงสื่อ)
+  - **ทุกแหล่งอื่น** รวมเป็น `corroborating_sources: [{name, url}]` (ลิสต์ครบ ไม่ทิ้ง)
+  - รวม tags / secondary_topics / actions ที่ไม่ซ้ำ; ใช้เนื้อหาที่ละเอียดที่สุดเป็น `content`
+- Same-day rerun: dedupe ด้วย `source.url`, title similarity, และ event-key ข้างต้น
+  **Add-only ต่อเหตุการณ์** — ถ้าเจอเหตุการณ์เดิม ให้**merge แหล่งเข้า post เดิม** ห้ามสร้าง id ใหม่
+  ก่อนรายงาน "completed" ให้สแกนโฟลเดอร์วันที่เป้าหมายและลบรายการซ้ำที่เพิ่งสร้าง (เก็บอันเก่า + รวมแหล่ง)
 
 ### Content rules
 - `summary_1`: 80–150 คำไทย ย่อหน้าเดียว ไม่มี bullet/header เขียนด้วยสำนวนตัวเอง **ห้ามคัดลอกประโยคจากต้นฉบับ**
@@ -110,9 +116,24 @@ manifest อ่านไม่ได้ → หยุด `PREFLIGHT_FAILED` · �
 4. ห้ามแตะโน้ตที่ `generated: false`
 
 ### ช่องทางผลลัพธ์ (บังคับครบ 3)
-1. **JSON สำหรับเว็บ (GitHub Pages)** — copy ไป `github-pages/data/` (file copy เท่านั้น ห้าม git push)
-2. **Markdown/text สำหรับ Obsidian** — `vault/10_Daily/...` และสำเนาใน `Document/...` (`generated: true`)
-3. **PDF สำหรับดาวน์โหลด + Infographic** — HTML→PDF และ infographic HTML→PNG (THSarabun บังคับ)
+1. **JSON รายวันสำหรับเว็บ (GitHub Pages)** — copy ไป `github-pages/data/` (file copy เท่านั้น ห้าม git push)  
+   ไฟล์หลัก `{DATE}_crime.json` ต้องตรง schema ตัวอย่าง (`date`, `generated_at`, `stats`, `posts[]`)  
+   แต่ละ `posts[]` ต้องมี `source_url` + `corroborating_sources[]` (ลิสต์แหล่งรวมหลัง merge) + `tags[]` + `topic`  
+   พร้อม `{DATE}_hotspots.json`, `{DATE}_alerts.json`, `{DATE}_trends.json`, `{DATE}_bd_leads.json`  
+   อัปเดต `manifest.json` (add-only) และใส่ `downloads[]` ชี้ไฟล์ PDF/PNG ใน `github-pages/data/downloads/`
+2. **Obsidian — 1 คดี = 1 โน้ต (รวมแหล่ง ไม่แยกตามสื่อ)**  
+   - `vault/20_Cases/{case_id}.md` = 1 เหตุการณ์ / 1 โน้ต (`generated: true`) · frontmatter `sources:` เป็นลิสต์ URL ทั้งหมด  
+   - `vault/40_CrimeTypes/{ชื่อประเภท}.md` = อัปเดตหน้ารวมประเภทที่มีข่าววันนี้  
+   - `vault/30_Entities/...` = หน่วย / จังหวัด / MO / กฎหมายที่ปรากฏ  
+   - **ห้าม** พึ่ง `vault/10_Daily/{DATE}.md` เป็นผลลัพธ์หลัก · **ห้าม** สร้างโน้ตซ้ำสำหรับแหล่งที่ 2/3 ของเหตุการณ์เดียวกัน
+3. **PDF สำหรับดาวน์โหลด + Infographic** — HTML→PDF และ infographic HTML→PNG (THSarabun บังคับ)  
+   คัดลอกไป `github-pages/data/downloads/{DATE}_crime.pdf` และ `{DATE}_infographic.png` ด้วย
+
+ท้ายรอบต้องพิมพ์ **ลิงก์ GitHub Pages**:
+- รายการข่าว: `{GITHUB_PAGES_BASE_URL}/#/{DATE}`
+- ดาวน์โหลด PDF: `{GITHUB_PAGES_BASE_URL}/#/downloads/{DATE}`
+- ตัวอย่างโพสต์: `{BASE}/#/{DATE}/{postId}`  
+(ไม่มี base ใน env ให้บอกว่าเปิดด้วย `npx serve github-pages`)
 
 ### PDF / Font
 - PDF บังคับ ห้ามรายงานว่าข้าม ลองตามลำดับ: weasyprint → playwright → wkhtmltopdf → headless chrome/edge `--print-to-pdf`
@@ -265,7 +286,7 @@ manifest อ่านไม่ได้ → หยุด `PREFLIGHT_FAILED` · �
     "severity": "", "verification": "",
     "case_stage": "", "police_role": "", "province": [], "region": [], "alert": false, "impersonation": false, "is_clarification": false,
     "content": "≥350 คำ ภาษาไทย (ห้ามมี field summary แยก)",
-    "source_url": "", "corroborating_sources": [],
+    "source_url": "", "corroborating_sources": [{"name": "", "url": ""}],
     "actions_public": [], "actions_org": [], "police_performance": {},
     "stats": {}, "tags": [], "category_label": "", "published_at": ""
   }]
@@ -274,7 +295,11 @@ manifest อ่านไม่ได้ → หยุด `PREFLIGHT_FAILED` · �
 Field mapping `post ← article`: `id←article_id`, `slug/title←content.*`, `topic/category_label←meta.category_label`,
 `secondary_topics←tags_struct.secondary_crime_types (แปลงเป็นชื่อไทย)`, `agency←agency.parent + " > " + agency.name`,
 `origin←source.origin`, `priority←meta.priority`, `severity/actions_*/police_performance/stats←crime_insights.*`,
-`content←content.summary_1 ขยายเป็น ≥350 คำ (เฉพาะข้อเท็จจริงจากแหล่ง)`, `source_url←source.url`, `tags←meta.tags`, `published_at←meta.published_at`
+`content←content.summary_1 ขยายเป็น ≥350 คำ (เฉพาะข้อเท็จจริงจากแหล่ง)`, `source_url←source.url`,
+`corroborating_sources←article.corroborating_sources` (หลัง event-merge ต้องมีครบทุกแหล่งรอง),
+`tags←meta.tags`, `published_at←meta.published_at`
+
+**UI บน GitHub Pages อ่านฟิลด์เหล่านี้:** กรอง `topic` / `tags` · แสดงลิสต์แหล่งจาก `source_url`+`corroborating_sources` · แท็บดาวน์โหลดอ่าน `manifest.downloads`
 
 ### ไฟล์ JSON ประกอบ
 - `_by_crime_type.json`: `{ "<ชื่อกลุ่ม>": {"count": n, "post_ids": [], "top_tags": [], "total_loss_thb": 0} }`
@@ -324,10 +349,17 @@ Document/{DATE}_Crime/
   _bd_leads.json, _brain_daily.md
   fonts/THSarabun{,.Bold,.Italic,.BoldItalic}.ttf
 Document/manifest.json
-github-pages/data/{DATE}_crime.json, {DATE}_hotspots.json, {DATE}_alerts.json,
-  {DATE}_trends.json, {DATE}_bd_leads.json, manifest.json
-vault/10_Daily/{DATE}.md
-vault/20_Cases/{case_id}.md
+github-pages/data/{DATE}_crime.json
+github-pages/data/{DATE}_hotspots.json
+github-pages/data/{DATE}_alerts.json
+github-pages/data/{DATE}_trends.json
+github-pages/data/{DATE}_bd_leads.json
+github-pages/data/downloads/{DATE}_crime.pdf
+github-pages/data/downloads/{DATE}_infographic.png
+github-pages/data/manifest.json   # days[].downloads[] ชี้ไฟล์ด้านบน
+vault/20_Cases/{case_id}.md       # 1 เหตุการณ์ = 1 โน้ต · sources: [url...]
+vault/40_CrimeTypes/{ชื่อประเภท}.md
+vault/30_Entities/{Units|Agencies|Laws|MO|Places|Regions}/...
 ```
 
 ## Completion Report
@@ -335,7 +367,7 @@ vault/20_Cases/{case_id}.md
 {
   "run_date": "", "target_date": "",
   "task": "1-online",
-  "pipeline": "task-1-police-crime-news-pipeline-1.0",
+  "pipeline": "task-1-police-crime-news-pipeline-1.1",
   "base_skill": "police-crime-news-pipeline-combined-1.1",
   "batches": {
     "A": {"attempted": 14, "created": 0, "no_news_today": []},
@@ -346,15 +378,26 @@ vault/20_Cases/{case_id}.md
   "articles_total": 0,
   "bd_leads_count": 0,
   "brain_entities_touched": 0,
+  "obsidian_cases": 0,
   "outputs": {"json_web": false, "obsidian_md": false, "pdf": false, "infographic": false},
   "trend_baseline": "ok|insufficient",
   "registry_issues": [],
+  "github_pages": {
+    "base_url": "",
+    "day_url": "",
+    "files": ["{DATE}_crime.json", "{DATE}_hotspots.json", "{DATE}_alerts.json", "{DATE}_trends.json"]
+  },
   "github_pages_copied": false,
   "git_push": "NOT PERFORMED — no git task run",
   "status": "complete|partial|failed"
 }
 ```
-ข้อความสุดท้าย ≤10 บรรทัด
+
+### ข้อความท้ายรอบ (บังคับ ≤12 บรรทัด รวมลิงก์)
+1. สถานะ + จำนวนบทความ + bd_leads  
+2. พาธใต้ `github-pages/data/`  
+3. ลิงก์เว็บ: `{BASE}/#/{DATE}` และ `{BASE}/#/{DATE}/{postId}` (`GITHUB_PAGES_BASE_URL` ถ้ามี; ไม่มีให้แนะ `npx serve github-pages`)  
+4. จำนวนโน้ตใน `vault/20_Cases` และประเภทที่อัปเดตใน `40_CrimeTypes`
 
 ---
 

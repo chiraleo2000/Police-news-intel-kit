@@ -18,7 +18,7 @@ LINE กลุ่ม → Bot → Webhook → SQLite
 6. เปิด Use webhook; ปิด Response mode ถ้าไม่ต้องการ reply จากบอท
 7. คัดลอก **Channel secret** → `LINE_CHANNEL_SECRET`
 8. หา `groupId` (จาก webhook log ครั้งแรก หรือ Messaging API) → `LINE_ALLOWED_GROUP_IDS`
-9. แจ้งสมาชิกกลุ่มว่าบอทเก็บ**เฉพาะลิงก์ URL** เพื่อ PDPA
+9. แจ้งสมาชิกกลุ่มว่าบอทเก็บ**เฉพาะลิงก์ URL และไฟล์ที่อัปโหลด** (ไม่เก็บข้อความอื่น) เพื่อ PDPA
 
 ## 2) รัน news-hub บนเครื่องที่เปิดตลอด
 
@@ -29,9 +29,13 @@ npm install
 npm run dev            # หรือ npm run build && npm start
 ```
 
-เปิด tunnel (Cloudflare / ngrok) ชี้มาที่ `:8080` แล้วใส่ URL ใน LINE webhook
+เปิด tunnel (ngrok free หรือ Cloudflare) ชี้มาที่พอร์ตใน `.env` (ตอนนี้ `18080`)
 
-ตรวจ: `GET /health`
+**ngrok-free:** URL เปลี่ยนทุกครั้งที่โปรเซส/เครื่องตื่นจาก hibernate  
+งาน `NewsIntel-LineWebhookWake` จะเปิด tunnel ใหม่ แล้ว `PUT` webhook ของ LINE ให้เอง (`PUBLIC_BASE_URL` + `/line/webhook`)  
+งาน `NewsIntel-LineWebhook` ตรวจทุก 5 นาที ถ้า URL ตายหรือ LINE ชี้คนละโฮสต์จะซ่อมอัตโนมัติ
+
+ตรวจ: `GET /health` และ `logs\webhook-watch.log`
 
 ## 3) สิ่งที่ webhook ทำ
 
@@ -40,19 +44,28 @@ npm run dev            # หรือ npm run build && npm start
 | Signature | HMAC-SHA256 raw body ด้วย channel secret (`x-line-signature`) |
 | ตอบ LINE | HTTP 200 ทันที แล้วค่อยประมวลผล |
 | Allowlist | รับเฉพาะ `groupId` ใน `LINE_ALLOWED_GROUP_IDS` |
-| เก็บอะไร | URL จากข้อความ `text` เท่านั้น — ไม่เก็บข้อความอื่น / ไม่เก็บ userId |
-| Unsend | ลบแถวที่มี `line_message_id` ตรงกัน |
+| เก็บอะไร | URL จากข้อความ `text` และไฟล์อัปโหลด `file` / `image` / `video` / `audio` — ข้อความที่ไม่มีลิงก์ทิ้ง / ไม่เก็บ userId |
+| ไฟล์ | ดาวน์โหลดจาก LINE Content API เมื่อมี `LINE_CHANNEL_ACCESS_TOKEN` เก็บที่ `LINE_FILES_PATH` (เพดาน `LINE_FILE_MAX_BYTES`) ไฟล์ executable ไม่เขียนลงดิสก์ ถ้าเป็น external URL เก็บเฉพาะ metadata |
+| Unsend | ลบแถว `line_links` / `line_files` ที่ `line_message_id` ตรงกัน และลบไฟล์บนดิสก์ |
 | Canonical | ตัด `utm_*` / `fbclid` ขยาย short link (timeout + กัน SSRF) |
 | domain_type | `official` / `media` / `social` / `unknown` — `social` → `fetchable=false` |
 
-## 4) Export เช้า (ก่อน Claude Task)
+## 4) Export (ต่อเนื่อง + เช้า)
+
+งาน **NewsIntel-LineExcel** เขียนไฟล์เดียวตลอดเวลา:
+
+- `exports/line_intake_continuous.xlsx` (+ `.json`)
+- แผ่น `line_intake`: แถว `kind=url` หรือ `kind=file` เท่านั้น (ข้อความแชทไม่มีลิงก์ไม่ถูกเก็บ)
+- อัปเดตหลังทุก webhook และทุก 5 นาที
 
 ```bash
-# cron / Task Scheduler 05:00 Asia/Bangkok
+# เช้า: snapshot รายวัน (ก่อน Claude Task) — ยังใช้ได้
 cd server && npm run job:export-links
+# มือ: rewrite continuous workbook
+cd server && npm run job:export-continuous
 ```
 
-ได้ไฟล์:
+ไฟล์รายวัน (ทางเลือก):
 
 - `exports/{DATE}_line_links.xlsx`
 - `exports/{DATE}_line_links.json`
@@ -70,7 +83,7 @@ Tools:
 - `run_status_get` / `run_status_put` — สถานะรอบก่อน
 - `export_path_hint` — path Excel ถ้าต้องเปิดดูเอง
 
-**กฎ Task-2:** ใช้ MCP ก่อน; Excel เป็น fallback สำหรับคนตรวจ ไม่ใช่ source of truth
+**กฎ Task-2:** อ่าน `exports/line_intake_continuous.json` (กรองวันที่) เป็นหลัก; MCP เป็นทางเลือก; อย่าใช้ลิงก์ข้ามวัน
 
 ## 6) ประเด็น scheduled task (Claude)
 

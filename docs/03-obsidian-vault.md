@@ -11,8 +11,8 @@ Vault เป็น **ชั้นมุมมอง (view layer)** ที่ ser
 | โฟลเดอร์ | เจ้าของ | เนื้อหา |
 | --- | --- | --- |
 | `00_Inbox` | คุณ | ร่าง/จดชั่วคราว |
-| `10_Daily` | server | หน้าสรุปรายวัน (ตารางคดี + ลิงก์ไปรายงานบนเว็บ) |
-| `20_Cases` | server | 1 โน้ต = 1 คดีหลัง merge |
+| `10_Daily` | (เลิกใช้เป็นผลลัพธ์หลัก) | ดัชนีสั้นได้ถ้าจำเป็น — **Task 1/2 เขียน Cases + CrimeTypes เป็นหลัก** |
+| `20_Cases` | server | 1 โน้ต = 1 คดี/หัวข้อข่าวหลัง merge (`generated: true`) |
 | `30_Entities/Units, Agencies, Laws, MO, Places, Regions` | server | โน้ตหน่วยงาน กฎหมาย รูปแบบการกระทำผิด สถานที่ ภาค |
 | `40_CrimeTypes` | server | 14 ประเภท (หน้ารวมของแต่ละประเภท) |
 | `50_Trends` | server | แนวโน้มรายสัปดาห์ (จาก `weekly_note`) |

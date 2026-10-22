@@ -13,10 +13,13 @@
     "start": "node dist/index.js",
     "mcp": "node dist/mcp-stdio.js",
     "job:export-links": "tsx src/jobs/export-links.ts",
+    "job:export-continuous": "tsx src/jobs/export-continuous.ts",
     "job:vault-build": "tsx src/jobs/vault-build.ts",
     "job:healthcheck": "tsx src/jobs/healthcheck.ts",
     "job:backup": "tsx src/jobs/backup.ts",
-    "test:url": "tsx src/line/url.test.ts"
+    "test:url": "tsx src/line/url.test.ts",
+    "test:filter": "tsx src/line/filter.test.ts",
+    "test:line": "tsx src/line/filter.test.ts && tsx src/line/process.test.ts"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.12.0",

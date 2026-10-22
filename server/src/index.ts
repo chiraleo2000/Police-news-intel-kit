@@ -1,10 +1,38 @@
+import fs from "node:fs";
+import path from "node:path";
 import Fastify, { type FastifyReply, type FastifyRequest } from "fastify";
 import { config, assertLineConfigured } from "./config.js";
-import { getDb, listLineLinks, listRecentNewLinks, markLineLinks, getRunStatus, putRunStatus, audit } from "./db/index.js";
+import { getDb, listLineLinks, listLineFiles, listRecentNewLinks, markLineLinks, getRunStatus, putRunStatus, audit } from "./db/index.js";
 import { verifyLineSignature } from "./line/signature.js";
 import { processLineEvents } from "./line/process.js";
 import { requireClaude, requireRead, resolveActor } from "./auth.js";
 import { todayIct } from "./line/url.js";
+
+function logWebhookRaw(raw: Buffer, ok: boolean) {
+  try {
+    const dir = path.resolve(config.exportPath, "..", "..", "logs");
+    fs.mkdirSync(dir, { recursive: true });
+    const file = path.join(dir, "webhook-raw.log");
+    let summary = `ok=${ok} bytes=${raw.length}`;
+    try {
+      const j = JSON.parse(raw.toString("utf8")) as { events?: Array<Record<string, unknown>> };
+      const evs = Array.isArray(j.events) ? j.events : [];
+      summary += ` events=${evs.length}`;
+      for (const ev of evs.slice(0, 20)) {
+        const msg = (ev.message ?? {}) as Record<string, unknown>;
+        const text = typeof msg.text === "string" ? msg.text : "";
+        const alt = typeof msg.altText === "string" ? msg.altText : "";
+        summary += ` | type=${ev.type} msg=${msg.type ?? "-"} textLen=${text.length} altLen=${alt.length}`;
+        if (text) summary += ` textPreview=${JSON.stringify(text.slice(0, 180))}`;
+      }
+    } catch {
+      summary += " parse=fail";
+    }
+    fs.appendFileSync(file, `${new Date().toISOString()} ${summary}\n`, "utf8");
+  } catch {
+    /* ignore logging failures */
+  }
+}
 
 type ReqWithRaw = FastifyRequest & { rawBody?: Buffer };
 
@@ -45,7 +73,9 @@ async function handleLineWebhook(req: FastifyRequest, reply: FastifyReply) {
 
   const raw = (req as ReqWithRaw).rawBody ?? Buffer.from("");
   const sig = req.headers["x-line-signature"] as string | undefined;
-  if (!verifyLineSignature(config.lineChannelSecret, raw, sig)) {
+  const sigOk = verifyLineSignature(config.lineChannelSecret, raw, sig);
+  logWebhookRaw(raw, sigOk);
+  if (!sigOk) {
     return reply.code(401).send({ error: "invalid_signature" });
   }
 
@@ -56,15 +86,21 @@ async function handleLineWebhook(req: FastifyRequest, reply: FastifyReply) {
 
   if (!events.length) return;
 
-  setImmediate(() => {
-    processLineEvents(events as Parameters<typeof processLineEvents>[0]).catch(
-      (err) => app.log.error({ err }, "line process failed"),
-    );
-  });
+  // Process in the same tick chain so bursts of group shares are not dropped
+  // if the process exits right after setImmediate scheduling.
+  void processLineEvents(events as Parameters<typeof processLineEvents>[0]).catch(
+    (err) => app.log.error({ err }, "line process failed"),
+  );
 }
 
 app.post("/line/webhook", handleLineWebhook);
 app.post("/webhook/line", handleLineWebhook);
+
+app.get("/v1/line_files", { preHandler: requireRead }, async (req) => {
+  const q = req.query as { date?: string };
+  const date = q.date || todayIct();
+  return { date, files: listLineFiles(date) };
+});
 
 app.get("/v1/line_links", { preHandler: requireRead }, async (req) => {
   const q = req.query as { date?: string; status?: string; days?: string };
