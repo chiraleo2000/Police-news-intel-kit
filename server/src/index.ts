@@ -13,6 +13,7 @@ function logWebhookRaw(raw: Buffer, ok: boolean) {
     const dir = path.resolve(config.exportPath, "..", "..", "logs");
     fs.mkdirSync(dir, { recursive: true });
     const file = path.join(dir, "webhook-raw.log");
+    const eventsFile = path.join(dir, "webhook-events.jsonl");
     let summary = `ok=${ok} bytes=${raw.length}`;
     try {
       const j = JSON.parse(raw.toString("utf8")) as { events?: Array<Record<string, unknown>> };
@@ -20,10 +21,28 @@ function logWebhookRaw(raw: Buffer, ok: boolean) {
       summary += ` events=${evs.length}`;
       for (const ev of evs.slice(0, 20)) {
         const msg = (ev.message ?? {}) as Record<string, unknown>;
+        const src = (ev.source ?? {}) as Record<string, unknown>;
         const text = typeof msg.text === "string" ? msg.text : "";
         const alt = typeof msg.altText === "string" ? msg.altText : "";
-        summary += ` | type=${ev.type} msg=${msg.type ?? "-"} textLen=${text.length} altLen=${alt.length}`;
+        const gid = typeof src.groupId === "string" ? src.groupId : typeof src.roomId === "string" ? src.roomId : "-";
+        summary += ` | type=${ev.type} src=${src.type ?? "-"} group=${gid} msg=${msg.type ?? "-"} textLen=${text.length} altLen=${alt.length}`;
         if (text) summary += ` textPreview=${JSON.stringify(text.slice(0, 180))}`;
+        // Compact trail for forensics when a URL is "missing" from Excel/JSON
+        fs.appendFileSync(
+          eventsFile,
+          `${JSON.stringify({
+            at: new Date().toISOString(),
+            sig_ok: ok,
+            type: ev.type,
+            source_type: src.type ?? null,
+            group_id: gid === "-" ? null : gid,
+            message_type: msg.type ?? null,
+            message_id: msg.id ?? null,
+            text: text ? text.slice(0, 2000) : null,
+            alt_text: alt ? alt.slice(0, 500) : null,
+          })}\n`,
+          "utf8",
+        );
       }
     } catch {
       summary += " parse=fail";
@@ -161,12 +180,31 @@ app.get("/v1/registry", { preHandler: requireRead }, async () => {
   };
 });
 
+function logFatal(kind: string, err: unknown) {
+  try {
+    const dir = path.resolve(config.exportPath, "..", "..", "logs");
+    fs.mkdirSync(dir, { recursive: true });
+    const line = `${new Date().toISOString()} ${kind} ${err instanceof Error ? err.stack ?? err.message : String(err)}\n`;
+    fs.appendFileSync(path.join(dir, "server.err.log"), line, "utf8");
+  } catch {
+    /* ignore */
+  }
+  console.error(kind, err);
+}
+
+process.on("uncaughtException", (err) => {
+  logFatal("uncaughtException", err);
+});
+process.on("unhandledRejection", (err) => {
+  logFatal("unhandledRejection", err);
+});
+
 const start = async () => {
   await app.listen({ port: config.port, host: "0.0.0.0" });
   app.log.info(`news-hub on :${config.port}`);
 };
 
 start().catch((err) => {
-  console.error(err);
+  logFatal("listen_failed", err);
   process.exit(1);
 });

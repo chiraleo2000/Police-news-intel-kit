@@ -2,7 +2,7 @@
  * Police News Briefing — static reader
  * Primary: data/feed.json (all posts)
  * Fallback: data/manifest.json + {DATE}_crime.json
- * Routes: #/r/{1|3|7|14|30|90|all} · #/{DATE}/{postId} · #/downloads/r/{range}
+ * Routes: #/r/{1|3|7|14|30|90|all} · #/{DATE}/{postId} · #/brain · #/downloads/r/{range}
  */
 (() => {
   const F = window.NewsFormat;
@@ -22,8 +22,10 @@
 
   const els = {
     tabNews: document.getElementById("tab-news"),
+    tabBrain: document.getElementById("tab-brain"),
     tabDownloads: document.getElementById("tab-downloads"),
     viewNews: document.getElementById("view-news"),
+    viewBrain: document.getElementById("view-brain"),
     viewDownloads: document.getElementById("view-downloads"),
     rangeSelect: document.getElementById("range-select"),
     downloadRangeSelect: document.getElementById("download-range-select"),
@@ -133,10 +135,19 @@
     if (parts[0] === "downloads") {
       const range =
         parts[1] === "r" && RANGE_VALUES.has(parts[2]) ? parts[2] : currentRange;
-      return { tab: "downloads", range, date: null, postId: null };
+      return { tab: "downloads", range, date: null, postId: null, nodeId: null };
+    }
+    if (parts[0] === "brain") {
+      return {
+        tab: "brain",
+        range: currentRange,
+        date: null,
+        postId: null,
+        nodeId: parts[1] ? decodeURIComponent(parts[1]) : null,
+      };
     }
     if (parts[0] === "r" && RANGE_VALUES.has(parts[1])) {
-      return { tab: "news", range: parts[1], date: null, postId: null };
+      return { tab: "news", range: parts[1], date: null, postId: null, nodeId: null };
     }
     if (parts[0] && /^\d{4}-\d{2}-\d{2}$/.test(parts[0])) {
       return {
@@ -144,14 +155,31 @@
         range: currentRange,
         date: parts[0],
         postId: parts[1] ? decodeURIComponent(parts[1]) : null,
+        nodeId: null,
       };
     }
-    return { tab: "news", range: currentRange || DEFAULT_RANGE, date: null, postId: null };
+    return {
+      tab: "news",
+      range: currentRange || DEFAULT_RANGE,
+      date: null,
+      postId: null,
+      nodeId: null,
+    };
   }
 
-  function setHash({ tab = "news", range = currentRange, date = null, postId = null } = {}) {
+  function setHash({
+    tab = "news",
+    range = currentRange,
+    date = null,
+    postId = null,
+    nodeId = null,
+  } = {}) {
     if (tab === "downloads") {
       location.hash = `#/downloads/r/${range || DEFAULT_RANGE}`;
+      return;
+    }
+    if (tab === "brain") {
+      location.hash = nodeId ? `#/brain/${encodeURIComponent(nodeId)}` : "#/brain";
       return;
     }
     if (date && postId) {
@@ -699,11 +727,15 @@
   }
 
   function setActiveTab(tab) {
-    const isNews = tab !== "downloads";
+    const isNews = tab === "news";
+    const isBrain = tab === "brain";
+    const isDownloads = tab === "downloads";
     els.tabNews.classList.toggle("is-active", isNews);
-    els.tabDownloads.classList.toggle("is-active", !isNews);
+    els.tabBrain?.classList.toggle("is-active", isBrain);
+    els.tabDownloads.classList.toggle("is-active", isDownloads);
     els.viewNews.hidden = !isNews;
-    els.viewDownloads.hidden = isNews;
+    if (els.viewBrain) els.viewBrain.hidden = !isBrain;
+    els.viewDownloads.hidden = !isDownloads;
   }
 
   function syncRange(range) {
@@ -726,6 +758,19 @@
     }
     if (parsed.tab === "downloads" && !raw.includes("/r/")) {
       setHash({ tab: "downloads", range });
+      return;
+    }
+    if (parsed.tab === "brain" && raw !== "brain" && !raw.startsWith("brain/")) {
+      setHash({ tab: "brain", nodeId: parsed.nodeId });
+      return;
+    }
+
+    if (parsed.tab === "brain") {
+      if (window.BrainGraph) {
+        await window.BrainGraph.show();
+        if (parsed.nodeId) window.BrainGraph.select(parsed.nodeId);
+      }
+      els.status.textContent = "Second Brain · กราฟจาก vault Obsidian";
       return;
     }
 
@@ -761,6 +806,7 @@
     setHash({ tab: "downloads", range: els.downloadRangeSelect.value });
   });
   els.tabNews.addEventListener("click", () => setHash({ tab: "news", range: currentRange }));
+  els.tabBrain?.addEventListener("click", () => setHash({ tab: "brain" }));
   els.tabDownloads.addEventListener("click", () =>
     setHash({ tab: "downloads", range: currentRange })
   );

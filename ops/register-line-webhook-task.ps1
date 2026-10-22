@@ -1,5 +1,5 @@
 # Register:
-#   NewsIntel-LineWebhook     — every 5 minutes (repair tunnel + sync LINE URL)
+#   NewsIntel-LineWebhook     — every 1 minute (repair tunnel + sync LINE URL)
 #   NewsIntel-LineWebhookWake — at logon and after sleep/hibernate (-Wake)
 #   NewsIntel-LineExcel       — rewrite continuous Excel every 5 minutes
 #
@@ -59,16 +59,19 @@ function Register-NewsIntelTask {
     Write-Output "registered $Name"
 }
 
-$repeat = New-ScheduledTaskTrigger -Once -At (Get-Date).AddMinutes(1) `
+$repeat1m = New-ScheduledTaskTrigger -Once -At (Get-Date).AddMinutes(1) `
+    -RepetitionInterval (New-TimeSpan -Minutes 1) `
+    -RepetitionDuration (New-TimeSpan -Days 9999)
+$repeat5m = New-ScheduledTaskTrigger -Once -At (Get-Date).AddMinutes(1) `
     -RepetitionInterval (New-TimeSpan -Minutes 5) `
     -RepetitionDuration (New-TimeSpan -Days 9999)
 $logon = New-ScheduledTaskTrigger -AtLogOn -User $account
 $resume = New-ResumeTrigger
 
-Register-NewsIntelTask -Name 'NewsIntel-LineWebhook' -ScriptPath $WatchScript -Triggers @($repeat)
+Register-NewsIntelTask -Name 'NewsIntel-LineWebhook' -ScriptPath $WatchScript -Triggers @($repeat1m)
 Register-NewsIntelTask -Name 'NewsIntel-LineWebhookWake' -ScriptPath $WatchScript `
     -ExtraArgs '-Wake' -Triggers @($logon, $resume)
-Register-NewsIntelTask -Name 'NewsIntel-LineExcel' -ScriptPath $ExportScript -Triggers @($repeat, $logon, $resume)
+Register-NewsIntelTask -Name 'NewsIntel-LineExcel' -ScriptPath $ExportScript -Triggers @($repeat5m, $logon, $resume)
 
 foreach ($cmd in @(
     'powercfg /change standby-timeout-ac 0',
@@ -82,5 +85,5 @@ foreach ($cmd in @(
 Write-Output ''
 Write-Output 'ngrok-free URL changes after hibernate are handled automatically:'
 Write-Output '  Wake/logon -> recycle tunnel -> update PUBLIC_BASE_URL -> PUT LINE webhook'
-Write-Output '  Every 5 min -> repair if public URL dies or LINE endpoint drifts'
+Write-Output '  Every 1 min -> repair if public URL dies or LINE endpoint drifts'
 Write-Output 'Optional stable host: set NGROK_DOMAIN=your-name.ngrok-free.app in server\.env'

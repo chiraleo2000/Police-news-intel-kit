@@ -108,10 +108,11 @@ export async function processLineEvents(events: LineEvent[]): Promise<void> {
 
     const classified = classifyMessage(ev.message);
     if (classified.action === "ignore") {
+      const preview = (ev.message?.text ?? ev.message?.altText ?? "").slice(0, 80);
       audit(
         "line-webhook",
         "skip_message",
-        `msgType=${ev.message?.type ?? "?"} no_url_or_upload`,
+        `group=${alias} groupId=${groupId ?? "?"} msgType=${ev.message?.type ?? "?"} no_url_or_upload preview=${JSON.stringify(preview)}`,
       );
       continue;
     }

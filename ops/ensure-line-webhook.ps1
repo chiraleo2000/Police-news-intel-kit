@@ -110,11 +110,17 @@ function Stop-NgrokForPort([int]$Port) {
 }
 
 function Start-NewsHub([int]$Port) {
+    if ((Get-ListenerPid $Port) -gt 0) {
+        Write-Log "news-hub already listening on $Port"
+        return
+    }
     $node = (Get-Command node -ErrorAction Stop).Source
     $outLog = Join-Path $LogDir 'server.log'
     $errLog = Join-Path $LogDir 'server.err.log'
-    Start-Process -FilePath $node -ArgumentList 'dist/index.js' -WorkingDirectory $ServerRoot `
-        -WindowStyle Hidden -RedirectStandardOutput $outLog -RedirectStandardError $errLog | Out-Null
+    # Append logs via cmd so each restart does not wipe crash history.
+    $arg = '/c ""{0}" dist/index.js >>"{1}" 2>>"{2}"' -f $node, $outLog, $errLog
+    Start-Process -FilePath 'cmd.exe' -ArgumentList $arg `
+        -WorkingDirectory $ServerRoot -WindowStyle Hidden | Out-Null
     Write-Log "started news-hub on port $Port"
 }
 
@@ -242,26 +248,36 @@ try {
     if (-not $healthyLocal) {
         $owner = Get-ListenerPid $port
         if ($owner -gt 0) {
-            $proc = Get-CimInstance Win32_Process -Filter "ProcessId = $owner"
-            $cmd = [string]$proc.CommandLine
-            if ($proc.Name -eq 'node.exe' -and $cmd -match 'dist[/\\]index\.js') {
-                Stop-Process -Id $owner -Force
-                Start-Sleep -Seconds 1
-                Write-Log "restarted unresponsive news-hub pid=$owner"
+            # Never kill a listening news-hub on a soft health blip (slow export can
+            # block the event loop briefly). Killing drops in-flight LINE webhooks.
+            # Only force-recycle when -Wake (logon / resume from sleep).
+            if ($Wake) {
+                $proc = Get-CimInstance Win32_Process -Filter "ProcessId = $owner"
+                $cmd = [string]$proc.CommandLine
+                if ($proc.Name -eq 'node.exe' -and $cmd -match 'dist[/\\]index\.js') {
+                    Stop-Process -Id $owner -Force
+                    Start-Sleep -Seconds 1
+                    Write-Log "Wake: recycled unresponsive news-hub pid=$owner"
+                } else {
+                    Write-Log "port $port is held by $($proc.Name) pid=$owner; left it alone"
+                    exit 1
+                }
             } else {
-                Write-Log "port $port is held by $($proc.Name) pid=$owner; left it alone"
-                exit 1
+                Write-Log "news-hub pid=$owner listening but /health failed - leave running (use -Wake to recycle)"
+                # Still continue to verify ngrok / LINE endpoint below.
             }
         }
-        Start-NewsHub $port
-        $ready = $false
-        foreach ($i in 1..25) {
-            Start-Sleep -Seconds 1
-            if (Test-Health $localUrl) { $ready = $true; break }
-        }
-        if (-not $ready) {
-            Write-Log 'news-hub did not become healthy'
-            exit 1
+        if ((Get-ListenerPid $port) -le 0) {
+            Start-NewsHub $port
+            $ready = $false
+            foreach ($i in 1..25) {
+                Start-Sleep -Seconds 1
+                if (Test-Health $localUrl) { $ready = $true; break }
+            }
+            if (-not $ready) {
+                Write-Log 'news-hub did not become healthy'
+                exit 1
+            }
         }
     }
 

@@ -13,8 +13,11 @@
 | `feed.json` | รายการข่าวรวม (UX หลัก) |
 | `manifest.json` | ช่วงวัน / ดาวน์โหลด / ไฟล์ประกอบ |
 | `{DATE}_crime.json` | แหล่งความจริงรายวัน + KPI |
+| `graph.json` | Second Brain — กราฟจาก `vault/` wikilinks (แท็บ Brain) |
 
 ทางเลือก: `{DATE}_hotspots.json`, `{DATE}_alerts.json`
+
+`graph.json` สร้างด้วย `node ops/build-obsidian-graph.js` (ถูกเรียกจาก `rebuild-pages-feed.js`) · ดู `docs/obsidian-second-brain.md`
 
 ## ดาวน์โหลด (แท็บ PDF)
 

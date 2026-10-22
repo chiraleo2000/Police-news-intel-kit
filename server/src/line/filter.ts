@@ -127,6 +127,14 @@ export function messageUrlHaystack(message: LineIncomingMessage | undefined): st
       /* ignore */
     }
   }
+  // Facebook / LINE share cards sometimes tuck the URL only in nested action.uri
+  // fields that are easier to catch by stringifying the whole message payload.
+  try {
+    const full = JSON.stringify(message);
+    if (full && /https?:\/\/|www\./i.test(full)) parts.push(full);
+  } catch {
+    /* ignore */
+  }
   return parts.join("\n");
 }
 

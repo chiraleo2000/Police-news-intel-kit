@@ -2,10 +2,12 @@
 /**
  * Rebuild github-pages/data/feed.json + manifest.json
  * Sync PDF / Infographic from Document/{DATE}_Crime* → data/downloads/
+ * Build Obsidian Second Brain graph → data/graph.json
  * Downloads list prioritizes PDF (สรุปรายวัน) over JSON.
  */
 const fs = require("fs");
 const path = require("path");
+const { spawnSync } = require("child_process");
 
 const ROOT = path.join(__dirname, "..");
 const DATA = path.join(ROOT, "github-pages", "data");
@@ -207,4 +209,18 @@ if (!pdfDays) {
   console.warn(
     "WARN: no PDF in data/downloads — place Document/{DATE}_Crime/{DATE}_crime.pdf then re-run"
   );
+}
+
+// Second Brain: vault wikilinks → graph.json (vault/ is local; graph is published)
+const graphScript = path.join(__dirname, "build-obsidian-graph.js");
+if (fs.existsSync(graphScript)) {
+  const r = spawnSync(process.execPath, [graphScript], {
+    cwd: ROOT,
+    encoding: "utf8",
+  });
+  if (r.stdout) process.stdout.write(r.stdout);
+  if (r.stderr) process.stderr.write(r.stderr);
+  if (r.status !== 0) {
+    console.warn("WARN: build-obsidian-graph.js failed — Pages Brain tab may be stale");
+  }
 }

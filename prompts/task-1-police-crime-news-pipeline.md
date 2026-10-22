@@ -133,10 +133,12 @@ manifest อ่านไม่ได้ → หยุด `PREFLIGHT_FAILED` · �
    พร้อม `{DATE}_hotspots.json`, `{DATE}_alerts.json`, `{DATE}_trends.json`, `{DATE}_bd_leads.json`  
    อัปเดต `manifest.json` (add-only) + `downloads[]`  
    **บังคับรัน** `node ops/rebuild-pages-feed.js` หลัง copy เพื่อสร้าง/อัปเดต `feed.json` (หน้าเว็บอ่านไฟล์นี้เป็นหลัก — ไม่มี feed จะดูเหมือนไม่มีข่าว)
-2. **Obsidian — 1 คดี = 1 โน้ต (รวมแหล่ง ไม่แยกตามสื่อ)**  
-   - `vault/20_Cases/{case_id}.md` = 1 เหตุการณ์ / 1 โน้ต (`generated: true`) · frontmatter `sources:` เป็นลิสต์ URL ทั้งหมด  
-   - `vault/40_CrimeTypes/{ชื่อประเภท}.md` = อัปเดตหน้ารวมประเภทที่มีข่าววันนี้  
-   - `vault/30_Entities/...` = หน่วย / จังหวัด / MO / กฎหมายที่ปรากฏ  
+2. **Obsidian Second Brain — 1 คดี = 1 โน้ต (รวมแหล่ง ไม่แยกตามสื่อ)**
+   - `vault/20_Cases/{case_id}.md` = 1 เหตุการณ์ / 1 โน้ต (`generated: true`) · frontmatter `sources:` เป็นลิสต์ URL ทั้งหมด
+   - `vault/40_CrimeTypes/{ชื่อประเภท}.md` = อัปเดตหน้ารวมประเภทที่มีข่าววันนี้
+   - `vault/30_Entities/...` = หน่วย / จังหวัด / MO / กฎหมายที่ปรากฏ
+   - ใช้ `[[wikilinks]]` เชื่อม คดี↔ประเภท↔หน่วย/จังหวัด เสมอ (กราฟบน GitHub Pages อ่านจากลิงก์เหล่านี้)
+   - หลังเขียน vault: รัน `node ops/rebuild-pages-feed.js` (สร้าง `github-pages/data/graph.json`) — **ห้าม** git push ใน Task 1
    - **ห้าม** พึ่ง `vault/10_Daily/{DATE}.md` เป็นผลลัพธ์หลัก · **ห้าม** สร้างโน้ตซ้ำสำหรับแหล่งที่ 2/3 ของเหตุการณ์เดียวกัน
 3. **PDF สำหรับดาวน์โหลด + Infographic** — HTML→PDF และ infographic HTML→PNG (THSarabun บังคับ)  
    คัดลอกไป `github-pages/data/downloads/{DATE}_crime.pdf` และ `{DATE}_infographic.png` ด้วย
