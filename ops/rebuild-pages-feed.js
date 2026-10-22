@@ -1,12 +1,16 @@
 #!/usr/bin/env node
 /**
- * Rebuild github-pages/data/feed.json (+ refresh manifest days)
- * from every *_crime.json / *_crime_line.json under github-pages/data/
+ * Rebuild github-pages/data/feed.json + manifest.json
+ * Sync PDF / Infographic from Document/{DATE}_Crime* → data/downloads/
+ * Downloads list prioritizes PDF (สรุปรายวัน) over JSON.
  */
 const fs = require("fs");
 const path = require("path");
 
-const DATA = path.join(__dirname, "..", "github-pages", "data");
+const ROOT = path.join(__dirname, "..");
+const DATA = path.join(ROOT, "github-pages", "data");
+const DOWNLOADS = path.join(DATA, "downloads");
+const DOCUMENT = path.join(ROOT, "Document");
 
 function readJson(file) {
   try {
@@ -14,6 +18,17 @@ function readJson(file) {
   } catch {
     return null;
   }
+}
+
+function ensureDir(dir) {
+  fs.mkdirSync(dir, { recursive: true });
+}
+
+function copyIfExists(src, dest) {
+  if (!fs.existsSync(src)) return false;
+  ensureDir(path.dirname(dest));
+  fs.copyFileSync(src, dest);
+  return true;
 }
 
 function mergePosts(list) {
@@ -46,6 +61,78 @@ function mergePosts(list) {
   return [...map.values()];
 }
 
+/** Sync PDF/PNG for a date from Document folders into github-pages/data/downloads */
+function syncDownloads(date) {
+  ensureDir(DOWNLOADS);
+  const candidates = [
+    {
+      srcs: [
+        path.join(DOCUMENT, `${date}_Crime`, `${date}_crime.pdf`),
+        path.join(DOCUMENT, `${date}_Crime`, `${date}_crime_report.pdf`),
+      ],
+      dest: path.join(DOWNLOADS, `${date}_crime.pdf`),
+      label: `PDF สรุปข่าว ${date}`,
+      kind: "pdf",
+      path: `downloads/${date}_crime.pdf`,
+    },
+    {
+      srcs: [
+        path.join(DOCUMENT, `${date}_CrimeLine`, `${date}_crime_line.pdf`),
+        path.join(DOCUMENT, `${date}_Crime`, `${date}_crime_line.pdf`),
+      ],
+      dest: path.join(DOWNLOADS, `${date}_crime_line.pdf`),
+      label: `PDF จาก LINE ${date}`,
+      kind: "pdf",
+      path: `downloads/${date}_crime_line.pdf`,
+    },
+    {
+      srcs: [
+        path.join(DOCUMENT, `${date}_Crime`, `${date}_infographic.png`),
+      ],
+      dest: path.join(DOWNLOADS, `${date}_infographic.png`),
+      label: `Infographic ${date}`,
+      kind: "image",
+      path: `downloads/${date}_infographic.png`,
+    },
+    {
+      srcs: [
+        path.join(DOCUMENT, `${date}_CrimeLine`, `${date}_infographic_line.png`),
+        path.join(DOCUMENT, `${date}_Crime`, `${date}_infographic_line.png`),
+      ],
+      dest: path.join(DOWNLOADS, `${date}_infographic_line.png`),
+      label: `Infographic LINE ${date}`,
+      kind: "image",
+      path: `downloads/${date}_infographic_line.png`,
+    },
+  ];
+
+  const downloads = [];
+  for (const item of candidates) {
+    let ok = fs.existsSync(item.dest);
+    if (!ok) {
+      for (const src of item.srcs) {
+        if (copyIfExists(src, item.dest)) {
+          ok = true;
+          console.log(`  synced ${path.relative(ROOT, src)} → downloads/`);
+          break;
+        }
+      }
+    }
+    // already in downloads/ from prior copy
+    if (!ok && fs.existsSync(item.dest)) ok = true;
+    if (ok) {
+      downloads.push({
+        label: item.label,
+        path: item.path,
+        kind: item.kind,
+      });
+    }
+  }
+  return downloads;
+}
+
+ensureDir(DOWNLOADS);
+
 const files = fs
   .readdirSync(DATA)
   .filter((f) => /_crime(_line)?\.json$/.test(f) && !f.includes("sample"));
@@ -68,18 +155,13 @@ for (const file of files) {
 const days = [...byDate.values()]
   .map((d) => {
     const posts = mergePosts(d.posts);
+    const downloads = syncDownloads(d.date);
     return {
       date: d.date,
       status: "published",
       total: posts.length,
       crime_file: d.files.find((f) => f.endsWith("_crime.json")) || d.files[0],
-      downloads: [
-        {
-          label: `JSON ข่าว ${d.date}`,
-          path: d.files.find((f) => f.endsWith("_crime.json")) || d.files[0],
-          kind: "json",
-        },
-      ],
+      downloads, // PDF / PNG only — ไม่ใส่ JSON ในแท็บดาวน์โหลด
       _posts: posts,
       _stats: d.stats,
     };
@@ -116,4 +198,13 @@ const manifest = {
 
 fs.writeFileSync(path.join(DATA, "feed.json"), JSON.stringify(feed, null, 1) + "\n");
 fs.writeFileSync(path.join(DATA, "manifest.json"), JSON.stringify(manifest, null, 1) + "\n");
-console.log(`feed.json: ${allPosts.length} posts across ${days.length} day(s)`);
+
+const pdfDays = days.filter((d) => d.downloads.some((x) => x.kind === "pdf")).length;
+console.log(
+  `feed.json: ${allPosts.length} posts / ${days.length} day(s) · PDF ready: ${pdfDays} day(s)`
+);
+if (!pdfDays) {
+  console.warn(
+    "WARN: no PDF in data/downloads — place Document/{DATE}_Crime/{DATE}_crime.pdf then re-run"
+  );
+}

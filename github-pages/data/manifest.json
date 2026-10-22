@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-22T04:02:28.234Z",
+ "generated_at": "2026-10-22T04:09:18.031Z",
  "schema_version": 1,
  "default_range": "all",
  "days": [
@@ -10,9 +10,14 @@
    "crime_file": "2026-10-22_crime.json",
    "downloads": [
     {
-     "label": "JSON ข่าว 2026-10-22",
-     "path": "2026-10-22_crime.json",
-     "kind": "json"
+     "label": "PDF สรุปข่าว 2026-10-22",
+     "path": "downloads/2026-10-22_crime.pdf",
+     "kind": "pdf"
+    },
+    {
+     "label": "Infographic 2026-10-22",
+     "path": "downloads/2026-10-22_infographic.png",
+     "kind": "image"
     }
    ]
   }

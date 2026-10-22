@@ -616,19 +616,58 @@
     }
   }
 
+  function downloadCandidatesForDay(day) {
+    const date = day.date;
+    // PDF สรุปรายวันเป็นหลัก — ไม่ใส่ JSON ในแท็บนี้
+    const defaults = [
+      {
+        label: `PDF สรุปข่าว ${date}`,
+        path: `downloads/${date}_crime.pdf`,
+        kind: "pdf",
+        date,
+      },
+      {
+        label: `PDF จาก LINE ${date}`,
+        path: `downloads/${date}_crime_line.pdf`,
+        kind: "pdf",
+        date,
+      },
+      {
+        label: `Infographic ${date}`,
+        path: `downloads/${date}_infographic.png`,
+        kind: "image",
+        date,
+      },
+      {
+        label: `Infographic LINE ${date}`,
+        path: `downloads/${date}_infographic_line.png`,
+        kind: "image",
+        date,
+      },
+    ];
+    const listed = Array.isArray(day.downloads)
+      ? day.downloads
+          .filter((d) => d && d.kind !== "json" && !String(d.path || "").endsWith(".json"))
+          .map((d) => ({ ...d, date }))
+      : [];
+    // merge: listed first, then defaults missing from listed
+    const seen = new Set(listed.map((d) => d.path));
+    for (const d of defaults) {
+      if (!seen.has(d.path)) listed.push(d);
+    }
+    // PDF before images
+    listed.sort((a, b) => {
+      const rank = (k) => (k === "pdf" ? 0 : k === "image" ? 1 : 2);
+      return rank(a.kind) - rank(b.kind) || String(b.date).localeCompare(String(a.date));
+    });
+    return listed;
+  }
+
   async function renderDownloads(range) {
     const days = daysInRange(range);
     const available = [];
     for (const day of days) {
-      const date = day.date;
-      const candidates = Array.isArray(day.downloads) && day.downloads.length
-        ? day.downloads.map((d) => ({ ...d, date }))
-        : [
-            { label: `JSON ข่าว ${date}`, path: `${date}_crime.json`, kind: "json", date },
-            { label: `PDF ${date}`, path: `downloads/${date}_crime.pdf`, kind: "pdf", date },
-            { label: `Infographic ${date}`, path: `downloads/${date}_infographic.png`, kind: "image", date },
-          ];
-      for (const item of candidates) {
+      for (const item of downloadCandidatesForDay(day)) {
         const href = item.path.startsWith("http")
           ? item.path
           : `${DATA}/${item.path}`.replace(/\/{2,}/g, "/");
@@ -638,23 +677,25 @@
       }
     }
     els.downloadList.innerHTML = available
-      .map(
-        (item) => `<li class="download-item">
+      .map((item) => {
+        const kindLabel =
+          item.kind === "pdf" ? "PDF สรุปรายวัน" : item.kind === "image" ? "Infographic" : (item.kind || "").toUpperCase();
+        return `<li class="download-item">
           <div>
             <strong>${escapeHtml(item.label)}</strong>
-            <p class="muted">${escapeHtml(item.date ? F.dateTh(item.date) : "")} · ${escapeHtml((item.kind || "").toUpperCase())}</p>
+            <p class="muted">${escapeHtml(item.date ? F.dateTh(item.date) : "")} · ${escapeHtml(kindLabel)}</p>
           </div>
           <a class="download-btn" href="${escapeHtml(item.href)}" download target="_blank" rel="noopener noreferrer">ดาวน์โหลด</a>
-        </li>`
-      )
+        </li>`;
+      })
       .join("");
     els.downloadEmpty.hidden = available.length > 0;
     els.downloadEmpty.textContent = available.length
       ? ""
-      : `ยังไม่มีไฟล์ในช่วง${RANGE_LABELS[range]}`;
+      : `ยังไม่มี PDF สรุปในช่วง${RANGE_LABELS[range]} — รันไปป์ไลน์แล้ว copy ไป data/downloads/{DATE}_crime.pdf`;
     els.status.textContent = available.length
-      ? `${available.length} ไฟล์ · ${RANGE_LABELS[range]}`
-      : "ยังไม่มีไฟล์ดาวน์โหลด";
+      ? `${available.length} ไฟล์ (PDF/Infographic) · ${RANGE_LABELS[range]}`
+      : "ยังไม่มี PDF ให้ดาวน์โหลด";
   }
 
   function setActiveTab(tab) {
