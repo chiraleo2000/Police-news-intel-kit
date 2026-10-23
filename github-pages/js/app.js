@@ -736,6 +736,9 @@
     els.viewNews.hidden = !isNews;
     if (els.viewBrain) els.viewBrain.hidden = !isBrain;
     els.viewDownloads.hidden = !isDownloads;
+    document.body.classList.toggle("is-brain", isBrain);
+    const main = document.getElementById("main");
+    if (main) main.classList.toggle("main-brain", isBrain);
   }
 
   function syncRange(range) {

@@ -750,18 +750,78 @@ body::before {
   }
 }
 
-/* Second Brain graph — wide interactive workspace */
-.brain-hero .hero-lead {
-  max-width: 42rem;
+/* Second Brain — full-bleed horizontal workspace */
+body.is-brain .site-footer {
+  display: none;
+}
+
+#main.main-brain.wrap {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+}
+
+.view-brain {
+  width: 100%;
+}
+
+.brain-shell {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  width: 100%;
+  padding: 0.55rem 0.85rem 0.85rem;
+  min-height: calc(100vh - 7.5rem);
+  box-sizing: border-box;
+}
+
+.brain-topbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 0.75rem 1.25rem;
+  width: 100%;
+  padding: 0.55rem 0.85rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.62);
+}
+
+.brain-topbar-title {
+  min-width: 12rem;
+}
+
+.brain-kicker {
+  margin: 0;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--teal);
+  font-weight: 600;
+}
+
+.brain-topbar-title h1 {
+  margin: 0.1rem 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 2vw, 1.75rem);
+  line-height: 1.2;
+}
+
+.brain-status-line {
+  margin: 0;
+  font-size: 0.88rem;
+  color: var(--slate);
 }
 
 .brain-stats {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.65rem 1.1rem;
-  margin-top: 0.75rem;
-  font-size: 0.92rem;
+  gap: 0.5rem 1rem;
+  align-items: center;
+  font-size: 0.9rem;
   color: var(--ink-soft);
+  flex: 1 1 auto;
 }
 
 .brain-stats strong {
@@ -769,34 +829,13 @@ body::before {
   font-weight: 700;
 }
 
-.brain-panel-wide {
-  width: min(100vw - 1.5rem, 1280px);
-  margin-inline: calc(50% - min(50vw - 0.75rem, 640px));
-  padding: 1rem 1.1rem 1.25rem;
-}
-
-.brain-layout {
-  display: grid;
-  grid-template-columns: minmax(240px, 300px) minmax(0, 1fr);
-  gap: 1rem;
-  align-items: start;
-}
-
-.brain-sidebar {
-  display: flex;
-  flex-direction: column;
-  gap: 0.85rem;
-  position: sticky;
-  top: 0.75rem;
-  max-height: calc(100vh - 5rem);
-  overflow: auto;
-}
-
 .brain-help-box {
+  position: relative;
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  background: rgba(255, 255, 255, 0.55);
-  padding: 0.55rem 0.75rem;
+  background: rgba(255, 255, 255, 0.7);
+  padding: 0.35rem 0.65rem;
+  margin-left: auto;
 }
 
 .brain-help-box summary {
@@ -804,12 +843,28 @@ body::before {
   font-family: var(--font-display);
   font-weight: 600;
   color: var(--ink-soft);
+  list-style: none;
+}
+
+.brain-help-box summary::-webkit-details-marker {
+  display: none;
 }
 
 .brain-help {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 0.35rem);
+  z-index: 20;
+  width: min(420px, 92vw);
+  max-height: 50vh;
+  overflow: auto;
+  padding: 0.75rem 0.9rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: #fff;
+  box-shadow: var(--shadow);
   font-size: 0.9rem;
   color: var(--ink-soft);
-  margin-top: 0.5rem;
 }
 
 .brain-help h3 {
@@ -848,102 +903,96 @@ body::before {
   flex: 0 0 auto;
 }
 
-.brain-filters {
+.brain-filterbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 0.55rem 0.7rem;
+  width: 100%;
+  padding: 0.65rem 0.85rem;
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  background: rgba(255, 255, 255, 0.62);
-  padding: 0.75rem 0.85rem 1rem;
-}
-
-.brain-filters h3 {
-  margin: 0 0 0.65rem;
-  font-family: var(--font-display);
-  font-size: 1rem;
+  background: rgba(255, 255, 255, 0.7);
 }
 
 .brain-field {
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
-  margin-bottom: 0.65rem;
-  font-size: 0.86rem;
+  gap: 0.2rem;
+  font-size: 0.78rem;
   color: var(--slate);
+  margin: 0;
+}
+
+.brain-field-search {
+  flex: 1 1 14rem;
+  min-width: 12rem;
+}
+
+.brain-field-narrow {
+  width: 5.5rem;
 }
 
 .brain-field input,
-.brain-field select,
-.brain-fieldset input {
+.brain-field select {
   font-family: var(--font-body);
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   color: var(--ink);
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  padding: 0.4rem 0.55rem;
+  padding: 0.38rem 0.5rem;
   background: #fff;
+  min-height: 2.15rem;
 }
 
 .brain-fieldset {
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  margin: 0 0 0.65rem;
-  padding: 0.45rem 0.55rem 0.55rem;
+  margin: 0;
+  padding: 0.2rem 0.5rem 0.35rem;
+}
+
+.brain-fieldset-inline {
+  display: flex;
+  flex-direction: column;
 }
 
 .brain-fieldset legend {
-  font-size: 0.86rem;
+  font-size: 0.78rem;
   color: var(--slate);
-  padding: 0 0.25rem;
+  padding: 0 0.2rem;
 }
 
-.brain-checks {
-  display: grid;
-  gap: 0.3rem;
-  font-size: 0.92rem;
+.brain-checks-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.7rem;
+  font-size: 0.88rem;
   color: var(--ink-soft);
 }
 
 .brain-checks label,
 .brain-check {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
+  gap: 0.3rem;
   cursor: pointer;
+  white-space: nowrap;
 }
 
 .brain-check {
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   color: var(--ink-soft);
-  margin-bottom: 0.4rem;
-}
-
-.brain-date-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.5rem;
+  margin: 0 0 0.15rem;
+  min-height: 2.15rem;
 }
 
 .brain-filter-actions {
-  margin-top: 0.5rem;
-}
-
-.brain-main {
-  min-width: 0;
-}
-
-.brain-toolbar {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.65rem;
-  margin-bottom: 0.65rem;
+  gap: 0.3rem;
   align-items: center;
-  justify-content: space-between;
-}
-
-.brain-zoom-btns {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.35rem;
-  align-items: center;
+  margin-left: auto;
 }
 
 .btn-ghost {
@@ -955,6 +1004,7 @@ body::before {
   padding: 0.4rem 0.75rem;
   border-radius: var(--radius);
   cursor: pointer;
+  min-height: 2.15rem;
 }
 
 .btn-ghost:hover {
@@ -962,10 +1012,19 @@ body::before {
   color: var(--teal);
 }
 
+.brain-legend-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.55rem 1rem;
+  width: 100%;
+  padding: 0 0.15rem;
+}
+
 .brain-legend {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.4rem;
+  gap: 0.35rem;
 }
 
 .brain-legend-item {
@@ -998,18 +1057,24 @@ body::before {
   background: var(--teal-soft);
 }
 
+.brain-hint {
+  margin: 0;
+  font-size: 0.84rem;
+}
+
 .brain-stage {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(260px, 340px);
-  gap: 0.85rem;
-  align-items: stretch;
-  min-height: min(72vh, 780px);
+  position: relative;
+  display: block;
+  width: 100%;
+  flex: 1 1 auto;
+  min-height: calc(100vh - 16rem);
 }
 
 #brain-canvas {
+  display: block;
   width: 100%;
-  height: min(72vh, 780px);
-  min-height: 520px;
+  height: calc(100vh - 16rem);
+  min-height: 560px;
   border: 1px solid var(--line);
   border-radius: var(--radius);
   background:
@@ -1025,13 +1090,19 @@ body::before {
 }
 
 .brain-detail {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  width: min(340px, 34vw);
+  max-height: calc(100% - 1.5rem);
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  background: rgba(255, 255, 255, 0.78);
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(8px);
+  box-shadow: var(--shadow);
   padding: 0.95rem 1.05rem;
   overflow: auto;
-  height: min(72vh, 780px);
-  min-height: 520px;
+  z-index: 5;
 }
 
 .brain-detail-placeholder h3 {
@@ -1041,7 +1112,7 @@ body::before {
 .brain-detail h3 {
   margin: 0.15rem 0 0.35rem;
   font-family: var(--font-display);
-  font-size: 1.2rem;
+  font-size: 1.15rem;
   line-height: 1.35;
 }
 
@@ -1074,7 +1145,7 @@ body::before {
 
 .brain-dl div {
   display: grid;
-  grid-template-columns: 7rem 1fr;
+  grid-template-columns: 6.5rem 1fr;
   gap: 0.35rem;
 }
 
@@ -1138,35 +1209,26 @@ body::before {
   text-underline-offset: 2px;
 }
 
-.brain-hint {
-  margin: 0.55rem 0 0;
-  font-size: 0.86rem;
-}
-
-@media (max-width: 980px) {
-  .brain-panel-wide {
-    width: min(100% - 0rem, 1280px);
-    margin-inline: 0;
-  }
-
-  .brain-layout {
-    grid-template-columns: 1fr;
-  }
-
-  .brain-sidebar {
-    position: static;
-    max-height: none;
+@media (max-width: 900px) {
+  .brain-filter-actions {
+    margin-left: 0;
+    width: 100%;
   }
 
   .brain-stage {
-    grid-template-columns: 1fr;
-    min-height: 0;
+    min-height: 70vh;
   }
 
-  #brain-canvas,
-  .brain-detail {
-    height: 480px;
+  #brain-canvas {
+    height: 70vh;
     min-height: 420px;
+  }
+
+  .brain-detail {
+    position: static;
+    width: 100%;
+    max-height: 40vh;
+    margin-top: 0.65rem;
   }
 }
 
