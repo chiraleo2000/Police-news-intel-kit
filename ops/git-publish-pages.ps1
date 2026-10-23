@@ -12,12 +12,12 @@ function Write-Log([string]$msg) {
     $line = '{0} {1}' -f (Get-Date -Format 'yyyy-MM-dd HH:mm:ss'), $msg
     if (-not (Test-Path $LogDir)) { New-Item -ItemType Directory -Path $LogDir -Force | Out-Null }
     Add-Content -Path $LogFile -Value $line -Encoding UTF8
-    Write-Output $line
+    # Host only — never Write-Output (would pollute return values)
+    Write-Host $line
 }
 
 function Invoke-GitLogged {
     param([Parameter(Mandatory)][string[]]$GitArgs)
-    # git writes progress/warnings to stderr — must not treat as terminating errors
     $prev = $ErrorActionPreference
     $ErrorActionPreference = 'Continue'
     $out = & git @GitArgs 2>&1
@@ -26,12 +26,11 @@ function Invoke-GitLogged {
     foreach ($line in @($out)) {
         Write-Log ("  git: {0}" -f $line)
     }
-    return $code
+    return [int]$code
 }
 
 Set-Location $KitRoot
 
-# Identity for scheduled runs (does not touch git config permanently)
 if (-not $env:GIT_AUTHOR_NAME) {
     $env:GIT_AUTHOR_NAME = 'chiraleo2000'
     $env:GIT_AUTHOR_EMAIL = 'chirapathleo.saelim@gmail.com'
@@ -64,7 +63,6 @@ try {
         'server/package.json'
     )
 
-    # Never stage secrets / runtime
     $null = Invoke-GitLogged @(
         'reset', 'HEAD', '--',
         'server/.env',
@@ -72,19 +70,17 @@ try {
         'server/exports/',
         'server/node_modules/',
         'logs/',
-        '_to_delete/'
+        '_to_delete/',
+        'ops/run/'
     )
 
-    # Drop local-only scratch under ops/run if present
-    $null = Invoke-GitLogged @('reset', 'HEAD', '--', 'ops/run/')
-
-    $status = & git status --porcelain 2>&1
-    if (-not $status) {
+    $status = @(git status --porcelain 2>$null)
+    if (-not $status -or $status.Count -eq 0) {
         Write-Log 'no changes — skip commit/push'
         exit 0
     }
 
-    Write-Log ("staging:`n{0}" -f (($status | Out-String).TrimEnd()))
+    Write-Log ("staging:`n{0}" -f ($status -join "`n"))
 
     $stamp = Get-Date -Format 'yyyy-MM-dd HH:mm'
     $msg = @"
