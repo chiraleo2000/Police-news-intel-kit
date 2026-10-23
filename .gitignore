@@ -87,3 +87,7 @@ _to_delete/
 # github-pages/data/*_alerts.json
 # github-pages/data/*_trends.json
 # !github-pages/data/sample/
+
+# local pipeline scratch
+ops/run/
+
