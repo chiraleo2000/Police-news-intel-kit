@@ -1,0 +1,341 @@
+{
+ "date": "2026-10-23",
+ "generated_at": "2026-10-23T08:50:00+07:00",
+ "run": "partial",
+ "stats": {
+  "total": 56,
+  "direct": 14,
+  "indirect": 42,
+  "priority_A": 14,
+  "priority_B": 33,
+  "priority_C": 9,
+  "alerts": 12,
+  "official_confirmed": 14,
+  "by_crime_type": {
+   "การปฏิบัติหน้าที่ ประชาสัมพันธ์ และนโยบายตำรวจ": 9,
+   "คดีชีวิต ร่างกาย และเพศ": 6,
+   "อาชญากรรมไซเบอร์และออนไลน์": 6,
+   "ยาเสพติด": 6,
+   "คดีเศรษฐกิจ การเงิน และฟอกเงิน": 5,
+   "อาชญากรรมที่เกี่ยวข้องกับนักท่องเที่ยวและชาวต่างชาติ": 5,
+   "คดีอุกฉกรรจ์ ผู้มีอิทธิพล และอาวุธ": 3,
+   "ค้ามนุษย์ แรงงานผิดกฎหมาย และคุ้มครองเด็ก": 3,
+   "อื่น ๆ": 3,
+   "พนันและบ่อนผิดกฎหมาย": 2,
+   "สิ่งแวดล้อม ทรัพยากร และสัตว์ป่า": 2,
+   "คดีทรัพย์สิน": 2,
+   "อาชญากรรมข้ามชาติและความร่วมมือระหว่างประเทศ": 1,
+   "คุ้มครองผู้บริโภคและสินค้าผิดกฎหมาย": 1,
+   "ความปลอดภัยทางหลวงและการสกัดจับ": 1,
+   "ความสงบเรียบร้อยและความมั่นคงภายใน": 1
+  },
+  "total_loss_thb": 3134030000,
+  "total_seized_value_thb": 194605000,
+  "total_arrested": 111
+ },
+ "articles_scraped_pass": 91,
+ "official_pr_articles": 15,
+ "posts_published_after_merge": 56,
+ "files": [
+  "2026-10-23_crime.html",
+  "2026-10-23_crime.json",
+  "2026-10-23_crime.md",
+  "2026-10-23_crime.pdf",
+  "2026-10-23_infographic.html",
+  "2026-10-23_infographic.png",
+  "_alerts.json",
+  "_bd_leads.json",
+  "_brain_daily.md",
+  "_by_agency.json",
+  "_by_crime_type.json",
+  "_hotspots.json",
+  "_tags.json",
+  "_trends.json",
+  "fonts"
+ ],
+ "no_news_today": [
+  "csd",
+  "ecd(ปอศ.)",
+  "cppd(ปคบ.)",
+  "humantrafficking(ศตคม.)",
+  "pct",
+  "ccid1-4",
+  "bpp(ตชด.)",
+  "highway(ทล. เว็บทางการ)",
+  "dsi.go.th",
+  "pacc.go.th",
+  "ocpb.go.th (ไม่ใช่คดี)",
+  "mdes.go.th รายการอื่น (ไม่ใช่คดี)"
+ ],
+ "source_health": {
+  "royalthaipolice.go.th": "empty (หน้าแรก/th/main client_error; ใช้ saranitet.police.go.th แทน)",
+  "saranitet.police.go.th": "ok (กองสารนิเทศ ตร. เว็บข่าวทางการหลัก; มีวันที่ใน URL DDMMYYYY; 6 ข่าว 22 ต.ค.)",
+  "ccib.go.th / ccid1": "ok-stale (ข่าวเก่า/ลิงก์ Facebook)",
+  "ccid2-4.ccib.go.th": "ccid2 empty (ไม่มีวันที่), ccid3 empty (ข่าวเก่า), ccid4 ok-stale (ล่าสุด 22 มิ.ย.), ccid5 blocked (robots)",
+  "cib.go.th": "error (client_error; ค้น allowed_domains ได้แต่ผลเก่าปี 2564-2565)",
+  "csd.go.th": "empty (หน้าแรกมีแต่ประกาศจัดซื้อ; บางหน้า client_error)",
+  "A05 สืบนครบาล": "search_only (ใช้สื่อ: dailynews สืบห้วยขวาง)",
+  "A06 ตำรวจทางหลวง": "search_only (highway.police.go.th robots_disallowed; ใช้ mgronline)",
+  "A07 ปอศ.": "empty (ecd.police.go.th ข่าวปี 2564); search_only",
+  "A08 ปคบ.": "blocked (cppd.go.th robots_disallowed); search_only ไม่พบข่าวในหน้าต่าง",
+  "A09 ปคม./ศตคม.": "ok-stale (humantrafficking.police.go.th มีรายการแต่ไม่มีวันที่); ไม่พบข่าว 22 ต.ค.",
+  "touristpolice.go.th": "ok (/tpb-news; 5 ข่าว 22 ต.ค. + 1 ข่าว 21 ต.ค.)",
+  "A11 PCT/ศปอส.": "error (pct.police.go.th, pctdata client_error); search_only",
+  "A12 ปอท.": "search_only (ใช้ข่าวตำรวจไซเบอร์/สตม. จากสื่อ)",
+  "immigration.go.th": "error (client_error); sub-site tak.immigration.go.th ok (มีรายการ 22 ต.ค. แต่ไม่มี permalink); bkk-airport ข่าวเก่า 2567",
+  "A14 บช.น./ภ.1-9/ตชด.": "search_only (metro.police.go.th client_error, bpp.go.th robots_disallowed); ใช้สื่อ mgronline/dailynews/amarintv",
+  "mgronline crime": "ok",
+  "dailynews crime": "ok",
+  "thairath crime": "ok (permalink fetch ส่วนใหญ่ client_error)",
+  "amarintv crime": "ok",
+  "15 dsi.go.th": "ok (listing มีวันที่ ใหม่สุด 21 ต.ค. 17:27; ไม่มีข่าว 22-23 ต.ค. ในหน้าต่าง)",
+  "16 oncb.go.th": "no_listing (/news=404, หน้าแรกไม่มีข่าว; or3/or7 /news=404; ค้น allowed_domains ได้แต่ผลไม่มีวันที่ในหน้าต่าง)",
+  "17 amlo.go.th": "no_listing (หน้าแรกเป็น splash; ค้นไม่พบ permalink; ocpb feed อ้างประกาศ ปปง. 22 ต.ค. และ 20 ต.ค. แต่ไม่มีลิงก์)",
+  "18 ago.go.th": "error (client_error ที่ /, /press, /th/press, /pr/ ; ค้น allowed_domains ได้ permalink เก่า)",
+  "19 correct.go.th": "blocked (ตามกฎ registry ไม่เปิด)",
+  "20 mdes.go.th": "ok (/news มีวันที่; 22 ต.ค. 4 รายการ ใช้ 3 รายการ)",
+  "21 thaipoliceonline.go.th": "blocked (ต้องใช้ JavaScript ไม่มีเนื้อหา)",
+  "22 thaicert.or.th": "ok (หน้าแรก 22 ต.ค. 1 รายการ; /category/news=client_error)",
+  "23 sec.or.th": "search_only (News.aspx client_error; ผลค้นเป็นข่าวเก่า พ.ค. 2569 ไม่อยู่ในหน้าต่าง)",
+  "24 nacc.go.th": "blocked (robots_disallowed ที่หน้าแรก; หน้า category เป็นข่าวปี 2566)",
+  "25 pacc.go.th": "ok-stale (/home1 ใหม่สุด 21 ต.ค. ลิงก์เป็นภาพ/PDF ไม่ใช่หน้าข่าว ไม่มีข่าว 22-23 ต.ค.)",
+  "26 ocpb.go.th": "ok (หน้าแรกมี 22 ต.ค. 1 รายการ ไม่ใช่ข่าวอาชญากรรม/ไม่มี permalink)",
+  "ไทยรัฐ": "no_listing (listing page 1 loads but newest item 2026-10-21 21:18, none in window; page 2 and permalinks return client_error)",
+  "เดลินิวส์": "ok (page 1+2 with dates; 9 in-window articles fetched)",
+  "mgronline": "ok-stale (listing undated; permalinks checked: 101792/101790/101787/101733/101657 published 2026-10-21 so before window; no in-window pass)",
+  "มติชน": "ok (page 1+2; most items dated 21 Oct or earlier; 2 in-window fetched)",
+  "ข่าวสด": "partial (/crime page 1 client_error; page 2 old (<=16 Oct); 2 in-window found via homepage featured list)",
+  "Thai PBS": "ok (page 1+2; 8 in-window fetched)",
+  "อมรินทร์ทีวี": "ok (page 1+2; 10 in-window fetched)",
+  "เนชั่นทีวี": "ok (listing undated, mostly non-crime; 1 crime article found via listing, dated by permalink)",
+  "ช่อง7HD": "blocked (robots_disallowed; ไม่เปิด)",
+  "PPTV": "empty (listing p1-2 ใหม่สุด 19 ต.ค.; ไม่มีข่าว 22-23 ต.ค.)",
+  "คมชัดลึก": "search_only (/crime ไม่มี listing; พบ permalink 1 รายการในหน้าต่างผ่าน allowed_domains search)",
+  "อิศรา": "error (client_error ทุกหน้า รวม permalink; search พบเฉพาะ title ไม่มีวันที่)",
+  "แนวหน้า": "ok (/n/crime-news/ มีวันที่; 8 รายการในหน้าต่าง)",
+  "ไทยโพสต์": "ok (/criminality/ มีวันที่; 2 รายการในหน้าต่าง)",
+  "กรุงเทพธุรกิจ": "search_only (หน้าแรก/หมวดไม่มีข่าวอาชญากรรม news-update client_error; permalink 1257562/1257410 ใช้เป็นแหล่งยืนยันรวมคดี)",
+  "The Thaiger TH": "ok (/th/news มีวันที่; 8 รายการ crime/police ในหน้าต่าง; ข่าวต่างประเทศ 0 รายการที่เจอในหน้าต่าง)",
+  "Bangkok Post": "no_listing (listing gives times without dates/permalinks; permalinks via search returned client_error)",
+  "The Thaiger": "ok",
+  "The Nation Thailand": "ok (homepage has no crime items in window; search-only older items)",
+  "Khaosod English": "ok (listing dated; 1 crime permalink client_error, used as corroboration only)",
+  "Thai Rath English": "ok",
+  "Pattaya Mail": "ok",
+  "The Phuket News": "error (listing ok without dates; all permalinks returned client_error)",
+  "Thai PBS World": "ok (crime items dated 17-19 Oct, out of window)",
+  "ASEAN NOW": "blocked (client_error; lead-only source anyway)",
+  "INTERPOL": "search_only (2026 items found not in window)",
+  "UNODC SEAP": "search_only (no in-window item; one permalink client_error)",
+  "OCCRP": "search_only (no in-window item)",
+  "Reuters legal": "error (search proxy rejected request)"
+ },
+ "registry_issues": [
+  {
+   "key": "royalthaipolice",
+   "url": "https://www.royalthaipolice.go.th/",
+   "problem": "หน้าแรกข่าวเก่า/ client_error",
+   "suggested_action": "เปลี่ยน official_url เป็น https://saranitet.police.go.th/commander-mission/ (listing มีวันที่ใน URL)"
+  },
+  {
+   "key": "cib",
+   "url": "https://www.cib.go.th/news?category=general",
+   "problem": "client_error",
+   "suggested_action": "ใช้สื่อ/saranitet; cib.go.th ค้นแล้วได้แต่ข่าวเก่า"
+  },
+  {
+   "key": "csd",
+   "url": "https://csd.go.th/",
+   "problem": "มีแต่ประกาศจัดซื้อ",
+   "suggested_action": "ตั้ง empty ใช้ search_only"
+  },
+  {
+   "key": "hwp",
+   "url": "https://www.highway.police.go.th/",
+   "problem": "robots_disallowed",
+   "suggested_action": "search_only ผ่านสื่อ"
+  },
+  {
+   "key": "cppd",
+   "url": "https://www.cppd.go.th/",
+   "problem": "robots_disallowed",
+   "suggested_action": "search_only ผ่านสื่อ"
+  },
+  {
+   "key": "ecd",
+   "url": "https://ecd.police.go.th/",
+   "problem": "ข่าวล่าสุดปี 2564",
+   "suggested_action": "search_only"
+  },
+  {
+   "key": "pct",
+   "url": "https://pct.police.go.th/",
+   "problem": "client_error",
+   "suggested_action": "search_only"
+  },
+  {
+   "key": "immigration",
+   "url": "https://www.immigration.go.th/",
+   "problem": "client_error",
+   "suggested_action": "ใช้ sub-site จังหวัด เช่น tak.immigration.go.th หรือสื่อ"
+  },
+  {
+   "key": "metro",
+   "url": "https://metro.police.go.th/",
+   "problem": "client_error",
+   "suggested_action": "search_only"
+  },
+  {
+   "key": "bpp",
+   "url": "http://www.bpp.go.th/",
+   "problem": "robots_disallowed",
+   "suggested_action": "search_only"
+  },
+  {
+   "key": "ccid5",
+   "url": "https://ccid5.ccib.go.th/",
+   "problem": "robots_disallowed",
+   "suggested_action": "ข้าม"
+  },
+  {
+   "key": "oncb.go.th",
+   "url": "https://www.oncb.go.th/news",
+   "problem": "404; หน้าแรกไม่มีข่าว; or*.oncb.go.th/news ก็ 404",
+   "suggested_action": "ใช้ permalink รูป or{N}.oncb.go.th/news/{id} จากผลค้นหา หรือทดสอบ /news/{id}"
+  },
+  {
+   "key": "ago.go.th",
+   "url": "https://www.ago.go.th/",
+   "problem": "หน้าแรกว่าง; /press /th/press /pr/ client_error",
+   "suggested_action": "ใช้รูป permalink ago.go.th/press{id}/ หรือ ago.go.th/{ddmmyy}-{n}/ จากการค้น"
+  },
+  {
+   "key": "thaipoliceonline.go.th",
+   "url": "https://www.thaipoliceonline.go.th/",
+   "problem": "ต้องใช้ JavaScript",
+   "suggested_action": "คง blocked"
+  },
+  {
+   "key": "nacc.go.th",
+   "url": "https://www.nacc.go.th/",
+   "problem": "robots_disallowed",
+   "suggested_action": "ตั้ง blocked"
+  },
+  {
+   "key": "sec.or.th",
+   "url": "https://www.sec.or.th/TH/Pages/News/News.aspx",
+   "problem": "client_error",
+   "suggested_action": "ใช้ News_Detail.aspx?NewsNo=N&NewsYear=2569 สุ่มเลขถัดจาก 103 (ลำดับล่าสุดไม่ทราบ)"
+  },
+  {
+   "key": "amlo.go.th",
+   "url": "https://www.amlo.go.th/",
+   "problem": "splash ไม่มี listing",
+   "suggested_action": "หา path ข่าวของ amlo (ocpb feed ชี้ว่ามีประกาศ 20-22 ต.ค.)"
+  },
+  {
+   "key": "pacc.go.th",
+   "url": "https://www.pacc.go.th/home1",
+   "problem": "ลิงก์ข่าวเป็นไฟล์ภาพ/PDF ไม่มีเนื้อหาข้อความ",
+   "suggested_action": "ถือเป็น listing-only; ใช้ /pubdl/view/suppression_news"
+  },
+  {
+   "key": "thairath",
+   "url": "https://www.thairath.co.th/news/crime/page/2",
+   "problem": "client_error on page 2 and on permalink fetch; page 1 stale (newest 21 Oct 21:18)",
+   "suggested_action": "use WebSearch with allowed_domains thairath.co.th or retry later"
+  },
+  {
+   "key": "khaosod",
+   "url": "https://www.khaosod.co.th/crime",
+   "problem": "client_error on page 1; page 2 shows only items up to 16 Oct",
+   "suggested_action": "use /crime/page/2 pattern cautiously; homepage featured list for latest"
+  },
+  {
+   "key": "nationtv",
+   "url": "https://www.nationtv.tv/crime",
+   "problem": "listing is mixed general news, no dates",
+   "suggested_action": "filter by permalink and search allowed_domains nationtv.tv"
+  },
+  {
+   "key": "mgronline",
+   "url": "https://mgronline.com/crime",
+   "problem": "no dates in listing; first items published 21 Oct evening, pre-window"
+  },
+  {
+   "key": "isranews",
+   "url": "https://www.isranews.org/",
+   "problem": "client_error ทุกหน้ารวม permalink",
+   "suggested_action": "ค้น allowed_domains ได้เฉพาะ title; ตรวจรอบหน้า"
+  },
+  {
+   "key": "komchadluek",
+   "url": "https://www.komchadluek.net/crime",
+   "problem": "ไม่มี listing (SPA/ว่าง)",
+   "suggested_action": "ใช้ search allowed_domains; permalink เลขต่ำ (6xxxxx) วันที่เก่า"
+  },
+  {
+   "key": "bangkokbiznews",
+   "url": "https://www.bangkokbiznews.com/",
+   "problem": "หน้าแรกไม่มีหมวดอาชญากรรม; /news/news-update client_error",
+   "suggested_action": "ใช้ search allowed_domains"
+  },
+  {
+   "key": "ch7",
+   "url": "https://news.ch7.com/crime",
+   "problem": "robots_disallowed",
+   "suggested_action": "ข้าม"
+  },
+  {
+   "key": "pptvhd36",
+   "url": "https://www.pptvhd36.com/news/อาชญากรรม",
+   "problem": "ข่าวใหม่สุด 19 ต.ค. (ไม่อัปเดต)",
+   "suggested_action": "ตรวจรอบหน้า"
+  },
+  {
+   "key": "aseannow",
+   "url": "https://aseannow.com/forum/163-thailand-crime-news/",
+   "problem": "client_error",
+   "suggested_action": "keep as lead-only; search with allowed_domains"
+  },
+  {
+   "key": "thephuketnews",
+   "url": "https://www.thephuketnews.com/",
+   "problem": "permalinks client_error",
+   "suggested_action": "try rendered mode or allowed_domains search"
+  },
+  {
+   "key": "reuters",
+   "url": "https://www.reuters.com/legal/",
+   "problem": "WebSearch proxy HTTP 400",
+   "suggested_action": "retry later"
+  }
+ ],
+ "discovered_paths": {
+  "saranitet": "https://saranitet.police.go.th/ (ข่าว ตร. ทางการ; permalink /commanders-mission/{หมวด}_{DDMMYYYY}_{id}/; หมวด /category/commanders-mission/{administration|crime-prevention-and-suppression|security-and-special-task|commissioner-general}/)",
+  "touristpolice": "https://www.touristpolice.go.th/tpb-news (permalink /post/tpbnews{YYYYMMDD}{NN}, /post/commandernews{...})",
+  "humantrafficking": "https://humantrafficking.police.go.th/ (ข่าวไม่มีวันที่; archive /partners/)",
+  "tak_immigration": "https://tak.immigration.go.th/ข่าวสาร-ตม-จว-ตาก/ (มีวันที่ ไม่มี permalink ใน fetch)",
+  "ccid_regional": "ccid2/3/4.ccib.go.th (ข่าวเก่า)",
+  "pacc": "https://www.pacc.go.th/home/news/pacc_news (listing, ลิงก์เป็นภาพ)",
+  "ocpb": "https://www.ocpb.go.th/index.php?filename=index (หน้าแรกมี feed วันที่), news_view.php?nid=N",
+  "thaicert": "https://www.thaicert.or.th/category/ภัยคุกคาม/ (ล้าหลัง ไม่ใช่ listing ล่าสุด)",
+  "mdes": "https://mdes.go.th/news/detail/{id}-{slug}",
+  "khaosod": "/crime/page/2 works; /crime fails; featured permalinks under /around-thailand/news_{id}",
+  "amarintv": "/news/crime and /news/crime?page=2 work (dated)",
+  "thaipbs": "/news/categories/crime and ?page=2 work (relative times)",
+  "nationtv": "/crime?page=2 returns same content as page 1",
+  "mgronline": "/crime/4012/start=20 works (10/page, undated)",
+  "thairath": "/news/crime works; /news/crime/page/2 and ?page=2 client_error; permalinks client_error",
+  "naewna": "https://www.naewna.com/n/crime-news/ (permalink /n/crime/{id}/)",
+  "thaipost": "https://www.thaipost.net/criminality/ (permalink /criminality-news/{id}/)",
+  "komchadluek": "permalink รูปแบบ /news/{id}, /news/crime/{id}, /news/general-news/{id} (ไม่มี listing)",
+  "bangkokbiznews": "permalink /news/news-update/{id} (ไม่มี listing)",
+  "pptvhd36": "https://www.pptvhd36.com/news/อาชญากรรม?page=2 ใช้ได้ (เรียงวันที่)",
+  "Thai PBS World": "/crime/{id}, /around-thailand/{id}",
+  "Thai Rath English": "/news/crime/{id} (dated listing)",
+  "Khaosod English": "/news/crimecourtscalamity/YYYY/MM/DD/",
+  "saranitet.police.go.th": "https://saranitet.police.go.th/ (กองสารนิเทศ ตร.; permalink /commanders-mission/{category}_{DDMMYYYY}_{id}/ — แทน royalthaipolice.go.th)"
+ },
+ "note": "WebFetch คืนสรุปจากโมเดลไม่ใช่ข้อความเต็ม → content ต่อโพสต์สั้นกว่า 350 คำในหลายกรณี; ไม่ได้ใช้ curl"
+}

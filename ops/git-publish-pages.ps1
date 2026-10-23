@@ -2,7 +2,7 @@
 # Safe: never force-push, never commit .env / secrets / sqlite / _to_delete.
 # Intended schedule: 10:00 and 14:00 Asia/Bangkok via register-git-publish-task.ps1
 
-$ErrorActionPreference = 'Stop'
+$ErrorActionPreference = 'Continue'
 $KitRoot = Split-Path -Parent $PSScriptRoot
 $LogDir = Join-Path $KitRoot 'logs'
 $LogFile = Join-Path $LogDir 'git-publish.log'
@@ -13,6 +13,20 @@ function Write-Log([string]$msg) {
     if (-not (Test-Path $LogDir)) { New-Item -ItemType Directory -Path $LogDir -Force | Out-Null }
     Add-Content -Path $LogFile -Value $line -Encoding UTF8
     Write-Output $line
+}
+
+function Invoke-GitLogged {
+    param([Parameter(Mandatory)][string[]]$GitArgs)
+    # git writes progress/warnings to stderr — must not treat as terminating errors
+    $prev = $ErrorActionPreference
+    $ErrorActionPreference = 'Continue'
+    $out = & git @GitArgs 2>&1
+    $code = $LASTEXITCODE
+    $ErrorActionPreference = $prev
+    foreach ($line in @($out)) {
+        Write-Log ("  git: {0}" -f $line)
+    }
+    return $code
 }
 
 Set-Location $KitRoot
@@ -29,37 +43,48 @@ try {
     if (Test-Path $Rebuild) {
         Write-Log 'rebuild-pages-feed.js'
         & node $Rebuild 2>&1 | ForEach-Object { Write-Log "  $_" }
+        if ($LASTEXITCODE -ne 0) {
+            Write-Log "rebuild failed exit=$LASTEXITCODE"
+            exit $LASTEXITCODE
+        }
     }
 
-    git add -A -- `
-        'github-pages/' `
-        'Document/' `
-        'prompts/' `
-        'ops/' `
-        'police-crime-news-pipeline.md' `
-        '.github/' `
-        '.gitignore' `
-        'docs/' `
-        'server/.env.example' `
-        'server/src/' `
-        'server/package.json' 2>&1 | Out-Null
+    $null = Invoke-GitLogged @(
+        'add', '-A', '--',
+        'github-pages/',
+        'Document/',
+        'prompts/',
+        'ops/',
+        'police-crime-news-pipeline.md',
+        '.github/',
+        '.gitignore',
+        'docs/',
+        'server/.env.example',
+        'server/src/',
+        'server/package.json'
+    )
 
     # Never stage secrets / runtime
-    git reset HEAD -- `
-        'server/.env' `
-        'server/data/' `
-        'server/exports/' `
-        'server/node_modules/' `
-        'logs/' `
-        '_to_delete/' 2>$null | Out-Null
+    $null = Invoke-GitLogged @(
+        'reset', 'HEAD', '--',
+        'server/.env',
+        'server/data/',
+        'server/exports/',
+        'server/node_modules/',
+        'logs/',
+        '_to_delete/'
+    )
 
-    $status = git status --porcelain
+    # Drop local-only scratch under ops/run if present
+    $null = Invoke-GitLogged @('reset', 'HEAD', '--', 'ops/run/')
+
+    $status = & git status --porcelain 2>&1
     if (-not $status) {
         Write-Log 'no changes — skip commit/push'
         exit 0
     }
 
-    Write-Log ("staging:`n{0}" -f ($status -join "`n"))
+    Write-Log ("staging:`n{0}" -f (($status | Out-String).TrimEnd()))
 
     $stamp = Get-Date -Format 'yyyy-MM-dd HH:mm'
     $msg = @"
@@ -67,16 +92,16 @@ Scheduled publish of news intel kit outputs ($stamp Asia/Bangkok).
 
 Sync github-pages feed/downloads and Document reports for GitHub Pages.
 "@
-    git commit -m $msg
-    if ($LASTEXITCODE -ne 0) {
-        Write-Log "commit failed exit=$LASTEXITCODE"
-        exit $LASTEXITCODE
+    $commitCode = Invoke-GitLogged @('commit', '-m', $msg)
+    if ($commitCode -ne 0) {
+        Write-Log "commit failed exit=$commitCode"
+        exit $commitCode
     }
 
-    git push origin HEAD
-    if ($LASTEXITCODE -ne 0) {
-        Write-Log "push failed exit=$LASTEXITCODE"
-        exit $LASTEXITCODE
+    $pushCode = Invoke-GitLogged @('push', 'origin', 'HEAD')
+    if ($pushCode -ne 0) {
+        Write-Log "push failed exit=$pushCode"
+        exit $pushCode
     }
 
     Write-Log 'push ok'
