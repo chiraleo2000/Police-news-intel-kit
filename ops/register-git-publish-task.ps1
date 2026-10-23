@@ -1,6 +1,6 @@
 # Register Windows Scheduled Tasks:
-#   NewsIntel-GitPublish-Morning — daily 10:00
-#   NewsIntel-GitPublish-Afternoon — daily 14:00
+#   NewsIntel-GitPublish-Morning - daily 10:00
+#   NewsIntel-GitPublish-Afternoon - daily 14:00
 # Both run ops/git-publish-pages.ps1 (rebuild feed + commit + push).
 #
 # Re-run after moving the repo.
@@ -47,10 +47,10 @@ Register-PublishAt -Name 'NewsIntel-GitPublish-Morning' -At ([datetime]'10:00')
 Register-PublishAt -Name 'NewsIntel-GitPublish-Afternoon' -At ([datetime]'14:00')
 
 Write-Output ''
-Write-Output 'Running self-test (node/git/origin/rebuild)…'
+Write-Output 'Running self-test (node/git/origin/rebuild)...'
 & powershell.exe -NoProfile -ExecutionPolicy Bypass -File $PublishScript -SelfTest
 if ($LASTEXITCODE -ne 0) {
-    Write-Output "SELFTEST FAILED exit=$LASTEXITCODE — fix before relying on the schedule"
+    Write-Output "SELFTEST FAILED exit=$LASTEXITCODE - fix before relying on the schedule"
     exit $LASTEXITCODE
 }
 

@@ -40,7 +40,7 @@ function Find-Exe([string]$Name, [string[]]$Candidates) {
 }
 
 function Initialize-Tools {
-    # Task Scheduler often has a stripped PATH — prepend common install dirs.
+    # Task Scheduler often has a stripped PATH - prepend common install dirs.
     $extra = @(
         'C:\Program Files\nodejs',
         'C:\Program Files\Git\cmd',
@@ -60,8 +60,8 @@ function Initialize-Tools {
         "$env:LOCALAPPDATA\Programs\Git\cmd\git.exe"
     )
 
-    if (-not $script:NodeExe) { throw 'node.exe not found — install Node.js or add it to PATH' }
-    if (-not $script:GitExe) { throw 'git.exe not found — install Git or add it to PATH' }
+    if (-not $script:NodeExe) { throw 'node.exe not found - install Node.js or add it to PATH' }
+    if (-not $script:GitExe) { throw 'git.exe not found - install Git or add it to PATH' }
     Write-Log ("tools node={0}" -f $script:NodeExe)
     Write-Log ("tools git={0}" -f $script:GitExe)
 }
@@ -102,7 +102,7 @@ function Test-PublishPreflight {
 
     Write-Log 'selftest: remote HEAD'
     $code = Invoke-GitLogged @('ls-remote', '--heads', 'origin', 'main')
-    if ($code -ne 0) { throw "cannot reach origin (exit=$code) — check credentials / network" }
+    if ($code -ne 0) { throw "cannot reach origin (exit=$code) - check credentials / network" }
 
     Write-Log 'selftest: rebuild dry'
     & $script:NodeExe $Rebuild 2>&1 | ForEach-Object { Write-Log "  $_" }
@@ -168,7 +168,7 @@ try {
 
     $staged = Get-StagedPaths
     if ($staged.Count -eq 0) {
-        Write-Log 'no staged changes — skip commit/push'
+        Write-Log 'no staged changes - skip commit/push'
         Write-Log '==== git-publish end ok (noop) ===='
         exit 0
     }
@@ -190,7 +190,7 @@ Sync github-pages feed/downloads and Document reports for GitHub Pages.
 
     $pushCode = Invoke-GitLogged @('push', 'origin', 'HEAD')
     if ($pushCode -ne 0) {
-        Write-Log "push failed exit=$pushCode — retry once in 15s"
+        Write-Log "push failed exit=$pushCode - retry once in 15s"
         Start-Sleep -Seconds 15
         $pushCode = Invoke-GitLogged @('push', 'origin', 'HEAD')
     }
