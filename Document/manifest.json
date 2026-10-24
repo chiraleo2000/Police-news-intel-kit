@@ -1,6 +1,14 @@
 {
- "generated_at": "2026-10-23T08:50:00+07:00",
+ "generated_at": "2026-10-24T08:13:46+07:00",
  "days": [
+  {
+   "date": "2026-10-24",
+   "status": "published",
+   "total": 32,
+   "path": "2026-10-24_Crime/2026-10-24_crime.json",
+   "run": "partial",
+   "note": "window 23-24 ต.ค.; scraped 48 บทความ → 32 เหตุการณ์; official PR (Batch A) 1 / official รวม 4; รันเวลา 08:00 เว็บ ตร. ส่วนใหญ่ยังไม่มีข่าวใหม่ ดู _index.json"
+  },
   {
    "date": "2026-10-23",
    "status": "published",
