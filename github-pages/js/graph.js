@@ -1,18 +1,21 @@
 /**
- * Second Brain graph viewer — interactive force layout over data/graph.json
- * Zoom / pan / hover / isolate · multi filters · help copy (TH)
+ * Second Brain graph — Obsidian-like force layout over data/graph.json
+ * Case (news) nodes are hubs; entity / crime_type are smaller satellites.
+ * Zoom / pan / fit-to-view scale with graph size.
  */
 (() => {
+  const ZOOM_MIN = 0.12;
+  const ZOOM_MAX = 6;
   const KIND_COLOR = {
-    case: "#1a6b5c",
-    entity: "#2c5f8a",
-    crime_type: "#c45c26",
-    daily: "#5a7184",
-    unresolved: "#9b2c2c",
-    other: "#3d5a6c",
+    case: "#7dd3c0",
+    entity: "#6ea8d8",
+    crime_type: "#e0a458",
+    daily: "#8b9aab",
+    unresolved: "#e07070",
+    other: "#9aa5b5",
   };
   const KIND_LABEL = {
-    case: "คดี",
+    case: "คดี (ข่าว)",
     entity: "เอนทิตี",
     crime_type: "ประเภทอาชญากรรม",
     daily: "รายวัน",
@@ -20,9 +23,9 @@
     other: "อื่น",
   };
   const KIND_HELP = {
-    case: "โน้ตคดีใน vault/20_Cases — หนึ่งเหตุการณ์ต่อหนึ่งโหนด",
-    entity: "หน่วย / จังหวัด / กฎหมาย / MO ใน vault/30_Entities",
-    crime_type: "หน้ารวมประเภทอาชญากรรมใน vault/40_CrimeTypes",
+    case: "โหนดหลัก — หัวข่าว/คดีใน vault/20_Cases (ใหญ่กว่าโหนดอื่น)",
+    entity: "โหนดย่อย — หน่วย / จังหวัด / คน / กฎหมาย / MO ใน vault/30_Entities",
+    crime_type: "โหนดย่อยรวมประเภท ใน vault/40_CrimeTypes",
     daily: "สรุปรายวัน (ไม่ใช่ผลหลัก)",
     unresolved: "[[ลิงก์]] ที่ยังไม่มีโน้ตปลายทาง — ควรแก้ชื่อหรือสร้างโน้ต",
     other: "โน้ตอื่นในคลัง",
@@ -33,8 +36,9 @@
   let raf = 0;
   let selectedId = null;
   let hoverId = null;
-  let drag = null; // { mode:'node'|'pan', id?, x,y, startX,startY, moved }
+  let drag = null;
   let camera = { x: 0, y: 0, scale: 1 };
+  let pendingFit = false;
   let filters = {
     kinds: new Set(["case", "entity", "crime_type", "daily", "unresolved", "other"]),
     q: "",
@@ -45,7 +49,7 @@
     bureau: "",
     hideOrphans: false,
     isolate: false,
-    showLabels: "auto", // auto | all | none
+    showLabels: "auto",
   };
   let bound = false;
 
@@ -58,6 +62,10 @@
       .replaceAll("<", "&lt;")
       .replaceAll(">", "&gt;")
       .replaceAll('"', "&quot;");
+  }
+
+  function clampZoom(s) {
+    return Math.min(ZOOM_MAX, Math.max(ZOOM_MIN, s));
   }
 
   async function loadGraph() {
@@ -82,7 +90,6 @@
   }
 
   function matchesGroups(n) {
-    // cases/types are kept when filtering entity group — cases may link to them
     if (filters.entityGroup && n.kind === "entity" && n.entity_group !== filters.entityGroup) {
       return false;
     }
@@ -137,19 +144,60 @@
     };
   }
 
+  /** Virtual world grows with node count so dense graphs can spread like Obsidian. */
+  function worldExtent(nodeCount) {
+    const side = Math.max(1100, Math.sqrt(Math.max(1, nodeCount)) * 110);
+    return { w: side * 1.2, h: side };
+  }
+
+  function nodeRadius(n) {
+    const deg = Math.sqrt(n.degree || 0);
+    switch (n.kind) {
+      case "case":
+        return 12 + Math.min(11, deg * 1.55);
+      case "crime_type":
+        return 7 + Math.min(7, deg * 0.85);
+      case "entity":
+        return 4.2 + Math.min(4.5, deg * 0.5);
+      case "daily":
+        return 5.5;
+      case "unresolved":
+        return 4;
+      default:
+        return 5;
+    }
+  }
+
+  function massOf(n) {
+    if (n.kind === "case") return 1.8;
+    if (n.kind === "crime_type") return 1.25;
+    if (n.kind === "entity") return 0.7;
+    return 1;
+  }
+
+  function idealLinkLength(l) {
+    const a = l.source.kind;
+    const b = l.target.kind;
+    if ((a === "case" && b === "entity") || (a === "entity" && b === "case")) return 52;
+    if ((a === "case" && b === "crime_type") || (a === "crime_type" && b === "case")) return 78;
+    if (a === "case" && b === "case") return 150;
+    return 96;
+  }
+
   function initSim(nodes, edges) {
     const canvas = els.canvas;
-    const w = Math.max(640, canvas.clientWidth || 960);
-    const h = Math.max(480, canvas.clientHeight || 640);
-    canvas.width = Math.floor(w * devicePixelRatio);
-    canvas.height = Math.floor(h * devicePixelRatio);
+    const vw = Math.max(640, canvas.clientWidth || 960);
+    const vh = Math.max(480, canvas.clientHeight || 640);
+    canvas.width = Math.floor(vw * devicePixelRatio);
+    canvas.height = Math.floor(vh * devicePixelRatio);
     const ctx = canvas.getContext("2d");
     ctx.setTransform(devicePixelRatio, 0, 0, devicePixelRatio, 0, 0);
 
+    const { w, h } = worldExtent(nodes.length);
     const byId = new Map(nodes.map((n) => [n.id, n]));
     for (const n of nodes) {
-      if (n.x == null) n.x = w / 2 + (Math.random() - 0.5) * w * 0.55;
-      if (n.y == null) n.y = h / 2 + (Math.random() - 0.5) * h * 0.55;
+      if (n.x == null) n.x = w / 2 + (Math.random() - 0.5) * w * 0.7;
+      if (n.y == null) n.y = h / 2 + (Math.random() - 0.5) * h * 0.7;
       n.vx = n.vx || 0;
       n.vy = n.vy || 0;
     }
@@ -157,13 +205,16 @@
       .map((e) => ({ source: byId.get(e.source), target: byId.get(e.target), label: e.label }))
       .filter((l) => l.source && l.target);
 
-    return { nodes, links, w, h, ctx, alpha: 1 };
+    return { nodes, links, w, h, vw, vh, ctx, alpha: 1 };
   }
 
   function tick(state) {
     const { nodes, links, w, h } = state;
-    if (state.alpha < 0.015 && !drag) return false;
-    state.alpha *= 0.988;
+    if (state.alpha < 0.012 && !drag) return false;
+    state.alpha *= 0.989;
+
+    const nCount = Math.max(1, nodes.length);
+    const repulse = 38 + Math.min(28, Math.sqrt(nCount));
 
     for (let i = 0; i < nodes.length; i++) {
       for (let j = i + 1; j < nodes.length; j++) {
@@ -172,15 +223,17 @@
         let dx = a.x - b.x;
         let dy = a.y - b.y;
         let dist = Math.hypot(dx, dy) || 0.01;
-        const min = 42;
-        if (dist < min * 5) {
-          const f = ((min * min) / (dist * dist)) * 0.4 * state.alpha;
+        const minSep = (nodeRadius(a) + nodeRadius(b)) * 1.15 + 10;
+        if (dist < minSep * 6) {
+          const f = ((repulse * repulse) / (dist * dist)) * 0.38 * state.alpha;
+          const ma = massOf(a);
+          const mb = massOf(b);
           dx = (dx / dist) * f;
           dy = (dy / dist) * f;
-          a.vx += dx;
-          a.vy += dy;
-          b.vx -= dx;
-          b.vy -= dy;
+          a.vx += (dx * mb) / (ma + mb);
+          a.vy += (dy * mb) / (ma + mb);
+          b.vx -= (dx * ma) / (ma + mb);
+          b.vy -= (dy * ma) / (ma + mb);
         }
       }
     }
@@ -189,51 +242,46 @@
       const dx = l.target.x - l.source.x;
       const dy = l.target.y - l.source.y;
       const dist = Math.hypot(dx, dy) || 0.01;
-      const ideal = 110;
-      const f = ((dist - ideal) / dist) * 0.022 * state.alpha;
+      const ideal = idealLinkLength(l);
+      const f = ((dist - ideal) / dist) * 0.028 * state.alpha;
       l.source.vx += dx * f;
       l.source.vy += dy * f;
       l.target.vx -= dx * f;
       l.target.vy -= dy * f;
     }
 
+    const pad = 40;
     for (const n of nodes) {
-      n.vx += (w / 2 - n.x) * 0.0012 * state.alpha;
-      n.vy += (h / 2 - n.y) * 0.0012 * state.alpha;
+      const pull = n.kind === "case" ? 0.00055 : 0.0014;
+      n.vx += (w / 2 - n.x) * pull * state.alpha;
+      n.vy += (h / 2 - n.y) * pull * state.alpha;
       if (drag?.mode === "node" && drag.id === n.id) {
         n.x = drag.x;
         n.y = drag.y;
         n.vx = 0;
         n.vy = 0;
       } else {
-        n.vx *= 0.86;
-        n.vy *= 0.86;
+        n.vx *= 0.84;
+        n.vy *= 0.84;
         n.x += n.vx;
         n.y += n.vy;
-        n.x = Math.max(24, Math.min(w - 24, n.x));
-        n.y = Math.max(24, Math.min(h - 24, n.y));
+        n.x = Math.max(pad, Math.min(w - pad, n.x));
+        n.y = Math.max(pad, Math.min(h - pad, n.y));
       }
     }
     return true;
   }
 
-  function nodeRadius(n) {
-    let base = 6;
-    if (n.kind === "crime_type") base = 9;
-    else if (n.kind === "case") base = 8;
-    return base + Math.min(6, Math.sqrt(n.degree || 0));
-  }
-
   function strokeColorForLink(hot, dim) {
-    if (hot) return "rgba(26,107,92,0.7)";
-    if (dim) return "rgba(11,28,44,0.05)";
-    return "rgba(11,28,44,0.16)";
+    if (hot) return "rgba(125, 211, 192, 0.72)";
+    if (dim) return "rgba(160, 176, 196, 0.05)";
+    return "rgba(160, 176, 196, 0.22)";
   }
 
   function drawLinkLabel(ctx, l) {
     const mx = (l.source.x + l.target.x) / 2;
     const my = (l.source.y + l.target.y) / 2;
-    ctx.fillStyle = "rgba(11,28,44,0.75)";
+    ctx.fillStyle = "rgba(220, 230, 242, 0.85)";
     ctx.font = `${11 / camera.scale}px Sarabun, Anuphan, sans-serif`;
     ctx.fillText(l.label, mx, my);
   }
@@ -243,12 +291,12 @@
       const hot = Boolean(focus) && (l.source.id === focus || l.target.id === focus);
       const dim = Boolean(focus) && !hot;
       ctx.strokeStyle = strokeColorForLink(hot, dim);
-      ctx.lineWidth = (hot ? 2.2 : 1) / camera.scale;
+      ctx.lineWidth = (hot ? 2 : 0.9) / camera.scale;
       ctx.beginPath();
       ctx.moveTo(l.source.x, l.source.y);
       ctx.lineTo(l.target.x, l.target.y);
       ctx.stroke();
-      if (hot && l.label && camera.scale > 0.85) drawLinkLabel(ctx, l);
+      if (hot && l.label && camera.scale > 0.7) drawLinkLabel(ctx, l);
     }
   }
 
@@ -259,13 +307,34 @@
       const hovered = n.id === hoverId;
       const active = selected || hovered;
       const dim = neigh && !neigh.has(n.id);
+      const color = KIND_COLOR[n.kind] || KIND_COLOR.other;
+
+      ctx.globalAlpha = dim ? 0.18 : 1;
+
+      // Soft Obsidian-like halo (stronger on case hubs)
+      if (!dim && (n.kind === "case" || active)) {
+        const glow = ctx.createRadialGradient(n.x, n.y, r * 0.2, n.x, n.y, r * (active ? 2.6 : 2.1));
+        glow.addColorStop(0, color + "55");
+        glow.addColorStop(1, "transparent");
+        ctx.fillStyle = glow;
+        ctx.beginPath();
+        ctx.arc(n.x, n.y, r * (active ? 2.6 : 2.1), 0, Math.PI * 2);
+        ctx.fill();
+      }
+
       ctx.beginPath();
-      ctx.arc(n.x, n.y, active ? r + 2.5 : r, 0, Math.PI * 2);
-      ctx.globalAlpha = dim ? 0.22 : 1;
-      ctx.fillStyle = KIND_COLOR[n.kind] || KIND_COLOR.other;
+      ctx.arc(n.x, n.y, active ? r + 1.8 : r, 0, Math.PI * 2);
+      ctx.fillStyle = color;
       ctx.fill();
+
+      if (n.kind === "case") {
+        ctx.strokeStyle = "rgba(255,255,255,0.28)";
+        ctx.lineWidth = 1.2 / camera.scale;
+        ctx.stroke();
+      }
+
       if (active) {
-        ctx.strokeStyle = "#0b1c2c";
+        ctx.strokeStyle = "#f2f6fb";
         ctx.lineWidth = 2 / camera.scale;
         ctx.stroke();
       }
@@ -276,28 +345,49 @@
   function shouldShowLabel(n, neigh, showAll) {
     if (showAll) return true;
     if (n.id === selectedId || n.id === hoverId) return true;
-    if (neigh?.has(n.id) && (n.degree || 0) >= 2) return true;
-    return (n.degree || 0) >= 5;
+    if (neigh?.has(n.id)) return n.kind === "case" || (n.degree || 0) >= 2;
+    // When zoomed out, only key case hubs; when zoomed in, more case titles
+    if (n.kind === "case") {
+      if (camera.scale < 0.45) return (n.degree || 0) >= 8;
+      if (camera.scale < 0.85) return (n.degree || 0) >= 4;
+      return (n.degree || 0) >= 2;
+    }
+    if (n.kind === "crime_type") return camera.scale > 0.9 && (n.degree || 0) >= 6;
+    return camera.scale > 1.35 && (n.degree || 0) >= 8;
+  }
+
+  function truncateLabel(title, kind) {
+    const max = kind === "case" ? (camera.scale > 1.2 ? 42 : 28) : 22;
+    if (title.length <= max) return title;
+    return title.slice(0, max - 1) + "…";
   }
 
   function drawLabels(ctx, nodes, neigh) {
     const showAll = filters.showLabels === "all";
     if (filters.showLabels === "none") return;
-    ctx.font = `${13 / camera.scale}px Sarabun, Anuphan, sans-serif`;
-    ctx.fillStyle = "rgba(11,28,44,0.9)";
+    const fontPx = Math.max(10, Math.min(15, 12.5 / Math.sqrt(camera.scale)));
+    ctx.font = `${fontPx / camera.scale}px Sarabun, Anuphan, sans-serif`;
+    ctx.fillStyle = "rgba(236, 242, 248, 0.92)";
     const labeled = nodes.filter((n) => shouldShowLabel(n, neigh, showAll));
-    const cap = showAll ? 120 : 50;
+    // Prefer cases first so they win the label budget
+    labeled.sort((a, b) => {
+      const ka = a.kind === "case" ? 0 : a.kind === "crime_type" ? 1 : 2;
+      const kb = b.kind === "case" ? 0 : b.kind === "crime_type" ? 1 : 2;
+      if (ka !== kb) return ka - kb;
+      return (b.degree || 0) - (a.degree || 0);
+    });
+    const cap = showAll ? 160 : camera.scale > 1 ? 70 : 40;
     for (const n of labeled.slice(0, cap)) {
       const outsideFocus = neigh && !neigh.has(n.id) && n.id !== selectedId && n.id !== hoverId;
       if (outsideFocus) continue;
-      const label = n.title.length > 32 ? n.title.slice(0, 31) + "…" : n.title;
-      ctx.fillText(label, n.x + nodeRadius(n) + 6, n.y + 4);
+      const label = truncateLabel(n.title, n.kind);
+      ctx.fillText(label, n.x + nodeRadius(n) + 5, n.y + 3);
     }
   }
 
   function draw(state) {
-    const { ctx, w, h, nodes, links } = state;
-    ctx.clearRect(0, 0, w, h);
+    const { ctx, vw, vh, nodes, links } = state;
+    ctx.clearRect(0, 0, vw, vh);
     ctx.save();
     ctx.translate(camera.x, camera.y);
     ctx.scale(camera.scale, camera.scale);
@@ -315,13 +405,63 @@
     if (!sim) return;
     const cont = tick(sim);
     draw(sim);
+    if (!cont && pendingFit) {
+      pendingFit = false;
+      fitToView();
+      draw(sim);
+    }
     if (cont || drag) raf = requestAnimationFrame(loop);
     else raf = 0;
   }
 
   function bump() {
-    if (sim) sim.alpha = Math.max(sim.alpha, 0.25);
+    if (sim) sim.alpha = Math.max(sim.alpha, 0.22);
     if (!raf) raf = requestAnimationFrame(loop);
+  }
+
+  function fitToView(padding = 56) {
+    if (!sim?.nodes?.length || !els.canvas) {
+      camera = { x: 0, y: 0, scale: 1 };
+      return;
+    }
+    let minX = Infinity;
+    let minY = Infinity;
+    let maxX = -Infinity;
+    let maxY = -Infinity;
+    for (const n of sim.nodes) {
+      const r = nodeRadius(n);
+      minX = Math.min(minX, n.x - r);
+      minY = Math.min(minY, n.y - r);
+      maxX = Math.max(maxX, n.x + r);
+      maxY = Math.max(maxY, n.y + r);
+    }
+    const bw = Math.max(60, maxX - minX);
+    const bh = Math.max(60, maxY - minY);
+    const rect = els.canvas.getBoundingClientRect();
+    const raw = Math.min((rect.width - padding * 2) / bw, (rect.height - padding * 2) / bh);
+    // More nodes → slightly more zoomed-out default (Obsidian global graph feel)
+    const crowd = Math.min(1, 55 / Math.sqrt(sim.nodes.length));
+    camera.scale = clampZoom(raw * (0.78 + 0.2 * crowd));
+    camera.x = rect.width / 2 - ((minX + maxX) / 2) * camera.scale;
+    camera.y = rect.height / 2 - ((minY + maxY) / 2) * camera.scale;
+    updateMeta(sim.nodes, sim.links);
+  }
+
+  function zoomAt(sx, sy, factor) {
+    const wx = (sx - camera.x) / camera.scale;
+    const wy = (sy - camera.y) / camera.scale;
+    const next = clampZoom(camera.scale * factor);
+    camera.x = sx - wx * next;
+    camera.y = sy - wy * next;
+    camera.scale = next;
+    updateMeta(sim?.nodes || [], sim?.links || []);
+    bump();
+  }
+
+  function zoomTowardCenter(factor) {
+    if (!els.canvas) return;
+    const r = els.canvas.getBoundingClientRect();
+    zoomAt(r.width / 2, r.height / 2, factor);
   }
 
   function updateMeta(nodes, edges) {
@@ -339,7 +479,7 @@
     }
   }
 
-  function restartSim(preserveCam = true) {
+  function restartSim(preserveCam = true, autoFit = false) {
     if (raf) cancelAnimationFrame(raf);
     const nodes = visibleNodes();
     const ids = new Set(nodes.map((n) => n.id));
@@ -358,6 +498,7 @@
     }
     if (!preserveCam) camera = { x: 0, y: 0, scale: 1 };
     sim = initSim(nodes, edges);
+    pendingFit = autoFit || !preserveCam;
     updateMeta(nodes, edges);
     raf = requestAnimationFrame(loop);
   }
@@ -365,11 +506,11 @@
   function hitTest(wx, wy) {
     if (!sim) return null;
     let best = null;
-    let bestD = 16 / camera.scale;
+    let bestD = Infinity;
     for (const n of sim.nodes) {
       const d = Math.hypot(n.x - wx, n.y - wy);
-      const thresh = nodeRadius(n) + 4 / camera.scale;
-      if (d < Math.max(bestD, thresh) && d <= thresh + 2) {
+      const thresh = nodeRadius(n) + 5 / camera.scale;
+      if (d <= thresh && d < bestD) {
         bestD = d;
         best = n;
       }
@@ -385,7 +526,7 @@
         <div class="brain-detail-placeholder">
           <p class="brain-kind">เลือกโหนด</p>
           <h3>คลิกจุดบนกราฟ</h3>
-          <p class="muted">จะแสดงคำอธิบายคดี/เอนทิตี ลิงก์เข้า–ออก และแท็กจาก Obsidian</p>
+          <p class="muted">โหนดใหญ่ = หัวข่าว · โหนดเล็ก = เอนทิตี/ประเภท (แบบ Obsidian)</p>
         </div>`;
       bump();
       return;
@@ -455,9 +596,10 @@
     restartSim(true);
     if (sim) {
       const n = sim.nodes.find((x) => x.id === id);
-      if (n) {
-        // center camera on node
+      if (n && els.canvas) {
         const r = els.canvas.getBoundingClientRect();
+        const targetScale = clampZoom(Math.max(camera.scale, 1.15));
+        camera.scale = targetScale;
         camera.x = r.width / 2 - n.x * camera.scale;
         camera.y = r.height / 2 - n.y * camera.scale;
       }
@@ -523,24 +665,22 @@
     if (!els.help) return;
     els.help.innerHTML = `
       <h3>กราฟนี้คืออะไร?</h3>
-      <p>สำเนากราฟจากคลัง Obsidian ตอน publish — ไม่ได้ดึงสดจาก Obsidian
-      เส้นมีป้ายความสัมพันธ์ เช่น arrested_by / related_to</p>
+      <p>สำเนากราฟจากคลัง Obsidian ตอน publish — โหนดใหญ่คือหัวข่าว (คดี)
+      โหนดเล็กคือเอนทิตี/ประเภทที่คดีพูดถึง เส้นมีป้ายเช่น arrested_by / related_to</p>
       <h3>วิธีใช้</h3>
       <ul>
         <li><strong>คลิก</strong> จุด = เปิดรายละเอียด</li>
         <li><strong>ลากจุด</strong> = จัดตำแหน่ง</li>
         <li><strong>ลากพื้นหลัง</strong> = เลื่อนมุมมอง (pan)</li>
-        <li><strong>สกอร์ล</strong> = ซูมเข้า/ออก</li>
+        <li><strong>สกอร์ล</strong> = ซูมเข้า/ออก (ช่วงกว้าง)</li>
+        <li><strong>พอดี</strong> = จัดให้เห็นทั้งกราฟตามจำนวนโหนด</li>
         <li><strong>ดับเบิลคลิก</strong> = โฟกัสเพื่อนบ้านของโหนด</li>
       </ul>
-      <h3>สีโหนด</h3>
-      <ul class="brain-help-colors">
-        ${Object.keys(KIND_LABEL)
-          .map(
-            (k) =>
-              `<li><i style="background:${KIND_COLOR[k]}"></i><span><strong>${KIND_LABEL[k]}</strong> — ${KIND_HELP[k]}</span></li>`
-          )
-          .join("")}
+      <h3>ขนาดโหนด</h3>
+      <ul>
+        <li><strong>คดี (ข่าว)</strong> — ใหญ่ที่สุด เป็นฮับหลัก</li>
+        <li><strong>ประเภท</strong> — กลาง</li>
+        <li><strong>เอนทิตี</strong> — เล็ก เกาะรอบคดี</li>
       </ul>
     `;
   }
@@ -560,7 +700,7 @@
     });
     if (kinds.size) filters.kinds = kinds;
     showDetail(selectedId ? graph.nodes.find((n) => n.id === selectedId) : null);
-    restartSim(true);
+    restartSim(true, true);
   }
 
   function resetAll() {
@@ -596,7 +736,7 @@
       }
     }
     showDetail(null);
-    restartSim(false);
+    restartSim(false, true);
   }
 
   function bindCanvas() {
@@ -609,13 +749,8 @@
       (ev) => {
         ev.preventDefault();
         const p = worldFromEvent(ev);
-        const factor = ev.deltaY < 0 ? 1.12 : 1 / 1.12;
-        const next = Math.min(3.5, Math.max(0.35, camera.scale * factor));
-        camera.x = p.sx - p.x * next;
-        camera.y = p.sy - p.y * next;
-        camera.scale = next;
-        updateMeta(sim?.nodes || [], sim?.links || []);
-        bump();
+        const factor = ev.deltaY < 0 ? 1.14 : 1 / 1.14;
+        zoomAt(p.sx, p.sy, factor);
       },
       { passive: false }
     );
@@ -684,14 +819,14 @@
       const p = worldFromEvent(ev);
       const hit = hitTest(p.x, p.y);
       if (!hit) {
-        camera = { x: 0, y: 0, scale: 1 };
+        fitToView();
         bump();
         return;
       }
       filters.isolate = true;
       if ($("brain-isolate")) $("brain-isolate").checked = true;
       showDetail(hit);
-      restartSim(true);
+      restartSim(true, true);
       selectById(hit.id);
     });
   }
@@ -718,7 +853,7 @@
       }
       if (els.empty) els.empty.hidden = true;
       if (els.status) {
-        els.status.textContent = "กราฟความรู้จาก Obsidian · ซูม/ลาก/กรองได้";
+        els.status.textContent = "กราฟแบบ Obsidian · โหนดใหญ่ = ข่าว · ซูม/พอดีจอได้";
       }
       renderHelp();
       fillEntityGroups();
@@ -726,7 +861,7 @@
       renderLegend();
       syncKindChecks();
       showDetail(null);
-      restartSim(false);
+      restartSim(false, true);
       bindCanvas();
     } catch (e) {
       if (els.empty) els.empty.hidden = false;
@@ -753,7 +888,7 @@
     $("brain-hide-orphans")?.addEventListener("change", onFilter);
     $("brain-isolate")?.addEventListener("change", (e) => {
       filters.isolate = e.target.checked;
-      restartSim(true);
+      restartSim(true, true);
       showDetail(selectedId ? graph.nodes.find((n) => n.id === selectedId) : null);
     });
 
@@ -766,14 +901,13 @@
       if (filters.kinds.has(k) && filters.kinds.size === 1) {
         filters.kinds = new Set(["case", "entity", "crime_type", "daily", "unresolved", "other"]);
       } else if (filters.kinds.has(k) && filters.kinds.size > 1) {
-        // solo this kind
         filters.kinds = new Set([k]);
       } else {
         filters.kinds = new Set([k]);
       }
       syncKindChecks();
       showDetail(null);
-      restartSim(true);
+      restartSim(true, true);
     });
 
     $("brain-detail")?.addEventListener("click", (e) => {
@@ -789,32 +923,23 @@
       if (actionName === "isolate") {
         filters.isolate = !filters.isolate;
         if ($("brain-isolate")) $("brain-isolate").checked = filters.isolate;
-        restartSim(true);
+        restartSim(true, true);
         showDetail(selectedId ? graph.nodes.find((n) => n.id === selectedId) : null);
       }
       if (actionName === "center" && selectedId) selectById(selectedId);
     });
 
     $("brain-reset")?.addEventListener("click", resetAll);
-    $("brain-zoom-in")?.addEventListener("click", () => {
-      camera.scale = Math.min(3.5, camera.scale * 1.2);
-      bump();
-      updateMeta(sim?.nodes || [], sim?.links || []);
-    });
-    $("brain-zoom-out")?.addEventListener("click", () => {
-      camera.scale = Math.max(0.35, camera.scale / 1.2);
-      bump();
-      updateMeta(sim?.nodes || [], sim?.links || []);
-    });
+    $("brain-zoom-in")?.addEventListener("click", () => zoomTowardCenter(1.22));
+    $("brain-zoom-out")?.addEventListener("click", () => zoomTowardCenter(1 / 1.22));
     $("brain-zoom-fit")?.addEventListener("click", () => {
-      camera = { x: 0, y: 0, scale: 1 };
+      fitToView();
       bump();
-      updateMeta(sim?.nodes || [], sim?.links || []);
     });
 
     window.addEventListener("resize", () => {
       if ($("view-brain")?.hidden) return;
-      restartSim(true);
+      restartSim(true, true);
     });
   }
 
@@ -835,9 +960,9 @@
       else {
         renderHelp();
         fillEntityGroups();
-      fillBureaus();
+        fillBureaus();
         renderLegend();
-        restartSim(true);
+        restartSim(true, true);
       }
     },
     select(id) {
