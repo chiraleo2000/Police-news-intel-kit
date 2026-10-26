@@ -1,10 +1,11 @@
-# Register:
-#   NewsIntel-LineWebhook     — every 1 minute (repair tunnel + sync LINE URL)
-#   NewsIntel-LineWebhookWake — at logon and after sleep/hibernate (-Wake)
-#   NewsIntel-LineExcel       — rewrite continuous Excel every 5 minutes
+# Register long-running LINE webhook keep-alive for ngrok Free:
+#   NewsIntel-LineWebhook     — every 2 minutes (repair only if edge/hub dead)
+#   NewsIntel-LineWebhookWake — at startup, logon, and resume-from-sleep (-Wake)
+#   NewsIntel-LineExcel       — continuous Excel/JSON via hub HTTP every 5 minutes
 #
-# After hibernate, ngrok-free issues a NEW public URL. The Wake task forces a
-# fresh tunnel and PUTs https://<new-host>/line/webhook to LINE automatically.
+# Free-plan URL policy (implemented in ensure-line-webhook.ps1):
+#   keep healthy tunnel; recycle only when public /health is dead;
+#   after hibernate/shutdown always re-sync LINE to the live URL.
 # Re-run this script after moving the repo.
 
 $ErrorActionPreference = 'Stop'
@@ -17,13 +18,14 @@ if (-not (Test-Path $WatchScript)) { throw "Missing $WatchScript" }
 if (-not (Test-Path $ExportScript)) { throw "Missing $ExportScript" }
 
 function New-ResumeTrigger {
+    # Only resume-from-sleep. Kernel-Power 107 is too noisy and caused Wake thrash.
     $eventClass = Get-CimClass -Namespace root/Microsoft/Windows/TaskScheduler -ClassName MSFT_TaskEventTrigger
     $resume = New-CimInstance -CimClass $eventClass -ClientOnly
     $resume.Enabled = $true
     $resume.Subscription = @'
 <QueryList>
   <Query Id="0" Path="System">
-    <Select Path="System">*[System[(Provider[@Name='Microsoft-Windows-Power-Troubleshooter'] and EventID=1) or (Provider[@Name='Microsoft-Windows-Kernel-Power'] and EventID=107)]]</Select>
+    <Select Path="System">*[System[Provider[@Name='Microsoft-Windows-Power-Troubleshooter'] and (EventID=1)]]</Select>
   </Query>
 </QueryList>
 '@
@@ -59,18 +61,30 @@ function Register-NewsIntelTask {
     Write-Output "registered $Name"
 }
 
-$repeat1m = New-ScheduledTaskTrigger -Once -At (Get-Date).AddMinutes(1) `
-    -RepetitionInterval (New-TimeSpan -Minutes 1) `
+# 2 minutes is enough to detect dead Free edges without hammering ngrok/LINE APIs.
+$repeat2m = New-ScheduledTaskTrigger -Once -At (Get-Date).AddMinutes(1) `
+    -RepetitionInterval (New-TimeSpan -Minutes 2) `
     -RepetitionDuration (New-TimeSpan -Days 9999)
 $repeat5m = New-ScheduledTaskTrigger -Once -At (Get-Date).AddMinutes(1) `
     -RepetitionInterval (New-TimeSpan -Minutes 5) `
     -RepetitionDuration (New-TimeSpan -Days 9999)
 $logon = New-ScheduledTaskTrigger -AtLogOn -User $account
 $resume = New-ResumeTrigger
+# AtStartup often needs elevation; try it, fall back to logon+resume.
+$startup = New-ScheduledTaskTrigger -AtStartup
 
-Register-NewsIntelTask -Name 'NewsIntel-LineWebhook' -ScriptPath $WatchScript -Triggers @($repeat1m)
-Register-NewsIntelTask -Name 'NewsIntel-LineWebhookWake' -ScriptPath $WatchScript `
-    -ExtraArgs '-Wake' -Triggers @($logon, $resume)
+Register-NewsIntelTask -Name 'NewsIntel-LineWebhook' -ScriptPath $WatchScript -Triggers @($repeat2m)
+
+$wakeTriggers = @($startup, $logon, $resume)
+try {
+    Register-NewsIntelTask -Name 'NewsIntel-LineWebhookWake' -ScriptPath $WatchScript `
+        -ExtraArgs '-Wake' -Triggers $wakeTriggers
+} catch {
+    Write-Output "AtStartup denied - registering Wake with logon+resume only"
+    Register-NewsIntelTask -Name 'NewsIntel-LineWebhookWake' -ScriptPath $WatchScript `
+        -ExtraArgs '-Wake' -Triggers @($logon, $resume)
+}
+
 Register-NewsIntelTask -Name 'NewsIntel-LineExcel' -ScriptPath $ExportScript -Triggers @($repeat5m, $logon, $resume)
 
 foreach ($cmd in @(
@@ -83,7 +97,9 @@ foreach ($cmd in @(
 }
 
 Write-Output ''
-Write-Output 'ngrok-free URL changes after hibernate are handled automatically:'
-Write-Output '  Wake/logon -> recycle tunnel -> update PUBLIC_BASE_URL -> PUT LINE webhook'
-Write-Output '  Every 1 min -> repair if public URL dies or LINE endpoint drifts'
+Write-Output 'ngrok Free keep-alive:'
+Write-Output '  keep URL while public /health is ok'
+Write-Output '  recycle only when edge dies (hibernate/shutdown) then PUT LINE webhook'
+Write-Output '  startup + logon + resume -> -Wake (sync LINE; recycle only if dead)'
+Write-Output '  every 2 min -> repair if hub/tunnel/LINE drift'
 Write-Output 'Optional stable host: set NGROK_DOMAIN=your-name.ngrok-free.app in server\.env'

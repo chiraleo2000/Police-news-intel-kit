@@ -11,6 +11,8 @@ export function getDb(): Database.Database {
   if (db) return db;
   fs.mkdirSync(path.dirname(config.dbPath), { recursive: true });
   db = new Database(config.dbPath);
+  db.pragma("journal_mode = WAL");
+  db.pragma("busy_timeout = 8000");
   db.exec(SCHEMA_SQL);
   return db;
 }

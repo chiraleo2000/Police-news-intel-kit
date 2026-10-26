@@ -1,0 +1,298 @@
+{
+ "date": "2026-10-26",
+ "generated_at": "2026-10-26T08:51:12+07:00",
+ "run": "partial",
+ "stats": {
+  "total": 21,
+  "direct": 1,
+  "indirect": 20,
+  "priority_A": 1,
+  "priority_B": 10,
+  "priority_C": 10,
+  "alerts": 6,
+  "official_confirmed": 1,
+  "by_crime_type": {
+   "คดีชีวิต ร่างกาย และเพศ": 3,
+   "อาชญากรรมไซเบอร์และออนไลน์": 3,
+   "คดีทรัพย์สิน": 3,
+   "ยาเสพติด": 2,
+   "ค้ามนุษย์ แรงงานผิดกฎหมาย และคุ้มครองเด็ก": 2,
+   "ความสงบเรียบร้อยและความมั่นคงภายใน": 2,
+   "พนันและบ่อนผิดกฎหมาย": 2,
+   "คุ้มครองผู้บริโภคและสินค้าผิดกฎหมาย": 1,
+   "คดีเศรษฐกิจ การเงิน และฟอกเงิน": 1,
+   "การปฏิบัติหน้าที่ ประชาสัมพันธ์ และนโยบายตำรวจ": 1,
+   "ความปลอดภัยทางหลวงและการสกัดจับ": 1
+  },
+  "total_loss_thb": 22192170,
+  "total_seized_value_thb": 6216651,
+  "total_arrested": 36
+ },
+ "articles_scraped_pass": 51,
+ "official_pr_articles": 0,
+ "official_articles_all_batches": 1,
+ "posts_published_after_merge": 21,
+ "fetch_count_approx": 325,
+ "skipped_out_of_scope": 30,
+ "partial_reasons": [
+  "official_pr_articles=0 (Batch A) <8, official overall 1 (ONCB ภ.9, 26 Oct): Mon 26 Oct 08:00 run after a weekend; Tourist Police/DSI/ONCB main/saranitet/OAG/PACC newest items 22-24 Oct (before window); MDES 403; robots-blocked rows not circumvented",
+  "รันวันจันทร์ 08:00 ICT หลังสุดสัปดาห์: เว็บหน่วยงานทางการยังไม่ลงข่าวใหม่ในหน้าต่าง 25-26 ต.ค.; ข่าวที่ตรงกับเหตุการณ์ใน 10-25 (ตัวประกัน/ชาวต่างชาติ/บัญชีม้า/ศุลกากร/ศอกตำรวจ ฯลฯ) ไม่ถูกสร้างซ้ำ (add-only ข้ามวัน) ตัดข่าวคอลัมน์/นโยบายกระทรวงยุติธรรม/ข่าวโพสต์โซเชียลแหล่งเดียวที่ไม่ยืนยัน",
+  "ตัดข่าวที่เกี่ยวกับการฆ่าตัวตายตามกฎจริยธรรม; Facebook/social ไม่ถูกดึง"
+ ],
+ "files": [
+  "2026-10-26_crime.html",
+  "2026-10-26_crime.json",
+  "2026-10-26_crime.md",
+  "2026-10-26_crime.pdf",
+  "2026-10-26_infographic.png"
+ ],
+ "no_news_today": false,
+ "source_health": {
+  "A:saranitet_police": "ok-stale (http 200; listing fetched 2026-10-26; in-window items 0; crime-relevant used 0)",
+  "A:ccid1": "ok-stale (http 200; listing fetched 2026-10-26; in-window items 0; crime-relevant used 0)",
+  "A:ccid2": "no_listing (undated, empty read-more links; 0)",
+  "A:ccid3": "no_listing (undated; Facebook links; 0)",
+  "A:ccid4": "ok-stale (newest 22 Jun 2026; 0)",
+  "A:ccid5": "blocked (robots; not circumvented)",
+  "A:cib": "search_only/no_listing (listing http200 without dated items; allowed_domains web_search returned no in-window permalinks)",
+  "A:csd": "search_only/no_listing (listing http200 without dated items; allowed_domains web_search returned no in-window permalinks)",
+  "A:metro_police": "ok-stale (http 200; listing fetched 2026-10-26; in-window items 0; crime-relevant used 0)",
+  "A:highway_police": "search_only (no in-window result; 0)",
+  "A:ecd": "ok-stale (page of 2021 items; search nothing; 0)",
+  "A:cppd": "blocked (robots; not circumvented)",
+  "A:humantrafficking": "ok-stale (http 200; listing fetched 2026-10-26; in-window items 0; crime-relevant used 0)",
+  "A:tourist_police": "ok-stale (listing + posts fetched; newest post 24 Oct 2026, none in window 25-26 Oct)",
+  "A:pct_sptk": "search_only (no result; 0)",
+  "A:ptt_sorporthor": "search_only (0)",
+  "A:immigration": "search_only/no_listing (listing http200 without dated items; allowed_domains web_search returned no in-window permalinks)",
+  "A:p1": "ok-stale (undated content circa 2014; 0)",
+  "A:p7": "error (client_error)",
+  "A:p8": "error (client_error)",
+  "A:p9": "error (client_error; search only, no in-window)",
+  "A:p2_p6": "search_only (nothing in window)",
+  "A:bpp_ตชด": "error (p3.bpp client_error; search nothing in window)",
+  "A:chonburi_provincial": "error (client_error)",
+  "B:DSI": "ok-stale (listing has dates; newest item 22 Oct 2026 17:00, none in window)",
+  "B:ONCB": "ok (main listing newest 22 Oct; regional or1-or9 checked; or9.oncb.go.th/news/26558 dated 26 Oct used as official)",
+  "B:AMLO": "search_only/no_listing (listing http200 without dated items; allowed_domains web_search returned no in-window permalinks)",
+  "B:OAG": "ok-stale (http 200; listing fetched 2026-10-26; in-window items 0; crime-relevant used 0)",
+  "B:Corrections": "blocked (robots/ERR; not circumvented, per v1.2 fix table)",
+  "B:MDES": "blocked (HTTP 403; not circumvented)",
+  "B:ThaiPoliceOnline": "js_only (SPA, no server-rendered list; no items)",
+  "B:ThaiCERT": "ok-stale (http 200; listing fetched 2026-10-26; in-window items 0; crime-relevant used 0)",
+  "B:SEC": "search_only/no_listing (listing http200 without dated items; allowed_domains web_search returned no in-window permalinks)",
+  "B:NACC": "blocked (robots; not circumvented)",
+  "B:PACC": "ok-stale (http 200; listing fetched 2026-10-26; in-window items 0; crime-relevant used 0)",
+  "B:OCPB": "search_only/no_listing (listing http200 without dated items; allowed_domains web_search returned no in-window permalinks)",
+  "C:27_thairath": "ok (http 200; listing fetched 2026-10-26; in-window items 1; crime-relevant used 1)",
+  "C:28_dailynews": "ok-stale (http 200; listing fetched 2026-10-26; in-window items 0; crime-relevant used 0)",
+  "C:29_mgr": "ok (http 200; listing fetched 2026-10-26; in-window items 11; crime-relevant used 11)",
+  "C:30_matichon": "ok (http 200; listing fetched 2026-10-26; in-window items 9; crime-relevant used 9)",
+  "C:31_khaosod": "ok (http 200; listing fetched 2026-10-26; in-window items 4; crime-relevant used 4)",
+  "C:32_thaipbs": "ok (http 200; listing fetched 2026-10-26; in-window items 3; crime-relevant used 3)",
+  "C:33_amarintv": "ok (http 200; listing fetched 2026-10-26; in-window items 13; crime-relevant used 13)",
+  "C:34_nationtv": "ok-stale (http 200; listing fetched 2026-10-26; in-window items 0; crime-relevant used 0)",
+  "C:35_ch7hd": "no_listing (http 200; listing fetched 2026-10-26; in-window items 0; crime-relevant used 0)",
+  "C:36_pptv": "ok-stale (http 200; listing fetched 2026-10-26; in-window items 0; crime-relevant used 0)",
+  "C:37_komchadluek": "no_listing (http 200; listing fetched 2026-10-26; in-window items 0; crime-relevant used 0)",
+  "C:38_isranews": "no_listing (http 200; listing fetched 2026-10-26; in-window items 0; crime-relevant used 0)",
+  "C:39_naewna": "ok (http 200; listing fetched 2026-10-26; in-window items 1; crime-relevant used 1)",
+  "C:40_thaipost": "ok (http 200; listing fetched 2026-10-26; in-window items 1; crime-relevant used 1)",
+  "C:41_bangkokbiznews": "ok-stale (http 200; listing fetched 2026-10-26; in-window items 0; crime-relevant used 0)",
+  "C:42_thaiger": "ok (dated listing; 23 Oct items celebrity/non-crime or rumor; 0 passing)",
+  "D:43": "search_only (listing/permalinks client_error; allowed_domains search returns undated results; 0 in-window items verified)",
+  "D:44": "ok (listing relative times; 3 in-window items; others dated Oct 22 or earlier)",
+  "D:45": "ok (no crime section on homepage; 0 in-window crime items; only Oct 24 world/business/ASEAN)",
+  "D:46": "ok (2 in-window items: 1 included, 1 skipped/lead; crime listing latest dated Oct 22)",
+  "D:47": "ok (5 in-window items; 4 bodies fetched, Bueng Kan machete item body error and not included)",
+  "D:48": "ok (1 in-window item; /category/news/crime client_error)",
+  "D:49": "ok (1 in-window item verified; other permalinks Oct 20-22 or client_error)",
+  "D:50": "ok (1 in-window crime item; /crime/ listing 404; other crime items dated Oct 17-19)",
+  "D:51": "blocked (client_error; lead-only, no articles)",
+  "D:52": "ok-stale (listing fetched; latest Oct 22; no Thailand/region item in window)",
+  "D:53": "blocked (roseap client_error; search shows only old stories)",
+  "D:54": "ok (1 in-window SEA item: Cambodia scam compound investor; others non-regional)",
+  "D:55": "error (WebSearch proxy rejected twice with HTTP 400)",
+  "A:royalthaipolice": "search_only/no_listing (listing http200 without dated items; allowed_domains web_search returned no in-window permalinks)",
+  "C:42_thaiger_th": "ok-stale (http 200; listing fetched 2026-10-26; in-window items 0; crime-relevant used 0)",
+  "D:43_bkkpost": "ok-stale (http 200; listing fetched 2026-10-26; in-window items 0; crime-relevant used 0)",
+  "D:44_thaiger": "ok (http 200; listing fetched 2026-10-26; in-window items 2; crime-relevant used 2)",
+  "D:45_nation": "ok (http 200; listing fetched 2026-10-26; in-window items 1; crime-relevant used 1)",
+  "D:46_khaosodeng": "ok (http 200; listing fetched 2026-10-26; in-window items 2; crime-relevant used 2)",
+  "D:47_thairath_en": "ok (http 200; listing fetched 2026-10-26; in-window items 1; crime-relevant used 1)",
+  "D:48_pattaya": "ok (http 200; listing fetched 2026-10-26; in-window items 2; crime-relevant used 2)",
+  "D:49_phuketnews": "ok-stale (http 200; listing fetched 2026-10-26; in-window items 0; crime-relevant used 0)",
+  "D:50_thaipbsworld": "ok-stale (http 200; listing fetched 2026-10-26; in-window items 0; crime-relevant used 0)",
+  "D:51_aseannow": "error (HTTP 404; forum lead-only source)",
+  "D:52_interpol": "ok-stale (http 200; listing fetched 2026-10-26; in-window items 0; crime-relevant used 0)",
+  "D:53_unodc": "ok-stale (http 200; listing fetched 2026-10-26; in-window items 0; crime-relevant used 0)",
+  "D:54_occrp": "ok-stale (http 200; listing fetched 2026-10-26; in-window items 0; crime-relevant used 0)",
+  "D:55_reuters": "blocked (HTTP 401 paywall; not bypassed)",
+  "C:35_ch7": "blocked (robots disallow; no content used)"
+ },
+ "registry_issues": [
+  {
+   "key": "saranitet_police",
+   "url": "https://saranitet.police.go.th/",
+   "problem": "Listing snapshot stops at 22 Oct 2026; no 23/24 Oct items",
+   "suggested_action": "Re-check later in day; may be fetch cache lag"
+  },
+  {
+   "key": "ccid1-4",
+   "url": "https://ccid1.ccib.go.th/",
+   "problem": "Sites mainly link to Facebook, undated, empty read-more links",
+   "suggested_action": "Use media corroboration; mark no_listing"
+  },
+  {
+   "key": "cib",
+   "url": "https://cib.go.th/",
+   "problem": "client_error",
+   "suggested_action": "search_only"
+  },
+  {
+   "key": "metro_police",
+   "url": "https://www.metro.police.go.th/",
+   "problem": "client_error",
+   "suggested_action": "search_only"
+  },
+  {
+   "key": "immigration",
+   "url": "https://www.immigration.go.th/",
+   "problem": "client_error",
+   "suggested_action": "use sub-sites; tak is stale since Jul 2026"
+  },
+  {
+   "key": "p7_p8_p9",
+   "url": "https://p8.police.go.th/index.php",
+   "problem": "client_error",
+   "suggested_action": "search_only"
+  },
+  {
+   "key": "p1",
+   "url": "https://p1.police.go.th/",
+   "problem": "content appears to be 2014-era",
+   "suggested_action": "mark stale"
+  },
+  {
+   "key": "OCPB",
+   "url": "https://www.ocpb.go.th/",
+   "problem": "No news list rendered; /news.php server error",
+   "suggested_action": "try more_news.php?cid=N or news_view.php?nid=N probing"
+  },
+  {
+   "key": "OAG",
+   "url": "https://www.ago.go.th/pr/",
+   "problem": "client_error",
+   "suggested_action": "use permalink search"
+  },
+  {
+   "key": "ONCB",
+   "url": "https://www.oncb.go.th/information-news",
+   "problem": "registry hint /news=404 outdated",
+   "suggested_action": "use /information-news (works, dated, with permalinks /news/{id})"
+  },
+  {
+   "key": "27_thairath",
+   "url": "https://www.thairath.co.th/news/crime/{id}",
+   "problem": "permalinks return client_error for most ids; only some fetch",
+   "suggested_action": "use listing titles+timestamps or allowed_domains search; consider alternative AMP/other path"
+  },
+  {
+   "key": "31_khaosod",
+   "url": "https://www.khaosod.co.th/crime",
+   "problem": "page 1 client_error",
+   "suggested_action": "use /crime/page/2 and homepage featured list; /around-thailand/ permalinks work"
+  },
+  {
+   "key": "37_komchadluek",
+   "url": "https://www.komchadluek.net/news/crime",
+   "problem": "no dated listing; search returns old items",
+   "suggested_action": "find dated listing path"
+  },
+  {
+   "key": "38_isranews",
+   "url": "https://www.isranews.org",
+   "problem": "no usable listing; search undated",
+   "suggested_action": "find RSS/listing"
+  },
+  {
+   "key": "36_pptv",
+   "url": "https://www.pptvhd36.com/news/อาชญากรรม",
+   "problem": "listing stale (newest 19 Oct)",
+   "suggested_action": "check alternate listing/latest path"
+  },
+  {
+   "key": "40_thaipost",
+   "url": "https://www.thaipost.net/criminality/",
+   "problem": "stale listing (newest 22 Oct)",
+   "suggested_action": "verify update frequency"
+  },
+  {
+   "key": "35_ch7hd",
+   "url": "news.ch7.com",
+   "problem": "robots disallow",
+   "suggested_action": "keep blocked"
+  },
+  {
+   "key": "43",
+   "url": "https://www.bangkokpost.com/thailand/crime",
+   "problem": "client_error on listing and permalinks; search results undated",
+   "suggested_action": "use Thai-language Bangkok Post/RSS or accept search_only"
+  },
+  {
+   "key": "51",
+   "url": "https://aseannow.com/forum/72-thailand-news/",
+   "problem": "client_error",
+   "suggested_action": "drop or mark lead-only"
+  },
+  {
+   "key": "53",
+   "url": "https://www.unodc.org/roseap/en/",
+   "problem": "client_error",
+   "suggested_action": "try /roseap/en/2026/10/ paths or press-release page"
+  },
+  {
+   "key": "55",
+   "url": "reuters.com search",
+   "problem": "WebSearch proxy HTTP 400 for allowed_domains reuters.com",
+   "suggested_action": "treat as error; do not bypass paywall"
+  },
+  {
+   "key": "50",
+   "url": "https://www.thaipbsworld.com/crime/",
+   "problem": "listing 404; article permalinks /crime/{id} work",
+   "suggested_action": "use homepage listing"
+  },
+  {
+   "key": "48",
+   "url": "https://www.pattayamail.com/category/news/crime",
+   "problem": "client_error",
+   "suggested_action": "use homepage"
+  }
+ ],
+ "discovered_paths": {
+  "A:tourist_police_category": "https://www.touristpolice.go.th/tpb-news/categories/กิจกรรมของ-บช-ทท",
+  "A:saranitet_investigation": "https://saranitet.police.go.th/category/commanders-mission/investigation/",
+  "A:highway_station_sites": "highwayNN.highway.police.go.th",
+  "A:bpp": "p3.bpp.police.go.th",
+  "A:ccid4_activities": "https://ccid4.ccib.go.th/กิจกรรม",
+  "A:humantrafficking_partners": "https://humantrafficking.police.go.th/partners/",
+  "B:ONCB": "https://www.oncb.go.th/information-news (ids ~26551 on 22 Oct)",
+  "B:PACC": "https://www.pacc.go.th/home/news/pacc_news (items are images)",
+  "B:MDES": "ids 11755-11760 around 22-23 Oct",
+  "B:SEC": "https://www.sec.or.th/TH/Pages/News_Detail.aspx?NewsNo=103&NewsYear=2569&Lang=TH",
+  "B:DSI": "https://www.dsi.go.th/th/Detail/{hash}",
+  "C:mgr_detail": "https://mgronline.com/crime/detail/{id} (id prefix 969 + date-sequence; works, dated in page)",
+  "C:dailynews_news": "https://www.dailynews.co.th/news/{id}/",
+  "C:amarintv": "https://www.amarintv.com/news/crime/{id}",
+  "C:naewna": "https://www.naewna.com/n/crime/{id}/",
+  "C:thaipost": "https://www.thaipost.net/criminality-news/{id}/",
+  "C:bangkokbiznews": "https://bangkokbiznews.com/news/news-update/{id}",
+  "C:khaosod_featured": "https://www.khaosod.co.th/around-thailand/news_{id}",
+  "C:thaiger": "https://thethaiger.com/th/news/{id}/",
+  "D:47": "https://en.thairath.co.th/news/crime (dated; ?page=2 returns same 5 items)",
+  "D:44": "https://thethaiger.com/ (homepage gives relative times); permalinks give exact time",
+  "D:49": "permalinks .php ids ~101987-101989 for Oct 21-23 (some fetch OK)"
+ },
+ "note": "ดึงด้วย requests/bs4 บนอุปกรณ์ (เนื้อหาเต็ม); ไม่มี git; Facebook ไม่ถูกดึง; ตัดรายการเกี่ยวกับการฆ่าตัวตาย; ch7/correct/ccid5/cppd/NACC บล็อกตาม robots ไม่ได้หลีกเลี่ยง"
+}

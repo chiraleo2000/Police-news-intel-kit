@@ -1,8 +1,26 @@
 {
- "generated_at": "2026-10-25T07:00:02.818Z",
+ "generated_at": "2026-10-26T03:00:02.783Z",
  "schema_version": 1,
  "default_range": "all",
  "days": [
+  {
+   "date": "2026-10-26",
+   "status": "published",
+   "total": 21,
+   "crime_file": "2026-10-26_crime.json",
+   "downloads": [
+    {
+     "label": "PDF สรุปข่าว 2026-10-26",
+     "path": "downloads/2026-10-26_crime.pdf",
+     "kind": "pdf"
+    },
+    {
+     "label": "Infographic 2026-10-26",
+     "path": "downloads/2026-10-26_infographic.png",
+     "kind": "image"
+    }
+   ]
+  },
   {
    "date": "2026-10-25",
    "status": "published",

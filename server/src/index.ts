@@ -180,6 +180,24 @@ app.get("/v1/registry", { preHandler: requireRead }, async () => {
   };
 });
 
+/** Rewrite continuous Excel/JSON from the live DB (avoids second-process sqlite crash). */
+app.post("/v1/export/continuous", { preHandler: requireClaude }, async (req) => {
+  const { writeContinuousIntakeExcel } = await import("./export/continuous.js");
+  const result = await writeContinuousIntakeExcel();
+  audit(resolveActor(req), "export_continuous", JSON.stringify(result));
+  return result;
+});
+
+/** Localhost-friendly export for scheduled tasks (no bearer required from 127.0.0.1). */
+app.post("/v1/export/continuous/local", async (req, reply) => {
+  const ip = req.ip || "";
+  if (ip !== "127.0.0.1" && ip !== "::1" && ip !== ":ffff:127.0.0.1") {
+    return reply.code(403).send({ error: "localhost_only" });
+  }
+  const { writeContinuousIntakeExcel } = await import("./export/continuous.js");
+  return writeContinuousIntakeExcel();
+});
+
 function logFatal(kind: string, err: unknown) {
   try {
     const dir = path.resolve(config.exportPath, "..", "..", "logs");
