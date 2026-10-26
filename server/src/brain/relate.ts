@@ -613,7 +613,7 @@ function phraseIsMostlyPlace(w: string, places: string[]): boolean {
   let rest = w;
   for (const pl of [...places, ...PLACE_NICKS]) {
     const pc = compact(pl);
-    if (pc.length >= 4) rest = rest.split(pc).join("");
+    if (pc.length >= 4) rest = rest.replaceAll(pc, "");
   }
   // Strip province-ish leftovers
   rest = rest.replace(/จังหวัด|อำเภอ|เขต|ตำบล|กรุงเทพ|ปัตตานี|พัทลุง|สงขลา|ชลบุรี/g, "");
@@ -662,35 +662,42 @@ function numberedUnitsIn(text: string, units: string[]): string[] {
   return out;
 }
 
-/** Distinctive named markers for identity matching. */
-function extractMarkers(post: PostV2, signal: string): Set<string> {
-  const out = new Set<string>();
+function addLatinMarkers(out: Set<string>, signal: string) {
   for (const t of latinTokens(signal)) {
-    // Prefer tokens with digits or mixed brand-like forms
     if (t.length >= 6 || /\d/.test(t)) out.add(`lat:${t}`);
     else if (t.length >= 5 && !LATIN_STOP.has(t)) out.add(`lat:${t}`);
   }
+}
+
+function addQuoteMarkers(out: Set<string>, signal: string) {
   for (const q of quotesIn(signal)) {
     const c = compact(q);
     if (c.length >= 6 && !isJunkPhrase(c) && !GENERIC_MARKERS.has(q.trim())) {
       out.add(`q:${c}`);
     }
   }
+}
+
+function addNickMarkers(out: Set<string>, post: PostV2) {
+  const blob = `${post.title || ""} ${String(post.content || "").slice(0, 400)}`;
+  const nick = /(?:เจ๊|พี่|น้อง)?[ก-๙]{2,12}\s*คนละยำ|[ก-๙]{2,8}(?:ซอมบี้)/.exec(blob);
+  if (nick) out.add(`nick:${compact(nick[0])}`);
+  if (/je\s*beer|คนละยำ|เจ๊เบียร์/i.test(blob)) out.add("nick:jebeer");
+}
+
+/** Distinctive named markers for identity matching. */
+function extractMarkers(post: PostV2, signal: string): Set<string> {
+  const out = new Set<string>();
+  addLatinMarkers(out, signal);
+  addQuoteMarkers(out, signal);
   const gang = specificGangName(post.gang_or_group || "");
   if (gang) out.add(`gang:${compact(gang)}`);
   const op = operationOf(post);
   if (op) {
     const oc = compact(op);
-    // Named ops: latin campaign or long Thai campaign title
     if (/[a-z]{4,}/.test(oc) || oc.length >= 16) out.add(`op:${oc}`);
   }
-  // Nickname-style person marks in title/lead when distinctive
-  const blob = `${post.title || ""} ${String(post.content || "").slice(0, 400)}`;
-  const nick = /(?:เจ๊|พี่|น้อง)?[ก-๙]{2,12}\s*คนละยำ|[ก-๙]{2,8}(?:ซอมบี้)/.exec(blob);
-  if (nick) out.add(`nick:${compact(nick[0])}`);
-  if (/je\s*beer|คนละยำ|เจ๊เบียร์/i.test(blob)) {
-    out.add("nick:jebeer");
-  }
+  addNickMarkers(out, post);
   return out;
 }
 
@@ -834,85 +841,105 @@ function sharedRareMarkers(
   return out;
 }
 
+type ScoreAcc = { score: number; why: string[] };
+
+function addNamedIdentity(left: CaseNode, right: CaseNode, acc: ScoreAcc, df: Map<string, number>) {
+  if (left.gangSpec && left.gangSpec === right.gangSpec) {
+    acc.score += 100;
+    acc.why.push(`gang:${left.gangSpec}`);
+  }
+  if (left.opSpec && left.opSpec.length >= 12 && left.opSpec === right.opSpec) {
+    acc.score += 96;
+    acc.why.push(`operation:${left.opRaw}`);
+  }
+  const rare = sharedRareMarkers(left, right, df).filter(
+    (m) => !(m.startsWith("lat:") && /shell|nginx|mariadb|php|cve/.test(m)),
+  );
+  if (rare.length) {
+    acc.score += 92;
+    acc.why.push(`name:${rare.slice(0, 2).join("+")}`);
+  }
+}
+
+function addNumberedUnitPlace(
+  left: CaseNode,
+  right: CaseNode,
+  places: string[],
+  sameTopic: boolean,
+  day: number,
+  acc: ScoreAcc,
+) {
+  const sharedNumbered = left.numberedUnits.filter((u) =>
+    right.numberedUnits.some((v) => unitsPairMatch(normUnit(u), normUnit(v))),
+  );
+  if (!sharedNumbered.length || !places.length || !sameTopic || day > 5) return;
+  acc.score += 90;
+  acc.why.push(`numbered-unit+place:${sharedNumbered[0]}/${places[0]}`);
+}
+
+function addSharedNick(left: CaseNode, right: CaseNode, sameTopic: boolean, day: number, acc: ScoreAcc) {
+  const nickLeft = [...left.markers].filter((m) => m.startsWith("nick:"));
+  const nickRight = new Set([...right.markers].filter((m) => m.startsWith("nick:")));
+  const sharedNick = nickLeft.find((m) => nickRight.has(m));
+  if (!sharedNick || !sameTopic || day > 7) return;
+  acc.score += 94;
+  acc.why.push(sharedNick);
+}
+
+function addPlacePhrase(
+  left: CaseNode,
+  right: CaseNode,
+  ctx: {
+    places: string[];
+    stations: string[];
+    sameTopic: boolean;
+    day: number;
+    units: boolean;
+    allNodes: CaseNode[];
+  },
+  acc: ScoreAcc,
+) {
+  if (acc.score >= 80 || ctx.day > 3 || !ctx.sameTopic) return;
+  if (!ctx.places.length && !ctx.stations.length) return;
+  const phrases = sharedDistinctPhrases(
+    `${left.title} ${left.signal}`,
+    `${right.title} ${right.signal}`,
+    12,
+  ).filter((p) => !isJunkPhrase(p) && !phraseIsMostlyPlace(p, ctx.places));
+  const rarePhrase = phrases.find((p) => {
+    const d = phraseDf(ctx.allNodes, [p]);
+    return d >= 2 && d <= 3;
+  });
+  if (!rarePhrase || !(ctx.units || ctx.stations.length > 0)) return;
+  acc.score += 85;
+  acc.why.push(`place+phrase:${ctx.places[0] || ctx.stations[0]}:${rarePhrase}`);
+}
+
 function decide(
   left: CaseNode,
   right: CaseNode,
   df: Map<string, number>,
   allNodes: CaseNode[],
 ): { score: number; via: string; follow: boolean } | null {
+  if (isCeremonyText(left.title) || isCeremonyText(right.title)) return null;
+
   const day = dayDistance(left.day, right.day);
   const places = intersect(left.districts, right.districts);
   const stations = intersect(left.stations, right.stations);
   const sameTopic = !!(left.topic && left.topic === right.topic);
   const units = unitsOverlap(left.units, right.units);
-  const why: string[] = [];
-  let score = 0;
+  const acc: ScoreAcc = { score: 0, why: [] };
 
-  if (isCeremonyText(left.title) || isCeremonyText(right.title)) return null;
+  addNamedIdentity(left, right, acc, df);
+  addNumberedUnitPlace(left, right, places, sameTopic, day, acc);
+  addSharedNick(left, right, sameTopic, day, acc);
+  addPlacePhrase(left, right, { places, stations, sameTopic, day, units, allNodes }, acc);
 
-  // --- Rule 1: same specific named identity ---
-  if (left.gangSpec && left.gangSpec === right.gangSpec) {
-    score += 100;
-    why.push(`gang:${left.gangSpec}`);
-  }
-  if (left.opSpec && left.opSpec.length >= 12 && left.opSpec === right.opSpec) {
-    score += 96;
-    why.push(`operation:${left.opRaw}`);
-  }
-
-  const rare = sharedRareMarkers(left, right, df).filter((m) => {
-    // Advisory product names alone (php2shell) are not "same incident"
-    if (m.startsWith("lat:") && /shell|nginx|mariadb|php|cve/.test(m)) return false;
-    return true;
-  });
-  if (rare.length) {
-    // Named site/brand/campaign is enough even across weeks (follow-ups)
-    score += 92;
-    why.push(`name:${rare.slice(0, 2).join("+")}`);
-  }
-
-  // Numbered unit in both titles + shared district + same topic ≤ 5 days
-  // (e.g. ตชด.437 + หาดใหญ่ พอตเค / อีโตมิเดต follow-ups)
-  const sharedNumbered = left.numberedUnits.filter((u) =>
-    right.numberedUnits.some((v) => unitsPairMatch(normUnit(u), normUnit(v))),
-  );
-  if (sharedNumbered.length && places.length && sameTopic && day <= 5) {
-    score += 90;
-    why.push(`numbered-unit+place:${sharedNumbered[0]}/${places[0]}`);
-  }
-
-  // Nickname / person mark (เจ๊เบียร์ คนละยำ) shared in titles
-  const nickLeft = [...left.markers].filter((m) => m.startsWith("nick:"));
-  const nickRight = new Set([...right.markers].filter((m) => m.startsWith("nick:")));
-  const sharedNick = nickLeft.find((m) => nickRight.has(m));
-  if (sharedNick && sameTopic && day <= 7) {
-    score += 94;
-    why.push(sharedNick);
-  }
-
-  // --- Rule 2: same district/venue ≤ 3 days + distinctive phrase ≥ 12 ---
-  if (score < 80 && day <= 3 && (places.length > 0 || stations.length > 0) && sameTopic) {
-    const phrases = sharedDistinctPhrases(
-      `${left.title} ${left.signal}`,
-      `${right.title} ${right.signal}`,
-      12,
-    ).filter((p) => !isJunkPhrase(p) && !phraseIsMostlyPlace(p, places));
-    const rarePhrase = phrases.find((p) => {
-      const d = phraseDf(allNodes, [p]);
-      return d >= 2 && d <= 3;
-    });
-    // Require a real local unit/station overlap — province-wide topic match is not enough
-    if (rarePhrase && (units || stations.length > 0)) {
-      score += 85;
-      why.push(`place+phrase:${places[0] || stations[0]}:${rarePhrase}`);
-    }
-  }
-
-  if (score < 80 || !why.length) return null;
+  if (acc.score < 80 || !acc.why.length) return null;
 
   const later = laterByDay(left, right);
   const follow = !!later && FOLLOW_MARKERS.some((m) => later.title.includes(m));
-  return { score, via: why.join("; "), follow };
+  return { score: acc.score, via: acc.why.join("; "), follow };
 }
 
 function collectEdges(nodes: CaseNode[], df: Map<string, number>): PlannedEdge[] {
