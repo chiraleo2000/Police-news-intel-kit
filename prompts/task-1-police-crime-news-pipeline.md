@@ -3,7 +3,7 @@ name: task-1-police-crime-news-pipeline
 description: >
   รายวัน 08:01 (Asia/Bangkok) — กวาดครบ registry Batch A–D (เน้นเว็บประชาสัมพันธ์ ตร.)
   ซ้ำได้ตอน scrape แล้วค่อย event-merge · tags 3–5 หัวข้อสำคัญ · taxonomy ขยาย
-  → แนวโน้ม 7 วัน · Second Brain + BD×งบ 2570 → JSON/Obsidian/PDF
+  → แนวโน้ม 7 วัน · ข้อมูลกราฟ + BD×งบ 2570 → JSON/Obsidian/PDF
   ⛔ NO GIT
 schedule: "CRON_TZ=Asia/Bangkok 1 8 * * *"
 trigger:
@@ -33,16 +33,17 @@ trigger:
 PDF รายวันยังรวมจาก HTML ตามประเภทคดีเหมือนเดิม — ห้าม copy โครงสรุปตาม บช.  
 ตัวอย่างจัดตาม บช. ใช้เป็น **มาตรฐานความลึกของการ์ด** ไม่ใช่โครงเอกสาร
 
-Second Brain ทำในรอบนี้ ไม่มี scheduled task แยก  
+ชั้น **ข้อมูลกราฟ** (vault + Pages) ทำในรอบนี้ ไม่มี scheduled task แยก  
 เรียก news-hub (`brain_search` / `brain_timeline`) ไม่เขียนไฟล์ vault ตรง ๆ  
-Pages graph เป็น snapshot หลัง `node ops/rebuild-pages-feed.js` เท่านั้น
+Pages แท็บ **ข้อมูลกราฟ** เป็น snapshot หลัง `node ops/rebuild-pages-feed.js` เท่านั้น  
+หลัง rebuild ต้องมี `graph.json` + ภาพ ego ต่อคดีที่ `github-pages/data/graphs/{case_id}.svg`
 
 ## สิ่งที่ต่อยอดจากต้นฉบับ
 1. registry 55 แหล่ง Batch A–D (กวาดออนไลน์)
 2. จัดกลุ่มประเภทอาชญากรรม + TAGs + แนวโน้ม 7 วัน
 3. Infographic + PDF
 4. จริยธรรมคดี · อ่านวันที่ พ.ศ. · registry health check
-5. วิเคราะห์ Second Brain + BD×งบ 2570 ในรอบเดียวกัน
+5. วิเคราะห์ข้อมูลกราฟ + BD×งบ 2570 ในรอบเดียวกัน (รวมภาพกราฟต่อหัวข่าว)
 6. Output 3 ช่อง: JSON เว็บ · MD Obsidian · PDF+Infographic
 
 ## Run params
@@ -134,7 +135,7 @@ manifest อ่านไม่ได้ → หยุด `PREFLIGHT_FAILED` · �
 
 ### วิเคราะห์ในรอบนี้ (บังคับ — ไม่มี task weekly แยก)
 หลัง merge ก่อนสร้างไฟล์เผยแพร่:
-1. **Second Brain รายวัน** → เขียน `_brain_daily.md`
+1. **ข้อมูลกราฟรายวัน** → เขียน `_brain_daily.md`
    - entities: หน่วยงาน / MO / จังหวัด / กฎหมายที่แหล่งระบุ
    - timeline สั้นต่อหน่วยงานที่ปรากฏวันนี้
    - ชื่อซ้ำ → `merge_proposal` สถานะ `proposed` เท่านั้น ห้ามรวมเอง
@@ -144,6 +145,14 @@ manifest อ่านไม่ได้ → หยุด `PREFLIGHT_FAILED` · �
    - ห้ามเดาชื่อโครงการหรือตัวเลขงบ
 3. ใส่บทวิเคราะห์ทั้งสองใน PDF และในไฟล์ Markdown ของ Obsidian
 4. ห้ามแตะโน้ตที่ `generated: false`
+5. **กราฟต่อหัวข่าว (บังคับ — ทุกโพสต์ในชุดวิเคราะห์ของรอบ)**  
+   ครอบคลุมทั้งข่าวใหม่ที่ ingest ในรอบนี้ **และ** โพสต์เดิมที่ถูกอัปเดต/re-analysis ในวันนั้น:
+   - หลังเขียน vault + รัน `node ops/rebuild-pages-feed.js` ตรวจว่ามี  
+     `github-pages/data/graphs/{case_id}.svg` (+ `.json` สรุป relations) ต่อทุก `case_id` ในชุด
+   - ในบทความ HTML/MD/PDF ของแต่ละหัวข่าว ใส่ส่วน **「ข้อมูลกราฟของข่าวนี้」**:
+     - ฝังหรือลิงก์ภาพ ego subgraph (คดี + เอนทิตี/ประเภท/related_cases + ป้ายเส้น เช่น `related_to` `arrested_by`)
+     - รายการความสัมพันธ์แบบมีป้าย (label) ชัดเจน
+   - หน้า GitHub Pages รายโพสต์ (`#/{DATE}/{postId}`) แสดงบล็อกเดียวกันจาก `graph.json` / `data/graphs/` อัตโนมัติ — อย่าข้ามขั้น rebuild
 
 ### ช่องทางผลลัพธ์ (บังคับครบ 3)
 1. **JSON รายวันสำหรับเว็บ (GitHub Pages)** — copy ไป `github-pages/data/` (file copy เท่านั้น ห้าม git push)  
@@ -152,12 +161,14 @@ manifest อ่านไม่ได้ → หยุด `PREFLIGHT_FAILED` · �
    พร้อม `{DATE}_hotspots.json`, `{DATE}_alerts.json`, `{DATE}_trends.json`, `{DATE}_bd_leads.json`  
    อัปเดต `manifest.json` (add-only) + `downloads[]`  
    **บังคับรัน** `node ops/rebuild-pages-feed.js` หลัง copy เพื่อสร้าง/อัปเดต `feed.json` (หน้าเว็บอ่านไฟล์นี้เป็นหลัก — ไม่มี feed จะดูเหมือนไม่มีข่าว)
-2. **Obsidian Second Brain — 1 คดี = 1 โน้ต (รวมแหล่ง ไม่แยกตามสื่อ)**
+2. **Obsidian ข้อมูลกราฟ — 1 คดี = 1 โน้ต (รวมแหล่ง ไม่แยกตามสื่อ)**
    - `vault/20_Cases/{case_id}.md` = 1 เหตุการณ์ / 1 โน้ต (`generated: true`) · frontmatter `sources:` เป็นลิสต์ URL ทั้งหมด
    - `vault/40_CrimeTypes/{ชื่อประเภท}.md` = อัปเดตหน้ารวมประเภทที่มีข่าววันนี้
    - `vault/30_Entities/...` = หน่วย / จังหวัด / MO / กฎหมายที่ปรากฏ
-   - ใช้ `[[wikilinks]]` เชื่อม คดี↔ประเภท↔หน่วย/จังหวัด เสมอ (กราฟบน GitHub Pages อ่านจากลิงก์เหล่านี้)
-   - หลังเขียน vault: รัน `node ops/rebuild-pages-feed.js` (สร้าง `github-pages/data/graph.json`) — **ห้าม** git push ใน Task 1
+   - ใช้ `[[wikilinks]]` เชื่อม คดี↔ประเภท↔หน่วย/จังหวัด เสมอ (แท็บ **ข้อมูลกราฟ** บน Pages อ่านจากลิงก์เหล่านี้)
+   - หลังเขียน vault: รัน `node ops/rebuild-pages-feed.js`  
+     (สร้าง `feed.json` + `graph.json` + `data/graphs/{case_id}.svg`) — **ห้าม** git push ใน Task 1
+   - ในโน้ตคดีและบท HTML ใส่ลิงก์/ฝัง `graphs/{case_id}.svg` และสรุป relations ของคดีนั้น
    - **ห้าม** พึ่ง `vault/10_Daily/{DATE}.md` เป็นผลลัพธ์หลัก · **ห้าม** สร้างโน้ตซ้ำสำหรับแหล่งที่ 2/3 ของเหตุการณ์เดียวกัน
 3. **PDF สำหรับดาวน์โหลด + Infographic** — HTML→PDF และ infographic HTML→PNG (THSarabun บังคับ)  
    คัดลอกไป `github-pages/data/downloads/{DATE}_crime.pdf` และ `{DATE}_infographic.png` ด้วย
@@ -414,6 +425,9 @@ github-pages/data/manifest.json   # days[].downloads[] ชี้ไฟล์ด�
 vault/20_Cases/{case_id}.md       # 1 เหตุการณ์ = 1 โน้ต · sources: [url...]
 vault/40_CrimeTypes/{ชื่อประเภท}.md
 vault/30_Entities/{Units|Agencies|Laws|MO|Places|Regions}/...
+github-pages/data/graph.json
+github-pages/data/graphs/{case_id}.svg   # ego subgraph ต่อหัวข่าว (สร้างโดย rebuild-pages-feed)
+github-pages/data/graphs/{case_id}.json  # สรุป relations ของคดี
 ```
 
 ## Completion Report

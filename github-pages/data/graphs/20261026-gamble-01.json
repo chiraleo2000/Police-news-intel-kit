@@ -1,0 +1,64 @@
+{
+ "case_id": "20261026-gamble-01",
+ "title": "ผบช.สอท. ยืนยันสืบสวนข้อกล่าวอ้างเว็บพนันจ่ายเงินพิเศษให้ ส.ส. ร่วม DSI-ดีอี ตรวจเส้นทางการเงิน ย้ำยังเป็นข้อกล่าวอ้างที่ต้องพิสูจน์",
+ "generated_at": "2026-10-26T07:18:59.030Z",
+ "node_count": 10,
+ "edge_count": 9,
+ "relations": [
+  {
+   "label": "announced_by",
+   "target_id": "30_Entities/People/ผบช.สอท.",
+   "target_title": "ผบช.สอท.",
+   "direction": "out"
+  },
+  {
+   "label": "announced_by",
+   "target_id": "30_Entities/People/DSI",
+   "target_title": "DSI",
+   "direction": "out"
+  },
+  {
+   "label": "announced_by",
+   "target_id": "30_Entities/People/กระทรวงดิจิทัลเพื่อเศรษฐกิจและสังคม",
+   "target_title": "กระทรวงดิจิทัลเพื่อเศรษฐกิจและสังคม",
+   "direction": "out"
+  },
+  {
+   "label": "announced_by",
+   "target_id": "30_Entities/People/บช.สอท.",
+   "target_title": "บช.สอท.",
+   "direction": "out"
+  },
+  {
+   "label": "targets_network",
+   "target_id": "30_Entities/Projects/เว็บพนันออนไลน์",
+   "target_title": "เว็บพนันออนไลน์",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "40_CrimeTypes/พนันและบ่อนผิดกฎหมาย",
+   "target_title": "พนันและบ่อนผิดกฎหมาย",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "30_Entities/Units/DSI",
+   "target_title": "DSI",
+   "direction": "in"
+  },
+  {
+   "label": "mentions",
+   "target_id": "30_Entities/Units/กระทรวงดิจิทัลเพื่อเศรษฐกิจและสังคม",
+   "target_title": "กระทรวงดิจิทัลเพื่อเศรษฐกิจและสังคม",
+   "direction": "in"
+  },
+  {
+   "label": "mentions",
+   "target_id": "30_Entities/Units/บช.สอท.",
+   "target_title": "บช.สอท.",
+   "direction": "in"
+  }
+ ],
+ "svg": "graphs/20261026-gamble-01.svg"
+}

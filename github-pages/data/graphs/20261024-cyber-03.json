@@ -1,0 +1,70 @@
+{
+ "case_id": "20261024-cyber-03",
+ "title": "Cyber Police Arrest Scam Gang Targeting Retired Nurse, Posing as Comptroller Generals Department Officials, Defrauding Over 1.8 Million Baht",
+ "generated_at": "2026-10-26T07:18:58.934Z",
+ "node_count": 6,
+ "edge_count": 10,
+ "relations": [
+  {
+   "label": "arrested_by",
+   "target_id": "30_Entities/Units/บก.สอท.",
+   "target_title": "บก.สอท.",
+   "direction": "out"
+  },
+  {
+   "label": "arrested_by",
+   "target_id": "30_Entities/Units/บก.สอท.4",
+   "target_title": "บก.สอท.4",
+   "direction": "out"
+  },
+  {
+   "label": "arrested_by",
+   "target_id": "30_Entities/People/บช.สอท.",
+   "target_title": "บช.สอท.",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "30_Entities/Units/บก.สอท.",
+   "target_title": "บก.สอท.",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "30_Entities/Units/บก.สอท.4",
+   "target_title": "บก.สอท.4",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "30_Entities/People/บช.สอท.",
+   "target_title": "บช.สอท.",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "30_Entities/Units/บก.สอท.",
+   "target_title": "บก.สอท.",
+   "direction": "in"
+  },
+  {
+   "label": "mentions",
+   "target_id": "30_Entities/Units/บก.สอท.4",
+   "target_title": "บก.สอท.4",
+   "direction": "in"
+  },
+  {
+   "label": "mentions",
+   "target_id": "30_Entities/Units/บช.สอท.",
+   "target_title": "บช.สอท.",
+   "direction": "in"
+  }
+ ],
+ "svg": "graphs/20261024-cyber-03.svg"
+}

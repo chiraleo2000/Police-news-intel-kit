@@ -1,0 +1,64 @@
+{
+ "case_id": "20261025-cyber-01",
+ "title": "ตำรวจทางหลวงดักจับผู้ต้องหาตามหมายจับ เครือข่ายฟอกเงินแก๊งคอลเซ็นเตอร์ผ่านแอปซื้อขายทองคำ เสียหายกว่า 8 ล้านบาท ที่นครสวรรค์",
+ "generated_at": "2026-10-26T07:18:58.981Z",
+ "node_count": 7,
+ "edge_count": 9,
+ "relations": [
+  {
+   "label": "arrested_by",
+   "target_id": "30_Entities/Units/บก.ทล.",
+   "target_title": "บก.ทล.",
+   "direction": "out"
+  },
+  {
+   "label": "arrested_by",
+   "target_id": "30_Entities/Units/ศกค.ตร.",
+   "target_title": "ศกค.ตร.",
+   "direction": "out"
+  },
+  {
+   "label": "arrested_by",
+   "target_id": "30_Entities/Units/สน.ทุ่งมหาเมฆ",
+   "target_title": "สน.ทุ่งมหาเมฆ",
+   "direction": "out"
+  },
+  {
+   "label": "ordered_by",
+   "target_id": "30_Entities/Units/บช.ก.",
+   "target_title": "บช.ก.",
+   "direction": "out"
+  },
+  {
+   "label": "targets_network",
+   "target_id": "30_Entities/Projects/แก๊งคอลเซ็นเตอร์",
+   "target_title": "แก๊งคอลเซ็นเตอร์",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "30_Entities/Units/บก.ทล.",
+   "target_title": "บก.ทล.",
+   "direction": "in"
+  },
+  {
+   "label": "mentions",
+   "target_id": "30_Entities/Units/ศกค.ตร.",
+   "target_title": "ศกค.ตร.",
+   "direction": "in"
+  },
+  {
+   "label": "mentions",
+   "target_id": "30_Entities/Units/สน.ทุ่งมหาเมฆ",
+   "target_title": "สน.ทุ่งมหาเมฆ",
+   "direction": "in"
+  }
+ ],
+ "svg": "graphs/20261025-cyber-01.svg"
+}

@@ -1,0 +1,40 @@
+{
+ "case_id": "20261023-cyber-01",
+ "title": "ตร.ไซเบอร์ ทลายเครือข่ายเงินกู้นอกระบบภาคเหนือ จับ 6 ผู้ต้องหา พิษณุโลก",
+ "generated_at": "2026-10-26T07:18:58.837Z",
+ "node_count": 6,
+ "edge_count": 5,
+ "relations": [
+  {
+   "label": "arrested_by",
+   "target_id": "30_Entities/Units/บก.สอท.4",
+   "target_title": "บก.สอท.4",
+   "direction": "out"
+  },
+  {
+   "label": "ordered_by",
+   "target_id": "30_Entities/People/บช.สอท.",
+   "target_title": "บช.สอท.",
+   "direction": "out"
+  },
+  {
+   "label": "announced_by",
+   "target_id": "30_Entities/People/ผบช.สอท.",
+   "target_title": "ผบช.สอท.",
+   "direction": "out"
+  },
+  {
+   "label": "targets_network",
+   "target_id": "30_Entities/Projects/เครือข่ายเงินกู้นอกระบบภาคเหนือ",
+   "target_title": "เครือข่ายเงินกู้นอกระบบภาคเหนือ",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261023-cyber-01.svg"
+}

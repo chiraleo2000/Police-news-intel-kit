@@ -1,0 +1,76 @@
+{
+ "case_id": "20261025-violent-02",
+ "title": "ชายวัย 19 ปี ถูกแจ้ง 3 ข้อหา ทำร้ายร่างกายหญิงขับรถที่ห้าแยกลาดพร้าว อัยการฟ้อง ศาลสั่งขัง นัดพิพากษา 15 ธ.ค. ตามข้อกล่าวหา",
+ "generated_at": "2026-10-26T07:18:59.012Z",
+ "node_count": 7,
+ "edge_count": 11,
+ "relations": [
+  {
+   "label": "related_to",
+   "target_id": "20_Cases/20261024-violent-04",
+   "target_title": "ตำรวจจับผู้ต้องหาทำร้ายผู้ขับรถหญิงกลางห้าแยกลาดพร้าว หลังมีปากเสียงเรื่องเสียงแตร",
+   "direction": "in"
+  },
+  {
+   "label": "investigated_by",
+   "target_id": "30_Entities/Units/บก.น.2",
+   "target_title": "บก.น.2",
+   "direction": "out"
+  },
+  {
+   "label": "investigated_by",
+   "target_id": "30_Entities/Units/ศาลแขวงพระนครเหนือ",
+   "target_title": "ศาลแขวงพระนครเหนือ",
+   "direction": "out"
+  },
+  {
+   "label": "investigated_by",
+   "target_id": "30_Entities/Units/สน.พหลโยธิน",
+   "target_title": "สน.พหลโยธิน",
+   "direction": "out"
+  },
+  {
+   "label": "investigated_by",
+   "target_id": "30_Entities/Units/สำนักงานอัยการพิเศษฝ่ายคดีแขวง 2",
+   "target_title": "สำนักงานอัยการพิเศษฝ่ายคดีแขวง 2",
+   "direction": "out"
+  },
+  {
+   "label": "follow_up_of",
+   "target_id": "20_Cases/20261024-violent-04",
+   "target_title": "ตำรวจจับผู้ต้องหาทำร้ายผู้ขับรถหญิงกลางห้าแยกลาดพร้าว หลังมีปากเสียงเรื่องเสียงแตร",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "40_CrimeTypes/คดีชีวิต ร่างกาย และเพศ",
+   "target_title": "คดีชีวิต ร่างกาย และเพศ",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "30_Entities/Units/บก.น.2",
+   "target_title": "บก.น.2",
+   "direction": "in"
+  },
+  {
+   "label": "mentions",
+   "target_id": "30_Entities/Units/ศาลแขวงพระนครเหนือ",
+   "target_title": "ศาลแขวงพระนครเหนือ",
+   "direction": "in"
+  },
+  {
+   "label": "mentions",
+   "target_id": "30_Entities/Units/สน.พหลโยธิน",
+   "target_title": "สน.พหลโยธิน",
+   "direction": "in"
+  },
+  {
+   "label": "mentions",
+   "target_id": "30_Entities/Units/สำนักงานอัยการพิเศษฝ่ายคดีแขวง 2",
+   "target_title": "สำนักงานอัยการพิเศษฝ่ายคดีแขวง 2",
+   "direction": "in"
+  }
+ ],
+ "svg": "graphs/20261025-violent-02.svg"
+}

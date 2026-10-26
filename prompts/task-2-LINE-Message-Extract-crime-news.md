@@ -123,10 +123,14 @@ DROP → บันทึกใน Completion Report อย่างเดีย�
 
 ### วิเคราะห์ในรอบนี้ (บังคับ — เฉพาะข่าวที่ผ่านเกณฑ์แล้ว)
 หลัง merge **เฉพาะ posts ที่ KEEP** ก่อนสร้างไฟล์เผยแพร่:
-1. **Second Brain** → `_brain_daily.md` (entities / timeline / merge_proposal = proposed เท่านั้น)
+1. **ข้อมูลกราฟ** → `_brain_daily.md` (entities / timeline / merge_proposal = proposed เท่านั้น)
 2. **BD × งบ 2570** → `_bd_leads.json` จาก `reference/budget-fy2570-police-related.json` เท่านั้น
 3. ใส่บทวิเคราะห์ใน PDF และในโน้ต Obsidian ที่เกี่ยวข้อง
-4. ห้ามแตะโน้ตที่ `generated: false`  
+4. ห้ามแตะโน้ตที่ `generated: false`
+5. **กราฟต่อหัวข่าว (บังคับ)** สำหรับทุกโพสต์ในชุดวิเคราะห์ของรอบ (NEW + DUP_EVENT ที่แตะ + โพสต์เดิมที่ re-analysis):
+   - รัน `node ops/rebuild-pages-feed.js` → ได้ `graph.json` และ `github-pages/data/graphs/{case_id}.svg`
+   - ใน HTML/MD/PDF ของแต่ละหัวข่าว ใส่ส่วน **「ข้อมูลกราฟของข่าวนี้」** (ฝัง/ลิงก์ SVG + รายการ relations มีป้าย เช่น `related_to` `arrested_by`)
+   - หน้า Pages รายโพสต์แสดงบล็อกนี้จาก graph อัตโนมัติหลัง rebuild — อย่าข้าม
 ถ้าหลังกรองแล้ว **0 ข่าว** → ข้าม brain/BD/PDF เนื้อหาเต็มได้ รายงาน `status=complete` พร้อม `links_skipped` + ไฟล์ JSON ว่าง/`posts:[]` ขั้นต่ำ (ประหยัด token)
 
 ## ช่องทางผลลัพธ์ (บังคับครบ 3 + รูปแบบ)
@@ -154,7 +158,8 @@ DROP → บันทึกใน Completion Report อย่างเดีย�
   {"label": "Infographic LINE", "path": "downloads/{DATE}_infographic_line.png", "kind": "image"}
 ]
 ```
-หลัง copy ไฟล์เว็บ **บังคับรัน** `node ops/rebuild-pages-feed.js` เพื่ออัปเดต `github-pages/data/feed.json` (UI อ่าน feed เป็นหลัก)
+หลัง copy ไฟล์เว็บ **บังคับรัน** `node ops/rebuild-pages-feed.js` เพื่ออัปเดต `feed.json` + `graph.json` + `data/graphs/{case_id}.svg`  
+(UI อ่าน feed เป็นหลัก · แท็บ **ข้อมูลกราฟ** อ่าน graph · หน้ารายโพสต์แสดง ego subgraph)
 
 ### 2) Obsidian — 1 เหตุการณ์ = 1 โน้ต (รวมแหล่ง ไม่แยกตามลิงก์ LINE)
 **ห้าม** สร้าง/พึ่ง `vault/10_Daily/{DATE}_line.md` เป็นผลลัพธ์หลัก  
@@ -213,6 +218,9 @@ github-pages/data/manifest.json
 vault/20_Cases/{case_id}.md
 vault/40_CrimeTypes/{ประเภท}.md
 vault/30_Entities/...
+github-pages/data/graph.json
+github-pages/data/graphs/{case_id}.svg
+github-pages/data/graphs/{case_id}.json
 ```
 
 ## Completion Report

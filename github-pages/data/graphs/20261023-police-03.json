@@ -1,0 +1,28 @@
+{
+ "case_id": "20261023-police-03",
+ "title": "ผู้บัญชาการตำรวจท่องเที่ยวตรวจเยี่ยมสถานีตำรวจท่องเที่ยว 3 นราธิวาส ย้ำความปลอดภัยของกำลังพล",
+ "generated_at": "2026-10-26T07:18:58.890Z",
+ "node_count": 4,
+ "edge_count": 3,
+ "relations": [
+  {
+   "label": "investigated_by",
+   "target_id": "30_Entities/People/บก.ทท.3",
+   "target_title": "บก.ทท.3",
+   "direction": "out"
+  },
+  {
+   "label": "investigated_by",
+   "target_id": "30_Entities/People/บช.ทท.",
+   "target_title": "บช.ทท.",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "40_CrimeTypes/การปฏิบัติหน้าที่ ประชาสัมพันธ์ และนโยบายตำรวจ",
+   "target_title": "การปฏิบัติหน้าที่ ประชาสัมพันธ์ และนโยบายตำรวจ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261023-police-03.svg"
+}

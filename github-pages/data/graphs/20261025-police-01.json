@@ -1,0 +1,52 @@
+{
+ "case_id": "20261025-police-01",
+ "title": "สน.วังทองหลาง ผนึก S.W.A.T. บก.น.4 ตรวจ 8 สถานบริการยามดึก สุ่มตรวจสารเสพติด 54 ราย ไม่พบผู้กระทำผิด",
+ "generated_at": "2026-10-26T07:18:59.003Z",
+ "node_count": 8,
+ "edge_count": 7,
+ "relations": [
+  {
+   "label": "announced_by",
+   "target_id": "30_Entities/People/S.W.A.T. บก.น.4",
+   "target_title": "S.W.A.T. บก.น.4",
+   "direction": "out"
+  },
+  {
+   "label": "announced_by",
+   "target_id": "30_Entities/People/บก.น.4",
+   "target_title": "บก.น.4",
+   "direction": "out"
+  },
+  {
+   "label": "announced_by",
+   "target_id": "30_Entities/People/สน.วังทองหลาง",
+   "target_title": "สน.วังทองหลาง",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "40_CrimeTypes/การปฏิบัติหน้าที่ ประชาสัมพันธ์ และนโยบายตำรวจ",
+   "target_title": "การปฏิบัติหน้าที่ ประชาสัมพันธ์ และนโยบายตำรวจ",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "30_Entities/Units/S.W.A.T. บก.น.4",
+   "target_title": "S.W.A.T. บก.น.4",
+   "direction": "in"
+  },
+  {
+   "label": "mentions",
+   "target_id": "30_Entities/Units/บก.น.4",
+   "target_title": "บก.น.4",
+   "direction": "in"
+  },
+  {
+   "label": "mentions",
+   "target_id": "30_Entities/Units/สน.วังทองหลาง",
+   "target_title": "สน.วังทองหลาง",
+   "direction": "in"
+  }
+ ],
+ "svg": "graphs/20261025-police-01.svg"
+}

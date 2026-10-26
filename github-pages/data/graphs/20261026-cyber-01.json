@@ -1,0 +1,58 @@
+{
+ "case_id": "20261026-cyber-01",
+ "title": "บก.ป. (CIB) จับหญิงวัย 26 ปี ตามหมายจับ แก๊งหลอกเปิดร้านออนไลน์-ทำภารกิจเพิ่มยอดขาย ผู้เสียหายโอน 25 ครั้ง สูญ 14.7 ล้านบาท ตามข้อกล่าวหา",
+ "generated_at": "2026-10-26T07:18:59.019Z",
+ "node_count": 6,
+ "edge_count": 8,
+ "relations": [
+  {
+   "label": "arrested_by",
+   "target_id": "30_Entities/Units/บก.ป.",
+   "target_title": "บก.ป.",
+   "direction": "out"
+  },
+  {
+   "label": "arrested_by",
+   "target_id": "30_Entities/Units/บก.ปอท.",
+   "target_title": "บก.ปอท.",
+   "direction": "out"
+  },
+  {
+   "label": "arrested_by",
+   "target_id": "30_Entities/Units/บช.ก.",
+   "target_title": "บช.ก.",
+   "direction": "out"
+  },
+  {
+   "label": "targets_network",
+   "target_id": "30_Entities/Projects/แก๊งหลอกเปิดร้านออนไลน์-ทำภา",
+   "target_title": "แก๊งหลอกเปิดร้านออนไลน์-ทำภา",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "30_Entities/Units/บก.ป.",
+   "target_title": "บก.ป.",
+   "direction": "in"
+  },
+  {
+   "label": "mentions",
+   "target_id": "30_Entities/Units/บก.ปอท.",
+   "target_title": "บก.ปอท.",
+   "direction": "in"
+  },
+  {
+   "label": "mentions",
+   "target_id": "30_Entities/Units/บช.ก.",
+   "target_title": "บช.ก.",
+   "direction": "in"
+  }
+ ],
+ "svg": "graphs/20261026-cyber-01.svg"
+}

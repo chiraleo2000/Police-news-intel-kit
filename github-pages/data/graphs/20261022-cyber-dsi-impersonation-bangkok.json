@@ -1,0 +1,52 @@
+{
+ "case_id": "20261022-cyber-dsi-impersonation-bangkok",
+ "title": "บก.น.8 รวบ 2 ผู้ต้องหาแก๊งคอลเซ็นเตอร์ไทย-มาเลย์ แอบอ้างเป็น DSI หลอกหญิงโอนเงิน-ส่งมอบทองรวมราว 3.1 ล้านบาท",
+ "generated_at": "2026-10-26T07:18:58.755Z",
+ "node_count": 7,
+ "edge_count": 7,
+ "relations": [
+  {
+   "label": "arrested_by",
+   "target_id": "30_Entities/Units/บก.น.8",
+   "target_title": "บก.น.8",
+   "direction": "out"
+  },
+  {
+   "label": "arrested_by",
+   "target_id": "30_Entities/Units/สน.บุคคโล",
+   "target_title": "สน.บุคคโล",
+   "direction": "out"
+  },
+  {
+   "label": "ordered_by",
+   "target_id": "30_Entities/People/บช.น.",
+   "target_title": "บช.น.",
+   "direction": "out"
+  },
+  {
+   "label": "targets_network",
+   "target_id": "30_Entities/Projects/คอลเซ็นเตอร์",
+   "target_title": "คอลเซ็นเตอร์",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "30_Entities/Units/กองบังคับการตำรวจนครบาล 8 (บก.น.8) - สน.บุคคโล",
+   "target_title": "กองบังคับการตำรวจนครบาล 8 (บก.น.8) / สน.บุคคโล",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "30_Entities/Units/กองบังคับการตำรวจนครบาล 8 (บก.น.8) - สน.บุคคโล",
+   "target_title": "กองบังคับการตำรวจนครบาล 8 (บก.น.8) / สน.บุคคโล",
+   "direction": "in"
+  }
+ ],
+ "svg": "graphs/20261022-cyber-dsi-impersonation-bangkok.svg"
+}

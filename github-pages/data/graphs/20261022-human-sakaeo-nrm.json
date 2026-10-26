@@ -1,0 +1,64 @@
+{
+ "case_id": "20261022-human-sakaeo-nrm",
+ "title": "ตม.สระแก้วรับตัว 25 คนไทยกลับจากกัมพูชา คัดกรอง NRM พบ 4 รายมีหมายจับ 3 รายเป็นผู้เสียหายค้ามนุษย์",
+ "generated_at": "2026-10-26T07:18:58.786Z",
+ "node_count": 9,
+ "edge_count": 9,
+ "relations": [
+  {
+   "label": "arrested_by",
+   "target_id": "30_Entities/Units/ตม.จว.สระแก้ว",
+   "target_title": "ตม.จว.สระแก้ว",
+   "direction": "out"
+  },
+  {
+   "label": "arrested_by",
+   "target_id": "30_Entities/People/บก.ตม.3",
+   "target_title": "บก.ตม.3",
+   "direction": "out"
+  },
+  {
+   "label": "arrested_by",
+   "target_id": "30_Entities/People/สตม.",
+   "target_title": "สตม.",
+   "direction": "out"
+  },
+  {
+   "label": "ordered_by",
+   "target_id": "30_Entities/Units/บช.สตม.",
+   "target_title": "บช.สตม.",
+   "direction": "out"
+  },
+  {
+   "label": "announced_by",
+   "target_id": "30_Entities/People/ผบช.สตม.",
+   "target_title": "ผบช.สตม.",
+   "direction": "out"
+  },
+  {
+   "label": "targets_network",
+   "target_id": "30_Entities/Projects/แก๊งสแกมเมอร์",
+   "target_title": "แก๊งสแกมเมอร์",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "30_Entities/Units/สำนักงานตรวจคนเข้าเมือง (ตม.) - ตม.จว.สระแก้ว",
+   "target_title": "สำนักงานตรวจคนเข้าเมือง (ตม.) / ตม.จว.สระแก้ว",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "40_CrimeTypes/ค้ามนุษย์ แรงงานผิดกฎหมาย และคุ้มครองเด็ก",
+   "target_title": "ค้ามนุษย์ แรงงานผิดกฎหมาย และคุ้มครองเด็ก",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "30_Entities/Units/สำนักงานตรวจคนเข้าเมือง (ตม.) - ตม.จว.สระแก้ว",
+   "target_title": "สำนักงานตรวจคนเข้าเมือง (ตม.) / ตม.จว.สระแก้ว",
+   "direction": "in"
+  }
+ ],
+ "svg": "graphs/20261022-human-sakaeo-nrm.svg"
+}

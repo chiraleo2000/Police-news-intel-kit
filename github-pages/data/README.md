@@ -13,11 +13,13 @@
 | `feed.json` | รายการข่าวรวม (UX หลัก) |
 | `manifest.json` | ช่วงวัน / ดาวน์โหลด / ไฟล์ประกอบ |
 | `{DATE}_crime.json` | แหล่งความจริงรายวัน + KPI |
-| `graph.json` | Second Brain — กราฟจาก `vault/` wikilinks (แท็บ Brain) |
+| `graph.json` | ข้อมูลกราฟ — จาก `vault/` wikilinks (แท็บ ข้อมูลกราฟ) |
+| `graphs/{case_id}.svg` | Ego subgraph ต่อหัวข่าว (แสดงในหน้ารายโพสต์ + ฝัง PDF/MD) |
+| `graphs/{case_id}.json` | สรุป relations ของคดีนั้น |
 
 ทางเลือก: `{DATE}_hotspots.json`, `{DATE}_alerts.json`
 
-`graph.json` สร้างด้วย `node ops/build-obsidian-graph.js` (ถูกเรียกจาก `rebuild-pages-feed.js`) · ดู `docs/obsidian-second-brain.md`
+`graph.json` + `graphs/*` สร้างด้วย `rebuild-pages-feed.js` → `build-obsidian-graph.js` + `build-case-ego-graphs.js` · ดู `docs/obsidian-second-brain.md`
 
 ## ดาวน์โหลด (แท็บ PDF)
 

@@ -1,0 +1,52 @@
+{
+ "case_id": "20261025-human-01",
+ "title": "ตำรวจ ปคม. จับหญิงผู้ต้องหาตามหมายจับ ข้อหาค้ามนุษย์ จัดหาเด็กหญิง 16 ปี สองราย ผ่านบัญชี X ช่วยเหลือผู้เสียหายแล้ว",
+ "generated_at": "2026-10-26T07:18:58.999Z",
+ "node_count": 5,
+ "edge_count": 7,
+ "relations": [
+  {
+   "label": "arrested_by",
+   "target_id": "30_Entities/Units/Destiny Rescue",
+   "target_title": "Destiny Rescue",
+   "direction": "out"
+  },
+  {
+   "label": "arrested_by",
+   "target_id": "30_Entities/Units/กก.3 บก.ปคม.",
+   "target_title": "กก.3 บก.ปคม.",
+   "direction": "out"
+  },
+  {
+   "label": "arrested_by",
+   "target_id": "30_Entities/Units/บก.ปคม.",
+   "target_title": "บก.ปคม.",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "40_CrimeTypes/ค้ามนุษย์ แรงงานผิดกฎหมาย และคุ้มครองเด็ก",
+   "target_title": "ค้ามนุษย์ แรงงานผิดกฎหมาย และคุ้มครองเด็ก",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "30_Entities/Units/Destiny Rescue",
+   "target_title": "Destiny Rescue",
+   "direction": "in"
+  },
+  {
+   "label": "mentions",
+   "target_id": "30_Entities/Units/กก.3 บก.ปคม.",
+   "target_title": "กก.3 บก.ปคม.",
+   "direction": "in"
+  },
+  {
+   "label": "mentions",
+   "target_id": "30_Entities/Units/บก.ปคม.",
+   "target_title": "บก.ปคม.",
+   "direction": "in"
+  }
+ ],
+ "svg": "graphs/20261025-human-01.svg"
+}

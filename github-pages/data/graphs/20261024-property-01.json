@@ -1,0 +1,52 @@
+{
+ "case_id": "20261024-property-01",
+ "title": "Summons Issued for Benz, Son of Mae Pattra, After Opening Safe Reveals Only Three Items Remaining",
+ "generated_at": "2026-10-26T07:18:58.954Z",
+ "node_count": 5,
+ "edge_count": 7,
+ "relations": [
+  {
+   "label": "investigated_by",
+   "target_id": "30_Entities/People/สน.วังทองหลาง",
+   "target_title": "สน.วังทองหลาง",
+   "direction": "out"
+  },
+  {
+   "label": "investigated_by",
+   "target_id": "30_Entities/Units/สภ.วังทองหลาง",
+   "target_title": "สภ.วังทองหลาง",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "40_CrimeTypes/คดีทรัพย์สิน",
+   "target_title": "คดีทรัพย์สิน",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "30_Entities/Units/สภ.วังทองหลาง",
+   "target_title": "สภ.วังทองหลาง",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "30_Entities/People/สน.วังทองหลาง",
+   "target_title": "สน.วังทองหลาง",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "30_Entities/Units/สน.วังทองหลาง",
+   "target_title": "สน.วังทองหลาง",
+   "direction": "in"
+  },
+  {
+   "label": "mentions",
+   "target_id": "30_Entities/Units/สภ.วังทองหลาง",
+   "target_title": "สภ.วังทองหลาง",
+   "direction": "in"
+  }
+ ],
+ "svg": "graphs/20261024-property-01.svg"
+}

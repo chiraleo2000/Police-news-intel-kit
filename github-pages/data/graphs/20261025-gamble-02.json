@@ -1,0 +1,52 @@
+{
+ "case_id": "20261025-gamble-02",
+ "title": "ฝ่ายปกครองนครศรีธรรมราชบุกทลายบ่อนไฮโลที่ชะอวด จับ 14 ราย ผู้ต้องหาอ้าง “เคลียร์แล้ว” ยังไม่ชัดเคลียร์กับหน่วยงานใด ตามข้อกล่าวหา",
+ "generated_at": "2026-10-26T07:18:58.997Z",
+ "node_count": 5,
+ "edge_count": 7,
+ "relations": [
+  {
+   "label": "arrested_by",
+   "target_id": "30_Entities/Units/ฝ่ายปกครอง จ.นครศรีธรรมราช",
+   "target_title": "ฝ่ายปกครอง จ.นครศรีธรรมราช",
+   "direction": "out"
+  },
+  {
+   "label": "arrested_by",
+   "target_id": "30_Entities/Units/สภ.ชะอวด",
+   "target_title": "สภ.ชะอวด",
+   "direction": "out"
+  },
+  {
+   "label": "arrested_by",
+   "target_id": "30_Entities/Units/อส.จ.นครศรีธรรมราช",
+   "target_title": "อส.จ.นครศรีธรรมราช",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "40_CrimeTypes/พนันและบ่อนผิดกฎหมาย",
+   "target_title": "พนันและบ่อนผิดกฎหมาย",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "30_Entities/Units/ฝ่ายปกครอง จ.นครศรีธรรมราช",
+   "target_title": "ฝ่ายปกครอง จ.นครศรีธรรมราช",
+   "direction": "in"
+  },
+  {
+   "label": "mentions",
+   "target_id": "30_Entities/Units/สภ.ชะอวด",
+   "target_title": "สภ.ชะอวด",
+   "direction": "in"
+  },
+  {
+   "label": "mentions",
+   "target_id": "30_Entities/Units/อส.จ.นครศรีธรรมราช",
+   "target_title": "อส.จ.นครศรีธรรมราช",
+   "direction": "in"
+  }
+ ],
+ "svg": "graphs/20261025-gamble-02.svg"
+}

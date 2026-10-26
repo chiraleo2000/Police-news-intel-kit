@@ -1,0 +1,34 @@
+{
+ "case_id": "20261022-drug-surin-yaba",
+ "title": "สภ.เมืองสุรินทร์ปิดล้อมตรวจค้นตำบลราม จับ 2 ผู้ต้องหายาบ้า รายหนึ่งมีไว้เพื่อจำหน่าย 334 เม็ด",
+ "generated_at": "2026-10-26T07:18:58.773Z",
+ "node_count": 4,
+ "edge_count": 4,
+ "relations": [
+  {
+   "label": "arrested_by",
+   "target_id": "30_Entities/Units/สภ.เมืองสุรินทร์",
+   "target_title": "สภ.เมืองสุรินทร์",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "30_Entities/Units/สถานีตำรวจภูธรเมืองสุรินทร์",
+   "target_title": "สถานีตำรวจภูธรเมืองสุรินทร์",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "40_CrimeTypes/ยาเสพติด",
+   "target_title": "ยาเสพติด",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "30_Entities/Units/สถานีตำรวจภูธรเมืองสุรินทร์",
+   "target_title": "สถานีตำรวจภูธรเมืองสุรินทร์",
+   "direction": "in"
+  }
+ ],
+ "svg": "graphs/20261022-drug-surin-yaba.svg"
+}

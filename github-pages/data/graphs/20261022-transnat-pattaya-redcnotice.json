@@ -1,0 +1,52 @@
+{
+ "case_id": "20261022-transnat-pattaya-redcnotice",
+ "title": "สตม.-ตำรวจภาค 2 จับชาวจีนเป้าหมาย Red Notice คดีบ่อนคาสิโนมูลค่า 1.5 พันล้านที่พัทยา",
+ "generated_at": "2026-10-26T07:18:58.826Z",
+ "node_count": 7,
+ "edge_count": 7,
+ "relations": [
+  {
+   "label": "arrested_by",
+   "target_id": "30_Entities/Units/ตม.จว.ชลบุรี",
+   "target_title": "ตม.จว.ชลบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "arrested_by",
+   "target_id": "30_Entities/Units/ภ.2",
+   "target_title": "ภ.2",
+   "direction": "out"
+  },
+  {
+   "label": "arrested_by",
+   "target_id": "30_Entities/People/สตม.",
+   "target_title": "สตม.",
+   "direction": "out"
+  },
+  {
+   "label": "ordered_by",
+   "target_id": "30_Entities/Units/บช.สตม.",
+   "target_title": "บช.สตม.",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "30_Entities/Units/สำนักงานตรวจคนเข้าเมือง (ตม.-สตม.)",
+   "target_title": "สำนักงานตรวจคนเข้าเมือง (ตม./สตม.)",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "40_CrimeTypes/อาชญากรรมข้ามชาติและความร่วมมือระหว่างประเทศ",
+   "target_title": "อาชญากรรมข้ามชาติและความร่วมมือระหว่างประเทศ",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "30_Entities/Units/สำนักงานตรวจคนเข้าเมือง (ตม.-สตม.)",
+   "target_title": "สำนักงานตรวจคนเข้าเมือง (ตม./สตม.)",
+   "direction": "in"
+  }
+ ],
+ "svg": "graphs/20261022-transnat-pattaya-redcnotice.svg"
+}

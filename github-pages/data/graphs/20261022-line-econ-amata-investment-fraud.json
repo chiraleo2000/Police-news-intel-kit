@@ -1,0 +1,46 @@
+{
+ "case_id": "20261022-line-econ-amata-investment-fraud",
+ "title": "บก.ปอศ. ตามจับ 6 ผู้ต้องหาแก๊งหลอกลงทุนหุ้นอมตะ ใน 4 จังหวัด",
+ "generated_at": "2026-10-26T07:18:58.796Z",
+ "node_count": 7,
+ "edge_count": 6,
+ "relations": [
+  {
+   "label": "arrested_by",
+   "target_id": "30_Entities/Units/กก.3",
+   "target_title": "กก.3",
+   "direction": "out"
+  },
+  {
+   "label": "arrested_by",
+   "target_id": "30_Entities/Units/บก.ปอศ.",
+   "target_title": "บก.ปอศ.",
+   "direction": "out"
+  },
+  {
+   "label": "ordered_by",
+   "target_id": "30_Entities/Units/บช.ก.",
+   "target_title": "บช.ก.",
+   "direction": "out"
+  },
+  {
+   "label": "targets_network",
+   "target_id": "30_Entities/Projects/แก๊งหลอกลงทุนหุ้นอมตะ",
+   "target_title": "แก๊งหลอกลงทุนหุ้นอมตะ",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "40_CrimeTypes/คดีเศรษฐกิจ การเงิน และฟอกเงิน",
+   "target_title": "คดีเศรษฐกิจ การเงิน และฟอกเงิน",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "30_Entities/Units/บก.ปอศ. (ตำรวจสอบสวนกลาง)",
+   "target_title": "บก.ปอศ. (ตำรวจสอบสวนกลาง)",
+   "direction": "in"
+  }
+ ],
+ "svg": "graphs/20261022-line-econ-amata-investment-fraud.svg"
+}

@@ -1,0 +1,40 @@
+{
+ "case_id": "20261022-drug-bungkan-yaba-minors",
+ "title": "ตชด.ภาค 2 สกัดรถเก๋งขนยาบ้า 197,960 เม็ด ผู้ต้องหา 3 คนเป็นเยาวชนอายุ 14-17 ปี ถูกจ้าง 40,000 บาท",
+ "generated_at": "2026-10-26T07:18:58.762Z",
+ "node_count": 5,
+ "edge_count": 5,
+ "relations": [
+  {
+   "label": "arrested_by",
+   "target_id": "30_Entities/Units/บก.ตชด.ภาค 2",
+   "target_title": "บก.ตชด.ภาค 2",
+   "direction": "out"
+  },
+  {
+   "label": "ordered_by",
+   "target_id": "30_Entities/Units/บช.ก.",
+   "target_title": "บช.ก.",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "30_Entities/Units/กองบังคับการตำรวจตระเวนชายแดนภาค 2 (บก.ตชด.ภาค 2)",
+   "target_title": "กองบังคับการตำรวจตระเวนชายแดนภาค 2 (บก.ตชด.ภาค 2)",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "40_CrimeTypes/ยาเสพติด",
+   "target_title": "ยาเสพติด",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "30_Entities/Units/กองบังคับการตำรวจตระเวนชายแดนภาค 2 (บก.ตชด.ภาค 2)",
+   "target_title": "กองบังคับการตำรวจตระเวนชายแดนภาค 2 (บก.ตชด.ภาค 2)",
+   "direction": "in"
+  }
+ ],
+ "svg": "graphs/20261022-drug-bungkan-yaba-minors.svg"
+}

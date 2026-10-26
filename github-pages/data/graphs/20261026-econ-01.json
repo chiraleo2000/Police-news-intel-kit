@@ -1,0 +1,28 @@
+{
+ "case_id": "20261026-econ-01",
+ "title": "ชายแปลกหน้าอ้างชื่อเจ้าอาวาสวัดดัง ขอยืมเงินอดีตเจ้าอาวาสกิตติมศักดิ์ที่ปทุมธานี 30,000 บาท ตามคำเล่า-มีภาพกล้องวงจรปิด ผู้เสียหายแจ้งความแล้ว",
+ "generated_at": "2026-10-26T07:18:59.028Z",
+ "node_count": 3,
+ "edge_count": 3,
+ "relations": [
+  {
+   "label": "investigated_by",
+   "target_id": "30_Entities/Units/สภ.สวนพริกไทย",
+   "target_title": "สภ.สวนพริกไทย",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "40_CrimeTypes/คดีเศรษฐกิจ การเงิน และฟอกเงิน",
+   "target_title": "คดีเศรษฐกิจ การเงิน และฟอกเงิน",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "30_Entities/Units/สภ.สวนพริกไทย",
+   "target_title": "สภ.สวนพริกไทย",
+   "direction": "in"
+  }
+ ],
+ "svg": "graphs/20261026-econ-01.svg"
+}

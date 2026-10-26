@@ -1,0 +1,40 @@
+{
+ "case_id": "20261022-public-uthenthawai-pathumwan-students",
+ "title": "นักศึกษาอุเทนถวายประกาศยุติความรุนแรงกับช่างกลปทุมวัน ยื่นหนังสือ สตช. ขอเป็นคนกลาง นัดหารือ 22 ต.ค.",
+ "generated_at": "2026-10-26T07:18:58.815Z",
+ "node_count": 5,
+ "edge_count": 5,
+ "relations": [
+  {
+   "label": "announced_by",
+   "target_id": "30_Entities/People/กระทรวง อว.",
+   "target_title": "กระทรวง อว.",
+   "direction": "out"
+  },
+  {
+   "label": "announced_by",
+   "target_id": "30_Entities/People/สตช.",
+   "target_title": "สตช.",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "30_Entities/Units/สำนักงานตำรวจแห่งชาติ (ผู้รับหนังสือ)",
+   "target_title": "สำนักงานตำรวจแห่งชาติ (ผู้รับหนังสือ)",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "40_CrimeTypes/ความสงบเรียบร้อยและความมั่นคงภายใน",
+   "target_title": "ความสงบเรียบร้อยและความมั่นคงภายใน",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "30_Entities/Units/สำนักงานตำรวจแห่งชาติ (ผู้รับหนังสือ)",
+   "target_title": "สำนักงานตำรวจแห่งชาติ (ผู้รับหนังสือ)",
+   "direction": "in"
+  }
+ ],
+ "svg": "graphs/20261022-public-uthenthawai-pathumwan-students.svg"
+}

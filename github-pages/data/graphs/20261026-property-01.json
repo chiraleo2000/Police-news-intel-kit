@@ -1,0 +1,28 @@
+{
+ "case_id": "20261026-property-01",
+ "title": "เจ้าของบ้านในขอนแก่นประกาศขายบ้าน หลังถูกลักทรัพย์ซ้ำ 3 ครั้งใน 3 ปี ตำรวจพบลายนิ้วมือแฝง มีผู้ต้องสงสัย 2–3 ราย",
+ "generated_at": "2026-10-26T07:18:59.038Z",
+ "node_count": 3,
+ "edge_count": 3,
+ "relations": [
+  {
+   "label": "investigated_by",
+   "target_id": "30_Entities/Units/สภ.เมืองขอนแก่น",
+   "target_title": "สภ.เมืองขอนแก่น",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "40_CrimeTypes/คดีทรัพย์สิน",
+   "target_title": "คดีทรัพย์สิน",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "30_Entities/Units/สภ.เมืองขอนแก่น",
+   "target_title": "สภ.เมืองขอนแก่น",
+   "direction": "in"
+  }
+ ],
+ "svg": "graphs/20261026-property-01.svg"
+}

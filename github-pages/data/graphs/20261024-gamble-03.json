@@ -1,0 +1,34 @@
+{
+ "case_id": "20261024-gamble-03",
+ "title": "เจ้าหน้าที่นครศรีธรรมราชบุกจับวงไฮโล นักพนันหนีถูกรวบ ซ่อนในห้องน้ำ",
+ "generated_at": "2026-10-26T07:18:58.949Z",
+ "node_count": 3,
+ "edge_count": 4,
+ "relations": [
+  {
+   "label": "arrested_by",
+   "target_id": "30_Entities/Units/ฝ่ายปกครองจังหวัดนครศรีธรรมราช",
+   "target_title": "ฝ่ายปกครองจังหวัดนครศรีธรรมราช",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "40_CrimeTypes/พนันและบ่อนผิดกฎหมาย",
+   "target_title": "พนันและบ่อนผิดกฎหมาย",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "30_Entities/Units/ฝ่ายปกครองจังหวัดนครศรีธรรมราช",
+   "target_title": "ฝ่ายปกครองจังหวัดนครศรีธรรมราช",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "30_Entities/Units/ฝ่ายปกครองจังหวัดนครศรีธรรมราช",
+   "target_title": "ฝ่ายปกครองจังหวัดนครศรีธรรมราช",
+   "direction": "in"
+  }
+ ],
+ "svg": "graphs/20261024-gamble-03.svg"
+}

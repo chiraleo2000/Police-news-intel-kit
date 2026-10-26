@@ -1,0 +1,22 @@
+{
+ "case_id": "20261023-public-01",
+ "title": "พระภิกษุดื่มสุราหน้าวัดที่อุทัยธานี ถูกให้ลาสิกขาและตำรวจดำเนินคดี",
+ "generated_at": "2026-10-26T07:18:58.904Z",
+ "node_count": 3,
+ "edge_count": 2,
+ "relations": [
+  {
+   "label": "arrested_by",
+   "target_id": "30_Entities/Units/ตำรวจในพื้นที่",
+   "target_title": "ตำรวจในพื้นที่",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "40_CrimeTypes/ความสงบเรียบร้อยและความมั่นคงภายใน",
+   "target_title": "ความสงบเรียบร้อยและความมั่นคงภายใน",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261023-public-01.svg"
+}

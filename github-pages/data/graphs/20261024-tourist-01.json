@@ -1,0 +1,40 @@
+{
+ "case_id": "20261024-tourist-01",
+ "title": "Koh Phangan revokes Israeli woman's visa after complaints about behaviour",
+ "generated_at": "2026-10-26T07:18:58.964Z",
+ "node_count": 5,
+ "edge_count": 5,
+ "relations": [
+  {
+   "label": "ordered_by",
+   "target_id": "30_Entities/People/บช.ทท.",
+   "target_title": "บช.ทท.",
+   "direction": "out"
+  },
+  {
+   "label": "announced_by",
+   "target_id": "30_Entities/People/ตำรวจท่องเที่ยว",
+   "target_title": "ตำรวจท่องเที่ยว",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "40_CrimeTypes/อาชญากรรมที่เกี่ยวข้องกับนักท่องเที่ยวและชาวต่างชาติ",
+   "target_title": "อาชญากรรมที่เกี่ยวข้องกับนักท่องเที่ยวและชาวต่างชาติ",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "30_Entities/People/ตำรวจท่องเที่ยว",
+   "target_title": "ตำรวจท่องเที่ยว",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "30_Entities/Units/ตำรวจท่องเที่ยว",
+   "target_title": "ตำรวจท่องเที่ยว",
+   "direction": "in"
+  }
+ ],
+ "svg": "graphs/20261024-tourist-01.svg"
+}

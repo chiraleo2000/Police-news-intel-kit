@@ -1,0 +1,28 @@
+{
+ "case_id": "20261023-police-01",
+ "title": "ตำรวจชั้นประทวนในสุรินทร์ถูกกล่าวหาว่าจ้างมือปืนฆ่าเทรนเนอร์ฟิตเนส เข้ามอบตัวแล้ว",
+ "generated_at": "2026-10-26T07:18:58.885Z",
+ "node_count": 4,
+ "edge_count": 3,
+ "relations": [
+  {
+   "label": "arrested_by",
+   "target_id": "30_Entities/Units/ภ.3",
+   "target_title": "ภ.3",
+   "direction": "out"
+  },
+  {
+   "label": "arrested_by",
+   "target_id": "30_Entities/Units/สภ.เมืองสุรินทร์",
+   "target_title": "สภ.เมืองสุรินทร์",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "40_CrimeTypes/การปฏิบัติหน้าที่ ประชาสัมพันธ์ และนโยบายตำรวจ",
+   "target_title": "การปฏิบัติหน้าที่ ประชาสัมพันธ์ และนโยบายตำรวจ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261023-police-01.svg"
+}

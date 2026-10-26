@@ -1,0 +1,64 @@
+{
+ "case_id": "20261022-drug-phuket-spiderweb-11",
+ "title": "ตำรวจภูเก็ตกวาดล้างยาเสพติด 5 พื้นที่ จับ 11 ราย ยาบ้า 8,700 เม็ด พร้อมคดีอาวุธปืน 1 ราย",
+ "generated_at": "2026-10-26T07:18:58.769Z",
+ "node_count": 9,
+ "edge_count": 9,
+ "relations": [
+  {
+   "label": "arrested_by",
+   "target_id": "30_Entities/Units/ภ.จว.ภูเก็ต",
+   "target_title": "ภ.จว.ภูเก็ต",
+   "direction": "out"
+  },
+  {
+   "label": "arrested_by",
+   "target_id": "30_Entities/Units/สภ.กะทู้",
+   "target_title": "สภ.กะทู้",
+   "direction": "out"
+  },
+  {
+   "label": "arrested_by",
+   "target_id": "30_Entities/Units/สภ.ฉลอง",
+   "target_title": "สภ.ฉลอง",
+   "direction": "out"
+  },
+  {
+   "label": "arrested_by",
+   "target_id": "30_Entities/Units/สภ.ถลาง",
+   "target_title": "สภ.ถลาง",
+   "direction": "out"
+  },
+  {
+   "label": "arrested_by",
+   "target_id": "30_Entities/Units/สภ.ป่าตอง",
+   "target_title": "สภ.ป่าตอง",
+   "direction": "out"
+  },
+  {
+   "label": "arrested_by",
+   "target_id": "30_Entities/Units/สภ.สาคู",
+   "target_title": "สภ.สาคู",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "30_Entities/Units/ตำรวจภูธรจังหวัดภูเก็ต (สภ.ฉลอง-ถลาง-ป่าตอง-สาคู-กะทู้)",
+   "target_title": "ตำรวจภูธรจังหวัดภูเก็ต (สภ.ฉลอง/ถลาง/ป่าตอง/สาคู/กะทู้)",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "40_CrimeTypes/ยาเสพติด",
+   "target_title": "ยาเสพติด",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "30_Entities/Units/ตำรวจภูธรจังหวัดภูเก็ต (สภ.ฉลอง-ถลาง-ป่าตอง-สาคู-กะทู้)",
+   "target_title": "ตำรวจภูธรจังหวัดภูเก็ต (สภ.ฉลอง/ถลาง/ป่าตอง/สาคู/กะทู้)",
+   "direction": "in"
+  }
+ ],
+ "svg": "graphs/20261022-drug-phuket-spiderweb-11.svg"
+}

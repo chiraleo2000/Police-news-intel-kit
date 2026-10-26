@@ -1,0 +1,28 @@
+{
+ "case_id": "20261026-human-01",
+ "title": "ตำรวจ สภ.บางเสาธง ใช้หมายจับ จับพระลูกวัดวัย 49 ปี ตามข้อกล่าวหากระทำชำเราเด็ก กรณีผู้เสียหายเป็นสามเณร ผู้ต้องหาให้การปฏิเสธ",
+ "generated_at": "2026-10-26T07:18:59.033Z",
+ "node_count": 3,
+ "edge_count": 3,
+ "relations": [
+  {
+   "label": "arrested_by",
+   "target_id": "30_Entities/Units/สภ.บางเสาธง",
+   "target_title": "สภ.บางเสาธง",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "40_CrimeTypes/ค้ามนุษย์ แรงงานผิดกฎหมาย และคุ้มครองเด็ก",
+   "target_title": "ค้ามนุษย์ แรงงานผิดกฎหมาย และคุ้มครองเด็ก",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "30_Entities/Units/สภ.บางเสาธง",
+   "target_title": "สภ.บางเสาธง",
+   "direction": "in"
+  }
+ ],
+ "svg": "graphs/20261026-human-01.svg"
+}

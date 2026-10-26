@@ -1,0 +1,40 @@
+{
+ "case_id": "20261023-cyber-02",
+ "title": "สตม.บุกบ้านหรูย่านสายไหม ทลายเครือข่ายสแกมเมอร์-เว็บพนันจีน จับ 14 ราย",
+ "generated_at": "2026-10-26T07:18:58.839Z",
+ "node_count": 6,
+ "edge_count": 5,
+ "relations": [
+  {
+   "label": "arrested_by",
+   "target_id": "30_Entities/People/สตม.",
+   "target_title": "สตม.",
+   "direction": "out"
+  },
+  {
+   "label": "ordered_by",
+   "target_id": "30_Entities/Units/บช.สตม.",
+   "target_title": "บช.สตม.",
+   "direction": "out"
+  },
+  {
+   "label": "announced_by",
+   "target_id": "30_Entities/People/ผบ.ตร.",
+   "target_title": "ผบ.ตร.",
+   "direction": "out"
+  },
+  {
+   "label": "targets_network",
+   "target_id": "30_Entities/Projects/แก๊งคอลเซ็นเตอร์",
+   "target_title": "แก๊งคอลเซ็นเตอร์",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261023-cyber-02.svg"
+}

@@ -1,0 +1,70 @@
+{
+ "case_id": "20261024-property-03",
+ "title": "Burglar robs Wichit home, abandons stolen pickup in Trang",
+ "generated_at": "2026-10-26T07:18:58.958Z",
+ "node_count": 5,
+ "edge_count": 10,
+ "relations": [
+  {
+   "label": "arrested_by",
+   "target_id": "30_Entities/Units/ภ.จว.ภูเก็ต",
+   "target_title": "ภ.จว.ภูเก็ต",
+   "direction": "out"
+  },
+  {
+   "label": "arrested_by",
+   "target_id": "30_Entities/Units/สภ.วิชิต",
+   "target_title": "สภ.วิชิต",
+   "direction": "out"
+  },
+  {
+   "label": "arrested_by",
+   "target_id": "30_Entities/Units/สภ.ห้วยยอด",
+   "target_title": "สภ.ห้วยยอด",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "40_CrimeTypes/คดีทรัพย์สิน",
+   "target_title": "คดีทรัพย์สิน",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "30_Entities/Units/สภ.วิชิต",
+   "target_title": "สภ.วิชิต",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "30_Entities/Units/สภ.ห้วยยอด",
+   "target_title": "สภ.ห้วยยอด",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "30_Entities/Units/ภ.จว.ภูเก็ต",
+   "target_title": "ภ.จว.ภูเก็ต",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "30_Entities/Units/ภ.จว.ภูเก็ต",
+   "target_title": "ภ.จว.ภูเก็ต",
+   "direction": "in"
+  },
+  {
+   "label": "mentions",
+   "target_id": "30_Entities/Units/สภ.วิชิต",
+   "target_title": "สภ.วิชิต",
+   "direction": "in"
+  },
+  {
+   "label": "mentions",
+   "target_id": "30_Entities/Units/สภ.ห้วยยอด",
+   "target_title": "สภ.ห้วยยอด",
+   "direction": "in"
+  }
+ ],
+ "svg": "graphs/20261024-property-03.svg"
+}

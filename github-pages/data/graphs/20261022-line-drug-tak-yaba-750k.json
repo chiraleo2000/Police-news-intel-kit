@@ -1,0 +1,52 @@
+{
+ "case_id": "20261022-line-drug-tak-yaba-750k",
+ "title": "ตำรวจภาค 6 แถลงจับ 3 ผู้ต้องหา ขนยาบ้า 750,000 เม็ดที่ตาก รายหนึ่งเป็นอดีตนายก อบต.",
+ "generated_at": "2026-10-26T07:18:58.795Z",
+ "node_count": 8,
+ "edge_count": 7,
+ "relations": [
+  {
+   "label": "arrested_by",
+   "target_id": "30_Entities/Units/กก.3 ปส.3 บช.ปส.",
+   "target_title": "กก.3 ปส.3 บช.ปส.",
+   "direction": "out"
+  },
+  {
+   "label": "arrested_by",
+   "target_id": "30_Entities/Units/ป.ป.ส. ภาค 6",
+   "target_title": "ป.ป.ส. ภาค 6",
+   "direction": "out"
+  },
+  {
+   "label": "arrested_by",
+   "target_id": "30_Entities/People/ภ.6",
+   "target_title": "ภ.6",
+   "direction": "out"
+  },
+  {
+   "label": "arrested_by",
+   "target_id": "30_Entities/Units/ภ.จว.ตาก",
+   "target_title": "ภ.จว.ตาก",
+   "direction": "out"
+  },
+  {
+   "label": "ordered_by",
+   "target_id": "30_Entities/People/บช.ปส.",
+   "target_title": "บช.ปส.",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "40_CrimeTypes/ยาเสพติด",
+   "target_title": "ยาเสพติด",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "30_Entities/Units/ตำรวจภูธรภาค 6 (ภ.6)",
+   "target_title": "ตำรวจภูธรภาค 6 (ภ.6)",
+   "direction": "in"
+  }
+ ],
+ "svg": "graphs/20261022-line-drug-tak-yaba-750k.svg"
+}

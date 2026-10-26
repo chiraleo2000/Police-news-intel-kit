@@ -1,0 +1,34 @@
+{
+ "case_id": "20261023-consumer-01",
+ "title": "ทลายเครือข่ายบุหรี่เถื่อนโคราช พบซุกบ้านพักทหาร รวบ 10 ผู้ต้องหา",
+ "generated_at": "2026-10-26T07:18:58.836Z",
+ "node_count": 5,
+ "edge_count": 4,
+ "relations": [
+  {
+   "label": "arrested_by",
+   "target_id": "30_Entities/Units/DOPA SWAT",
+   "target_title": "DOPA SWAT",
+   "direction": "out"
+  },
+  {
+   "label": "arrested_by",
+   "target_id": "30_Entities/Units/กองทัพภาคที่ 2",
+   "target_title": "กองทัพภาคที่ 2",
+   "direction": "out"
+  },
+  {
+   "label": "targets_network",
+   "target_id": "30_Entities/Projects/เครือข่ายบุหรี่เถื่อนโคราช",
+   "target_title": "เครือข่ายบุหรี่เถื่อนโคราช",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "40_CrimeTypes/คุ้มครองผู้บริโภคและสินค้าผิดกฎหมาย",
+   "target_title": "คุ้มครองผู้บริโภคและสินค้าผิดกฎหมาย",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261023-consumer-01.svg"
+}

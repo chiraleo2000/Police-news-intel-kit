@@ -1,0 +1,34 @@
+{
+ "case_id": "20261024-cyber-05",
+ "title": "พยาบาลสาวร้องถูกมิจฉาชีพตัดต่อ AI สวมรอยหาคู่ ใช้ใบแพทย์ปลอม",
+ "generated_at": "2026-10-26T07:18:58.937Z",
+ "node_count": 3,
+ "edge_count": 4,
+ "relations": [
+  {
+   "label": "investigated_by",
+   "target_id": "30_Entities/Units/สภ.บางใหญ่",
+   "target_title": "สภ.บางใหญ่",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "30_Entities/Units/สภ.บางใหญ่",
+   "target_title": "สภ.บางใหญ่",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "30_Entities/Units/สภ.บางใหญ่",
+   "target_title": "สภ.บางใหญ่",
+   "direction": "in"
+  }
+ ],
+ "svg": "graphs/20261024-cyber-05.svg"
+}

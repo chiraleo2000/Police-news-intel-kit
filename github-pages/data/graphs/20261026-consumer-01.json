@@ -1,0 +1,52 @@
+{
+ "case_id": "20261026-consumer-01",
+ "title": "ศูนย์พญาพิรุณ-กรมปศุสัตว์-ศุลกากร ยึดเนื้อสัตว์พรีเมียมจากฝรั่งเศสกว่า 2 ตัน 21 ชนิด ที่สุวรรณภูมิ ตามข้อกล่าวหานำเข้าโดยไม่มีใบอนุญาต",
+ "generated_at": "2026-10-26T07:18:59.018Z",
+ "node_count": 5,
+ "edge_count": 7,
+ "relations": [
+  {
+   "label": "investigated_by",
+   "target_id": "30_Entities/Units/กรมปศุสัตว์",
+   "target_title": "กรมปศุสัตว์",
+   "direction": "out"
+  },
+  {
+   "label": "investigated_by",
+   "target_id": "30_Entities/Units/กรมศุลกากร",
+   "target_title": "กรมศุลกากร",
+   "direction": "out"
+  },
+  {
+   "label": "investigated_by",
+   "target_id": "30_Entities/Units/ศูนย์ปฏิบัติการพญาพิรุณ",
+   "target_title": "ศูนย์ปฏิบัติการพญาพิรุณ",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "40_CrimeTypes/คุ้มครองผู้บริโภคและสินค้าผิดกฎหมาย",
+   "target_title": "คุ้มครองผู้บริโภคและสินค้าผิดกฎหมาย",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "30_Entities/Units/กรมปศุสัตว์",
+   "target_title": "กรมปศุสัตว์",
+   "direction": "in"
+  },
+  {
+   "label": "mentions",
+   "target_id": "30_Entities/Units/กรมศุลกากร",
+   "target_title": "กรมศุลกากร",
+   "direction": "in"
+  },
+  {
+   "label": "mentions",
+   "target_id": "30_Entities/Units/ศูนย์ปฏิบัติการพญาพิรุณ",
+   "target_title": "ศูนย์ปฏิบัติการพญาพิรุณ",
+   "direction": "in"
+  }
+ ],
+ "svg": "graphs/20261026-consumer-01.svg"
+}

@@ -1,0 +1,52 @@
+{
+ "case_id": "20261025-drug-02",
+ "title": "ตำรวจภูธรมุกดาหารสกัดจับรถลำเลียงยาบ้า 2.62 ล้านเม็ด พร้อมรถสเก๊านำทาง คุมตัว 4 ผู้ต้องหา ตามข้อกล่าวหา",
+ "generated_at": "2026-10-26T07:18:58.987Z",
+ "node_count": 5,
+ "edge_count": 7,
+ "relations": [
+  {
+   "label": "arrested_by",
+   "target_id": "30_Entities/Units/กก.สส.ภ.จว.มุกดาหาร",
+   "target_title": "กก.สส.ภ.จว.มุกดาหาร",
+   "direction": "out"
+  },
+  {
+   "label": "arrested_by",
+   "target_id": "30_Entities/Units/ภ.จว.มุกดาหาร",
+   "target_title": "ภ.จว.มุกดาหาร",
+   "direction": "out"
+  },
+  {
+   "label": "arrested_by",
+   "target_id": "30_Entities/Units/สภ.นิคมคำสร้อย",
+   "target_title": "สภ.นิคมคำสร้อย",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "40_CrimeTypes/ยาเสพติด",
+   "target_title": "ยาเสพติด",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "30_Entities/Units/กก.สส.ภ.จว.มุกดาหาร",
+   "target_title": "กก.สส.ภ.จว.มุกดาหาร",
+   "direction": "in"
+  },
+  {
+   "label": "mentions",
+   "target_id": "30_Entities/Units/ภ.จว.มุกดาหาร",
+   "target_title": "ภ.จว.มุกดาหาร",
+   "direction": "in"
+  },
+  {
+   "label": "mentions",
+   "target_id": "30_Entities/Units/สภ.นิคมคำสร้อย",
+   "target_title": "สภ.นิคมคำสร้อย",
+   "direction": "in"
+  }
+ ],
+ "svg": "graphs/20261025-drug-02.svg"
+}

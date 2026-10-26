@@ -619,6 +619,45 @@ body::before {
   margin: 0.4rem 0;
 }
 
+.post-detail .story-graph-block .story-ego-wrap {
+  margin: 0.75rem 0 0.5rem;
+  padding: 0.5rem;
+  background: #eef3f7;
+  border: 1px solid var(--line, #d5ddd8);
+  border-radius: 10px;
+  overflow: auto;
+}
+
+.post-detail .story-ego-svg,
+.post-detail .story-ego-img {
+  display: block;
+  width: 100%;
+  max-width: 760px;
+  height: auto;
+  margin: 0 auto;
+}
+
+.post-detail .story-rel-heading {
+  font-size: 0.95rem;
+  margin: 0.85rem 0 0.35rem;
+}
+
+.post-detail .story-rel-list {
+  margin: 0.25rem 0 0.5rem;
+  padding-left: 1.2rem;
+}
+
+.post-detail .story-rel-list code {
+  font-size: 0.82em;
+  background: var(--mist, #e8eef2);
+  padding: 0.1rem 0.35rem;
+  border-radius: 4px;
+}
+
+.post-detail .story-graph-link {
+  margin-top: 0.5rem;
+}
+
 .post-detail .pre {
   white-space: pre-wrap;
 }
@@ -797,7 +836,7 @@ body::before {
   }
 }
 
-/* Second Brain — full-bleed horizontal workspace */
+/* ข้อมูลกราฟ — full-bleed horizontal workspace */
 body.is-brain .site-footer {
   display: none;
 }

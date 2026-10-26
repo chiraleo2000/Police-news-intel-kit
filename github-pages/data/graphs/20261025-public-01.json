@@ -1,0 +1,28 @@
+{
+ "case_id": "20261025-public-01",
+ "title": "ชาวบ้านแหลมฟ้าผ่า สมุทรปราการ ผวา วัยรุ่น 2 กลุ่มไล่ทำร้ายกันกลางดึก ปาระเบิดไทยประดิษฐ์เกือบ 10 ลูก ผู้ใหญ่บ้านประสานตำรวจแล้ว",
+ "generated_at": "2026-10-26T07:18:59.007Z",
+ "node_count": 3,
+ "edge_count": 3,
+ "relations": [
+  {
+   "label": "investigated_by",
+   "target_id": "30_Entities/Units/ผู้ใหญ่บ้าน หมู่ 6 ต.แหลมฟ้าผ่า",
+   "target_title": "ผู้ใหญ่บ้าน หมู่ 6 ต.แหลมฟ้าผ่า",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "40_CrimeTypes/ความสงบเรียบร้อยและความมั่นคงภายใน",
+   "target_title": "ความสงบเรียบร้อยและความมั่นคงภายใน",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "30_Entities/Units/ผู้ใหญ่บ้าน หมู่ 6 ต.แหลมฟ้าผ่า",
+   "target_title": "ผู้ใหญ่บ้าน หมู่ 6 ต.แหลมฟ้าผ่า",
+   "direction": "in"
+  }
+ ],
+ "svg": "graphs/20261025-public-01.svg"
+}

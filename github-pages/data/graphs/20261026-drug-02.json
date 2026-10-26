@@ -1,0 +1,58 @@
+{
+ "case_id": "20261026-drug-02",
+ "title": "ปปส.ภาค 9 ตรวจสอบเรื่องร้องเรียนสายด่วน 1386 ในตรัง-สงขลา ตรวจค้นบ้านด้วยหมายค้นไม่พบยาเสพติด ขยายผลนักค้ารายสำคัญหลบหนีหมายจับ",
+ "generated_at": "2026-10-26T07:18:59.026Z",
+ "node_count": 9,
+ "edge_count": 8,
+ "relations": [
+  {
+   "label": "ordered_by",
+   "target_id": "30_Entities/People/บช.ปส.",
+   "target_title": "บช.ปส.",
+   "direction": "out"
+  },
+  {
+   "label": "announced_by",
+   "target_id": "30_Entities/People/บก.ปปส.ภ.9",
+   "target_title": "บก.ปปส.ภ.9",
+   "direction": "out"
+  },
+  {
+   "label": "announced_by",
+   "target_id": "30_Entities/People/ปปส.ภาค 9",
+   "target_title": "ปปส.ภาค 9",
+   "direction": "out"
+  },
+  {
+   "label": "announced_by",
+   "target_id": "30_Entities/People/สภ.วังวิเศษ",
+   "target_title": "สภ.วังวิเศษ",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "40_CrimeTypes/ยาเสพติด",
+   "target_title": "ยาเสพติด",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "30_Entities/Units/บก.ปปส.ภ.9",
+   "target_title": "บก.ปปส.ภ.9",
+   "direction": "in"
+  },
+  {
+   "label": "mentions",
+   "target_id": "30_Entities/Units/ปปส.ภาค 9",
+   "target_title": "ปปส.ภาค 9",
+   "direction": "in"
+  },
+  {
+   "label": "mentions",
+   "target_id": "30_Entities/Units/สภ.วังวิเศษ",
+   "target_title": "สภ.วังวิเศษ",
+   "direction": "in"
+  }
+ ],
+ "svg": "graphs/20261026-drug-02.svg"
+}

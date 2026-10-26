@@ -6,4 +6,4 @@ source: prompts/task-1-police-crime-news-pipeline.md
 
 ใช้ไฟล์ `prompts/task-1-police-crime-news-pipeline.md` ทั้งไฟล์ (08:01)
 
-การวิเคราะห์ Second Brain อยู่ในรอบนี้ ไม่สร้าง task แยก
+การวิเคราะห์ข้อมูลกราฟ (รวมภาพกราฟต่อหัวข่าว) อยู่ในรอบนี้ ไม่สร้าง task แยก

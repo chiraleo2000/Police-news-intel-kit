@@ -1,0 +1,28 @@
+{
+ "case_id": "20261026-gamble-02",
+ "title": "ตำรวจ สภ.บ้านบึง ชลบุรี จับ 21 ราย ตั้งวงเล่นไฮโล รวมอดีตนายก อบต. รายหนึ่ง ยึดเงินสด 3,800 บาท ตามข้อกล่าวหา",
+ "generated_at": "2026-10-26T07:18:59.031Z",
+ "node_count": 3,
+ "edge_count": 3,
+ "relations": [
+  {
+   "label": "arrested_by",
+   "target_id": "30_Entities/Units/สภ.บ้านบึง",
+   "target_title": "สภ.บ้านบึง",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "40_CrimeTypes/พนันและบ่อนผิดกฎหมาย",
+   "target_title": "พนันและบ่อนผิดกฎหมาย",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "30_Entities/Units/สภ.บ้านบึง",
+   "target_title": "สภ.บ้านบึง",
+   "direction": "in"
+  }
+ ],
+ "svg": "graphs/20261026-gamble-02.svg"
+}

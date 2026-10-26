@@ -1,0 +1,28 @@
+{
+ "case_id": "20261023-drug-02",
+ "title": "ตำรวจปราบปรามยาเสพติดทลายเครือข่ายใหญ่ 7 คดี ยึดยาบ้ากว่า 7 ล้านเม็ด และยืนยันการยิงตอบโต้ที่เขาย้อยเป็นไปตามกฎหมาย",
+ "generated_at": "2026-10-26T07:18:58.849Z",
+ "node_count": 4,
+ "edge_count": 3,
+ "relations": [
+  {
+   "label": "announced_by",
+   "target_id": "30_Entities/People/บช.ปส.",
+   "target_title": "บช.ปส.",
+   "direction": "out"
+  },
+  {
+   "label": "targets_network",
+   "target_id": "30_Entities/Projects/เครือข่ายใหญ่",
+   "target_title": "เครือข่ายใหญ่",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "40_CrimeTypes/ยาเสพติด",
+   "target_title": "ยาเสพติด",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261023-drug-02.svg"
+}

@@ -1,0 +1,28 @@
+{
+ "case_id": "20261023-property-02",
+ "title": "สืบ สน.ห้วยขวาง จับชายวัย 47 ตามหมายจับ คดีย่องลักไอแพดในห้องพัก พบมีประวัติหลายคดี",
+ "generated_at": "2026-10-26T07:18:58.902Z",
+ "node_count": 4,
+ "edge_count": 3,
+ "relations": [
+  {
+   "label": "arrested_by",
+   "target_id": "30_Entities/Units/บก.น.1",
+   "target_title": "บก.น.1",
+   "direction": "out"
+  },
+  {
+   "label": "arrested_by",
+   "target_id": "30_Entities/Units/สน.ห้วยขวาง",
+   "target_title": "สน.ห้วยขวาง",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "40_CrimeTypes/คดีทรัพย์สิน",
+   "target_title": "คดีทรัพย์สิน",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261023-property-02.svg"
+}

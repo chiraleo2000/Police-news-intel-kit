@@ -1,0 +1,40 @@
+{
+ "case_id": "20261026-public-02",
+ "title": "ฝ่ายปกครอง-สภ.แม่สะเรียง จับกลุ่มนักดื่ม 4 ราย ตั้งวงดื่มแอลกอฮอล์ในที่ว่าการอำเภอ ระหว่างงานวิ่ง แจ้งข้อหาดำเนินคดี",
+ "generated_at": "2026-10-26T07:18:59.044Z",
+ "node_count": 4,
+ "edge_count": 5,
+ "relations": [
+  {
+   "label": "arrested_by",
+   "target_id": "30_Entities/Units/ฝ่ายปกครองอำเภอแม่สะเรียง",
+   "target_title": "ฝ่ายปกครองอำเภอแม่สะเรียง",
+   "direction": "out"
+  },
+  {
+   "label": "arrested_by",
+   "target_id": "30_Entities/Units/สภ.แม่สะเรียง",
+   "target_title": "สภ.แม่สะเรียง",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "40_CrimeTypes/ความสงบเรียบร้อยและความมั่นคงภายใน",
+   "target_title": "ความสงบเรียบร้อยและความมั่นคงภายใน",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "30_Entities/Units/ฝ่ายปกครองอำเภอแม่สะเรียง",
+   "target_title": "ฝ่ายปกครองอำเภอแม่สะเรียง",
+   "direction": "in"
+  },
+  {
+   "label": "mentions",
+   "target_id": "30_Entities/Units/สภ.แม่สะเรียง",
+   "target_title": "สภ.แม่สะเรียง",
+   "direction": "in"
+  }
+ ],
+ "svg": "graphs/20261026-public-02.svg"
+}

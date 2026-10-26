@@ -1,0 +1,34 @@
+{
+ "case_id": "20261026-cyber-03",
+ "title": "นักศึกษาหญิงวัย 18 ปี รอดแก๊งคอลเซ็นเตอร์แอบอ้างตำรวจ-เครือข่ายมือถือ หลังเอะใจเรื่องวิดีโอคอลนาน ไปลงบันทึกประจำวันที่ สน.บางเขน",
+ "generated_at": "2026-10-26T07:18:59.022Z",
+ "node_count": 4,
+ "edge_count": 4,
+ "relations": [
+  {
+   "label": "investigated_by",
+   "target_id": "30_Entities/Units/สน.บางเขน",
+   "target_title": "สน.บางเขน",
+   "direction": "out"
+  },
+  {
+   "label": "targets_network",
+   "target_id": "30_Entities/Projects/คอลเซ็นเตอร์",
+   "target_title": "คอลเซ็นเตอร์",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "30_Entities/Units/สน.บางเขน",
+   "target_title": "สน.บางเขน",
+   "direction": "in"
+  }
+ ],
+ "svg": "graphs/20261026-cyber-03.svg"
+}

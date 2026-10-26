@@ -1,0 +1,22 @@
+{
+ "case_id": "20261023-drug-01",
+ "title": "นครพนมยึดยาบ้า 4 ล้านเม็ด ริมโขง อ.ธาตุพนม ไม่พบผู้กระทำผิด",
+ "generated_at": "2026-10-26T07:18:58.847Z",
+ "node_count": 3,
+ "edge_count": 2,
+ "relations": [
+  {
+   "label": "investigated_by",
+   "target_id": "30_Entities/Units/หน่วยงานความมั่นคงบูรณาการ",
+   "target_title": "หน่วยงานความมั่นคงบูรณาการ",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "40_CrimeTypes/ยาเสพติด",
+   "target_title": "ยาเสพติด",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261023-drug-01.svg"
+}

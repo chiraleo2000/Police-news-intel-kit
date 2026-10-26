@@ -1,0 +1,22 @@
+{
+ "case_id": "20261024-transnat-04",
+ "title": "Sanctioned Investor in Cambodian Scam Compound Owns California Mansion",
+ "generated_at": "2026-10-26T07:18:58.971Z",
+ "node_count": 3,
+ "edge_count": 2,
+ "relations": [
+  {
+   "label": "ordered_by",
+   "target_id": "30_Entities/People/บช.สอท.",
+   "target_title": "บช.สอท.",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "40_CrimeTypes/อาชญากรรมข้ามชาติและความร่วมมือระหว่างประเทศ",
+   "target_title": "อาชญากรรมข้ามชาติและความร่วมมือระหว่างประเทศ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261024-transnat-04.svg"
+}

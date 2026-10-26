@@ -613,7 +613,40 @@
     els.status.textContent = `${posts.length} เหตุการณ์ · ${RANGE_LABELS[range]} · พร้อมใช้งาน`;
   }
 
-  function renderPostDetail(date, postId) {
+  async function storyGraphSection(post) {
+    if (window.BrainGraph?.storyGraphHtml) {
+      try {
+        return await window.BrainGraph.storyGraphHtml(post);
+      } catch {
+        /* fall through */
+      }
+    }
+    const caseKey = post.id || post.slug || "";
+    const svgPath = caseKey ? `data/graphs/${encodeURIComponent(caseKey)}.svg` : "";
+    const related = post.related_cases || [];
+    const relHtml = related.length
+      ? `<ul class="story-rel-list">${related
+          .map(
+            (r) =>
+              `<li><code>${escapeHtml(r.relation || "related_to")}</code> → ${escapeHtml(r.title || r.id)}</li>`
+          )
+          .join("")}</ul>`
+      : `<p class="muted">ยังไม่มีเส้นความสัมพันธ์</p>`;
+    return `
+      <section class="analysis-block story-graph-block">
+        <h2>ข้อมูลกราฟของข่าวนี้</h2>
+        ${
+          svgPath
+            ? `<img class="story-ego-img" src="${svgPath}" alt="ข้อมูลกราฟ" loading="lazy" onerror="this.hidden=true" />`
+            : ""
+        }
+        <h3 class="story-rel-heading">ความสัมพันธ์</h3>
+        ${relHtml}
+        <p class="muted story-graph-link"><a href="#/brain">เปิดแท็บข้อมูลกราฟ</a></p>
+      </section>`;
+  }
+
+  async function renderPostDetail(date, postId) {
     const post =
       allPosts.find((p) => p._date === date && (p.id === postId || p.slug === postId)) ||
       allPosts.find((p) => p.id === postId || p.slug === postId);
@@ -634,6 +667,7 @@
     const actions = (post.actions_public || []).filter((a) => a && a !== "N/A");
     const tags = (post.tags || []).map((t) => `<span class="chip">${escapeHtml(t)}</span>`).join("");
     const sources = sourceList(post);
+    const graphHtml = await storyGraphSection(post);
     els.postDetail.innerHTML = `
       <a class="back" href="#/r/${currentRange}">← กลับรายการ (${escapeHtml(RANGE_LABELS[currentRange])})</a>
       <div class="post-meta">
@@ -655,15 +689,16 @@
           ? `<section class="analysis-block"><h2>วิเคราะห์</h2><p class="pre">${escapeHtml(post.analysis_notes)}</p></section>`
           : ""
       }
+      ${graphHtml}
       ${
         (post.related_cases || []).length
-          ? `<section class="analysis-block"><h2>ความเชื่อมโยง</h2><ul>${post.related_cases
+          ? `<section class="analysis-block"><h2>ความเชื่อมโยง (related_cases)</h2><ul>${post.related_cases
               .map(
                 (r) =>
                   `<li><a href="#/${escapeHtml(post._date || date)}/${encodeURIComponent(r.id)}">${escapeHtml(r.title || r.id)}</a> <span class="muted">(${escapeHtml(r.relation || "related_to")})</span></li>`
               )
               .join("")}</ul></section>`
-          : `<section class="analysis-block"><h2>ความเชื่อมโยง</h2><p class="muted">ยังไม่พบเรื่องที่เกี่ยวข้องในช่วงที่ค้นได้</p></section>`
+          : `<section class="analysis-block"><h2>ความเชื่อมโยง (related_cases)</h2><p class="muted">ยังไม่พบเรื่องที่เกี่ยวข้องในช่วงที่ค้นได้</p></section>`
       }
       <section class="fact-card">
         <h2>การ์ดข้อเท็จจริง</h2>
@@ -850,7 +885,7 @@
       await window.BrainGraph.show();
       if (parsed.nodeId) window.BrainGraph.select(parsed.nodeId);
     }
-    els.status.textContent = "Second Brain · กราฟจาก vault Obsidian";
+    els.status.textContent = "ข้อมูลกราฟ · จาก vault Obsidian";
   }
 
   function handleEmpty() {
@@ -889,7 +924,7 @@
     }
 
     if (parsed.date && parsed.postId) {
-      renderPostDetail(parsed.date, parsed.postId);
+      await renderPostDetail(parsed.date, parsed.postId);
       return;
     }
 

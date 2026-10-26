@@ -1,0 +1,28 @@
+{
+ "case_id": "20261025-property-01",
+ "title": "ตำรวจบางศรีเมืองจับชายวัย 28 ปี ผู้ต้องหาลักทรัพย์ในเคหสถาน นนทบุรี มูลค่ากว่า 2 ล้านบาท ให้การว่าเป็นหนี้จากเทรดทองตามโฆษณาโซเชียล",
+ "generated_at": "2026-10-26T07:18:59.006Z",
+ "node_count": 3,
+ "edge_count": 3,
+ "relations": [
+  {
+   "label": "arrested_by",
+   "target_id": "30_Entities/Units/สภ.บางศรีเมือง",
+   "target_title": "สภ.บางศรีเมือง",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "40_CrimeTypes/คดีทรัพย์สิน",
+   "target_title": "คดีทรัพย์สิน",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "30_Entities/Units/สภ.บางศรีเมือง",
+   "target_title": "สภ.บางศรีเมือง",
+   "direction": "in"
+  }
+ ],
+ "svg": "graphs/20261025-property-01.svg"
+}

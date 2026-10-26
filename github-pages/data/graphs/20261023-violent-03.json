@@ -1,0 +1,34 @@
+{
+ "case_id": "20261023-violent-03",
+ "title": "ผู้รับเหมารายใหญ่ในพัทลุงถูกยิงสองนัดขณะซ้อมกอล์ฟ ตำรวจยังไม่พบตัวผู้ก่อเหตุ",
+ "generated_at": "2026-10-26T07:18:58.921Z",
+ "node_count": 4,
+ "edge_count": 4,
+ "relations": [
+  {
+   "label": "related_to",
+   "target_id": "20_Cases/20261022-violent-phatthalung-contractor",
+   "target_title": "คนร้ายใช้ปืนไรเฟิล .22 ซุ่มยิงผู้รับเหมาวัย 57 ปีขณะซ้อมกอล์ฟ พัทลุง บาดเจ็บสาหัส ตำรวจเล็งปมธุรกิจ",
+   "direction": "in"
+  },
+  {
+   "label": "investigated_by",
+   "target_id": "30_Entities/Units/สภ.บางแก้ว",
+   "target_title": "สภ.บางแก้ว",
+   "direction": "out"
+  },
+  {
+   "label": "follow_up_of",
+   "target_id": "20_Cases/20261022-violent-phatthalung-contractor",
+   "target_title": "คนร้ายใช้ปืนไรเฟิล .22 ซุ่มยิงผู้รับเหมาวัย 57 ปีขณะซ้อมกอล์ฟ พัทลุง บาดเจ็บสาหัส ตำรวจเล็งปมธุรกิจ",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "40_CrimeTypes/คดีชีวิต ร่างกาย และเพศ",
+   "target_title": "คดีชีวิต ร่างกาย และเพศ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261023-violent-03.svg"
+}

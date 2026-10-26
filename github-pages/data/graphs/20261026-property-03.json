@@ -1,0 +1,40 @@
+{
+ "case_id": "20261026-property-03",
+ "title": "สน.พลับพลาไชย 2 จับ 2 ชายวัยกลางคน ผู้ต้องสงสัยทำทีขอยืมเงินแล้วกระชากสร้อยคอทองคำ 2 บาท ที่เยาวราช ตามข้อกล่าวหา ให้การขายทองได้ 11,000 บาท",
+ "generated_at": "2026-10-26T07:18:59.040Z",
+ "node_count": 4,
+ "edge_count": 5,
+ "relations": [
+  {
+   "label": "arrested_by",
+   "target_id": "30_Entities/Units/บก.น.6",
+   "target_title": "บก.น.6",
+   "direction": "out"
+  },
+  {
+   "label": "arrested_by",
+   "target_id": "30_Entities/Units/สน.พลับพลาไชย 2",
+   "target_title": "สน.พลับพลาไชย 2",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "40_CrimeTypes/คดีทรัพย์สิน",
+   "target_title": "คดีทรัพย์สิน",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "30_Entities/Units/บก.น.6",
+   "target_title": "บก.น.6",
+   "direction": "in"
+  },
+  {
+   "label": "mentions",
+   "target_id": "30_Entities/Units/สน.พลับพลาไชย 2",
+   "target_title": "สน.พลับพลาไชย 2",
+   "direction": "in"
+  }
+ ],
+ "svg": "graphs/20261026-property-03.svg"
+}

@@ -1,0 +1,40 @@
+{
+ "case_id": "20261023-police-07",
+ "title": "หัวหน้า ตม. นำมาตรการความปลอดภัยนักท่องเที่ยวและป้องกันอาชญากรรมในพัทยา ใช้ AI จดจำใบหน้าตามผู้ต้องหา",
+ "generated_at": "2026-10-26T07:18:58.896Z",
+ "node_count": 6,
+ "edge_count": 5,
+ "relations": [
+  {
+   "label": "ordered_by",
+   "target_id": "30_Entities/Units/บช.สตม.",
+   "target_title": "บช.สตม.",
+   "direction": "out"
+  },
+  {
+   "label": "announced_by",
+   "target_id": "30_Entities/People/ตม.",
+   "target_title": "ตม.",
+   "direction": "out"
+  },
+  {
+   "label": "announced_by",
+   "target_id": "30_Entities/People/ตำรวจท่องเที่ยว",
+   "target_title": "ตำรวจท่องเที่ยว",
+   "direction": "out"
+  },
+  {
+   "label": "announced_by",
+   "target_id": "30_Entities/People/ตำรวจภูธรชลบุรี",
+   "target_title": "ตำรวจภูธรชลบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "40_CrimeTypes/การปฏิบัติหน้าที่ ประชาสัมพันธ์ และนโยบายตำรวจ",
+   "target_title": "การปฏิบัติหน้าที่ ประชาสัมพันธ์ และนโยบายตำรวจ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261023-police-07.svg"
+}

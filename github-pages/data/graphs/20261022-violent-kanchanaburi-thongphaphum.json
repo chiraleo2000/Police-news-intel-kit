@@ -1,0 +1,40 @@
+{
+ "case_id": "20261022-violent-kanchanaburi-thongphaphum",
+ "title": "พบชายวัย 45 ปีถูกยิงเสียชีวิตในบ้านใต้ถุนสูง ทองผาภูมิ กาญจนบุรี ตำรวจล่าตัวคนร้าย",
+ "generated_at": "2026-10-26T07:18:58.830Z",
+ "node_count": 5,
+ "edge_count": 5,
+ "relations": [
+  {
+   "label": "investigated_by",
+   "target_id": "30_Entities/Units/พิสูจน์หลักฐานกาญจนบุรี",
+   "target_title": "พิสูจน์หลักฐานกาญจนบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "investigated_by",
+   "target_id": "30_Entities/Units/สภ.ทองผาภูมิ",
+   "target_title": "สภ.ทองผาภูมิ",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "30_Entities/Units/สถานีตำรวจภูธรทองผาภูมิ",
+   "target_title": "สถานีตำรวจภูธรทองผาภูมิ",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "40_CrimeTypes/คดีชีวิต ร่างกาย และเพศ",
+   "target_title": "คดีชีวิต ร่างกาย และเพศ",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "30_Entities/Units/สถานีตำรวจภูธรทองผาภูมิ",
+   "target_title": "สถานีตำรวจภูธรทองผาภูมิ",
+   "direction": "in"
+  }
+ ],
+ "svg": "graphs/20261022-violent-kanchanaburi-thongphaphum.svg"
+}

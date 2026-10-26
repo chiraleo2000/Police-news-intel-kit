@@ -1,0 +1,64 @@
+{
+ "case_id": "20261025-drug-03",
+ "title": "ตำรวจภาค 5 พบยาบ้าราว 2 ล้านเม็ดถูกทิ้งในป่าละเมาะริมถนนเชียงใหม่-พร้าว คาดขบวนการลำเลียงหวั่นด่านเอ็กซเรย์",
+ "generated_at": "2026-10-26T07:18:58.988Z",
+ "node_count": 6,
+ "edge_count": 9,
+ "relations": [
+  {
+   "label": "investigated_by",
+   "target_id": "30_Entities/Units/กก.ปพ.บก.สส.ภ.5",
+   "target_title": "กก.ปพ.บก.สส.ภ.5",
+   "direction": "out"
+  },
+  {
+   "label": "investigated_by",
+   "target_id": "30_Entities/Units/ภ.5",
+   "target_title": "ภ.5",
+   "direction": "out"
+  },
+  {
+   "label": "investigated_by",
+   "target_id": "30_Entities/Units/ศอ.ปส.ภ.5",
+   "target_title": "ศอ.ปส.ภ.5",
+   "direction": "out"
+  },
+  {
+   "label": "investigated_by",
+   "target_id": "30_Entities/Units/สภ.แม่แฝก",
+   "target_title": "สภ.แม่แฝก",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "40_CrimeTypes/ยาเสพติด",
+   "target_title": "ยาเสพติด",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "30_Entities/Units/กก.ปพ.บก.สส.ภ.5",
+   "target_title": "กก.ปพ.บก.สส.ภ.5",
+   "direction": "in"
+  },
+  {
+   "label": "mentions",
+   "target_id": "30_Entities/Units/ภ.5",
+   "target_title": "ภ.5",
+   "direction": "in"
+  },
+  {
+   "label": "mentions",
+   "target_id": "30_Entities/Units/ศอ.ปส.ภ.5",
+   "target_title": "ศอ.ปส.ภ.5",
+   "direction": "in"
+  },
+  {
+   "label": "mentions",
+   "target_id": "30_Entities/Units/สภ.แม่แฝก",
+   "target_title": "สภ.แม่แฝก",
+   "direction": "in"
+  }
+ ],
+ "svg": "graphs/20261025-drug-03.svg"
+}

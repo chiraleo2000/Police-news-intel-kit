@@ -1,0 +1,28 @@
+{
+ "case_id": "20261023-police-06",
+ "title": "ประชุมทบทวนการปฏิบัติการจัดงาน วันตำรวจ ประจำปี 2569",
+ "generated_at": "2026-10-26T07:18:58.894Z",
+ "node_count": 4,
+ "edge_count": 3,
+ "relations": [
+  {
+   "label": "investigated_by",
+   "target_id": "30_Entities/Units/กองสารนิเทศ ตร.",
+   "target_title": "กองสารนิเทศ ตร.",
+   "direction": "out"
+  },
+  {
+   "label": "investigated_by",
+   "target_id": "30_Entities/Units/ตร.",
+   "target_title": "ตร.",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "40_CrimeTypes/การปฏิบัติหน้าที่ ประชาสัมพันธ์ และนโยบายตำรวจ",
+   "target_title": "การปฏิบัติหน้าที่ ประชาสัมพันธ์ และนโยบายตำรวจ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261023-police-06.svg"
+}

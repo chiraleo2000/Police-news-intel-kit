@@ -1,0 +1,34 @@
+{
+ "case_id": "20261022-line-tourist-hatyai-chinese-smuggling",
+ "title": "บก.ตม.6 รวบครบ 3 ราย ทลายขบวนการนำพาคนจีนจากมาเลเซียลอบเข้าไทย",
+ "generated_at": "2026-10-26T07:18:58.800Z",
+ "node_count": 5,
+ "edge_count": 4,
+ "relations": [
+  {
+   "label": "arrested_by",
+   "target_id": "30_Entities/Units/กก.สส.บก.ตม.6",
+   "target_title": "กก.สส.บก.ตม.6",
+   "direction": "out"
+  },
+  {
+   "label": "arrested_by",
+   "target_id": "30_Entities/Units/ตม.จว.สงขลา",
+   "target_title": "ตม.จว.สงขลา",
+   "direction": "out"
+  },
+  {
+   "label": "ordered_by",
+   "target_id": "30_Entities/Units/บช.สตม.",
+   "target_title": "บช.สตม.",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "40_CrimeTypes/อาชญากรรมที่เกี่ยวข้องกับนักท่องเที่ยวและชาวต่างชาติ",
+   "target_title": "อาชญากรรมที่เกี่ยวข้องกับนักท่องเที่ยวและชาวต่างชาติ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261022-line-tourist-hatyai-chinese-smuggling.svg"
+}

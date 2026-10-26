@@ -1,0 +1,70 @@
+{
+ "case_id": "20261024-property-04",
+ "title": "Beer-lured theft suspect caught after court escape left owner afraid",
+ "generated_at": "2026-10-26T07:18:58.959Z",
+ "node_count": 5,
+ "edge_count": 10,
+ "relations": [
+  {
+   "label": "arrested_by",
+   "target_id": "30_Entities/Units/ตำรวจสืบสวนภาค 2",
+   "target_title": "ตำรวจสืบสวนภาค 2",
+   "direction": "out"
+  },
+  {
+   "label": "arrested_by",
+   "target_id": "30_Entities/Units/ภ.2",
+   "target_title": "ภ.2",
+   "direction": "out"
+  },
+  {
+   "label": "arrested_by",
+   "target_id": "30_Entities/Units/สภ.เมืองพัทยา",
+   "target_title": "สภ.เมืองพัทยา",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "40_CrimeTypes/คดีทรัพย์สิน",
+   "target_title": "คดีทรัพย์สิน",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "30_Entities/Units/สภ.เมืองพัทยา",
+   "target_title": "สภ.เมืองพัทยา",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "30_Entities/Units/ภ.2",
+   "target_title": "ภ.2",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "30_Entities/Units/ตำรวจสืบสวนภาค 2",
+   "target_title": "ตำรวจสืบสวนภาค 2",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "30_Entities/Units/ตำรวจสืบสวนภาค 2",
+   "target_title": "ตำรวจสืบสวนภาค 2",
+   "direction": "in"
+  },
+  {
+   "label": "mentions",
+   "target_id": "30_Entities/Units/ภ.2",
+   "target_title": "ภ.2",
+   "direction": "in"
+  },
+  {
+   "label": "mentions",
+   "target_id": "30_Entities/Units/สภ.เมืองพัทยา",
+   "target_title": "สภ.เมืองพัทยา",
+   "direction": "in"
+  }
+ ],
+ "svg": "graphs/20261024-property-04.svg"
+}

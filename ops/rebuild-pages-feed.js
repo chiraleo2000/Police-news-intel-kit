@@ -2,7 +2,8 @@
 /**
  * Rebuild github-pages/data/feed.json + manifest.json
  * Sync PDF / Infographic from Document/{DATE}_Crime* → data/downloads/
- * Build Obsidian Second Brain graph → data/graph.json
+ * Build ข้อมูลกราฟ (Obsidian vault graph) → data/graph.json
+ * Build per-case ego SVGs → data/graphs/{case_id}.svg
  * Downloads list prioritizes PDF (สรุปรายวัน) over JSON.
  */
 const fs = require("fs");
@@ -211,7 +212,7 @@ if (!pdfDays) {
   );
 }
 
-// Second Brain: vault wikilinks → graph.json (vault/ is local; graph is published)
+// ข้อมูลกราฟ: vault wikilinks → graph.json (vault/ is local; graph is published)
 const graphScript = path.join(__dirname, "build-obsidian-graph.js");
 if (fs.existsSync(graphScript)) {
   const r = spawnSync(process.execPath, [graphScript], {
@@ -221,6 +222,20 @@ if (fs.existsSync(graphScript)) {
   if (r.stdout) process.stdout.write(r.stdout);
   if (r.stderr) process.stderr.write(r.stderr);
   if (r.status !== 0) {
-    console.warn("WARN: build-obsidian-graph.js failed — Pages Brain tab may be stale");
+    console.warn("WARN: build-obsidian-graph.js failed — Pages ข้อมูลกราฟ tab may be stale");
+  }
+}
+
+// Per-story ego subgraphs for blog/detail + PDF embeds
+const egoScript = path.join(__dirname, "build-case-ego-graphs.js");
+if (fs.existsSync(egoScript)) {
+  const r = spawnSync(process.execPath, [egoScript], {
+    cwd: ROOT,
+    encoding: "utf8",
+  });
+  if (r.stdout) process.stdout.write(r.stdout);
+  if (r.stderr) process.stderr.write(r.stderr);
+  if (r.status !== 0) {
+    console.warn("WARN: build-case-ego-graphs.js failed — per-story graphs may be missing");
   }
 }

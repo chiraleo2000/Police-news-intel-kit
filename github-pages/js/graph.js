@@ -1,7 +1,8 @@
 /**
- * Second Brain graph — Obsidian-like force layout over data/graph.json
+ * ข้อมูลกราฟ — Obsidian-like force layout over data/graph.json
  * Case (news) nodes are hubs; entity / crime_type are smaller satellites.
  * Zoom / pan / fit-to-view scale with graph size.
+ * Also builds per-story ego SVG for post detail views.
  */
 (() => {
   const ZOOM_MIN = 0.12;
@@ -273,31 +274,93 @@
   }
 
   function strokeColorForLink(hot, dim) {
-    if (hot) return "rgba(125, 211, 192, 0.72)";
+    if (hot) return "rgba(125, 211, 192, 0.85)";
     if (dim) return "rgba(160, 176, 196, 0.05)";
-    return "rgba(160, 176, 196, 0.22)";
+    return "rgba(160, 176, 196, 0.32)";
   }
 
-  function drawLinkLabel(ctx, l) {
+  function drawPillLabel(ctx, text, x, y, opts = {}) {
+    const fontPx = opts.fontPx || 12;
+    const padX = opts.padX ?? 6;
+    const padY = opts.padY ?? 3;
+    const align = opts.align || "left";
+    ctx.font = `${opts.weight || "600"} ${fontPx / camera.scale}px Sarabun, Anuphan, sans-serif`;
+    const w = ctx.measureText(text).width;
+    const h = fontPx / camera.scale;
+    let left = x;
+    if (align === "center") left = x - w / 2;
+    else if (align === "right") left = x - w;
+    const px = padX / camera.scale;
+    const py = padY / camera.scale;
+    const rx = 6 / camera.scale;
+    ctx.fillStyle = opts.bg || "rgba(12, 18, 28, 0.88)";
+    ctx.strokeStyle = opts.border || "rgba(220, 230, 242, 0.35)";
+    ctx.lineWidth = 1 / camera.scale;
+    ctx.beginPath();
+    const r = rx;
+    const x0 = left - px;
+    const y0 = y - h + py * 0.2;
+    const bw = w + px * 2;
+    const bh = h + py * 1.6;
+    ctx.moveTo(x0 + r, y0);
+    ctx.arcTo(x0 + bw, y0, x0 + bw, y0 + bh, r);
+    ctx.arcTo(x0 + bw, y0 + bh, x0, y0 + bh, r);
+    ctx.arcTo(x0, y0 + bh, x0, y0, r);
+    ctx.arcTo(x0, y0, x0 + bw, y0, r);
+    ctx.closePath();
+    ctx.fill();
+    ctx.stroke();
+    ctx.fillStyle = opts.fg || "#f4f8fc";
+    ctx.textBaseline = "alphabetic";
+    ctx.fillText(text, left, y);
+  }
+
+  function drawLinkLabel(ctx, l, emphasized) {
+    if (!l.label) return;
     const mx = (l.source.x + l.target.x) / 2;
     const my = (l.source.y + l.target.y) / 2;
-    ctx.fillStyle = "rgba(220, 230, 242, 0.85)";
-    ctx.font = `${11 / camera.scale}px Sarabun, Anuphan, sans-serif`;
-    ctx.fillText(l.label, mx, my);
+    const text = l.label === "mentions" && !emphasized ? "" : l.label;
+    if (!text) return;
+    drawPillLabel(ctx, text, mx, my + 3 / camera.scale, {
+      fontPx: emphasized ? 11.5 : 10,
+      align: "center",
+      bg: emphasized ? "rgba(18, 40, 36, 0.92)" : "rgba(16, 24, 36, 0.82)",
+      border: emphasized ? "rgba(125, 211, 192, 0.55)" : "rgba(180, 196, 214, 0.35)",
+      fg: emphasized ? "#d8fff4" : "#e8f0f8",
+      weight: "600",
+    });
+  }
+
+  function shouldShowLinkLabel(l, focus) {
+    if (!l.label) return false;
+    const hot = Boolean(focus) && (l.source.id === focus || l.target.id === focus);
+    if (hot) return camera.scale > 0.45;
+    if (l.label === "mentions") return false;
+    if (camera.scale > 1.35) return true;
+    if (camera.scale > 0.95 && (l.source.kind === "case" || l.target.kind === "case")) {
+      return (l.source.degree || 0) + (l.target.degree || 0) >= 4;
+    }
+    return false;
   }
 
   function drawLinks(ctx, links, focus) {
+    const labelBudget = camera.scale > 1.2 ? 48 : camera.scale > 0.85 ? 28 : 14;
+    const labeled = [];
     for (const l of links) {
       const hot = Boolean(focus) && (l.source.id === focus || l.target.id === focus);
       const dim = Boolean(focus) && !hot;
       ctx.strokeStyle = strokeColorForLink(hot, dim);
-      ctx.lineWidth = (hot ? 2 : 0.9) / camera.scale;
+      ctx.lineWidth = (hot ? 2.2 : 1) / camera.scale;
       ctx.beginPath();
       ctx.moveTo(l.source.x, l.source.y);
       ctx.lineTo(l.target.x, l.target.y);
       ctx.stroke();
-      if (hot && l.label && camera.scale > 0.7) drawLinkLabel(ctx, l);
+      if (!dim && shouldShowLinkLabel(l, focus)) labeled.push({ l, hot });
     }
+    labeled
+      .sort((a, b) => Number(b.hot) - Number(a.hot))
+      .slice(0, labelBudget)
+      .forEach(({ l, hot }) => drawLinkLabel(ctx, l, hot));
   }
 
   function drawNodes(ctx, nodes, neigh) {
@@ -345,43 +408,77 @@
   function shouldShowLabel(n, neigh, showAll) {
     if (showAll) return true;
     if (n.id === selectedId || n.id === hoverId) return true;
-    if (neigh?.has(n.id)) return n.kind === "case" || (n.degree || 0) >= 2;
-    // When zoomed out, only key case hubs; when zoomed in, more case titles
+    if (neigh?.has(n.id)) return true;
     if (n.kind === "case") {
-      if (camera.scale < 0.45) return (n.degree || 0) >= 8;
-      if (camera.scale < 0.85) return (n.degree || 0) >= 4;
-      return (n.degree || 0) >= 2;
+      if (camera.scale < 0.45) return (n.degree || 0) >= 6;
+      if (camera.scale < 0.85) return (n.degree || 0) >= 3;
+      return true;
     }
-    if (n.kind === "crime_type") return camera.scale > 0.9 && (n.degree || 0) >= 6;
-    return camera.scale > 1.35 && (n.degree || 0) >= 8;
+    if (n.kind === "crime_type") return camera.scale > 0.75 && (n.degree || 0) >= 3;
+    return camera.scale > 1.1 && (n.degree || 0) >= 4;
   }
 
   function truncateLabel(title, kind) {
-    const max = kind === "case" ? (camera.scale > 1.2 ? 42 : 28) : 22;
+    const max = kind === "case" ? (camera.scale > 1.2 ? 44 : 30) : 24;
     if (title.length <= max) return title;
     return title.slice(0, max - 1) + "…";
+  }
+
+  function nodePropLines(n, active) {
+    const showProps =
+      active ||
+      camera.scale >= 1.05 ||
+      (n.kind === "case" && camera.scale >= 0.85 && (n.degree || 0) >= 3);
+    if (!showProps) return [];
+    if (n.kind === "case") {
+      return [n.bureau, n.area, n.crime_type, n.status]
+        .filter((x) => x && String(x) !== "-")
+        .map((x) => truncateLabel(String(x), "prop"))
+        .slice(0, active || camera.scale >= 1.35 ? 4 : 2);
+    }
+    if (n.kind === "entity" && n.entity_group) {
+      return [truncateLabel(String(n.entity_group), "prop")];
+    }
+    return [];
   }
 
   function drawLabels(ctx, nodes, neigh) {
     const showAll = filters.showLabels === "all";
     if (filters.showLabels === "none") return;
-    const fontPx = Math.max(10, Math.min(15, 12.5 / Math.sqrt(camera.scale)));
-    ctx.font = `${fontPx / camera.scale}px Sarabun, Anuphan, sans-serif`;
-    ctx.fillStyle = "rgba(236, 242, 248, 0.92)";
+    const fontPx = Math.max(11, Math.min(15, 13 / Math.sqrt(Math.max(0.5, camera.scale))));
     const labeled = nodes.filter((n) => shouldShowLabel(n, neigh, showAll));
-    // Prefer cases first so they win the label budget
     labeled.sort((a, b) => {
       const ka = a.kind === "case" ? 0 : a.kind === "crime_type" ? 1 : 2;
       const kb = b.kind === "case" ? 0 : b.kind === "crime_type" ? 1 : 2;
       if (ka !== kb) return ka - kb;
       return (b.degree || 0) - (a.degree || 0);
     });
-    const cap = showAll ? 160 : camera.scale > 1 ? 70 : 40;
+    const cap = showAll ? 180 : camera.scale > 1 ? 90 : 55;
     for (const n of labeled.slice(0, cap)) {
       const outsideFocus = neigh && !neigh.has(n.id) && n.id !== selectedId && n.id !== hoverId;
       if (outsideFocus) continue;
+      const active = n.id === selectedId || n.id === hoverId;
       const label = truncateLabel(n.title, n.kind);
-      ctx.fillText(label, n.x + nodeRadius(n) + 5, n.y + 3);
+      const x = n.x + nodeRadius(n) + 7;
+      const y = n.y + 4;
+      drawPillLabel(ctx, label, x, y, {
+        fontPx: active ? fontPx + 1 : fontPx,
+        bg: active ? "rgba(8, 28, 24, 0.94)" : "rgba(10, 16, 26, 0.9)",
+        border: active ? "rgba(125, 211, 192, 0.65)" : "rgba(210, 222, 236, 0.4)",
+        fg: "#f6fafc",
+        weight: "700",
+      });
+      const props = nodePropLines(n, active);
+      props.forEach((line, i) => {
+        drawPillLabel(ctx, line, x, y + (14 + i * 13) / camera.scale, {
+          fontPx: Math.max(9.5, fontPx - 2),
+          bg: "rgba(20, 28, 40, 0.82)",
+          border: "rgba(160, 176, 196, 0.28)",
+          fg: "#c8d6e4",
+          weight: "500",
+          padY: 2,
+        });
+      });
     }
   }
 
@@ -548,6 +645,7 @@
         ${node.date ? `<div><dt>วันที่</dt><dd>${escapeHtml(node.date)}</dd></div>` : ""}
         ${node.bureau ? `<div><dt>หน่วยงาน</dt><dd>${escapeHtml(node.bureau)}</dd></div>` : ""}
         ${node.crime_type ? `<div><dt>ประเภท</dt><dd>${escapeHtml(node.crime_type)}</dd></div>` : ""}
+        ${node.status ? `<div><dt>สถานะ</dt><dd>${escapeHtml(node.status)}</dd></div>` : ""}
         ${node.entity_group ? `<div><dt>กลุ่มเอนทิตี</dt><dd>${escapeHtml(node.entity_group)}</dd></div>` : ""}
         <div><dt>องศาลิงก์</dt><dd>${node.degree || 0}</dd></div>
       </dl>
@@ -664,9 +762,10 @@
   function renderHelp() {
     if (!els.help) return;
     els.help.innerHTML = `
-      <h3>กราฟนี้คืออะไร?</h3>
+      <h3>ข้อมูลกราฟคืออะไร?</h3>
       <p>สำเนากราฟจากคลัง Obsidian ตอน publish — โหนดใหญ่คือหัวข่าว (คดี)
-      โหนดเล็กคือเอนทิตี/ประเภทที่คดีพูดถึง เส้นมีป้ายเช่น arrested_by / related_to</p>
+      โหนดเล็กคือเอนทิตี/ประเภทที่คดีพูดถึง เส้นมีป้ายเช่น arrested_by / related_to
+      เมื่อซูมเข้าหรือเลือกโหนด จะเห็นคุณสมบัติสำคัญบนโหนด (หน่วยงาน พื้นที่ ประเภท สถานะ)</p>
       <h3>วิธีใช้</h3>
       <ul>
         <li><strong>คลิก</strong> จุด = เปิดรายละเอียด</li>
@@ -843,7 +942,7 @@
     if (!els.canvas) return;
 
     try {
-      if (els.status) els.status.textContent = "กำลังโหลด Second Brain…";
+      if (els.status) els.status.textContent = "กำลังโหลดข้อมูลกราฟ…";
       graph = await loadGraph();
       const n = graph.stats?.nodes || graph.nodes?.length || 0;
       if (!n) {
@@ -853,7 +952,7 @@
       }
       if (els.empty) els.empty.hidden = true;
       if (els.status) {
-        els.status.textContent = "กราฟแบบ Obsidian · โหนดใหญ่ = ข่าว · ซูม/พอดีจอได้";
+        els.status.textContent = "ข้อมูลกราฟ · โหนดใหญ่ = ข่าว · ซูมเพื่ออ่านป้ายและคุณสมบัติ";
       }
       renderHelp();
       fillEntityGroups();
@@ -943,6 +1042,234 @@
     });
   }
 
+  function matchCaseKeys(post) {
+    return [post?.case_id, post?.id, post?.slug].filter(Boolean).map(String);
+  }
+
+  function findCaseNode(postOrId) {
+    if (!graph?.nodes) return null;
+    const keys =
+      typeof postOrId === "string" || typeof postOrId === "number"
+        ? [String(postOrId)]
+        : matchCaseKeys(postOrId);
+    if (!keys.length) return null;
+    return (
+      graph.nodes.find(
+        (n) =>
+          n.kind === "case" &&
+          keys.some(
+            (k) =>
+              n.case_id === k ||
+              n.id === k ||
+              n.id.endsWith("/" + k) ||
+              (n.path && n.path.includes(k))
+          )
+      ) || null
+    );
+  }
+
+  function egoForHub(hub) {
+    if (!hub || !graph) return { hub: null, nodes: [], edges: [], relations: [] };
+    const edges = (graph.edges || []).filter((e) => e.source === hub.id || e.target === hub.id);
+    const ids = new Set([hub.id]);
+    for (const e of edges) {
+      ids.add(e.source);
+      ids.add(e.target);
+    }
+    const byId = new Map(graph.nodes.map((n) => [n.id, n]));
+    const nodes = [...ids].map((id) => byId.get(id)).filter(Boolean);
+    const relations = edges.map((e) => {
+      const otherId = e.source === hub.id ? e.target : e.source;
+      const other = byId.get(otherId);
+      return {
+        label: e.label || "mentions",
+        target_id: otherId,
+        target_title: other?.title || otherId,
+        target_kind: other?.kind || "",
+        direction: e.source === hub.id ? "out" : "in",
+      };
+    });
+    return { hub, nodes, edges, relations };
+  }
+
+  function truncateStory(s, max) {
+    const t = String(s || "").trim();
+    if (t.length <= max) return t;
+    return t.slice(0, max - 1) + "…";
+  }
+
+  function egoKindColor(kind) {
+    return KIND_COLOR[kind] || KIND_COLOR.other;
+  }
+
+  function buildEgoSvg(hub, neighbors, edges) {
+    const W = 720;
+    const H = 400;
+    const cx = W / 2;
+    const cy = H / 2 + 10;
+    const positions = new Map();
+    positions.set(hub.id, { x: cx, y: cy, r: 20 });
+    const n = neighbors.length;
+    const radius = Math.min(160, 64 + n * 11);
+    neighbors.forEach((node, i) => {
+      const angle = (Math.PI * 2 * i) / Math.max(1, n) - Math.PI / 2;
+      const r = node.kind === "crime_type" ? 13 : node.kind === "case" ? 15 : 10;
+      positions.set(node.id, {
+        x: cx + Math.cos(angle) * radius,
+        y: cy + Math.sin(angle) * radius,
+        r,
+      });
+    });
+
+    const parts = [];
+    for (const e of edges) {
+      const a = positions.get(e.source);
+      const b = positions.get(e.target);
+      if (!a || !b) continue;
+      const mx = (a.x + b.x) / 2;
+      const my = (a.y + b.y) / 2;
+      parts.push(
+        `<line x1="${a.x.toFixed(1)}" y1="${a.y.toFixed(1)}" x2="${b.x.toFixed(1)}" y2="${b.y.toFixed(1)}" stroke="#6a7c8e" stroke-width="1.5" opacity="0.8"/>`
+      );
+      if (e.label && e.label !== "mentions") {
+        parts.push(
+          `<rect x="${(mx - 34).toFixed(1)}" y="${(my - 8).toFixed(1)}" width="68" height="15" rx="7" fill="#fff" stroke="#b8c6d4"/>` +
+            `<text x="${mx.toFixed(1)}" y="${(my + 3).toFixed(1)}" text-anchor="middle" font-size="9.5" fill="#243040" font-family="Sarabun, Anuphan, sans-serif">${escapeHtml(truncateStory(e.label, 14))}</text>`
+        );
+      }
+    }
+
+    for (const node of [hub, ...neighbors]) {
+      const p = positions.get(node.id);
+      if (!p) continue;
+      const title = truncateStory(node.title, node.id === hub.id ? 34 : 24);
+      const pillW = Math.min(200, 10 + title.length * 6.8);
+      parts.push(
+        `<circle cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="${p.r}" fill="${egoKindColor(node.kind)}" stroke="#fff" stroke-width="2"/>`
+      );
+      parts.push(
+        `<rect x="${(p.x - pillW / 2).toFixed(1)}" y="${(p.y + p.r + 4).toFixed(1)}" width="${pillW.toFixed(1)}" height="16" rx="8" fill="rgba(255,255,255,0.95)" stroke="#c5d0da"/>` +
+          `<text x="${p.x.toFixed(1)}" y="${(p.y + p.r + 15).toFixed(1)}" text-anchor="middle" font-size="10.5" font-weight="600" fill="#1a222c" font-family="Sarabun, Anuphan, sans-serif">${escapeHtml(title)}</text>`
+      );
+      if (node.id === hub.id) {
+        const props = [hub.bureau, hub.area, hub.crime_type, hub.status]
+          .filter((x) => x && x !== "-")
+          .slice(0, 3);
+        props.forEach((line, i) => {
+          parts.push(
+            `<text x="${p.x.toFixed(1)}" y="${(p.y + p.r + 30 + i * 12).toFixed(1)}" text-anchor="middle" font-size="9.5" fill="#4a5a68" font-family="Sarabun, Anuphan, sans-serif">${escapeHtml(truncateStory(line, 30))}</text>`
+          );
+        });
+      } else if (node.kind === "entity" && node.entity_group) {
+        parts.push(
+          `<text x="${p.x.toFixed(1)}" y="${(p.y + p.r + 28).toFixed(1)}" text-anchor="middle" font-size="9" fill="#4a5a68" font-family="Sarabun, Anuphan, sans-serif">${escapeHtml(truncateStory(node.entity_group, 20))}</text>`
+        );
+      }
+    }
+
+    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" width="100%" height="auto" class="story-ego-svg" role="img" aria-label="ข้อมูลกราฟของข่าวนี้">${parts.join("")}</svg>`;
+  }
+
+  function relationsFromPost(post, graphRels) {
+    const list = [...(graphRels || [])];
+    const seen = new Set(list.map((r) => `${r.label}|${r.target_id}`));
+    for (const r of post?.related_cases || []) {
+      const tid = r.id || r.case_id || "";
+      const key = `${r.relation || "related_to"}|${tid}`;
+      if (!tid || seen.has(key)) continue;
+      seen.add(key);
+      list.push({
+        label: r.relation || "related_to",
+        target_id: tid,
+        target_title: r.title || tid,
+        target_kind: "case",
+        direction: "out",
+      });
+    }
+    return list;
+  }
+
+  async function ensureGraph() {
+    if (!graph) {
+      try {
+        graph = await loadGraph();
+      } catch {
+        graph = null;
+      }
+    }
+    return graph;
+  }
+
+  async function storyGraphHtml(post) {
+    await ensureGraph();
+    const hub = findCaseNode(post);
+    const caseKey = hub?.case_id || post?.id || post?.slug || "";
+    const staticSvg = caseKey ? `data/graphs/${encodeURIComponent(caseKey)}.svg` : "";
+
+    if (!hub) {
+      const postRels = relationsFromPost(post, []);
+      const relList = postRels.length
+        ? `<ul class="story-rel-list">${postRels
+            .map(
+              (r) =>
+                `<li><code>${escapeHtml(r.label)}</code> → ${escapeHtml(r.target_title)}</li>`
+            )
+            .join("")}</ul>`
+        : `<p class="muted">ยังไม่มีเส้นความสัมพันธ์ในข้อมูลกราฟสำหรับข่าวนี้</p>`;
+      return `
+        <section class="analysis-block story-graph-block">
+          <h2>ข้อมูลกราฟของข่าวนี้</h2>
+          <p class="muted">ยังไม่พบโหนดคดีใน graph.json — แสดงเฉพาะ related_cases จากโพสต์</p>
+          ${
+            staticSvg
+              ? `<img class="story-ego-img" src="${staticSvg}" alt="ข้อมูลกราฟ ${escapeHtml(caseKey)}" loading="lazy" onerror="this.hidden=true" />`
+              : ""
+          }
+          <h3 class="story-rel-heading">ความสัมพันธ์</h3>
+          ${relList}
+          <p class="muted story-graph-link"><a href="#/brain">เปิดแท็บข้อมูลกราฟทั้งหมด</a></p>
+        </section>`;
+    }
+
+    const { edges, relations } = egoForHub(hub);
+    const neighMap = new Map();
+    for (const e of edges) {
+      const oid = e.source === hub.id ? e.target : e.source;
+      const n = graph.nodes.find((x) => x.id === oid);
+      if (n && n.id !== hub.id) neighMap.set(n.id, n);
+    }
+    const uniqNeighbors = [...neighMap.values()];
+    const svg = buildEgoSvg(hub, uniqNeighbors, edges);
+    const allRels = relationsFromPost(post, relations);
+    const relList = allRels.length
+      ? `<ul class="story-rel-list">${allRels
+          .map((r) => {
+            const arrow = r.direction === "in" ? "←" : "→";
+            const href =
+              r.target_kind === "case" && r.target_id
+                ? `#/brain/${encodeURIComponent(r.target_id)}`
+                : `#/brain/${encodeURIComponent(hub.id)}`;
+            return `<li><code>${escapeHtml(r.label)}</code> ${arrow} <a href="${href}">${escapeHtml(r.target_title)}</a></li>`;
+          })
+          .join("")}</ul>`
+      : `<p class="muted">ยังไม่มีเส้นความสัมพันธ์</p>`;
+
+    return `
+      <section class="analysis-block story-graph-block">
+        <h2>ข้อมูลกราฟของข่าวนี้</h2>
+        <p class="muted">ฮับคดี + เอนทิตี / ประเภท / คดีเกี่ยวข้อง (จาก graph.json)</p>
+        <div class="story-ego-wrap">${svg}</div>
+        ${
+          staticSvg
+            ? `<p class="muted story-ego-static"><a href="${staticSvg}" target="_blank" rel="noopener">เปิดภาพ SVG</a> · <code>data/graphs/${escapeHtml(caseKey)}.svg</code></p>`
+            : ""
+        }
+        <h3 class="story-rel-heading">ความสัมพันธ์ที่เชื่อมกับข่าวนี้</h3>
+        ${relList}
+        <p class="muted story-graph-link"><a href="#/brain/${encodeURIComponent(hub.id)}">โฟกัสโหนดนี้ในแท็บข้อมูลกราฟ</a></p>
+      </section>`;
+  }
+
   window.BrainGraph = {
     async show() {
       wireOnce();
@@ -973,5 +1300,7 @@
       bound = false;
       return mount();
     },
+    storyGraphHtml,
+    findCaseNode,
   };
 })();

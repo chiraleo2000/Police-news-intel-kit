@@ -1,0 +1,52 @@
+{
+ "case_id": "20261024-gamble-02",
+ "title": "ดีเอสไอรวบรวมข้อมูล Shuffle เชื่อมโยง 49 ลูกค้า ธุรกรรมกว่า 100 ล้านบาท",
+ "generated_at": "2026-10-26T07:18:58.948Z",
+ "node_count": 5,
+ "edge_count": 7,
+ "relations": [
+  {
+   "label": "related_to",
+   "target_id": "20_Cases/20261022-gamble-dsi-shuffle",
+   "target_title": "DSI สอบเว็บคาสิโนคริปโต shuffle.com เร่งหาผู้เล่นชาวไทยผ่านบัญชีธนาคาร เงินไหลเวียนราว 118 ล้านบาท",
+   "direction": "in"
+  },
+  {
+   "label": "investigated_by",
+   "target_id": "30_Entities/Units/ดีเอสไอ",
+   "target_title": "ดีเอสไอ",
+   "direction": "out"
+  },
+  {
+   "label": "targets_network",
+   "target_id": "30_Entities/Projects/เว็บพนันต่างประเทศ",
+   "target_title": "เว็บพนันต่างประเทศ",
+   "direction": "out"
+  },
+  {
+   "label": "related_to",
+   "target_id": "20_Cases/20261022-gamble-dsi-shuffle",
+   "target_title": "DSI สอบเว็บคาสิโนคริปโต shuffle.com เร่งหาผู้เล่นชาวไทยผ่านบัญชีธนาคาร เงินไหลเวียนราว 118 ล้านบาท",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "40_CrimeTypes/พนันและบ่อนผิดกฎหมาย",
+   "target_title": "พนันและบ่อนผิดกฎหมาย",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "30_Entities/Units/ดีเอสไอ",
+   "target_title": "ดีเอสไอ",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "30_Entities/Units/ดีเอสไอ",
+   "target_title": "ดีเอสไอ",
+   "direction": "in"
+  }
+ ],
+ "svg": "graphs/20261024-gamble-02.svg"
+}

@@ -1,0 +1,76 @@
+{
+ "case_id": "20261025-cyber-02",
+ "title": "บช.สอท. จับบัญชีม้าเครือข่ายกลุ่มลับแพร่คลิปลามก-ชักชวนพนันออนไลน์ ตามหมายจับ ยังตามล่าแอดมิน",
+ "generated_at": "2026-10-26T07:18:58.983Z",
+ "node_count": 9,
+ "edge_count": 11,
+ "relations": [
+  {
+   "label": "arrested_by",
+   "target_id": "30_Entities/Units/TICAC",
+   "target_title": "TICAC",
+   "direction": "out"
+  },
+  {
+   "label": "arrested_by",
+   "target_id": "30_Entities/Units/บก.สอท.1",
+   "target_title": "บก.สอท.1",
+   "direction": "out"
+  },
+  {
+   "label": "arrested_by",
+   "target_id": "30_Entities/People/บช.สอท.",
+   "target_title": "บช.สอท.",
+   "direction": "out"
+  },
+  {
+   "label": "arrested_by",
+   "target_id": "30_Entities/Units/ศตคม.ตร.",
+   "target_title": "ศตคม.ตร.",
+   "direction": "out"
+  },
+  {
+   "label": "announced_by",
+   "target_id": "30_Entities/People/ผบช.สอท.",
+   "target_title": "ผบช.สอท.",
+   "direction": "out"
+  },
+  {
+   "label": "targets_network",
+   "target_id": "30_Entities/Projects/เครือข่ายกลุ่มลับแพร่คลิปลามก-ชักชวนพนั",
+   "target_title": "เครือข่ายกลุ่มลับแพร่คลิปลามก-ชักชวนพนั",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  },
+  {
+   "label": "mentions",
+   "target_id": "30_Entities/Units/TICAC",
+   "target_title": "TICAC",
+   "direction": "in"
+  },
+  {
+   "label": "mentions",
+   "target_id": "30_Entities/Units/บก.สอท.1",
+   "target_title": "บก.สอท.1",
+   "direction": "in"
+  },
+  {
+   "label": "mentions",
+   "target_id": "30_Entities/Units/บช.สอท.",
+   "target_title": "บช.สอท.",
+   "direction": "in"
+  },
+  {
+   "label": "mentions",
+   "target_id": "30_Entities/Units/ศตคม.ตร.",
+   "target_title": "ศตคม.ตร.",
+   "direction": "in"
+  }
+ ],
+ "svg": "graphs/20261025-cyber-02.svg"
+}
