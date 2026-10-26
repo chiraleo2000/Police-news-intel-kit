@@ -3,5 +3,12 @@ dist/
 data/
 exports/
 .env
+.env.*
+!.env.example
+*.local
+*.local.json
+config.local.*
+__pycache__/
+*.py[cod]
 *.sqlite
 *.sqlite-*

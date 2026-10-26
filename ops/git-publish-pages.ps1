@@ -1,5 +1,5 @@
 # Publish local news/Pages data to GitHub (commit + push).
-# Safe: never force-push, never commit .env / secrets / sqlite / _to_delete / ops/run.
+# Safe: never force-push, never commit .env / local config / cache / sqlite / _to_delete / ops/run.
 # Schedule: 10:00 and 14:00 Asia/Bangkok via register-git-publish-task.ps1
 #
 # Hardened for Task Scheduler:
@@ -158,12 +158,15 @@ try {
     $null = Invoke-GitLogged @(
         'reset', 'HEAD', '--',
         'server/.env',
+        'server/.env.local',
         'server/data/',
         'server/exports/',
+        'server/dist/',
         'server/node_modules/',
         'logs/',
         '_to_delete/',
-        'ops/run/'
+        'ops/run/',
+        'ops/__pycache__/'
     )
 
     $staged = Get-StagedPaths
