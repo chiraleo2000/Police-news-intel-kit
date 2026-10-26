@@ -18,9 +18,9 @@ into a single run so article files don't need a second invocation to be read bac
 
 ## Global rules (apply everywhere)
 - ⛔ Never run `git add` / `git commit` / `git push`, and never write a deploy/push script. Copying finished files into a local `github-pages/data/` folder is allowed (it's just a file copy); actually publishing that repo is a separate task, not run here.
-- Fetch order: **official** `.go.th`/`.or.th` URL (`truncated` mode → retry `rendered` if body <300 chars) → Tier-1 aggregator (list below) → social media is **reference only, never fetched** (store the Facebook/social URL if known, don't visit it). Caps: ≤2 `web_search`, ≤12 `web_fetch` per batch. Never re-fetch a URL already used; skip an agency with nothing new and report `no_news_today`.
+- Fetch order: **official** `.go.th`/`.or.th` URL (read the full article in `rendered` mode before any summary or analysis; do not process a `truncated` lead or the first 300 words) → Tier-1 aggregator (list below) → social media is **reference only, never fetched** (store the Facebook/social URL if known, don't visit it). Caps: ≤2 `web_search`, ≤12 `web_fetch` per batch. Never re-fetch a URL already used; skip an agency with nothing new and report `no_news_today`.
 - Keep only items published inside the 24h window; if no date is visible, keep only if it's top-3 on a "latest" listing page, else skip.
-- `summary_1`: 80–150 Thai words, single paragraph, no bullets/headers. `source.url` must be the article permalink, never a homepage/listing page. A "pass" = HTTP 200 + title + body ≥300 chars.
+- `summary_1`: 80–150 Thai words, single paragraph, no bullets/headers. `source.url` must be the article permalink, never a homepage/listing page. A "pass" = HTTP 200 + title + the full article (at least 300 characters). The 300-character floor does not mean the opening is enough to process.
 - `bd_insights` on every article: if the news has real economic/policy/innovation significance → `opportunity`, `actions_sme` (2), `actions_si` (2), `urgency`; otherwise `opportunity: "N/A"`, `urgency: "low"`.
 - Same-day rerun: dedupe by `source.url` and by title similarity ≥90%. **Add-only** — never delete/overwrite existing articles or manifest entries. Before reporting "completed," re-scan the target-date folder and remove any duplicate you just created (keep the older one).
 - PDF generation is mandatory — never report it as skipped. Try in order: weasyprint → playwright → wkhtmltopdf → headless chrome/edge `--print-to-pdf`. PDF must embed the THSarabun font (Regular/Bold/Italic/Bold-Italic) so Thai text doesn't render as boxes.
@@ -47,7 +47,7 @@ into a single run so article files don't need a second invocation to be read bac
 {
   "article_id": "", "agency": {"parent": "", "name": "", "registry_key": "", "official_url": ""},
   "source": {"url": "", "type": "official|aggregator", "fetch_priority_used": "1_official|2_aggregator"},
-  "fetch": {"status": "pass|fail", "http_status": 200, "fetched_at": "", "fetch_mode": "truncated|rendered"},
+  "fetch": {"status": "pass|fail", "http_status": 200, "fetched_at": "", "fetch_mode": "rendered"},
   "meta": {"published_at": "", "target_date": "", "within_24h": true, "status": "scraped|published", "batch": "A|B|C", "category_label": "", "news_type": "", "tags": []},
   "content": {"title": "", "slug": "", "summary_1": "", "language": "th"},
   "bd_insights": {"opportunity": "", "actions_sme": ["", ""], "actions_si": ["", ""], "urgency": "high|medium|low", "related_sectors": [], "tender_potential": false},
@@ -90,7 +90,7 @@ github-pages/data/{DATE}_news.json, manifest.json   (copy and update for push)
 ```
 
 ## Tier-1 aggregators (fallback only)
-Nation Thailand — nationthailand.com | Bangkok Post — bangkokpost.com | Thai Rath English — en.thairath.co.th | Thailand Business News — thailand-business-news.com | OpenGov Asia — opengovasia.com | Kaohoon International — kaohooninternational.com | ryt9.com — ryt9.com/en (truncated mode) | Pattaya Mail — pattayamail.com
+Nation Thailand — nationthailand.com | Bangkok Post — bangkokpost.com | Thai Rath English — en.thairath.co.th | Thailand Business News — thailand-business-news.com | OpenGov Asia — opengovasia.com | Kaohoon International — kaohooninternational.com | ryt9.com — ryt9.com/en (read the full article) | Pattaya Mail — pattayamail.com
 
 ---
 

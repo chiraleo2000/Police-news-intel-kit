@@ -11,7 +11,7 @@ def mgr(u):
     for t in s(['script','style','nav','footer','header']): t.decompose()
     txt=s.get_text(' ',strip=True)
     t=d['title']; i=txt.find(t,txt.find(t)+len(t)) if txt.count(t)>1 else txt.find(t)
-    body=txt[i+len(t):i+len(t)+4500] if i>=0 else txt[:4500]
+    body=txt[i+len(t):] if i>=0 else txt
     d['body']=body;d['len']=len(body);json.dump(d,open(fn,'w'),ensure_ascii=False);return u
 with cf.ThreadPoolExecutor(10) as ex: list(ex.map(mgr,cands['C_29_mgr']))
 # regional oncb, others

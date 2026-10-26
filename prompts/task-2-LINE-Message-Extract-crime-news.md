@@ -65,13 +65,13 @@ LINE กลุ่ม → Bot → Webhook → SQLite → line_intake_continuous.{
   `ประชาสัมพันธ์` `แถลงข่าว` `police` `arrest` `scam` `narcotics` `crime` `fraud`
 
 ### ชั้น 2 — peek ถูก (title + 200–400 ตัวอักษรแรกเท่านั้น)
-ใช้เฉพาะ candidate ที่ยังไม่ชัดจากชั้น 1:
-- ดึงแค่ title + excerpt สั้น **ห้าม** ดึงทั้งบทความมาใส่ context
+ใช้เฉพาะ candidate ที่ยังไม่ชัดจากชั้น 1 **เพื่อตัดสิน KEEP หรือ DROP เท่านั้น** ห้ามเอาข้อความ peek ไปสรุป ติดแท็ก หรือวิเคราะห์:
+- ดึงแค่ title + excerpt สั้นในขั้นตัดสินใจนี้
 - **KEEP** ถ้าเกี่ยวกับ: การปฏิบัติหน้าที่ตำรวจ · **ประชาสัมพันธ์/แถลงของ ตร.** · คดีอาญา/อาชญากรรม ·  
   ยาเสพติด · ไซเบอร์หลอกลวง · ค้ามนุษย์ · เศรษฐกิจผิดกฎหมายที่มีแถลง ตร. · เตือนภัยมิจฉาชีพ
 - **DROP** ถ้าเป็นข่าวทั่วไป การเมืองที่ไม่ใช่คดี เศรษฐกิจมหภาค กีฬา บันเทิง สุขภาพ ไม่มีหน่วยตำรวจ/ข้อหา
 
-หลัง KEEP เท่านั้นจึง `web_fetch` เต็ม + สร้าง article + taxonomy + วิเคราะห์  
+หลัง KEEP ต้องอ่าน**บทความเต็มจนจบเนื้อหา**ก่อนสร้าง article ห้ามใช้แค่ 300 คำแรก ย่อหน้าแรก หรือผลโหมด `truncated` มาประมวลผล แล้วจึงทำ taxonomy และวิเคราะห์  
 DROP → บันทึกใน Completion Report อย่างเดียว **ห้าม** สรุปเนื้อหายาว
 
 เพดาน: ≤40 URL เข้าชั้น 1; หลังกรองแล้ว fetch เต็ม ≤25 ลิงก์/รอบ (เรียง official ตร. → สื่ออาชญากรรม → อื่น)
@@ -100,7 +100,7 @@ DROP → บันทึกใน Completion Report อย่างเดีย�
 ## กฎที่ต้องยึดจาก police-crime-news-pipeline (ห้ามละ)
 - Git: ห้าม add/commit/push
 - Facebook/โซเชียล = reference only ห้ามเปิด · `fetchable=false` → skipped
-- pass = HTTP 200 + title + body ≥300 ตัวอักษร · อ่านวันที่ พ.ศ.
+- pass = HTTP 200 + title + เนื้อหาข่าวทั้งเรื่อง (ยาวอย่างน้อย 300 ตัวอักษร) · เกณฑ์นี้ไม่ใช่ใบอนุญาตให้หยุดที่ส่วนต้น · อ่านวันที่ พ.ศ.
 - **ตรวจซ้ำก่อนสร้างโพสต์ใหม่ (บังคับ — ประหยัด token + ไม่ซ้ำ blog):**  
   อ่านผลที่มีอยู่ของ `RUN_DATE` ก่อน fetch/เขียนยาว:
   1. `github-pages/data/{DATE}_crime.json` + `{DATE}_crime_line.json` + `feed.json` (posts ที่ `_date=RUN_DATE`)
@@ -116,7 +116,7 @@ DROP → บันทึกใน Completion Report อย่างเดีย�
   | **NEW** | สร้าง article/post ตามปกติ แล้วค่อย event-merge รอบท้าย | fetch เต็ม |
 - **Event-level merge (ท้ายรอบ):** รวมเหตุการณ์ซ้ำในชุด LINE เอง + กับ Task 1 อีกครั้งหลังสร้าง NEW  
   1 post / 1 case · แหล่งรองทั้งหมดใน `corroborating_sources[]`
-- **Tags:** ตาม Task 1 — `meta.tags` **3–5 หัวข้อสำคัญ**; PR ตร. ตั้ง `tags_struct.is_police_pr = true`  
+- **Tags:** ตาม Task 1 — `meta.tags` **1–2 คำเฉพาะของหัวข่าว** ห้ามคำกว้าง ห้ามจังหวัด/หน่วยงาน; PR ตร. ตั้ง `tags_struct.is_police_pr = true`  
   taxonomy รวม POLICE (ประชาสัมพันธ์) / GAMBLE / ENV / PUBLIC
 - add-only ต่อเหตุการณ์ · จริยธรรมคดีครบ
 - `summary_1` 80–150 คำ · `content` ≥350 คำ **เฉพาะ NEW** (ของ DUP_EVENT ไม่เขียน content ทับ)

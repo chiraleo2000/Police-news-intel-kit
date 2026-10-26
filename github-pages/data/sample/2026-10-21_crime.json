@@ -1,95 +1,132 @@
 {
-  "date": "2026-10-21",
-  "generated_at": "2026-10-21T12:00:00+07:00",
-  "_comment": "ไฟล์ตัวอย่าง — คัดลอกไป ../ และเพิ่มวันที่ใน manifest.days เพื่อทดสอบ UI",
-  "stats": {
-    "total": 2,
-    "direct": 1,
-    "indirect": 1,
-    "priority_A": 1,
-    "priority_B": 1,
-    "priority_C": 0,
-    "alerts": 1,
-    "official_confirmed": 1,
-    "by_crime_type": {
-      "อาชญากรรมไซเบอร์และออนไลน์": 1,
-      "ยาเสพติด": 1
-    },
-    "total_loss_thb": 2500000,
-    "total_seized_value_thb": 800000,
-    "total_arrested": 3
+ "date": "2026-10-21",
+ "generated_at": "2026-10-21T12:00:00+07:00",
+ "_comment": "ไฟล์ตัวอย่าง — คัดลอกไป ../ และเพิ่มวันที่ใน manifest.days เพื่อทดสอบ UI",
+ "stats": {
+  "total": 2,
+  "direct": 1,
+  "indirect": 1,
+  "priority_A": 1,
+  "priority_B": 1,
+  "priority_C": 0,
+  "alerts": 1,
+  "official_confirmed": 1,
+  "by_crime_type": {
+   "อาชญากรรมไซเบอร์และออนไลน์": 1,
+   "ยาเสพติด": 1
   },
-  "posts": [
-    {
-      "id": "2026-10-21-cyber-001",
-      "slug": "ตัวอย่าง-คอลเซ็นเตอร์",
-      "title": "[ตัวอย่าง] ตำรวจไซเบอร์แถลงจับกุมแก๊งคอลเซ็นเตอร์",
-      "topic": "อาชญากรรมไซเบอร์และออนไลน์",
-      "secondary_topics": [],
-      "agency": "สำนักงานตำรวจแห่งชาติ > บช.สอท.",
-      "origin": "direct",
-      "priority": "A",
-      "severity": "high",
-      "verification": "official_confirmed",
-      "case_stage": "จับกุม",
-      "police_role": "สืบสวนจับกุม",
-      "province": ["กรุงเทพมหานคร"],
-      "region": ["กรุงเทพฯ และปริมณฑล"],
-      "alert": true,
-      "impersonation": true,
-      "is_clarification": false,
-      "content": "นี่คือข้อความตัวอย่างสำหรับทดสอบหน้า GitHub Pages เท่านั้น ไม่ใช่ข่าวจริง ตามที่ตำรวจแถลง ผู้ต้องหาถูกจับกุมในข้อหาเกี่ยวกับการหลอกลวงออนไลน์ ขอให้ประชาชนใช้ช่องทางทางการเท่านั้นเมื่อต้องติดต่อหน่วยงาน",
-      "source_url": "https://www.example.com/sample",
-      "corroborating_sources": [],
-      "actions_public": [
-        "อย่าโอนเงินตามสายที่ไม่รู้จัก",
-        "ตรวจสอบช่องทางทางการของหน่วยงานก่อนให้ข้อมูล"
-      ],
-      "actions_org": ["N/A", "N/A"],
-      "police_performance": {
-        "operation": "ตัวอย่าง",
-        "units_involved": ["บช.สอท."],
-        "outcome": "จับกุม",
-        "note": "N/A"
-      },
-      "stats": { "arrested": 3, "suspects": 3, "victims": null, "loss_thb": 2500000, "seized_value_thb": null },
-      "tags": ["คอลเซ็นเตอร์", "แอบอ้างเจ้าหน้าที่"],
-      "category_label": "อาชญากรรมไซเบอร์และออนไลน์",
-      "published_at": "2026-10-21T09:30:00+07:00"
-    },
-    {
-      "id": "2026-10-21-drug-001",
-      "slug": "ตัวอย่าง-ยาเสพติด",
-      "title": "[ตัวอย่าง] สกัดจับลำเลียงยาเสพติดบนทางหลวง",
-      "topic": "ยาเสพติด",
-      "secondary_topics": [],
-      "agency": "สำนักงานตำรวจแห่งชาติ > บก.ทล.",
-      "origin": "indirect",
-      "priority": "B",
-      "severity": "medium",
-      "verification": "media_only",
-      "case_stage": "จับกุม",
-      "police_role": "ปราบปรามเชิงรุก",
-      "province": ["นครราชสีมา"],
-      "region": ["ภาคตะวันออกเฉียงเหนือ"],
-      "alert": false,
-      "impersonation": false,
-      "is_clarification": false,
-      "content": "ข้อความตัวอย่างสำหรับทดสอบการจัดกลุ่มประเภทยาเสพติดและการแสดง hotspot จังหวัด ไม่ใช่ข่าวจริง",
-      "source_url": "https://www.example.com/sample-drug",
-      "corroborating_sources": [],
-      "actions_public": ["N/A", "N/A"],
-      "actions_org": ["N/A", "N/A"],
-      "police_performance": {
-        "operation": "ด่านตรวจ",
-        "units_involved": ["บก.ทล."],
-        "outcome": "จับกุม",
-        "note": "N/A"
-      },
-      "stats": { "arrested": null, "suspects": 2, "victims": null, "loss_thb": null, "seized_value_thb": 800000 },
-      "tags": ["ลำเลียงยาเสพติด"],
-      "category_label": "ยาเสพติด",
-      "published_at": "2026-10-21T11:00:00+07:00"
-    }
-  ]
+  "total_loss_thb": 2500000,
+  "total_seized_value_thb": 800000,
+  "total_arrested": 3
+ },
+ "posts": [
+  {
+   "id": "2026-10-21-cyber-001",
+   "slug": "ตัวอย่าง-คอลเซ็นเตอร์",
+   "title": "[ตัวอย่าง] ตำรวจไซเบอร์แถลงจับกุมแก๊งคอลเซ็นเตอร์",
+   "topic": "อาชญากรรมไซเบอร์และออนไลน์",
+   "secondary_topics": [],
+   "agency": "สำนักงานตำรวจแห่งชาติ > บช.สอท.",
+   "origin": "direct",
+   "priority": "A",
+   "severity": "high",
+   "verification": "official_confirmed",
+   "case_stage": "จับกุม",
+   "police_role": "สืบสวนจับกุม",
+   "province": [
+    "กรุงเทพมหานคร"
+   ],
+   "region": [
+    "กรุงเทพฯ และปริมณฑล"
+   ],
+   "alert": true,
+   "impersonation": true,
+   "is_clarification": false,
+   "content": "นี่คือข้อความตัวอย่างสำหรับทดสอบหน้า GitHub Pages เท่านั้น ไม่ใช่ข่าวจริง ตามที่ตำรวจแถลง ผู้ต้องหาถูกจับกุมในข้อหาเกี่ยวกับการหลอกลวงออนไลน์ ขอให้ประชาชนใช้ช่องทางทางการเท่านั้นเมื่อต้องติดต่อหน่วยงาน",
+   "source_url": "https://www.example.com/sample",
+   "corroborating_sources": [],
+   "actions_public": [
+    "อย่าโอนเงินตามสายที่ไม่รู้จัก",
+    "ตรวจสอบช่องทางทางการของหน่วยงานก่อนให้ข้อมูล"
+   ],
+   "actions_org": [
+    "N/A",
+    "N/A"
+   ],
+   "police_performance": {
+    "operation": "ตัวอย่าง",
+    "units_involved": [
+     "บช.สอท."
+    ],
+    "outcome": "จับกุม",
+    "note": "N/A"
+   },
+   "stats": {
+    "arrested": 3,
+    "suspects": 3,
+    "victims": null,
+    "loss_thb": 2500000,
+    "seized_value_thb": null
+   },
+   "tags": [
+    "แอบอ้างเจ้าหน้าที่หลอกโอน"
+   ],
+   "category_label": "อาชญากรรมไซเบอร์และออนไลน์",
+   "published_at": "2026-10-21T09:30:00+07:00"
+  },
+  {
+   "id": "2026-10-21-drug-001",
+   "slug": "ตัวอย่าง-ยาเสพติด",
+   "title": "[ตัวอย่าง] สกัดจับลำเลียงยาเสพติดบนทางหลวง",
+   "topic": "ยาเสพติด",
+   "secondary_topics": [],
+   "agency": "สำนักงานตำรวจแห่งชาติ > บก.ทล.",
+   "origin": "indirect",
+   "priority": "B",
+   "severity": "medium",
+   "verification": "media_only",
+   "case_stage": "จับกุม",
+   "police_role": "ปราบปรามเชิงรุก",
+   "province": [
+    "นครราชสีมา"
+   ],
+   "region": [
+    "ภาคตะวันออกเฉียงเหนือ"
+   ],
+   "alert": false,
+   "impersonation": false,
+   "is_clarification": false,
+   "content": "ข้อความตัวอย่างสำหรับทดสอบการจัดกลุ่มประเภทยาเสพติดและการแสดง hotspot จังหวัด ไม่ใช่ข่าวจริง",
+   "source_url": "https://www.example.com/sample-drug",
+   "corroborating_sources": [],
+   "actions_public": [
+    "N/A",
+    "N/A"
+   ],
+   "actions_org": [
+    "N/A",
+    "N/A"
+   ],
+   "police_performance": {
+    "operation": "ด่านตรวจ",
+    "units_involved": [
+     "บก.ทล."
+    ],
+    "outcome": "จับกุม",
+    "note": "N/A"
+   },
+   "stats": {
+    "arrested": null,
+    "suspects": 2,
+    "victims": null,
+    "loss_thb": null,
+    "seized_value_thb": 800000
+   },
+   "tags": [
+    "ลำเลียงยาบนทางหลวง"
+   ],
+   "category_label": "ยาเสพติด",
+   "published_at": "2026-10-21T11:00:00+07:00"
+  }
+ ]
 }

@@ -53,7 +53,7 @@
         "original_language": { "enum": ["th", "en"] },
         "is_clarification": { "type": "boolean" },
         "category_label": { "type": "string" },
-        "tags": { "type": "array", "items": { "type": "string" }, "maxItems": 10 },
+        "tags": { "type": "array", "items": { "type": "string" }, "minItems": 1, "maxItems": 2 },
         "tags_struct": { "type": "object" }
       }
     },

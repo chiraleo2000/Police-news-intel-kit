@@ -17,7 +17,7 @@ description: ใช้เมื่อต้องนำลิงก์ที่�
    - โดเมนไม่อยู่ใน registry และเป็น `unknown` → ทำได้เพียง fetch 1 ครั้งเพื่อประเมินว่าเป็นข่าวหรือไม่; ถ้าไม่ใช่ข่าว mark `skipped` เหตุผล `not_news`
    - โดเมนที่ดูเป็นฟิชชิง/ย่อลิงก์ที่ไม่ resolve/ขอ login → mark `skipped` เหตุผล `suspicious` และ **ห้ามเปิดซ้ำ**
 3. เรียงลำดับ: official (`.go.th`/`.or.th`) → สื่อ (Batch C/D) → unknown; จำกัด ≤40 ลิงก์/รอบ ที่เหลือคงสถานะ `new` ไว้ให้รอบถัดไป
-4. fetch ตามกฎของ `police-crime-news-pipeline` (truncated → rendered; pass = 200 + title + body ≥300 ตัวอักษร; ช่วง 24 ชม.)
+4. fetch บทความเต็มตามกฎของ `police-crime-news-pipeline` (อ่านจนจบเนื้อหา ห้ามประมวลผลจาก truncated หรือ 300 คำแรก; pass = 200 + title + เนื้อหาทั้งเรื่องที่ยาวอย่างน้อย 300 ตัวอักษร; ช่วง 24 ชม.)
    ข่าวเก่ากว่า 24 ชม. → mark `skipped` เหตุผล `older_than_24h`
 5. สร้าง article ตาม schema ของ skill หลัก โดยตั้ง `source.origin = "line_curated"`, `meta.batch = "L"`
    - **ห้ามใส่ข้อมูลผู้ส่ง/ชื่อกลุ่ม/ข้อความที่ผู้ส่งพิมพ์** ลงใน article (ใช้เฉพาะเนื้อหาของลิงก์)

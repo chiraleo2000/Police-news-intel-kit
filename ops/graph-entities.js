@@ -496,8 +496,8 @@ function postText(post) {
     post.title || "",
     post.gang_or_group || "",
     tags,
-    String(post.content || "").slice(0, 4000),
-    String(post.analysis_notes || "").slice(0, 1500),
+    String(post.content || ""),
+    String(post.analysis_notes || ""),
   ].join("\n");
 }
 

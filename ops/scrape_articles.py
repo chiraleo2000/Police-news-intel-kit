@@ -53,7 +53,7 @@ def fetch(u):
         art=s.find('article') or s.find('main') or s.body
         ps=[p.get_text(' ',strip=True) for p in (art.find_all('p') if art else [])]
         body='\n'.join(p for p in ps if len(p)>20) or (art.get_text(' ',strip=True) if art else '')
-        d={'url':u,'final':r.url,'status':r.status_code,'title':(title or '').strip(),'date':date,'body':body[:9000],'len':len(body)}
+        d={'url':u,'final':r.url,'status':r.status_code,'title':(title or '').strip(),'date':date,'body':body,'len':len(body)}
     except Exception as e:
         d={'url':u,'status':'ERR','err':str(e)[:120]}
     json.dump(d,open(fn,'w'),ensure_ascii=False); return d

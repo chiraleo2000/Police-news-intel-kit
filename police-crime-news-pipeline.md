@@ -31,7 +31,7 @@ trigger:
   การ copy ไฟล์เสร็จแล้วไป `github-pages/data/` ทำได้ แต่การ publish repo เป็นงานแยก
 
 ### Fetch order
-1. **Official** `.go.th` / `.or.th` URL (`truncated` mode → ถ้าเนื้อหา <300 ตัวอักษร retry `rendered`)
+1. **Official** `.go.th` / `.or.th` URL — permalink ของข่าวต้องอ่านเนื้อหาเต็มจนจบ (`rendered`) ห้ามประมวลผลจากโหมด `truncated` หรือจาก 300 คำแรก/ส่วนต้น ถ้าเนื้อหาข่าวสั้นกว่า 300 ตัวอักษรให้ถือว่า fail ไม่ใช่ให้สรุปจากส่วนที่ดึงมาได้
 2. **สื่อหมวดอาชญากรรม** (Batch C/D) — ใช้เป็นแหล่งยืนยันของ Batch A/B เมื่อเว็บทางการไม่มีข่าว/ดึงไม่ได้
 3. **Facebook / โซเชียล = reference only — ห้าม fetch/เปิดเด็ดขาด**
    เก็บ URL ไว้ใน `social_media.agency_facebook` เท่านั้น ถ้าข่าวจาก FB ถูกสื่ออ้างถึง
@@ -40,7 +40,7 @@ trigger:
    ห้ามกรอก/ส่งแบบฟอร์ม ห้ามสร้างบัญชี
 - Caps ต่อ batch: A ≤4 `web_search` / ≤18 `web_fetch`; B ≤3 / ≤14; C ≤3 / ≤16; D ≤3 / ≤14
 - ห้าม fetch URL ซ้ำ; หน่วยงานที่ไม่มีข่าวใหม่ให้ข้ามและรายงาน `no_news_today`
-- "pass" = HTTP 200 + มี title + body ≥300 ตัวอักษร
+- "pass" = HTTP 200 + มี title + เนื้อหาข่าวทั้งเรื่อง (ยาวอย่างน้อย 300 ตัวอักษร) ห้ามถือว่าส่วนต้นที่ครบ 300 ตัวอักษรเพียงพอสำหรับสรุปหรือวิเคราะห์
 
 ### Registry health check (ใหม่)
 - แต่ละแหล่งใน registry มีสถานะ URL: **V** = ตรวจพบโดเมนจริงจากการค้นหา, **U** = มาจากรายการที่ผู้ใช้ให้ (ยังไม่ทดสอบ fetch),
@@ -120,7 +120,7 @@ trigger:
 
 ## ระบบ TAGs
 
-เก็บใน `meta.tags` (array ภาษาไทย ไม่เกิน 10 tag/ข่าว) และ `meta.tags_struct`:
+เก็บใน `meta.tags` (array ภาษาไทย **1–2 tag ต่อข่าว** เป็นวลีเฉพาะของหัวข่าวนั้น ห้ามคำกว้าง ห้ามชื่อจังหวัดหรือหน่วยงาน) และ `meta.tags_struct`:
 
 ```json
 "tags_struct": {
@@ -148,7 +148,7 @@ trigger:
 - `province`: ชื่อจังหวัดเต็มภาษาไทย (ใช้สร้าง hotspot); ถ้าไม่ระบุจังหวัดให้เป็น `[]` ไม่เดาจากชื่อหน่วย
 - `modus_operandi`: เลือกจากรายการ canonical ก่อน ถ้าไม่มีให้สร้างคำสั้นใหม่และเก็บใน `_tags.json` ส่วน `new_mo_candidates`
 
-**Canonical MO (ใช้ปรับให้ tag สอดคล้องข้ามวัน):** คอลเซ็นเตอร์ · แอบอ้างเจ้าหน้าที่รัฐ/ตำรวจ · ส่งพัสดุปลอม · หลอกลงทุนคริปโต/สินทรัพย์ดิจิทัล ·
+**Canonical MO (ใช้ใน `tags_struct.modus_operandi` เท่านั้น ไม่ copy เข้า `meta.tags`):** คอลเซ็นเตอร์ · แอบอ้างเจ้าหน้าที่รัฐ/ตำรวจ · ส่งพัสดุปลอม · หลอกลงทุนคริปโต/สินทรัพย์ดิจิทัล ·
 หลอกลงทุนหุ้น/ฟอเร็กซ์ · หลอกรักออนไลน์ (romance scam) · หลอกซื้อขายออนไลน์ · หลอกหางาน/งานออนไลน์ · ปล่อยกู้นอกระบบออนไลน์ ·
 บัญชีม้า/ซิมม้า · ลิงก์ปลอม/ฟิชชิง · มัลแวร์/แอปดูดเงิน · ข่มขู่ทางเพศ (sextortion) · เว็บพนันออนไลน์ · ศูนย์/แก๊งสแกมชายแดน ·
 แชร์ลูกโซ่ · ฟอกเงินผ่านบัญชีม้า/คริปโต · ลักลอบขนยาเสพติด · สินค้า/ยาปลอม · ค้ามนุษย์เพื่อบังคับกระทำผิด · แรงงานต่างด้าวผิดกฎหมาย ·
@@ -188,7 +188,7 @@ trigger:
   "source": {"url": "", "type": "official|aggregator", "origin": "direct|indirect", "fetch_priority_used": "1_official|2_media"},
   "corroborating_sources": [{"name": "", "url": ""}],
   "verification": "official_confirmed|media_only|single_source",
-  "fetch": {"status": "pass|fail", "http_status": 200, "fetched_at": "", "fetch_mode": "truncated|rendered"},
+  "fetch": {"status": "pass|fail", "http_status": 200, "fetched_at": "", "fetch_mode": "rendered"},
   "meta": {
     "published_at": "", "target_date": "", "within_24h": true,
     "status": "scraped|published", "batch": "A|B|C|D", "priority": "A|B|C",
