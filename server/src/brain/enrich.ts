@@ -240,6 +240,12 @@ function noteGang(post: PostV2): string | null {
   return null;
 }
 
+export function relatedAnalysisLine(
+  related: Array<{ id: string; title: string; relation: string }>,
+): string {
+  return noteRelated(related);
+}
+
 function noteRelated(
   related: Array<{ id: string; title: string; relation: string }>,
 ): string {

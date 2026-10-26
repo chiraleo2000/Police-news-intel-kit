@@ -1,6 +1,7 @@
 import { getDb } from "../db/index.js";
 import type { PostV2, Rel } from "./enrich.js";
 import { commandersIn, relForStage, unitsOf } from "./enrich.js";
+import { extractPostEntities } from "./entities.js";
 
 export type CaseRow = {
   id: string;
@@ -24,6 +25,13 @@ function nowIso() {
 
 function entityId(kind: string, name: string) {
   return `${kind}:${name.trim()}`;
+}
+
+function entityKindForGroup(group: string): "unit" | "person" | "project" | null {
+  if (group === "หน่วย") return "unit";
+  if (group === "บุคคล" || group === "ผู้ต้องหา") return "person";
+  if (group === "ข่ายเครือข่าย" || group === "บัญชี") return "project";
+  return null;
 }
 
 export function upsertEntity(kind: "unit" | "person" | "project", name: string) {
@@ -109,6 +117,12 @@ export function indexPost(post: PostV2, day: string) {
   for (const person of commandersIn(text)) {
     upsertEntity("person", person);
     upsertRelation("case", id, "announced_by", "entity", entityId("person", person));
+  }
+  for (const ent of extractPostEntities(post)) {
+    const kind = entityKindForGroup(ent.group);
+    if (!kind) continue;
+    upsertEntity(kind, ent.name);
+    upsertRelation("case", id, ent.rel, "entity", entityId(kind, ent.name));
   }
   for (const rel of post.related_cases || []) {
     if (!rel?.id) continue;

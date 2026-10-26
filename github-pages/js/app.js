@@ -613,6 +613,32 @@
     els.status.textContent = `${posts.length} เหตุการณ์ · ${RANGE_LABELS[range]} · พร้อมใช้งาน`;
   }
 
+  const REL_TH = {
+    investigated_by: "สืบสวนโดย",
+    arrested_by: "จับโดย",
+    ordered_by: "สั่งการโดย",
+    announced_by: "แจ้งโดย",
+    targets_network: "เป้าหมายเครือข่าย",
+    mentions: "กล่าวถึง",
+    related_to: "เกี่ยวข้องกับ",
+    follow_up_of: "ติดตามจาก",
+    located_in: "เกิดที่",
+    involves_person: "เกี่ยวข้องกับบุคคล",
+    suspect: "ผู้ต้องหา",
+    account: "บัญชี",
+    uses_account: "ใช้บัญชี",
+  };
+
+  function relationLabel(raw) {
+    if (window.BrainGraph?.relationLabel) return window.BrainGraph.relationLabel(raw);
+    const s = String(raw ?? "").trim();
+    if (!s) return "";
+    if (REL_TH[s]) return REL_TH[s];
+    const key = s.toLowerCase().replace(/\s+/g, "_");
+    if (REL_TH[key]) return REL_TH[key];
+    return s;
+  }
+
   async function storyGraphSection(post) {
     if (window.BrainGraph?.storyGraphHtml) {
       try {
@@ -628,13 +654,14 @@
       ? `<ul class="story-rel-list">${related
           .map(
             (r) =>
-              `<li><code>${escapeHtml(r.relation || "related_to")}</code> → ${escapeHtml(r.title || r.id)}</li>`
+              `<li><span class="story-rel-label">${escapeHtml(relationLabel(r.relation || "related_to"))}</span> → ${escapeHtml(r.title || r.id)}</li>`
           )
           .join("")}</ul>`
       : `<p class="muted">ยังไม่มีเส้นความสัมพันธ์</p>`;
     return `
       <section class="analysis-block story-graph-block">
         <h2>ข้อมูลกราฟของข่าวนี้</h2>
+        <p class="story-graph-actions"><a class="btn-ghost story-open-graph" href="#/brain">เปิดในกราฟ</a></p>
         ${
           svgPath
             ? `<img class="story-ego-img" src="${svgPath}" alt="ข้อมูลกราฟ" loading="lazy" onerror="this.hidden=true" />`
@@ -695,7 +722,7 @@
           ? `<section class="analysis-block"><h2>ความเชื่อมโยง (related_cases)</h2><ul>${post.related_cases
               .map(
                 (r) =>
-                  `<li><a href="#/${escapeHtml(post._date || date)}/${encodeURIComponent(r.id)}">${escapeHtml(r.title || r.id)}</a> <span class="muted">(${escapeHtml(r.relation || "related_to")})</span></li>`
+                  `<li><a href="#/${escapeHtml(post._date || date)}/${encodeURIComponent(r.id)}">${escapeHtml(r.title || r.id)}</a> <span class="muted">(${escapeHtml(relationLabel(r.relation || "related_to"))})</span></li>`
               )
               .join("")}</ul></section>`
           : `<section class="analysis-block"><h2>ความเชื่อมโยง (related_cases)</h2><p class="muted">ยังไม่พบเรื่องที่เกี่ยวข้องในช่วงที่ค้นได้</p></section>`

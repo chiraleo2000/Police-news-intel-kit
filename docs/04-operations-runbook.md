@@ -41,8 +41,8 @@ Claude scheduled task อาจถูกข้ามได้ — งานท�
 | ลิงก์เข้าแต่ไม่ถูกใช้ | โดเมน social หรือเก่ากว่า 24 ชม. หรือ unknown | ดู `reason` ใน export; ถ้าเป็นข่าวจริงให้เปลี่ยนเป็น `new` ด้วยมือ |
 | ข่าวน้อยผิดปกติ | แหล่งเปลี่ยนโครงสร้าง/บล็อก/Search ติดขัด | ดู `registry_issues` ในรายงาน; รันมือซ้ำ; ตรวจ URL ที่ขึ้นสถานะ U/? |
 | โน้ตใน vault ไม่ขึ้น | `vault-build` ล้ม/โน้ตถูกกันด้วยตัวกรองจริยธรรม | `logs\vault-build.log` ดู `needs_review`; แก้ที่ข้อมูลต้นทาง แล้วรัน `--full` |
-| กราฟรก | เพิ่งนำเข้าจำนวนมาก/ลิงก์เกินกฎ | ตรวจ Graph filter; รัน Task 3; ตรวจกฎลิงก์ docs/03 ข้อ 4 |
-| ชื่อ entity ซ้ำ | alias ยังไม่อยู่ใน `canonical-entities.md` | เพิ่ม alias → `vault-build --full` → ยอมรับข้อเสนอรวมใน Task 3 |
+| กราฟรก | เพิ่งนำเข้าจำนวนมาก/ลิงก์เกินกฎ | ตรวจ Graph filter; ดูเช็คลิสต์ Task 1/2 (ห้ามโยงแค่ประเภท+จังหวัด, ห้ามเส้นไม่มีป้ายไทย); ตรวจกฎลิงก์ docs/03 ข้อ 4 |
+| ชื่อ entity ซ้ำ | alias ยังไม่อยู่ใน `canonical-entities.md` | เพิ่ม alias → `vault-build --full` → ข้อเสนอรวมอยู่ใน `_brain_daily.md` ของ Task 1/2 สถานะ `proposed` ห้ามรวมเอง |
 | ดิสก์เต็ม | log/backup โต | ลบ backup เก่า (นโยบายข้อ 5); หมุน log |
 | งานซ้อนกัน (Task 1 ยังไม่เสร็จตอน Task 2 เริ่ม) | ข่าววันนั้นเยอะ | เลื่อน Task 2 เป็น 07:00 (ต้องแก้ docs/healthcheck ที่อ้าง 06:40 ให้ตรงกัน) |
 
@@ -91,7 +91,7 @@ Claude scheduled task อาจถูกข้ามได้ — งานท�
 | ต้องการ | ทำ |
 | --- | --- |
 | หยุดเก็บลิงก์ LINE | LINE Console → ปิด "Use webhook" (หรือเอา `groupId` ออกจาก allowlist แล้ว restart) |
-| หยุดงาน Claude | ปิดการใช้งาน Scheduled task ทั้ง 3 งานในแอป |
+| หยุดงาน Claude | ปิดการใช้งาน Scheduled task ทั้ง 2 งาน (08:01 และ 08:30) ในแอป |
 | หยุดงาน server | `schtasks /Change /TN "NewsIntel-ExportLinks" /DISABLE` (ทำเช่นเดียวกับ VaultBuild/Healthcheck/Backup) |
 | เปิดกลับ | `/ENABLE` ในคำสั่งเดียวกัน แล้วรัน healthcheck ด้วยมือ |
 | ลบข้อมูลตามคำขอ | docs/03 ข้อ 8 |
@@ -99,7 +99,7 @@ Claude scheduled task อาจถูกข้ามได้ — งานท�
 ## 9) เช็กลิสต์รายสัปดาห์ (10 นาที)
 
 - [ ] ดูแจ้งเตือน 7 วัน — มีรูปแบบซ้ำไหม
-- [ ] อ่านข้อเสนอรวมชื่อจาก Task 3 แล้วอนุมัติ/ปฏิเสธ
+- [ ] อ่าน `merge_proposal` สถานะ `proposed` ใน `_brain_daily.md` ของ Task 1/2 แล้วอนุมัติ/ปฏิเสธด้วยมือ (ไม่มีงานรีวิววันอาทิตย์)
 - [ ] ตรวจจำนวนลิงก์ LINE ที่ `skipped` + เหตุผล
 - [ ] ตรวจหน้า Usage และพื้นที่ดิสก์
 - [ ] ตรวจ `registry_issues` รวม 7 วัน — แก้ URL ที่เสียซ้ำ

@@ -1,32 +1,26 @@
 {
  "case_id": "20261023-cyber-06",
  "title": "ดีอี จับมือ Meta เปิดงาน Digital Dialogue IRL (DDIRL) Bangkok ยกระดับความปลอดภัย เสริมทักษะผู้ปกครอง-เยาวชน รู้เท่าทันโลกออนไลน์",
- "generated_at": "2026-10-26T07:18:58.845Z",
- "node_count": 5,
- "edge_count": 4,
+ "generated_at": "2026-10-26T07:49:36.465Z",
+ "node_count": 4,
+ "edge_count": 3,
  "relations": [
   {
-   "label": "announced_by",
+   "label": "แจ้งโดย",
    "target_id": "30_Entities/People/ETDA",
    "target_title": "ETDA",
    "direction": "out"
   },
   {
-   "label": "announced_by",
+   "label": "แจ้งโดย",
    "target_id": "30_Entities/People/Meta",
    "target_title": "Meta",
    "direction": "out"
   },
   {
-   "label": "announced_by",
+   "label": "แจ้งโดย",
    "target_id": "30_Entities/People/กระทรวงดีอี",
    "target_title": "กระทรวงดีอี",
-   "direction": "out"
-  },
-  {
-   "label": "mentions",
-   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
-   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
    "direction": "out"
   }
  ],

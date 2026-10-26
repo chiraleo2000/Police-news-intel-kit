@@ -1,45 +1,33 @@
 {
  "case_id": "20261025-violent-01",
  "title": "ผู้การนครบาล 1 ระงับเหตุชายคลุ้มคลั่งถือมีดจี้ภรรยาและบุตรวัย 5 ขวบเป็นตัวประกันใต้สะพานยมราช ตรวจพบสารเสพติด แจ้งข้อหา 4 ข้อ ตามข้อกล่าวหา",
- "generated_at": "2026-10-26T07:18:59.010Z",
+ "generated_at": "2026-10-26T07:49:36.616Z",
  "node_count": 5,
- "edge_count": 6,
+ "edge_count": 4,
  "relations": [
   {
-   "label": "arrested_by",
+   "label": "จับโดย",
    "target_id": "30_Entities/Units/บก.น.1",
    "target_title": "บก.น.1",
    "direction": "out"
   },
   {
-   "label": "arrested_by",
+   "label": "จับโดย",
    "target_id": "30_Entities/Units/สน.พญาไท",
    "target_title": "สน.พญาไท",
    "direction": "out"
   },
   {
-   "label": "ordered_by",
+   "label": "สั่งการโดย",
    "target_id": "30_Entities/People/บช.น.",
    "target_title": "บช.น.",
    "direction": "out"
   },
   {
-   "label": "mentions",
-   "target_id": "40_CrimeTypes/คดีชีวิต ร่างกาย และเพศ",
-   "target_title": "คดีชีวิต ร่างกาย และเพศ",
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/บุคคล/วรศักดิ์ พิสิษฐ์บรรณากร",
+   "target_title": "วรศักดิ์ พิสิษฐ์บรรณากร",
    "direction": "out"
-  },
-  {
-   "label": "mentions",
-   "target_id": "30_Entities/Units/บก.น.1",
-   "target_title": "บก.น.1",
-   "direction": "in"
-  },
-  {
-   "label": "mentions",
-   "target_id": "30_Entities/Units/สน.พญาไท",
-   "target_title": "สน.พญาไท",
-   "direction": "in"
   }
  ],
  "svg": "graphs/20261025-violent-01.svg"

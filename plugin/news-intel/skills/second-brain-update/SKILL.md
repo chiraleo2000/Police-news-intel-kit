@@ -1,13 +1,13 @@
 ---
 name: second-brain-update
-description: ใช้ในงานทบทวนรายสัปดาห์ของ Second Brain (Obsidian vault ที่ news-hub สร้าง) — ตรวจชื่อซ้ำ entity กำพร้า สร้าง timeline ต่อหน่วยงาน และสรุปแนวโน้มรายสัปดาห์ผ่าน brain_* tools
+description: ไม่มี scheduled task รีวิววันอาทิตย์ — ใช้เมื่อมีคนสั่งทบทวนด้วยมือเท่านั้น การวิเคราะห์ข้อมูลกราฟรายวันอยู่ใน Task 1 (08:01) และ Task 2 (08:30)
 ---
 
 # second-brain-update
 
-Claude **ไม่แก้ไฟล์ vault โดยตรง** ทุกการเปลี่ยนแปลงทำผ่าน `news-hub` (`GET /v1/brain/search`, `GET /v1/brain/timeline`) แล้ว server เป็นผู้เขียนโน้ต
+ไม่มี scheduled task นี้ และห้ามตั้งรีวิววันอาทิตย์ การวิเคราะห์ข้อมูลกราฟรายวันอยู่ใน Task 1 (08:01) และ Task 2 (08:30) ตามเช็คลิสต์ใน `prompts/`
 
-งานวิเคราะห์ข่าวรายวันใช้เครื่องมือชุดเดียวกัน: ต้อง search ก่อนโยงคดีเก่า ห้ามข้ามไปเขียน related จากความจำ
+ถ้ามีคนสั่งทบทวนด้วยมือ: ค้นด้วย `brain_search` / `brain_timeline` ก่อนโยงคดีเก่า ห้ามข้ามไปเขียน related จากความจำ ข้อเสนอรวมชื่อเป็น `proposed` เท่านั้น ห้ามรวมเอง
 
 ## ขั้นตอนรายสัปดาห์ (สัปดาห์ ISO ที่เพิ่งจบ, Asia/Bangkok)
 1. **รวบรวม**: `brain_timeline(since=<วันจันทร์>, until=<วันอาทิตย์>)` ได้ cases/entities/relations ของสัปดาห์

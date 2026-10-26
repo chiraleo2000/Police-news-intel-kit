@@ -7,10 +7,18 @@
  */
 const fs = require("node:fs");
 const path = require("node:path");
+const {
+  thaiLabel,
+  isSpecificNetwork,
+  looksLikeUnit,
+  entityGroupForFolder,
+  extractPostEntities,
+} = require("./graph-entities");
 
 const ROOT = path.join(__dirname, "..");
 const VAULT = path.join(ROOT, "vault");
-const OUT = path.join(ROOT, "github-pages", "data", "graph.json");
+const DATA = path.join(ROOT, "github-pages", "data");
+const OUT = path.join(DATA, "graph.json");
 
 const FM_LINE_RE = /^(\w+):(.*)$/;
 const LABELED_REL_KEYS = ["rel_units", "rel_people", "rel_projects", "rel_cases"];
@@ -141,8 +149,8 @@ function labeledRels(fm) {
     for (const item of arr) {
       if (!item || typeof item !== "object") continue;
       const target = String(item.target || "").trim();
-      const label = String(item.rel || "mentions").trim();
-      if (target) out.push({ target, label });
+      const label = thaiLabel(item.rel);
+      if (target && label) out.push({ target, label });
     }
   }
   return out;
@@ -156,9 +164,9 @@ function wikilinkCut(inner) {
 }
 
 function wikilinkRelLabel(inner, pipe) {
-  if (pipe < 0) return "mentions";
-  const rel = /rel:(\w+)/.exec(inner.slice(pipe + 1));
-  return rel ? rel[1] : "mentions";
+  if (pipe < 0) return "";
+  const rel = /rel:([A-Za-z0-9_]+)/.exec(inner.slice(pipe + 1));
+  return rel ? thaiLabel(rel[1]) : "";
 }
 
 function extractLinks(body) {
@@ -296,12 +304,24 @@ function createUnresolvedNode(rawTarget, id) {
   };
 }
 
-function pushEdge(state, source, targetId, label) {
-  if (!targetId || targetId === source) return;
+function networkEdgeOk(state, targetId, label) {
+  if (label !== "เป้าหมายเครือข่าย") return true;
+  const target = state.byId.get(targetId);
+  if (!target) return false;
+  if (target.entity_group === "ข่ายเครือข่าย") return true;
+  return isSpecificNetwork(target.title);
+}
+
+function pushEdge(state, source, targetId, rawLabel) {
+  const label = thaiLabel(rawLabel) || (String(rawLabel || "").trim() && /[ก-๙]/.test(rawLabel) ? String(rawLabel).trim() : "");
+  if (!label || !targetId || targetId === source) return;
+  if (!networkEdgeOk(state, targetId, label)) return;
+  const target = state.byId.get(targetId);
+  if (target && (target.title === "ตำรวจ" || target.title === "เจ้าหน้าที่" || target.title === "ผู้ต้องหา")) return;
   const ek = `${source}→${targetId}→${label}`;
   if (state.edgeKeys.has(ek)) return;
   state.edgeKeys.add(ek);
-  state.edges.push({ source, target: targetId, label: label || "mentions" });
+  state.edges.push({ source, target: targetId, label });
 }
 
 function resolveTarget(state, rawTarget) {
@@ -332,15 +352,126 @@ function stripRelSuffix(rawTarget) {
   return idx < 0 ? s : s.slice(0, idx);
 }
 
+function bothCases(state, sourceId, targetId) {
+  return state.byId.get(sourceId)?.kind === "case" && state.byId.get(targetId)?.kind === "case";
+}
+
 function resolveAndPushEdges(node, state) {
   for (const rel of node.rels || []) {
-    pushEdge(state, node.id, resolveTarget(state, rel.target), rel.label);
+    const label = thaiLabel(rel.label);
+    if (!label) continue;
+    const targetId = resolveTarget(state, rel.target);
+    if (bothCases(state, node.id, targetId)) continue;
+    pushEdge(state, node.id, targetId, label);
   }
   for (const rawTarget of node.links) {
-    const link = typeof rawTarget === "string" ? { target: rawTarget, label: "mentions" } : rawTarget;
+    const link = typeof rawTarget === "string" ? { target: rawTarget, label: "" } : rawTarget;
+    const label = thaiLabel(link.label);
+    if (!label) continue;
     const clean = stripRelSuffix(link.target);
-    pushEdge(state, node.id, resolveTarget(state, clean), link.label || "mentions");
+    const targetId = resolveTarget(state, clean);
+    if (bothCases(state, node.id, targetId)) continue;
+    pushEdge(state, node.id, targetId, label);
   }
+}
+
+function loadCrimePosts() {
+  const posts = [];
+  if (!fs.existsSync(DATA)) return posts;
+  for (const name of fs.readdirSync(DATA)) {
+    if (!/^\d{4}-\d{2}-\d{2}_crime(_line)?\.json$/.test(name)) continue;
+    const doc = JSON.parse(fs.readFileSync(path.join(DATA, name), "utf8"));
+    const day = name.slice(0, 10);
+    for (const post of doc.posts || []) posts.push({ ...post, _day: post._day || day });
+  }
+  return posts;
+}
+
+function caseNodeId(state, caseId) {
+  const id = String(caseId || "").trim();
+  if (!id) return "";
+  return (
+    state.aliasIndex.get(normalizeKey(id)) ||
+    state.aliasIndex.get(normalizeKey(`20_Cases/${id}`)) ||
+    ""
+  );
+}
+
+function blankNode(id, title, group) {
+  return {
+    id,
+    title,
+    kind: "entity",
+    folder: `30_Entities/${group}`,
+    entity_group: group,
+    date: null,
+    case_id: null,
+    crime_type: null,
+    bureau: null,
+    area: null,
+    status: null,
+    tags: [],
+    links: [],
+    rels: [],
+    excerpt: "",
+    path: null,
+  };
+}
+
+function safeEntityName(name) {
+  return String(name || "")
+    .replaceAll(/[\\/:*?"<>|]/g, " ")
+    .replaceAll(/\s+/g, " ")
+    .trim();
+}
+
+function ensureEntity(state, ent) {
+  const name = safeEntityName(ent.name);
+  if (!name) return "";
+  const id = `30_Entities/${ent.group}/${name}`;
+  const alias = state.aliasIndex.get(normalizeKey(name));
+  if (alias && state.byId.has(alias)) {
+    const node = state.byId.get(alias);
+    if (node.kind === "entity" && !looksLikeUnit(node.title)) {
+      if (ent.group === "ผู้ต้องหา" && node.entity_group === "บุคคล") node.entity_group = "ผู้ต้องหา";
+      if (!node.entity_group) node.entity_group = ent.group;
+      return alias;
+    }
+    if (node.kind === "entity" && ent.group === "หน่วย") return alias;
+  }
+  if (state.byId.has(id)) return id;
+  const node = blankNode(id, name, ent.group);
+  state.nodes.push(node);
+  state.byId.set(id, node);
+  addAlias(state, id, id);
+  addAlias(state, name, id);
+  return id;
+}
+
+function absorbPosts(state) {
+  for (const post of loadCrimePosts()) {
+    const src = caseNodeId(state, post.id);
+    if (!src) continue;
+    for (const rel of post.related_cases || []) {
+      const dst = caseNodeId(state, rel.id);
+      const label = thaiLabel(rel.relation || "related_to");
+      if (dst && label) pushEdge(state, src, dst, label);
+    }
+    for (const ent of extractPostEntities(post)) {
+      const dst = ensureEntity(state, ent);
+      if (dst) pushEdge(state, src, dst, ent.rel);
+    }
+  }
+}
+
+function finalizeEntityGroup(node) {
+  if (node.kind !== "entity") return node.entity_group;
+  const preset = node.entity_group;
+  if (preset === "ผู้ต้องหา" || preset === "บัญชี" || preset === "สถานที่") return preset;
+  if (preset === "บุคคล") return looksLikeUnit(node.title) ? "หน่วย" : "บุคคล";
+  if (preset === "ข่ายเครือข่าย") return preset;
+  if (preset === "หน่วย") return "หน่วย";
+  return entityGroupForFolder(node.folder, node.title);
 }
 
 function computeDegrees(edges) {
@@ -365,22 +496,45 @@ function build() {
     if (node.kind === "crime_type" || node.kind === "daily") continue;
     resolveAndPushEdges(node, state);
   }
+  absorbPosts(state);
 
-  // Strip heavy fields from published nodes (keep links count via edges)
+  for (const node of state.nodes) {
+    if (node.kind === "entity") node.entity_group = finalizeEntityGroup(node);
+  }
+  const dropped = new Set(
+    state.nodes.filter((node) => node.kind === "entity" && !node.entity_group).map((node) => node.id),
+  );
+  state.edges = state.edges.filter(
+    (edge) => edge.label && !dropped.has(edge.source) && !dropped.has(edge.target),
+  );
   const degrees = computeDegrees(state.edges);
-  const publishedNodes = state.nodes.map(({ links, rels, ...rest }) => ({
-    ...rest,
-    degree: degrees.get(rest.id) || 0,
-  }));
+  const publishedNodes = state.nodes
+    .filter((node) => !dropped.has(node.id))
+    .filter((node) => node.kind !== "entity" || (degrees.get(node.id) || 0) > 0)
+    .map(({ links, rels, ...rest }) => ({
+      ...rest,
+      degree: degrees.get(rest.id) || 0,
+    }));
+  const kept = new Set(publishedNodes.map((node) => node.id));
+  state.edges = state.edges.filter((edge) => kept.has(edge.source) && kept.has(edge.target));
 
   const stats = {
     nodes: publishedNodes.length,
     edges: state.edges.length,
     unresolved: state.unresolved,
     by_kind: {},
+    by_entity_group: {},
+    by_label: {},
   };
   for (const n of publishedNodes) {
     stats.by_kind[n.kind] = (stats.by_kind[n.kind] || 0) + 1;
+    if (n.kind === "entity") {
+      const g = n.entity_group || "(none)";
+      stats.by_entity_group[g] = (stats.by_entity_group[g] || 0) + 1;
+    }
+  }
+  for (const edge of state.edges) {
+    stats.by_label[edge.label] = (stats.by_label[edge.label] || 0) + 1;
   }
 
   const graph = {

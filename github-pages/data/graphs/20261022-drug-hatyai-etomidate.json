@@ -1,62 +1,50 @@
 {
  "case_id": "20261022-drug-hatyai-etomidate",
  "title": "ตำรวจคุ้มครองผู้บริโภคร่วม ตชด.437 จับ 2 ผู้ต้องหา ทลายแหล่งผสมน้ำยาบุหรี่ไฟฟ้าผสมอีโตมิเดต หาดใหญ่",
- "generated_at": "2026-10-26T07:18:58.764Z",
- "node_count": 8,
- "edge_count": 9,
+ "generated_at": "2026-10-26T07:49:36.390Z",
+ "node_count": 7,
+ "edge_count": 7,
  "relations": [
   {
-   "label": "arrested_by",
+   "label": "จับโดย",
    "target_id": "30_Entities/Units/ตชด.437",
    "target_title": "ตชด.437",
    "direction": "out"
   },
   {
-   "label": "arrested_by",
+   "label": "จับโดย",
    "target_id": "30_Entities/Units/บก.ปคบ.",
    "target_title": "บก.ปคบ.",
    "direction": "out"
   },
   {
-   "label": "arrested_by",
+   "label": "จับโดย",
    "target_id": "30_Entities/Units/สภ.หาดใหญ่",
    "target_title": "สภ.หาดใหญ่",
    "direction": "out"
   },
   {
-   "label": "ordered_by",
+   "label": "สั่งการโดย",
    "target_id": "30_Entities/Units/บช.ก.",
    "target_title": "บช.ก.",
    "direction": "out"
   },
   {
-   "label": "related_to",
+   "label": "เกี่ยวข้องกับ",
    "target_id": "20_Cases/20261023-drug-03",
    "target_title": "ตชด.437 ร่วม ปคบ. ทลายแหล่งผลิตพอตเคกลางหาดใหญ่ จับ 2 ราย",
    "direction": "out"
   },
   {
-   "label": "mentions",
-   "target_id": "30_Entities/Units/ตำรวจคุ้มครองผู้บริโภค (บก.ปคบ.) ร่วม ตชด.ที่ 437",
-   "target_title": "ตำรวจคุ้มครองผู้บริโภค (บก.ปคบ.) ร่วม ตชด.ที่ 437",
+   "label": "เกิดที่",
+   "target_id": "30_Entities/สถานที่/หาดใหญ่",
+   "target_title": "หาดใหญ่",
    "direction": "out"
   },
   {
-   "label": "mentions",
-   "target_id": "40_CrimeTypes/ยาเสพติด",
-   "target_title": "ยาเสพติด",
-   "direction": "out"
-  },
-  {
-   "label": "related_to",
+   "label": "เกี่ยวข้องกับ",
    "target_id": "20_Cases/20261023-drug-03",
    "target_title": "ตชด.437 ร่วม ปคบ. ทลายแหล่งผลิตพอตเคกลางหาดใหญ่ จับ 2 ราย",
-   "direction": "in"
-  },
-  {
-   "label": "mentions",
-   "target_id": "30_Entities/Units/ตำรวจคุ้มครองผู้บริโภค (บก.ปคบ.) ร่วม ตชด.ที่ 437",
-   "target_title": "ตำรวจคุ้มครองผู้บริโภค (บก.ปคบ.) ร่วม ตชด.ที่ 437",
    "direction": "in"
   }
  ],

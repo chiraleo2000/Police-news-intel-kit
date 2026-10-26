@@ -1,39 +1,27 @@
 {
  "case_id": "20261022-line-consumer-fake-helmets-nakhonpathom",
  "title": "บก.ปอศ. ทลายแหล่งขายหมวกกันน็อกปลอมเลียนแบบแบรนด์ดังทางออนไลน์ ยึดของกลางที่นครปฐม",
- "generated_at": "2026-10-26T07:18:58.788Z",
- "node_count": 6,
- "edge_count": 5,
+ "generated_at": "2026-10-26T07:49:36.412Z",
+ "node_count": 4,
+ "edge_count": 3,
  "relations": [
   {
-   "label": "arrested_by",
+   "label": "จับโดย",
    "target_id": "30_Entities/Units/กก.1",
    "target_title": "กก.1",
    "direction": "out"
   },
   {
-   "label": "arrested_by",
+   "label": "จับโดย",
    "target_id": "30_Entities/Units/บก.ปอศ.",
    "target_title": "บก.ปอศ.",
    "direction": "out"
   },
   {
-   "label": "ordered_by",
+   "label": "สั่งการโดย",
    "target_id": "30_Entities/Units/บช.ก.",
    "target_title": "บช.ก.",
    "direction": "out"
-  },
-  {
-   "label": "mentions",
-   "target_id": "40_CrimeTypes/คุ้มครองผู้บริโภคและสินค้าผิดกฎหมาย",
-   "target_title": "คุ้มครองผู้บริโภคและสินค้าผิดกฎหมาย",
-   "direction": "out"
-  },
-  {
-   "label": "mentions",
-   "target_id": "30_Entities/Units/บก.ปอศ. (ตำรวจสอบสวนกลาง)",
-   "target_title": "บก.ปอศ. (ตำรวจสอบสวนกลาง)",
-   "direction": "in"
   }
  ],
  "svg": "graphs/20261022-line-consumer-fake-helmets-nakhonpathom.svg"

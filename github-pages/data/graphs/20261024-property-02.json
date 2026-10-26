@@ -1,75 +1,33 @@
 {
  "case_id": "20261024-property-02",
  "title": "ตำรวจไซเบอร์ทลายแหล่งผลิตอาวุธปืนเถื่อนขายออนไลน์ ฉะเชิงเทรา จับผู้ต้องหา 1 ราย",
- "generated_at": "2026-10-26T07:18:58.956Z",
- "node_count": 7,
- "edge_count": 11,
+ "generated_at": "2026-10-26T07:49:36.566Z",
+ "node_count": 5,
+ "edge_count": 4,
  "relations": [
   {
-   "label": "arrested_by",
+   "label": "จับโดย",
    "target_id": "30_Entities/Units/กก.4 บก.สอท.2",
    "target_title": "กก.4 บก.สอท.2",
    "direction": "out"
   },
   {
-   "label": "arrested_by",
+   "label": "จับโดย",
    "target_id": "30_Entities/Units/บก.สอท.2",
    "target_title": "บก.สอท.2",
    "direction": "out"
   },
   {
-   "label": "arrested_by",
+   "label": "จับโดย",
    "target_id": "30_Entities/People/บช.สอท.",
    "target_title": "บช.สอท.",
    "direction": "out"
   },
   {
-   "label": "announced_by",
+   "label": "แจ้งโดย",
    "target_id": "30_Entities/People/ผบช.สอท.",
    "target_title": "ผบช.สอท.",
    "direction": "out"
-  },
-  {
-   "label": "mentions",
-   "target_id": "40_CrimeTypes/คดีทรัพย์สิน",
-   "target_title": "คดีทรัพย์สิน",
-   "direction": "out"
-  },
-  {
-   "label": "mentions",
-   "target_id": "30_Entities/Units/บก.สอท.2",
-   "target_title": "บก.สอท.2",
-   "direction": "out"
-  },
-  {
-   "label": "mentions",
-   "target_id": "30_Entities/Units/กก.4 บก.สอท.2",
-   "target_title": "กก.4 บก.สอท.2",
-   "direction": "out"
-  },
-  {
-   "label": "mentions",
-   "target_id": "30_Entities/People/บช.สอท.",
-   "target_title": "บช.สอท.",
-   "direction": "out"
-  },
-  {
-   "label": "mentions",
-   "target_id": "30_Entities/Units/กก.4 บก.สอท.2",
-   "target_title": "กก.4 บก.สอท.2",
-   "direction": "in"
-  },
-  {
-   "label": "mentions",
-   "target_id": "30_Entities/Units/บก.สอท.2",
-   "target_title": "บก.สอท.2",
-   "direction": "in"
-  },
-  {
-   "label": "mentions",
-   "target_id": "30_Entities/Units/บช.สอท.",
-   "target_title": "บช.สอท.",
-   "direction": "in"
   }
  ],
  "svg": "graphs/20261024-property-02.svg"

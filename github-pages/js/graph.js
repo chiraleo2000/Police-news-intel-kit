@@ -31,6 +31,22 @@
     unresolved: "[[ลิงก์]] ที่ยังไม่มีโน้ตปลายทาง — ควรแก้ชื่อหรือสร้างโน้ต",
     other: "โน้ตอื่นในคลัง",
   };
+  /** English edge labels in graph.json → Thai on screen. Thai labels pass through. */
+  const REL_TH = {
+    investigated_by: "สืบสวนโดย",
+    arrested_by: "จับโดย",
+    ordered_by: "สั่งการโดย",
+    announced_by: "แจ้งโดย",
+    targets_network: "เป้าหมายเครือข่าย",
+    mentions: "กล่าวถึง",
+    related_to: "เกี่ยวข้องกับ",
+    follow_up_of: "ติดตามจาก",
+    located_in: "เกิดที่",
+    involves_person: "เกี่ยวข้องกับบุคคล",
+    suspect: "ผู้ต้องหา",
+    account: "บัญชี",
+    uses_account: "ใช้บัญชี",
+  };
 
   let graph = null;
   let sim = null;
@@ -51,6 +67,7 @@
     hideOrphans: false,
     isolate: false,
     showLabels: "auto",
+    relation: "",
   };
   let bound = false;
 
@@ -69,6 +86,49 @@
     return Math.min(ZOOM_MAX, Math.max(ZOOM_MIN, s));
   }
 
+  function relationLabel(raw) {
+    const s = String(raw ?? "").trim();
+    if (!s) return "";
+    if (REL_TH[s]) return REL_TH[s];
+    const key = s.toLowerCase().replace(/\s+/g, "_");
+    if (REL_TH[key]) return REL_TH[key];
+    return s;
+  }
+
+  function isGenericMention(label) {
+    const s = String(label ?? "").trim().toLowerCase();
+    return s === "mentions" || s === "กล่าวถึง";
+  }
+
+  function pairKey(a, b) {
+    return a < b ? `${a}\0${b}` : `${b}\0${a}`;
+  }
+
+  /**
+   * Drop blank labels. Drop generic mentions when a more specific edge joins the same pair,
+   * unless the caller is filtering to that mention label on purpose.
+   */
+  function presentEdges(edges, respectRelation) {
+    const specific = new Set();
+    for (const e of edges) {
+      const raw = String(e.label ?? "").trim();
+      if (raw && !isGenericMention(raw)) specific.add(pairKey(e.source, e.target));
+    }
+    const want = respectRelation ? filters.relation : "";
+    return edges.filter((e) => {
+      const raw = String(e.label ?? "").trim();
+      if (!raw) return false;
+      const display = relationLabel(raw);
+      if (want) return display === want || raw === want;
+      if (isGenericMention(raw) && specific.has(pairKey(e.source, e.target))) return false;
+      return true;
+    });
+  }
+
+  function usableEdges(edges) {
+    return presentEdges(edges, true);
+  }
+
   async function loadGraph() {
     const res = await fetch(`data/graph.json?t=${Date.now()}`, { cache: "no-store" });
     if (!res.ok) throw new Error("graph.json not found — run node ops/build-obsidian-graph.js");
@@ -77,7 +137,9 @@
 
   function neighborIds(id) {
     const set = new Set([id]);
-    for (const e of graph?.edges || []) {
+    const ids = new Set((graph?.nodes || []).filter(passesBaseFilters).map((n) => n.id));
+    ids.add(id);
+    for (const e of usableEdges((graph?.edges || []).filter((e) => ids.has(e.source) && ids.has(e.target)))) {
       if (e.source === id) set.add(e.target);
       if (e.target === id) set.add(e.source);
     }
@@ -126,11 +188,21 @@
       const keep = neighborIds(selectedId);
       nodes = nodes.filter((n) => keep.has(n.id));
     }
+    if (filters.hideOrphans || filters.relation) {
+      const ids = new Set(nodes.map((n) => n.id));
+      const edges = usableEdges((graph.edges || []).filter((e) => ids.has(e.source) && ids.has(e.target)));
+      const touched = new Set();
+      for (const e of edges) {
+        touched.add(e.source);
+        touched.add(e.target);
+      }
+      nodes = nodes.filter((n) => touched.has(n.id) || n.id === selectedId);
+    }
     return nodes;
   }
 
   function visibleEdges(ids) {
-    return (graph?.edges || []).filter((e) => ids.has(e.source) && ids.has(e.target));
+    return usableEdges((graph?.edges || []).filter((e) => ids.has(e.source) && ids.has(e.target)));
   }
 
   function worldFromEvent(ev) {
@@ -209,67 +281,74 @@
     return { nodes, links, w, h, vw, vh, ctx, alpha: 1 };
   }
 
-  function tick(state) {
-    const { nodes, links, w, h } = state;
-    if (state.alpha < 0.012 && !drag) return false;
-    state.alpha *= 0.989;
+  function repulsePair(a, b, repulse, alpha) {
+    let dx = a.x - b.x;
+    let dy = a.y - b.y;
+    const dist = Math.hypot(dx, dy) || 0.01;
+    const minSep = (nodeRadius(a) + nodeRadius(b)) * 1.15 + 10;
+    if (dist >= minSep * 6) return;
+    const f = ((repulse * repulse) / (dist * dist)) * 0.38 * alpha;
+    const ma = massOf(a);
+    const mb = massOf(b);
+    dx = (dx / dist) * f;
+    dy = (dy / dist) * f;
+    a.vx += (dx * mb) / (ma + mb);
+    a.vy += (dy * mb) / (ma + mb);
+    b.vx -= (dx * ma) / (ma + mb);
+    b.vy -= (dy * ma) / (ma + mb);
+  }
 
-    const nCount = Math.max(1, nodes.length);
-    const repulse = 38 + Math.min(28, Math.sqrt(nCount));
-
+  function applyRepulsion(nodes, repulse, alpha) {
     for (let i = 0; i < nodes.length; i++) {
       for (let j = i + 1; j < nodes.length; j++) {
-        const a = nodes[i];
-        const b = nodes[j];
-        let dx = a.x - b.x;
-        let dy = a.y - b.y;
-        let dist = Math.hypot(dx, dy) || 0.01;
-        const minSep = (nodeRadius(a) + nodeRadius(b)) * 1.15 + 10;
-        if (dist < minSep * 6) {
-          const f = ((repulse * repulse) / (dist * dist)) * 0.38 * state.alpha;
-          const ma = massOf(a);
-          const mb = massOf(b);
-          dx = (dx / dist) * f;
-          dy = (dy / dist) * f;
-          a.vx += (dx * mb) / (ma + mb);
-          a.vy += (dy * mb) / (ma + mb);
-          b.vx -= (dx * ma) / (ma + mb);
-          b.vy -= (dy * ma) / (ma + mb);
-        }
+        repulsePair(nodes[i], nodes[j], repulse, alpha);
       }
     }
+  }
 
+  function applyLinkPull(links, alpha) {
     for (const l of links) {
       const dx = l.target.x - l.source.x;
       const dy = l.target.y - l.source.y;
       const dist = Math.hypot(dx, dy) || 0.01;
       const ideal = idealLinkLength(l);
-      const f = ((dist - ideal) / dist) * 0.028 * state.alpha;
+      const f = ((dist - ideal) / dist) * 0.028 * alpha;
       l.source.vx += dx * f;
       l.source.vy += dy * f;
       l.target.vx -= dx * f;
       l.target.vy -= dy * f;
     }
+  }
 
+  function stepNode(n, w, h, alpha) {
     const pad = 40;
-    for (const n of nodes) {
-      const pull = n.kind === "case" ? 0.00055 : 0.0014;
-      n.vx += (w / 2 - n.x) * pull * state.alpha;
-      n.vy += (h / 2 - n.y) * pull * state.alpha;
-      if (drag?.mode === "node" && drag.id === n.id) {
-        n.x = drag.x;
-        n.y = drag.y;
-        n.vx = 0;
-        n.vy = 0;
-      } else {
-        n.vx *= 0.84;
-        n.vy *= 0.84;
-        n.x += n.vx;
-        n.y += n.vy;
-        n.x = Math.max(pad, Math.min(w - pad, n.x));
-        n.y = Math.max(pad, Math.min(h - pad, n.y));
-      }
+    const pull = n.kind === "case" ? 0.00055 : 0.0014;
+    n.vx += (w / 2 - n.x) * pull * alpha;
+    n.vy += (h / 2 - n.y) * pull * alpha;
+    if (drag?.mode === "node" && drag.id === n.id) {
+      n.x = drag.x;
+      n.y = drag.y;
+      n.vx = 0;
+      n.vy = 0;
+      return;
     }
+    n.vx *= 0.84;
+    n.vy *= 0.84;
+    n.x += n.vx;
+    n.y += n.vy;
+    n.x = Math.max(pad, Math.min(w - pad, n.x));
+    n.y = Math.max(pad, Math.min(h - pad, n.y));
+  }
+
+  function tick(state) {
+    const { nodes, links, w, h } = state;
+    if (state.alpha < 0.012 && drag?.mode !== "node") return false;
+    state.alpha *= 0.989;
+    const nCount = Math.max(1, nodes.length);
+    const repulse = 38 + Math.min(28, Math.sqrt(nCount));
+    applyRepulsion(nodes, repulse, state.alpha);
+    applyLinkPull(links, state.alpha);
+    for (const n of nodes) stepNode(n, w, h, state.alpha);
     return true;
   }
 
@@ -280,28 +359,27 @@
   }
 
   function drawPillLabel(ctx, text, x, y, opts = {}) {
-    const fontPx = opts.fontPx || 12;
-    const padX = opts.padX ?? 6;
-    const padY = opts.padY ?? 3;
+    const fontPx = opts.fontPx || 14;
+    const scale = camera.scale || 1;
+    const padX = (opts.padX ?? 7) / scale;
+    const padY = (opts.padY ?? 5) / scale;
     const align = opts.align || "left";
-    ctx.font = `${opts.weight || "600"} ${fontPx / camera.scale}px Sarabun, Anuphan, sans-serif`;
+    ctx.font = `${opts.weight || "700"} ${fontPx / scale}px Sarabun, Anuphan, sans-serif`;
     const w = ctx.measureText(text).width;
-    const h = fontPx / camera.scale;
+    const h = fontPx / scale;
     let left = x;
     if (align === "center") left = x - w / 2;
     else if (align === "right") left = x - w;
-    const px = padX / camera.scale;
-    const py = padY / camera.scale;
-    const rx = 6 / camera.scale;
-    ctx.fillStyle = opts.bg || "rgba(12, 18, 28, 0.88)";
-    ctx.strokeStyle = opts.border || "rgba(220, 230, 242, 0.35)";
-    ctx.lineWidth = 1 / camera.scale;
+    const rx = 7 / scale;
+    ctx.fillStyle = opts.bg || "rgba(6, 10, 16, 0.94)";
+    ctx.strokeStyle = opts.border || "rgba(232, 240, 248, 0.55)";
+    ctx.lineWidth = Math.max(1, 1.25 / scale);
     ctx.beginPath();
-    const r = rx;
-    const x0 = left - px;
-    const y0 = y - h + py * 0.2;
-    const bw = w + px * 2;
-    const bh = h + py * 1.6;
+    const x0 = left - padX;
+    const y0 = y - h - padY * 0.95;
+    const bw = w + padX * 2;
+    const bh = h + padY * 2.5;
+    const r = Math.min(rx, bh / 2, bw / 2);
     ctx.moveTo(x0 + r, y0);
     ctx.arcTo(x0 + bw, y0, x0 + bw, y0 + bh, r);
     ctx.arcTo(x0 + bw, y0 + bh, x0, y0 + bh, r);
@@ -310,97 +388,115 @@
     ctx.closePath();
     ctx.fill();
     ctx.stroke();
-    ctx.fillStyle = opts.fg || "#f4f8fc";
+    ctx.fillStyle = opts.fg || "#ffffff";
     ctx.textBaseline = "alphabetic";
     ctx.fillText(text, left, y);
   }
 
-  function drawLinkLabel(ctx, l, emphasized) {
-    if (!l.label) return;
+  function screenOf(x, y) {
+    return { x: x * camera.scale + camera.x, y: y * camera.scale + camera.y };
+  }
+
+  function segmentHitsView(x1, y1, x2, y2, vw, vh, margin = 32) {
+    const a = screenOf(x1, y1);
+    const b = screenOf(x2, y2);
+    const minX = Math.min(a.x, b.x);
+    const maxX = Math.max(a.x, b.x);
+    const minY = Math.min(a.y, b.y);
+    const maxY = Math.max(a.y, b.y);
+    return maxX >= -margin && minX <= vw + margin && maxY >= -margin && minY <= vh + margin;
+  }
+
+  function drawLinkLabel(ctx, l, emphasized, text) {
+    if (!text) return;
     const mx = (l.source.x + l.target.x) / 2;
     const my = (l.source.y + l.target.y) / 2;
-    const text = l.label === "mentions" && !emphasized ? "" : l.label;
-    if (!text) return;
     drawPillLabel(ctx, text, mx, my + 3 / camera.scale, {
-      fontPx: emphasized ? 11.5 : 10,
+      fontPx: emphasized ? 13 : 12,
       align: "center",
-      bg: emphasized ? "rgba(18, 40, 36, 0.92)" : "rgba(16, 24, 36, 0.82)",
-      border: emphasized ? "rgba(125, 211, 192, 0.55)" : "rgba(180, 196, 214, 0.35)",
-      fg: emphasized ? "#d8fff4" : "#e8f0f8",
-      weight: "600",
+      bg: emphasized ? "rgba(8, 36, 32, 0.96)" : "rgba(8, 12, 20, 0.94)",
+      border: emphasized ? "rgba(125, 211, 192, 0.85)" : "rgba(220, 232, 244, 0.55)",
+      fg: "#ffffff",
+      weight: "700",
     });
   }
 
-  function shouldShowLinkLabel(l, focus) {
-    if (!l.label) return false;
-    const hot = Boolean(focus) && (l.source.id === focus || l.target.id === focus);
-    if (hot) return camera.scale > 0.45;
-    if (l.label === "mentions") return false;
-    if (camera.scale > 1.35) return true;
-    if (camera.scale > 0.95 && (l.source.kind === "case" || l.target.kind === "case")) {
-      return (l.source.degree || 0) + (l.target.degree || 0) >= 4;
-    }
-    return false;
-  }
-
-  function drawLinks(ctx, links, focus) {
-    const labelBudget = camera.scale > 1.2 ? 48 : camera.scale > 0.85 ? 28 : 14;
+  function drawLinks(ctx, links, focus, vw, vh) {
+    const zoomed = camera.scale >= 0.6;
     const labeled = [];
     for (const l of links) {
       const hot = Boolean(focus) && (l.source.id === focus || l.target.id === focus);
       const dim = Boolean(focus) && !hot;
+      const name = relationLabel(l.label);
+      const mustName = hot || zoomed;
+      if (mustName && !name) continue;
+      if (vw && !segmentHitsView(l.source.x, l.source.y, l.target.x, l.target.y, vw, vh)) continue;
       ctx.strokeStyle = strokeColorForLink(hot, dim);
-      ctx.lineWidth = (hot ? 2.2 : 1) / camera.scale;
+      ctx.lineWidth = (hot ? 2.4 : 1) / camera.scale;
       ctx.beginPath();
       ctx.moveTo(l.source.x, l.source.y);
       ctx.lineTo(l.target.x, l.target.y);
       ctx.stroke();
-      if (!dim && shouldShowLinkLabel(l, focus)) labeled.push({ l, hot });
+      if (name && mustName) labeled.push({ l, hot, name });
     }
-    labeled
-      .sort((a, b) => Number(b.hot) - Number(a.hot))
-      .slice(0, labelBudget)
-      .forEach(({ l, hot }) => drawLinkLabel(ctx, l, hot));
+    labeled.sort((a, b) => Number(a.hot) - Number(b.hot));
+    for (const { l, hot, name } of labeled) drawLinkLabel(ctx, l, hot, name);
+  }
+
+  function nodeVisual(n, neigh) {
+    return {
+      r: nodeRadius(n),
+      active: n.id === selectedId || n.id === hoverId,
+      dim: Boolean(neigh && !neigh.has(n.id)),
+      color: KIND_COLOR[n.kind] || KIND_COLOR.other,
+    };
+  }
+
+  function haloReach(r, active) {
+    if (active) return r * 2.6;
+    return r * 2.1;
+  }
+
+  function drawNodeHalo(ctx, n, r, color, active) {
+    const reach = haloReach(r, active);
+    const glow = ctx.createRadialGradient(n.x, n.y, r * 0.2, n.x, n.y, reach);
+    glow.addColorStop(0, color + "55");
+    glow.addColorStop(1, "transparent");
+    ctx.fillStyle = glow;
+    ctx.beginPath();
+    ctx.arc(n.x, n.y, reach, 0, Math.PI * 2);
+    ctx.fill();
+  }
+
+  function discRadius(r, active) {
+    if (active) return r + 1.8;
+    return r;
+  }
+
+  function drawNodeDisc(ctx, n, r, color, active) {
+    ctx.beginPath();
+    ctx.arc(n.x, n.y, discRadius(r, active), 0, Math.PI * 2);
+    ctx.fillStyle = color;
+    ctx.fill();
+    if (n.kind === "case") {
+      ctx.strokeStyle = "rgba(255,255,255,0.28)";
+      ctx.lineWidth = 1.2 / camera.scale;
+      ctx.stroke();
+    }
+    if (active) {
+      ctx.strokeStyle = "#f2f6fb";
+      ctx.lineWidth = 2 / camera.scale;
+      ctx.stroke();
+    }
   }
 
   function drawNodes(ctx, nodes, neigh) {
     for (const n of nodes) {
-      const r = nodeRadius(n);
-      const selected = n.id === selectedId;
-      const hovered = n.id === hoverId;
-      const active = selected || hovered;
-      const dim = neigh && !neigh.has(n.id);
-      const color = KIND_COLOR[n.kind] || KIND_COLOR.other;
-
+      const { r, active, dim, color } = nodeVisual(n, neigh);
       ctx.globalAlpha = dim ? 0.18 : 1;
-
       // Soft Obsidian-like halo (stronger on case hubs)
-      if (!dim && (n.kind === "case" || active)) {
-        const glow = ctx.createRadialGradient(n.x, n.y, r * 0.2, n.x, n.y, r * (active ? 2.6 : 2.1));
-        glow.addColorStop(0, color + "55");
-        glow.addColorStop(1, "transparent");
-        ctx.fillStyle = glow;
-        ctx.beginPath();
-        ctx.arc(n.x, n.y, r * (active ? 2.6 : 2.1), 0, Math.PI * 2);
-        ctx.fill();
-      }
-
-      ctx.beginPath();
-      ctx.arc(n.x, n.y, active ? r + 1.8 : r, 0, Math.PI * 2);
-      ctx.fillStyle = color;
-      ctx.fill();
-
-      if (n.kind === "case") {
-        ctx.strokeStyle = "rgba(255,255,255,0.28)";
-        ctx.lineWidth = 1.2 / camera.scale;
-        ctx.stroke();
-      }
-
-      if (active) {
-        ctx.strokeStyle = "#f2f6fb";
-        ctx.lineWidth = 2 / camera.scale;
-        ctx.stroke();
-      }
+      if (!dim && (n.kind === "case" || active)) drawNodeHalo(ctx, n, r, color, active);
+      drawNodeDisc(ctx, n, r, color, active);
       ctx.globalAlpha = 1;
     }
   }
@@ -418,23 +514,40 @@
     return camera.scale > 1.1 && (n.degree || 0) >= 4;
   }
 
+  function labelKindRank(kind) {
+    if (kind === "case") return 0;
+    if (kind === "crime_type") return 1;
+    return 2;
+  }
+
+  function labelDrawCap(showAll, count) {
+    if (showAll) return count;
+    if (camera.scale >= 0.9) return 280;
+    return 80;
+  }
+
+  function labelLimit(kind) {
+    if (kind === "case") {
+      if (camera.scale > 1.2) return 48;
+      return 36;
+    }
+    if (kind === "prop") return 40;
+    return 28;
+  }
+
   function truncateLabel(title, kind) {
-    const max = kind === "case" ? (camera.scale > 1.2 ? 44 : 30) : 24;
+    const max = labelLimit(kind);
     if (title.length <= max) return title;
     return title.slice(0, max - 1) + "…";
   }
 
   function nodePropLines(n, active) {
-    const showProps =
-      active ||
-      camera.scale >= 1.05 ||
-      (n.kind === "case" && camera.scale >= 0.85 && (n.degree || 0) >= 3);
-    if (!showProps) return [];
+    const zoomed = camera.scale >= 0.85;
+    if (!active && !zoomed) return [];
     if (n.kind === "case") {
-      return [n.bureau, n.area, n.crime_type, n.status]
+      return [n.bureau, n.area, n.crime_type]
         .filter((x) => x && String(x) !== "-")
-        .map((x) => truncateLabel(String(x), "prop"))
-        .slice(0, active || camera.scale >= 1.35 ? 4 : 2);
+        .map((x) => truncateLabel(String(x), "prop"));
     }
     if (n.kind === "entity" && n.entity_group) {
       return [truncateLabel(String(n.entity_group), "prop")];
@@ -442,41 +555,54 @@
     return [];
   }
 
-  function drawLabels(ctx, nodes, neigh) {
+  function drawLabels(ctx, nodes, neigh, vw, vh) {
     const showAll = filters.showLabels === "all";
-    if (filters.showLabels === "none") return;
-    const fontPx = Math.max(11, Math.min(15, 13 / Math.sqrt(Math.max(0.5, camera.scale))));
-    const labeled = nodes.filter((n) => shouldShowLabel(n, neigh, showAll));
+    const titlesOff = filters.showLabels === "none";
+    const fontPx = Math.max(14, Math.min(18, 16 / Math.sqrt(Math.max(0.45, camera.scale))));
+    const labeled = nodes.filter((n) => {
+      if (titlesOff && n.id !== selectedId && n.id !== hoverId) return false;
+      if (!shouldShowLabel(n, neigh, showAll)) return false;
+      if (vw && n.id !== selectedId && n.id !== hoverId) {
+        const p = screenOf(n.x, n.y);
+        if (p.x < -40 || p.y < -40 || p.x > vw + 40 || p.y > vh + 40) return false;
+      }
+      return true;
+    });
     labeled.sort((a, b) => {
-      const ka = a.kind === "case" ? 0 : a.kind === "crime_type" ? 1 : 2;
-      const kb = b.kind === "case" ? 0 : b.kind === "crime_type" ? 1 : 2;
+      const ka = labelKindRank(a.kind);
+      const kb = labelKindRank(b.kind);
       if (ka !== kb) return ka - kb;
       return (b.degree || 0) - (a.degree || 0);
     });
-    const cap = showAll ? 180 : camera.scale > 1 ? 90 : 55;
-    for (const n of labeled.slice(0, cap)) {
+    const cap = labelDrawCap(showAll, labeled.length);
+    const must = labeled.filter((n) => n.id === selectedId || n.id === hoverId);
+    const rest = labeled.filter((n) => n.id !== selectedId && n.id !== hoverId);
+    const shown = must.concat(rest.slice(0, Math.max(0, cap - must.length)));
+    const propPx = Math.max(12, fontPx - 2);
+    const step = (propPx + 9) / camera.scale;
+    for (const n of shown) {
       const outsideFocus = neigh && !neigh.has(n.id) && n.id !== selectedId && n.id !== hoverId;
-      if (outsideFocus) continue;
+      if (outsideFocus && camera.scale < 0.85) continue;
       const active = n.id === selectedId || n.id === hoverId;
       const label = truncateLabel(n.title, n.kind);
-      const x = n.x + nodeRadius(n) + 7;
-      const y = n.y + 4;
+      const x = n.x + nodeRadius(n) + 8;
+      const y = n.y + 4 / camera.scale;
       drawPillLabel(ctx, label, x, y, {
         fontPx: active ? fontPx + 1 : fontPx,
-        bg: active ? "rgba(8, 28, 24, 0.94)" : "rgba(10, 16, 26, 0.9)",
-        border: active ? "rgba(125, 211, 192, 0.65)" : "rgba(210, 222, 236, 0.4)",
-        fg: "#f6fafc",
+        bg: active ? "rgba(4, 22, 18, 0.96)" : "rgba(6, 10, 16, 0.94)",
+        border: active ? "rgba(125, 211, 192, 0.9)" : "rgba(236, 244, 252, 0.62)",
+        fg: "#ffffff",
         weight: "700",
       });
       const props = nodePropLines(n, active);
       props.forEach((line, i) => {
-        drawPillLabel(ctx, line, x, y + (14 + i * 13) / camera.scale, {
-          fontPx: Math.max(9.5, fontPx - 2),
-          bg: "rgba(20, 28, 40, 0.82)",
-          border: "rgba(160, 176, 196, 0.28)",
-          fg: "#c8d6e4",
-          weight: "500",
-          padY: 2,
+        drawPillLabel(ctx, line, x, y + step * (i + 1), {
+          fontPx: propPx,
+          bg: "rgba(16, 28, 42, 0.92)",
+          border: "rgba(186, 206, 226, 0.45)",
+          fg: "#e7f0f8",
+          weight: "600",
+          padY: 3,
         });
       });
     }
@@ -492,14 +618,17 @@
     const focus = selectedId || hoverId;
     const neigh = focus ? neighborIds(focus) : null;
 
-    drawLinks(ctx, links, focus);
+    drawLinks(ctx, links, focus, vw, vh);
     drawNodes(ctx, nodes, neigh);
-    drawLabels(ctx, nodes, neigh);
+    drawLabels(ctx, nodes, neigh, vw, vh);
     ctx.restore();
   }
 
   function loop() {
-    if (!sim) return;
+    if (!sim) {
+      raf = 0;
+      return;
+    }
     const cont = tick(sim);
     draw(sim);
     if (!cont && pendingFit) {
@@ -507,13 +636,17 @@
       fitToView();
       draw(sim);
     }
-    if (cont || drag) raf = requestAnimationFrame(loop);
+    if (cont || drag?.mode === "node") raf = requestAnimationFrame(loop);
     else raf = 0;
   }
 
-  function bump() {
-    if (sim) sim.alpha = Math.max(sim.alpha, 0.22);
+  function requestDraw() {
     if (!raf) raf = requestAnimationFrame(loop);
+  }
+
+  function bump() {
+    if (sim) sim.alpha = Math.max(sim.alpha, 0.28);
+    requestDraw();
   }
 
   function fitToView(padding = 56) {
@@ -552,7 +685,7 @@
     camera.y = sy - wy * next;
     camera.scale = next;
     updateMeta(sim?.nodes || [], sim?.links || []);
-    bump();
+    requestDraw();
   }
 
   function zoomTowardCenter(factor) {
@@ -625,7 +758,7 @@
           <h3>คลิกจุดบนกราฟ</h3>
           <p class="muted">โหนดใหญ่ = หัวข่าว · โหนดเล็ก = เอนทิตี/ประเภท (แบบ Obsidian)</p>
         </div>`;
-      bump();
+      requestDraw();
       return;
     }
     const incoming = (graph.edges || []).filter((e) => e.target === node.id);
@@ -662,7 +795,7 @@
                 .slice(0, 16)
                 .map(
                   (e) =>
-                    `<li><button type="button" data-goto="${escapeHtml(e.target)}">${escapeHtml(e.label || "mentions")} → ${escapeHtml(nameOf(e.target))}</button></li>`
+                    `<li><button type="button" data-goto="${escapeHtml(e.target)}">${escapeHtml(relationLabel(e.label) || "กล่าวถึง")} → ${escapeHtml(nameOf(e.target))}</button></li>`
                 )
                 .join("")
             : "<li class='muted'>—</li>"
@@ -673,14 +806,14 @@
                 .slice(0, 16)
                 .map(
                   (e) =>
-                    `<li><button type="button" data-goto="${escapeHtml(e.source)}">${escapeHtml(e.label || "mentions")} ← ${escapeHtml(nameOf(e.source))}</button></li>`
+                    `<li><button type="button" data-goto="${escapeHtml(e.source)}">${escapeHtml(relationLabel(e.label) || "กล่าวถึง")} ← ${escapeHtml(nameOf(e.source))}</button></li>`
                 )
                 .join("")
             : "<li class='muted'>—</li>"
         }</ul></div>
       </div>
     `;
-    bump();
+    requestDraw();
   }
 
   function selectById(id) {
@@ -700,6 +833,7 @@
         camera.scale = targetScale;
         camera.x = r.width / 2 - n.x * camera.scale;
         camera.y = r.height / 2 - n.y * camera.scale;
+        updateMeta(sim.nodes, sim.links);
       }
     }
     bump();
@@ -759,13 +893,37 @@
     sel.value = cur;
   }
 
+  function fillRelations() {
+    const sel = $("brain-relation");
+    if (!sel || !graph) return;
+    const counts = new Map();
+    for (const e of graph.edges || []) {
+      const raw = String(e.label ?? "").trim();
+      if (!raw) continue;
+      const display = relationLabel(raw);
+      counts.set(display, (counts.get(display) || 0) + 1);
+    }
+    const labels = [...counts.keys()].sort((a, b) => a.localeCompare(b, "th"));
+    const cur = filters.relation;
+    sel.innerHTML =
+      `<option value="">ทุกความสัมพันธ์</option>` +
+      labels
+        .map((g) => `<option value="${escapeHtml(g)}">${escapeHtml(g)} (${counts.get(g)})</option>`)
+        .join("");
+    if (cur && labels.includes(cur)) sel.value = cur;
+    else {
+      sel.value = "";
+      filters.relation = "";
+    }
+  }
+
   function renderHelp() {
     if (!els.help) return;
     els.help.innerHTML = `
       <h3>ข้อมูลกราฟคืออะไร?</h3>
       <p>สำเนากราฟจากคลัง Obsidian ตอน publish — โหนดใหญ่คือหัวข่าว (คดี)
-      โหนดเล็กคือเอนทิตี/ประเภทที่คดีพูดถึง เส้นมีป้ายเช่น arrested_by / related_to
-      เมื่อซูมเข้าหรือเลือกโหนด จะเห็นคุณสมบัติสำคัญบนโหนด (หน่วยงาน พื้นที่ ประเภท สถานะ)</p>
+      โหนดเล็กคือเอนทิตี/ประเภทที่คดีพูดถึง ป้ายเส้นเป็นภาษาไทย (เช่น จับโดย, สืบสวนโดย, เกี่ยวข้องกับ, กล่าวถึง)
+      เมื่อซูมเข้า ชี้ หรือเลือกโหนด จะเห็นคุณสมบัติบนโหนด (หน่วยงาน พื้นที่ ประเภท หรือกลุ่มเอนทิตี)</p>
       <h3>วิธีใช้</h3>
       <ul>
         <li><strong>คลิก</strong> จุด = เปิดรายละเอียด</li>
@@ -791,6 +949,7 @@
     filters.dateTo = $("brain-date-to")?.value || "";
     filters.entityGroup = $("brain-entity-group")?.value || "";
     filters.bureau = $("brain-bureau")?.value || "";
+    filters.relation = $("brain-relation")?.value || "";
     filters.hideOrphans = Boolean($("brain-hide-orphans")?.checked);
     filters.showLabels = $("brain-labels")?.value || "auto";
     const kinds = new Set();
@@ -814,6 +973,7 @@
       hideOrphans: false,
       isolate: false,
       showLabels: "auto",
+      relation: "",
     };
     camera = { x: 0, y: 0, scale: 1 };
     selectedId = null;
@@ -824,6 +984,7 @@
     if ($("brain-date-to")) $("brain-date-to").value = "";
     if ($("brain-entity-group")) $("brain-entity-group").value = "";
     if ($("brain-bureau")) $("brain-bureau").value = "";
+    if ($("brain-relation")) $("brain-relation").value = "";
     if ($("brain-hide-orphans")) $("brain-hide-orphans").checked = false;
     if ($("brain-isolate")) $("brain-isolate").checked = false;
     if ($("brain-labels")) $("brain-labels").value = "auto";
@@ -879,7 +1040,8 @@
         };
       }
       canvas.setPointerCapture(ev.pointerId);
-      bump();
+      if (drag.mode === "node") bump();
+      else requestDraw();
     });
 
     canvas.addEventListener("pointermove", (ev) => {
@@ -890,7 +1052,7 @@
         if (nid !== hoverId) {
           hoverId = nid;
           canvas.style.cursor = hit ? "pointer" : "grab";
-          bump();
+          requestDraw();
         }
         return;
       }
@@ -900,16 +1062,19 @@
       if (drag.mode === "node") {
         drag.x = p.x;
         drag.y = p.y;
+        bump();
       } else {
         camera.x = drag.camX + (p.sx - drag.startX);
         camera.y = drag.camY + (p.sy - drag.startY);
+        requestDraw();
       }
-      bump();
     });
 
     const endDrag = () => {
+      const wasNode = drag?.mode === "node";
       drag = null;
-      bump();
+      if (wasNode) bump();
+      else requestDraw();
     };
     canvas.addEventListener("pointerup", endDrag);
     canvas.addEventListener("pointercancel", endDrag);
@@ -919,7 +1084,7 @@
       const hit = hitTest(p.x, p.y);
       if (!hit) {
         fitToView();
-        bump();
+        requestDraw();
         return;
       }
       filters.isolate = true;
@@ -957,6 +1122,7 @@
       renderHelp();
       fillEntityGroups();
       fillBureaus();
+      fillRelations();
       renderLegend();
       syncKindChecks();
       showDetail(null);
@@ -973,7 +1139,7 @@
     els._wired = true;
 
     const onFilter = () => applyFiltersFromDom();
-    ["brain-search", "brain-min-degree", "brain-date-from", "brain-date-to", "brain-entity-group", "brain-bureau", "brain-labels"].forEach(
+    ["brain-search", "brain-min-degree", "brain-date-from", "brain-date-to", "brain-entity-group", "brain-bureau", "brain-relation", "brain-labels"].forEach(
       (id) => {
         $(id)?.addEventListener("change", onFilter);
         $(id)?.addEventListener("input", () => {
@@ -1033,7 +1199,7 @@
     $("brain-zoom-out")?.addEventListener("click", () => zoomTowardCenter(1 / 1.22));
     $("brain-zoom-fit")?.addEventListener("click", () => {
       fitToView();
-      bump();
+      requestDraw();
     });
 
     window.addEventListener("resize", () => {
@@ -1062,7 +1228,7 @@
               n.case_id === k ||
               n.id === k ||
               n.id.endsWith("/" + k) ||
-              (n.path && n.path.includes(k))
+              n.path?.includes(k)
           )
       ) || null
     );
@@ -1102,6 +1268,12 @@
     return KIND_COLOR[kind] || KIND_COLOR.other;
   }
 
+  function egoSatelliteRadius(kind) {
+    if (kind === "crime_type") return 13;
+    if (kind === "case") return 15;
+    return 10;
+  }
+
   function buildEgoSvg(hub, neighbors, edges) {
     const W = 720;
     const H = 400;
@@ -1113,7 +1285,7 @@
     const radius = Math.min(160, 64 + n * 11);
     neighbors.forEach((node, i) => {
       const angle = (Math.PI * 2 * i) / Math.max(1, n) - Math.PI / 2;
-      const r = node.kind === "crime_type" ? 13 : node.kind === "case" ? 15 : 10;
+      const r = egoSatelliteRadius(node.kind);
       positions.set(node.id, {
         x: cx + Math.cos(angle) * radius,
         y: cy + Math.sin(angle) * radius,
@@ -1131,10 +1303,13 @@
       parts.push(
         `<line x1="${a.x.toFixed(1)}" y1="${a.y.toFixed(1)}" x2="${b.x.toFixed(1)}" y2="${b.y.toFixed(1)}" stroke="#6a7c8e" stroke-width="1.5" opacity="0.8"/>`
       );
-      if (e.label && e.label !== "mentions") {
+      const relName = relationLabel(e.label);
+      if (relName) {
+        const shown = truncateStory(relName, 18);
+        const pillW = Math.max(56, 14 + shown.length * 7.2);
         parts.push(
-          `<rect x="${(mx - 34).toFixed(1)}" y="${(my - 8).toFixed(1)}" width="68" height="15" rx="7" fill="#fff" stroke="#b8c6d4"/>` +
-            `<text x="${mx.toFixed(1)}" y="${(my + 3).toFixed(1)}" text-anchor="middle" font-size="9.5" fill="#243040" font-family="Sarabun, Anuphan, sans-serif">${escapeHtml(truncateStory(e.label, 14))}</text>`
+          `<rect x="${(mx - pillW / 2).toFixed(1)}" y="${(my - 9).toFixed(1)}" width="${pillW.toFixed(1)}" height="16" rx="8" fill="#10211e" stroke="#7dd3c0"/>` +
+            `<text x="${mx.toFixed(1)}" y="${(my + 3).toFixed(1)}" text-anchor="middle" font-size="10" font-weight="700" fill="#ffffff" font-family="Sarabun, Anuphan, sans-serif">${escapeHtml(shown)}</text>`
         );
       }
     }
@@ -1145,9 +1320,7 @@
       const title = truncateStory(node.title, node.id === hub.id ? 34 : 24);
       const pillW = Math.min(200, 10 + title.length * 6.8);
       parts.push(
-        `<circle cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="${p.r}" fill="${egoKindColor(node.kind)}" stroke="#fff" stroke-width="2"/>`
-      );
-      parts.push(
+        `<circle cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="${p.r}" fill="${egoKindColor(node.kind)}" stroke="#fff" stroke-width="2"/>`,
         `<rect x="${(p.x - pillW / 2).toFixed(1)}" y="${(p.y + p.r + 4).toFixed(1)}" width="${pillW.toFixed(1)}" height="16" rx="8" fill="rgba(255,255,255,0.95)" stroke="#c5d0da"/>` +
           `<text x="${p.x.toFixed(1)}" y="${(p.y + p.r + 15).toFixed(1)}" text-anchor="middle" font-size="10.5" font-weight="600" fill="#1a222c" font-family="Sarabun, Anuphan, sans-serif">${escapeHtml(title)}</text>`
       );
@@ -1212,7 +1385,7 @@
         ? `<ul class="story-rel-list">${postRels
             .map(
               (r) =>
-                `<li><code>${escapeHtml(r.label)}</code> → ${escapeHtml(r.target_title)}</li>`
+                `<li><span class="story-rel-label">${escapeHtml(relationLabel(r.label) || "กล่าวถึง")}</span> → ${escapeHtml(r.target_title)}</li>`
             )
             .join("")}</ul>`
         : `<p class="muted">ยังไม่มีเส้นความสัมพันธ์ในข้อมูลกราฟสำหรับข่าวนี้</p>`;
@@ -1225,6 +1398,7 @@
               ? `<img class="story-ego-img" src="${staticSvg}" alt="ข้อมูลกราฟ ${escapeHtml(caseKey)}" loading="lazy" onerror="this.hidden=true" />`
               : ""
           }
+          <p class="story-graph-actions"><a class="btn-ghost story-open-graph" href="#/brain">เปิดในกราฟ</a></p>
           <h3 class="story-rel-heading">ความสัมพันธ์</h3>
           ${relList}
           <p class="muted story-graph-link"><a href="#/brain">เปิดแท็บข้อมูลกราฟทั้งหมด</a></p>
@@ -1232,15 +1406,22 @@
     }
 
     const { edges, relations } = egoForHub(hub);
+    const drawEdges = presentEdges(edges, false);
     const neighMap = new Map();
-    for (const e of edges) {
+    for (const e of drawEdges) {
       const oid = e.source === hub.id ? e.target : e.source;
       const n = graph.nodes.find((x) => x.id === oid);
       if (n && n.id !== hub.id) neighMap.set(n.id, n);
     }
     const uniqNeighbors = [...neighMap.values()];
-    const svg = buildEgoSvg(hub, uniqNeighbors, edges);
-    const allRels = relationsFromPost(post, relations);
+    const svg = buildEgoSvg(hub, uniqNeighbors, drawEdges);
+    const keptEdges = new Set(drawEdges.map((e) => `${e.source}|${e.target}|${e.label}`));
+    const shownRels = relations.filter((r) => {
+      const source = r.direction === "out" ? hub.id : r.target_id;
+      const target = r.direction === "out" ? r.target_id : hub.id;
+      return keptEdges.has(`${source}|${target}|${r.label}`);
+    });
+    const allRels = relationsFromPost(post, shownRels);
     const relList = allRels.length
       ? `<ul class="story-rel-list">${allRels
           .map((r) => {
@@ -1249,7 +1430,7 @@
               r.target_kind === "case" && r.target_id
                 ? `#/brain/${encodeURIComponent(r.target_id)}`
                 : `#/brain/${encodeURIComponent(hub.id)}`;
-            return `<li><code>${escapeHtml(r.label)}</code> ${arrow} <a href="${href}">${escapeHtml(r.target_title)}</a></li>`;
+            return `<li><span class="story-rel-label">${escapeHtml(relationLabel(r.label) || "กล่าวถึง")}</span> ${arrow} <a href="${href}">${escapeHtml(r.target_title)}</a></li>`;
           })
           .join("")}</ul>`
       : `<p class="muted">ยังไม่มีเส้นความสัมพันธ์</p>`;
@@ -1258,6 +1439,7 @@
       <section class="analysis-block story-graph-block">
         <h2>ข้อมูลกราฟของข่าวนี้</h2>
         <p class="muted">ฮับคดี + เอนทิตี / ประเภท / คดีเกี่ยวข้อง (จาก graph.json)</p>
+        <p class="story-graph-actions"><a class="btn-ghost story-open-graph" href="#/brain/${encodeURIComponent(hub.id)}">เปิดในกราฟ</a></p>
         <div class="story-ego-wrap">${svg}</div>
         ${
           staticSvg
@@ -1288,6 +1470,7 @@
         renderHelp();
         fillEntityGroups();
         fillBureaus();
+        fillRelations();
         renderLegend();
         restartSim(true, true);
       }
@@ -1302,5 +1485,6 @@
     },
     storyGraphHtml,
     findCaseNode,
+    relationLabel,
   };
 })();

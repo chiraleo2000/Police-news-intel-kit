@@ -1,75 +1,51 @@
 {
  "case_id": "20261024-transnat-01",
  "title": "สตม.ทลายรังแก๊งคอลเซ็นเตอร์-เว็บพนันจีน \"หงก้วน\" ย่านสายไหม จับ 14 ราย เสียหายกว่า 100 ล้าน",
- "generated_at": "2026-10-26T07:18:58.966Z",
- "node_count": 9,
- "edge_count": 11,
+ "generated_at": "2026-10-26T07:49:36.575Z",
+ "node_count": 8,
+ "edge_count": 7,
  "relations": [
   {
-   "label": "arrested_by",
+   "label": "จับโดย",
    "target_id": "30_Entities/Units/บก.สส.สตม.",
    "target_title": "บก.สส.สตม.",
    "direction": "out"
   },
   {
-   "label": "arrested_by",
+   "label": "จับโดย",
    "target_id": "30_Entities/People/สตม.",
    "target_title": "สตม.",
    "direction": "out"
   },
   {
-   "label": "ordered_by",
+   "label": "สั่งการโดย",
    "target_id": "30_Entities/Units/บช.สตม.",
    "target_title": "บช.สตม.",
    "direction": "out"
   },
   {
-   "label": "announced_by",
+   "label": "แจ้งโดย",
    "target_id": "30_Entities/People/ผบ.ตร.",
    "target_title": "ผบ.ตร.",
    "direction": "out"
   },
   {
-   "label": "announced_by",
+   "label": "แจ้งโดย",
    "target_id": "30_Entities/People/ผบช.สตม.",
    "target_title": "ผบช.สตม.",
    "direction": "out"
   },
   {
-   "label": "targets_network",
-   "target_id": "30_Entities/Projects/เว็บพนันออนไลน์ต่างชาติ",
-   "target_title": "เว็บพนันออนไลน์ต่างชาติ",
+   "label": "เป้าหมายเครือข่าย",
+   "target_id": "30_Entities/ข่ายเครือข่าย/หงก้วน",
+   "target_title": "หงก้วน",
    "direction": "out"
   },
   {
-   "label": "mentions",
-   "target_id": "40_CrimeTypes/อาชญากรรมข้ามชาติและความร่วมมือระหว่างประเทศ",
-   "target_title": "อาชญากรรมข้ามชาติและความร่วมมือระหว่างประเทศ",
+   "label": "เกิดที่",
+   "target_id": "30_Entities/สถานที่/สายไหม",
+   "target_title": "สายไหม",
    "direction": "out"
-  },
-  {
-   "label": "mentions",
-   "target_id": "30_Entities/People/สตม.",
-   "target_title": "สตม.",
-   "direction": "out"
-  },
-  {
-   "label": "mentions",
-   "target_id": "30_Entities/Units/บก.สส.สตม.",
-   "target_title": "บก.สส.สตม.",
-   "direction": "out"
-  },
-  {
-   "label": "mentions",
-   "target_id": "30_Entities/Units/บก.สส.สตม.",
-   "target_title": "บก.สส.สตม.",
-   "direction": "in"
-  },
-  {
-   "label": "mentions",
-   "target_id": "30_Entities/Units/สตม.",
-   "target_title": "สตม.",
-   "direction": "in"
   }
  ],
  "svg": "graphs/20261024-transnat-01.svg"

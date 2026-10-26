@@ -1,26 +1,32 @@
 {
  "case_id": "20261023-drug-06",
  "title": "ผบ.ตร. ร่วมประชุมคณะกรรมการป้องกันและปราบปรามยาเสพติด ครั้งที่ 3/2569 ที่ทำเนียบรัฐบาล",
- "generated_at": "2026-10-26T07:18:58.855Z",
- "node_count": 4,
- "edge_count": 3,
+ "generated_at": "2026-10-26T07:49:36.473Z",
+ "node_count": 5,
+ "edge_count": 4,
  "relations": [
   {
-   "label": "investigated_by",
+   "label": "สืบสวนโดย",
    "target_id": "30_Entities/Units/ตร.",
    "target_title": "ตร.",
    "direction": "out"
   },
   {
-   "label": "announced_by",
+   "label": "แจ้งโดย",
    "target_id": "30_Entities/People/ผบ.ตร.",
    "target_title": "ผบ.ตร.",
    "direction": "out"
   },
   {
-   "label": "mentions",
-   "target_id": "40_CrimeTypes/ยาเสพติด",
-   "target_title": "ยาเสพติด",
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/บุคคล/สำราญ นวลมา",
+   "target_title": "สำราญ นวลมา",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/บุคคล/กฤษฎา กาญจนอลงกรณ์",
+   "target_title": "กฤษฎา กาญจนอลงกรณ์",
    "direction": "out"
   }
  ],

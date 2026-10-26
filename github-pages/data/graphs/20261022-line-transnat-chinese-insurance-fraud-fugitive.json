@@ -1,39 +1,27 @@
 {
  "case_id": "20261022-line-transnat-chinese-insurance-fraud-fugitive",
  "title": "บก.ตม.1 รวบนักธุรกิจจีนวัย 41 ปี ผู้หลบหนีหมายจับของทางการจีน คดีฉ้อโกงลงทุนประกันภัย เสียหายราว 220 ล้านบาท",
- "generated_at": "2026-10-26T07:18:58.801Z",
- "node_count": 6,
- "edge_count": 5,
+ "generated_at": "2026-10-26T07:49:36.426Z",
+ "node_count": 4,
+ "edge_count": 3,
  "relations": [
   {
-   "label": "arrested_by",
+   "label": "จับโดย",
    "target_id": "30_Entities/Units/กก.3 บก.สส.สตม.",
    "target_title": "กก.3 บก.สส.สตม.",
    "direction": "out"
   },
   {
-   "label": "arrested_by",
+   "label": "จับโดย",
    "target_id": "30_Entities/People/บก.ตม.1",
    "target_title": "บก.ตม.1",
    "direction": "out"
   },
   {
-   "label": "ordered_by",
+   "label": "สั่งการโดย",
    "target_id": "30_Entities/Units/บช.สตม.",
    "target_title": "บช.สตม.",
    "direction": "out"
-  },
-  {
-   "label": "mentions",
-   "target_id": "40_CrimeTypes/อาชญากรรมข้ามชาติและความร่วมมือระหว่างประเทศ",
-   "target_title": "อาชญากรรมข้ามชาติและความร่วมมือระหว่างประเทศ",
-   "direction": "out"
-  },
-  {
-   "label": "mentions",
-   "target_id": "30_Entities/Units/บก.ตม.1",
-   "target_title": "บก.ตม.1",
-   "direction": "in"
   }
  ],
  "svg": "graphs/20261022-line-transnat-chinese-insurance-fraud-fugitive.svg"

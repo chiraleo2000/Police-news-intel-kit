@@ -1,69 +1,27 @@
 {
  "case_id": "20261024-cyber-04",
  "title": "DE ผนึก Meta ยกระดับยืนยันตัวตนผู้ลงโฆษณาออนไลน์ เตรียมใช้ No ID, No Ads ต้นเดือน พ.ย.",
- "generated_at": "2026-10-26T07:18:58.935Z",
- "node_count": 8,
- "edge_count": 10,
+ "generated_at": "2026-10-26T07:49:36.547Z",
+ "node_count": 4,
+ "edge_count": 3,
  "relations": [
   {
-   "label": "announced_by",
+   "label": "แจ้งโดย",
    "target_id": "30_Entities/People/ETDA",
    "target_title": "ETDA",
    "direction": "out"
   },
   {
-   "label": "announced_by",
+   "label": "แจ้งโดย",
    "target_id": "30_Entities/People/Meta",
    "target_title": "Meta",
    "direction": "out"
   },
   {
-   "label": "announced_by",
+   "label": "แจ้งโดย",
    "target_id": "30_Entities/People/กระทรวงดีอี",
    "target_title": "กระทรวงดีอี",
    "direction": "out"
-  },
-  {
-   "label": "mentions",
-   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
-   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
-   "direction": "out"
-  },
-  {
-   "label": "mentions",
-   "target_id": "30_Entities/People/กระทรวงดีอี",
-   "target_title": "กระทรวงดีอี",
-   "direction": "out"
-  },
-  {
-   "label": "mentions",
-   "target_id": "30_Entities/People/ETDA",
-   "target_title": "ETDA",
-   "direction": "out"
-  },
-  {
-   "label": "mentions",
-   "target_id": "30_Entities/People/Meta",
-   "target_title": "Meta",
-   "direction": "out"
-  },
-  {
-   "label": "mentions",
-   "target_id": "30_Entities/Units/ETDA",
-   "target_title": "ETDA",
-   "direction": "in"
-  },
-  {
-   "label": "mentions",
-   "target_id": "30_Entities/Units/Meta",
-   "target_title": "Meta",
-   "direction": "in"
-  },
-  {
-   "label": "mentions",
-   "target_id": "30_Entities/Units/กระทรวงดีอี",
-   "target_title": "กระทรวงดีอี",
-   "direction": "in"
   }
  ],
  "svg": "graphs/20261024-cyber-04.svg"

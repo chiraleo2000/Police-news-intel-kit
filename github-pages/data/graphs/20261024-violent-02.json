@@ -1,69 +1,33 @@
 {
  "case_id": "20261024-violent-02",
  "title": "ตำรวจท่าศาลาจับผู้ต้องหาตามหมายจับคดีกระทำชำเราเด็ก ตามข้อกล่าวหา",
- "generated_at": "2026-10-26T07:18:58.975Z",
+ "generated_at": "2026-10-26T07:49:36.584Z",
  "node_count": 5,
- "edge_count": 10,
+ "edge_count": 4,
  "relations": [
   {
-   "label": "arrested_by",
+   "label": "จับโดย",
    "target_id": "30_Entities/Units/ภ.จว.นครศรีธรรมราช",
    "target_title": "ภ.จว.นครศรีธรรมราช",
    "direction": "out"
   },
   {
-   "label": "arrested_by",
+   "label": "จับโดย",
    "target_id": "30_Entities/Units/สภ.ท่าศาลา",
    "target_title": "สภ.ท่าศาลา",
    "direction": "out"
   },
   {
-   "label": "arrested_by",
+   "label": "จับโดย",
    "target_id": "30_Entities/Units/สภ.นาบอน",
    "target_title": "สภ.นาบอน",
    "direction": "out"
   },
   {
-   "label": "mentions",
-   "target_id": "40_CrimeTypes/คดีชีวิต ร่างกาย และเพศ",
-   "target_title": "คดีชีวิต ร่างกาย และเพศ",
+   "label": "เกิดที่",
+   "target_id": "30_Entities/สถานที่/ท่าศาลา",
+   "target_title": "ท่าศาลา",
    "direction": "out"
-  },
-  {
-   "label": "mentions",
-   "target_id": "30_Entities/Units/สภ.ท่าศาลา",
-   "target_title": "สภ.ท่าศาลา",
-   "direction": "out"
-  },
-  {
-   "label": "mentions",
-   "target_id": "30_Entities/Units/ภ.จว.นครศรีธรรมราช",
-   "target_title": "ภ.จว.นครศรีธรรมราช",
-   "direction": "out"
-  },
-  {
-   "label": "mentions",
-   "target_id": "30_Entities/Units/สภ.นาบอน",
-   "target_title": "สภ.นาบอน",
-   "direction": "out"
-  },
-  {
-   "label": "mentions",
-   "target_id": "30_Entities/Units/ภ.จว.นครศรีธรรมราช",
-   "target_title": "ภ.จว.นครศรีธรรมราช",
-   "direction": "in"
-  },
-  {
-   "label": "mentions",
-   "target_id": "30_Entities/Units/สภ.ท่าศาลา",
-   "target_title": "สภ.ท่าศาลา",
-   "direction": "in"
-  },
-  {
-   "label": "mentions",
-   "target_id": "30_Entities/Units/สภ.นาบอน",
-   "target_title": "สภ.นาบอน",
-   "direction": "in"
   }
  ],
  "svg": "graphs/20261024-violent-02.svg"

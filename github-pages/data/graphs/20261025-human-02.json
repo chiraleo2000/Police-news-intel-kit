@@ -1,75 +1,39 @@
 {
  "case_id": "20261025-human-02",
  "title": "ตำรวจท่องเที่ยว-ภ.5 จับ 2 ผู้ต้องหา ตามข้อกล่าวหาขบวนการ \"โรแมนซ์สแกม\" หลอกหญิงชาวจีนเข้าไทยแล้วบังคับพาไปชายแดน",
- "generated_at": "2026-10-26T07:18:59.001Z",
- "node_count": 8,
- "edge_count": 11,
+ "generated_at": "2026-10-26T07:49:36.608Z",
+ "node_count": 6,
+ "edge_count": 5,
  "relations": [
   {
-   "label": "arrested_by",
+   "label": "จับโดย",
    "target_id": "30_Entities/Units/กก.2 บก.ทท.2",
    "target_title": "กก.2 บก.ทท.2",
    "direction": "out"
   },
   {
-   "label": "arrested_by",
+   "label": "จับโดย",
    "target_id": "30_Entities/Units/บก.ทท.2",
    "target_title": "บก.ทท.2",
    "direction": "out"
   },
   {
-   "label": "arrested_by",
+   "label": "จับโดย",
    "target_id": "30_Entities/People/บช.ทท.",
    "target_title": "บช.ทท.",
    "direction": "out"
   },
   {
-   "label": "arrested_by",
+   "label": "จับโดย",
    "target_id": "30_Entities/Units/ภ.5",
    "target_title": "ภ.5",
    "direction": "out"
   },
   {
-   "label": "arrested_by",
+   "label": "จับโดย",
    "target_id": "30_Entities/Units/สภ.ลี้",
    "target_title": "สภ.ลี้",
    "direction": "out"
-  },
-  {
-   "label": "mentions",
-   "target_id": "40_CrimeTypes/ค้ามนุษย์ แรงงานผิดกฎหมาย และคุ้มครองเด็ก",
-   "target_title": "ค้ามนุษย์ แรงงานผิดกฎหมาย และคุ้มครองเด็ก",
-   "direction": "out"
-  },
-  {
-   "label": "mentions",
-   "target_id": "30_Entities/Units/กก.2 บก.ทท.2",
-   "target_title": "กก.2 บก.ทท.2",
-   "direction": "in"
-  },
-  {
-   "label": "mentions",
-   "target_id": "30_Entities/Units/บก.ทท.2",
-   "target_title": "บก.ทท.2",
-   "direction": "in"
-  },
-  {
-   "label": "mentions",
-   "target_id": "30_Entities/Units/บช.ทท.",
-   "target_title": "บช.ทท.",
-   "direction": "in"
-  },
-  {
-   "label": "mentions",
-   "target_id": "30_Entities/Units/ภ.5",
-   "target_title": "ภ.5",
-   "direction": "in"
-  },
-  {
-   "label": "mentions",
-   "target_id": "30_Entities/Units/สภ.ลี้",
-   "target_title": "สภ.ลี้",
-   "direction": "in"
   }
  ],
  "svg": "graphs/20261025-human-02.svg"

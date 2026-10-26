@@ -1,39 +1,27 @@
 {
  "case_id": "20261022-gamble-sattahip-resort",
  "title": "สภ.สัตหีบร่วมฝ่ายปกครองทลายบ่อนไพ่เก้าเกเคลื่อนที่ในรีสอร์ตบางเสร่ ควบคุมผู้เล่น 26-29 คน",
- "generated_at": "2026-10-26T07:18:58.779Z",
- "node_count": 5,
- "edge_count": 5,
+ "generated_at": "2026-10-26T07:49:36.405Z",
+ "node_count": 4,
+ "edge_count": 3,
  "relations": [
   {
-   "label": "arrested_by",
+   "label": "จับโดย",
    "target_id": "30_Entities/Units/ฝ่ายปกครองอำเภอสัตหีบ",
    "target_title": "ฝ่ายปกครองอำเภอสัตหีบ",
    "direction": "out"
   },
   {
-   "label": "arrested_by",
+   "label": "จับโดย",
    "target_id": "30_Entities/Units/สภ.สัตหีบ",
    "target_title": "สภ.สัตหีบ",
    "direction": "out"
   },
   {
-   "label": "mentions",
-   "target_id": "30_Entities/Units/สถานีตำรวจภูธรสัตหีบ ร่วมฝ่ายปกครองอำเภอสัตหีบ",
-   "target_title": "สถานีตำรวจภูธรสัตหีบ ร่วมฝ่ายปกครองอำเภอสัตหีบ",
+   "label": "เกิดที่",
+   "target_id": "30_Entities/สถานที่/สัตหีบ",
+   "target_title": "สัตหีบ",
    "direction": "out"
-  },
-  {
-   "label": "mentions",
-   "target_id": "40_CrimeTypes/พนันและบ่อนผิดกฎหมาย",
-   "target_title": "พนันและบ่อนผิดกฎหมาย",
-   "direction": "out"
-  },
-  {
-   "label": "mentions",
-   "target_id": "30_Entities/Units/สถานีตำรวจภูธรสัตหีบ ร่วมฝ่ายปกครองอำเภอสัตหีบ",
-   "target_title": "สถานีตำรวจภูธรสัตหีบ ร่วมฝ่ายปกครองอำเภอสัตหีบ",
-   "direction": "in"
   }
  ],
  "svg": "graphs/20261022-gamble-sattahip-resort.svg"

@@ -1,32 +1,32 @@
 {
  "case_id": "20261022-line-cyber-samui-crypto-fraud",
  "title": "ตำรวจน้ำ-ตำรวจไซเบอร์ 4 จับหญิง 67 ปีที่เกาะสมุย ตามหมายจับคดีหลอกลงทุนหุ้น-เหรียญดิจิทัล เหยื่อสูญกว่า 2.9 ล้าน",
- "generated_at": "2026-10-26T07:18:58.791Z",
+ "generated_at": "2026-10-26T07:49:36.416Z",
  "node_count": 5,
  "edge_count": 4,
  "relations": [
   {
-   "label": "arrested_by",
+   "label": "จับโดย",
    "target_id": "30_Entities/Units/กองบังคับการตำรวจน้ำ",
    "target_title": "กองบังคับการตำรวจน้ำ",
    "direction": "out"
   },
   {
-   "label": "arrested_by",
+   "label": "จับโดย",
    "target_id": "30_Entities/Units/บก.สอท.4",
    "target_title": "บก.สอท.4",
    "direction": "out"
   },
   {
-   "label": "ordered_by",
+   "label": "สั่งการโดย",
    "target_id": "30_Entities/People/บช.สอท.",
    "target_title": "บช.สอท.",
    "direction": "out"
   },
   {
-   "label": "mentions",
-   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
-   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "label": "เกิดที่",
+   "target_id": "30_Entities/สถานที่/เกาะสมุย",
+   "target_title": "เกาะสมุย",
    "direction": "out"
   }
  ],

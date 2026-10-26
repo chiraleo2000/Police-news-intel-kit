@@ -1,38 +1,32 @@
 {
  "case_id": "20261023-transnat-01",
  "title": "ตม.จับ 2 ชาวจีนหมายแดงตำรวจสากล คดีลักพาตัว-ฆาตกรรมที่ดูไบ หลบในคอนโดกรุงเทพฯ",
- "generated_at": "2026-10-26T07:18:58.917Z",
- "node_count": 6,
- "edge_count": 5,
+ "generated_at": "2026-10-26T07:49:36.529Z",
+ "node_count": 5,
+ "edge_count": 4,
  "relations": [
   {
-   "label": "arrested_by",
+   "label": "จับโดย",
    "target_id": "30_Entities/Units/บก.ปคม.",
    "target_title": "บก.ปคม.",
    "direction": "out"
   },
   {
-   "label": "arrested_by",
+   "label": "จับโดย",
    "target_id": "30_Entities/Units/บช.ก.",
    "target_title": "บช.ก.",
    "direction": "out"
   },
   {
-   "label": "arrested_by",
+   "label": "จับโดย",
    "target_id": "30_Entities/People/สตม.",
    "target_title": "สตม.",
    "direction": "out"
   },
   {
-   "label": "ordered_by",
+   "label": "สั่งการโดย",
    "target_id": "30_Entities/Units/บช.สตม.",
    "target_title": "บช.สตม.",
-   "direction": "out"
-  },
-  {
-   "label": "mentions",
-   "target_id": "40_CrimeTypes/อาชญากรรมข้ามชาติและความร่วมมือระหว่างประเทศ",
-   "target_title": "อาชญากรรมข้ามชาติและความร่วมมือระหว่างประเทศ",
    "direction": "out"
   }
  ],

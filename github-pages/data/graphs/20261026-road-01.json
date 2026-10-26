@@ -1,39 +1,27 @@
 {
  "case_id": "20261026-road-01",
  "title": "เรือชนกันในคลองสำโรง บางพลี สมุทรปราการ ผู้บาดเจ็บ 7 ราย คนขับเรือทั้ง 2 ลำเข้าพบตำรวจแล้ว รอกรมเจ้าท่าแจ้งความ",
- "generated_at": "2026-10-26T07:18:59.046Z",
+ "generated_at": "2026-10-26T07:49:36.656Z",
  "node_count": 4,
- "edge_count": 5,
+ "edge_count": 3,
  "relations": [
   {
-   "label": "investigated_by",
+   "label": "สืบสวนโดย",
    "target_id": "30_Entities/Units/กรมเจ้าท่า",
    "target_title": "กรมเจ้าท่า",
    "direction": "out"
   },
   {
-   "label": "investigated_by",
+   "label": "สืบสวนโดย",
    "target_id": "30_Entities/Units/ตำรวจ สภ.บางพลี (ตามพื้นที่)",
    "target_title": "ตำรวจ สภ.บางพลี (ตามพื้นที่)",
    "direction": "out"
   },
   {
-   "label": "mentions",
-   "target_id": "40_CrimeTypes/ความปลอดภัยทางหลวงและการสกัดจับ",
-   "target_title": "ความปลอดภัยทางหลวงและการสกัดจับ",
+   "label": "เกิดที่",
+   "target_id": "30_Entities/สถานที่/คลองสำโรง",
+   "target_title": "คลองสำโรง",
    "direction": "out"
-  },
-  {
-   "label": "mentions",
-   "target_id": "30_Entities/Units/กรมเจ้าท่า",
-   "target_title": "กรมเจ้าท่า",
-   "direction": "in"
-  },
-  {
-   "label": "mentions",
-   "target_id": "30_Entities/Units/ตำรวจ สภ.บางพลี (ตามพื้นที่)",
-   "target_title": "ตำรวจ สภ.บางพลี (ตามพื้นที่)",
-   "direction": "in"
   }
  ],
  "svg": "graphs/20261026-road-01.svg"

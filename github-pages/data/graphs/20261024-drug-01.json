@@ -1,81 +1,39 @@
 {
  "case_id": "20261024-drug-01",
  "title": "รวบ “ดอม” เอเย่นต์ยาเสพติดชาวอเมริกัน ยึดยาเสพติดซุกช่องลับในโซฟา",
- "generated_at": "2026-10-26T07:18:58.939Z",
- "node_count": 7,
- "edge_count": 12,
+ "generated_at": "2026-10-26T07:49:36.551Z",
+ "node_count": 6,
+ "edge_count": 5,
  "relations": [
   {
-   "label": "arrested_by",
+   "label": "จับโดย",
    "target_id": "30_Entities/Units/ตม.จว.สุราษฎร์ธานี",
    "target_title": "ตม.จว.สุราษฎร์ธานี",
    "direction": "out"
   },
   {
-   "label": "arrested_by",
+   "label": "จับโดย",
    "target_id": "30_Entities/Units/บก.ตม.6",
    "target_title": "บก.ตม.6",
    "direction": "out"
   },
   {
-   "label": "arrested_by",
+   "label": "จับโดย",
    "target_id": "30_Entities/Units/สภ.เกาะพะงัน",
    "target_title": "สภ.เกาะพะงัน",
    "direction": "out"
   },
   {
-   "label": "ordered_by",
+   "label": "สั่งการโดย",
    "target_id": "30_Entities/Units/บช.สตม.",
    "target_title": "บช.สตม.",
    "direction": "out"
   },
   {
-   "label": "targets_network",
-   "target_id": "30_Entities/Projects/ขยายผลเครือข่ายค้ายา",
-   "target_title": "ขยายผลเครือข่ายค้ายา",
+   "label": "ผู้ต้องหา",
+   "target_id": "30_Entities/ผู้ต้องหา/ดอม",
+   "target_title": "ดอม",
    "direction": "out"
-  },
-  {
-   "label": "mentions",
-   "target_id": "40_CrimeTypes/ยาเสพติด",
-   "target_title": "ยาเสพติด",
-   "direction": "out"
-  },
-  {
-   "label": "mentions",
-   "target_id": "30_Entities/Units/บก.ตม.6",
-   "target_title": "บก.ตม.6",
-   "direction": "out"
-  },
-  {
-   "label": "mentions",
-   "target_id": "30_Entities/Units/ตม.จว.สุราษฎร์ธานี",
-   "target_title": "ตม.จว.สุราษฎร์ธานี",
-   "direction": "out"
-  },
-  {
-   "label": "mentions",
-   "target_id": "30_Entities/Units/สภ.เกาะพะงัน",
-   "target_title": "สภ.เกาะพะงัน",
-   "direction": "out"
-  },
-  {
-   "label": "mentions",
-   "target_id": "30_Entities/Units/ตม.จว.สุราษฎร์ธานี",
-   "target_title": "ตม.จว.สุราษฎร์ธานี",
-   "direction": "in"
-  },
-  {
-   "label": "mentions",
-   "target_id": "30_Entities/Units/บก.ตม.6",
-   "target_title": "บก.ตม.6",
-   "direction": "in"
-  },
-  {
-   "label": "mentions",
-   "target_id": "30_Entities/Units/สภ.เกาะพะงัน",
-   "target_title": "สภ.เกาะพะงัน",
-   "direction": "in"
   }
  ],
  "svg": "graphs/20261024-drug-01.svg"

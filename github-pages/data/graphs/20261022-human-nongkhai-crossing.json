@@ -1,45 +1,27 @@
 {
  "case_id": "20261022-human-nongkhai-crossing",
  "title": "หนองคายจับคนขับและชาวลาวช่วยพาชาวจีน 8 รายลอบเข้าเมืองข้ามโขง",
- "generated_at": "2026-10-26T07:18:58.783Z",
- "node_count": 6,
- "edge_count": 6,
+ "generated_at": "2026-10-26T07:49:36.409Z",
+ "node_count": 4,
+ "edge_count": 3,
  "relations": [
   {
-   "label": "arrested_by",
+   "label": "จับโดย",
    "target_id": "30_Entities/Units/ตชด.",
    "target_title": "ตชด.",
    "direction": "out"
   },
   {
-   "label": "arrested_by",
+   "label": "จับโดย",
    "target_id": "30_Entities/Units/ตม.หนองคาย",
    "target_title": "ตม.หนองคาย",
    "direction": "out"
   },
   {
-   "label": "ordered_by",
+   "label": "สั่งการโดย",
    "target_id": "30_Entities/Units/บช.สตม.",
    "target_title": "บช.สตม.",
    "direction": "out"
-  },
-  {
-   "label": "mentions",
-   "target_id": "30_Entities/Units/สำนักงานตรวจคนเข้าเมือง (ตม.)",
-   "target_title": "สำนักงานตรวจคนเข้าเมือง (ตม.)",
-   "direction": "out"
-  },
-  {
-   "label": "mentions",
-   "target_id": "40_CrimeTypes/ค้ามนุษย์ แรงงานผิดกฎหมาย และคุ้มครองเด็ก",
-   "target_title": "ค้ามนุษย์ แรงงานผิดกฎหมาย และคุ้มครองเด็ก",
-   "direction": "out"
-  },
-  {
-   "label": "mentions",
-   "target_id": "30_Entities/Units/สำนักงานตรวจคนเข้าเมือง (ตม.)",
-   "target_title": "สำนักงานตรวจคนเข้าเมือง (ตม.)",
-   "direction": "in"
   }
  ],
  "svg": "graphs/20261022-human-nongkhai-crossing.svg"

@@ -1,39 +1,27 @@
 {
  "case_id": "20261022-tourist-maesariang-falsebirth",
  "title": "อำเภอแม่สะเรียงจับชายวัย 30 ปี แจ้งเป็นบิดาเท็จให้เด็กต่างด้าว ค่าจ้างครั้งละ 2,000 บาท",
- "generated_at": "2026-10-26T07:18:58.818Z",
- "node_count": 5,
- "edge_count": 5,
+ "generated_at": "2026-10-26T07:49:36.440Z",
+ "node_count": 4,
+ "edge_count": 3,
  "relations": [
   {
-   "label": "arrested_by",
+   "label": "จับโดย",
    "target_id": "30_Entities/Units/สภ.แม่สะเรียง",
    "target_title": "สภ.แม่สะเรียง",
    "direction": "out"
   },
   {
-   "label": "arrested_by",
+   "label": "จับโดย",
    "target_id": "30_Entities/Units/อำเภอแม่สะเรียง",
    "target_title": "อำเภอแม่สะเรียง",
    "direction": "out"
   },
   {
-   "label": "mentions",
-   "target_id": "30_Entities/Units/ที่ว่าการอำเภอแม่สะเรียง - สภ.แม่สะเรียง",
-   "target_title": "ที่ว่าการอำเภอแม่สะเรียง / สภ.แม่สะเรียง",
+   "label": "เกิดที่",
+   "target_id": "30_Entities/สถานที่/แม่สะเรียง",
+   "target_title": "แม่สะเรียง",
    "direction": "out"
-  },
-  {
-   "label": "mentions",
-   "target_id": "40_CrimeTypes/อาชญากรรมที่เกี่ยวข้องกับนักท่องเที่ยวและชาวต่างชาติ",
-   "target_title": "อาชญากรรมที่เกี่ยวข้องกับนักท่องเที่ยวและชาวต่างชาติ",
-   "direction": "out"
-  },
-  {
-   "label": "mentions",
-   "target_id": "30_Entities/Units/ที่ว่าการอำเภอแม่สะเรียง - สภ.แม่สะเรียง",
-   "target_title": "ที่ว่าการอำเภอแม่สะเรียง / สภ.แม่สะเรียง",
-   "direction": "in"
   }
  ],
  "svg": "graphs/20261022-tourist-maesariang-falsebirth.svg"

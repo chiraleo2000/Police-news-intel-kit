@@ -1,20 +1,14 @@
 {
  "case_id": "20261023-human-03",
  "title": "ดีอี หารือแนวทางปกป้องเด็กและเยาวชนจากภัยในโลกออนไลน์",
- "generated_at": "2026-10-26T07:18:58.873Z",
- "node_count": 3,
- "edge_count": 2,
+ "generated_at": "2026-10-26T07:49:36.492Z",
+ "node_count": 2,
+ "edge_count": 1,
  "relations": [
   {
-   "label": "announced_by",
+   "label": "แจ้งโดย",
    "target_id": "30_Entities/People/กระทรวงดีอี",
    "target_title": "กระทรวงดีอี",
-   "direction": "out"
-  },
-  {
-   "label": "mentions",
-   "target_id": "40_CrimeTypes/ค้ามนุษย์ แรงงานผิดกฎหมาย และคุ้มครองเด็ก",
-   "target_title": "ค้ามนุษย์ แรงงานผิดกฎหมาย และคุ้มครองเด็ก",
    "direction": "out"
   }
  ],

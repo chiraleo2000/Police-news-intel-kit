@@ -2,9 +2,8 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import {
-  buildAnalysisNotes,
-  buildExecBlurb,
   enrichPost,
+  relatedAnalysisLine,
   type EnrichOptions,
   type PostV2,
 } from "./enrich.js";
@@ -95,13 +94,31 @@ function enrichDayFile(
   return rows;
 }
 
+export function patchAnalysisRelated(
+  notes: string | undefined,
+  related: Array<{ id: string; title: string; relation: string }>,
+): string {
+  const line = relatedAnalysisLine(related);
+  const text = String(notes || "");
+  if (!text.trim()) return related.length ? line : "";
+  const rows = text.split("\n");
+  const idx = rows.findIndex((row) => row.trimStart().startsWith("- ความเชื่อมโยง"));
+  if (idx >= 0) {
+    if (rows[idx].trim() === line) return text;
+    rows[idx] = line;
+    return rows.join("\n");
+  }
+  if (!related.length) return text;
+  return `${text.trimEnd()}\n${line}`;
+}
+
 function applyRelatedHeuristics(all: MigrateRow[]): { edges: number; detail: string[] } {
   const planned = planCaseRelations(all.map((row) => ({ day: row.day, post: row.post })));
   for (const row of all) {
     const id = String(row.post.id || "");
-    row.post.related_cases = id ? planned.rels.get(id) || [] : [];
-    row.post.exec_blurb = buildExecBlurb(row.post);
-    row.post.analysis_notes = buildAnalysisNotes(row.post, row.post.related_cases || []);
+    const related = id ? planned.rels.get(id) || [] : [];
+    row.post.related_cases = related;
+    row.post.analysis_notes = patchAnalysisRelated(row.post.analysis_notes, related);
   }
   return {
     edges: planned.edges.length,
@@ -167,6 +184,51 @@ export function migrateCrimeJson(opts: MigrateOptions = {}): {
     vaultNotes = syncVaultCaseLinks(all).notes;
   }
   return { files: files.length, posts: all.length, errors, edges, vaultNotes };
+}
+
+/** Rewrite related_cases and the one analysis bullet. Does not open SQLite. */
+export function refreshCaseLinks(): {
+  files: number;
+  posts: number;
+  changedPosts: number;
+  edges: number;
+  detail: string[];
+  vaultNotes: number;
+} {
+  const files = crimeJsonFiles();
+  const all: MigrateRow[] = [];
+  for (const file of files) {
+    const day = readDayFile(file);
+    for (const post of day.doc.posts || []) all.push({ day: day.date, post, file });
+  }
+  const planned = applyRelatedHeuristics(all);
+  const byFile = new Map<string, PostV2[]>();
+  let changedPosts = 0;
+  for (const row of all) {
+    const list = byFile.get(row.file) || [];
+    list.push(row.post);
+    byFile.set(row.file, list);
+  }
+  for (const file of files) {
+    const day = readDayFile(file);
+    const nextPosts = byFile.get(file) || day.doc.posts || [];
+    const before = JSON.stringify(day.doc.posts || []);
+    day.doc.posts = nextPosts;
+    if (JSON.stringify(nextPosts) !== before) {
+      day.doc.format_version = 2;
+      fs.writeFileSync(file, JSON.stringify(day.doc, null, 1) + "\n", "utf8");
+      changedPosts += nextPosts.length;
+    }
+  }
+  const vault = syncVaultCaseLinks(all);
+  return {
+    files: files.length,
+    posts: all.length,
+    changedPosts,
+    edges: planned.edges,
+    detail: planned.detail,
+    vaultNotes: vault.notes,
+  };
 }
 
 function esc(s: string) {
@@ -293,7 +355,10 @@ function patchCaseNote(raw: string, post: PostV2, caseIds: Set<string>): string 
   const caseLines = (post.related_cases || []).map(
     (r) => `- [[${r.id}|rel:${r.relation || "related_to"}]]`,
   );
-  const body = patchRelationsSection(split.body, caseLines, caseIds);
+  const body = patchAnalysisRelated(
+    patchRelationsSection(split.body, caseLines, caseIds),
+    post.related_cases || [],
+  );
   const prefix = fm ? `${fm}\n---\n\n` : "";
   const merged = `${prefix}${body.replace(/^\n+/, "")}`;
   const normalized = merged.endsWith("\n") ? merged : `${merged}\n`;

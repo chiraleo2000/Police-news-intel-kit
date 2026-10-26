@@ -1,63 +1,45 @@
 {
  "case_id": "20261025-tourist-01",
  "title": "สตม. ตรวจสอบกรณีครอบครัวตามหาพิธีกรชาวดัตช์วัย 70 ปี พบข้อมูลเดินทางออกไทยไป สปป.ลาว ตั้งแต่ปลายปี 2568",
- "generated_at": "2026-10-26T07:18:59.009Z",
- "node_count": 8,
- "edge_count": 9,
+ "generated_at": "2026-10-26T07:49:36.615Z",
+ "node_count": 7,
+ "edge_count": 6,
  "relations": [
   {
-   "label": "investigated_by",
+   "label": "สืบสวนโดย",
    "target_id": "30_Entities/Units/บก.ตม.",
    "target_title": "บก.ตม.",
    "direction": "out"
   },
   {
-   "label": "investigated_by",
+   "label": "สืบสวนโดย",
    "target_id": "30_Entities/Units/บก.สส.สตม.",
    "target_title": "บก.สส.สตม.",
    "direction": "out"
   },
   {
-   "label": "investigated_by",
+   "label": "สืบสวนโดย",
    "target_id": "30_Entities/People/สตม.",
    "target_title": "สตม.",
    "direction": "out"
   },
   {
-   "label": "ordered_by",
+   "label": "สั่งการโดย",
    "target_id": "30_Entities/Units/บช.สตม.",
    "target_title": "บช.สตม.",
    "direction": "out"
   },
   {
-   "label": "announced_by",
+   "label": "แจ้งโดย",
    "target_id": "30_Entities/People/ผบช.สตม.",
    "target_title": "ผบช.สตม.",
    "direction": "out"
   },
   {
-   "label": "mentions",
-   "target_id": "40_CrimeTypes/อาชญากรรมที่เกี่ยวข้องกับนักท่องเที่ยวและชาวต่างชาติ",
-   "target_title": "อาชญากรรมที่เกี่ยวข้องกับนักท่องเที่ยวและชาวต่างชาติ",
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/บุคคล/เชิงรณ ริมผดี",
+   "target_title": "เชิงรณ ริมผดี",
    "direction": "out"
-  },
-  {
-   "label": "mentions",
-   "target_id": "30_Entities/Units/บก.ตม.",
-   "target_title": "บก.ตม.",
-   "direction": "in"
-  },
-  {
-   "label": "mentions",
-   "target_id": "30_Entities/Units/บก.สส.สตม.",
-   "target_title": "บก.สส.สตม.",
-   "direction": "in"
-  },
-  {
-   "label": "mentions",
-   "target_id": "30_Entities/Units/สตม.",
-   "target_title": "สตม.",
-   "direction": "in"
   }
  ],
  "svg": "graphs/20261025-tourist-01.svg"

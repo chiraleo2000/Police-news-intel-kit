@@ -1,63 +1,45 @@
 {
  "case_id": "20261022-tourist-dsi-nominee",
  "title": "DSI ส่งหลักฐานให้มหาดไทยทบทวนสัญชาติ นักธุรกิจต่างชาติ ขยายผลนอมินีถือครองที่ดิน",
- "generated_at": "2026-10-26T07:18:58.816Z",
- "node_count": 9,
- "edge_count": 9,
+ "generated_at": "2026-10-26T07:49:36.438Z",
+ "node_count": 7,
+ "edge_count": 6,
  "relations": [
   {
-   "label": "ordered_by",
+   "label": "สั่งการโดย",
    "target_id": "30_Entities/Units/บช.สตม.",
    "target_title": "บช.สตม.",
    "direction": "out"
   },
   {
-   "label": "announced_by",
+   "label": "แจ้งโดย",
    "target_id": "30_Entities/People/DSI",
    "target_title": "DSI",
    "direction": "out"
   },
   {
-   "label": "announced_by",
+   "label": "แจ้งโดย",
    "target_id": "30_Entities/People/กรมการปกครอง",
    "target_title": "กรมการปกครอง",
    "direction": "out"
   },
   {
-   "label": "announced_by",
+   "label": "แจ้งโดย",
    "target_id": "30_Entities/People/กรมที่ดิน",
    "target_title": "กรมที่ดิน",
    "direction": "out"
   },
   {
-   "label": "announced_by",
+   "label": "แจ้งโดย",
    "target_id": "30_Entities/People/กรมสรรพากร",
    "target_title": "กรมสรรพากร",
    "direction": "out"
   },
   {
-   "label": "announced_by",
+   "label": "แจ้งโดย",
    "target_id": "30_Entities/People/ปปง.",
    "target_title": "ปปง.",
    "direction": "out"
-  },
-  {
-   "label": "mentions",
-   "target_id": "30_Entities/Units/กรมสอบสวนคดีพิเศษ (DSI)",
-   "target_title": "กรมสอบสวนคดีพิเศษ (DSI)",
-   "direction": "out"
-  },
-  {
-   "label": "mentions",
-   "target_id": "40_CrimeTypes/อาชญากรรมที่เกี่ยวข้องกับนักท่องเที่ยวและชาวต่างชาติ",
-   "target_title": "อาชญากรรมที่เกี่ยวข้องกับนักท่องเที่ยวและชาวต่างชาติ",
-   "direction": "out"
-  },
-  {
-   "label": "mentions",
-   "target_id": "30_Entities/Units/กรมสอบสวนคดีพิเศษ (DSI)",
-   "target_title": "กรมสอบสวนคดีพิเศษ (DSI)",
-   "direction": "in"
   }
  ],
  "svg": "graphs/20261022-tourist-dsi-nominee.svg"

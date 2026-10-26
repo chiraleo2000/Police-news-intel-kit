@@ -1,57 +1,39 @@
 {
  "case_id": "20261024-gamble-01",
  "title": "ตำรวจไซเบอร์บุกทลายเว็บพนัน taipei999 สงขลา เงินสะพัด 379 ล้าน",
- "generated_at": "2026-10-26T07:18:58.945Z",
- "node_count": 6,
- "edge_count": 8,
+ "generated_at": "2026-10-26T07:49:36.556Z",
+ "node_count": 5,
+ "edge_count": 5,
  "relations": [
   {
-   "label": "related_to",
-   "target_id": "20_Cases/20261023-gamble-01",
-   "target_title": "ตำรวจไซเบอร์ทลายเว็บพนันใหญ่ในสงขลา ตรวจพบธุรกรรม 17 วันกว่า 379 ล้านบาท",
-   "direction": "in"
-  },
-  {
-   "label": "arrested_by",
+   "label": "จับโดย",
    "target_id": "30_Entities/Units/ตำรวจไซเบอร์",
    "target_title": "ตำรวจไซเบอร์",
    "direction": "out"
   },
   {
-   "label": "ordered_by",
+   "label": "สั่งการโดย",
    "target_id": "30_Entities/People/บช.สอท.",
    "target_title": "บช.สอท.",
    "direction": "out"
   },
   {
-   "label": "targets_network",
-   "target_id": "30_Entities/Projects/เว็บพนันออนไลน์",
-   "target_title": "เว็บพนันออนไลน์",
-   "direction": "out"
+   "label": "เกี่ยวข้องกับ",
+   "target_id": "20_Cases/20261023-gamble-01",
+   "target_title": "ตำรวจไซเบอร์ทลายเว็บพนันใหญ่ในสงขลา ตรวจพบธุรกรรม 17 วันกว่า 379 ล้านบาท",
+   "direction": "in"
   },
   {
-   "label": "related_to",
+   "label": "เกี่ยวข้องกับ",
    "target_id": "20_Cases/20261023-gamble-01",
    "target_title": "ตำรวจไซเบอร์ทลายเว็บพนันใหญ่ในสงขลา ตรวจพบธุรกรรม 17 วันกว่า 379 ล้านบาท",
    "direction": "out"
   },
   {
-   "label": "mentions",
-   "target_id": "40_CrimeTypes/พนันและบ่อนผิดกฎหมาย",
-   "target_title": "พนันและบ่อนผิดกฎหมาย",
+   "label": "บัญชี",
+   "target_id": "30_Entities/บัญชี/taipei999",
+   "target_title": "taipei999",
    "direction": "out"
-  },
-  {
-   "label": "mentions",
-   "target_id": "30_Entities/Units/ตำรวจไซเบอร์",
-   "target_title": "ตำรวจไซเบอร์",
-   "direction": "out"
-  },
-  {
-   "label": "mentions",
-   "target_id": "30_Entities/Units/ตำรวจไซเบอร์",
-   "target_title": "ตำรวจไซเบอร์",
-   "direction": "in"
   }
  ],
  "svg": "graphs/20261024-gamble-01.svg"

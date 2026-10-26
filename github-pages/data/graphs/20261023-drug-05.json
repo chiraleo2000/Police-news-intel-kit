@@ -1,42 +1,36 @@
 {
  "case_id": "20261023-drug-05",
  "title": "จับเด็กเรียนดี หิ้วยาบ้ากว่า 4 พันเม็ด รับถูกจ้างส่งพัสดุ โดยไม่รู้ว่าคืออะไร",
- "generated_at": "2026-10-26T07:18:58.854Z",
- "node_count": 6,
- "edge_count": 6,
+ "generated_at": "2026-10-26T07:49:36.472Z",
+ "node_count": 5,
+ "edge_count": 5,
  "relations": [
   {
-   "label": "arrested_by",
+   "label": "จับโดย",
    "target_id": "30_Entities/Units/กกล.สุรสีห์",
    "target_title": "กกล.สุรสีห์",
    "direction": "out"
   },
   {
-   "label": "arrested_by",
+   "label": "จับโดย",
    "target_id": "30_Entities/Units/ตชด.135",
    "target_title": "ตชด.135",
    "direction": "out"
   },
   {
-   "label": "arrested_by",
+   "label": "จับโดย",
    "target_id": "30_Entities/Units/สภ.ทองผาภูมิ",
    "target_title": "สภ.ทองผาภูมิ",
    "direction": "out"
   },
   {
-   "label": "related_to",
+   "label": "เกี่ยวข้องกับ",
    "target_id": "20_Cases/20261024-drug-02",
    "target_title": "ตำรวจกาญจนบุรีจับเยาวชนถูกกล่าวหาขนยาบ้ากว่า 4 พันเม็ด อ้างถูกจ้างส่งพัสดุ",
    "direction": "out"
   },
   {
-   "label": "mentions",
-   "target_id": "40_CrimeTypes/ยาเสพติด",
-   "target_title": "ยาเสพติด",
-   "direction": "out"
-  },
-  {
-   "label": "related_to",
+   "label": "เกี่ยวข้องกับ",
    "target_id": "20_Cases/20261024-drug-02",
    "target_title": "ตำรวจกาญจนบุรีจับเยาวชนถูกกล่าวหาขนยาบ้ากว่า 4 พันเม็ด อ้างถูกจ้างส่งพัสดุ",
    "direction": "in"

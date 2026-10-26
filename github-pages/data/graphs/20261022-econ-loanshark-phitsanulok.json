@@ -1,45 +1,27 @@
 {
  "case_id": "20261022-econ-loanshark-phitsanulok",
  "title": "บช.สอท. บุกทลายเครือข่ายปล่อยกู้นอกระบบแอปกู้เงินที่พิษณุโลก จับ 6 ราย",
- "generated_at": "2026-10-26T07:18:58.776Z",
- "node_count": 6,
- "edge_count": 6,
+ "generated_at": "2026-10-26T07:49:36.401Z",
+ "node_count": 4,
+ "edge_count": 3,
  "relations": [
   {
-   "label": "arrested_by",
+   "label": "จับโดย",
    "target_id": "30_Entities/Units/บก.สอท.4",
    "target_title": "บก.สอท.4",
    "direction": "out"
   },
   {
-   "label": "arrested_by",
+   "label": "จับโดย",
    "target_id": "30_Entities/People/บช.สอท.",
    "target_title": "บช.สอท.",
    "direction": "out"
   },
   {
-   "label": "targets_network",
+   "label": "เป้าหมายเครือข่าย",
    "target_id": "30_Entities/Projects/เครือข่ายปล่อยกู้นอกระบบแอปกู้เงินที่พิ",
    "target_title": "เครือข่ายปล่อยกู้นอกระบบแอปกู้เงินที่พิ",
    "direction": "out"
-  },
-  {
-   "label": "mentions",
-   "target_id": "30_Entities/Units/ตำรวจไซเบอร์ (บช.สอท.-CCIB)",
-   "target_title": "ตำรวจไซเบอร์ (บช.สอท./CCIB)",
-   "direction": "out"
-  },
-  {
-   "label": "mentions",
-   "target_id": "40_CrimeTypes/คดีเศรษฐกิจ การเงิน และฟอกเงิน",
-   "target_title": "คดีเศรษฐกิจ การเงิน และฟอกเงิน",
-   "direction": "out"
-  },
-  {
-   "label": "mentions",
-   "target_id": "30_Entities/Units/ตำรวจไซเบอร์ (บช.สอท.-CCIB)",
-   "target_title": "ตำรวจไซเบอร์ (บช.สอท./CCIB)",
-   "direction": "in"
   }
  ],
  "svg": "graphs/20261022-econ-loanshark-phitsanulok.svg"

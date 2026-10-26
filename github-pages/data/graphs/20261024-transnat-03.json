@@ -1,93 +1,39 @@
 {
  "case_id": "20261024-transnat-03",
  "title": "ตม.รวบนักธุรกิจหญิงจีน หนีหมายจับคดีศุลกากร เสียหายกว่า 500 ล้านบาท",
- "generated_at": "2026-10-26T07:18:58.970Z",
- "node_count": 10,
- "edge_count": 14,
+ "generated_at": "2026-10-26T07:49:36.578Z",
+ "node_count": 6,
+ "edge_count": 5,
  "relations": [
   {
-   "label": "arrested_by",
+   "label": "จับโดย",
    "target_id": "30_Entities/People/ตม.",
    "target_title": "ตม.",
    "direction": "out"
   },
   {
-   "label": "arrested_by",
+   "label": "จับโดย",
    "target_id": "30_Entities/People/บก.ตม.1",
    "target_title": "บก.ตม.1",
    "direction": "out"
   },
   {
-   "label": "arrested_by",
+   "label": "จับโดย",
    "target_id": "30_Entities/Units/บก.สส.สตม.",
    "target_title": "บก.สส.สตม.",
    "direction": "out"
   },
   {
-   "label": "arrested_by",
+   "label": "จับโดย",
    "target_id": "30_Entities/People/สตม.",
    "target_title": "สตม.",
    "direction": "out"
   },
   {
-   "label": "ordered_by",
+   "label": "สั่งการโดย",
    "target_id": "30_Entities/Units/บช.สตม.",
    "target_title": "บช.สตม.",
    "direction": "out"
-  },
-  {
-   "label": "mentions",
-   "target_id": "40_CrimeTypes/อาชญากรรมข้ามชาติและความร่วมมือระหว่างประเทศ",
-   "target_title": "อาชญากรรมข้ามชาติและความร่วมมือระหว่างประเทศ",
-   "direction": "out"
-  },
-  {
-   "label": "mentions",
-   "target_id": "30_Entities/People/สตม.",
-   "target_title": "สตม.",
-   "direction": "out"
-  },
-  {
-   "label": "mentions",
-   "target_id": "30_Entities/People/บก.ตม.1",
-   "target_title": "บก.ตม.1",
-   "direction": "out"
-  },
-  {
-   "label": "mentions",
-   "target_id": "30_Entities/Units/บก.สส.สตม.",
-   "target_title": "บก.สส.สตม.",
-   "direction": "out"
-  },
-  {
-   "label": "mentions",
-   "target_id": "30_Entities/People/ตม.",
-   "target_title": "ตม.",
-   "direction": "out"
-  },
-  {
-   "label": "mentions",
-   "target_id": "30_Entities/Units/ตม.",
-   "target_title": "ตม.",
-   "direction": "in"
-  },
-  {
-   "label": "mentions",
-   "target_id": "30_Entities/Units/บก.ตม.1",
-   "target_title": "บก.ตม.1",
-   "direction": "in"
-  },
-  {
-   "label": "mentions",
-   "target_id": "30_Entities/Units/บก.สส.สตม.",
-   "target_title": "บก.สส.สตม.",
-   "direction": "in"
-  },
-  {
-   "label": "mentions",
-   "target_id": "30_Entities/Units/สตม.",
-   "target_title": "สตม.",
-   "direction": "in"
   }
  ],
  "svg": "graphs/20261024-transnat-03.svg"

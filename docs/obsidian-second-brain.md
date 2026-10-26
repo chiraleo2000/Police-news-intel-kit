@@ -9,9 +9,9 @@
 | Per-story ego subgraph | `github-pages/data/graphs/{case_id}.svg` | Yes |
 | News posts | `github-pages/data/*_crime*.json` | Yes |
 
-Open Obsidian on the folder `police-news-intel-kit/vault`. Claude Task 1/2 does **not** edit notes by hand. It calls news-hub `GET /v1/brain/search` and `GET /v1/brain/timeline` (retrieval). `vault-build` writes notes. GitHub Pages only shows a snapshot in `graph.json` after `node ops/rebuild-pages-feed.js` — the site cannot query Obsidian live.
+Open Obsidian on the folder `police-news-intel-kit/vault`. Task 1 (08:01) and Task 2 (08:30) search with `GET /v1/brain/search` and `GET /v1/brain/timeline`, then write the day’s working-set notes (`generated: true`) and JSON. There is no Sunday graph-review task. GitHub Pages only shows a snapshot in `graph.json` after `node ops/rebuild-pages-feed.js`.
 
-Edges carry a `label` (`arrested_by`, `related_to`, `mentions`, …). Dates, crime type, bureau, area, and status stay properties on the case node (also shown on the canvas when zoomed/selected). Nodes are cases, units, announced commanders, and named networks.
+Edges that are kept use a Thai `label` from case frontmatter `rel_units` / `rel_people` / `rel_projects` / `rel_cases` (`สืบสวนโดย`, `จับโดย`, `สั่งการโดย`, `แจ้งโดย`, `เกิดที่`, `เป้าหมายเครือข่าย`, `เกี่ยวข้องกับบุคคล`, `ผู้ต้องหา`, `บัญชี`, and between stories only `เกี่ยวข้องกับ` or `ติดตามจาก`). Do not keep an unlabeled edge or a `mentions` edge. `bureau`, `area`, `crime_type`, and `status_th` stay properties on the case node. `gang_or_group` is set on the same note when the article names a real group. Nodes are only entities the article actually names.
 
 ## Build & publish
 
@@ -32,6 +32,6 @@ Scheduled `ops/git-publish-pages.ps1` already runs `rebuild-pages-feed.js`, so t
 
 ## Tips for a denser graph
 
-- Always link cases to `[[crime type]]` and unit/place entity notes.
-- Prefer stable note titles so wikilinks resolve (avoid renaming without updating links).
-- Unresolved links appear in red as `unresolved:…` nodes — fix the note name or link text.
+- Put crime type on the case field `crime_type`. Link a unit, place, person, or network only with a Thai `rel_*` row, not a bare wikilink.
+- Prefer stable note titles so links resolve (avoid renaming without updating `rel_*` targets).
+- Unresolved links appear in red as `unresolved:…` nodes — fix the note name or the `target` text.

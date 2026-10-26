@@ -1,51 +1,33 @@
 {
  "case_id": "20261022-drug-phetchaburi-ice",
  "title": "ปส. เผชิญหน้าขบวนการลำเลียงไอซ์ 500 กก. ที่เพชรบุรี ผู้ต้องสงสัยเสียชีวิต 2 ราย",
- "generated_at": "2026-10-26T07:18:58.767Z",
- "node_count": 7,
- "edge_count": 7,
+ "generated_at": "2026-10-26T07:49:36.392Z",
+ "node_count": 5,
+ "edge_count": 4,
  "relations": [
   {
-   "label": "arrested_by",
+   "label": "จับโดย",
    "target_id": "30_Entities/Units/กก.ปพ.",
    "target_title": "กก.ปพ.",
    "direction": "out"
   },
   {
-   "label": "arrested_by",
+   "label": "จับโดย",
    "target_id": "30_Entities/Units/ปส.",
    "target_title": "ปส.",
    "direction": "out"
   },
   {
-   "label": "arrested_by",
+   "label": "จับโดย",
    "target_id": "30_Entities/Units/ปส.3",
    "target_title": "ปส.3",
    "direction": "out"
   },
   {
-   "label": "ordered_by",
+   "label": "สั่งการโดย",
    "target_id": "30_Entities/Units/บช.ก.",
    "target_title": "บช.ก.",
    "direction": "out"
-  },
-  {
-   "label": "mentions",
-   "target_id": "30_Entities/Units/สำนักงาน ป.ป.ส.-ตำรวจปราบปรามยาเสพติด",
-   "target_title": "สำนักงาน ป.ป.ส./ตำรวจปราบปรามยาเสพติด",
-   "direction": "out"
-  },
-  {
-   "label": "mentions",
-   "target_id": "40_CrimeTypes/ยาเสพติด",
-   "target_title": "ยาเสพติด",
-   "direction": "out"
-  },
-  {
-   "label": "mentions",
-   "target_id": "30_Entities/Units/สำนักงาน ป.ป.ส.-ตำรวจปราบปรามยาเสพติด",
-   "target_title": "สำนักงาน ป.ป.ส./ตำรวจปราบปรามยาเสพติด",
-   "direction": "in"
   }
  ],
  "svg": "graphs/20261022-drug-phetchaburi-ice.svg"

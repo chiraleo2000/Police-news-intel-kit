@@ -3,7 +3,8 @@ description: ทบทวน Second Brain รายสัปดาห์ (รว
 argument-hint: "[YYYY-Www]"
 ---
 
-ใช้ skill `second-brain-update`
+ไม่มี scheduled task รีวิววันอาทิตย์ การวิเคราะห์รายวันอยู่ใน Task 1 และ Task 2  
+ใช้ skill `second-brain-update` เฉพาะเมื่อมีคนสั่งทบทวนด้วยมือ
 
 - สัปดาห์เป้าหมาย = `$ARGUMENTS` ถ้ามี ไม่เช่นนั้นสัปดาห์ ISO ที่เพิ่งจบ (Asia/Bangkok)
 - ใช้เฉพาะ tool `brain_search`, `brain_timeline`, `brain_upsert` ของ `news-hub`

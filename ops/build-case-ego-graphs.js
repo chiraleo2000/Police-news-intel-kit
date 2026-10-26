@@ -100,9 +100,11 @@ function renderSvg(hub, neighbors, edges) {
       `<line x1="${a.x.toFixed(1)}" y1="${a.y.toFixed(1)}" x2="${b.x.toFixed(1)}" y2="${b.y.toFixed(1)}" stroke="#7a8a9a" stroke-width="1.4" opacity="0.75"/>`
     );
     if (e.label && e.label !== "mentions") {
+      const shown = truncate(e.label, 18);
+      const width = Math.min(168, Math.max(64, [...shown].length * 9 + 14));
       lines.push(
-        `<rect x="${(mx - 36).toFixed(1)}" y="${(my - 9).toFixed(1)}" width="72" height="16" rx="8" fill="#fff" stroke="#c5d0da" stroke-width="0.8"/>` +
-          `<text x="${mx.toFixed(1)}" y="${(my + 3).toFixed(1)}" text-anchor="middle" font-size="10" fill="#2a3540" font-family="Sarabun, Anuphan, sans-serif">${esc(truncate(e.label, 14))}</text>`
+        `<rect x="${(mx - width / 2).toFixed(1)}" y="${(my - 9).toFixed(1)}" width="${width.toFixed(1)}" height="16" rx="8" fill="#fff" stroke="#c5d0da" stroke-width="0.8"/>` +
+          `<text x="${mx.toFixed(1)}" y="${(my + 3).toFixed(1)}" text-anchor="middle" font-size="10" fill="#2a3540" font-family="Sarabun, Anuphan, sans-serif">${esc(shown)}</text>`
       );
     }
   }
@@ -139,7 +141,7 @@ function relationSummary(hub, edges, byId) {
     const otherId = e.source === hub.id ? e.target : e.source;
     const other = byId.get(otherId);
     return {
-      label: e.label || "mentions",
+      label: e.label || "",
       target_id: otherId,
       target_title: other?.title || otherId,
       direction: e.source === hub.id ? "out" : "in",

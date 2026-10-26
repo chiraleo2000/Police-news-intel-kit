@@ -1,20 +1,14 @@
 {
  "case_id": "20261023-property-01",
  "title": "'แม่ภัทร' ปาดน้ำตาเปิดตู้เซฟ ทรัพย์สินเหลือไม่ถึงล้าน หวังลูกนำมาคืน หากเหลือทำบุญให้ผู้ยากไร้",
- "generated_at": "2026-10-26T07:18:58.900Z",
- "node_count": 3,
- "edge_count": 2,
+ "generated_at": "2026-10-26T07:49:36.516Z",
+ "node_count": 2,
+ "edge_count": 1,
  "relations": [
   {
-   "label": "investigated_by",
+   "label": "สืบสวนโดย",
    "target_id": "30_Entities/People/สน.วังทองหลาง",
    "target_title": "สน.วังทองหลาง",
-   "direction": "out"
-  },
-  {
-   "label": "mentions",
-   "target_id": "40_CrimeTypes/คดีทรัพย์สิน",
-   "target_title": "คดีทรัพย์สิน",
    "direction": "out"
   }
  ],

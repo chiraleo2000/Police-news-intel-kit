@@ -1,22 +1,9 @@
 {
  "case_id": "20261023-gamble-02",
  "title": "Bitkub ยอมรับพบลูกค้า 49 ราย โยงเส้นทางเงินเว็บพนัน กว่า 100 ล้านบาท",
- "generated_at": "2026-10-26T07:18:58.869Z",
- "node_count": 3,
- "edge_count": 2,
- "relations": [
-  {
-   "label": "targets_network",
-   "target_id": "30_Entities/Projects/เว็บพนัน",
-   "target_title": "เว็บพนัน",
-   "direction": "out"
-  },
-  {
-   "label": "mentions",
-   "target_id": "40_CrimeTypes/พนันและบ่อนผิดกฎหมาย",
-   "target_title": "พนันและบ่อนผิดกฎหมาย",
-   "direction": "out"
-  }
- ],
+ "generated_at": "2026-10-26T07:49:36.488Z",
+ "node_count": 1,
+ "edge_count": 0,
+ "relations": [],
  "svg": "graphs/20261023-gamble-02.svg"
 }

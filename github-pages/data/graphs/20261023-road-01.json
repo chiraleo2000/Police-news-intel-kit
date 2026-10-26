@@ -1,20 +1,14 @@
 {
  "case_id": "20261023-road-01",
  "title": "เหยื่อหญิงวัย 67 เหยียบคันเร่งผิด เจ็บ 6 สาหัสบางคน ตร.รอสอบก่อนแจ้งข้อหา",
- "generated_at": "2026-10-26T07:18:58.906Z",
- "node_count": 3,
- "edge_count": 2,
+ "generated_at": "2026-10-26T07:49:36.521Z",
+ "node_count": 2,
+ "edge_count": 1,
  "relations": [
   {
-   "label": "investigated_by",
+   "label": "สืบสวนโดย",
    "target_id": "30_Entities/Units/สน.พระโขนง",
    "target_title": "สน.พระโขนง",
-   "direction": "out"
-  },
-  {
-   "label": "mentions",
-   "target_id": "40_CrimeTypes/ความปลอดภัยทางหลวงและการสกัดจับ",
-   "target_title": "ความปลอดภัยทางหลวงและการสกัดจับ",
    "direction": "out"
   }
  ],

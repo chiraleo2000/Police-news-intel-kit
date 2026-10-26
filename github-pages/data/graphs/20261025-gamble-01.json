@@ -1,69 +1,33 @@
 {
  "case_id": "20261025-gamble-01",
  "title": "กองปราบฯ ทลายเครือข่ายเว็บพนันออนไลน์ในชลบุรี จับ 8 ราย ขยายผลจากโรงงานผลิตบัญชีม้าพัทลุง ตามข้อกล่าวหา",
- "generated_at": "2026-10-26T07:18:58.996Z",
- "node_count": 7,
- "edge_count": 10,
+ "generated_at": "2026-10-26T07:49:36.604Z",
+ "node_count": 5,
+ "edge_count": 4,
  "relations": [
   {
-   "label": "arrested_by",
+   "label": "จับโดย",
    "target_id": "30_Entities/Units/บก.ทล.",
    "target_title": "บก.ทล.",
    "direction": "out"
   },
   {
-   "label": "arrested_by",
+   "label": "จับโดย",
    "target_id": "30_Entities/Units/บก.ป.",
    "target_title": "บก.ป.",
    "direction": "out"
   },
   {
-   "label": "arrested_by",
+   "label": "จับโดย",
    "target_id": "30_Entities/Units/บก.รน.",
    "target_title": "บก.รน.",
    "direction": "out"
   },
   {
-   "label": "arrested_by",
+   "label": "จับโดย",
    "target_id": "30_Entities/Units/บช.ก.",
    "target_title": "บช.ก.",
    "direction": "out"
-  },
-  {
-   "label": "targets_network",
-   "target_id": "30_Entities/Projects/เว็บพนันออนไลน์",
-   "target_title": "เว็บพนันออนไลน์",
-   "direction": "out"
-  },
-  {
-   "label": "mentions",
-   "target_id": "40_CrimeTypes/พนันและบ่อนผิดกฎหมาย",
-   "target_title": "พนันและบ่อนผิดกฎหมาย",
-   "direction": "out"
-  },
-  {
-   "label": "mentions",
-   "target_id": "30_Entities/Units/บก.ทล.",
-   "target_title": "บก.ทล.",
-   "direction": "in"
-  },
-  {
-   "label": "mentions",
-   "target_id": "30_Entities/Units/บก.ป.",
-   "target_title": "บก.ป.",
-   "direction": "in"
-  },
-  {
-   "label": "mentions",
-   "target_id": "30_Entities/Units/บก.รน.",
-   "target_title": "บก.รน.",
-   "direction": "in"
-  },
-  {
-   "label": "mentions",
-   "target_id": "30_Entities/Units/บช.ก.",
-   "target_title": "บช.ก.",
-   "direction": "in"
   }
  ],
  "svg": "graphs/20261025-gamble-01.svg"

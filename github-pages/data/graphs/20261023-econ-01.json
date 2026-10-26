@@ -1,44 +1,38 @@
 {
  "case_id": "20261023-econ-01",
  "title": "ปฏิบัติการ BLACK TRACE ทลายขบวนขุดบิตคอยน์ผิดกฎหมาย ยึดอสังหาริมทรัพย์กว่า 185 ล้านบาท",
- "generated_at": "2026-10-26T07:18:58.857Z",
- "node_count": 7,
- "edge_count": 6,
+ "generated_at": "2026-10-26T07:49:36.475Z",
+ "node_count": 6,
+ "edge_count": 5,
  "relations": [
   {
-   "label": "investigated_by",
+   "label": "สืบสวนโดย",
    "target_id": "30_Entities/People/DSI",
    "target_title": "DSI",
    "direction": "out"
   },
   {
-   "label": "investigated_by",
+   "label": "สืบสวนโดย",
    "target_id": "30_Entities/People/ตม.",
    "target_title": "ตม.",
    "direction": "out"
   },
   {
-   "label": "investigated_by",
+   "label": "สืบสวนโดย",
    "target_id": "30_Entities/Units/ตำรวจสอบสวนกลาง ปอท. (ตามข่าว)",
    "target_title": "ตำรวจสอบสวนกลาง/ปอท. (ตามข่าว)",
    "direction": "out"
   },
   {
-   "label": "investigated_by",
+   "label": "สืบสวนโดย",
    "target_id": "30_Entities/People/ปปง.",
    "target_title": "ปปง.",
    "direction": "out"
   },
   {
-   "label": "ordered_by",
+   "label": "สั่งการโดย",
    "target_id": "30_Entities/Units/บช.ก.",
    "target_title": "บช.ก.",
-   "direction": "out"
-  },
-  {
-   "label": "mentions",
-   "target_id": "40_CrimeTypes/คดีเศรษฐกิจ การเงิน และฟอกเงิน",
-   "target_title": "คดีเศรษฐกิจ การเงิน และฟอกเงิน",
    "direction": "out"
   }
  ],

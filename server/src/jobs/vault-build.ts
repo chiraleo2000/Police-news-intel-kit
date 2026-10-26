@@ -6,6 +6,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { getDb } from "../db/index.js";
+import { isSpecificNetwork } from "../brain/entities.js";
 import { vaultDir } from "../brain/files.js";
 import { listCases, type CaseRow } from "../brain/store.js";
 
@@ -23,14 +24,21 @@ function yamlEscape(s: string) {
   return JSON.stringify(s);
 }
 
+function keepNamedRel(rel: { rel: string; target: string }) {
+  if (!rel.rel || rel.rel === "mentions") return false;
+  if (rel.rel === "targets_network" && !isSpecificNetwork(rel.target)) return false;
+  return true;
+}
+
 function relLines(rels: Array<{ rel: string; dst_type: string; target: string }>) {
-  const units = rels.filter((r) => r.dst_type === "entity" && r.rel !== "announced_by" && r.rel !== "targets_network");
-  const people = rels.filter((r) => r.rel === "announced_by");
-  const projects = rels.filter((r) => r.rel === "targets_network");
-  const cases = rels.filter((r) => r.dst_type === "case");
+  const named = rels.filter(keepNamedRel);
+  const units = named.filter((r) => r.dst_type === "entity" && r.rel !== "announced_by" && r.rel !== "targets_network");
+  const people = named.filter((r) => r.rel === "announced_by");
+  const projects = named.filter((r) => r.rel === "targets_network");
+  const cases = named.filter((r) => r.dst_type === "case");
   const pack = (rows: typeof rels) =>
     JSON.stringify(rows.map((r) => ({ target: r.target, rel: r.rel })));
-  return { units: pack(units), people: pack(people), projects: pack(projects), cases: pack(cases), rels };
+  return { units: pack(units), people: pack(people), projects: pack(projects), cases: pack(cases), rels: named };
 }
 
 function loadRels(stmt: { all: (id: string) => unknown[] }, id: string) {

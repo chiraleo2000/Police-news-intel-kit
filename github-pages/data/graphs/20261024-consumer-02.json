@@ -1,51 +1,21 @@
 {
  "case_id": "20261024-consumer-02",
  "title": "กมธ.คุ้มครองผู้บริโภค จี้ สพฐ. ร่วมเยียวยา ผู้ปกครอง-นักเรียนทัศนศึกษาจีนทิพย์",
- "generated_at": "2026-10-26T07:18:58.929Z",
- "node_count": 4,
- "edge_count": 7,
+ "generated_at": "2026-10-26T07:49:36.541Z",
+ "node_count": 3,
+ "edge_count": 2,
  "relations": [
   {
-   "label": "investigated_by",
+   "label": "สืบสวนโดย",
    "target_id": "30_Entities/Units/กองปราบปราม",
    "target_title": "กองปราบปราม",
    "direction": "out"
   },
   {
-   "label": "investigated_by",
+   "label": "สืบสวนโดย",
    "target_id": "30_Entities/Units/สพฐ.",
    "target_title": "สพฐ.",
    "direction": "out"
-  },
-  {
-   "label": "mentions",
-   "target_id": "40_CrimeTypes/คุ้มครองผู้บริโภคและสินค้าผิดกฎหมาย",
-   "target_title": "คุ้มครองผู้บริโภคและสินค้าผิดกฎหมาย",
-   "direction": "out"
-  },
-  {
-   "label": "mentions",
-   "target_id": "30_Entities/Units/กองปราบปราม",
-   "target_title": "กองปราบปราม",
-   "direction": "out"
-  },
-  {
-   "label": "mentions",
-   "target_id": "30_Entities/Units/สพฐ.",
-   "target_title": "สพฐ.",
-   "direction": "out"
-  },
-  {
-   "label": "mentions",
-   "target_id": "30_Entities/Units/กองปราบปราม",
-   "target_title": "กองปราบปราม",
-   "direction": "in"
-  },
-  {
-   "label": "mentions",
-   "target_id": "30_Entities/Units/สพฐ.",
-   "target_title": "สพฐ.",
-   "direction": "in"
   }
  ],
  "svg": "graphs/20261024-consumer-02.svg"

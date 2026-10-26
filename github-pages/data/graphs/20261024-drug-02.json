@@ -1,81 +1,39 @@
 {
  "case_id": "20261024-drug-02",
  "title": "ตำรวจกาญจนบุรีจับเยาวชนถูกกล่าวหาขนยาบ้ากว่า 4 พันเม็ด อ้างถูกจ้างส่งพัสดุ",
- "generated_at": "2026-10-26T07:18:58.940Z",
- "node_count": 6,
- "edge_count": 12,
+ "generated_at": "2026-10-26T07:49:36.552Z",
+ "node_count": 5,
+ "edge_count": 5,
  "relations": [
   {
-   "label": "related_to",
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/ตชด.",
+   "target_title": "ตชด.",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/ร้อย ตชด.135",
+   "target_title": "ร้อย ตชด.135",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/สภ.ทองผาภูมิ",
+   "target_title": "สภ.ทองผาภูมิ",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับ",
    "target_id": "20_Cases/20261023-drug-05",
    "target_title": "จับเด็กเรียนดี หิ้วยาบ้ากว่า 4 พันเม็ด รับถูกจ้างส่งพัสดุ โดยไม่รู้ว่าคืออะไร",
    "direction": "in"
   },
   {
-   "label": "arrested_by",
-   "target_id": "30_Entities/Units/ตชด.",
-   "target_title": "ตชด.",
-   "direction": "out"
-  },
-  {
-   "label": "arrested_by",
-   "target_id": "30_Entities/Units/ร้อย ตชด.135",
-   "target_title": "ร้อย ตชด.135",
-   "direction": "out"
-  },
-  {
-   "label": "arrested_by",
-   "target_id": "30_Entities/Units/สภ.ทองผาภูมิ",
-   "target_title": "สภ.ทองผาภูมิ",
-   "direction": "out"
-  },
-  {
-   "label": "related_to",
+   "label": "เกี่ยวข้องกับ",
    "target_id": "20_Cases/20261023-drug-05",
    "target_title": "จับเด็กเรียนดี หิ้วยาบ้ากว่า 4 พันเม็ด รับถูกจ้างส่งพัสดุ โดยไม่รู้ว่าคืออะไร",
    "direction": "out"
-  },
-  {
-   "label": "mentions",
-   "target_id": "40_CrimeTypes/ยาเสพติด",
-   "target_title": "ยาเสพติด",
-   "direction": "out"
-  },
-  {
-   "label": "mentions",
-   "target_id": "30_Entities/Units/สภ.ทองผาภูมิ",
-   "target_title": "สภ.ทองผาภูมิ",
-   "direction": "out"
-  },
-  {
-   "label": "mentions",
-   "target_id": "30_Entities/Units/ตชด.",
-   "target_title": "ตชด.",
-   "direction": "out"
-  },
-  {
-   "label": "mentions",
-   "target_id": "30_Entities/Units/ร้อย ตชด.135",
-   "target_title": "ร้อย ตชด.135",
-   "direction": "out"
-  },
-  {
-   "label": "mentions",
-   "target_id": "30_Entities/Units/ตชด.",
-   "target_title": "ตชด.",
-   "direction": "in"
-  },
-  {
-   "label": "mentions",
-   "target_id": "30_Entities/Units/ร้อย ตชด.135",
-   "target_title": "ร้อย ตชด.135",
-   "direction": "in"
-  },
-  {
-   "label": "mentions",
-   "target_id": "30_Entities/Units/สภ.ทองผาภูมิ",
-   "target_title": "สภ.ทองผาภูมิ",
-   "direction": "in"
   }
  ],
  "svg": "graphs/20261024-drug-02.svg"

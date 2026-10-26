@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Anuphan:wght@400;500;600;700&family=Sarabun:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/site.css?v=20261026a" />
+  <link rel="stylesheet" href="css/site.css?v=20261026b" />
 </head>
 <body>
   <a class="skip-link" href="#main">ข้ามไปเนื้อหา</a>
@@ -134,6 +134,7 @@
               <label><input type="checkbox" data-kind-check="crime_type" checked /> ประเภท</label>
               <label><input type="checkbox" data-kind-check="daily" checked /> รายวัน</label>
               <label><input type="checkbox" data-kind-check="unresolved" checked /> ลิงก์ค้าง</label>
+              <label><input type="checkbox" data-kind-check="other" checked /> อื่น</label>
             </div>
           </fieldset>
 
@@ -166,6 +167,13 @@
           </label>
 
           <label class="brain-field">
+            <span>ความสัมพันธ์</span>
+            <select id="brain-relation">
+              <option value="">ทุกความสัมพันธ์</option>
+            </select>
+          </label>
+
+          <label class="brain-field">
             <span>ป้ายชื่อ</span>
             <select id="brain-labels">
               <option value="auto" selected>อัตโนมัติ</option>
@@ -194,7 +202,7 @@
         <div class="brain-legend-row">
           <div class="brain-legend" id="brain-legend" aria-label="คำอธิบายสี — คลิกเพื่อโฟกัสชนิด"></div>
           <span class="muted" id="brain-meta"></span>
-          <span class="muted brain-hint">โหนดใหญ่ = ข่าว · เล็ก = เอนทิตี · สกอร์ลซูม · พอดี = fit · ดับเบิลคลิกพื้นหลัง = fit ทั้งกราฟ</span>
+          <span class="muted brain-hint">โหนดใหญ่ = ข่าว · ลากพื้นหลังเลื่อน · ลากจุดจัดตำแหน่ง · สกอร์ลซูม · ดับเบิลคลิกโหนด = เฉพาะเพื่อนบ้าน · ป้ายเส้นเป็นภาษาไทย</span>
         </div>
 
         <div class="brain-stage">
@@ -245,8 +253,8 @@
     </div>
   </footer>
 
-  <script src="js/format.js?v=20261026a" defer></script>
-  <script src="js/graph.js?v=20261026a" defer></script>
-  <script src="js/app.js?v=20261026a" defer></script>
+  <script src="js/format.js?v=20261026b" defer></script>
+  <script src="js/graph.js?v=20261026b" defer></script>
+  <script src="js/app.js?v=20261026b" defer></script>
 </body>
 </html>

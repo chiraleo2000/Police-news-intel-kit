@@ -1,33 +1,27 @@
 {
  "case_id": "20261026-violent-02",
  "title": "กก.ดส.บช.น. จับชายวัย 47 ปี หนีหมายจับคดีข่มขืนเยาวชนวัย 17 ปี นานเกือบ 7 ปี พบทำงานขับมอเตอร์ไซค์รับจ้างย่านลาดพร้าว ตามหมายศาลอาญา",
- "generated_at": "2026-10-26T07:18:59.050Z",
+ "generated_at": "2026-10-26T07:49:36.660Z",
  "node_count": 4,
- "edge_count": 4,
+ "edge_count": 3,
  "relations": [
   {
-   "label": "arrested_by",
+   "label": "จับโดย",
    "target_id": "30_Entities/Units/กก.ดส.บช.น.",
    "target_title": "กก.ดส.บช.น.",
    "direction": "out"
   },
   {
-   "label": "ordered_by",
+   "label": "สั่งการโดย",
    "target_id": "30_Entities/People/บช.น.",
    "target_title": "บช.น.",
    "direction": "out"
   },
   {
-   "label": "mentions",
-   "target_id": "40_CrimeTypes/คดีชีวิต ร่างกาย และเพศ",
-   "target_title": "คดีชีวิต ร่างกาย และเพศ",
+   "label": "เกิดที่",
+   "target_id": "30_Entities/สถานที่/ลาดพร้าว",
+   "target_title": "ลาดพร้าว",
    "direction": "out"
-  },
-  {
-   "label": "mentions",
-   "target_id": "30_Entities/Units/กก.ดส.บช.น.",
-   "target_title": "กก.ดส.บช.น.",
-   "direction": "in"
   }
  ],
  "svg": "graphs/20261026-violent-02.svg"

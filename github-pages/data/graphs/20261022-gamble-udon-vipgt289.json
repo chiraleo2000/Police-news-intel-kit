@@ -1,57 +1,33 @@
 {
  "case_id": "20261022-gamble-udon-vipgt289",
  "title": "บก.สอท.5 ทลายเว็บพนัน VIP.GT289TH3 อุดรธานี สมาชิกกว่า 2 แสนราย เงินหมุนเวียนกว่า 120 ล้านบาทต่อปี",
- "generated_at": "2026-10-26T07:18:58.781Z",
- "node_count": 8,
- "edge_count": 8,
+ "generated_at": "2026-10-26T07:49:36.407Z",
+ "node_count": 5,
+ "edge_count": 4,
  "relations": [
   {
-   "label": "arrested_by",
+   "label": "จับโดย",
    "target_id": "30_Entities/Units/บก.สอท.5",
    "target_title": "บก.สอท.5",
    "direction": "out"
   },
   {
-   "label": "arrested_by",
+   "label": "จับโดย",
    "target_id": "30_Entities/People/บช.สอท.",
    "target_title": "บช.สอท.",
    "direction": "out"
   },
   {
-   "label": "announced_by",
+   "label": "แจ้งโดย",
    "target_id": "30_Entities/People/ผบช.สอท.",
    "target_title": "ผบช.สอท.",
    "direction": "out"
   },
   {
-   "label": "targets_network",
-   "target_id": "30_Entities/Projects/เว็บพนัน",
-   "target_title": "เว็บพนัน",
+   "label": "บัญชี",
+   "target_id": "30_Entities/บัญชี/VIP.GT289TH3",
+   "target_title": "VIP.GT289TH3",
    "direction": "out"
-  },
-  {
-   "label": "targets_network",
-   "target_id": "30_Entities/Projects/เว็บพนันออนไลน์",
-   "target_title": "เว็บพนันออนไลน์",
-   "direction": "out"
-  },
-  {
-   "label": "mentions",
-   "target_id": "30_Entities/Units/ตำรวจไซเบอร์ (บช.สอท.-บก.สอท.5)",
-   "target_title": "ตำรวจไซเบอร์ (บช.สอท./บก.สอท.5)",
-   "direction": "out"
-  },
-  {
-   "label": "mentions",
-   "target_id": "40_CrimeTypes/พนันและบ่อนผิดกฎหมาย",
-   "target_title": "พนันและบ่อนผิดกฎหมาย",
-   "direction": "out"
-  },
-  {
-   "label": "mentions",
-   "target_id": "30_Entities/Units/ตำรวจไซเบอร์ (บช.สอท.-บก.สอท.5)",
-   "target_title": "ตำรวจไซเบอร์ (บช.สอท./บก.สอท.5)",
-   "direction": "in"
   }
  ],
  "svg": "graphs/20261022-gamble-udon-vipgt289.svg"

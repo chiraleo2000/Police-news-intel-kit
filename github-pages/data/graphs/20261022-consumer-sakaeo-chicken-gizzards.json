@@ -1,39 +1,21 @@
 {
  "case_id": "20261022-consumer-sakaeo-chicken-gizzards",
  "title": "กองกำลังบูรพาสกัดลอบขนกึ๋นไก่ 9 กระสอบ คนร้ายทิ้งของกลางหนีข้ามแดนกัมพูชา สระแก้ว",
- "generated_at": "2026-10-26T07:18:58.752Z",
- "node_count": 5,
- "edge_count": 5,
+ "generated_at": "2026-10-26T07:49:36.379Z",
+ "node_count": 3,
+ "edge_count": 2,
  "relations": [
   {
-   "label": "investigated_by",
+   "label": "สืบสวนโดย",
    "target_id": "30_Entities/Units/กองกำลังบูรพา",
    "target_title": "กองกำลังบูรพา",
    "direction": "out"
   },
   {
-   "label": "investigated_by",
+   "label": "สืบสวนโดย",
    "target_id": "30_Entities/Units/ทหารพรานที่ 12",
    "target_title": "ทหารพรานที่ 12",
    "direction": "out"
-  },
-  {
-   "label": "mentions",
-   "target_id": "30_Entities/Units/กองกำลังบูรพา หน่วยเฉพาะกิจโคกสูง - ทหารพราน",
-   "target_title": "กองกำลังบูรพา หน่วยเฉพาะกิจโคกสูง / ทหารพราน",
-   "direction": "out"
-  },
-  {
-   "label": "mentions",
-   "target_id": "40_CrimeTypes/คุ้มครองผู้บริโภคและสินค้าผิดกฎหมาย",
-   "target_title": "คุ้มครองผู้บริโภคและสินค้าผิดกฎหมาย",
-   "direction": "out"
-  },
-  {
-   "label": "mentions",
-   "target_id": "30_Entities/Units/กองกำลังบูรพา หน่วยเฉพาะกิจโคกสูง - ทหารพราน",
-   "target_title": "กองกำลังบูรพา หน่วยเฉพาะกิจโคกสูง / ทหารพราน",
-   "direction": "in"
   }
  ],
  "svg": "graphs/20261022-consumer-sakaeo-chicken-gizzards.svg"

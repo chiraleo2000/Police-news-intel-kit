@@ -1,45 +1,33 @@
 {
  "case_id": "20261024-other-01",
  "title": "ผบช.ทท. เยี่ยมครอบครัวตำรวจท่องเที่ยวในจังหวัดนราธิวาส ย้ำ 'ครอบครัวเดียวกัน'",
- "generated_at": "2026-10-26T07:18:58.951Z",
- "node_count": 6,
- "edge_count": 6,
+ "generated_at": "2026-10-26T07:49:36.561Z",
+ "node_count": 5,
+ "edge_count": 4,
  "relations": [
   {
-   "label": "ordered_by",
+   "label": "สั่งการโดย",
    "target_id": "30_Entities/People/บช.ทท.",
    "target_title": "บช.ทท.",
    "direction": "out"
   },
   {
-   "label": "announced_by",
+   "label": "แจ้งโดย",
    "target_id": "30_Entities/People/ผบช.ทท.",
    "target_title": "ผบช.ทท.",
    "direction": "out"
   },
   {
-   "label": "announced_by",
+   "label": "แจ้งโดย",
    "target_id": "30_Entities/People/กองบัญชาการตำรวจท่องเที่ยว",
    "target_title": "กองบัญชาการตำรวจท่องเที่ยว",
    "direction": "out"
   },
   {
-   "label": "mentions",
-   "target_id": "40_CrimeTypes/อื่น ๆ",
-   "target_title": "อื่น ๆ",
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/บุคคล/พงศ์ศยาม เมียนขันทอง",
+   "target_title": "พงศ์ศยาม เมียนขันทอง",
    "direction": "out"
-  },
-  {
-   "label": "mentions",
-   "target_id": "30_Entities/People/กองบัญชาการตำรวจท่องเที่ยว",
-   "target_title": "กองบัญชาการตำรวจท่องเที่ยว",
-   "direction": "out"
-  },
-  {
-   "label": "mentions",
-   "target_id": "30_Entities/Units/กองบัญชาการตำรวจท่องเที่ยว",
-   "target_title": "กองบัญชาการตำรวจท่องเที่ยว",
-   "direction": "in"
   }
  ],
  "svg": "graphs/20261024-other-01.svg"

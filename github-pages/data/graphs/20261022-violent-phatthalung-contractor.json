@@ -1,56 +1,38 @@
 {
  "case_id": "20261022-violent-phatthalung-contractor",
  "title": "คนร้ายใช้ปืนไรเฟิล .22 ซุ่มยิงผู้รับเหมาวัย 57 ปีขณะซ้อมกอล์ฟ พัทลุง บาดเจ็บสาหัส ตำรวจเล็งปมธุรกิจ",
- "generated_at": "2026-10-26T07:18:58.833Z",
- "node_count": 7,
- "edge_count": 8,
+ "generated_at": "2026-10-26T07:49:36.453Z",
+ "node_count": 5,
+ "edge_count": 5,
  "relations": [
   {
-   "label": "investigated_by",
+   "label": "สืบสวนโดย",
    "target_id": "30_Entities/People/ภ.9",
    "target_title": "ภ.9",
    "direction": "out"
   },
   {
-   "label": "investigated_by",
+   "label": "สืบสวนโดย",
    "target_id": "30_Entities/Units/ภ.จว.พัทลุง",
    "target_title": "ภ.จว.พัทลุง",
    "direction": "out"
   },
   {
-   "label": "investigated_by",
+   "label": "สืบสวนโดย",
    "target_id": "30_Entities/Units/สภ.บางแก้ว",
    "target_title": "สภ.บางแก้ว",
    "direction": "out"
   },
   {
-   "label": "related_to",
+   "label": "เกี่ยวข้องกับ",
    "target_id": "20_Cases/20261023-violent-03",
    "target_title": "ผู้รับเหมารายใหญ่ในพัทลุงถูกยิงสองนัดขณะซ้อมกอล์ฟ ตำรวจยังไม่พบตัวผู้ก่อเหตุ",
    "direction": "out"
   },
   {
-   "label": "mentions",
-   "target_id": "30_Entities/Units/สถานีตำรวจภูธรบางแก้ว - ตำรวจภูธรจังหวัดพัทลุง",
-   "target_title": "สถานีตำรวจภูธรบางแก้ว / ตำรวจภูธรจังหวัดพัทลุง",
-   "direction": "out"
-  },
-  {
-   "label": "mentions",
-   "target_id": "40_CrimeTypes/คดีชีวิต ร่างกาย และเพศ",
-   "target_title": "คดีชีวิต ร่างกาย และเพศ",
-   "direction": "out"
-  },
-  {
-   "label": "follow_up_of",
+   "label": "ติดตามจาก",
    "target_id": "20_Cases/20261023-violent-03",
    "target_title": "ผู้รับเหมารายใหญ่ในพัทลุงถูกยิงสองนัดขณะซ้อมกอล์ฟ ตำรวจยังไม่พบตัวผู้ก่อเหตุ",
-   "direction": "in"
-  },
-  {
-   "label": "mentions",
-   "target_id": "30_Entities/Units/สถานีตำรวจภูธรบางแก้ว - ตำรวจภูธรจังหวัดพัทลุง",
-   "target_title": "สถานีตำรวจภูธรบางแก้ว / ตำรวจภูธรจังหวัดพัทลุง",
    "direction": "in"
   }
  ],

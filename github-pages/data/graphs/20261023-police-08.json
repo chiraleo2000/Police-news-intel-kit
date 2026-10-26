@@ -1,26 +1,20 @@
 {
  "case_id": "20261023-police-08",
  "title": "\"รุทธพล\" ชี้แจงกรณี 8 คนถูกร้องปมถอดรหัสบาร์โค้ด-คิวอาร์โค้ดบัตรเลือกตั้ง",
- "generated_at": "2026-10-26T07:18:58.897Z",
- "node_count": 4,
- "edge_count": 3,
+ "generated_at": "2026-10-26T07:49:36.513Z",
+ "node_count": 3,
+ "edge_count": 2,
  "relations": [
   {
-   "label": "investigated_by",
+   "label": "สืบสวนโดย",
    "target_id": "30_Entities/People/DSI",
    "target_title": "DSI",
    "direction": "out"
   },
   {
-   "label": "ordered_by",
+   "label": "สั่งการโดย",
    "target_id": "30_Entities/Units/บช.ก.",
    "target_title": "บช.ก.",
-   "direction": "out"
-  },
-  {
-   "label": "mentions",
-   "target_id": "40_CrimeTypes/การปฏิบัติหน้าที่ ประชาสัมพันธ์ และนโยบายตำรวจ",
-   "target_title": "การปฏิบัติหน้าที่ ประชาสัมพันธ์ และนโยบายตำรวจ",
    "direction": "out"
   }
  ],

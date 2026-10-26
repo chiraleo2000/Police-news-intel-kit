@@ -1,38 +1,32 @@
 {
  "case_id": "20261022-line-human-nakhonphanom-karaoke-labor",
  "title": "ตม.นครพนมบุกตรวจร้านคาราโอเกะ 2 แห่ง จับนายจ้างไทย 2 ราย แรงงานลาว 7 ราย ทำงานโดยไม่มีใบอนุญาต",
- "generated_at": "2026-10-26T07:18:58.798Z",
- "node_count": 6,
- "edge_count": 5,
+ "generated_at": "2026-10-26T07:49:36.423Z",
+ "node_count": 5,
+ "edge_count": 4,
  "relations": [
   {
-   "label": "arrested_by",
+   "label": "จับโดย",
    "target_id": "30_Entities/Units/จัดหางาน",
    "target_title": "จัดหางาน",
    "direction": "out"
   },
   {
-   "label": "arrested_by",
+   "label": "จับโดย",
    "target_id": "30_Entities/Units/ตม.จว.นครพนม",
    "target_title": "ตม.จว.นครพนม",
    "direction": "out"
   },
   {
-   "label": "arrested_by",
+   "label": "จับโดย",
    "target_id": "30_Entities/Units/สภ.ศรีสงคราม",
    "target_title": "สภ.ศรีสงคราม",
    "direction": "out"
   },
   {
-   "label": "ordered_by",
+   "label": "สั่งการโดย",
    "target_id": "30_Entities/Units/บช.สตม.",
    "target_title": "บช.สตม.",
-   "direction": "out"
-  },
-  {
-   "label": "mentions",
-   "target_id": "40_CrimeTypes/ค้ามนุษย์ แรงงานผิดกฎหมาย และคุ้มครองเด็ก",
-   "target_title": "ค้ามนุษย์ แรงงานผิดกฎหมาย และคุ้มครองเด็ก",
    "direction": "out"
   }
  ],

@@ -1,33 +1,15 @@
 {
  "case_id": "20261022-consumer-chiangmai-matcha-customs",
  "title": "ศุลกากรเชียงใหม่ตรวจพบมัทฉะ 100 กก. 972 หีบห่อ ผู้โดยสารไทยเดินช่องเขียว มูลค่าเกิน 5 แสนบาท",
- "generated_at": "2026-10-26T07:18:58.744Z",
- "node_count": 3,
- "edge_count": 4,
+ "generated_at": "2026-10-26T07:49:36.373Z",
+ "node_count": 2,
+ "edge_count": 1,
  "relations": [
   {
-   "label": "investigated_by",
+   "label": "สืบสวนโดย",
    "target_id": "30_Entities/Units/ด่านศุลกากรท่าอากาศยานเชียงใหม่",
    "target_title": "ด่านศุลกากรท่าอากาศยานเชียงใหม่",
    "direction": "out"
-  },
-  {
-   "label": "mentions",
-   "target_id": "30_Entities/Units/ด่านศุลกากรท่าอากาศยานเชียงใหม่",
-   "target_title": "ด่านศุลกากรท่าอากาศยานเชียงใหม่",
-   "direction": "out"
-  },
-  {
-   "label": "mentions",
-   "target_id": "40_CrimeTypes/คุ้มครองผู้บริโภคและสินค้าผิดกฎหมาย",
-   "target_title": "คุ้มครองผู้บริโภคและสินค้าผิดกฎหมาย",
-   "direction": "out"
-  },
-  {
-   "label": "mentions",
-   "target_id": "30_Entities/Units/ด่านศุลกากรท่าอากาศยานเชียงใหม่",
-   "target_title": "ด่านศุลกากรท่าอากาศยานเชียงใหม่",
-   "direction": "in"
   }
  ],
  "svg": "graphs/20261022-consumer-chiangmai-matcha-customs.svg"

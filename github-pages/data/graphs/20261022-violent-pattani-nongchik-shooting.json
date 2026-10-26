@@ -1,39 +1,27 @@
 {
  "case_id": "20261022-violent-pattani-nongchik-shooting",
  "title": "คนร้ายบุกยิงชายวัย 54 ปีและหญิงวัย 75 ปีบาดเจ็บสาหัสในบ้านเช่า หนองจิก ปัตตานี",
- "generated_at": "2026-10-26T07:18:58.831Z",
- "node_count": 5,
- "edge_count": 5,
+ "generated_at": "2026-10-26T07:49:36.452Z",
+ "node_count": 4,
+ "edge_count": 3,
  "relations": [
   {
-   "label": "investigated_by",
+   "label": "สืบสวนโดย",
    "target_id": "30_Entities/Units/พิสูจน์หลักฐาน",
    "target_title": "พิสูจน์หลักฐาน",
    "direction": "out"
   },
   {
-   "label": "investigated_by",
+   "label": "สืบสวนโดย",
    "target_id": "30_Entities/Units/สภ.หนองจิก",
    "target_title": "สภ.หนองจิก",
    "direction": "out"
   },
   {
-   "label": "mentions",
-   "target_id": "30_Entities/Units/สถานีตำรวจภูธรหนองจิก",
-   "target_title": "สถานีตำรวจภูธรหนองจิก",
+   "label": "เกิดที่",
+   "target_id": "30_Entities/สถานที่/หนองจิก",
+   "target_title": "หนองจิก",
    "direction": "out"
-  },
-  {
-   "label": "mentions",
-   "target_id": "40_CrimeTypes/คดีชีวิต ร่างกาย และเพศ",
-   "target_title": "คดีชีวิต ร่างกาย และเพศ",
-   "direction": "out"
-  },
-  {
-   "label": "mentions",
-   "target_id": "30_Entities/Units/สถานีตำรวจภูธรหนองจิก",
-   "target_title": "สถานีตำรวจภูธรหนองจิก",
-   "direction": "in"
   }
  ],
  "svg": "graphs/20261022-violent-pattani-nongchik-shooting.svg"

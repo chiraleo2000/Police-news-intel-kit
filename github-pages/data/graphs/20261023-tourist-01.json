@@ -1,38 +1,38 @@
 {
  "case_id": "20261023-tourist-01",
  "title": "ตรวจค้น 12 จุดที่พัทยา สอบนอมินีที่ดิน-บ้านหรูมูลค่ากว่า 800 ล้านบาท",
- "generated_at": "2026-10-26T07:18:58.908Z",
+ "generated_at": "2026-10-26T07:49:36.522Z",
  "node_count": 6,
  "edge_count": 5,
  "relations": [
   {
-   "label": "announced_by",
+   "label": "แจ้งโดย",
    "target_id": "30_Entities/People/กรมที่ดิน",
    "target_title": "กรมที่ดิน",
    "direction": "out"
   },
   {
-   "label": "announced_by",
+   "label": "แจ้งโดย",
    "target_id": "30_Entities/People/พาณิชย์จังหวัดชลบุรี",
    "target_title": "พาณิชย์จังหวัดชลบุรี",
    "direction": "out"
   },
   {
-   "label": "announced_by",
+   "label": "แจ้งโดย",
    "target_id": "30_Entities/People/สภ.บางละมุง",
    "target_title": "สภ.บางละมุง",
    "direction": "out"
   },
   {
-   "label": "announced_by",
+   "label": "แจ้งโดย",
    "target_id": "30_Entities/People/สภ.หนองปรือ",
    "target_title": "สภ.หนองปรือ",
    "direction": "out"
   },
   {
-   "label": "mentions",
-   "target_id": "40_CrimeTypes/อาชญากรรมที่เกี่ยวข้องกับนักท่องเที่ยวและชาวต่างชาติ",
-   "target_title": "อาชญากรรมที่เกี่ยวข้องกับนักท่องเที่ยวและชาวต่างชาติ",
+   "label": "เกิดที่",
+   "target_id": "30_Entities/สถานที่/พัทยา",
+   "target_title": "พัทยา",
    "direction": "out"
   }
  ],

@@ -1,26 +1,20 @@
 {
  "case_id": "20261023-organized-02",
  "title": "ผู้ต้องหาคดีขนอาวุธสงครามจากกัมพูชาเข้ามอบตัวที่ตราด หลังหลบหนี 2 เดือน ปฏิเสธข้อกล่าวหา",
- "generated_at": "2026-10-26T07:18:58.876Z",
- "node_count": 4,
- "edge_count": 3,
+ "generated_at": "2026-10-26T07:49:36.495Z",
+ "node_count": 3,
+ "edge_count": 2,
  "relations": [
   {
-   "label": "investigated_by",
+   "label": "สืบสวนโดย",
    "target_id": "30_Entities/Units/ภ.จว.ตราด",
    "target_title": "ภ.จว.ตราด",
    "direction": "out"
   },
   {
-   "label": "investigated_by",
+   "label": "สืบสวนโดย",
    "target_id": "30_Entities/Units/สภ.แหลมงอบ",
    "target_title": "สภ.แหลมงอบ",
-   "direction": "out"
-  },
-  {
-   "label": "mentions",
-   "target_id": "40_CrimeTypes/คดีอุกฉกรรจ์ ผู้มีอิทธิพล และอาวุธ",
-   "target_title": "คดีอุกฉกรรจ์ ผู้มีอิทธิพล และอาวุธ",
    "direction": "out"
   }
  ],

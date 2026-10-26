@@ -1,32 +1,26 @@
 {
  "case_id": "20261023-human-01",
  "title": "จับชาวจีน 8 ราย ลักลอบข้ามแม่น้ำโขงจากลาวเข้าหนองคาย พร้อมผู้ช่วยเหลืออีก 2 ราย",
- "generated_at": "2026-10-26T07:18:58.870Z",
- "node_count": 5,
- "edge_count": 4,
+ "generated_at": "2026-10-26T07:49:36.489Z",
+ "node_count": 4,
+ "edge_count": 3,
  "relations": [
   {
-   "label": "arrested_by",
+   "label": "จับโดย",
    "target_id": "30_Entities/Units/ตชด.245",
    "target_title": "ตชด.245",
    "direction": "out"
   },
   {
-   "label": "arrested_by",
+   "label": "จับโดย",
    "target_id": "30_Entities/Units/ตม.หนองคาย",
    "target_title": "ตม.หนองคาย",
    "direction": "out"
   },
   {
-   "label": "ordered_by",
+   "label": "สั่งการโดย",
    "target_id": "30_Entities/Units/บช.สตม.",
    "target_title": "บช.สตม.",
-   "direction": "out"
-  },
-  {
-   "label": "mentions",
-   "target_id": "40_CrimeTypes/ค้ามนุษย์ แรงงานผิดกฎหมาย และคุ้มครองเด็ก",
-   "target_title": "ค้ามนุษย์ แรงงานผิดกฎหมาย และคุ้มครองเด็ก",
    "direction": "out"
   }
  ],

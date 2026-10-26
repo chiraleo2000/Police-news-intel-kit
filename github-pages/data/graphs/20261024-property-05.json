@@ -1,51 +1,21 @@
 {
  "case_id": "20261024-property-05",
  "title": "เจ้าของบ้านขอนแก่นถูกโจรเข้าซ้ำ 3 ครั้ง ประกาศขายหนีโจร",
- "generated_at": "2026-10-26T07:18:58.961Z",
- "node_count": 4,
- "edge_count": 7,
+ "generated_at": "2026-10-26T07:49:36.571Z",
+ "node_count": 3,
+ "edge_count": 2,
  "relations": [
   {
-   "label": "investigated_by",
+   "label": "สืบสวนโดย",
    "target_id": "30_Entities/Units/พิสูจน์หลักฐานขอนแก่น",
    "target_title": "พิสูจน์หลักฐานขอนแก่น",
    "direction": "out"
   },
   {
-   "label": "investigated_by",
+   "label": "สืบสวนโดย",
    "target_id": "30_Entities/Units/สภ.ย่อยศิลา",
    "target_title": "สภ.ย่อยศิลา",
    "direction": "out"
-  },
-  {
-   "label": "mentions",
-   "target_id": "40_CrimeTypes/คดีทรัพย์สิน",
-   "target_title": "คดีทรัพย์สิน",
-   "direction": "out"
-  },
-  {
-   "label": "mentions",
-   "target_id": "30_Entities/Units/สภ.ย่อยศิลา",
-   "target_title": "สภ.ย่อยศิลา",
-   "direction": "out"
-  },
-  {
-   "label": "mentions",
-   "target_id": "30_Entities/Units/พิสูจน์หลักฐานขอนแก่น",
-   "target_title": "พิสูจน์หลักฐานขอนแก่น",
-   "direction": "out"
-  },
-  {
-   "label": "mentions",
-   "target_id": "30_Entities/Units/พิสูจน์หลักฐานขอนแก่น",
-   "target_title": "พิสูจน์หลักฐานขอนแก่น",
-   "direction": "in"
-  },
-  {
-   "label": "mentions",
-   "target_id": "30_Entities/Units/สภ.ย่อยศิลา",
-   "target_title": "สภ.ย่อยศิลา",
-   "direction": "in"
   }
  ],
  "svg": "graphs/20261024-property-05.svg"

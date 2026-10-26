@@ -1,45 +1,27 @@
 {
  "case_id": "20261022-tourist-pattani-pakistani-identity",
  "title": "ตม.6 จับเจ้าของร้านผ้าใหญ่ปัตตานี ชาวปากีสถานวัย 54 ปี สวมสิทธิ์บัตรประชาชนไทย",
- "generated_at": "2026-10-26T07:18:58.820Z",
- "node_count": 6,
- "edge_count": 6,
+ "generated_at": "2026-10-26T07:49:36.442Z",
+ "node_count": 4,
+ "edge_count": 3,
  "relations": [
   {
-   "label": "arrested_by",
+   "label": "จับโดย",
    "target_id": "30_Entities/Units/บก.ตม.6",
    "target_title": "บก.ตม.6",
    "direction": "out"
   },
   {
-   "label": "arrested_by",
+   "label": "จับโดย",
    "target_id": "30_Entities/Units/สภ.เมืองปัตตานี",
    "target_title": "สภ.เมืองปัตตานี",
    "direction": "out"
   },
   {
-   "label": "ordered_by",
+   "label": "สั่งการโดย",
    "target_id": "30_Entities/Units/บช.สตม.",
    "target_title": "บช.สตม.",
    "direction": "out"
-  },
-  {
-   "label": "mentions",
-   "target_id": "30_Entities/Units/กองบังคับการตรวจคนเข้าเมือง 6 (บก.ตม.6)",
-   "target_title": "กองบังคับการตรวจคนเข้าเมือง 6 (บก.ตม.6)",
-   "direction": "out"
-  },
-  {
-   "label": "mentions",
-   "target_id": "40_CrimeTypes/อาชญากรรมที่เกี่ยวข้องกับนักท่องเที่ยวและชาวต่างชาติ",
-   "target_title": "อาชญากรรมที่เกี่ยวข้องกับนักท่องเที่ยวและชาวต่างชาติ",
-   "direction": "out"
-  },
-  {
-   "label": "mentions",
-   "target_id": "30_Entities/Units/กองบังคับการตรวจคนเข้าเมือง 6 (บก.ตม.6)",
-   "target_title": "กองบังคับการตรวจคนเข้าเมือง 6 (บก.ตม.6)",
-   "direction": "in"
   }
  ],
  "svg": "graphs/20261022-tourist-pattani-pakistani-identity.svg"

@@ -1,51 +1,39 @@
 {
  "case_id": "20261022-transnat-phuket-french-redcnotice",
  "title": "ตม.ภูเก็ตจับชาวฝรั่งเศสวัย 40 ปี เป้าหมายหมายแดงเบลเยียม คดียาเสพติด ที่ป่าตอง",
- "generated_at": "2026-10-26T07:18:58.828Z",
- "node_count": 7,
- "edge_count": 7,
+ "generated_at": "2026-10-26T07:49:36.449Z",
+ "node_count": 6,
+ "edge_count": 5,
  "relations": [
   {
-   "label": "arrested_by",
+   "label": "จับโดย",
    "target_id": "30_Entities/Units/ตม.จว.ภูเก็ต",
    "target_title": "ตม.จว.ภูเก็ต",
    "direction": "out"
   },
   {
-   "label": "arrested_by",
+   "label": "จับโดย",
    "target_id": "30_Entities/Units/ตม.จว.สตูล",
    "target_title": "ตม.จว.สตูล",
    "direction": "out"
   },
   {
-   "label": "arrested_by",
+   "label": "จับโดย",
    "target_id": "30_Entities/Units/บก.ตม.6",
    "target_title": "บก.ตม.6",
    "direction": "out"
   },
   {
-   "label": "ordered_by",
+   "label": "สั่งการโดย",
    "target_id": "30_Entities/Units/บช.สตม.",
    "target_title": "บช.สตม.",
    "direction": "out"
   },
   {
-   "label": "mentions",
-   "target_id": "30_Entities/Units/สำนักงานตรวจคนเข้าเมือง (ตม.) - ตม.จว.ภูเก็ต",
-   "target_title": "สำนักงานตรวจคนเข้าเมือง (ตม.) / ตม.จว.ภูเก็ต",
+   "label": "เกิดที่",
+   "target_id": "30_Entities/สถานที่/ป่าตอง",
+   "target_title": "ป่าตอง",
    "direction": "out"
-  },
-  {
-   "label": "mentions",
-   "target_id": "40_CrimeTypes/อาชญากรรมข้ามชาติและความร่วมมือระหว่างประเทศ",
-   "target_title": "อาชญากรรมข้ามชาติและความร่วมมือระหว่างประเทศ",
-   "direction": "out"
-  },
-  {
-   "label": "mentions",
-   "target_id": "30_Entities/Units/สำนักงานตรวจคนเข้าเมือง (ตม.) - ตม.จว.ภูเก็ต",
-   "target_title": "สำนักงานตรวจคนเข้าเมือง (ตม.) / ตม.จว.ภูเก็ต",
-   "direction": "in"
   }
  ],
  "svg": "graphs/20261022-transnat-phuket-french-redcnotice.svg"

@@ -1,32 +1,26 @@
 {
  "case_id": "20261023-violent-01",
  "title": "คนร้ายกราดยิงตลาดนัด อ.หนองจิก ปัตตานี ชาวบ้านบาดเจ็บ 2 ราย",
- "generated_at": "2026-10-26T07:18:58.918Z",
- "node_count": 5,
- "edge_count": 4,
+ "generated_at": "2026-10-26T07:49:36.531Z",
+ "node_count": 4,
+ "edge_count": 3,
  "relations": [
   {
-   "label": "investigated_by",
-   "target_id": "30_Entities/People/ตำรวจ",
-   "target_title": "ตำรวจ",
-   "direction": "out"
-  },
-  {
-   "label": "investigated_by",
+   "label": "สืบสวนโดย",
    "target_id": "30_Entities/Units/ทหาร",
    "target_title": "ทหาร",
    "direction": "out"
   },
   {
-   "label": "investigated_by",
+   "label": "สืบสวนโดย",
    "target_id": "30_Entities/Units/ฝ่ายปกครอง",
    "target_title": "ฝ่ายปกครอง",
    "direction": "out"
   },
   {
-   "label": "mentions",
-   "target_id": "40_CrimeTypes/คดีชีวิต ร่างกาย และเพศ",
-   "target_title": "คดีชีวิต ร่างกาย และเพศ",
+   "label": "เกิดที่",
+   "target_id": "30_Entities/สถานที่/หนองจิก",
+   "target_title": "หนองจิก",
    "direction": "out"
   }
  ],

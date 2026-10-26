@@ -21,11 +21,15 @@ trigger:
 | ก่อนหน้า | — | webhook เก็บลิงก์/ไฟล์ตลอดวัน → `server/exports/line_intake_continuous.*` |
 | กฎเนื้อหา/taxonomy/จริยธรรม | ในไฟล์ Task 1 / `police-crime-news-pipeline.md` | **ใช้ชุดเดียวกัน** |
 
-## บังคับ v2 (เหมือน Task 1 — วิเคราะห์อยู่ในรอบนี้ ไม่มี task แยก)
-- โพสต์ยังแยกหัวข่าว คง `content` เดิม
+## บังคับ v2 (เหมือน Task 1 — วิเคราะห์อยู่ในรอบนี้ ไม่มี task แยก และไม่มีรีวิววันอาทิตย์)
+- โพสต์ยังแยกหัวข่าว คง `content` เดิม วิเคราะห์ทีละหัวข่าว
 - เติม `exec_blurb` `analysis_notes` `primary_bureau` `area` `status_th` `gang_or_group` `references` `format_version: 2`
-- `related_cases` ต้องมาจาก MCP `brain_search` (หรือ `GET /v1/brain/search`) ก่อน ห้ามเดา ว่างได้เป็น `[]`
+- `related_cases` ต้องมาจาก MCP `brain_search` / `brain_timeline` (หรือ `GET /v1/brain/search` และ `GET /v1/brain/timeline`) ก่อน ห้ามเดา
+  - เก็บได้เมื่อเป็นเหตุการณ์เดียวกัน หรือการติดตามผลจริง ไม่แน่หรือตรงกันแค่ประเภท+จังหวัด → `[]`
+  - ทุกแถวที่เก็บ: `{id, title, relation}` และ `relation` เป็น `เกี่ยวข้องกับ` หรือ `ติดตามจาก` เท่านั้น
+- ชื่อแท็บที่ผู้ใช้เห็นคือ **ข้อมูลกราฟ** API ภายในยังเรียก `brain_*` ได้
 - PDF รวมจาก HTML ไม่จัดโครงตาม บช.
+- ห้ามเขียนทับไฟล์วันอื่น และห้ามเขียนทับโพสต์ใน `{DATE}_crime.json` ที่รอบนี้ไม่ได้แตะ
 
 ไหลต้นทาง:
 ```
@@ -122,16 +126,49 @@ DROP → บันทึกใน Completion Report อย่างเดีย�
   - ไฟล์เว็บ `{DATE}_crime_line.json` (ไม่ทับไฟล์ Task 1) · UI รวมกับ Task 1 อัตโนมัติ
 
 ### วิเคราะห์ในรอบนี้ (บังคับ — เฉพาะข่าวที่ผ่านเกณฑ์แล้ว)
-หลัง merge **เฉพาะ posts ที่ KEEP** ก่อนสร้างไฟล์เผยแพร่:
-1. **ข้อมูลกราฟ** → `_brain_daily.md` (entities / timeline / merge_proposal = proposed เท่านั้น)
-2. **BD × งบ 2570** → `_bd_leads.json` จาก `reference/budget-fy2570-police-related.json` เท่านั้น
-3. ใส่บทวิเคราะห์ใน PDF และในโน้ต Obsidian ที่เกี่ยวข้อง
-4. ห้ามแตะโน้ตที่ `generated: false`
-5. **กราฟต่อหัวข่าว (บังคับ)** สำหรับทุกโพสต์ในชุดวิเคราะห์ของรอบ (NEW + DUP_EVENT ที่แตะ + โพสต์เดิมที่ re-analysis):
-   - รัน `node ops/rebuild-pages-feed.js` → ได้ `graph.json` และ `github-pages/data/graphs/{case_id}.svg`
-   - ใน HTML/MD/PDF ของแต่ละหัวข่าว ใส่ส่วน **「ข้อมูลกราฟของข่าวนี้」** (ฝัง/ลิงก์ SVG + รายการ relations มีป้าย เช่น `related_to` `arrested_by`)
-   - หน้า Pages รายโพสต์แสดงบล็อกนี้จาก graph อัตโนมัติหลัง rebuild — อย่าข้าม
-ถ้าหลังกรองแล้ว **0 ข่าว** → ข้าม brain/BD/PDF เนื้อหาเต็มได้ รายงาน `status=complete` พร้อม `links_skipped` + ไฟล์ JSON ว่าง/`posts:[]` ขั้นต่ำ (ประหยัด token)
+
+ใช้เช็คลิสต์เดียวกับ Task 1 กับ **ชุดของรอบนี้เท่านั้น** ไม่มีงานรีวิววันอาทิตย์
+
+**ชุดของรอบ** = โพสต์ `NEW` และโพสต์ที่ `DUP_EVENT` แตะในรอบนี้ (รวมโพสต์เดิมของวันนั้นที่ append แหล่งหรือ re-analysis)  
+`DUP_EXACT` ที่ข้ามไปไม่เข้าชุด ห้ามวิเคราะห์ซ้ำเพื่อให้ครบจำนวน  
+ห้ามเขียนทับไฟล์วันอื่น ห้ามเขียนทับโพสต์ที่รอบนี้ไม่ได้แตะใน `{DATE}_crime.json` หรือ `{DATE}_crime_line.json`  
+โน้ตคดีที่ append แหล่ง: แก้เฉพาะโน้ตนั้น
+
+ทำทีละหัวข่าวในชุด ตามลำดับ ห้ามข้ามข้อ ทำไม่ได้ให้บันทึกเหตุผลแล้ว `status: partial`
+
+1. อ่านข้อเท็จจริงของหัวข่าวนี้จากแหล่งของมันเท่านั้น คง `content` เดิมของ `DUP_EVENT` (ห้ามเขียน content ทั้งก้อนทับ)
+2. ใส่คุณสมบัติโหนดคดีทั้งในโพสต์และ frontmatter `vault/20_Cases/{case_id}.md`:
+   - `primary_bureau` / `bureau`, `area`, `topic` / `crime_type`, `status_th`
+   - `gang_or_group` = ชื่อขบวนการที่ข่าวตั้งชื่อจริงเท่านั้น ไม่มีให้ `-` ห้ามใส่คำลอย "แก๊ง" "ขบวนการ" "มิจฉาชีพ"
+   กราฟแสดง `bureau` `area` `crime_type` `status_th` บนโหนดคดี ชื่อกลุ่มจริงต้องมีเส้น `เป้าหมายเครือข่าย`
+3. ไล่ชนิดโหนดที่บทความเอ่ยชื่อจริงให้ครบ ชนิดที่ไม่มีให้เขียน "ไม่มี" ห้ามข้ามชนิด: หน่วย, สถานที่, ประเภทอาชญากรรม, บุคคล, ผู้ต้องหา, บัญชีธนาคาร/ม้า, ข่ายเครือข่าย  
+   ห้ามโหนดจากคำทั่วไป (ตำรวจ, เจ้าหน้าที่, ประชาชน, ผู้เสียหาย, คนร้าย, ข่าว, จับกุม)  
+   ผู้ต้องหา: เฉพาะที่แหล่งทางการแถลงชื่อ และไม่ใช่คดีเพศ ค้ามนุษย์ เด็ก หรือความรุนแรงในครอบครัว  
+   บัญชี: ห้ามใส่เลขบัญชี เลขบัตร เบอร์โทร ที่อยู่เลขที่
+4. ทุกเส้นที่เก็บต้องมีป้ายไทยใน `rel_units` `rel_people` `rel_projects` `rel_cases` เป็น `{target, rel}`  
+   ตัวสร้างกราฟอ่านสี่ฟิลด์นี้เท่านั้น:
+   - หน่วย → `rel_units` target `30_Entities/Units/{ชื่อ}` ป้าย `สืบสวนโดย` | `จับโดย` | `สั่งการโดย` | `แจ้งโดย`
+   - สถานที่ → แถวใน `rel_units` target `30_Entities/Places/{ชื่อ}` ป้าย `เกิดที่`
+   - บุคคล → `rel_people` ป้าย `เกี่ยวข้องกับบุคคล`
+   - ผู้ต้องหา → `rel_people` ป้าย `ผู้ต้องหา`
+   - ข่าย → `rel_projects` target `30_Entities/Projects/{ชื่อ}` ป้าย `เป้าหมายเครือข่าย`
+   - บัญชี → `rel_projects` ป้าย `บัญชี`
+   บทบาทไม่ชัดให้ตัดโหนด ห้ามป้าย `mentions` `related_to` `arrested_by`  
+   `[[wikilink]]` เปล่ากลายเป็น `mentions` ห้ามใช้เป็นเส้น ถ้ามีวงเล็บเหลี่ยมต้องมีแถว `rel_*` คู่กัน  
+   ประเภทอาชญากรรมอยู่ที่ `crime_type` อัปเดต `40_CrimeTypes` เป็นข้อความ add-only
+5. เส้นไปข่าวอื่นหลังค้น brain:
+   - เก็บเมื่อเป็นเหตุการณ์เดียวกันหรือการติดตามผลจริง ไม่แน่ → `related_cases: []` และ `rel_cases` ว่าง
+   - ห้ามโยงเพียงเพราะประเภทคดีและจังหวัดตรงกัน
+   - `relation` เป็น `เกี่ยวข้องกับ` หรือ `ติดตามจาก` และแถว `rel_cases` ใช้ป้ายเดียวกัน พร้อม `title` ของอีกหัวข่าว
+6. `analysis_notes` ของหัวนี้: มีเส้นข้ามข่าวให้เอ่ยชื่อหัวข่าวอีกเรื่องและป้ายไทย ไม่มีให้เขียน `ไม่มีเส้นไปข่าวอื่น — ไม่ใช่เหตุการณ์เดียวกันหรือการติดตามผลที่ชี้ได้` ห้ามยัดเส้นให้ครบทุกข่าว
+7. ส่วน **「ข้อมูลกราฟของข่าวนี้」** ใน HTML/MD/PDF และโน้ตคดี: รายการป้ายไทยจริง ชี้ `github-pages/data/graphs/{case_id}.svg` และ `.json` ถ้าไม่มีเส้นไปข่าวอื่นให้เขียนประโยคในข้อ 6 ซ้ำ
+
+หลังครบทุกหัวในชุด:
+8. `_brain_daily.md` จากเอนทิตีที่ผ่านข้อ 3–4 เท่านั้น timeline สั้น ชื่อซ้ำ → `merge_proposal` สถานะ `proposed` ห้ามรวมเอง
+9. `_bd_leads.json` จาก `reference/budget-fy2570-police-related.json` เท่านั้น ห้ามเดางบ ใส่บทวิเคราะห์ใน PDF และโน้ต Obsidian ที่เกี่ยวข้อง ห้ามแตะโน้ต `generated: false`
+10. รัน `node ops/rebuild-pages-feed.js` ตรวจ `graph.json` และ `graphs/{case_id}.svg` + `.json` ต่อทุกหัวในชุด ป้ายเส้นที่รอบนี้สร้างต้องเป็นไทยและไม่มี `mentions` ถ้าไม่มีไฟล์ให้แก้โน้ตแล้ว rebuild ซ้ำ ห้าม git push
+
+ถ้าหลังกรองแล้ว **0 ข่าว** (ไม่มี NEW และไม่มี DUP_EVENT) → ข้ามเช็คลิสต์ brain/BD/PDF เนื้อหาเต็มได้ รายงาน `status=complete` พร้อม `links_skipped` + ไฟล์ JSON ว่าง/`posts:[]` ขั้นต่ำ (ประหยัด token) ห้ามสร้างเส้นหรือโหนดปลอมให้กราฟไม่ว่าง
 
 ## ช่องทางผลลัพธ์ (บังคับครบ 3 + รูปแบบ)
 
@@ -169,10 +206,11 @@ DROP → บันทึกใน Completion Report อย่างเดีย�
 | โฟลเดอร์ | เนื้อหา |
 | --- | --- |
 | `vault/20_Cases/{case_id}.md` | 1 เหตุการณ์ = 1 โน้ต (`generated: true`) · รวมแหล่งทั้งหมด |
-| `vault/40_CrimeTypes/{ชื่อประเภท}.md` | อัปเดตหน้ารวมประเภทที่มีข่าววันนี้ (add-only ลิงก์/รายการคดี) |
-| `vault/30_Entities/...` | หน่วย / จังหวัด / MO / กฎหมายที่ปรากฏ (generated: true) |
+| `vault/40_CrimeTypes/{ชื่อประเภท}.md` | อัปเดตหน้ารวมประเภทที่มีข่าววันนี้ (ข้อความ add-only ห้าม wikilink เปล่า) |
+| `vault/30_Entities/...` | เฉพาะหน่วย สถานที่ บุคคล ผู้ต้องหา บัญชี หรือข่ายที่ข่าวเอ่ยชื่อจริง |
 
-Frontmatter คดีต้องมี: `type: case`, `date`, `crime_type`, `severity`, `verification`, `provinces`, `units`, `tags`, `sources` (array URL ครบ)  
+Frontmatter คดีต้องมี: `type: case`, `date`, `crime_type`, `severity`, `verification`, `provinces`, `units`, `tags`, `sources` (array URL ครบ), `bureau`, `area`, `status_th`, `gang_or_group`, `rel_units`, `rel_people`, `rel_projects`, `rel_cases`  
+เส้นอยู่ที่ `rel_*` พร้อมป้ายไทยตามเช็คลิสต์ ห้ามใช้ `[[wikilink]]` เปล่าเป็นเส้น (`mentions`)  
 ชื่อไฟล์ `case_id` รูปแบบ `{DATE}-{slug-สั้น}` เช่น `2026-10-22-khaosod-cyber-001`
 
 สำเนาชุดเดียวไป `Document/{DATE}_CrimeLine/` ได้
@@ -194,9 +232,9 @@ Frontmatter คดีต้องมี: `type: case`, `date`, `crime_type`, `se
 7. สร้าง article เฉพาะ NEW + taxonomy/tags · **DUP_EVENT = append ลิงก์เข้า post/case เดิมเท่านั้น**
 8. **Event-merge ท้ายรอบ** กับ Task 1 อีกครั้ง — **ห้าม scrape Batch A–D** · ห้าม blog ซ้ำ
 9. Trend 7 วัน (ข้ามได้ถ้าไม่มี NEW และไม่มี append)
-10. วิเคราะห์ brain/BD **เมื่อมี NEW หรือมีการ append แหล่ง** (ไม่รันถ้ามีแต่ DUP_EXACT)
-11. Publish 3 ช่องทาง + `node ops/rebuild-pages-feed.js`
-12. Completion Report + ลิงก์ Pages · ไม่ git push
+10. เช็คลิสต์วิเคราะห์ต่อหัวข่าว (เอนทิตี + ป้ายไทย + related_cases) แล้ว brain/BD **เมื่อมี NEW หรือ DUP_EVENT** (ไม่รันถ้ามีแต่ DUP_EXACT หรือ 0 ข่าว)
+11. Publish 3 ช่องทางเฉพาะโพสต์ที่แตะ + `node ops/rebuild-pages-feed.js` ตรวจ ego graph ของชุดนี้
+12. Completion Report + ลิงก์ Pages · ไม่ git push · ห้ามเขียนทับวันอื่น
 
 ## Document output tree (Task 2)
 ```
@@ -253,6 +291,16 @@ github-pages/data/graphs/{case_id}.json
   "sources_appended_to_existing": 0,
   "bd_leads_count": 0,
   "brain_entities_touched": 0,
+  "graph_check": {
+    "working_set_count": 0,
+    "headlines_analyzed": 0,
+    "entities_listed_per_headline": false,
+    "thai_labels_only": false,
+    "related_cases_empty_when_unsure": false,
+    "rebuild_pages_feed": false,
+    "ego_graphs_for_working_set": false,
+    "unrelated_days_untouched": true
+  },
   "obsidian_cases": 0,
   "outputs": {"json_web": false, "obsidian_md": false, "pdf": false, "infographic": false},
   "github_pages": {
@@ -283,6 +331,7 @@ github-pages/data/graphs/{case_id}.json
 - ห้ามใช้ลิงก์จากวันอื่นใน continuous export
 - ห้ามทำ Obsidian แบบสรุปรายวันเป็นผลลัพธ์หลัก
 - **ห้าม fetch เต็ม / สรุปยาว / วิเคราะห์ brain·BD กับลิงก์ที่ยังไม่ผ่านเกณฑ์ตำรวจหรืออาชญากรรม/PR ตร.**
+- ห้ามข้ามการดึงเอนทิตีหรือป้ายไทยในชุดของรอบ ห้ามโยงข่าวกันแค่เพราะประเภทกับจังหวัดตรงกัน ห้ามใช้ป้าย `mentions`
 - ห้ามยัดข่าวที่ไม่เกี่ยวเข้า `posts[]` เพื่อให้ตัวเลขดูเยอะ
 - **ห้ามสร้าง post/case ใหม่เมื่อเหตุการณ์มีอยู่แล้วใน Task 1 หรือคลังวันนั้น** — ให้ append ลิงก์เท่านั้น
 - ห้ามข้ามข่าวประชาสัมพันธ์ ตร. ที่ผ่านเกณฑ์ (ถือว่าอยู่ในขอบเขต Task 2)

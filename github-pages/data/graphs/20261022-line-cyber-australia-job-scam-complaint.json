@@ -1,26 +1,20 @@
 {
  "case_id": "20261022-line-cyber-australia-job-scam-complaint",
  "title": "ผู้เสียหายหลายสิบรายร้อง บก.ปคม. ขบวนการหลอกทำงานออสเตรเลีย ความเสียหายเบื้องต้นเกิน 10 ล้านบาท",
- "generated_at": "2026-10-26T07:18:58.789Z",
- "node_count": 4,
- "edge_count": 3,
+ "generated_at": "2026-10-26T07:49:36.414Z",
+ "node_count": 3,
+ "edge_count": 2,
  "relations": [
   {
-   "label": "investigated_by",
+   "label": "สืบสวนโดย",
    "target_id": "30_Entities/Units/บก.ปคม.",
    "target_title": "บก.ปคม.",
    "direction": "out"
   },
   {
-   "label": "investigated_by",
+   "label": "สืบสวนโดย",
    "target_id": "30_Entities/Units/บช.ก.",
    "target_title": "บช.ก.",
-   "direction": "out"
-  },
-  {
-   "label": "mentions",
-   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
-   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
    "direction": "out"
   }
  ],

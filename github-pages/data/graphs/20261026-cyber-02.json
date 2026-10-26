@@ -1,27 +1,15 @@
 {
  "case_id": "20261026-cyber-02",
  "title": "ร้านอาหารนนทบุรีแจ้งความ เพจรีวิวอ้างผู้ติดตาม 3 แสน ขอกินฟรี-เรียกค่ารีวิว 25,000 บาท ตำรวจชี้เข้าข่ายพยายามกรรโชกทรัพย์ เชื่อเป็นกลุ่มมิจฉาชีพ",
- "generated_at": "2026-10-26T07:18:59.021Z",
- "node_count": 3,
- "edge_count": 3,
+ "generated_at": "2026-10-26T07:49:36.629Z",
+ "node_count": 2,
+ "edge_count": 1,
  "relations": [
   {
-   "label": "investigated_by",
+   "label": "สืบสวนโดย",
    "target_id": "30_Entities/Units/สภ.ไทรน้อย",
    "target_title": "สภ.ไทรน้อย",
    "direction": "out"
-  },
-  {
-   "label": "mentions",
-   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
-   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
-   "direction": "out"
-  },
-  {
-   "label": "mentions",
-   "target_id": "30_Entities/Units/สภ.ไทรน้อย",
-   "target_title": "สภ.ไทรน้อย",
-   "direction": "in"
   }
  ],
  "svg": "graphs/20261026-cyber-02.svg"

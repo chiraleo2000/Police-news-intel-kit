@@ -1,26 +1,26 @@
 {
  "case_id": "20261023-organized-03",
  "title": "ตำรวจพัทยาตามจับผู้ต้องหาคดีลักทรัพย์ที่สะเดาะกุญแจมือหนีระหว่างส่งศาล ได้ตัวที่ระยอง",
- "generated_at": "2026-10-26T07:18:58.878Z",
+ "generated_at": "2026-10-26T07:49:36.496Z",
  "node_count": 4,
  "edge_count": 3,
  "relations": [
   {
-   "label": "investigated_by",
+   "label": "สืบสวนโดย",
    "target_id": "30_Entities/Units/ภ.2",
    "target_title": "ภ.2",
    "direction": "out"
   },
   {
-   "label": "investigated_by",
+   "label": "สืบสวนโดย",
    "target_id": "30_Entities/Units/สภ.เมืองพัทยา",
    "target_title": "สภ.เมืองพัทยา",
    "direction": "out"
   },
   {
-   "label": "mentions",
-   "target_id": "40_CrimeTypes/คดีอุกฉกรรจ์ ผู้มีอิทธิพล และอาวุธ",
-   "target_title": "คดีอุกฉกรรจ์ ผู้มีอิทธิพล และอาวุธ",
+   "label": "เกิดที่",
+   "target_id": "30_Entities/สถานที่/พัทยา",
+   "target_title": "พัทยา",
    "direction": "out"
   }
  ],

@@ -1,33 +1,15 @@
 {
  "case_id": "20261024-violent-03",
  "title": "\"บัวขาว\" ประกาศช่วยหญิงสุรินทร์ที่ถูกแก้วฟาดหน้า ลั่นไม่มีใครเหนือกฎหมาย",
- "generated_at": "2026-10-26T07:18:58.976Z",
- "node_count": 3,
- "edge_count": 4,
+ "generated_at": "2026-10-26T07:49:36.586Z",
+ "node_count": 2,
+ "edge_count": 1,
  "relations": [
   {
-   "label": "investigated_by",
+   "label": "สืบสวนโดย",
    "target_id": "30_Entities/Units/ตำรวจในพื้นที่",
    "target_title": "ตำรวจในพื้นที่",
    "direction": "out"
-  },
-  {
-   "label": "mentions",
-   "target_id": "40_CrimeTypes/คดีชีวิต ร่างกาย และเพศ",
-   "target_title": "คดีชีวิต ร่างกาย และเพศ",
-   "direction": "out"
-  },
-  {
-   "label": "mentions",
-   "target_id": "30_Entities/Units/ตำรวจในพื้นที่",
-   "target_title": "ตำรวจในพื้นที่",
-   "direction": "out"
-  },
-  {
-   "label": "mentions",
-   "target_id": "30_Entities/Units/ตำรวจในพื้นที่",
-   "target_title": "ตำรวจในพื้นที่",
-   "direction": "in"
   }
  ],
  "svg": "graphs/20261024-violent-03.svg"

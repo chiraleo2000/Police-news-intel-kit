@@ -1,20 +1,20 @@
 {
  "case_id": "20261023-violent-06",
  "title": "เดือดริมหาดพัทยาสองสาวต่างวัยเปิดฉากซัดกันนัว ปมแย่งที่นั่ง-วางกระเป๋า ได้แผลหัวแตกเลือดอาบ",
- "generated_at": "2026-10-26T07:18:58.926Z",
+ "generated_at": "2026-10-26T07:49:36.537Z",
  "node_count": 3,
  "edge_count": 2,
  "relations": [
   {
-   "label": "investigated_by",
+   "label": "สืบสวนโดย",
    "target_id": "30_Entities/Units/สภ.เมืองพัทยา",
    "target_title": "สภ.เมืองพัทยา",
    "direction": "out"
   },
   {
-   "label": "mentions",
-   "target_id": "40_CrimeTypes/คดีชีวิต ร่างกาย และเพศ",
-   "target_title": "คดีชีวิต ร่างกาย และเพศ",
+   "label": "เกิดที่",
+   "target_id": "30_Entities/สถานที่/พัทยา",
+   "target_title": "พัทยา",
    "direction": "out"
   }
  ],

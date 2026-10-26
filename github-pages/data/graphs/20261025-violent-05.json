@@ -1,27 +1,21 @@
 {
  "case_id": "20261025-violent-05",
  "title": "ตำรวจ สน.ภาษีเจริญ แจ้ง 4 ข้อหาชายวัยกลางคนที่ใช้ศอกกระทุ้งตำรวจจราจรขณะถูกเรียกตรวจ ใต้สถานี BTS บางหว้า",
- "generated_at": "2026-10-26T07:18:59.016Z",
+ "generated_at": "2026-10-26T07:49:36.624Z",
  "node_count": 3,
- "edge_count": 3,
+ "edge_count": 2,
  "relations": [
   {
-   "label": "arrested_by",
+   "label": "จับโดย",
    "target_id": "30_Entities/Units/สน.ภาษีเจริญ",
    "target_title": "สน.ภาษีเจริญ",
    "direction": "out"
   },
   {
-   "label": "mentions",
-   "target_id": "40_CrimeTypes/คดีชีวิต ร่างกาย และเพศ",
-   "target_title": "คดีชีวิต ร่างกาย และเพศ",
+   "label": "เกิดที่",
+   "target_id": "30_Entities/สถานที่/ภาษีเจริญ",
+   "target_title": "ภาษีเจริญ",
    "direction": "out"
-  },
-  {
-   "label": "mentions",
-   "target_id": "30_Entities/Units/สน.ภาษีเจริญ",
-   "target_title": "สน.ภาษีเจริญ",
-   "direction": "in"
   }
  ],
  "svg": "graphs/20261025-violent-05.svg"

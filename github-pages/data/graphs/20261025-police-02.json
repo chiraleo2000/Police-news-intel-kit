@@ -1,69 +1,45 @@
 {
  "case_id": "20261025-police-02",
  "title": "ผบช.ทท. ปล่อยแถวตำรวจท่องเที่ยวเดินตรวจย่านการค้าหาดใหญ่ ประมาณ 100 นาย เสริมความเชื่อมั่นนักท่องเที่ยว พร้อมตรวจสายตรวจม้าชายหาดสมิหลา",
- "generated_at": "2026-10-26T07:18:59.004Z",
- "node_count": 11,
- "edge_count": 10,
+ "generated_at": "2026-10-26T07:49:36.611Z",
+ "node_count": 7,
+ "edge_count": 6,
  "relations": [
   {
-   "label": "announced_by",
+   "label": "แจ้งโดย",
    "target_id": "30_Entities/People/ผบช.ทท.",
    "target_title": "ผบช.ทท.",
    "direction": "out"
   },
   {
-   "label": "announced_by",
+   "label": "แจ้งโดย",
    "target_id": "30_Entities/People/กก.3 บก.ทท.3",
    "target_title": "กก.3 บก.ทท.3",
    "direction": "out"
   },
   {
-   "label": "announced_by",
+   "label": "แจ้งโดย",
    "target_id": "30_Entities/People/บก.ทท.3",
    "target_title": "บก.ทท.3",
    "direction": "out"
   },
   {
-   "label": "announced_by",
+   "label": "แจ้งโดย",
    "target_id": "30_Entities/People/บช.ทท.",
    "target_title": "บช.ทท.",
    "direction": "out"
   },
   {
-   "label": "announced_by",
+   "label": "แจ้งโดย",
    "target_id": "30_Entities/People/ภ.จว.สงขลา",
    "target_title": "ภ.จว.สงขลา",
    "direction": "out"
   },
   {
-   "label": "mentions",
-   "target_id": "40_CrimeTypes/อาชญากรรมที่เกี่ยวข้องกับนักท่องเที่ยวและชาวต่างชาติ",
-   "target_title": "อาชญากรรมที่เกี่ยวข้องกับนักท่องเที่ยวและชาวต่างชาติ",
+   "label": "เกิดที่",
+   "target_id": "30_Entities/สถานที่/หาดใหญ่",
+   "target_title": "หาดใหญ่",
    "direction": "out"
-  },
-  {
-   "label": "mentions",
-   "target_id": "30_Entities/Units/กก.3 บก.ทท.3",
-   "target_title": "กก.3 บก.ทท.3",
-   "direction": "in"
-  },
-  {
-   "label": "mentions",
-   "target_id": "30_Entities/Units/บก.ทท.3",
-   "target_title": "บก.ทท.3",
-   "direction": "in"
-  },
-  {
-   "label": "mentions",
-   "target_id": "30_Entities/Units/บช.ทท.",
-   "target_title": "บช.ทท.",
-   "direction": "in"
-  },
-  {
-   "label": "mentions",
-   "target_id": "30_Entities/Units/ภ.จว.สงขลา",
-   "target_title": "ภ.จว.สงขลา",
-   "direction": "in"
   }
  ],
  "svg": "graphs/20261025-police-02.svg"
