@@ -384,10 +384,10 @@
   }
 
   function drawPillLabel(ctx, text, x, y, opts = {}) {
-    const fontPx = opts.fontPx || 14;
+    const fontPx = opts.fontPx || 11;
     const scale = camera.scale || 1;
-    const padX = (opts.padX ?? 7) / scale;
-    const padY = (opts.padY ?? 5) / scale;
+    const padX = (opts.padX ?? 5) / scale;
+    const padY = (opts.padY ?? 3) / scale;
     const align = opts.align || "left";
     ctx.font = `${opts.weight || "700"} ${fontPx / scale}px Sarabun, Anuphan, sans-serif`;
     const w = ctx.measureText(text).width;
@@ -432,12 +432,52 @@
     return maxX >= -margin && minX <= vw + margin && maxY >= -margin && minY <= vh + margin;
   }
 
-  function drawLinkLabel(ctx, l, emphasized, text) {
+  function pillWorldBox(ctx, text, x, y, fontPx, align) {
+    const scale = camera.scale || 1;
+    ctx.font = `700 ${fontPx / scale}px Sarabun, Anuphan, sans-serif`;
+    const w = ctx.measureText(text).width;
+    const h = (fontPx + 8) / scale;
+    let left = x;
+    if (align === "center") left = x - w / 2;
+    else if (align === "right") left = x - w;
+    return {
+      l: left - 5 / scale,
+      t: y - h,
+      r: left + w + 5 / scale,
+      b: y + 4 / scale,
+    };
+  }
+
+  function screenBox(box) {
+    const a = screenOf(box.l, box.t);
+    const c = screenOf(box.r, box.b);
+    return {
+      l: Math.min(a.x, c.x),
+      t: Math.min(a.y, c.y),
+      r: Math.max(a.x, c.x),
+      b: Math.max(a.y, c.y),
+    };
+  }
+
+  function boxesHit(a, b) {
+    return !(a.r + 2 < b.l || a.l > b.r + 2 || a.b + 2 < b.t || a.t > b.b + 2);
+  }
+
+  function claimLabel(ctx, text, x, y, fontPx, align, occupied, force) {
+    const screen = screenBox(pillWorldBox(ctx, text, x, y, fontPx, align));
+    if (!force && occupied.some((box) => boxesHit(screen, box))) return false;
+    occupied.push(screen);
+    return true;
+  }
+
+  function drawLinkLabel(ctx, l, emphasized, text, occupied) {
     if (!text) return;
     const mx = (l.source.x + l.target.x) / 2;
     const my = (l.source.y + l.target.y) / 2;
+    const fontPx = emphasized ? 10 : 9;
+    if (!claimLabel(ctx, text, mx, my + 3 / camera.scale, fontPx, "center", occupied, emphasized)) return;
     drawPillLabel(ctx, text, mx, my + 3 / camera.scale, {
-      fontPx: emphasized ? 13 : 12,
+      fontPx,
       align: "center",
       bg: emphasized ? "rgba(8, 36, 32, 0.96)" : "rgba(8, 12, 20, 0.94)",
       border: emphasized ? "rgba(125, 211, 192, 0.85)" : "rgba(220, 232, 244, 0.55)",
@@ -446,7 +486,7 @@
     });
   }
 
-  function drawLinks(ctx, links, focus, vw, vh) {
+  function drawLinks(ctx, links, focus, vw, vh, occupied) {
     const zoomed = camera.scale >= 0.6;
     const labeled = [];
     for (const l of links) {
@@ -465,7 +505,7 @@
       if (name && mustName) labeled.push({ l, hot, name });
     }
     labeled.sort((a, b) => Number(a.hot) - Number(b.hot));
-    for (const { l, hot, name } of labeled) drawLinkLabel(ctx, l, hot, name);
+    for (const { l, hot, name } of labeled) drawLinkLabel(ctx, l, hot, name, occupied);
   }
 
   function nodeVisual(n, neigh) {
@@ -547,17 +587,17 @@
 
   function labelDrawCap(showAll, count) {
     if (showAll) return count;
-    if (camera.scale >= 0.9) return 280;
-    return 80;
+    if (camera.scale >= 1.15) return 140;
+    return 48;
   }
 
   function labelLimit(kind) {
     if (kind === "case") {
-      if (camera.scale > 1.2) return 48;
-      return 36;
+      if (camera.scale > 1.4) return 36;
+      return 24;
     }
-    if (kind === "prop") return 40;
-    return 28;
+    if (kind === "prop") return 22;
+    return 18;
   }
 
   function truncateLabel(title, kind) {
@@ -567,8 +607,7 @@
   }
 
   function nodePropLines(n, active) {
-    const zoomed = camera.scale >= 0.85;
-    if (!active && !zoomed) return [];
+    if (!active) return [];
     if (n.kind === "case") {
       return [n.bureau, n.area, n.crime_type]
         .filter((x) => x && String(x) !== "-")
@@ -580,10 +619,10 @@
     return [];
   }
 
-  function drawLabels(ctx, nodes, neigh, vw, vh) {
+  function nodeLabelJobs(ctx, nodes, neigh, vw, vh, occupied) {
     const showAll = filters.showLabels === "all";
     const titlesOff = filters.showLabels === "none";
-    const fontPx = Math.max(14, Math.min(18, 16 / Math.sqrt(Math.max(0.45, camera.scale))));
+    const fontPx = camera.scale >= 1.4 ? 12 : 10;
     const labeled = nodes.filter((n) => {
       if (titlesOff && n.id !== selectedId && n.id !== hoverId) return false;
       if (!shouldShowLabel(n, neigh, showAll)) return false;
@@ -603,8 +642,9 @@
     const must = labeled.filter((n) => n.id === selectedId || n.id === hoverId);
     const rest = labeled.filter((n) => n.id !== selectedId && n.id !== hoverId);
     const shown = must.concat(rest.slice(0, Math.max(0, cap - must.length)));
-    const propPx = Math.max(12, fontPx - 2);
+    const propPx = 9;
     const step = (propPx + 9) / camera.scale;
+    const jobs = [];
     for (const n of shown) {
       const outsideFocus = neigh && !neigh.has(n.id) && n.id !== selectedId && n.id !== hoverId;
       if (outsideFocus && camera.scale < 0.85) continue;
@@ -612,24 +652,38 @@
       const label = truncateLabel(n.title, n.kind);
       const x = n.x + nodeRadius(n) + 8;
       const y = n.y + 4 / camera.scale;
-      drawPillLabel(ctx, label, x, y, {
-        fontPx: active ? fontPx + 1 : fontPx,
-        bg: active ? "rgba(4, 22, 18, 0.96)" : "rgba(6, 10, 16, 0.94)",
-        border: active ? "rgba(125, 211, 192, 0.9)" : "rgba(236, 244, 252, 0.62)",
+      const titlePx = active ? fontPx + 1 : fontPx;
+      if (!claimLabel(ctx, label, x, y, titlePx, "left", occupied, active)) continue;
+      const props = [];
+      nodePropLines(n, active).forEach((line, i) => {
+        const py = y + step * (i + 1);
+        if (!claimLabel(ctx, line, x, py, propPx, "left", occupied, true)) return;
+        props.push({ line, py });
+      });
+      jobs.push({ label, x, y, titlePx, active, props });
+    }
+    return jobs;
+  }
+
+  function paintNodeLabels(ctx, jobs) {
+    for (const job of jobs) {
+      drawPillLabel(ctx, job.label, job.x, job.y, {
+        fontPx: job.titlePx,
+        bg: job.active ? "rgba(4, 22, 18, 0.96)" : "rgba(6, 10, 16, 0.94)",
+        border: job.active ? "rgba(125, 211, 192, 0.9)" : "rgba(236, 244, 252, 0.62)",
         fg: "#ffffff",
         weight: "700",
       });
-      const props = nodePropLines(n, active);
-      props.forEach((line, i) => {
-        drawPillLabel(ctx, line, x, y + step * (i + 1), {
-          fontPx: propPx,
+      for (const prop of job.props) {
+        drawPillLabel(ctx, prop.line, job.x, prop.py, {
+          fontPx: 9,
           bg: "rgba(16, 28, 42, 0.92)",
           border: "rgba(186, 206, 226, 0.45)",
           fg: "#e7f0f8",
           weight: "600",
           padY: 3,
         });
-      });
+      }
     }
   }
 
@@ -643,9 +697,11 @@
     const focus = selectedId || hoverId;
     const neigh = focus ? neighborIds(focus) : null;
 
-    drawLinks(ctx, links, focus, vw, vh);
+    const occupied = [];
+    const jobs = nodeLabelJobs(ctx, nodes, neigh, vw, vh, occupied);
+    drawLinks(ctx, links, focus, vw, vh, occupied);
     drawNodes(ctx, nodes, neigh);
-    drawLabels(ctx, nodes, neigh, vw, vh);
+    paintNodeLabels(ctx, jobs);
     ctx.restore();
   }
 
@@ -1359,7 +1415,7 @@
         const pillW = Math.max(56, 14 + shown.length * 7.2);
         parts.push(
           `<rect x="${(mx - pillW / 2).toFixed(1)}" y="${(my - 9).toFixed(1)}" width="${pillW.toFixed(1)}" height="16" rx="8" fill="#10211e" stroke="#7dd3c0"/>` +
-            `<text x="${mx.toFixed(1)}" y="${(my + 3).toFixed(1)}" text-anchor="middle" font-size="10" font-weight="700" fill="#ffffff" font-family="Sarabun, Anuphan, sans-serif">${escapeHtml(shown)}</text>`
+            `<text x="${mx.toFixed(1)}" y="${(my + 3).toFixed(1)}" text-anchor="middle" font-size="8.5" font-weight="700" fill="#ffffff" font-family="Sarabun, Anuphan, sans-serif">${escapeHtml(shown)}</text>`
         );
       }
     }
@@ -1372,7 +1428,7 @@
       parts.push(
         `<circle cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="${p.r}" fill="${egoKindColor(node.kind)}" stroke="#fff" stroke-width="2"/>`,
         `<rect x="${(p.x - pillW / 2).toFixed(1)}" y="${(p.y + p.r + 4).toFixed(1)}" width="${pillW.toFixed(1)}" height="16" rx="8" fill="rgba(255,255,255,0.95)" stroke="#c5d0da"/>` +
-          `<text x="${p.x.toFixed(1)}" y="${(p.y + p.r + 15).toFixed(1)}" text-anchor="middle" font-size="10.5" font-weight="600" fill="#1a222c" font-family="Sarabun, Anuphan, sans-serif">${escapeHtml(title)}</text>`
+          `<text x="${p.x.toFixed(1)}" y="${(p.y + p.r + 14).toFixed(1)}" text-anchor="middle" font-size="9" font-weight="600" fill="#1a222c" font-family="Sarabun, Anuphan, sans-serif">${escapeHtml(title)}</text>`
       );
       if (node.id === hub.id) {
         const props = [hub.bureau, hub.area, hub.crime_type, hub.status]
@@ -1380,12 +1436,12 @@
           .slice(0, 3);
         props.forEach((line, i) => {
           parts.push(
-            `<text x="${p.x.toFixed(1)}" y="${(p.y + p.r + 30 + i * 12).toFixed(1)}" text-anchor="middle" font-size="9.5" fill="#4a5a68" font-family="Sarabun, Anuphan, sans-serif">${escapeHtml(truncateStory(line, 30))}</text>`
+            `<text x="${p.x.toFixed(1)}" y="${(p.y + p.r + 26 + i * 11).toFixed(1)}" text-anchor="middle" font-size="8" fill="#4a5a68" font-family="Sarabun, Anuphan, sans-serif">${escapeHtml(truncateStory(line, 30))}</text>`
           );
         });
       } else if (node.kind === "entity" && node.entity_group) {
         parts.push(
-          `<text x="${p.x.toFixed(1)}" y="${(p.y + p.r + 28).toFixed(1)}" text-anchor="middle" font-size="9" fill="#4a5a68" font-family="Sarabun, Anuphan, sans-serif">${escapeHtml(truncateStory(node.entity_group, 20))}</text>`
+          `<text x="${p.x.toFixed(1)}" y="${(p.y + p.r + 26).toFixed(1)}" text-anchor="middle" font-size="8" fill="#4a5a68" font-family="Sarabun, Anuphan, sans-serif">${escapeHtml(truncateStory(node.entity_group, 20))}</text>`
         );
       }
     }
@@ -1550,10 +1606,10 @@
     const hubAt = screenOfStory(job, hub.x, hub.y);
     const boxes = job.placed.map((p) => {
       const lines = storyLabelLines(storyLabel(p.node));
-      job.ctx.font = "600 13px Sarabun, Anuphan, sans-serif";
-      const longest = lines.reduce((max, line) => Math.max(max, job.ctx.measureText(line).width), 24);
-      const w = Math.max(76, Math.ceil(longest) + 18);
-      const h = 10 + lines.length * 16;
+      job.ctx.font = "600 11px Sarabun, Anuphan, sans-serif";
+      const longest = lines.reduce((max, line) => Math.max(max, job.ctx.measureText(line).width), 20);
+      const w = Math.max(56, Math.ceil(longest) + 12);
+      const h = 6 + lines.length * 14;
       const at = screenOfStory(job, p.x, p.y);
       let dx = at.x - hubAt.x;
       let dy = at.y - hubAt.y;
@@ -1584,6 +1640,8 @@
         h,
         x,
         y,
+        fontPx: 11,
+        lineH: 14,
         anchorX: at.x,
         anchorY: at.y,
       };
@@ -1628,7 +1686,7 @@
 
   function storyEdgePills(job, nodeBoxes) {
     const byPos = new Map(job.placed.map((p) => [p.node.id, p]));
-    job.ctx.font = "600 13px Sarabun, Anuphan, sans-serif";
+    job.ctx.font = "600 10px Sarabun, Anuphan, sans-serif";
     const pills = [];
     for (const edge of job.edges) {
       const a = byPos.get(edge.source);
@@ -1638,9 +1696,9 @@
       const dx = b.x - a.x;
       const dy = b.y - a.y;
       const len = Math.hypot(dx, dy) || 1;
-      const at = screenOfStory(job, a.x + dx * 0.56 + (-dy / len) * 26, a.y + dy * 0.56 + (dx / len) * 26);
-      const w = Math.max(64, Math.ceil(job.ctx.measureText(name).width) + 16);
-      pills.push({ text: name, w, h: 20, x: at.x - w / 2, y: at.y - 10 });
+      const at = screenOfStory(job, a.x + dx * 0.56 + (-dy / len) * 22, a.y + dy * 0.56 + (dx / len) * 22);
+      const w = Math.max(44, Math.ceil(job.ctx.measureText(name).width) + 10);
+      pills.push({ text: name, w, h: 16, x: at.x - w / 2, y: at.y - 8, fontPx: 10, lineH: 14 });
     }
     separateStoryBoxes(pills);
     const clear = [];
@@ -1668,11 +1726,13 @@
     ctx.fill();
     ctx.stroke();
     ctx.fillStyle = dark ? "#ffffff" : "#1a222c";
-    ctx.font = "600 13px Sarabun, Anuphan, sans-serif";
+    const fontPx = box.fontPx || 11;
+    const lineH = box.lineH || fontPx + 3;
+    ctx.font = `600 ${fontPx}px Sarabun, Anuphan, sans-serif`;
     ctx.textBaseline = "middle";
     const lines = box.lines || [box.text];
     lines.forEach((line, index) => {
-      ctx.fillText(line, box.x + 8, box.y + 8 + index * 16 + 6);
+      ctx.fillText(line, box.x + 6, box.y + lineH * index + lineH / 2);
     });
   }
 
