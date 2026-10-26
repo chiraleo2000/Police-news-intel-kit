@@ -1396,14 +1396,16 @@
     const cy = 300;
     const n = Math.max(1, neighbors.length);
     const radius = 150 + n * 18;
-    const placed = [{ node: hub, x: cx, y: cy, r: 18 }];
+    const placed = [{ node: hub, x: cx, y: cy, r: 22, vx: 0, vy: 0 }];
     neighbors.forEach((node, i) => {
       const angle = (Math.PI * 2 * i) / n - Math.PI / 2;
       placed.push({
         node,
         x: cx + Math.cos(angle) * radius,
         y: cy + Math.sin(angle) * radius,
-        r: node.kind === "case" ? 14 : 9,
+        r: node.kind === "case" ? 16 : 11,
+        vx: 0,
+        vy: 0,
       });
     });
     return placed;
@@ -1548,21 +1550,94 @@
   function hitStoryNode(job, wx, wy) {
     let best = null;
     let bestD = Infinity;
+    const pad = 16 / (job.camera.scale || 1);
     for (const p of job.placed) {
       const d = Math.hypot(p.x - wx, p.y - wy);
-      if (d <= p.r + 6 && d < bestD) {
+      if (d <= p.r + pad && d < bestD) {
         best = p;
         bestD = d;
       }
     }
-    return best;
+    if (best) return best;
+    for (const box of job.labels) {
+      const inside = wx >= box.x - 4 && wx <= box.x + box.w + 4 && wy >= box.y - 4 && wy <= box.y + box.h + 4;
+      if (!inside) continue;
+      return job.placed.find((p) => p.node.id === box.id) || null;
+    }
+    return null;
+  }
+
+  function storyTick(job) {
+    const dragging = job.drag?.mode === "node" ? job.drag.id : "";
+    if (job.alpha < 0.02 && !dragging) return false;
+    job.alpha *= 0.985;
+    const nodes = job.placed;
+    for (let i = 0; i < nodes.length; i += 1) {
+      for (let j = i + 1; j < nodes.length; j += 1) {
+        const a = nodes[i];
+        const b = nodes[j];
+        let dx = a.x - b.x;
+        let dy = a.y - b.y;
+        const dist = Math.hypot(dx, dy) || 0.01;
+        if (dist > 220) continue;
+        const force = (1600 / (dist * dist)) * job.alpha;
+        dx = (dx / dist) * force;
+        dy = (dy / dist) * force;
+        a.vx += dx;
+        a.vy += dy;
+        b.vx -= dx;
+        b.vy -= dy;
+      }
+    }
+    const byId = new Map(nodes.map((p) => [p.node.id, p]));
+    for (const edge of job.edges) {
+      const a = byId.get(edge.source);
+      const b = byId.get(edge.target);
+      if (!a || !b) continue;
+      const dx = b.x - a.x;
+      const dy = b.y - a.y;
+      const dist = Math.hypot(dx, dy) || 0.01;
+      const pull = ((dist - 150) / dist) * 0.04 * job.alpha;
+      a.vx += dx * pull;
+      a.vy += dy * pull;
+      b.vx -= dx * pull;
+      b.vy -= dy * pull;
+    }
+    for (const p of nodes) {
+      if (p.node.id === dragging) {
+        p.x = job.drag.x;
+        p.y = job.drag.y;
+        p.vx = 0;
+        p.vy = 0;
+        continue;
+      }
+      p.vx *= 0.82;
+      p.vy *= 0.82;
+      p.x += p.vx;
+      p.y += p.vy;
+    }
+    job.labels = storyLabelBoxes(nodes, nodes[0].x, nodes[0].y);
+    return true;
+  }
+
+  function pumpStory(job) {
+    if (job.raf) return;
+    const step = () => {
+      const cont = storyTick(job);
+      drawStory(job);
+      if (cont || job.drag) job.raf = requestAnimationFrame(step);
+      else job.raf = 0;
+    };
+    job.raf = requestAnimationFrame(step);
   }
 
   function bindStoryCanvas(canvas, job) {
+    if (canvas.dataset.storyBound === "1") return;
+    canvas.dataset.storyBound = "1";
     const world = (ev) => {
       const rect = canvas.getBoundingClientRect();
-      const sx = ev.clientX - rect.left;
-      const sy = ev.clientY - rect.top;
+      const sx = ((ev.clientX - rect.left) / Math.max(1, rect.width)) * job.w;
+      const sy = ((ev.clientY - rect.top) / Math.max(1, rect.height)) * job.h;
       return {
         sx,
         sy,
@@ -1583,67 +1658,78 @@
       const p = world(ev);
       const hit = hitStoryNode(job, p.x, p.y);
       job.drag = hit
-        ? { mode: "node", id: hit.node.id, x: p.x, y: p.y, sx: p.sx, sy: p.sy, moved: false }
+        ? { mode: "node", id: hit.node.id, x: hit.x, y: hit.y, sx: p.sx, sy: p.sy, moved: false }
         : { mode: "pan", sx: p.sx, sy: p.sy, camX: job.camera.x, camY: job.camera.y, moved: false };
+      if (job.drag.mode === "node") job.alpha = 1;
       canvas.setPointerCapture(ev.pointerId);
+      pumpStory(job);
     });
     canvas.addEventListener("pointermove", (ev) => {
       const p = world(ev);
       if (!job.drag) {
         const hit = hitStoryNode(job, p.x, p.y);
-        canvas.style.cursor = hit && blogHashForNode(hit.node) && hit.node.id !== job.hubId ? "pointer" : "grab";
+        canvas.style.cursor = hit ? "grab" : "default";
         return;
       }
       job.drag.moved = job.drag.moved || Math.hypot(p.sx - job.drag.sx, p.sy - job.drag.sy) > 4;
       if (job.drag.mode === "node") {
-        const item = job.placed.find((row) => row.node.id === job.drag.id);
-        if (item) {
-          item.x = p.x;
-          item.y = p.y;
-        }
-        job.labels = storyLabelBoxes(job.placed, job.placed[0].x, job.placed[0].y);
+        job.drag.x = p.x;
+        job.drag.y = p.y;
+        job.alpha = Math.max(job.alpha, 0.45);
+        canvas.style.cursor = "grabbing";
       } else {
         job.camera.x = job.drag.camX + (p.sx - job.drag.sx);
         job.camera.y = job.drag.camY + (p.sy - job.drag.sy);
+        drawStory(job);
+        return;
       }
-      drawStory(job);
+      pumpStory(job);
     });
-    canvas.addEventListener("pointerup", (ev) => {
+    const endDrag = () => {
       const drag = job.drag;
       job.drag = null;
+      job.alpha = Math.max(job.alpha, 0.35);
+      canvas.style.cursor = "default";
+      pumpStory(job);
       if (!drag || drag.moved || drag.mode !== "node") return;
       const item = job.placed.find((row) => row.node.id === drag.id);
       const href = item ? blogHashForNode(item.node) : "";
       if (href && item.node.id !== job.hubId) location.hash = href;
-    });
+    };
+    canvas.addEventListener("pointerup", endDrag);
+    canvas.addEventListener("pointercancel", endDrag);
   }
 
   function mountStoryGraphs(root) {
-    if (storyRaf) cancelAnimationFrame(storyRaf);
-    const canvases = root?.querySelectorAll?.("canvas.story-ego-canvas") || [];
-    canvases.forEach((canvas) => {
-      const payload = storyPayloads.get(canvas.dataset.hub || "");
-      if (!payload) return;
-      const w = Math.max(320, canvas.clientWidth || 720);
-      const h = 520;
-      canvas.width = Math.floor(w * devicePixelRatio);
-      canvas.height = Math.floor(h * devicePixelRatio);
-      canvas.style.height = `${h}px`;
-      const placed = placeStoryNodes(payload.hub, payload.neighbors);
-      const job = {
-        ctx: canvas.getContext("2d"),
-        w,
-        h,
-        hubId: payload.hub.id,
-        placed,
-        labels: storyLabelBoxes(placed, placed[0].x, placed[0].y),
-        edges: payload.edges,
-        camera: { x: 0, y: 0, scale: 1 },
-        drag: null,
-      };
-      fitStoryCamera(job);
-      bindStoryCanvas(canvas, job);
-      drawStory(job);
+    const canvases = [...(root?.querySelectorAll?.("canvas.story-ego-canvas") || [])];
+    requestAnimationFrame(() => {
+      canvases.forEach((canvas) => {
+        if (!canvas.isConnected) return;
+        const payload = storyPayloads.get(canvas.dataset.hub || "");
+        if (!payload) return;
+        const rect = canvas.getBoundingClientRect();
+        const w = Math.max(320, Math.round(rect.width || canvas.clientWidth || 720));
+        const h = Math.max(420, Math.round(rect.height || 520));
+        canvas.width = Math.floor(w * devicePixelRatio);
+        canvas.height = Math.floor(h * devicePixelRatio);
+        const placed = placeStoryNodes(payload.hub, payload.neighbors);
+        const job = {
+          ctx: canvas.getContext("2d"),
+          w,
+          h,
+          hubId: payload.hub.id,
+          placed,
+          labels: storyLabelBoxes(placed, placed[0].x, placed[0].y),
+          edges: payload.edges,
+          camera: { x: 0, y: 0, scale: 1 },
+          drag: null,
+          alpha: 0.85,
+          raf: 0,
+        };
+        fitStoryCamera(job);
+        bindStoryCanvas(canvas, job);
+        pumpStory(job);
+      });
     });
   }
 
@@ -1711,7 +1797,7 @@
     return `
       <section class="analysis-block story-graph-block">
         <h2>ข้อมูลกราฟของข่าวนี้</h2>
-        <p class="muted">ลากพื้นหลังเพื่อเลื่อน · สกอร์ลเพื่อซูม · ลากโหนดเพื่อจัดที่ · คลิกโหนดข่าว (เส้นขอบเข้ม) เพื่อเปิดบล็อกนั้น</p>
+        <p class="muted">ลากวงกลมหรือป้ายชื่อเพื่อขยับโหนด (โหนดที่เชื่อมจะขยับตาม) · ลากพื้นว่างเพื่อเลื่อนมุมมอง · สกอร์ลเพื่อซูม · คลิกโหนดข่าวโดยไม่ลากเพื่อเปิดบล็อกนั้น</p>
         <p class="story-graph-actions"><a class="btn-ghost story-open-graph" href="#/brain/${encodeURIComponent(hub.id)}">เปิดในกราฟ</a></p>
         <div class="story-ego-wrap"><canvas class="story-ego-canvas" data-hub="${escapeHtml(hub.id)}" aria-label="ข้อมูลกราฟของข่าวนี้"></canvas></div>
         ${
