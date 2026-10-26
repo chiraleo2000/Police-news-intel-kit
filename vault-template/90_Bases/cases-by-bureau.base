@@ -1,0 +1,17 @@
+filters:
+  and:
+    - file.inFolder("20_Cases")
+views:
+  - type: table
+    name: ตามหน่วยงาน
+    order:
+      - bureau
+      - date
+      - crime_type
+      - status_th
+    groupBy:
+      property: bureau
+      direction: ASC
+    sort:
+      - property: date
+        direction: DESC

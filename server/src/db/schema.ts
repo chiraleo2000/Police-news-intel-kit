@@ -64,4 +64,45 @@ CREATE TABLE IF NOT EXISTS webhook_seen (
   event_id TEXT PRIMARY KEY,
   at TEXT NOT NULL
 );
+
+CREATE TABLE IF NOT EXISTS cases (
+  id TEXT PRIMARY KEY,
+  date TEXT NOT NULL,
+  title TEXT NOT NULL,
+  topic TEXT,
+  bureau TEXT,
+  province_json TEXT,
+  status_th TEXT,
+  gang_or_group TEXT,
+  severity TEXT,
+  area TEXT,
+  payload_json TEXT,
+  format_version INTEGER NOT NULL DEFAULT 1,
+  updated_at TEXT NOT NULL
+);
+CREATE INDEX IF NOT EXISTS ix_cases_date ON cases(date);
+CREATE INDEX IF NOT EXISTS ix_cases_topic ON cases(topic);
+CREATE INDEX IF NOT EXISTS ix_cases_bureau ON cases(bureau);
+
+CREATE TABLE IF NOT EXISTS entities (
+  id TEXT PRIMARY KEY,
+  kind TEXT NOT NULL CHECK (kind IN ('unit','person','project')),
+  name TEXT NOT NULL,
+  aliases_json TEXT,
+  updated_at TEXT NOT NULL
+);
+CREATE INDEX IF NOT EXISTS ix_entities_kind ON entities(kind);
+CREATE INDEX IF NOT EXISTS ix_entities_name ON entities(name);
+
+CREATE TABLE IF NOT EXISTS relations (
+  id INTEGER PRIMARY KEY,
+  src_type TEXT NOT NULL,
+  src_id TEXT NOT NULL,
+  rel TEXT NOT NULL,
+  dst_type TEXT NOT NULL,
+  dst_id TEXT NOT NULL,
+  UNIQUE (src_type, src_id, rel, dst_type, dst_id)
+);
+CREATE INDEX IF NOT EXISTS ix_rel_src ON relations(src_type, src_id);
+CREATE INDEX IF NOT EXISTS ix_rel_dst ON relations(dst_type, dst_id);
 `;

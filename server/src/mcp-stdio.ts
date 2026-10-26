@@ -1,18 +1,10 @@
 /**
  * MCP stdio shim for Claude scheduled tasks / plugin.
- * Bridges to local news-hub HTTP API (or direct DB if NEWSHUB_URL unreachable — DB direct).
- *
- * Tools:
- *   line_links_get  — links for date or recent new
- *   line_links_mark — mark used/skipped
- *   run_status_get / run_status_put
+ * Tools call the local SQLite brain directly (same process as this shim).
  */
-import { Server } from "@modelcontextprotocol/sdk/server/index.js";
+import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
-import {
-  CallToolRequestSchema,
-  ListToolsRequestSchema,
-} from "@modelcontextprotocol/sdk/types.js";
+import { z } from "zod";
 import { config } from "./config.js";
 import {
   getDb,
@@ -24,188 +16,177 @@ import {
   audit,
 } from "./db/index.js";
 import { todayIct } from "./line/url.js";
+import { brainUpsert } from "./brain/upsert.js";
 
 getDb();
 
-const server = new Server(
-  { name: "news-hub", version: "0.2.0" },
-  { capabilities: { tools: {} } },
+const server = new McpServer({ name: "news-hub", version: "0.2.0" });
+
+function text(data: unknown) {
+  return { content: [{ type: "text" as const, text: JSON.stringify(data, null, 2) }] };
+}
+
+function fail(e: unknown) {
+  return {
+    content: [{ type: "text" as const, text: `Error: ${e instanceof Error ? e.message : String(e)}` }],
+    isError: true as const,
+  };
+}
+
+async function run<T>(fn: () => Promise<T> | T) {
+  try {
+    return text(await fn());
+  } catch (e) {
+    return fail(e);
+  }
+}
+
+server.registerTool(
+  "line_links_get",
+  {
+    description:
+      "ดึงลิงก์จาก LINE ที่เก็บใน DB. ใช้ date=YYYY-MM-DD หรือ days=N สำหรับ status=new ย้อนหลัง",
+    inputSchema: {
+      date: z.string().optional(),
+      status: z.enum(["new", "used", "skipped"]).optional(),
+      days: z.number().optional(),
+    },
+  },
+  async ({ date, status, days }) =>
+    run(() => {
+      if (typeof days === "number") {
+        const links = listRecentNewLinks(days);
+        return { mode: "recent_new", days, count: links.length, links };
+      }
+      const day = date || todayIct();
+      const links = listLineLinks(day, status);
+      return { date: day, status: status ?? null, count: links.length, links };
+    }),
 );
 
-server.setRequestHandler(ListToolsRequestSchema, async () => ({
-  tools: [
-    {
-      name: "line_links_get",
-      description:
-        "ดึงลิงก์จาก LINE ที่เก็บใน DB (แหล่งจริง). ใช้ date=YYYY-MM-DD หรือ days=N สำหรับ status=new ย้อนหลัง. อย่า scrape registry ใน Task-2",
-      inputSchema: {
-        type: "object",
-        properties: {
-          date: { type: "string", description: "ICT date YYYY-MM-DD (default today)" },
-          status: {
-            type: "string",
-            enum: ["new", "used", "skipped"],
-            description: "filter by status",
-          },
-          days: {
-            type: "number",
-            description: "if set, return status=new from last N days (ignores date)",
-          },
-        },
-      },
+server.registerTool(
+  "line_links_mark",
+  {
+    description: "อัปเดตสถานะลิงก์หลังใช้ในบทความ (used) หรือข้าม (skipped)",
+    inputSchema: {
+      ids: z.array(z.number()),
+      status: z.enum(["used", "skipped"]),
+      article_id: z.string().optional(),
+      reason: z.string().optional(),
     },
-    {
-      name: "line_links_mark",
-      description: "อัปเดตสถานะลิงก์หลังใช้ในบทความ (used) หรือข้าม (skipped)",
-      inputSchema: {
-        type: "object",
-        properties: {
-          ids: { type: "array", items: { type: "number" } },
-          status: { type: "string", enum: ["used", "skipped"] },
-          article_id: { type: "string" },
-          reason: { type: "string" },
-        },
-        required: ["ids", "status"],
-      },
-    },
-    {
-      name: "run_status_get",
-      description: "ดูสถานะรอบล่าสุดของ task (แก้ปัญหา session ใหม่ไม่มี memory)",
-      inputSchema: {
-        type: "object",
-        properties: { task: { type: "string" } },
-      },
-    },
-    {
-      name: "run_status_put",
-      description: "บันทึกสถานะรอบนี้เมื่อจบงาน",
-      inputSchema: {
-        type: "object",
-        properties: {
-          task: { type: "string" },
-          run_date: { type: "string" },
-          status: {
-            type: "string",
-            enum: ["running", "complete", "partial", "failed"],
-          },
-          counts: { type: "object" },
-          issues: { type: "array" },
-        },
-        required: ["task", "run_date", "status"],
-      },
-    },
-    {
-      name: "export_path_hint",
-      description: "บอก path ของ Excel/JSON export เช้านี้ (สำหรับตรวจดู ถ้า MCP อ่าน DB ไม่ได้)",
-      inputSchema: {
-        type: "object",
-        properties: { date: { type: "string" } },
-      },
-    },
-  ],
-}));
-
-server.setRequestHandler(CallToolRequestSchema, async (req) => {
-  const name = req.params.name;
-  const args = (req.params.arguments ?? {}) as Record<string, unknown>;
-
-  try {
-    if (name === "line_links_get") {
-      let links;
-      let meta: Record<string, unknown> = {};
-      if (typeof args.days === "number") {
-        links = listRecentNewLinks(args.days);
-        meta = { mode: "recent_new", days: args.days };
-      } else {
-        const date = (args.date as string) || todayIct();
-        links = listLineLinks(date, args.status as string | undefined);
-        meta = { date, status: args.status ?? null };
-      }
-      const out = {
-        ...meta,
-        count: links.length,
-        links: links.map((r) => ({
-          id: r.id,
-          received_at: r.received_at,
-          group_alias: r.group_alias,
-          url: r.url,
-          canonical_url: r.canonical_url,
-          domain: r.domain,
-          domain_type: r.domain_type,
-          fetchable: Boolean(r.fetchable),
-          status: r.status,
-          used_in_article_id: r.article_id,
-        })),
-        note: "social/fetchable=false = reference only; do not full-scrape",
-      };
-      return { content: [{ type: "text", text: JSON.stringify(out, null, 2) }] };
-    }
-
-    if (name === "line_links_mark") {
-      const ids = args.ids as number[];
-      const status = args.status as "used" | "skipped";
-      const n = markLineLinks(
-        ids,
-        status,
-        (args.article_id as string) ?? null,
-        (args.reason as string) ?? null,
-      );
+  },
+  async (args) =>
+    run(() => {
+      const updated = markLineLinks(args.ids, args.status, args.article_id ?? null, args.reason ?? null);
       audit("mcp", "line_links_mark", JSON.stringify(args));
-      return {
-        content: [{ type: "text", text: JSON.stringify({ updated: n }) }],
-      };
-    }
+      return { updated };
+    }),
+);
 
-    if (name === "run_status_get") {
-      const out = getRunStatus((args.task as string) || "task-2");
-      return { content: [{ type: "text", text: JSON.stringify(out, null, 2) }] };
-    }
+server.registerTool(
+  "run_status_get",
+  {
+    description: "ดูสถานะรอบล่าสุดของ task",
+    inputSchema: { task: z.string().optional() },
+  },
+  async ({ task }) => run(() => getRunStatus(task || "task-2")),
+);
 
-    if (name === "run_status_put") {
+server.registerTool(
+  "run_status_put",
+  {
+    description: "บันทึกสถานะรอบนี้เมื่อจบงาน",
+    inputSchema: {
+      task: z.string(),
+      run_date: z.string(),
+      status: z.enum(["running", "complete", "partial", "failed"]),
+      counts: z.record(z.unknown()).optional(),
+      issues: z.array(z.unknown()).optional(),
+    },
+  },
+  async (args) =>
+    run(() => {
       putRunStatus({
-        task: args.task as string,
-        run_date: args.run_date as string,
-        status: args.status as string,
+        task: args.task,
+        run_date: args.run_date,
+        status: args.status,
         counts_json: args.counts ? JSON.stringify(args.counts) : undefined,
         issues_json: args.issues ? JSON.stringify(args.issues) : undefined,
       });
-      return { content: [{ type: "text", text: JSON.stringify({ ok: true }) }] };
-    }
+      return { ok: true };
+    }),
+);
 
-    if (name === "export_path_hint") {
-      const date = (args.date as string) || todayIct();
-      const base = `${config.exportPath}/${date}_line_links`;
-      return {
-        content: [
-          {
-            type: "text",
-            text: JSON.stringify({
-              date,
-              json: `${base}.json`,
-              xlsx: `${base}.xlsx`,
-              prefer: "line_links_get over Excel — Excel is export-only",
-            }),
-          },
-        ],
-      };
-    }
+server.registerTool(
+  "export_path_hint",
+  {
+    description: "บอก path ของ Excel/JSON export",
+    inputSchema: { date: z.string().optional() },
+  },
+  async ({ date }) =>
+    run(() => {
+      const day = date || todayIct();
+      const base = `${config.exportPath}/${day}_line_links`;
+      return { date: day, json: `${base}.json`, xlsx: `${base}.xlsx` };
+    }),
+);
 
-    return {
-      content: [{ type: "text", text: `Unknown tool: ${name}` }],
-      isError: true,
-    };
-  } catch (e) {
-    return {
-      content: [
-        {
-          type: "text",
-          text: `Error: ${e instanceof Error ? e.message : String(e)}`,
-        },
-      ],
-      isError: true,
-    };
-  }
-});
+server.registerTool(
+  "brain_search",
+  {
+    description: "ค้นคดี/เอนทิตีใน second brain. บังคับใช้ก่อนโยง related_cases",
+    inputSchema: {
+      q: z.string(),
+      type: z.enum(["case", "entity", "unit", "person", "project", "all"]).optional(),
+      limit: z.number().optional(),
+    },
+  },
+  async ({ q, type, limit }) =>
+    run(async () => {
+      const query = q.trim();
+      if (!query) return { query: "", cases: [], entities: [] };
+      const { searchBrain } = await import("./brain/store.js");
+      return searchBrain(query, type, limit || 30);
+    }),
+);
+
+server.registerTool(
+  "brain_timeline",
+  {
+    description: "ดึงคดีในช่วงวันที่ สำหรับลำดับเวลาและ related",
+    inputSchema: {
+      since: z.string().optional(),
+      until: z.string().optional(),
+      bureau: z.string().optional(),
+      crime_type: z.string().optional(),
+    },
+  },
+  async (args) =>
+    run(async () => {
+      const { timelineBrain } = await import("./brain/store.js");
+      return timelineBrain(args.since || "1970-01-01", args.until || "2999-12-31", args.bureau, args.crime_type);
+    }),
+);
+
+server.registerTool(
+  "brain_upsert",
+  {
+    description:
+      "บันทึกข้อเสนอรวมชื่อ / timeline หน่วยงาน / โน้ตรายสัปดาห์. ห้ามใช้ลบหรือรวม entity เอง",
+    inputSchema: {
+      kind: z.enum(["merge_proposal", "entity_timeline", "weekly_note"]),
+      status: z.string().optional(),
+      keep: z.string().optional(),
+      merge: z.array(z.string()).optional(),
+      reason: z.string().optional(),
+      entity: z.string().optional(),
+      entries: z.array(z.record(z.unknown())).optional(),
+      week: z.string().optional(),
+      body: z.string().optional(),
+    },
+  },
+  async (args) => run(() => brainUpsert(args)),
+);
 
 const transport = new StdioServerTransport();
 await server.connect(transport);

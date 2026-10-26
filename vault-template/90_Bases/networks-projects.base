@@ -1,0 +1,8 @@
+filters:
+  and:
+    - file.inFolder("30_Entities/Projects")
+views:
+  - type: table
+    name: เครือข่ายและปฏิบัติการ
+    order:
+      - name

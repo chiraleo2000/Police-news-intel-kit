@@ -81,10 +81,10 @@
 
   function escapeHtml(s) {
     return String(s ?? "")
-      .replace(/&/g, "&amp;")
-      .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;")
-      .replace(/"/g, "&quot;");
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;")
+      .replaceAll('"', "&quot;");
   }
 
   async function fetchJson(path) {
@@ -189,37 +189,52 @@
     location.hash = `#/r/${range || DEFAULT_RANGE}`;
   }
 
+  function mergeCorroborating(cur, p) {
+    const extras = [];
+    if (p.source_url && p.source_url !== cur.source_url) {
+      extras.push({ name: p.agency || "แหล่งอื่น", url: p.source_url });
+    }
+    for (const s of p.corroborating_sources || []) if (s?.url) extras.push(s);
+    const seen = new Set(
+      [cur.source_url, ...(cur.corroborating_sources || []).map((x) => x?.url)].filter(Boolean)
+    );
+    for (const s of extras) {
+      if (!s.url || seen.has(s.url)) continue;
+      seen.add(s.url);
+      cur.corroborating_sources.push(s);
+    }
+  }
+
+  function mergeTags(cur, p) {
+    for (const t of p.tags || []) if (!cur.tags.includes(t)) cur.tags.push(t);
+  }
+
+  function mergeContentAndDate(cur, p) {
+    if ((p.content || "").length > (cur.content || "").length) cur.content = p.content;
+    if ((p._date || "") > (cur._date || "")) cur._date = p._date;
+  }
+
+  function mergeInto(cur, p) {
+    mergeCorroborating(cur, p);
+    mergeTags(cur, p);
+    mergeContentAndDate(cur, p);
+  }
+
   function mergePosts(list) {
     const map = new Map();
     for (const p of list || []) {
       if (!p) continue;
       const key = p.id || p.slug || p.source_url || `${p._date}:${p.title}`;
       if (!key) continue;
-      if (!map.has(key)) {
+      if (map.has(key)) {
+        mergeInto(map.get(key), p);
+      } else {
         map.set(key, {
           ...p,
           corroborating_sources: [...(p.corroborating_sources || [])],
           tags: [...(p.tags || [])],
         });
-        continue;
       }
-      const cur = map.get(key);
-      const extras = [];
-      if (p.source_url && p.source_url !== cur.source_url) {
-        extras.push({ name: p.agency || "แหล่งอื่น", url: p.source_url });
-      }
-      for (const s of p.corroborating_sources || []) if (s?.url) extras.push(s);
-      const seen = new Set(
-        [cur.source_url, ...(cur.corroborating_sources || []).map((x) => x?.url)].filter(Boolean)
-      );
-      for (const s of extras) {
-        if (!s.url || seen.has(s.url)) continue;
-        seen.add(s.url);
-        cur.corroborating_sources.push(s);
-      }
-      for (const t of p.tags || []) if (!cur.tags.includes(t)) cur.tags.push(t);
-      if ((p.content || "").length > (cur.content || "").length) cur.content = p.content;
-      if ((p._date || "") > (cur._date || "")) cur._date = p._date;
     }
     return [...map.values()];
   }
@@ -318,7 +333,7 @@
 
     // Ensure manifest days cover posts
     if (!manifest.days.length && allPosts.length) {
-      const dates = [...new Set(allPosts.map((p) => p._date).filter(Boolean))].sort().reverse();
+      const dates = [...new Set(allPosts.map((p) => p._date).filter(Boolean))].sort((a, b) => b.localeCompare(a));
       manifest.days = dates.map((date) => ({
         date,
         total: allPosts.filter((p) => p._date === date).length,
@@ -331,7 +346,7 @@
   }
 
   function inferDate(p) {
-    const m = String(p.published_at || p.id || "").match(/(\d{4}-\d{2}-\d{2})/);
+    const m = /(\d{4}-\d{2}-\d{2})/.exec(String(p.published_at || p.id || ""));
     return m ? m[1] : "";
   }
 
@@ -388,7 +403,7 @@
   }
 
   function renderTopicChips(posts) {
-    const topics = [...new Set(posts.map((p) => p.topic || p.category_label).filter(Boolean))].sort();
+    const topics = [...new Set(posts.map((p) => p.topic || p.category_label).filter(Boolean))].sort((a, b) => a.localeCompare(b));
     els.topicChips.innerHTML =
       `<button type="button" class="chip-btn${filters.topic ? "" : " is-active"}" data-topic="">ทั้งหมด</button>` +
       topics
@@ -400,7 +415,7 @@
   }
 
   function fillTagFilter(posts) {
-    const tags = [...new Set(posts.flatMap((p) => p.tags || []).filter(Boolean))].sort();
+    const tags = [...new Set(posts.flatMap((p) => p.tags || []).filter(Boolean))].sort((a, b) => a.localeCompare(b));
     const cur = filters.tag;
     els.tagFilter.innerHTML =
       `<option value="">ทุกแท็ก</option>` +
@@ -471,6 +486,73 @@
       .join("");
   }
 
+  const DAY_STAT_FIELDS = [
+    ["total_arrested", "arrested", "hasA"],
+    ["total_loss_thb", "loss", "hasL"],
+    ["total_seized_value_thb", "seized", "hasS"],
+  ];
+
+  function addDayStats(totals, st) {
+    for (const [field, sumKey, hasKey] of DAY_STAT_FIELDS) {
+      if (!st[field]) continue;
+      totals[sumKey] += Number(st[field]) || 0;
+      totals[hasKey] = true;
+    }
+  }
+
+  function dayAlertItems(bundle, posts, date) {
+    if (Array.isArray(bundle.alerts)) return bundle.alerts;
+    return (
+      bundle.alerts?.alerts ||
+      bundle.alerts?.items ||
+      posts.filter((p) => p.alert && p._date === date)
+    );
+  }
+
+  async function aggregateDayStats(dayList, posts) {
+    const totals = {
+      arrested: 0,
+      loss: 0,
+      seized: 0,
+      hasA: false,
+      hasL: false,
+      hasS: false,
+      hotspotMap: new Map(),
+      alertItems: [],
+    };
+    const bundles = await Promise.all(dayList.map((d) => loadDayCrime(d.date, d.crime_file)));
+
+    dayList.forEach((d, i) => {
+      const b = bundles[i];
+      addDayStats(totals, b.stats || {});
+      for (const h of normalizeHotspots(b.hotspots)) {
+        totals.hotspotMap.set(h.name, (totals.hotspotMap.get(h.name) || 0) + (h.count || 0));
+      }
+      for (const a of dayAlertItems(b, posts, d.date) || []) {
+        totals.alertItems.push({ ...a, _date: d.date });
+      }
+    });
+    return totals;
+  }
+
+  function renderAlertItems(alertItems) {
+    if (!alertItems.length) {
+      els.alerts.hidden = true;
+      return;
+    }
+    els.alerts.hidden = false;
+    els.alertsBody.innerHTML = alertItems
+      .slice(0, 6)
+      .map((a) => {
+        const title = a.title || a.topic || "เตือนภัย";
+        const actions = (a.actions_public || []).filter((x) => x && x !== "N/A");
+        const listItems = actions.map((x) => `<li>${escapeHtml(x)}</li>`).join("");
+        const list = actions.length ? `<ul>${listItems}</ul>` : "";
+        return `<div class="alert-item"><strong>${escapeHtml(title)}</strong>${list}</div>`;
+      })
+      .join("");
+  }
+
   async function renderFeed(range) {
     const dayList = daysInRange(range);
     currentPosts = postsInRange(range);
@@ -497,38 +579,8 @@
     renderPostList(posts);
 
     // KPI below posts
-    let arrested = 0;
-    let loss = 0;
-    let seized = 0;
-    let hasA = false;
-    let hasL = false;
-    let hasS = false;
-    const hotspotMap = new Map();
-    const alertItems = [];
-
-    for (const d of dayList) {
-      const b = await loadDayCrime(d.date, d.crime_file);
-      const st = b.stats || {};
-      if (st.total_arrested) {
-        arrested += Number(st.total_arrested) || 0;
-        hasA = true;
-      }
-      if (st.total_loss_thb) {
-        loss += Number(st.total_loss_thb) || 0;
-        hasL = true;
-      }
-      if (st.total_seized_value_thb) {
-        seized += Number(st.total_seized_value_thb) || 0;
-        hasS = true;
-      }
-      for (const h of normalizeHotspots(b.hotspots)) {
-        hotspotMap.set(h.name, (hotspotMap.get(h.name) || 0) + (h.count || 0));
-      }
-      const rawAlerts = Array.isArray(b.alerts)
-        ? b.alerts
-        : b.alerts?.alerts || b.alerts?.items || posts.filter((p) => p.alert && p._date === d.date);
-      for (const a of rawAlerts || []) alertItems.push({ ...a, _date: d.date });
-    }
+    const { arrested, loss, seized, hasA, hasL, hasS, hotspotMap, alertItems } =
+      await aggregateDayStats(dayList, posts);
 
     els.kpi.hidden = false;
     els.kpi.innerHTML = [
@@ -544,22 +596,7 @@
       )
       .join("");
 
-    if (alertItems.length) {
-      els.alerts.hidden = false;
-      els.alertsBody.innerHTML = alertItems
-        .slice(0, 6)
-        .map((a) => {
-          const title = a.title || a.topic || "เตือนภัย";
-          const actions = (a.actions_public || []).filter((x) => x && x !== "N/A");
-          const list = actions.length
-            ? `<ul>${actions.map((x) => `<li>${escapeHtml(x)}</li>`).join("")}</ul>`
-            : "";
-          return `<div class="alert-item"><strong>${escapeHtml(title)}</strong>${list}</div>`;
-        })
-        .join("");
-    } else {
-      els.alerts.hidden = true;
-    }
+    renderAlertItems(alertItems);
 
     const spots = [...hotspotMap.entries()]
       .map(([name, count]) => ({ name, count }))
@@ -609,6 +646,37 @@
       <p class="muted">${escapeHtml(post.agency || "")}${post.published_at ? " · " + escapeHtml(post.published_at) : ""}</p>
       <div class="content">${escapeHtml(post.content || "")}</div>
       ${
+        post.exec_blurb
+          ? `<section class="analysis-block"><h2>สำหรับผู้บริหาร</h2><p>${escapeHtml(post.exec_blurb)}</p></section>`
+          : ""
+      }
+      ${
+        post.analysis_notes
+          ? `<section class="analysis-block"><h2>วิเคราะห์</h2><p class="pre">${escapeHtml(post.analysis_notes)}</p></section>`
+          : ""
+      }
+      ${
+        (post.related_cases || []).length
+          ? `<section class="analysis-block"><h2>ความเชื่อมโยง</h2><ul>${post.related_cases
+              .map(
+                (r) =>
+                  `<li><a href="#/${escapeHtml(post._date || date)}/${encodeURIComponent(r.id)}">${escapeHtml(r.title || r.id)}</a> <span class="muted">(${escapeHtml(r.relation || "related_to")})</span></li>`
+              )
+              .join("")}</ul></section>`
+          : `<section class="analysis-block"><h2>ความเชื่อมโยง</h2><p class="muted">ยังไม่พบเรื่องที่เกี่ยวข้องในช่วงที่ค้นได้</p></section>`
+      }
+      <section class="fact-card">
+        <h2>การ์ดข้อเท็จจริง</h2>
+        <dl>
+          <div><dt>ประเภทคดี</dt><dd>${escapeHtml(post.topic || "-")}</dd></div>
+          <div><dt>พื้นที่</dt><dd>${escapeHtml(post.area || (post.province || []).join(", ") || "-")}</dd></div>
+          <div><dt>สถานะ</dt><dd>${escapeHtml(post.status_th || post.case_stage || "-")}</dd></div>
+          <div><dt>มูลค่าความเสียหาย</dt><dd>${escapeHtml(post.stats?.loss_thb ? F.money(post.stats.loss_thb) : "-")}</dd></div>
+          <div><dt>ชื่อกลุ่ม/แก๊ง</dt><dd>${escapeHtml(post.gang_or_group || "-")}</dd></div>
+          <div><dt>หน่วยงานหลัก</dt><dd>${escapeHtml(post.primary_bureau || "-")}</dd></div>
+        </dl>
+      </section>
+      ${
         actions.length
           ? `<div class="actions"><strong>ข้อแนะนำประชาชน</strong><ul>${actions
               .map((a) => `<li>${escapeHtml(a)}</li>`)
@@ -642,6 +710,18 @@
     } catch {
       return false;
     }
+  }
+
+  function downloadKindRank(kind) {
+    if (kind === "pdf") return 0;
+    if (kind === "image") return 1;
+    return 2;
+  }
+
+  function downloadKindLabel(kind) {
+    if (kind === "pdf") return "PDF สรุปรายวัน";
+    if (kind === "image") return "Infographic";
+    return (kind || "").toUpperCase();
   }
 
   function downloadCandidatesForDay(day) {
@@ -684,30 +764,31 @@
       if (!seen.has(d.path)) listed.push(d);
     }
     // PDF before images
-    listed.sort((a, b) => {
-      const rank = (k) => (k === "pdf" ? 0 : k === "image" ? 1 : 2);
-      return rank(a.kind) - rank(b.kind) || String(b.date).localeCompare(String(a.date));
-    });
+    listed.sort(
+      (a, b) =>
+        downloadKindRank(a.kind) - downloadKindRank(b.kind) ||
+        String(b.date).localeCompare(String(a.date))
+    );
     return listed;
   }
 
   async function renderDownloads(range) {
     const days = daysInRange(range);
-    const available = [];
-    for (const day of days) {
-      for (const item of downloadCandidatesForDay(day)) {
-        const href = item.path.startsWith("http")
+    const candidates = days.flatMap((day) =>
+      downloadCandidatesForDay(day).map((item) => ({
+        ...item,
+        href: item.path.startsWith("http")
           ? item.path
-          : `${DATA}/${item.path}`.replace(/\/{2,}/g, "/");
-        if (item.path.startsWith("http") || (await fileExists(href))) {
-          available.push({ ...item, href });
-        }
-      }
-    }
+          : `${DATA}/${item.path}`.replace(/\/{2,}/g, "/"),
+      }))
+    );
+    const exists = await Promise.all(
+      candidates.map((item) => item.path.startsWith("http") || fileExists(item.href))
+    );
+    const available = candidates.filter((_, i) => exists[i]);
     els.downloadList.innerHTML = available
       .map((item) => {
-        const kindLabel =
-          item.kind === "pdf" ? "PDF สรุปรายวัน" : item.kind === "image" ? "Infographic" : (item.kind || "").toUpperCase();
+        const kindLabel = downloadKindLabel(item.kind);
         return `<li class="download-item">
           <div>
             <strong>${escapeHtml(item.label)}</strong>
@@ -747,6 +828,42 @@
     els.downloadRangeSelect.value = range;
   }
 
+  function redirectToCanonicalHash(parsed, range) {
+    const raw = (location.hash || "").replace(/^#\/?/, "");
+    if (parsed.tab === "news" && !parsed.date && !parsed.postId && (!raw || raw === "/")) {
+      setHash({ tab: "news", range });
+      return true;
+    }
+    if (parsed.tab === "downloads" && !raw.includes("/r/")) {
+      setHash({ tab: "downloads", range });
+      return true;
+    }
+    if (parsed.tab === "brain" && raw !== "brain" && !raw.startsWith("brain/")) {
+      setHash({ tab: "brain", nodeId: parsed.nodeId });
+      return true;
+    }
+    return false;
+  }
+
+  async function handleBrainRoute(parsed) {
+    if (window.BrainGraph) {
+      await window.BrainGraph.show();
+      if (parsed.nodeId) window.BrainGraph.select(parsed.nodeId);
+    }
+    els.status.textContent = "Second Brain · กราฟจาก vault Obsidian";
+  }
+
+  function handleEmpty() {
+    els.heroKicker.textContent = "รอไฟล์ JSON";
+    els.heroTitle.textContent = "ยังไม่มีสรุปข่าวในคลัง";
+    els.heroLead.textContent = "วาง feed.json หรือ manifest.json + *_crime.json ใต้ data/";
+    els.postList.innerHTML = `<li><p class="muted">ยังไม่มีข้อมูล</p></li>`;
+    els.statPosts.textContent = "0 ข่าว";
+    els.statTypes.textContent = "0 ประเภท";
+    els.statAlerts.textContent = "0 เตือนภัย";
+    els.status.textContent = "ไม่มีข้อมูลในคลัง";
+  }
+
   async function route() {
     if (!bootstrapped) return;
     const parsed = parseHash();
@@ -754,38 +871,15 @@
     syncRange(range);
     setActiveTab(parsed.tab);
 
-    const raw = (location.hash || "").replace(/^#\/?/, "");
-    if (parsed.tab === "news" && !parsed.date && !parsed.postId && (!raw || raw === "/")) {
-      setHash({ tab: "news", range });
-      return;
-    }
-    if (parsed.tab === "downloads" && !raw.includes("/r/")) {
-      setHash({ tab: "downloads", range });
-      return;
-    }
-    if (parsed.tab === "brain" && raw !== "brain" && !raw.startsWith("brain/")) {
-      setHash({ tab: "brain", nodeId: parsed.nodeId });
-      return;
-    }
+    if (redirectToCanonicalHash(parsed, range)) return;
 
     if (parsed.tab === "brain") {
-      if (window.BrainGraph) {
-        await window.BrainGraph.show();
-        if (parsed.nodeId) window.BrainGraph.select(parsed.nodeId);
-      }
-      els.status.textContent = "Second Brain · กราฟจาก vault Obsidian";
+      await handleBrainRoute(parsed);
       return;
     }
 
     if (!allPosts.length && !manifest.days.length) {
-      els.heroKicker.textContent = "รอไฟล์ JSON";
-      els.heroTitle.textContent = "ยังไม่มีสรุปข่าวในคลัง";
-      els.heroLead.textContent = "วาง feed.json หรือ manifest.json + *_crime.json ใต้ data/";
-      els.postList.innerHTML = `<li><p class="muted">ยังไม่มีข้อมูล</p></li>`;
-      els.statPosts.textContent = "0 ข่าว";
-      els.statTypes.textContent = "0 ประเภท";
-      els.statAlerts.textContent = "0 เตือนภัย";
-      els.status.textContent = "ไม่มีข้อมูลในคลัง";
+      handleEmpty();
       return;
     }
 
@@ -816,7 +910,7 @@
   els.topicChips.addEventListener("click", (e) => {
     const btn = e.target.closest("[data-topic]");
     if (!btn) return;
-    filters.topic = btn.getAttribute("data-topic") || "";
+    filters.topic = btn.dataset.topic || "";
     renderTopicChips(currentPosts);
     renderPostList(currentPosts);
   });
@@ -857,7 +951,7 @@
       const prev = allPosts.length;
       await bootstrapData();
       if (allPosts.length !== prev) await route();
-      else if (!location.hash.includes("/") || location.hash.match(/^#\/r\//)) {
+      else if (!location.hash.includes("/") || /^#\/r\//.exec(location.hash)) {
         // soft refresh list timestamps only
         await route();
       }

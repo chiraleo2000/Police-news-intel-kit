@@ -1,0 +1,16 @@
+filters:
+  and:
+    - file.inFolder("20_Cases")
+    - date >= today() - "30d"
+views:
+  - type: table
+    name: คดี 30 วัน
+    order:
+      - date
+      - bureau
+      - crime_type
+      - status_th
+      - area
+    sort:
+      - property: date
+        direction: DESC

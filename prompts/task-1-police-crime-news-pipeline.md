@@ -18,6 +18,24 @@ trigger:
 ไฟล์นี้คือ **police-crime-news-pipeline.md** ที่ต่อยอดสำหรับ scheduled task  
 ช่องทางหลัก = เว็บ (Batch A–D) · **ไม่ได้อ่าน Excel จาก LINE** (ดู Task 2)
 
+## บังคับ v2 — วิเคราะห์ต่อหัวข่าว + retrieval (ไม่จัด PDF ตาม บช.)
+
+แต่ละโพสต์ยังเป็น **1 หัวข่าว** เหมือนเดิม ห้ามจัดบท HTML/PDF เป็นรายการตาม บช.
+
+ลำดับเนื้อหาในโพสต์:
+1. `content` = สรุปข่าวเดิม (ห้ามทิ้ง)
+2. `exec_blurb` = 2–4 ประโยคสำหรับผู้บริหาร ภาษาไม่เทคนิค
+3. `analysis_notes` = ข้อสังเกตจากข้อเท็จจริงในแหล่งเท่านั้น
+4. `related_cases` = **หลัง** MCP `brain_search` / `brain_timeline` (หรือ `GET /v1/brain/search` และ `GET /v1/brain/timeline`) เท่านั้น หาไม่เจอให้ `[]` ห้ามเดา
+5. การ์ด: `topic` `area` `status_th` `stats.loss_thb` `gang_or_group` `primary_bureau` `references`
+
+ตั้ง `format_version: 2` ทุกไฟล์ `{DATE}_crime.json`  
+PDF รายวันยังรวมจาก HTML ตามประเภทคดีเหมือนเดิม — ห้าม copy โครงสรุปตาม บช.  
+ตัวอย่างจัดตาม บช. ใช้เป็น **มาตรฐานความลึกของการ์ด** ไม่ใช่โครงเอกสาร
+
+Second Brain: Claude เรียก news-hub ไม่เขียนไฟล์ vault ตรง ๆ  
+Pages graph เป็น snapshot หลัง `node ops/rebuild-pages-feed.js` เท่านั้น
+
 ## สิ่งที่ต่อยอดจากต้นฉบับ
 1. registry 55 แหล่ง Batch A–D (กวาดออนไลน์)
 2. จัดกลุ่มประเภทอาชญากรรม + TAGs + แนวโน้ม 7 วัน

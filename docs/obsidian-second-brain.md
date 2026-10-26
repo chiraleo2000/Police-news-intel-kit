@@ -8,7 +8,9 @@
 | Web graph for Pages | `github-pages/data/graph.json` | Yes |
 | News posts | `github-pages/data/*_crime*.json` | Yes |
 
-Open Obsidian on the folder `police-news-intel-kit/vault`. Claude Task 1/2 writes case, entity, and crime-type notes with `[[wikilinks]]`.
+Open Obsidian on the folder `police-news-intel-kit/vault`. Claude Task 1/2 does **not** edit notes by hand. It calls news-hub `GET /v1/brain/search` and `GET /v1/brain/timeline` (retrieval). `vault-build` writes notes. GitHub Pages only shows a snapshot in `graph.json` after `node ops/rebuild-pages-feed.js` — the site cannot query Obsidian live.
+
+Edges carry a `label` (`arrested_by`, `related_to`, `mentions`, …). Dates, crime type, and area stay properties on the case. Nodes are cases, units, announced commanders, and named networks.
 
 ## Build & publish
 

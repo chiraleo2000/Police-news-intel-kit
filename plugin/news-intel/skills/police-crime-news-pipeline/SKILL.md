@@ -15,6 +15,12 @@ trigger:
 
 # SKILL: police-crime-news-pipeline-combined v1.1
 
+## Retrieval ก่อนโยงข่าว (บังคับ)
+ก่อนเขียน `related_cases` หรือบทวิเคราะห์ข้ามวัน เรียก news-hub:
+`GET /v1/brain/search?q=` และถ้าต้องทั้งช่วง `GET /v1/brain/timeline?since=&until=`
+ผลว่าง → `related_cases: []` ห้ามแต่งความเชื่อมโยง
+โพสต์ยังเป็นหัวข่าวละเรื่อง ห้ามจัด PDF ตาม บช. ดูรายละเอียดใน `prompts/task-1-police-crime-news-pipeline.md` ส่วน v2
+
 ดัดแปลงจาก gov-news-pipeline-combined v1.0 — โครงเดิม 8 ขั้นตอน เพิ่มขั้นวิเคราะห์แนวโน้มเป็น 9 ขั้นตอน และ
 
 1. registry เป็นแหล่งข่าวตำรวจ/อาชญากรรม 55 แหล่ง แบ่ง 4 batch

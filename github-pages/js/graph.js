@@ -42,6 +42,7 @@
     dateFrom: "",
     dateTo: "",
     entityGroup: "",
+    bureau: "",
     hideOrphans: false,
     isolate: false,
     showLabels: "auto", // auto | all | none
@@ -53,10 +54,10 @@
 
   function escapeHtml(s) {
     return String(s ?? "")
-      .replace(/&/g, "&amp;")
-      .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;")
-      .replace(/"/g, "&quot;");
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;")
+      .replaceAll('"', "&quot;");
   }
 
   async function loadGraph() {
@@ -74,24 +75,40 @@
     return set;
   }
 
-  function passesBaseFilters(n) {
-    if (!filters.kinds.has(n.kind)) return false;
-    if ((n.degree || 0) < filters.minDegree) return false;
-    if (filters.hideOrphans && (n.degree || 0) === 0 && n.kind !== "unresolved") return false;
+  function matchesDegree(n) {
+    const degree = n.degree || 0;
+    if (degree < filters.minDegree) return false;
+    return !(filters.hideOrphans && degree === 0 && n.kind !== "unresolved");
+  }
+
+  function matchesGroups(n) {
+    // cases/types are kept when filtering entity group — cases may link to them
     if (filters.entityGroup && n.kind === "entity" && n.entity_group !== filters.entityGroup) {
       return false;
     }
-    if (filters.entityGroup && n.kind !== "entity" && n.kind !== "case" && n.kind !== "crime_type") {
-      /* keep cases/types when filtering entity group — cases may link to them */
-    }
+    return !(filters.bureau && n.kind === "case" && (n.bureau || "") !== filters.bureau);
+  }
+
+  function matchesDates(n) {
     if (filters.dateFrom && n.date && n.date < filters.dateFrom) return false;
-    if (filters.dateTo && n.date && n.date > filters.dateTo) return false;
+    return !(filters.dateTo && n.date && n.date > filters.dateTo);
+  }
+
+  function matchesQuery(n) {
     const q = filters.q.trim().toLowerCase();
-    if (q) {
-      const hay = `${n.title} ${n.id} ${(n.tags || []).join(" ")} ${n.crime_type || ""} ${n.entity_group || ""}`.toLowerCase();
-      if (!hay.includes(q)) return false;
-    }
-    return true;
+    if (!q) return true;
+    const hay = `${n.title} ${n.id} ${(n.tags || []).join(" ")} ${n.crime_type || ""} ${n.bureau || ""} ${n.area || ""} ${n.entity_group || ""}`.toLowerCase();
+    return hay.includes(q);
+  }
+
+  function passesBaseFilters(n) {
+    return (
+      filters.kinds.has(n.kind) &&
+      matchesDegree(n) &&
+      matchesGroups(n) &&
+      matchesDates(n) &&
+      matchesQuery(n)
+    );
   }
 
   function visibleNodes() {
@@ -137,7 +154,7 @@
       n.vy = n.vy || 0;
     }
     const links = edges
-      .map((e) => ({ source: byId.get(e.source), target: byId.get(e.target) }))
+      .map((e) => ({ source: byId.get(e.source), target: byId.get(e.target), label: e.label }))
       .filter((l) => l.source && l.target);
 
     return { nodes, links, w, h, ctx, alpha: 1 };
@@ -201,8 +218,81 @@
   }
 
   function nodeRadius(n) {
-    const base = n.kind === "crime_type" ? 9 : n.kind === "case" ? 8 : 6;
+    let base = 6;
+    if (n.kind === "crime_type") base = 9;
+    else if (n.kind === "case") base = 8;
     return base + Math.min(6, Math.sqrt(n.degree || 0));
+  }
+
+  function strokeColorForLink(hot, dim) {
+    if (hot) return "rgba(26,107,92,0.7)";
+    if (dim) return "rgba(11,28,44,0.05)";
+    return "rgba(11,28,44,0.16)";
+  }
+
+  function drawLinkLabel(ctx, l) {
+    const mx = (l.source.x + l.target.x) / 2;
+    const my = (l.source.y + l.target.y) / 2;
+    ctx.fillStyle = "rgba(11,28,44,0.75)";
+    ctx.font = `${11 / camera.scale}px Sarabun, Anuphan, sans-serif`;
+    ctx.fillText(l.label, mx, my);
+  }
+
+  function drawLinks(ctx, links, focus) {
+    for (const l of links) {
+      const hot = Boolean(focus) && (l.source.id === focus || l.target.id === focus);
+      const dim = Boolean(focus) && !hot;
+      ctx.strokeStyle = strokeColorForLink(hot, dim);
+      ctx.lineWidth = (hot ? 2.2 : 1) / camera.scale;
+      ctx.beginPath();
+      ctx.moveTo(l.source.x, l.source.y);
+      ctx.lineTo(l.target.x, l.target.y);
+      ctx.stroke();
+      if (hot && l.label && camera.scale > 0.85) drawLinkLabel(ctx, l);
+    }
+  }
+
+  function drawNodes(ctx, nodes, neigh) {
+    for (const n of nodes) {
+      const r = nodeRadius(n);
+      const selected = n.id === selectedId;
+      const hovered = n.id === hoverId;
+      const active = selected || hovered;
+      const dim = neigh && !neigh.has(n.id);
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, active ? r + 2.5 : r, 0, Math.PI * 2);
+      ctx.globalAlpha = dim ? 0.22 : 1;
+      ctx.fillStyle = KIND_COLOR[n.kind] || KIND_COLOR.other;
+      ctx.fill();
+      if (active) {
+        ctx.strokeStyle = "#0b1c2c";
+        ctx.lineWidth = 2 / camera.scale;
+        ctx.stroke();
+      }
+      ctx.globalAlpha = 1;
+    }
+  }
+
+  function shouldShowLabel(n, neigh, showAll) {
+    if (showAll) return true;
+    if (n.id === selectedId || n.id === hoverId) return true;
+    if (neigh?.has(n.id) && (n.degree || 0) >= 2) return true;
+    return (n.degree || 0) >= 5;
+  }
+
+  function drawLabels(ctx, nodes, neigh) {
+    const showAll = filters.showLabels === "all";
+    if (filters.showLabels === "none") return;
+    ctx.font = `${13 / camera.scale}px Sarabun, Anuphan, sans-serif`;
+    ctx.fillStyle = "rgba(11,28,44,0.9)";
+    const labeled = nodes.filter((n) => shouldShowLabel(n, neigh, showAll));
+    const cap = showAll ? 120 : 50;
+    for (const n of labeled.slice(0, cap)) {
+      const outsideFocus = neigh && !neigh.has(n.id) && n.id !== selectedId && n.id !== hoverId;
+      if (outsideFocus) continue;
+      const label = n.title.length > 32 ? n.title.slice(0, 31) + "…" : n.title;
+      ctx.fillText(label, n.x + nodeRadius(n) + 6, n.y + 4);
+    }
   }
 
   function draw(state) {
@@ -215,58 +305,9 @@
     const focus = selectedId || hoverId;
     const neigh = focus ? neighborIds(focus) : null;
 
-    for (const l of links) {
-      const hot =
-        focus && (l.source.id === focus || l.target.id === focus);
-      const dim = focus && !hot;
-      ctx.strokeStyle = hot
-        ? "rgba(26,107,92,0.7)"
-        : dim
-          ? "rgba(11,28,44,0.05)"
-          : "rgba(11,28,44,0.16)";
-      ctx.lineWidth = (hot ? 2.2 : 1) / camera.scale;
-      ctx.beginPath();
-      ctx.moveTo(l.source.x, l.source.y);
-      ctx.lineTo(l.target.x, l.target.y);
-      ctx.stroke();
-    }
-
-    for (const n of nodes) {
-      const r = nodeRadius(n);
-      const selected = n.id === selectedId;
-      const hovered = n.id === hoverId;
-      const dim = neigh && !neigh.has(n.id);
-      ctx.beginPath();
-      ctx.arc(n.x, n.y, selected || hovered ? r + 2.5 : r, 0, Math.PI * 2);
-      ctx.globalAlpha = dim ? 0.22 : 1;
-      ctx.fillStyle = KIND_COLOR[n.kind] || KIND_COLOR.other;
-      ctx.fill();
-      if (selected || hovered) {
-        ctx.strokeStyle = "#0b1c2c";
-        ctx.lineWidth = 2 / camera.scale;
-        ctx.stroke();
-      }
-      ctx.globalAlpha = 1;
-    }
-
-    const showAll = filters.showLabels === "all";
-    const showNone = filters.showLabels === "none";
-    if (!showNone) {
-      ctx.font = `${13 / camera.scale}px Sarabun, Anuphan, sans-serif`;
-      ctx.fillStyle = "rgba(11,28,44,0.9)";
-      const labeled = nodes.filter((n) => {
-        if (showAll) return true;
-        if (n.id === selectedId || n.id === hoverId) return true;
-        if (neigh && neigh.has(n.id) && (n.degree || 0) >= 2) return true;
-        return (n.degree || 0) >= 5;
-      });
-      const cap = showAll ? 120 : 50;
-      for (const n of labeled.slice(0, cap)) {
-        if (neigh && !neigh.has(n.id) && n.id !== selectedId && n.id !== hoverId) continue;
-        const label = n.title.length > 32 ? n.title.slice(0, 31) + "…" : n.title;
-        ctx.fillText(label, n.x + nodeRadius(n) + 6, n.y + 4);
-      }
-    }
+    drawLinks(ctx, links, focus);
+    drawNodes(ctx, nodes, neigh);
+    drawLabels(ctx, nodes, neigh);
     ctx.restore();
   }
 
@@ -353,6 +394,10 @@
     const outgoing = (graph.edges || []).filter((e) => e.source === node.id);
     const nameOf = (id) => graph.nodes.find((n) => n.id === id)?.title || id;
 
+    const tagList = node.tags || [];
+    const tagSpans = tagList.map((t) => "<span>" + escapeHtml(t) + "</span>").join("");
+    const tagsHtml = tagList.length ? '<p class="brain-tags">' + tagSpans + "</p>" : "";
+
     els.detail.innerHTML = `
       <p class="brain-kind">${escapeHtml(KIND_LABEL[node.kind] || node.kind)}</p>
       <h3>${escapeHtml(node.title)}</h3>
@@ -360,15 +405,12 @@
       <p class="muted brain-path">${escapeHtml(node.path || node.id)}</p>
       <dl class="brain-dl">
         ${node.date ? `<div><dt>วันที่</dt><dd>${escapeHtml(node.date)}</dd></div>` : ""}
+        ${node.bureau ? `<div><dt>หน่วยงาน</dt><dd>${escapeHtml(node.bureau)}</dd></div>` : ""}
         ${node.crime_type ? `<div><dt>ประเภท</dt><dd>${escapeHtml(node.crime_type)}</dd></div>` : ""}
         ${node.entity_group ? `<div><dt>กลุ่มเอนทิตี</dt><dd>${escapeHtml(node.entity_group)}</dd></div>` : ""}
         <div><dt>องศาลิงก์</dt><dd>${node.degree || 0}</dd></div>
       </dl>
-      ${
-        (node.tags || []).length
-          ? `<p class="brain-tags">${node.tags.map((t) => `<span>${escapeHtml(t)}</span>`).join("")}</p>`
-          : ""
-      }
+      ${tagsHtml}
       ${node.excerpt ? `<p class="brain-excerpt">${escapeHtml(node.excerpt)}</p>` : ""}
       <div class="brain-detail-actions">
         <button type="button" class="btn-ghost" data-action="isolate">${filters.isolate ? "แสดงทั้งกราฟ" : "โฟกัสเพื่อนบ้าน"}</button>
@@ -381,7 +423,7 @@
                 .slice(0, 16)
                 .map(
                   (e) =>
-                    `<li><button type="button" data-goto="${escapeHtml(e.target)}">${escapeHtml(nameOf(e.target))}</button></li>`
+                    `<li><button type="button" data-goto="${escapeHtml(e.target)}">${escapeHtml(e.label || "mentions")} → ${escapeHtml(nameOf(e.target))}</button></li>`
                 )
                 .join("")
             : "<li class='muted'>—</li>"
@@ -392,7 +434,7 @@
                 .slice(0, 16)
                 .map(
                   (e) =>
-                    `<li><button type="button" data-goto="${escapeHtml(e.source)}">${escapeHtml(nameOf(e.source))}</button></li>`
+                    `<li><button type="button" data-goto="${escapeHtml(e.source)}">${escapeHtml(e.label || "mentions")} ← ${escapeHtml(nameOf(e.source))}</button></li>`
                 )
                 .join("")
             : "<li class='muted'>—</li>"
@@ -425,7 +467,7 @@
 
   function syncKindChecks() {
     document.querySelectorAll("[data-kind-check]").forEach((el) => {
-      el.checked = filters.kinds.has(el.getAttribute("data-kind-check"));
+      el.checked = filters.kinds.has(el.dataset.kindCheck);
     });
     renderLegend();
   }
@@ -444,6 +486,11 @@
       .join("");
   }
 
+  function compareText(a, b) {
+    if (a === b) return 0;
+    return a < b ? -1 : 1;
+  }
+
   function fillEntityGroups() {
     const sel = $("brain-entity-group");
     if (!sel || !graph) return;
@@ -451,7 +498,7 @@
       ...new Set(
         graph.nodes.filter((n) => n.kind === "entity" && n.entity_group).map((n) => n.entity_group)
       ),
-    ].sort();
+    ].sort(compareText);
     const cur = filters.entityGroup;
     sel.innerHTML =
       `<option value="">ทุกกลุ่มเอนทิตี</option>` +
@@ -459,12 +506,25 @@
     sel.value = cur;
   }
 
+  function fillBureaus() {
+    const sel = $("brain-bureau");
+    if (!sel || !graph) return;
+    const bureaus = [
+      ...new Set(graph.nodes.filter((n) => n.kind === "case" && n.bureau && n.bureau !== "-").map((n) => n.bureau)),
+    ].sort(compareText);
+    const cur = filters.bureau;
+    sel.innerHTML =
+      `<option value="">ทุกหน่วยงาน</option>` +
+      bureaus.map((g) => `<option value="${escapeHtml(g)}">${escapeHtml(g)}</option>`).join("");
+    sel.value = cur;
+  }
+
   function renderHelp() {
     if (!els.help) return;
     els.help.innerHTML = `
       <h3>กราฟนี้คืออะไร?</h3>
-      <p>ดึงจากคลัง <strong>Obsidian</strong> (<code>vault/</code>) — แต่ละจุดคือโน้ต
-      เส้นคือ <code>[[wikilink]]</code> ระหว่างคดี · ประเภทอาชญากรรม · หน่วย/จังหวัด</p>
+      <p>สำเนากราฟจากคลัง Obsidian ตอน publish — ไม่ได้ดึงสดจาก Obsidian
+      เส้นมีป้ายความสัมพันธ์ เช่น arrested_by / related_to</p>
       <h3>วิธีใช้</h3>
       <ul>
         <li><strong>คลิก</strong> จุด = เปิดรายละเอียด</li>
@@ -491,11 +551,12 @@
     filters.dateFrom = $("brain-date-from")?.value || "";
     filters.dateTo = $("brain-date-to")?.value || "";
     filters.entityGroup = $("brain-entity-group")?.value || "";
+    filters.bureau = $("brain-bureau")?.value || "";
     filters.hideOrphans = Boolean($("brain-hide-orphans")?.checked);
     filters.showLabels = $("brain-labels")?.value || "auto";
     const kinds = new Set();
     document.querySelectorAll("[data-kind-check]:checked").forEach((el) => {
-      kinds.add(el.getAttribute("data-kind-check"));
+      kinds.add(el.dataset.kindCheck);
     });
     if (kinds.size) filters.kinds = kinds;
     showDetail(selectedId ? graph.nodes.find((n) => n.id === selectedId) : null);
@@ -510,6 +571,7 @@
       dateFrom: "",
       dateTo: "",
       entityGroup: "",
+      bureau: "",
       hideOrphans: false,
       isolate: false,
       showLabels: "auto",
@@ -522,6 +584,7 @@
     if ($("brain-date-from")) $("brain-date-from").value = "";
     if ($("brain-date-to")) $("brain-date-to").value = "";
     if ($("brain-entity-group")) $("brain-entity-group").value = "";
+    if ($("brain-bureau")) $("brain-bureau").value = "";
     if ($("brain-hide-orphans")) $("brain-hide-orphans").checked = false;
     if ($("brain-isolate")) $("brain-isolate").checked = false;
     if ($("brain-labels")) $("brain-labels").value = "auto";
@@ -659,6 +722,7 @@
       }
       renderHelp();
       fillEntityGroups();
+      fillBureaus();
       renderLegend();
       syncKindChecks();
       showDetail(null);
@@ -675,7 +739,7 @@
     els._wired = true;
 
     const onFilter = () => applyFiltersFromDom();
-    ["brain-search", "brain-min-degree", "brain-date-from", "brain-date-to", "brain-entity-group", "brain-labels"].forEach(
+    ["brain-search", "brain-min-degree", "brain-date-from", "brain-date-to", "brain-entity-group", "brain-bureau", "brain-labels"].forEach(
       (id) => {
         $(id)?.addEventListener("change", onFilter);
         $(id)?.addEventListener("input", () => {
@@ -698,7 +762,7 @@
     $("brain-legend")?.addEventListener("click", (e) => {
       const btn = e.target.closest("[data-kind]");
       if (!btn) return;
-      const k = btn.getAttribute("data-kind");
+      const k = btn.dataset.kind;
       if (filters.kinds.has(k) && filters.kinds.size === 1) {
         filters.kinds = new Set(["case", "entity", "crime_type", "daily", "unresolved", "other"]);
       } else if (filters.kinds.has(k) && filters.kinds.size > 1) {
@@ -714,20 +778,21 @@
 
     $("brain-detail")?.addEventListener("click", (e) => {
       const goto = e.target.closest("[data-goto]");
-      if (goto) {
-        selectById(goto.getAttribute("data-goto"));
+      const gotoId = goto ? goto.dataset.goto : "";
+      if (gotoId) {
+        selectById(gotoId);
         return;
       }
       const act = e.target.closest("[data-action]");
       if (!act) return;
-      const a = act.getAttribute("data-action");
-      if (a === "isolate") {
+      const actionName = act.dataset.action || "";
+      if (actionName === "isolate") {
         filters.isolate = !filters.isolate;
         if ($("brain-isolate")) $("brain-isolate").checked = filters.isolate;
         restartSim(true);
         showDetail(selectedId ? graph.nodes.find((n) => n.id === selectedId) : null);
       }
-      if (a === "center" && selectedId) selectById(selectedId);
+      if (actionName === "center" && selectedId) selectById(selectedId);
     });
 
     $("brain-reset")?.addEventListener("click", resetAll);
@@ -770,6 +835,7 @@
       else {
         renderHelp();
         fillEntityGroups();
+      fillBureaus();
         renderLegend();
         restartSim(true);
       }

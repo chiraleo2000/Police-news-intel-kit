@@ -5,7 +5,9 @@ description: ใช้ในงานทบทวนรายสัปดาห�
 
 # second-brain-update
 
-Claude **ไม่แก้ไฟล์ vault โดยตรง** ทุกการเปลี่ยนแปลงทำผ่าน `news-hub` (`brain_search`, `brain_timeline`, `brain_upsert`) แล้ว server เป็นผู้เขียนโน้ต
+Claude **ไม่แก้ไฟล์ vault โดยตรง** ทุกการเปลี่ยนแปลงทำผ่าน `news-hub` (`GET /v1/brain/search`, `GET /v1/brain/timeline`) แล้ว server เป็นผู้เขียนโน้ต
+
+งานวิเคราะห์ข่าวรายวันใช้เครื่องมือชุดเดียวกัน: ต้อง search ก่อนโยงคดีเก่า ห้ามข้ามไปเขียน related จากความจำ
 
 ## ขั้นตอนรายสัปดาห์ (สัปดาห์ ISO ที่เพิ่งจบ, Asia/Bangkok)
 1. **รวบรวม**: `brain_timeline(since=<วันจันทร์>, until=<วันอาทิตย์>)` ได้ cases/entities/relations ของสัปดาห์
@@ -18,7 +20,7 @@ Claude **ไม่แก้ไฟล์ vault โดยตรง** ทุกก�
    - ประเภทคดี/MO/จังหวัดที่เพิ่มขึ้นหรือลดลงเทียบ 4 สัปดาห์ก่อนหน้า (ถ้าข้อมูล <4 สัปดาห์ ให้ระบุ "ข้อมูลไม่พอ" ห้ามอ้างแนวโน้ม)
    - 5 เรื่องที่มีความเชื่อมโยงหลายคดี (relation ≥2 เส้นเข้า entity เดียวกัน) พร้อมหลักฐาน case_id
    - ข้อเสนอแนะการปรับ registry/ชื่อมาตรฐาน (ถ้ามี)
-6. จบด้วย `run_status_put(task="brain-review", week=..., status="complete", counts={...})`
+6. จบด้วย `run_status_put(task="brain-review", run_date=<วันอาทิตย์>, status="complete", counts={week, ...})`
 
 ## ข้อห้าม
 - ไม่ลบ/ไม่เขียนทับโน้ตที่ `generated: false` (โน้ตที่มนุษย์เขียน)

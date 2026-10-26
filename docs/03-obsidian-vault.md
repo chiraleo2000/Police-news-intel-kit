@@ -56,6 +56,15 @@ sources: ["https://..."]
 
 **ห้ามสร้างโน้ตบุคคล** สำหรับผู้ต้องหา ผู้เสียหาย หรือพยาน; ไม่ใส่ชื่อ-นามสกุลจริงใน frontmatter/ชื่อไฟล์; คดีเพศ/ค้ามนุษย์/เด็กไม่ระบุตัวผู้เสียหายและสถานที่เฉพาะเจาะจง
 
+โหนดบุคคลที่อนุญาต: เฉพาะตำแหน่งผู้บังคับบัญชาที่แถลงเปิดเผย (เช่น `ผบช.สอท.`) ใน `30_Entities/People`  
+เครือข่ายที่มีชื่ออยู่ที่ `30_Entities/Projects`  
+ความสัมพันธ์อยู่ที่ `rel_units` / `rel_people` / `rel_projects` / `rel_cases` เป็น `{target, rel}` และทุกเส้นบนกราฟมี label  
+`40_CrimeTypes` ไม่ฝังลิสต์คดี — กรองด้วย property `crime_type` ใน Bases
+
+## Retrieval สำหรับ Claude
+ใช้ `GET /v1/brain/search?q=&type=` และ `GET /v1/brain/timeline?since=&until=` บน news-hub  
+อย่าเปิดอ่านทั้ง `vault/` ตอนวิเคราะห์ ดู `vault-template/_system/retrieval-playbook.md`
+
 ## 4) กฎการลิงก์ (กันกราฟรก)
 
 1. คดีลิงก์ไปที่: crime_type 1 + secondary ≤ 2, units ≤ 3, laws ≤ 3, provinces ≤ 3, mo ≤ 4

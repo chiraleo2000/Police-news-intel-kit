@@ -5,14 +5,15 @@
  *
  * Usage: node ops/build-obsidian-graph.js
  */
-const fs = require("fs");
-const path = require("path");
+const fs = require("node:fs");
+const path = require("node:path");
 
 const ROOT = path.join(__dirname, "..");
 const VAULT = path.join(ROOT, "vault");
 const OUT = path.join(ROOT, "github-pages", "data", "graph.json");
 
-const WIKILINK_RE = /\[\[([^\]|#]+)(?:#[^\]|]+)?(?:\|[^\]]+)?\]\]/g;
+const FM_LINE_RE = /^(\w+):(.*)$/;
+const LABELED_REL_KEYS = ["rel_units", "rel_people", "rel_projects", "rel_cases"];
 
 function walkMd(dir, acc = []) {
   if (!fs.existsSync(dir)) return acc;
@@ -26,6 +27,28 @@ function walkMd(dir, acc = []) {
   return acc;
 }
 
+function isQuoted(v, quote) {
+  return v.startsWith(quote) && v.endsWith(quote);
+}
+
+function unquote(v) {
+  if (isQuoted(v, '"') || isQuoted(v, "'")) return v.slice(1, -1);
+  return v;
+}
+
+function parseFmValue(rawValue) {
+  const v = unquote(rawValue.trim());
+  if (v.startsWith("[") && v.endsWith("]")) {
+    try {
+      return JSON.parse(v.replaceAll("'", '"'));
+    } catch {
+      return v;
+    }
+  }
+  if (v === "true" || v === "false") return v === "true";
+  return v;
+}
+
 function splitFrontmatter(raw) {
   if (!raw.startsWith("---")) return { fm: {}, body: raw };
   const end = raw.indexOf("\n---", 3);
@@ -34,23 +57,8 @@ function splitFrontmatter(raw) {
   const body = raw.slice(end + 4).replace(/^\r?\n/, "");
   const fm = {};
   for (const line of block.split(/\r?\n/)) {
-    const m = line.match(/^([A-Za-z0-9_]+):\s*(.*)$/);
-    if (!m) continue;
-    let v = m[2].trim();
-    if ((v.startsWith('"') && v.endsWith('"')) || (v.startsWith("'") && v.endsWith("'"))) {
-      v = v.slice(1, -1);
-    }
-    if (v.startsWith("[") && v.endsWith("]")) {
-      try {
-        fm[m[1]] = JSON.parse(v.replace(/'/g, '"'));
-      } catch {
-        fm[m[1]] = v;
-      }
-    } else if (v === "true" || v === "false") {
-      fm[m[1]] = v === "true";
-    } else {
-      fm[m[1]] = v;
-    }
+    const m = FM_LINE_RE.exec(line);
+    if (m) fm[m[1]] = parseFmValue(m[2]);
   }
   return { fm, body };
 }
@@ -71,164 +79,282 @@ function entitySubtype(rel) {
 }
 
 function firstHeading(body) {
-  const m = body.match(/^#\s+(.+)$/m);
+  const m = /^#[ \t]+([^\r\n]+)/m.exec(body);
   return m ? m[1].trim() : null;
 }
 
+function wikilinkLabel(inner) {
+  const pipe = inner.indexOf("|");
+  if (pipe >= 0) return inner.slice(pipe + 1);
+  const hash = inner.indexOf("#");
+  if (hash >= 0) return inner.slice(0, hash);
+  return inner;
+}
+
+function consumeWikilink(body, i) {
+  const end = body.indexOf("]]", i + 2);
+  if (end < 0) return null;
+  return { text: wikilinkLabel(body.slice(i + 2, end)), next: end + 2 };
+}
+
+function consumeMarkdownLink(body, i) {
+  if (body[i] !== "[") return null;
+  const close = body.indexOf("]", i + 1);
+  if (close <= i || body[close + 1] !== "(") return null;
+  const urlEnd = body.indexOf(")", close + 2);
+  if (urlEnd <= close) return null;
+  return { text: body.slice(i + 1, close), next: urlEnd + 1 };
+}
+
+/** Linear scan — avoids nested-quantifier backtracking in wikilink/markdown regexes. */
+function replaceInlineLinks(body) {
+  let out = "";
+  let i = 0;
+  while (i < body.length) {
+    const wiki = body.startsWith("[[", i) ? consumeWikilink(body, i) : null;
+    const link = wiki || consumeMarkdownLink(body, i);
+    if (link) {
+      out += link.text;
+      i = link.next;
+    } else {
+      out += body[i];
+      i += 1;
+    }
+  }
+  return out;
+}
+
 function excerpt(body, max = 360) {
-  const text = body
-    .replace(/^#+\s+.+$/gm, "")
-    .replace(/\[\[([^\]|]+)(?:\|([^\]]+))?\]\]/g, (_, a, b) => b || a)
-    .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1")
-    .replace(/[*_`>#-]/g, " ")
-    .replace(/\s+/g, " ")
+  const text = replaceInlineLinks(body.replaceAll(/^#+[ \t]+[^\r\n]+/gm, ""))
+    .replaceAll(/[*_`>#-]/g, " ")
+    .replaceAll(/\s+/g, " ")
     .trim();
   if (text.length <= max) return text;
   return text.slice(0, max - 1).trimEnd() + "…";
 }
 
-function extractLinks(body) {
+function labeledRels(fm) {
   const out = [];
-  WIKILINK_RE.lastIndex = 0;
-  let m;
-  while ((m = WIKILINK_RE.exec(body)) !== null) {
-    const target = m[1].trim().replace(/\\/g, "/");
-    if (target) out.push(target);
+  for (const key of LABELED_REL_KEYS) {
+    const arr = fm[key];
+    if (!Array.isArray(arr)) continue;
+    for (const item of arr) {
+      if (!item || typeof item !== "object") continue;
+      const target = String(item.target || "").trim();
+      const label = String(item.rel || "mentions").trim();
+      if (target) out.push({ target, label });
+    }
   }
-  return [...new Set(out)];
+  return out;
+}
+
+function extractLinks(body) {
+  const out = new Set();
+  let i = 0;
+  while (i < body.length) {
+    if (!body.startsWith("[[", i)) {
+      i += 1;
+      continue;
+    }
+    const end = body.indexOf("]]", i + 2);
+    if (end < 0) break;
+    const inner = body.slice(i + 2, end);
+    const cut = Math.min(
+      ...[inner.indexOf("|"), inner.indexOf("#")].filter((n) => n >= 0).concat([inner.length]),
+    );
+    const target = inner.slice(0, cut).trim().replaceAll("\\", "/");
+    if (target) out.add(target);
+    i = end + 2;
+  }
+  return [...out];
 }
 
 function normalizeKey(s) {
   return String(s || "")
     .trim()
     .toLowerCase()
-    .replace(/\\/g, "/")
+    .replaceAll("\\", "/")
     .replace(/\.md$/i, "");
 }
 
+function parseTags(tags) {
+  if (Array.isArray(tags)) return tags.map(String);
+  if (typeof tags === "string") return tags.split(/[, ]+/).filter(Boolean);
+  return [];
+}
+
+function writeGraph(graph) {
+  fs.mkdirSync(path.dirname(OUT), { recursive: true });
+  fs.writeFileSync(OUT, JSON.stringify(graph, null, 1) + "\n");
+}
+
+function writeEmptyGraph() {
+  console.warn("WARN: vault/ missing — writing empty graph.json");
+  const empty = {
+    generated_at: new Date().toISOString(),
+    schema_version: 1,
+    source: "vault/",
+    stats: { nodes: 0, edges: 0, unresolved: 0 },
+    nodes: [],
+    edges: [],
+  };
+  writeGraph(empty);
+  return empty;
+}
+
+function createState() {
+  return {
+    nodes: [],
+    byId: new Map(),
+    aliasIndex: new Map(), // normalized alias → id
+    edges: [],
+    edgeKeys: new Set(),
+    unresolved: 0,
+    unresolvedSamples: [],
+  };
+}
+
+function addAlias(state, alias, id) {
+  const k = normalizeKey(alias);
+  if (!k) return;
+  if (!state.aliasIndex.has(k)) state.aliasIndex.set(k, id);
+}
+
+function processFile(full, state) {
+  const rel = path.relative(VAULT, full).split(path.sep).join("/");
+  const id = rel.replace(/\.md$/i, "");
+  const raw = fs.readFileSync(full, "utf8");
+  const { fm, body } = splitFrontmatter(raw);
+  const title = firstHeading(body) || path.basename(id);
+  const kind = kindFromRel(rel);
+  const tags = parseTags(fm.tags);
+
+  const node = {
+    id,
+    title,
+    kind,
+    folder: rel.split("/").slice(0, -1).join("/") || "",
+    entity_group: entitySubtype(rel),
+    date: fm.date || null,
+    case_id: fm.case_id || (kind === "case" ? path.basename(id) : null),
+    crime_type: fm.crime_type || null,
+    bureau: fm.bureau || null,
+    area: fm.area || null,
+    tags,
+    links: extractLinks(body),
+    rels: labeledRels(fm),
+    excerpt: excerpt(body),
+    path: rel,
+  };
+  state.nodes.push(node);
+  state.byId.set(id, node);
+
+  addAlias(state, id, id);
+  addAlias(state, path.basename(id), id);
+  addAlias(state, title, id);
+  if (fm.case_id) addAlias(state, String(fm.case_id), id);
+}
+
+function createUnresolvedNode(rawTarget, id) {
+  return {
+    id,
+    title: rawTarget,
+    kind: "unresolved",
+    folder: "",
+    entity_group: null,
+    date: null,
+    case_id: null,
+    crime_type: null,
+    bureau: null,
+    area: null,
+    tags: [],
+    links: [],
+    rels: [],
+    excerpt: "",
+    path: null,
+  };
+}
+
+function pushEdge(state, source, targetId, label) {
+  if (!targetId || targetId === source) return;
+  const ek = `${source}→${targetId}→${label}`;
+  if (state.edgeKeys.has(ek)) return;
+  state.edgeKeys.add(ek);
+  state.edges.push({ source, target: targetId, label: label || "mentions" });
+}
+
+function resolveTarget(state, rawTarget) {
+  let targetId = state.aliasIndex.get(normalizeKey(rawTarget));
+  if (!targetId) {
+    const base = normalizeKey(String(rawTarget).split("/").pop());
+    targetId = state.aliasIndex.get(base);
+  }
+  if (targetId) return targetId;
+
+  state.unresolved++;
+  if (state.unresolvedSamples.length < 12) {
+    state.unresolvedSamples.push({ from: "?", to: rawTarget });
+  }
+  const danglingId = `unresolved:${rawTarget}`;
+  if (!state.byId.has(danglingId)) {
+    const dang = createUnresolvedNode(rawTarget, danglingId);
+    state.nodes.push(dang);
+    state.byId.set(danglingId, dang);
+    addAlias(state, rawTarget, danglingId);
+  }
+  return danglingId;
+}
+
+function stripRelSuffix(rawTarget) {
+  const s = String(rawTarget);
+  const idx = s.indexOf("|rel:");
+  return idx < 0 ? s : s.slice(0, idx);
+}
+
+function resolveAndPushEdges(node, state) {
+  for (const rel of node.rels || []) {
+    pushEdge(state, node.id, resolveTarget(state, rel.target), rel.label);
+  }
+  for (const rawTarget of node.links) {
+    const clean = stripRelSuffix(rawTarget);
+    pushEdge(state, node.id, resolveTarget(state, clean), "mentions");
+  }
+}
+
+function computeDegrees(edges) {
+  const degrees = new Map();
+  for (const e of edges) {
+    degrees.set(e.source, (degrees.get(e.source) || 0) + 1);
+    degrees.set(e.target, (degrees.get(e.target) || 0) + 1);
+  }
+  return degrees;
+}
+
 function build() {
-  if (!fs.existsSync(VAULT)) {
-    console.warn("WARN: vault/ missing — writing empty graph.json");
-    const empty = {
-      generated_at: new Date().toISOString(),
-      schema_version: 1,
-      source: "vault/",
-      stats: { nodes: 0, edges: 0, unresolved: 0 },
-      nodes: [],
-      edges: [],
-    };
-    fs.mkdirSync(path.dirname(OUT), { recursive: true });
-    fs.writeFileSync(OUT, JSON.stringify(empty, null, 1) + "\n");
-    return empty;
-  }
+  if (!fs.existsSync(VAULT)) return writeEmptyGraph();
 
-  const files = walkMd(VAULT);
-  const nodes = [];
-  const byId = new Map();
-  const aliasIndex = new Map(); // normalized alias → id
+  const state = createState();
+  for (const full of walkMd(VAULT)) processFile(full, state);
 
-  function addAlias(alias, id) {
-    const k = normalizeKey(alias);
-    if (!k) return;
-    if (!aliasIndex.has(k)) aliasIndex.set(k, id);
-  }
-
-  for (const full of files) {
-    const rel = path.relative(VAULT, full).split(path.sep).join("/");
-    const id = rel.replace(/\.md$/i, "");
-    const raw = fs.readFileSync(full, "utf8");
-    const { fm, body } = splitFrontmatter(raw);
-    const title = firstHeading(body) || path.basename(id);
-    const kind = kindFromRel(rel);
-    const tags = Array.isArray(fm.tags)
-      ? fm.tags.map(String)
-      : typeof fm.tags === "string"
-        ? fm.tags.split(/[, ]+/).filter(Boolean)
-        : [];
-
-    const node = {
-      id,
-      title,
-      kind,
-      folder: rel.split("/").slice(0, -1).join("/") || "",
-      entity_group: entitySubtype(rel),
-      date: fm.date || null,
-      case_id: fm.case_id || (kind === "case" ? path.basename(id) : null),
-      crime_type: fm.crime_type || null,
-      tags,
-      links: extractLinks(body),
-      excerpt: excerpt(body),
-      path: rel,
-    };
-    nodes.push(node);
-    byId.set(id, node);
-
-    addAlias(id, id);
-    addAlias(path.basename(id), id);
-    addAlias(title, id);
-    if (fm.case_id) addAlias(String(fm.case_id), id);
-  }
-
-  const edges = [];
-  const edgeKeys = new Set();
-  let unresolved = 0;
-  const unresolvedSamples = [];
-
-  for (const node of nodes) {
-    for (const rawTarget of node.links) {
-      const key = normalizeKey(rawTarget);
-      let targetId = aliasIndex.get(key);
-      if (!targetId) {
-        // try basename of path-like link
-        const base = normalizeKey(rawTarget.split("/").pop());
-        targetId = aliasIndex.get(base);
-      }
-      if (!targetId) {
-        unresolved++;
-        if (unresolvedSamples.length < 12) {
-          unresolvedSamples.push({ from: node.id, to: rawTarget });
-        }
-        // Keep dangling node so the brain shows missing links (Obsidian-like)
-        const danglingId = `unresolved:${rawTarget}`;
-        if (!byId.has(danglingId)) {
-          const dang = {
-            id: danglingId,
-            title: rawTarget,
-            kind: "unresolved",
-            folder: "",
-            entity_group: null,
-            date: null,
-            case_id: null,
-            crime_type: null,
-            tags: [],
-            links: [],
-            excerpt: "",
-            path: null,
-          };
-          nodes.push(dang);
-          byId.set(danglingId, dang);
-          addAlias(rawTarget, danglingId);
-        }
-        targetId = danglingId;
-      }
-      if (targetId === node.id) continue;
-      const ek = `${node.id}→${targetId}`;
-      if (edgeKeys.has(ek)) continue;
-      edgeKeys.add(ek);
-      edges.push({ source: node.id, target: targetId });
-    }
+  // Only nodes that existed before resolution; new unresolved nodes are appended after this count.
+  const nodeCount = state.nodes.length;
+  for (let i = 0; i < nodeCount; i++) {
+    const node = state.nodes[i];
+    if (node.kind === "crime_type" || node.kind === "daily") continue;
+    resolveAndPushEdges(node, state);
   }
 
   // Strip heavy fields from published nodes (keep links count via edges)
-  const publishedNodes = nodes.map(({ links, ...rest }) => ({
+  const degrees = computeDegrees(state.edges);
+  const publishedNodes = state.nodes.map(({ links, rels, ...rest }) => ({
     ...rest,
-    degree: edges.filter((e) => e.source === rest.id || e.target === rest.id).length,
+    degree: degrees.get(rest.id) || 0,
   }));
 
   const stats = {
     nodes: publishedNodes.length,
-    edges: edges.length,
-    unresolved,
+    edges: state.edges.length,
+    unresolved: state.unresolved,
     by_kind: {},
   };
   for (const n of publishedNodes) {
@@ -237,19 +363,18 @@ function build() {
 
   const graph = {
     generated_at: new Date().toISOString(),
-    schema_version: 1,
+    schema_version: 2,
     source: "vault/",
     note: "Derived from Obsidian wikilinks. Local vault/ is the second brain; this file is the Pages view.",
     stats,
-    unresolved_samples: unresolvedSamples,
+    unresolved_samples: state.unresolvedSamples,
     nodes: publishedNodes,
-    edges,
+    edges: state.edges,
   };
 
-  fs.mkdirSync(path.dirname(OUT), { recursive: true });
-  fs.writeFileSync(OUT, JSON.stringify(graph, null, 1) + "\n");
+  writeGraph(graph);
   console.log(
-    `graph.json: ${stats.nodes} nodes / ${stats.edges} edges · unresolved=${unresolved} · ${OUT}`
+    `graph.json: ${stats.nodes} nodes / ${stats.edges} edges · unresolved=${state.unresolved} · ${OUT}`
   );
   return graph;
 }

@@ -8,45 +8,81 @@ import { processLineEvents } from "./line/process.js";
 import { requireClaude, requireRead, resolveActor } from "./auth.js";
 import { todayIct } from "./line/url.js";
 
+function asPlainString(v: unknown, fallback = "-"): string {
+  return typeof v === "string" && v ? v : fallback;
+}
+
+function groupIdOf(src: Record<string, unknown>): string {
+  if (typeof src.groupId === "string") return src.groupId;
+  if (typeof src.roomId === "string") return src.roomId;
+  return "-";
+}
+
+type WebhookEventLog = {
+  eventsFile: string;
+  ok: boolean;
+  ev: Record<string, unknown>;
+  src: Record<string, unknown>;
+  msg: Record<string, unknown>;
+  gid: string;
+  text: string;
+  alt: string;
+};
+
+function appendWebhookEvent(entry: WebhookEventLog) {
+  const { eventsFile, ok, ev, src, msg, gid, text, alt } = entry;
+  fs.appendFileSync(
+    eventsFile,
+    `${JSON.stringify({
+      at: new Date().toISOString(),
+      sig_ok: ok,
+      type: ev.type,
+      source_type: typeof src.type === "string" ? src.type : null,
+      group_id: gid === "-" ? null : gid,
+      message_type: typeof msg.type === "string" ? msg.type : null,
+      message_id: msg.id ?? null,
+      text: text ? text.slice(0, 2000) : null,
+      alt_text: alt ? alt.slice(0, 500) : null,
+    })}\n`,
+    "utf8",
+  );
+}
+
+function summarizeWebhookEvents(
+  raw: Buffer,
+  ok: boolean,
+  eventsFile: string,
+): string {
+  let summary = `ok=${ok} bytes=${raw.length}`;
+  try {
+    const j = JSON.parse(raw.toString("utf8")) as { events?: Array<Record<string, unknown>> };
+    const evs = Array.isArray(j.events) ? j.events : [];
+    summary += ` events=${evs.length}`;
+    for (const ev of evs.slice(0, 20)) {
+      const msg = (ev.message ?? {}) as Record<string, unknown>;
+      const src = (ev.source ?? {}) as Record<string, unknown>;
+      const text = typeof msg.text === "string" ? msg.text : "";
+      const alt = typeof msg.altText === "string" ? msg.altText : "";
+      const gid = groupIdOf(src);
+      const srcType = asPlainString(src.type);
+      const msgType = asPlainString(msg.type);
+      summary += ` | type=${ev.type} src=${srcType} group=${gid} msg=${msgType} textLen=${text.length} altLen=${alt.length}`;
+      if (text) summary += ` textPreview=${JSON.stringify(text.slice(0, 180))}`;
+      appendWebhookEvent({ eventsFile, ok, ev, src, msg, gid, text, alt });
+    }
+  } catch {
+    summary += " parse=fail";
+  }
+  return summary;
+}
+
 function logWebhookRaw(raw: Buffer, ok: boolean) {
   try {
     const dir = path.resolve(config.exportPath, "..", "..", "logs");
     fs.mkdirSync(dir, { recursive: true });
     const file = path.join(dir, "webhook-raw.log");
     const eventsFile = path.join(dir, "webhook-events.jsonl");
-    let summary = `ok=${ok} bytes=${raw.length}`;
-    try {
-      const j = JSON.parse(raw.toString("utf8")) as { events?: Array<Record<string, unknown>> };
-      const evs = Array.isArray(j.events) ? j.events : [];
-      summary += ` events=${evs.length}`;
-      for (const ev of evs.slice(0, 20)) {
-        const msg = (ev.message ?? {}) as Record<string, unknown>;
-        const src = (ev.source ?? {}) as Record<string, unknown>;
-        const text = typeof msg.text === "string" ? msg.text : "";
-        const alt = typeof msg.altText === "string" ? msg.altText : "";
-        const gid = typeof src.groupId === "string" ? src.groupId : typeof src.roomId === "string" ? src.roomId : "-";
-        summary += ` | type=${ev.type} src=${src.type ?? "-"} group=${gid} msg=${msg.type ?? "-"} textLen=${text.length} altLen=${alt.length}`;
-        if (text) summary += ` textPreview=${JSON.stringify(text.slice(0, 180))}`;
-        // Compact trail for forensics when a URL is "missing" from Excel/JSON
-        fs.appendFileSync(
-          eventsFile,
-          `${JSON.stringify({
-            at: new Date().toISOString(),
-            sig_ok: ok,
-            type: ev.type,
-            source_type: src.type ?? null,
-            group_id: gid === "-" ? null : gid,
-            message_type: msg.type ?? null,
-            message_id: msg.id ?? null,
-            text: text ? text.slice(0, 2000) : null,
-            alt_text: alt ? alt.slice(0, 500) : null,
-          })}\n`,
-          "utf8",
-        );
-      }
-    } catch {
-      summary += " parse=fail";
-    }
+    const summary = summarizeWebhookEvents(raw, ok, eventsFile);
     fs.appendFileSync(file, `${new Date().toISOString()} ${summary}\n`, "utf8");
   } catch {
     /* ignore logging failures */
@@ -76,7 +112,7 @@ app.addContentTypeParser(
 
 getDb();
 
-app.get("/health", async () => ({
+app.get("/health", () => ({
   ok: true,
   service: "news-hub",
   today_ict: todayIct(),
@@ -115,13 +151,13 @@ async function handleLineWebhook(req: FastifyRequest, reply: FastifyReply) {
 app.post("/line/webhook", handleLineWebhook);
 app.post("/webhook/line", handleLineWebhook);
 
-app.get("/v1/line_files", { preHandler: requireRead }, async (req) => {
+app.get("/v1/line_files", { preHandler: requireRead }, (req) => {
   const q = req.query as { date?: string };
   const date = q.date || todayIct();
   return { date, files: listLineFiles(date) };
 });
 
-app.get("/v1/line_links", { preHandler: requireRead }, async (req) => {
+app.get("/v1/line_links", { preHandler: requireRead }, (req) => {
   const q = req.query as { date?: string; status?: string; days?: string };
   if (q.days) {
     const days = Math.min(30, Math.max(1, Number(q.days) || 1));
@@ -131,7 +167,7 @@ app.get("/v1/line_links", { preHandler: requireRead }, async (req) => {
   return { date, links: listLineLinks(date, q.status) };
 });
 
-app.post("/v1/line_links/mark", { preHandler: requireClaude }, async (req, reply) => {
+app.post("/v1/line_links/mark", { preHandler: requireClaude }, (req, reply) => {
   const body = req.body as {
     ids?: number[];
     status?: "used" | "skipped";
@@ -146,12 +182,12 @@ app.post("/v1/line_links/mark", { preHandler: requireClaude }, async (req, reply
   return { updated: n };
 });
 
-app.get("/v1/run_status", { preHandler: requireRead }, async (req) => {
+app.get("/v1/run_status", { preHandler: requireRead }, (req) => {
   const q = req.query as { task?: string };
   return getRunStatus(q.task || "task-2");
 });
 
-app.put("/v1/run_status", { preHandler: requireClaude }, async (req, reply) => {
+app.put("/v1/run_status", { preHandler: requireClaude }, (req, reply) => {
   const body = req.body as {
     task?: string;
     run_date?: string;
@@ -172,7 +208,7 @@ app.put("/v1/run_status", { preHandler: requireClaude }, async (req, reply) => {
   return { ok: true };
 });
 
-app.get("/v1/registry", { preHandler: requireRead }, async () => {
+app.get("/v1/registry", { preHandler: requireRead }, () => {
   // Task-2 uses LINE only; registry endpoint reserved for Task-1 / future.
   return {
     note: "registry served from plugin/reference; use local files for Task-1",
@@ -180,6 +216,38 @@ app.get("/v1/registry", { preHandler: requireRead }, async () => {
   };
 });
 
+const IPV4_MAPPED_PREFIX = "::ffff:";
+
+function isLoopbackAddress(ip: string): boolean {
+  if (ip === "::1" || ip === "127.0.0.1") return true;
+  if (!ip.startsWith(IPV4_MAPPED_PREFIX)) return false;
+  return isLoopbackAddress(ip.slice(IPV4_MAPPED_PREFIX.length));
+}
+
+function isLocal(req: FastifyRequest) {
+  return isLoopbackAddress(req.ip || "");
+}
+
+async function allowReadOrLocal(req: FastifyRequest, reply: FastifyReply) {
+  if (isLocal(req)) return;
+  await requireRead(req, reply);
+}
+
+app.get("/v1/brain/search", { preHandler: allowReadOrLocal }, async (req) => {
+  const q = req.query as { q?: string; type?: string; limit?: string };
+  const query = (q.q || "").trim();
+  if (!query) return { query: "", cases: [], entities: [] };
+  const { searchBrain } = await import("./brain/store.js");
+  return searchBrain(query, q.type, Number(q.limit) || 30);
+});
+
+app.get("/v1/brain/timeline", { preHandler: allowReadOrLocal }, async (req) => {
+  const q = req.query as { since?: string; until?: string; bureau?: string; crime_type?: string };
+  const since = q.since || "1970-01-01";
+  const until = q.until || "2999-12-31";
+  const { timelineBrain } = await import("./brain/store.js");
+  return timelineBrain(since, until, q.bureau, q.crime_type);
+});
 /** Rewrite continuous Excel/JSON from the live DB (avoids second-process sqlite crash). */
 app.post("/v1/export/continuous", { preHandler: requireClaude }, async (req) => {
   const { writeContinuousIntakeExcel } = await import("./export/continuous.js");
@@ -188,10 +256,9 @@ app.post("/v1/export/continuous", { preHandler: requireClaude }, async (req) => 
   return result;
 });
 
-/** Localhost-friendly export for scheduled tasks (no bearer required from 127.0.0.1). */
+/** Localhost-friendly export for scheduled tasks (no bearer required from loopback). */
 app.post("/v1/export/continuous/local", async (req, reply) => {
-  const ip = req.ip || "";
-  if (ip !== "127.0.0.1" && ip !== "::1" && ip !== ":ffff:127.0.0.1") {
+  if (!isLoopbackAddress(req.ip || "")) {
     return reply.code(403).send({ error: "localhost_only" });
   }
   const { writeContinuousIntakeExcel } = await import("./export/continuous.js");
@@ -217,12 +284,11 @@ process.on("unhandledRejection", (err) => {
   logFatal("unhandledRejection", err);
 });
 
-const start = async () => {
+try {
   await app.listen({ port: config.port, host: "0.0.0.0" });
   app.log.info(`news-hub on :${config.port}`);
-};
-
-start().catch((err) => {
+} catch (err) {
   logFatal("listen_failed", err);
-  process.exit(1);
-});
+  console.error(err);
+  process.exitCode = 1;
+}

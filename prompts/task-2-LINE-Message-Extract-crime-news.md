@@ -21,6 +21,12 @@ trigger:
 | ก่อนหน้า | — | webhook เก็บลิงก์/ไฟล์ตลอดวัน → `server/exports/line_intake_continuous.*` |
 | กฎเนื้อหา/taxonomy/จริยธรรม | ในไฟล์ Task 1 / `police-crime-news-pipeline.md` | **ใช้ชุดเดียวกัน** |
 
+## บังคับ v2 (เหมือน Task 1)
+- โพสต์ยังแยกหัวข่าว คง `content` เดิม
+- เติม `exec_blurb` `analysis_notes` `primary_bureau` `area` `status_th` `gang_or_group` `references` `format_version: 2`
+- `related_cases` ต้องมาจาก MCP `brain_search` (หรือ `GET /v1/brain/search`) ก่อน ห้ามเดา ว่างได้เป็น `[]`
+- PDF รวมจาก HTML ไม่จัดโครงตาม บช.
+
 ไหลต้นทาง:
 ```
 LINE กลุ่ม → Bot → Webhook → SQLite → line_intake_continuous.{json,xlsx}

@@ -14,7 +14,9 @@
 | `news_put_entities(payload)` | Task 1, 2 | cases/entities/relations → vault-build |
 | `run_status_get(task)` | ทุก task | preflight / ALREADY_COMPLETE |
 | `run_status_put(...)` | ทุก task | complete / partial / failed |
-| `brain_search` / `brain_timeline` / `brain_upsert` | Task 3 | Second Brain |
+| `brain_search(q, type?, limit?)` | Task 1, 2 (+ enrich) | ค้นคดี/เอนทิตีใน SQLite ก่อนโยง related |
+| `brain_timeline(since?, until?, bureau?, crime_type?)` | Task 1, 2 | ไทม์ไลน์คดีตามช่วงวัน |
+| `brain_upsert(kind, ...)` | รีวิวรายสัปดาห์ | บันทึก merge_proposal / entity_timeline / weekly_note (ไม่ลบของเก่า) |
 
 ## Auth
 

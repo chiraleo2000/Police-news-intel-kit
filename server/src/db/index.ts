@@ -14,6 +14,9 @@ export function getDb(): Database.Database {
   db.pragma("journal_mode = WAL");
   db.pragma("busy_timeout = 8000");
   db.exec(SCHEMA_SQL);
+  // Keep the handle alive for the process lifetime. Node 24 + better-sqlite3
+  // aborts if the native Database is collected while statements still exist.
+  (globalThis as typeof globalThis & { __newsHubDb?: Database.Database }).__newsHubDb = db;
   return db;
 }
 
