@@ -161,7 +161,8 @@ DROP → บันทึกใน Completion Report อย่างเดีย�
    - ห้ามโยงเพียงเพราะประเภทคดีและจังหวัดตรงกัน
    - `relation` เป็น `เกี่ยวข้องกับ` หรือ `ติดตามจาก` และแถว `rel_cases` ใช้ป้ายเดียวกัน พร้อม `title` ของอีกหัวข่าว
 6. `analysis_notes` ของหัวนี้: มีเส้นข้ามข่าวให้เอ่ยชื่อหัวข่าวอีกเรื่องและป้ายไทย ไม่มีให้เขียน `ไม่มีเส้นไปข่าวอื่น — ไม่ใช่เหตุการณ์เดียวกันหรือการติดตามผลที่ชี้ได้` ห้ามยัดเส้นให้ครบทุกข่าว
-7. ส่วน **「ข้อมูลกราฟของข่าวนี้」** ใน HTML/MD/PDF และโน้ตคดี: รายการป้ายไทยจริง ชี้ `github-pages/data/graphs/{case_id}.svg` และ `.json` ถ้าไม่มีเส้นไปข่าวอื่นให้เขียนประโยคในข้อ 6 ซ้ำ
+7. ส่วน **「ข้อมูลกราฟของข่าวนี้」** ใน HTML/MD/PDF และโน้ตคดี: รายการป้ายไทยจริง ชี้ `github-pages/data/graphs/{case_id}.svg` และ `.json` ถ้าไม่มีเส้นไปข่าวอื่นให้เขียนประโยคในข้อ 6 ซ้ำ  
+   ก่อนแปลง PDF รัน `node ops/embed-graphs-in-html.js` ให้ฝัง SVG ของแต่ละหัวเข้าใน `{DATE}_crime_line.html` PDF ต้องมีทั้งเนื้อข่าวและภาพกราฟ ห้ามแปลง HTML ที่ยังไม่มี `<section class="story-graph">`
 
 หลังครบทุกหัวในชุด:
 8. `_brain_daily.md` จากเอนทิตีที่ผ่านข้อ 3–4 เท่านั้น timeline สั้น ชื่อซ้ำ → `merge_proposal` สถานะ `proposed` ห้ามรวมเอง
@@ -217,6 +218,8 @@ Frontmatter คดีต้องมี: `type: case`, `date`, `crime_type`, `se
 
 ### 3) PDF + Infographic + แท็บดาวน์โหลดบน Pages
 `Document/{DATE}_CrimeLine/{DATE}_crime_line.{html,pdf}` และ `{DATE}_infographic_line.{html,png}` (THSarabun)  
+หลัง rebuild รัน `node ops/embed-graphs-in-html.js` แล้ว `python ops/html-to-pdf.py`  
+PDF ประกอบจาก HTML ของแต่ละหัวข่าวรวมภาพกราฟ ego ที่ฝังไว้  
 คัดลอกไป `github-pages/data/downloads/{DATE}_crime_line.pdf` และ `{DATE}_infographic_line.png`
 
 ## Pipeline — one run

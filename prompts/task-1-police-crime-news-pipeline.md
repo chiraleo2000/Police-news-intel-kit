@@ -190,6 +190,7 @@ manifest อ่านไม่ได้ → หยุด `PREFLIGHT_FAILED` · �
    - ถ้าไม่มีเส้นไปข่าวอื่น ให้เขียนประโยคในข้อ 6 ซ้ำในส่วนนี้
    - ชี้ไฟล์ `github-pages/data/graphs/{case_id}.svg` และ `.json`
    - ยังไม่รัน rebuild ในข้อนี้
+   - หลัง rebuild แล้ว ก่อนแปลง PDF ต้องฝัง SVG ของหัวนั้นเข้าใน HTML (ขั้นตอน PDF ด้านล่าง) ไม่ใช่แค่ลิงก์ไฟล์
 
 หลังครบทุกหัวข่าวในชุด จึงทำสามข้อนี้ตามลำดับ ห้ามสลับ:
 8. เขียน `_brain_daily.md` จากเอนทิตีที่ผ่านข้อ 3–4 ของรอบนี้เท่านั้น timeline สั้นต่อหน่วยที่ปรากฏวันนี้ ชื่อซ้ำ → `merge_proposal` สถานะ `proposed` เท่านั้น ห้ามรวมเอง
@@ -215,7 +216,10 @@ manifest อ่านไม่ได้ → หยุด `PREFLIGHT_FAILED` · �
    - ในโน้ตคดีและบท HTML ใส่ลิงก์/ฝัง `graphs/{case_id}.svg` และสรุปเส้นป้ายไทยของคดีนั้น ถ้าไม่มีเส้นไปข่าวอื่นให้เขียนไว้ตรง ๆ
    - **ห้าม** พึ่ง `vault/10_Daily/{DATE}.md` เป็นผลลัพธ์หลัก · **ห้าม** สร้างโน้ตซ้ำสำหรับแหล่งที่ 2/3 ของเหตุการณ์เดียวกัน · **ห้าม** เขียนทับไฟล์วันอื่นที่ไม่ได้แตะ
 3. **PDF สำหรับดาวน์โหลด + Infographic** — HTML→PDF และ infographic HTML→PNG (THSarabun บังคับ)  
-   คัดลอกไป `github-pages/data/downloads/{DATE}_crime.pdf` และ `{DATE}_infographic.png` ด้วย
+   หลัง `rebuild-pages-feed.js` รัน `node ops/embed-graphs-in-html.js` เพื่อฝังภาพกราฟ (SVG inline) และรายการเส้นไทยเข้าใน `{DATE}_crime.html` ของแต่ละหัวข่าว แล้วจึงแปลง PDF  
+   PDF ต้องมีทั้งเนื้อข่าวจาก HTML และภาพกราฟของหัวนั้น ห้ามแปลงจาก HTML ที่ยังไม่มี `<section class="story-graph">`  
+   คัดลอกไป `github-pages/data/downloads/{DATE}_crime.pdf` และ `{DATE}_infographic.png` ด้วย  
+   แปลงได้ด้วย `python ops/html-to-pdf.py` (weasyprint → playwright → Edge)
 
 ท้ายรอบต้องพิมพ์ **ลิงก์ GitHub Pages**:
 - รายการข่าว: `{GITHUB_PAGES_BASE_URL}/#/{DATE}`
@@ -453,6 +457,8 @@ PNG: render ด้วย playwright / headless chrome (`--window-size=1080,<heig
 ถ้า render ไม่ได้ให้ลองเครื่องมือถัดไปตามลำดับเดียวกับ PDF และห้ามรายงานว่าข้าม
 
 ## รายงานฉบับเต็ม (`{DATE}_crime.html` / `.pdf`)
+- แต่ละหัวข่าวใน HTML ต้องตามด้วยส่วน **ข้อมูลกราฟของข่าวนี้**: ภาพ ego (`graphs/{case_id}.svg` ฝัง inline) + รายการเส้นภาษาไทย + บรรทัดเชื่อมข่าวอื่นหรือประโยคว่าไม่มีเส้นไปข่าวอื่น
+- รัน `node ops/embed-graphs-in-html.js` หลัง rebuild แล้วค่อย HTML→PDF เพื่อไม่ให้ PDF ขาดกราฟ
 - หน้าปก: วันที่ + executive summary 5–7 บรรทัด (ภาพรวม ประเภทที่พุ่งขึ้น รูปแบบมิจฉาชีพที่ขึ้นสูง ประเด็นตำรวจ)
 - **จัดเป็นหมวดตามประเภทอาชญากรรม** (เรียงตามจำนวนข่าว) แต่ละหมวด: จำนวนข่าว, ข่าวเรียงตาม severity, tag ของหมวด,
   กล่อง "แนวโน้ม/ข้อสังเกต" (จาก `trend_signal` ที่ซ้ำ ≥2 ข่าว และ `_trends.json`)

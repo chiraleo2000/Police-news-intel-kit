@@ -181,7 +181,7 @@ trigger:
    คำนวณต่อประเภทคดี: `today_count`, `avg_prev_7d`, `delta_pct`; ตั้ง `surge = true` เมื่อ `delta_pct ≥ +50%` และ `today_count ≥ 3`
    และต่อ MO/จังหวัดแบบเดียวกัน ถ้ามีข้อมูลย้อนหลัง <3 วัน ให้ตั้ง `baseline: "insufficient"` ห้ามอ้างแนวโน้ม
 7. สร้างไฟล์ JSON: `{DATE}_crime.json`, `_index.json`, `_by_crime_type.json`, `_by_agency.json`, `_hotspots.json`, `_tags.json`, `_alerts.json`, `_trends.json`
-   คัดลอกฟอนต์ THSarabun → `fonts/`; สร้าง `{DATE}_crime.html` → `{DATE}_crime.pdf` และ `{DATE}_infographic.html` → `{DATE}_infographic.png`
+   คัดลอกฟอนต์ THSarabun → `fonts/`; หลัง rebuild รัน `node ops/embed-graphs-in-html.js` ให้ฝัง SVG กราฟของแต่ละหัวเข้าใน `{DATE}_crime.html` แล้วจึง `{DATE}_crime.html` → `{DATE}_crime.pdf` และ `{DATE}_infographic.html` → `{DATE}_infographic.png` PDF ต้องมีทั้งเนื้อข่าวและภาพกราฟ
 8. อัปเดต `Document/manifest.json` (prepend, add-only); ตั้ง `meta.status = "published"`
    จากนั้น copy `{DATE}_crime.json`, `_hotspots.json`, `_alerts.json`, `_trends.json`, `manifest.json` ไป `github-pages/data/` (file copy เท่านั้น)
 9. Verify ทุกไฟล์มีอยู่และไม่ว่าง (json parse ได้, html >10KB, pdf >0, png >0) แล้วพิมพ์ Completion Report **จบ — ไม่ git push**
