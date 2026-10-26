@@ -77,7 +77,7 @@ DROP → บันทึกใน Completion Report อย่างเดีย�
 เพดาน: ≤40 URL เข้าชั้น 1; หลังกรองแล้ว fetch เต็ม ≤25 ลิงก์/รอบ (เรียง official ตร. → สื่ออาชญากรรม → อื่น)
 
 ## Run params
-`RUN_DATE` / `TARGET_DATE` = วันนี้ (Asia/Bangkok). Window = รายการที่ `received_at` อยู่ในวันนั้นเท่านั้น  
+`RUN_DATE` / `TARGET_DATE` = วันนี้ (Asia/Bangkok). Window = รายการที่ `received_at` ขึ้นต้นด้วย `RUN_DATE` เท่านั้น ห้ามตัดด้วยเกณฑ์ 24 ชั่วโมงย้อนหลัง เพราะจะทิ้งลิงก์ของวันเดียวกันที่เข้ามาก่อน 08:30  
 รันอัตโนมัติ — ห้ามถามคำถามกลับ  
 `run_status_get(task="task-2")` ถ้าวันนี้ `complete` และไม่มี `force` → `ALREADY_COMPLETE`  
 ไม่มีลิงก์ของ RUN_DATE ใน continuous export → หยุด `PREFLIGHT_FAILED: missing line links for date`
@@ -158,6 +158,7 @@ DROP → บันทึกใน Completion Report อย่างเดีย�
    `[[wikilink]]` เปล่ากลายเป็น `mentions` ห้ามใช้เป็นเส้น ถ้ามีวงเล็บเหลี่ยมต้องมีแถว `rel_*` คู่กัน  
    ประเภทอาชญากรรมอยู่ที่ `crime_type` อัปเดต `40_CrimeTypes` เป็นข้อความ add-only
 5. เส้นไปข่าวอื่นหลังค้น brain:
+   - ผล `brain_search` / `brain_timeline` เป็นรายชื่อให้เทียบ ไม่ใช่เส้นสำเร็จ `brain_timeline` ที่กรองด้วยประเภทคดีคืนทุกข่าวของประเภทนั้น ห้ามคัดลอกทั้งก้อนเข้า `related_cases`
    - เก็บเมื่อเป็นเหตุการณ์เดียวกันหรือการติดตามผลจริง ไม่แน่ → `related_cases: []` และ `rel_cases` ว่าง
    - ห้ามโยงเพียงเพราะประเภทคดีและจังหวัดตรงกัน
    - `relation` เป็น `เกี่ยวข้องกับ` หรือ `ติดตามจาก` และแถว `rel_cases` ใช้ป้ายเดียวกัน พร้อม `title` ของอีกหัวข่าว
@@ -174,7 +175,11 @@ DROP → บันทึกใน Completion Report อย่างเดีย�
 หลังครบทุกหัวในชุด:
 8. `_brain_daily.md` จากเอนทิตีที่ผ่านข้อ 3–4 เท่านั้น timeline สั้น ชื่อซ้ำ → `merge_proposal` สถานะ `proposed` ห้ามรวมเอง
 9. `_bd_leads.json` จาก `reference/budget-fy2570-police-related.json` เท่านั้น ห้ามเดางบ ใส่บทวิเคราะห์ใน PDF และโน้ต Obsidian ที่เกี่ยวข้อง ห้ามแตะโน้ต `generated: false`
-10. รัน `node ops/rebuild-pages-feed.js` ตรวจ `graph.json` และ `graphs/{case_id}.svg` + `.json` ต่อทุกหัวในชุด ป้ายเส้นที่รอบนี้สร้างต้องเป็นไทยและไม่มี `mentions` ถ้าไม่มีไฟล์ให้แก้โน้ตแล้ว rebuild ซ้ำ ห้าม git push
+10. ลำดับปิดงานเมื่อมี NEW หรือ DUP_EVENT ห้ามสลับ และห้าม git push
+    1. เขียน JSON ของชุดนี้และ vault ให้ครบก่อน `posts[].id` กับชื่อโน้ตเป็น `YYYYMMDD-slug` เช่น `20261026-drug-01` ห้ามใช้ `2026-10-26-...`
+    2. `node ops/rebuild-pages-feed.js` ครั้งเดียว ตรวจ `graph.json` และ `graphs/{case_id}.svg` + `.json` ป้ายเส้นที่รอบนี้สร้างต้องเป็นไทยและไม่มี `mentions` ถ้าไฟล์กราฟไม่มี ให้แก้โน้ตแล้ว rebuild อีกครั้งก่อนไปขั้นถัดไป
+    3. `node ops/embed-graphs-in-html.js` ฝัง SVG เข้า `{DATE}_crime_line.html` ทุกหัวในชุดต้องมี `<section class="story-graph">`
+    4. `python ops/html-to-pdf.py` แล้วคัดลอก PDF และ infographic ไป `github-pages/data/downloads/`
 
 ถ้าหลังกรองแล้ว **0 ข่าว** (ไม่มี NEW และไม่มี DUP_EVENT) → ข้ามเช็คลิสต์ brain/BD/PDF เนื้อหาเต็มได้ รายงาน `status=complete` พร้อม `links_skipped` + ไฟล์ JSON ว่าง/`posts:[]` ขั้นต่ำ (ประหยัด token) ห้ามสร้างเส้นหรือโหนดปลอมให้กราฟไม่ว่าง
 
@@ -193,8 +198,9 @@ DROP → บันทึกใน Completion Report อย่างเดีย�
 | `manifest.json` | prepend วัน `DATE` แบบ add-only; ระบุ `path` ชี้ไฟล์ crime_line |
 
 `posts[]` ต้องมีอย่างน้อย: `id, slug, title, topic, agency, origin, priority, severity, verification, content (≥350 คำ), source_url, corroborating_sources[], tags, category_label, published_at`  
-`topic` / `category_label` = **ชื่อกลุ่ม taxonomy ภาษาไทยเต็ม** (เช่น อาชญากรรมไซเบอร์และออนไลน์)  
-`corroborating_sources` = ลิสต์แหล่งทั้งหมดที่รายงานเหตุการณ์เดียวกัน (หลัง merge) — UI ใช้กรองประเภท/แท็กและแสดงลิงก์แหล่งใน blog
+`topic` / `category_label` = **ชื่อกลุ่ม taxonomy ภาษาไทยเต็ม** (เช่น อาชญากรรมไซเบอร์และออนไลน์) ช่องกรองประเภทอาชญากรรมอ่านค่านี้ ส่วนช่องแท็กอ่าน `tags`  
+`corroborating_sources` = ลิสต์แหล่งทั้งหมดที่รายงานเหตุการณ์เดียวกัน (หลัง merge) หน้าเว็บใช้แสดงลิงก์แหล่ง ไม่ใช้เป็นตัวกรองประเภทหรือแท็ก  
+โพสต์ต้องมีฟิลด์ v2 ครบ: `format_version: 2` `exec_blurb` `analysis_notes` `primary_bureau` `area` `status_th` `gang_or_group` `related_cases` `references`
 
 อัปเดต `manifest.json` แบบ add-only และใส่:
 ```json
@@ -203,7 +209,7 @@ DROP → บันทึกใน Completion Report อย่างเดีย�
   {"label": "Infographic LINE", "path": "downloads/{DATE}_infographic_line.png", "kind": "image"}
 ]
 ```
-หลัง copy ไฟล์เว็บ **บังคับรัน** `node ops/rebuild-pages-feed.js` เพื่ออัปเดต `feed.json` + `graph.json` + `data/graphs/{case_id}.svg`  
+หลัง copy ไฟล์เว็บ ให้ปิดงานตามเช็คลิสต์ข้อ 10: rebuild ครั้งเดียว แล้วฝังกราฟ แล้วแปลง PDF  
 (UI อ่าน feed เป็นหลัก · แท็บ **ข้อมูลกราฟ** อ่าน graph · หน้ารายโพสต์แสดง ego subgraph)
 
 ### 2) Obsidian — 1 เหตุการณ์ = 1 โน้ต (รวมแหล่ง ไม่แยกตามลิงก์ LINE)
@@ -219,7 +225,7 @@ DROP → บันทึกใน Completion Report อย่างเดีย�
 
 Frontmatter คดีต้องมี: `type: case`, `date`, `crime_type`, `severity`, `verification`, `provinces`, `units`, `tags`, `sources` (array URL ครบ), `bureau`, `area`, `status_th`, `gang_or_group`, `rel_units`, `rel_people`, `rel_projects`, `rel_cases`  
 เส้นอยู่ที่ `rel_*` พร้อมป้ายไทยตามเช็คลิสต์ ห้ามใช้ `[[wikilink]]` เปล่าเป็นเส้น (`mentions`)  
-ชื่อไฟล์ `case_id` รูปแบบ `{DATE}-{slug-สั้น}` เช่น `2026-10-22-khaosod-cyber-001`
+ชื่อไฟล์ `case_id` และ `posts[].id` รูปแบบ `YYYYMMDD-slug` เช่น `20261022-cyber-khaosod-001` ห้ามใส่ขีดในวันที่ รหัส `2026-10-22-...` เป็นคนละคดีกับคลังปัจจุบัน
 
 สำเนาชุดเดียวไป `Document/{DATE}_CrimeLine/` ได้
 
@@ -243,8 +249,8 @@ PDF ประกอบจาก HTML ของแต่ละหัวข่า�
 8. **Event-merge ท้ายรอบ** กับ Task 1 อีกครั้ง — **ห้าม scrape Batch A–D** · ห้าม blog ซ้ำ
 9. Trend 7 วัน (ข้ามได้ถ้าไม่มี NEW และไม่มี append)
 10. เช็คลิสต์วิเคราะห์ต่อหัวข่าว (เอนทิตี + ป้ายไทย + related_cases) แล้ว brain/BD **เมื่อมี NEW หรือ DUP_EVENT** (ไม่รันถ้ามีแต่ DUP_EXACT หรือ 0 ข่าว)
-11. Publish 3 ช่องทางเฉพาะโพสต์ที่แตะ + `node ops/rebuild-pages-feed.js` ตรวจ ego graph ของชุดนี้
-12. Completion Report + ลิงก์ Pages · ไม่ git push · ห้ามเขียนทับวันอื่น
+11. Publish 3 ช่องทางเฉพาะโพสต์ที่แตะ แล้วทำลำดับปิดงานข้อ 10: rebuild ครั้งเดียว → `embed-graphs-in-html.js` → `html-to-pdf.py`
+12. Completion Report + ลิงก์ Pages ตามเส้นทางจริง · ไม่ git push · ห้ามเขียนทับวันอื่น
 
 ## Document output tree (Task 2)
 ```
@@ -328,9 +334,11 @@ github-pages/data/graphs/{case_id}.json
 1. สถานะ + จำนวนลิงก์ used/skipped + จำนวนคดี
 2. พาธไฟล์ JSON รายวันใต้ `github-pages/data/`
 3. **ลิงก์เปิดเว็บ** (ถ้ามี `GITHUB_PAGES_BASE_URL` ใน env/.env ใช้ค่านั้น; ไม่มีให้ใช้ relative และบอกวิธี `npx serve github-pages`):
-   - หน้ารายวัน: `{BASE}/#/{DATE}`
-   - แท็บดาวน์โหลด PDF: `{BASE}/#/downloads/{DATE}`
+   - รายการข่าว: `{BASE}/#/r/all`
+   - แท็บดาวน์โหลด PDF: `{BASE}/#/downloads/r/all`
+   - ข้อมูลกราฟ: `{BASE}/#/brain`
    - ตัวอย่างโพสต์: `{BASE}/#/{DATE}/{postId}`
+   ห้ามใช้ `#/{DATE}` หรือ `#/downloads/{DATE}` เป็นลิงก์เปิดวันนั้น
 4. จำนวนโน้ต Obsidian ที่เขียน/อัปเดตใน `20_Cases` (หลัง merge ไม่นับซ้ำ) / ประเภทใน `40_CrimeTypes`
 
 ## สิ่งที่ห้ามใน Task 2

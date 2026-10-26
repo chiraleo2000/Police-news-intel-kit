@@ -179,6 +179,7 @@ manifest อ่านไม่ได้ → หยุด `PREFLIGHT_FAILED` · �
    `[[wikilink]]` เปล่ากลายเป็น `mentions` ห้ามใช้เป็นเส้น ถ้ามีวงเล็บเหลี่ยมในเนื้อหาต้องมีแถว `rel_*` คู่กันด้วยป้ายไทยเดียวกัน  
    ประเภทอาชญากรรมอยู่ที่ฟิลด์ `crime_type` อัปเดต `vault/40_CrimeTypes/{ชื่อ}.md` แบบ add-only ด้วยข้อความ ห้ามใส่ wikilink เปล่า
 5. ตัดสินเส้นไปข่าวอื่นหลังค้น brain แล้วเทียบทีละเรื่อง:
+   - ผล `brain_search` / `brain_timeline` เป็นรายชื่อให้เทียบ ไม่ใช่เส้นสำเร็จ `brain_timeline` ที่กรองด้วยประเภทคดีคืนทุกข่าวของประเภทนั้น ห้ามคัดลอกทั้งก้อนเข้า `related_cases`
    - เก็บได้เมื่อเป็นเหตุการณ์เดียวกัน หรือการติดตามผลจริง (จับเพิ่ม ส่งฟ้อง ศาล หรือแถลงคืบหน้าของปฏิบัติการเดิมที่ชี้คน วัน สถานที่ หรือของกลางชุดเดียวกัน)
    - ไม่แน่ → `related_cases: []` และ `rel_cases` ว่าง
    - ห้ามโยงเพียงเพราะประเภทคดีและจังหวัดตรงกัน
@@ -202,8 +203,12 @@ manifest อ่านไม่ได้ → หยุด `PREFLIGHT_FAILED` · �
 หลังครบทุกหัวข่าวในชุด จึงทำสามข้อนี้ตามลำดับ ห้ามสลับ:
 8. เขียน `_brain_daily.md` จากเอนทิตีที่ผ่านข้อ 3–4 ของรอบนี้เท่านั้น timeline สั้นต่อหน่วยที่ปรากฏวันนี้ ชื่อซ้ำ → `merge_proposal` สถานะ `proposed` เท่านั้น ห้ามรวมเอง
 9. เขียน `_bd_leads.json` จาก `reference/budget-fy2570-police-related.json` (หรือ `.md`) เท่านั้น จับคู่หน่วยหรือเทคโนโลยีที่ข่าวระบุกับโครงการ ตร. ห้ามเดาชื่อโครงการหรือตัวเลขงบ ใส่บทวิเคราะห์ทั้งสองใน PDF และใน Markdown ของ Obsidian ห้ามแตะโน้ตที่ `generated: false`
-10. รัน `node ops/rebuild-pages-feed.js` ครั้งเดียวหลังเขียน JSON และ vault ของชุดนี้ ตรวจว่าทุก `case_id` ในชุดมี `github-pages/data/graphs/{case_id}.svg` และ `.json` และ `graph.json` อัปเดต ป้ายใน `.json` ของเส้นที่รอบนี้สร้างต้องเป็นไทยและไม่มี `mentions` ถ้าไฟล์กราฟไม่มี ให้แก้โน้ตแล้วรัน rebuild ซ้ำก่อนปิดงาน หน้า Pages `#/{DATE}/{postId}` อ่านบล็อกนี้จากกราฟหลัง rebuild  
-    ห้าม `git add` / `git commit` / `git push`
+10. ลำดับปิดงาน ห้ามสลับ และห้าม `git add` / `git commit` / `git push`
+    1. เขียน JSON ของชุดนี้และ vault ให้ครบก่อน รหัส `posts[].id` กับชื่อโน้ตเป็น `YYYYMMDD-slug` เช่น `20261026-drug-01` ห้ามใช้ `2026-10-26-...`
+    2. `node ops/rebuild-pages-feed.js` ครั้งเดียว ตรวจว่าทุก `case_id` ในชุดมี `github-pages/data/graphs/{case_id}.svg` และ `.json` และ `graph.json` อัปเดต ป้ายเส้นที่รอบนี้สร้างต้องเป็นไทยและไม่มี `mentions` ถ้าไฟล์กราฟไม่มี ให้แก้โน้ตแล้วรัน rebuild อีกครั้งก่อนไปขั้นถัดไป
+    3. `node ops/embed-graphs-in-html.js` ฝัง SVG เข้า `{DATE}_crime.html` ทุกหัวในชุดต้องมี `<section class="story-graph">`
+    4. `python ops/html-to-pdf.py` แล้วคัดลอก PDF และ infographic ไป `github-pages/data/downloads/`
+    หน้ารายการคือ `#/r/all` โพสต์คือ `#/{DATE}/{postId}` ดาวน์โหลดคือ `#/downloads/r/all` ข้อมูลกราฟคือ `#/brain` ห้ามรายงาน `#/{DATE}` หรือ `#/downloads/{DATE}` เป็นลิงก์เปิดวันนั้น
 
 ### ช่องทางผลลัพธ์ (บังคับครบ 3)
 1. **JSON รายวันสำหรับเว็บ (GitHub Pages)** — copy ไป `github-pages/data/` (file copy เท่านั้น ห้าม git push)  
@@ -218,8 +223,7 @@ manifest อ่านไม่ได้ → หยุด `PREFLIGHT_FAILED` · �
    - `vault/40_CrimeTypes/{ชื่อประเภท}.md` = อัปเดตหน้ารวมประเภทที่มีข่าววันนี้แบบข้อความ add-only
    - `vault/30_Entities/...` = เฉพาะหน่วย สถานที่ บุคคล ผู้ต้องหา บัญชี หรือข่ายที่ข่าวเอ่ยชื่อจริง ตามเช็คลิสต์ข้อ 3
    - เส้นความสัมพันธ์อยู่ที่ `rel_*` พร้อมป้ายไทย ห้ามใช้ `[[wikilink]]` เปล่าแทนป้าย (แท็บ **ข้อมูลกราฟ** อ่านป้ายจากฟิลด์เหล่านี้หลัง rebuild)
-   - หลังเขียน vault: รัน `node ops/rebuild-pages-feed.js`  
-     (สร้าง `feed.json` + `graph.json` + `data/graphs/{case_id}.svg`) — **ห้าม** git push ใน Task 1
+   - rebuild, ฝังกราฟ, และแปลง PDF ทำตามลำดับปิดงานข้อ 10 เท่านั้น ห้ามรัน rebuild ก่อน vault ของชุดนี้จบ และห้าม git push
    - ในโน้ตคดีและบท HTML ใส่ลิงก์/ฝัง `graphs/{case_id}.svg` และสรุปเส้นป้ายไทยของคดีนั้น ถ้าไม่มีเส้นไปข่าวอื่นให้เขียนไว้ตรง ๆ
    - **ห้าม** พึ่ง `vault/10_Daily/{DATE}.md` เป็นผลลัพธ์หลัก · **ห้าม** สร้างโน้ตซ้ำสำหรับแหล่งที่ 2/3 ของเหตุการณ์เดียวกัน · **ห้าม** เขียนทับไฟล์วันอื่นที่ไม่ได้แตะ
 3. **PDF สำหรับดาวน์โหลด + Infographic** — HTML→PDF และ infographic HTML→PNG (THSarabun บังคับ)  
@@ -228,11 +232,12 @@ manifest อ่านไม่ได้ → หยุด `PREFLIGHT_FAILED` · �
    คัดลอกไป `github-pages/data/downloads/{DATE}_crime.pdf` และ `{DATE}_infographic.png` ด้วย  
    แปลงได้ด้วย `python ops/html-to-pdf.py` (weasyprint → playwright → Edge)
 
-ท้ายรอบต้องพิมพ์ **ลิงก์ GitHub Pages**:
-- รายการข่าว: `{GITHUB_PAGES_BASE_URL}/#/{DATE}`
-- ดาวน์โหลด PDF: `{GITHUB_PAGES_BASE_URL}/#/downloads/{DATE}`
-- ตัวอย่างโพสต์: `{BASE}/#/{DATE}/{postId}`  
-(ไม่มี base ใน env ให้บอกว่าเปิดด้วย `npx serve github-pages`)
+ท้ายรอบต้องพิมพ์ **ลิงก์ GitHub Pages** ตามเส้นทางที่เว็บอ่านจริง:
+- รายการข่าว: `{GITHUB_PAGES_BASE_URL}/#/r/all`
+- ดาวน์โหลด PDF: `{GITHUB_PAGES_BASE_URL}/#/downloads/r/all`
+- ข้อมูลกราฟ: `{BASE}/#/brain`
+- ตัวอย่างโพสต์: `{BASE}/#/{DATE}/{postId}`
+(ไม่มี base ใน env ให้บอกว่าเปิดด้วย `npx serve github-pages` `#/{DATE}` คนเดียวไม่กรองเฉพาะวันนั้น)
 
 ### PDF / Font
 - PDF บังคับ ห้ามรายงานว่าข้าม ลองตามลำดับ: weasyprint → playwright → wkhtmltopdf → headless chrome/edge `--print-to-pdf`
@@ -326,7 +331,7 @@ manifest อ่านไม่ได้ → หยุด `PREFLIGHT_FAILED` · �
 **Scrape (4 batch — ต้องครบทุกแหล่ง · ซ้ำได้ก่อน merge)**
 1. **Batch A** — หน่วยตำรวจ + **หน้าประชาสัมพันธ์/ข่าวเว็บทางการ** (บังคับก่อน)  
    → `News/Articles/{Parent}/{Agency}/{DATE}/{Slug}/`  
-   ต่อแหล่ง: เปิดหน้า listing ข่าว/PR แล้วเก็บ **top 5 permalink ใน 24 ชม.** (หรือทั้งหมดในหน้าล่าสุดถ้า ≤5)
+   ต่อแหล่ง: เปิดหน้า listing ข่าว/PR แล้วเก็บ permalink ทุกชิ้นที่เผยแพร่ตั้งแต่ 00:00 ของเมื่อวานถึงเวลารัน ห้ามตัดเหลือ 5 รายการ และห้ามใช้หน้าต่าง 24 ชั่วโมง
 2. **Batch B** — ยุติธรรม / บังคับใช้กฎหมาย / เตือนภัย — ครบทุกแถว เช่นกัน
 3. **Batch C** — สื่อไทยหมวดอาชญากรรม — ครบทุกสำนัก; อนุญาตหลายบทความต่อสำนัก
 4. **Batch D** — สื่อ EN / สากล — เฉพาะที่เกี่ยวกับไทย/ภูมิภาค
@@ -341,7 +346,7 @@ manifest อ่านไม่ได้ → หยุด `PREFLIGHT_FAILED` · �
 7. **วิเคราะห์ตามเช็คลิสต์ต่อหัวข่าว** (คุณสมบัติโหนด → ดึงเอนทิตี → ป้ายไทย → related_cases → analysis_notes) แล้วจึง `_brain_daily.md` + `_bd_leads.json`
 8. สร้างชุดไฟล์ครบ 3 ช่องทาง (ดู Document output tree) เฉพาะชุดของรอบ ห้ามเขียนทับวันอื่น
 9. อัปเดต `Document/manifest.json` (prepend, add-only); `meta.status = "published"`; copy JSON → `github-pages/data/`
-10. รัน `node ops/rebuild-pages-feed.js` ตรวจ ego graph ต่อทุกหัวในชุด แล้ว Completion Report **จบ — ไม่ git push**
+10. ลำดับปิดงานตามเช็คลิสต์ข้อ 10: `rebuild-pages-feed.js` ครั้งเดียว → `embed-graphs-in-html.js` → `html-to-pdf.py` → Completion Report ห้าม git push
 
 ---
 
@@ -381,6 +386,7 @@ manifest อ่านไม่ได้ → หยุด `PREFLIGHT_FAILED` · �
   "social_media": {"agency_facebook": ""}
 }
 ```
+- `meta.within_24h` = true เมื่อวันเผยแพร่อยู่ในช่วง 00:00 ของเมื่อวานถึงเวลารัน ชื่อฟิลด์เก่ายังใช้คำว่า 24h แต่ความหมายคือหน้าต่างนี้ ไม่ใช่ 24 ชั่วโมงย้อนหลังจาก 08:01
 - `severity`: high = ชีวิต/ความรุนแรงร้ายแรง, ความเสียหาย ≥ 10 ล้านบาท, ขบวนการข้ามชาติ, หรือภัยที่กระทบประชาชนวงกว้าง; medium = ทรัพย์สินหรือกลุ่มเฉพาะ; low = นโยบาย/แต่งตั้ง/ข่าวติดตามผล
 - `related_laws`: ใส่เฉพาะที่แหล่งข่าวระบุ ห้ามเติมจากความจำ (กฎหมายด้านอาชญากรรมเทคโนโลยีมีการออกใหม่/แก้ไขเป็นระยะ ให้ยึดตามข่าว)
 - `actions_public` (2 ข้อ) = วิธีสังเกต/ป้องกันสำหรับประชาชน; `actions_org` (2 ข้อ) = สิ่งที่ธนาคาร/SME/หน่วยงานควรทำ
@@ -550,7 +556,7 @@ github-pages/data/graphs/{case_id}.json  # สรุป relations ของค�
 ### ข้อความท้ายรอบ (บังคับ ≤12 บรรทัด รวมลิงก์)
 1. สถานะ + จำนวนบทความ + bd_leads  
 2. พาธใต้ `github-pages/data/`  
-3. ลิงก์เว็บ: `{BASE}/#/{DATE}` และ `{BASE}/#/{DATE}/{postId}` (`GITHUB_PAGES_BASE_URL` ถ้ามี; ไม่มีให้แนะ `npx serve github-pages`)  
+3. ลิงก์เว็บ: `{BASE}/#/r/all` · `{BASE}/#/downloads/r/all` · `{BASE}/#/brain` · `{BASE}/#/{DATE}/{postId}` (`GITHUB_PAGES_BASE_URL` ถ้ามี; ไม่มีให้แนะ `npx serve github-pages`)  
 4. จำนวนโน้ตใน `vault/20_Cases` และประเภทที่อัปเดตใน `40_CrimeTypes`
 
 ---
@@ -584,7 +590,7 @@ github-pages/data/graphs/{case_id}.json  # สรุป relations ของค�
 | 14b | เว็บข่าวรวม/PR ตร. ที่ค้นพบระหว่างรอบ | บันทึก URL จริงใน `discovered_paths` | – | site:go.th ตำรวจ แถลงข่าว | – |
 
 หมายเหตุ Batch A (ประชาสัมพันธ์):
-- **ลำดับงาน:** (1) เปิด official_url / หน้าข่าว-PR → เก็บ permalink ใน 24 ชม. (2) ถ้า listing ว่าง/พัง ค่อย `web_search`  
+- **ลำดับงาน:** (1) เปิด official_url / หน้าข่าว-PR → เก็บ permalink ที่เผยแพร่ตั้งแต่ 00:00 ของเมื่อวานถึงเวลารัน (2) ถ้า listing ว่าง/พัง ค่อย `web_search`  
 - search_only: ใช้โควตา search ของ Batch A เพื่อหา **permalink จากโดเมน `.go.th` ของตำรวจก่อน** แล้วค่อยสื่อ  
 - ตำรวจท่องเที่ยว: ใช้หน้าโพสต์ `/post/...`; EN → สรุปเป็นไทย + `original_language=en`  
 - พบเว็บทางการใหม่ → เติม registry / `discovered_paths` และตั้ง `is_police_pr`  
