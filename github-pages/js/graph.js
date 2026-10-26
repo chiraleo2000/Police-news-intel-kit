@@ -65,6 +65,7 @@
     dateTo: "",
     entityGroup: "",
     bureau: "",
+    crimeType: "",
     hideOrphans: false,
     isolate: false,
     showLabels: "auto",
@@ -167,7 +168,11 @@
     if (filters.entityGroup && n.kind === "entity" && n.entity_group !== filters.entityGroup) {
       return false;
     }
-    return !(filters.bureau && n.kind === "case" && (n.bureau || "") !== filters.bureau);
+    if (filters.bureau && n.kind === "case" && (n.bureau || "") !== filters.bureau) return false;
+    if (!filters.crimeType) return true;
+    if (n.kind === "case") return (n.crime_type || "") === filters.crimeType;
+    if (n.kind === "crime_type") return (n.title || "") === filters.crimeType;
+    return true;
   }
 
   function matchesDates(n) {
@@ -195,6 +200,15 @@
   function visibleNodes() {
     if (!graph) return [];
     let nodes = graph.nodes.filter(passesBaseFilters);
+    if (filters.crimeType) {
+      const caseIds = new Set(nodes.filter((n) => n.kind === "case").map((n) => n.id));
+      const linked = new Set(caseIds);
+      for (const e of graph.edges || []) {
+        if (caseIds.has(e.source)) linked.add(e.target);
+        if (caseIds.has(e.target)) linked.add(e.source);
+      }
+      nodes = nodes.filter((n) => n.kind === "case" || n.kind === "crime_type" || linked.has(n.id));
+    }
     if (filters.isolate && selectedId) {
       const keep = neighborIds(selectedId);
       nodes = nodes.filter((n) => keep.has(n.id));
@@ -904,6 +918,27 @@
     sel.value = cur;
   }
 
+  function fillCrimeTypes() {
+    const sel = $("brain-crime-type");
+    if (!sel || !graph) return;
+    const types = [
+      ...new Set(
+        graph.nodes
+          .filter((n) => n.kind === "case" && n.crime_type && n.crime_type !== "-")
+          .map((n) => n.crime_type)
+      ),
+    ].sort((a, b) => a.localeCompare(b, "th"));
+    const cur = filters.crimeType;
+    sel.innerHTML =
+      `<option value="">ทุกประเภท</option>` +
+      types.map((g) => `<option value="${escapeHtml(g)}">${escapeHtml(g)}</option>`).join("");
+    if (cur && types.includes(cur)) sel.value = cur;
+    else {
+      sel.value = "";
+      filters.crimeType = "";
+    }
+  }
+
   function fillRelations() {
     const sel = $("brain-relation");
     if (!sel || !graph) return;
@@ -960,6 +995,7 @@
     filters.dateTo = $("brain-date-to")?.value || "";
     filters.entityGroup = $("brain-entity-group")?.value || "";
     filters.bureau = $("brain-bureau")?.value || "";
+    filters.crimeType = $("brain-crime-type")?.value || "";
     filters.relation = $("brain-relation")?.value || "";
     filters.hideOrphans = Boolean($("brain-hide-orphans")?.checked);
     filters.showLabels = $("brain-labels")?.value || "auto";
@@ -981,6 +1017,7 @@
       dateTo: "",
       entityGroup: "",
       bureau: "",
+      crimeType: "",
       hideOrphans: false,
       isolate: false,
       showLabels: "auto",
@@ -995,6 +1032,7 @@
     if ($("brain-date-to")) $("brain-date-to").value = "";
     if ($("brain-entity-group")) $("brain-entity-group").value = "";
     if ($("brain-bureau")) $("brain-bureau").value = "";
+    if ($("brain-crime-type")) $("brain-crime-type").value = "";
     if ($("brain-relation")) $("brain-relation").value = "";
     if ($("brain-hide-orphans")) $("brain-hide-orphans").checked = false;
     if ($("brain-isolate")) $("brain-isolate").checked = false;
@@ -1133,6 +1171,7 @@
       renderHelp();
       fillEntityGroups();
       fillBureaus();
+      fillCrimeTypes();
       fillRelations();
       renderLegend();
       syncKindChecks();
@@ -1150,7 +1189,7 @@
     els._wired = true;
 
     const onFilter = () => applyFiltersFromDom();
-    ["brain-search", "brain-min-degree", "brain-date-from", "brain-date-to", "brain-entity-group", "brain-bureau", "brain-relation", "brain-labels"].forEach(
+    ["brain-search", "brain-min-degree", "brain-date-from", "brain-date-to", "brain-entity-group", "brain-bureau", "brain-crime-type", "brain-relation", "brain-labels"].forEach(
       (id) => {
         $(id)?.addEventListener("change", onFilter);
         $(id)?.addEventListener("input", () => {
@@ -1967,6 +2006,7 @@
         renderHelp();
         fillEntityGroups();
         fillBureaus();
+        fillCrimeTypes();
         fillRelations();
         renderLegend();
         restartSim(true, true);

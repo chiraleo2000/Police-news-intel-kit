@@ -31,6 +31,7 @@
     downloadRangeSelect: document.getElementById("download-range-select"),
     toolbar: document.getElementById("toolbar"),
     topicChips: document.getElementById("topic-chips"),
+    topicFilter: document.getElementById("topic-filter"),
     tagFilter: document.getElementById("tag-filter"),
     searchInput: document.getElementById("search-input"),
     filterNote: document.getElementById("filter-note"),
@@ -402,8 +403,14 @@
     }
   }
 
+  function topicNames(posts) {
+    return [...new Set(posts.map((p) => p.topic || p.category_label).filter(Boolean))].sort((a, b) =>
+      a.localeCompare(b, "th")
+    );
+  }
+
   function renderTopicChips(posts) {
-    const topics = [...new Set(posts.map((p) => p.topic || p.category_label).filter(Boolean))].sort((a, b) => a.localeCompare(b));
+    const topics = topicNames(posts);
     els.topicChips.innerHTML =
       `<button type="button" class="chip-btn${filters.topic ? "" : " is-active"}" data-topic="">ทั้งหมด</button>` +
       topics
@@ -412,6 +419,19 @@
             `<button type="button" class="chip-btn${filters.topic === t ? " is-active" : ""}" data-topic="${escapeHtml(t)}">${escapeHtml(t)}</button>`
         )
         .join("");
+  }
+
+  function fillTopicFilter(posts) {
+    const topics = topicNames(posts);
+    const cur = filters.topic;
+    els.topicFilter.innerHTML =
+      `<option value="">ทุกประเภท</option>` +
+      topics.map((t) => `<option value="${escapeHtml(t)}">${escapeHtml(t)}</option>`).join("");
+    if (cur && topics.includes(cur)) els.topicFilter.value = cur;
+    else {
+      filters.topic = "";
+      els.topicFilter.value = "";
+    }
   }
 
   function fillTagFilter(posts) {
@@ -574,6 +594,7 @@
     els.statTypes.textContent = `${F.number(types.length)} ประเภท`;
     els.statAlerts.textContent = `${F.number(alertCount)} เตือนภัย`;
 
+    fillTopicFilter(posts);
     renderTopicChips(posts);
     fillTagFilter(posts);
     renderPostList(posts);
@@ -981,6 +1002,12 @@
     const btn = e.target.closest("[data-topic]");
     if (!btn) return;
     filters.topic = btn.dataset.topic || "";
+    if (els.topicFilter) els.topicFilter.value = filters.topic;
+    renderTopicChips(currentPosts);
+    renderPostList(currentPosts);
+  });
+  els.topicFilter.addEventListener("change", () => {
+    filters.topic = els.topicFilter.value;
     renderTopicChips(currentPosts);
     renderPostList(currentPosts);
   });

@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Anuphan:wght@400;500;600;700&family=Sarabun:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/site.css?v=20261026f" />
+  <link rel="stylesheet" href="css/site.css?v=20261026p" />
 </head>
 <body>
   <a class="skip-link" href="#main">ข้ามไปเนื้อหา</a>
@@ -46,10 +46,19 @@
       </section>
 
       <div class="toolbar" id="toolbar">
-        <div class="chip-row" id="topic-chips" aria-label="กรองประเภทอาชญากรรม"></div>
+        <div class="filter-block">
+          <p class="filter-label" id="topic-label">ประเภทอาชญากรรม</p>
+          <div class="chip-row" id="topic-chips" aria-labelledby="topic-label"></div>
+        </div>
         <div class="toolbar-row">
-          <label class="filter range-picker">
-            <span class="sr-only">ช่วงวัน</span>
+          <label class="filter labeled topic-filter">
+            <span>ประเภทอาชญากรรม</span>
+            <select id="topic-filter">
+              <option value="">ทุกประเภท</option>
+            </select>
+          </label>
+          <label class="filter range-picker labeled">
+            <span>ช่วงวัน</span>
             <select id="range-select">
               <option value="1">วันนี้</option>
               <option value="3">3 วัน</option>
@@ -60,8 +69,8 @@
               <option value="all" selected>ทั้งหมด</option>
             </select>
           </label>
-          <label class="filter">
-            <span class="sr-only">กรองแท็ก</span>
+          <label class="filter labeled">
+            <span>แท็ก</span>
             <select id="tag-filter">
               <option value="">ทุกแท็ก</option>
             </select>
@@ -149,6 +158,13 @@
             <span>หน่วยงาน</span>
             <select id="brain-bureau">
               <option value="">ทั้งหมด</option>
+            </select>
+          </label>
+
+          <label class="brain-field">
+            <span>ประเภทอาชญากรรม</span>
+            <select id="brain-crime-type">
+              <option value="">ทุกประเภท</option>
             </select>
           </label>
 
@@ -254,7 +270,7 @@
   </footer>
 
   <script src="js/format.js?v=20261026b" defer></script>
-  <script src="js/graph.js?v=20261026o" defer></script>
-  <script src="js/app.js?v=20261026o" defer></script>
+  <script src="js/graph.js?v=20261026p" defer></script>
+  <script src="js/app.js?v=20261026p" defer></script>
 </body>
 </html>
