@@ -1,104 +1,117 @@
-# news-intel-kit — ชุดติดตั้งไปป์ไลน์ข่าวรายวัน (LINE → Claude → Obsidian)
+# ข่าวตำรวจ — ระบบรวบรวมและวิเคราะห์ข่าวรายวัน
 
-ชุดนี้รวม prompts, plugin, GitHub Pages และ **news-hub (LINE webhook → SQLite → export Excel/JSON + MCP)** — ดู `docs/05-line-webhook-setup.md`
+ระบบนี้รับลิงก์ข่าวจากกลุ่ม LINE และกวาดเว็บตำรวจกับสื่อ แล้วให้ Claude วิเคราะห์ทีละหัวข่าวในรอบเดียวกัน จากนั้นแยกผลออกสามช่องทาง: เว็บสำหรับอ่าน, โน้ตสำหรับวิเคราะห์ภายใน, และ PDF สำหรับดาวน์โหลด
 
-## 1) คำตอบเรื่อง Obsidian: ควรเพิ่ม — ถ้าใช้เป็น "ชั้นแสดงผลและสำรวจความสัมพันธ์"
+รายละเอียดเครื่องมือ ขั้นตอน และพารามิเตอร์อยู่ที่ [structure.md](structure.md) วิธีติดตั้งอยู่ที่ [docs/01-install-windows.md](docs/01-install-windows.md)
 
-**เหตุผลที่คุ้ม**
-- กราฟ/backlinks เห็นความเชื่อมโยง หน่วยงาน ↔ คดี ↔ รูปแบบการกระทำผิด ↔ จังหวัด ↔ กฎหมาย ได้เร็วกว่าอ่านรายงาน
-- ไฟล์เป็น Markdown ธรรมดา: ค้นหา/ถ่ายโอน/สำรองง่าย ไม่ผูกกับเครื่องมือใดเครื่องมือหนึ่ง
-- Bases (ฟีเจอร์หลักของ Obsidian ตั้งแต่ 1.9) และ Dataview ทำตาราง/แดชบอร์ดจาก frontmatter ได้โดยไม่ต้องเขียนโค้ด
+เวลาทั้งหมดด้านล่างเป็น Asia/Bangkok
 
-**ข้อควรระวังที่ทำให้ออกแบบเป็นแบบนี้**
-| ความเสี่ยง | วิธีรับมือในชุดนี้ |
+## ภาพรวม
+
+Obsidian อยู่กลางทาง กราฟบนเว็บอ่านโน้ตที่ Claude เขียนลง `vault/` ไม่ได้ข้าม Obsidian ไปสร้างกราฟเอง
+
+```mermaid
+flowchart TD
+  LINE[LINE] --> WH[Webhook server]
+  NGROK[ngrok] --> WH
+  WH --> DB[(SQLite)]
+  DB --> XL[Excel และ JSON]
+  WEB[เว็บ 55 แหล่ง] --> T1[ถึงเวลา 08:01 เริ่ม Task 1]
+  XL --> T2[ถึงเวลา 08:30 เริ่ม Task 2]
+  DB -->|MCP| T1
+  DB -->|MCP| T2
+  T1 --> V[Obsidian vault]
+  T2 --> V
+  T1 --> J[JSON รายวัน]
+  T2 --> J
+  V --> G[build-obsidian-graph.js]
+  J --> P[GitHub Pages]
+  G --> P
+  T1 --> PDF[PDF]
+  T2 --> PDF
+  P --> GIT[git]
+```
+
+| เครื่องมือ | บทบาท |
 | --- | --- |
-| LLM เขียนไฟล์ vault ตรง ๆ → ชื่อเพี้ยน ซ้ำ ลิงก์พัง | Task 1/2 เขียนเฉพาะโน้ตชุดของรอบที่ `generated: true` แล้ว rebuild; ห้ามแตะ `generated: false` |
-| กราฟรก เมื่อมีข่าววันละหลายสิบเรื่อง | โน้ตหลักเป็น "คดี" (หลัง merge) ไม่ใช่ "บทความ"; จำกัดจำนวนลิงก์ต่อคดี; ไม่ลิงก์เข้าโน้ตวันที่; เก็บถาวรหลัง 90 วันและกรองออกจากกราฟ |
-| ชื่อ entity ไม่ตรงกันข้ามวัน | `canonical-entities.md` + `brain_search` ก่อนสร้างใหม่ + ข้อเสนอรวมชื่อรายสัปดาห์ (ไม่รวมเอง) |
-| ข้อมูลคดี/ผู้ต้องหาอยู่ในไฟล์ที่ซิงก์ได้ | โหนดผู้ต้องหาได้เฉพาะชื่อที่แหล่งทางการแถลง และไม่ใช่คดีเพศ/ค้ามนุษย์/เด็ก/ความรุนแรงในครอบครัว; ห้ามเลขบัญชีและตัวตนผู้เสียหาย; vault เป็นความลับภายใน ห้ามซิงก์สาธารณะ |
-| Obsidian ใช้ทีละคน | ทีมดูผ่านเว็บ (GitHub Pages ที่คุณมีแผนไว้) ส่วน Obsidian เป็นเครื่องมือวิเคราะห์ของคุณ |
+| LINE | กลุ่มที่ส่งลิงก์ข่าว |
+| Webhook server | รับเหตุการณ์จาก LINE |
+| ngrok | เปิดทางจากอินเทอร์เน็ตเข้าเครื่อง |
+| SQLite | เก็บลิงก์และดัชนีค้นหา |
+| Excel | ไฟล์ที่รอบเช้าเปิดอ่าน |
+| MCP | ทางที่ Claude เรียก SQLite |
+| WebFetch | เปิดหน้าเว็บ |
+| source-fetcher | ตัวช่วยกวาดทีละชุดแหล่ง |
+| Claude | วิเคราะห์และเขียนผล |
+| Obsidian | โน้ตที่ Claude ต้องเขียน และเป็นต้นทางของกราฟบนเว็บ |
+| PDF | รายงานดาวน์โหลด |
+| GitHub Pages | เว็บที่คนอ่าน |
+| git | ส่งไฟล์เว็บขึ้นเวลา 10:00 และ 14:00 |
 
-**สรุปบทบาท:** DB = แหล่งความจริง · Obsidian = มุมมองและเครื่องมือวิเคราะห์ · เว็บ = เผยแพร่ · Claude = เก็บข่าว + วิเคราะห์
+## เวิร์กโฟลว์รายวัน
 
-## 2) สถาปัตยกรรม
-
+```mermaid
+flowchart TD
+  A[ตลอดวัน LINE เข้า Webhook server แล้วลง SQLite] --> B[ทุก 5 นาที SQLite ออกเป็น Excel และ JSON]
+  B --> C[ถึงเวลา 08:01 Task 1 เริ่ม]
+  C --> D[ถึงเวลา 08:30 Task 2 เริ่ม]
+  D --> E[อ่านโน้ต Obsidian สร้างกราฟ แล้วแปลง PDF]
+  E --> F[ถึงเวลา 10:00 และ 14:00 git ส่งเว็บ]
 ```
-LINE กลุ่ม → Bot → /line/webhook → DB (แหล่งจริง)
-                                      ├─ export Excel/JSON 05:00 (ตรวจดู)
-                                      └─ MCP news-hub
-                                              ▲        │ อ่าน/เขียน
-                   Scheduled Task (Claude) ───┘        ▼
-              [plugin skills] → raw → merge → enrich → publish → web / A2A
+
+08:01 และ 08:30 เป็นเวลาที่ตั้งให้สองรอบเริ่ม ไม่ได้เป็นตารางงานที่เอาไฟล์ไปวาง เมื่อถึงเวลานั้น Claude เปิดรอบแล้วทำตามไฟล์ prompt ของรอบนั้น
+
+1. ตลอดวัน LINE ส่งลิงก์เข้า Webhook server แล้วลง SQLite
+2. ทุก 5 นาที SQLite ถูกเขียนออกเป็น Excel และ JSON เพื่อให้รอบเช้าอ่านได้
+3. ถึง 08:01 Task 1 เริ่ม กวาดเว็บ 55 แหล่งตาม prompt ของ Task 1
+4. ถึง 08:30 Task 2 เริ่ม อ่านลิงก์ของวันนั้นจาก Excel ตาม prompt ของ Task 2
+5. ท้ายรอบ Claude เขียนโน้ต Obsidian ก่อน สคริปต์จึงอ่านโน้ตนั้นไปทำกราฟบน GitHub Pages และแปลง PDF
+6. 10:00 และ 14:00 git ส่งเว็บขึ้น GitHub Pages
+
+เครื่องที่รัน Webhook server ต้องเปิดค้างไว้ งาน `NewsIntel-LineWebhook` ตรวจทุก 2 นาที และซ่อม ngrok เมื่อเซิร์ฟเวอร์ไม่ตอบ
+
+## หนึ่งเรื่องออกสามช่องทาง
+
+```mermaid
+flowchart LR
+  C[Claude] --> V[Obsidian หนึ่งคดีหนึ่งโน้ต]
+  C --> J[JSON ของวัน]
+  C --> H[HTML]
+  V --> G[กราฟ]
+  J --> WEB[GitHub Pages แท็บข่าว]
+  G --> BRAIN[GitHub Pages แท็บข้อมูลกราฟ]
+  H --> PDF[PDF]
 ```
 
-## 3) ตารางเวลารายวัน (Asia/Bangkok)
+- **Obsidian** คือไฟล์ใน `vault/20_Cases/` ที่ prompt สั่งให้เขียนทุกหัวข่าวที่รอบนั้นแตะ แท็บข้อมูลกราฟอ่านกราฟที่แปลงจากโน้ตเหล่านี้ ตัวโฟลเดอร์โน้ตไม่ขึ้นเว็บ
+- **GitHub Pages** อ่านข่าวจาก `feed.json` มีแท็บข่าว แท็บข้อมูลกราฟ และแท็บดาวน์โหลด
+- **PDF** เป็นรายงานรวมของวัน แต่ละหัวมีภาพกราฟของเรื่องนั้น ตัวอักษรไทยใช้ฟอนต์ THSarabun
 
-| เวลา | งาน | ผู้รัน |
+## สองรอบของ Claude
+
+| | Task 1 | Task 2 |
 | --- | --- | --- |
-| 05:00 | `export-links` ส่งออกลิงก์ LINE เป็น `.xlsx` + `.json` | server (Windows Task Scheduler) |
-| 08:01 | Task 1 กวาดข่าวออนไลน์ + วิเคราะห์ในรอบเดียวกัน | Claude scheduled task |
-| 08:30 | Task 2 ลิงก์ LINE + วิเคราะห์ในรอบเดียวกัน | Claude scheduled task |
-| ต่อเนื่อง | `vault-build` แบบเพิ่มส่วน (debounce 2 นาที หลังได้ entities) | server |
-| 07:45 | `vault-build` เต็มรูปแบบ (ประกันความถูกต้อง) | server |
-| 08:15 | `healthcheck` + แจ้งเตือนถ้าผิดปกติ | server |
-| 23:30 | `backup` DB + vault | server |
+| เวลาที่ตั้งให้เริ่ม | 08:01 | 08:30 |
+| ไฟล์ที่ทำตามเมื่อถึงเวลานั้น | `prompts/task-1-police-crime-news-pipeline.md` | `prompts/task-2-LINE-Message-Extract-crime-news.md` |
+| แหล่ง | เว็บในบัญชี 55 แหล่ง แบ่งชุด A–D | URL จาก LINE ของวันนั้นชุด L |
+| ไฟล์เว็บ | `{วันที่}_crime.json` | `{วันที่}_crime_line.json` |
+| โฟลเดอร์รายงาน | `Document/{วันที่}_Crime/` | `Document/{วันที่}_CrimeLine/` |
 
-**หลักสำคัญ:** server คือ "ผู้เฝ้า" (watchdog) — ถ้า Claude task ไม่รัน (เครื่องหลับ/แอปปิด/เน็ตหลุด) server จะเห็นว่าไม่มี `run_status` แล้วแจ้งเตือน
+ทั้งสองรอบใช้กติกาเนื้อหาชุดเดียวกัน วิเคราะห์อยู่ในรอบนั้น และเขียนโน้ต Obsidian ในรอบนั้น ขั้นตอนย่อยที่ไฟล์ prompt สั่งไว้ อยู่ใน [structure.md](structure.md)
 
-## 4) สารบัญไฟล์
+## กติกาที่ทั้งสองรอบยึด
 
-```
-README.md                         ← ไฟล์นี้
-docs/01-install-windows.md        ← ขั้นตอนติดตั้งทั้งหมด (LINE, server, Obsidian, Claude, ตั้งเวลา, ทดสอบ)
-docs/02-news-hub-spec.md          ← สเปกของ server: DB, REST, MCP tools, jobs, LINE webhook, ความปลอดภัย
-docs/03-obsidian-vault.md         ← โครง vault, รูปแบบโน้ต, ปลั๊กอิน, คิวรีกราฟ/Bases, ความเป็นส่วนตัว
-docs/04-operations-runbook.md     ← ปฏิบัติการรายวัน, แจ้งเตือน, แก้ปัญหา, สำรอง/กู้คืน, ความปลอดภัย
+- เปิดเว็บทางการก่อน แล้วจึงใช้สื่อยืนยัน หน้าโซเชียลเก็บเป็นที่อยู่อ้างอิงและไม่เปิด
+- หลายสำนักที่รายงานเหตุการณ์เดียวกันถูกรวมเป็นหนึ่งเรื่อง
+- เส้นบนกราฟมีป้ายภาษาไทย โยงไปข่าวอื่นเมื่อเป็นเหตุการณ์เดียวกันหรือเป็นการติดตามผลที่ชี้ได้
+- รหัสเรื่องเป็นรูปแบบ `20261026-drug-01` หนึ่งรหัสต่อหนึ่งเหตุการณ์
+- รอบข่าวไม่สั่ง `git add` `git commit` หรือ `git push`
 
-prompts/   (มีแค่ 2 ไฟล์ — ไม่มี task-3)
-  task-1-police-crime-news-pipeline.md      ← 08:01 กวาดออนไลน์ + วิเคราะห์ในรอบเดียวกัน
-  task-2-LINE-Message-Extract-crime-news.md ← 08:30 LINE + วิเคราะห์ในรอบเดียวกัน
-docs/05-line-webhook-setup.md     ← ตั้งค่า LINE OA + webhook + export + MCP
-reference/   ← งบดิจิทัลปี 2570 สำหรับขั้นวิเคราะห์ BD ใน task 1 และ 2
-scheduled-tasks/
+## เอกสารที่คู่กัน
 
-plugin/                           ← ปลั๊กอิน news-intel (skills, commands, agent, .mcp.json)
-  news-intel/.mcp.json            ← ชี้ MCP news-hub (stdio → SQLite)
-
-server/                           ← news-hub ใช้งานได้แล้วสำหรับเส้น LINE
-  src/index.ts                    ← Fastify: /line/webhook + /v1/line_links*
-  src/mcp-stdio.ts                ← MCP tools: line_links_get/mark, run_status_*
-  src/jobs/export-links.ts        ← 05:00 → exports/{DATE}_line_links.{xlsx,json}
-schemas/                          ← JSON Schema + สรุป MCP tools
-github-pages/                     ← เว็บ static (HTML/CSS/JS) อ่าน data/*.json
-  index.html · css/ · js/ · data/manifest.json · data/sample/
-vault-template/_system/           ← README ของ vault + canonical-entities.md
-ops/setup-windows.bat             ← สร้างโฟลเดอร์ runtime + Task Scheduler
-data/ exports/ logs/ backup/      ← runtime placeholders (.gitkeep)
-police-crime-news-pipeline.md     ← เอกสารต้นทาง skill อาชญากรรม (canonical อยู่ที่ plugin)
-```
-
-## 5) ลำดับที่แนะนำ (อย่าข้ามเฟส)
-
-| เฟส | ทำอะไร | ผ่านเมื่อ |
-| --- | --- | --- |
-| 0 | ทดสอบว่า scheduled task ของคุณเรียก MCP `news-hub` ตอนไม่มีคนเฝ้าได้ (ดู docs/01 ขั้น 8) | task ทดสอบอ่านลิงก์ LINE แล้วเขียนไฟล์ทดสอบกลับได้ |
-| 1 | LINE OA + webhook + DB + export `.xlsx` | ส่งลิงก์ในกลุ่มแล้วเห็นในไฟล์ 05:00 วันถัดไป |
-| 2 | Task 2 (อาชญากรรม) รันมือด้วย `/crime-news` | ได้ article/รายงาน/infographic เข้า news-hub |
-| 3 | ตั้ง schedule Task 1, 2 + healthcheck | 3 วันติดต่อกัน `complete` ทุกวัน |
-| 4 | เปิด vault + Bases/กราฟ | เห็นคดีของวันและความเชื่อมโยงใน Obsidian |
-| 5 | Task 3 รายสัปดาห์, เติม JSON เข้า `github-pages/data/`, A2A/Engagement | เว็บขึ้นบน Pages และมีข่าวจริงอย่างน้อย 3 วัน |
-
-## 6) Claude schedules — วิธีใช้ repo นี้
-
-1. ติดตั้ง plugin จาก `plugin/` (marketplace local `news-intel-local`)
-2. เปิด `scheduled-tasks/<task>/SKILL.md` → คัดลอกกล่อง **PROMPT** ไปสร้าง Scheduled Task
-3. แนบ skills ตามตารางใน `scheduled-tasks/README.md` + ตั้งอนุมัติอัตโนมัติ
-4. แก้ prompt ที่ `prompts/` แล้ว sync ไป `scheduled-tasks/` (อย่าแก้แค่ข้างเดียว)
-
-## 7) สิ่งที่ยังไม่อยู่ในชุดนี้ และสิ่งที่ต้องตรวจเอง
-
-- **โค้ด news-hub ที่รันได้**: มี skeleton ที่ `server/` + สเปก docs/02 — ยังไม่มี implementation จริง (stub `process.exit(1)`)
-- **รันไม่ต้องมีคนเฝ้าได้แค่ไหน**: เอกสาร Anthropic มีข้อความขัดกัน — ออกแบบให้ใช้เครื่องเปิดตลอด + server เป็น watchdog และทดสอบเฟส 0 ก่อน
-- **รูปแบบ plugin/marketplace**: อิง `.claude-plugin/plugin.json`, `skills/`, `commands/`, `agents/`, `.mcp.json` — ชื่อเมนูในแอปอาจต่างกัน
-- **ไวยากรณ์ `.base` ของ Obsidian Bases**: ตัวอย่างใน docs/03 ต้องตรวจกับเวอร์ชันที่ติดตั้ง
-- **URL ใน registry**: ไฟล์ `server/config/registry/*.json` ยังเป็นโครงเปล่า — ต้องแปลงจากตารางใน skill
+| ไฟล์ | เนื้อหา |
+| --- | --- |
+| [structure.md](structure.md) | เครื่องมือ, agent, ขั้นตอนประมวลผล, กราฟ, API |
+| [docs/01-install-windows.md](docs/01-install-windows.md) | ติดตั้งบน Windows |
+| [docs/05-line-webhook-setup.md](docs/05-line-webhook-setup.md) | ตั้ง LINE, tunnel, และไฟล์รับเข้า |
+| [prompts/](prompts/) | คำสั่งที่ Claude ทำตามเมื่อถึงเวลาของรอบนั้น |
