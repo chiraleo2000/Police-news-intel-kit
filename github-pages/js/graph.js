@@ -1374,7 +1374,6 @@
   }
 
   const storyPayloads = new Map();
-  let storyRaf = 0;
 
   function blogHashForNode(node) {
     if (!node || node.kind !== "case" || !node.date || !node.case_id) return "";
@@ -1391,19 +1390,25 @@
     return truncateStory(node.title || node.case_id || node.id, max);
   }
 
+  function storyRingRadius(count) {
+    const n = Math.max(1, count);
+    if (n <= 1) return 210;
+    return Math.max(210, 120 / (2 * Math.sin(Math.PI / n)));
+  }
+
   function placeStoryNodes(hub, neighbors) {
-    const cx = 480;
-    const cy = 300;
     const n = Math.max(1, neighbors.length);
-    const radius = 150 + n * 18;
-    const placed = [{ node: hub, x: cx, y: cy, r: 22, vx: 0, vy: 0 }];
+    const radius = storyRingRadius(n);
+    const cx = radius + 160;
+    const cy = radius + 90;
+    const placed = [{ node: hub, x: cx, y: cy, r: 24, vx: 0, vy: 0 }];
     neighbors.forEach((node, i) => {
       const angle = (Math.PI * 2 * i) / n - Math.PI / 2;
       placed.push({
         node,
         x: cx + Math.cos(angle) * radius,
         y: cy + Math.sin(angle) * radius,
-        r: node.kind === "case" ? 16 : 11,
+        r: node.kind === "case" ? 18 : 13,
         vx: 0,
         vy: 0,
       });
@@ -1411,114 +1416,281 @@
     return placed;
   }
 
-  function storyLabelBoxes(placed, cx, cy) {
-    const boxes = placed.map((p) => {
-      const text = storyLabel(p.node);
-      const w = Math.max(72, 16 + text.length * 7.4);
-      const h = 20;
-      const dx = p.x - cx;
-      const dy = p.y - cy;
-      const len = Math.hypot(dx, dy) || 1;
-      const ax = p.node.id === placed[0].node.id ? 0 : dx / len;
-      const ay = p.node.id === placed[0].node.id ? 1 : dy / len;
-      return {
-        id: p.node.id,
-        text,
-        w,
-        h,
-        x: p.x + ax * (p.r + 8) - w / 2,
-        y: p.y + ay * (p.r + 10),
-      };
-    });
-    for (let pass = 0; pass < 14; pass += 1) {
+  function screenOfStory(job, x, y) {
+    return {
+      x: x * job.camera.scale + job.camera.x,
+      y: y * job.camera.scale + job.camera.y,
+    };
+  }
+
+  function storyBoxesOverlap(a, b, gap) {
+    return a.x < b.x + b.w + gap && a.x + a.w + gap > b.x && a.y < b.y + b.h + gap && a.y + a.h + gap > b.y;
+  }
+
+  function pushStoryBoxes(a, b) {
+    const overlapX = Math.min(a.x + a.w, b.x + b.w) - Math.max(a.x, b.x);
+    const overlapY = Math.min(a.y + a.h, b.y + b.h) - Math.max(a.y, b.y);
+    if (overlapX <= 0 || overlapY <= 0) return false;
+    if (overlapX < overlapY) {
+      const push = overlapX / 2 + 4;
+      if (a.x <= b.x) {
+        a.x -= push;
+        b.x += push;
+      } else {
+        a.x += push;
+        b.x -= push;
+      }
+      return true;
+    }
+    const pushY = overlapY / 2 + 4;
+    if (a.y <= b.y) {
+      a.y -= pushY;
+      b.y += pushY;
+    } else {
+      a.y += pushY;
+      b.y -= pushY;
+    }
+    return true;
+  }
+
+  function separateStoryBoxes(boxes) {
+    for (let pass = 0; pass < 28; pass += 1) {
+      let moved = false;
       for (let i = 0; i < boxes.length; i += 1) {
         for (let j = i + 1; j < boxes.length; j += 1) {
-          const a = boxes[i];
-          const b = boxes[j];
-          const overlapX = Math.min(a.x + a.w, b.x + b.w) - Math.max(a.x, b.x);
-          const overlapY = Math.min(a.y + a.h, b.y + b.h) - Math.max(a.y, b.y);
-          if (overlapX <= 0 || overlapY <= 0) continue;
-          const push = overlapX < overlapY ? overlapX / 2 + 3 : 0;
-          const pushY = overlapY <= overlapX ? overlapY / 2 + 3 : 0;
-          if (a.x <= b.x) {
-            a.x -= push;
-            b.x += push;
-          } else {
-            a.x += push;
-            b.x -= push;
-          }
-          if (a.y <= b.y) {
-            a.y -= pushY;
-            b.y += pushY;
-          } else {
-            a.y += pushY;
-            b.y -= pushY;
-          }
+          if (pushStoryBoxes(boxes[i], boxes[j])) moved = true;
         }
       }
+      if (!moved) break;
     }
+  }
+
+  function clampStoryBox(box, w, h) {
+    box.x = Math.max(6, Math.min(w - box.w - 6, box.x));
+    box.y = Math.max(6, Math.min(h - box.h - 6, box.y));
+  }
+
+  function liftLabelOffNode(box) {
+    const pad = 20;
+    const nearestX = Math.max(box.x, Math.min(box.anchorX, box.x + box.w));
+    const nearestY = Math.max(box.y, Math.min(box.anchorY, box.y + box.h));
+    const dist = Math.hypot(nearestX - box.anchorX, nearestY - box.anchorY);
+    if (dist >= pad) return;
+    let ux = box.x + box.w / 2 - box.anchorX;
+    let uy = box.y + box.h / 2 - box.anchorY;
+    let len = Math.hypot(ux, uy);
+    if (len < 6) {
+      ux = 0;
+      uy = -1;
+      len = 1;
+    }
+    const push = pad - dist + box.h / 2 + 6;
+    box.x += (ux / len) * push;
+    box.y += (uy / len) * push;
+  }
+
+  function storyLabelLines(text) {
+    if (text.length <= 16) return [text];
+    const mid = Math.ceil(text.length / 2);
+    return [text.slice(0, mid).trim(), text.slice(mid).trim()];
+  }
+
+  function storyScreenLabels(job) {
+    const hub = job.placed[0];
+    const hubAt = screenOfStory(job, hub.x, hub.y);
+    const boxes = job.placed.map((p) => {
+      const lines = storyLabelLines(storyLabel(p.node));
+      job.ctx.font = "600 13px Sarabun, Anuphan, sans-serif";
+      const longest = lines.reduce((max, line) => Math.max(max, job.ctx.measureText(line).width), 24);
+      const w = Math.max(76, Math.ceil(longest) + 18);
+      const h = 10 + lines.length * 16;
+      const at = screenOfStory(job, p.x, p.y);
+      let dx = at.x - hubAt.x;
+      let dy = at.y - hubAt.y;
+      let len = Math.hypot(dx, dy);
+      if (len < 1) {
+        dx = 0;
+        dy = -1;
+        len = 1;
+      }
+      const reach = p.r * job.camera.scale + 12;
+      const cx = at.x + (dx / len) * (reach + w / 2);
+      const cy = at.y + (dy / len) * (reach + h / 2);
+      let x = cx - w / 2;
+      let y = cy - h / 2;
+      const offTop = y < 8;
+      const offBottom = y + h > job.h - 8;
+      if (offTop || offBottom) {
+        const side = at.x > job.w * 0.55 ? 1 : -1;
+        x = at.x + side * (p.r * job.camera.scale + 14);
+        if (side < 0) x -= w;
+        y = at.y - h / 2;
+      }
+      return {
+        id: p.node.id,
+        text: lines.join(" "),
+        lines,
+        w,
+        h,
+        x,
+        y,
+        anchorX: at.x,
+        anchorY: at.y,
+      };
+    });
+    separateStoryBoxes(boxes);
+    for (let pass = 0; pass < 4; pass += 1) {
+      for (const box of boxes) liftLabelOffNode(box);
+      separateStoryBoxes(boxes);
+    }
+    for (const box of boxes) clampStoryBox(box, job.w, job.h);
+    const hubBox = boxes.find((box) => box.id === job.hubId);
+    if (hubBox) {
+      const reach = (job.placed[0].r || 24) * job.camera.scale + 18;
+      hubBox.x = hubBox.anchorX - hubBox.w / 2;
+      hubBox.y = hubBox.anchorY - reach - hubBox.h;
+      clampStoryBox(hubBox, job.w, job.h);
+      for (let pass = 0; pass < 10; pass += 1) {
+        for (const box of boxes) {
+          if (box !== hubBox) shoveOff(box, hubBox, job.h);
+        }
+      }
+      for (const box of boxes) clampStoryBox(box, job.w, job.h);
+    }
+    for (const box of boxes) liftLabelOffNode(box);
     return boxes;
   }
 
-  function storyEdgeLabel(a, b, text) {
-    const mx = a.x + (b.x - a.x) * 0.38;
-    const my = a.y + (b.y - a.y) * 0.38;
-    const dx = b.x - a.x;
-    const dy = b.y - a.y;
-    const len = Math.hypot(dx, dy) || 1;
-    const w = Math.max(52, 12 + text.length * 7);
-    return { x: mx + (-dy / len) * 14 - w / 2, y: my + (dx / len) * 14 - 8, w, h: 16, text };
+  function shoveOff(box, fixed, boundsH) {
+    const overlapX = Math.min(box.x + box.w, fixed.x + fixed.w) - Math.max(box.x, fixed.x);
+    const overlapY = Math.min(box.y + box.h, fixed.y + fixed.h) - Math.max(box.y, fixed.y);
+    if (overlapX <= 0 || overlapY <= 0) return;
+    const pushX = overlapX + 6;
+    const pushY = overlapY + 6;
+    const nextY = box.y + (box.y < fixed.y ? -pushY : pushY);
+    const staysOnCanvas = nextY >= 6 && nextY + box.h <= boundsH - 6;
+    if (overlapY < overlapX && staysOnCanvas) {
+      box.y = nextY;
+      return;
+    }
+    box.x += box.x < fixed.x ? -pushX : pushX;
   }
 
-  function drawStory(job) {
-    const { ctx, w, h, placed, labels, edges, camera } = job;
-    ctx.setTransform(devicePixelRatio, 0, 0, devicePixelRatio, 0, 0);
-    ctx.clearRect(0, 0, w, h);
+  function storyEdgePills(job, nodeBoxes) {
+    const byPos = new Map(job.placed.map((p) => [p.node.id, p]));
+    job.ctx.font = "600 13px Sarabun, Anuphan, sans-serif";
+    const pills = [];
+    for (const edge of job.edges) {
+      const a = byPos.get(edge.source);
+      const b = byPos.get(edge.target);
+      const name = relationLabel(edge.label);
+      if (!a || !b || !name) continue;
+      const dx = b.x - a.x;
+      const dy = b.y - a.y;
+      const len = Math.hypot(dx, dy) || 1;
+      const at = screenOfStory(job, a.x + dx * 0.56 + (-dy / len) * 26, a.y + dy * 0.56 + (dx / len) * 26);
+      const w = Math.max(64, Math.ceil(job.ctx.measureText(name).width) + 16);
+      pills.push({ text: name, w, h: 20, x: at.x - w / 2, y: at.y - 10 });
+    }
+    separateStoryBoxes(pills);
+    const clear = [];
+    for (const pill of pills) {
+      clampStoryBox(pill, job.w, job.h);
+      const blocked = nodeBoxes.some((box) => storyBoxesOverlap(box, pill, 6))
+        || clear.some((other) => storyBoxesOverlap(other, pill, 6));
+      if (!blocked) clear.push(pill);
+    }
+    return clear;
+  }
+
+  function drawScreenPill(ctx, box, dark) {
+    ctx.fillStyle = dark ? "#10211e" : "rgba(255,255,255,0.97)";
+    ctx.strokeStyle = dark ? "#7dd3c0" : "#9aafc0";
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    const r = Math.min(8, box.h / 2);
+    ctx.moveTo(box.x + r, box.y);
+    ctx.arcTo(box.x + box.w, box.y, box.x + box.w, box.y + box.h, r);
+    ctx.arcTo(box.x + box.w, box.y + box.h, box.x, box.y + box.h, r);
+    ctx.arcTo(box.x, box.y + box.h, box.x, box.y, r);
+    ctx.arcTo(box.x, box.y, box.x + box.w, box.y, r);
+    ctx.closePath();
+    ctx.fill();
+    ctx.stroke();
+    ctx.fillStyle = dark ? "#ffffff" : "#1a222c";
+    ctx.font = "600 13px Sarabun, Anuphan, sans-serif";
+    ctx.textBaseline = "middle";
+    const lines = box.lines || [box.text];
+    lines.forEach((line, index) => {
+      ctx.fillText(line, box.x + 8, box.y + 8 + index * 16 + 6);
+    });
+  }
+
+  function drawStoryLabelLeaders(ctx, boxes) {
     ctx.save();
-    ctx.translate(camera.x, camera.y);
-    ctx.scale(camera.scale, camera.scale);
-    ctx.lineWidth = 1.4 / camera.scale;
+    ctx.strokeStyle = "#8aa0b4";
+    ctx.lineWidth = 1;
+    for (const box of boxes) {
+      const cx = box.x + box.w / 2;
+      const dist = Math.hypot(cx - box.anchorX, box.y + box.h / 2 - box.anchorY);
+      if (dist < 34) continue;
+      const y = box.anchorY < box.y ? box.y : box.y + box.h;
+      ctx.beginPath();
+      ctx.moveTo(box.anchorX, box.anchorY);
+      ctx.lineTo(cx, y);
+      ctx.stroke();
+    }
+    ctx.restore();
+  }
+
+  function drawStoryGraph(job) {
+    const { ctx } = job;
+    ctx.lineWidth = 1.6 / job.camera.scale;
     ctx.strokeStyle = "#5d7388";
-    ctx.font = `${12 / camera.scale}px Sarabun, Anuphan, sans-serif`;
-    const byPos = new Map(placed.map((p) => [p.node.id, p]));
-    for (const e of edges) {
-      const a = byPos.get(e.source);
-      const b = byPos.get(e.target);
+    const byPos = new Map(job.placed.map((p) => [p.node.id, p]));
+    for (const edge of job.edges) {
+      const a = byPos.get(edge.source);
+      const b = byPos.get(edge.target);
       if (!a || !b) continue;
       ctx.beginPath();
       ctx.moveTo(a.x, a.y);
       ctx.lineTo(b.x, b.y);
       ctx.stroke();
-      const name = relationLabel(e.label);
-      if (!name) continue;
-      const pill = storyEdgeLabel(a, b, name);
-      ctx.fillStyle = "#10211e";
-      ctx.fillRect(pill.x, pill.y, pill.w, pill.h);
-      ctx.fillStyle = "#ffffff";
-      ctx.fillText(name, pill.x + 6, pill.y + 12);
     }
-    const labelById = new Map(labels.map((box) => [box.id, box]));
-    for (const p of placed) {
+    const storyFill = {
+      case: "#1a6b5c",
+      entity: "#2c5f8a",
+      crime_type: "#a15c12",
+      daily: "#5a7184",
+      unresolved: "#9b2c2c",
+      other: "#3d5a6c",
+    };
+    for (const p of job.placed) {
       const linked = Boolean(blogHashForNode(p.node)) && p.node.id !== job.hubId;
       ctx.beginPath();
       ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-      const storyFill = { case: "#1a6b5c", entity: "#2c5f8a", crime_type: "#a15c12", daily: "#5a7184", unresolved: "#9b2c2c", other: "#3d5a6c" };
       ctx.fillStyle = storyFill[p.node.kind] || storyFill.other;
       ctx.fill();
-      ctx.lineWidth = (linked ? 2.4 : 1.2) / camera.scale;
+      ctx.lineWidth = (linked ? 3 : 1.6) / job.camera.scale;
       ctx.strokeStyle = linked ? "#0b1c2c" : "#ffffff";
       ctx.stroke();
-      const box = labelById.get(p.node.id);
-      if (!box) continue;
-      ctx.fillStyle = "rgba(255,255,255,0.96)";
-      ctx.fillRect(box.x, box.y, box.w, box.h);
-      ctx.strokeStyle = "#c5d0da";
-      ctx.lineWidth = 1 / camera.scale;
-      ctx.strokeRect(box.x, box.y, box.w, box.h);
-      ctx.fillStyle = "#1a222c";
-      ctx.fillText(box.text, box.x + 6, box.y + 14);
     }
+  }
+
+  function drawStory(job) {
+    const { ctx } = job;
+    ctx.setTransform(devicePixelRatio, 0, 0, devicePixelRatio, 0, 0);
+    ctx.clearRect(0, 0, job.w, job.h);
+    ctx.save();
+    ctx.translate(job.camera.x, job.camera.y);
+    ctx.scale(job.camera.scale, job.camera.scale);
+    drawStoryGraph(job);
     ctx.restore();
+    const labels = storyScreenLabels(job);
+    job.labels = labels;
+    drawStoryLabelLeaders(ctx, labels);
+    for (const pill of storyEdgePills(job, labels)) drawScreenPill(ctx, pill, true);
+    for (const box of labels) drawScreenPill(ctx, box, false);
   }
 
   function fitStoryCamera(job) {
@@ -1532,25 +1704,19 @@
       maxX = Math.max(maxX, p.x + p.r);
       maxY = Math.max(maxY, p.y + p.r);
     }
-    for (const box of job.labels) {
-      minX = Math.min(minX, box.x);
-      minY = Math.min(minY, box.y);
-      maxX = Math.max(maxX, box.x + box.w);
-      maxY = Math.max(maxY, box.y + box.h);
-    }
-    const pad = 28;
+    const pad = 128;
     const bw = Math.max(40, maxX - minX);
     const bh = Math.max(40, maxY - minY);
     const scale = Math.min((job.w - pad * 2) / bw, (job.h - pad * 2) / bh);
-    job.camera.scale = Math.min(2.4, Math.max(0.35, scale));
+    job.camera.scale = Math.min(1.8, Math.max(0.45, scale));
     job.camera.x = job.w / 2 - ((minX + maxX) / 2) * job.camera.scale;
     job.camera.y = job.h / 2 - ((minY + maxY) / 2) * job.camera.scale;
   }
 
-  function hitStoryNode(job, wx, wy) {
+  function hitStoryCircle(job, wx, wy) {
     let best = null;
     let bestD = Infinity;
-    const pad = 16 / (job.camera.scale || 1);
+    const pad = 14 / (job.camera.scale || 1);
     for (const p of job.placed) {
       const d = Math.hypot(p.x - wx, p.y - wy);
       if (d <= p.r + pad && d < bestD) {
@@ -1558,82 +1724,33 @@
         bestD = d;
       }
     }
-    if (best) return best;
-    for (const box of job.labels) {
-      const inside = wx >= box.x - 4 && wx <= box.x + box.w + 4 && wy >= box.y - 4 && wy <= box.y + box.h + 4;
+    return best;
+  }
+
+  function hitStoryNode(job, p) {
+    const boxes = job.labels || [];
+    for (let i = boxes.length - 1; i >= 0; i -= 1) {
+      const box = boxes[i];
+      const inside = p.sx >= box.x && p.sx <= box.x + box.w && p.sy >= box.y && p.sy <= box.y + box.h;
       if (!inside) continue;
-      return job.placed.find((p) => p.node.id === box.id) || null;
+      return job.placed.find((row) => row.node.id === box.id) || null;
     }
-    return null;
+    return hitStoryCircle(job, p.x, p.y);
   }
 
-  function storyTick(job) {
-    const dragging = job.drag?.mode === "node" ? job.drag.id : "";
-    if (job.alpha < 0.02 && !dragging) return false;
-    job.alpha *= 0.985;
-    const nodes = job.placed;
-    for (let i = 0; i < nodes.length; i += 1) {
-      for (let j = i + 1; j < nodes.length; j += 1) {
-        const a = nodes[i];
-        const b = nodes[j];
-        let dx = a.x - b.x;
-        let dy = a.y - b.y;
-        const dist = Math.hypot(dx, dy) || 0.01;
-        if (dist > 220) continue;
-        const force = (1600 / (dist * dist)) * job.alpha;
-        dx = (dx / dist) * force;
-        dy = (dy / dist) * force;
-        a.vx += dx;
-        a.vy += dy;
-        b.vx -= dx;
-        b.vy -= dy;
-      }
-    }
-    const byId = new Map(nodes.map((p) => [p.node.id, p]));
-    for (const edge of job.edges) {
-      const a = byId.get(edge.source);
-      const b = byId.get(edge.target);
-      if (!a || !b) continue;
-      const dx = b.x - a.x;
-      const dy = b.y - a.y;
-      const dist = Math.hypot(dx, dy) || 0.01;
-      const pull = ((dist - 150) / dist) * 0.04 * job.alpha;
-      a.vx += dx * pull;
-      a.vy += dy * pull;
-      b.vx -= dx * pull;
-      b.vy -= dy * pull;
-    }
-    for (const p of nodes) {
-      if (p.node.id === dragging) {
-        p.x = job.drag.x;
-        p.y = job.drag.y;
-        p.vx = 0;
-        p.vy = 0;
-        continue;
-      }
-      p.vx *= 0.82;
-      p.vy *= 0.82;
-      p.x += p.vx;
-      p.y += p.vy;
-    }
-    job.labels = storyLabelBoxes(nodes, nodes[0].x, nodes[0].y);
-    return true;
-  }
-
-  function pumpStory(job) {
-    if (job.raf) return;
-    const step = () => {
-      const cont = storyTick(job);
-      drawStory(job);
-      if (cont || job.drag) job.raf = requestAnimationFrame(step);
-      else job.raf = 0;
-    };
-    job.raf = requestAnimationFrame(step);
+  function moveDraggedStoryNode(job, p) {
+    const dragged = job.placed.find((row) => row.node.id === job.drag.id);
+    if (!dragged) return;
+    dragged.x = p.x;
+    dragged.y = p.y;
+    job.drag.x = p.x;
+    job.drag.y = p.y;
   }
 
   function bindStoryCanvas(canvas, job) {
     if (canvas.dataset.storyBound === "1") return;
     canvas.dataset.storyBound = "1";
+    canvas.style.touchAction = "none";
     const world = (ev) => {
       const rect = canvas.getBoundingClientRect();
       const sx = ((ev.clientX - rect.left) / Math.max(1, rect.width)) * job.w;
@@ -1648,56 +1765,62 @@
     canvas.addEventListener("wheel", (ev) => {
       ev.preventDefault();
       const p = world(ev);
-      const next = Math.min(2.8, Math.max(0.35, job.camera.scale * (ev.deltaY < 0 ? 1.12 : 1 / 1.12)));
+      const next = Math.min(2.8, Math.max(0.4, job.camera.scale * (ev.deltaY < 0 ? 1.12 : 1 / 1.12)));
       job.camera.x = p.sx - p.x * next;
       job.camera.y = p.sy - p.y * next;
       job.camera.scale = next;
       drawStory(job);
     }, { passive: false });
     canvas.addEventListener("pointerdown", (ev) => {
+      if (ev.button !== 0) return;
+      ev.preventDefault();
       const p = world(ev);
-      const hit = hitStoryNode(job, p.x, p.y);
+      const hit = hitStoryNode(job, p);
       job.drag = hit
         ? { mode: "node", id: hit.node.id, x: hit.x, y: hit.y, sx: p.sx, sy: p.sy, moved: false }
         : { mode: "pan", sx: p.sx, sy: p.sy, camX: job.camera.x, camY: job.camera.y, moved: false };
-      if (job.drag.mode === "node") job.alpha = 1;
-      canvas.setPointerCapture(ev.pointerId);
-      pumpStory(job);
+      canvas.style.cursor = "grabbing";
+      try {
+        canvas.setPointerCapture(ev.pointerId);
+      } catch {
+        /* capture is optional; pointermove still updates the graph */
+      }
+      drawStory(job);
     });
     canvas.addEventListener("pointermove", (ev) => {
       const p = world(ev);
       if (!job.drag) {
-        const hit = hitStoryNode(job, p.x, p.y);
-        canvas.style.cursor = hit ? "grab" : "default";
+        const hit = hitStoryNode(job, p);
+        const linked = hit && blogHashForNode(hit.node) && hit.node.id !== job.hubId;
+        canvas.style.cursor = linked ? "pointer" : "grab";
         return;
       }
+      ev.preventDefault();
       job.drag.moved = job.drag.moved || Math.hypot(p.sx - job.drag.sx, p.sy - job.drag.sy) > 4;
-      if (job.drag.mode === "node") {
-        job.drag.x = p.x;
-        job.drag.y = p.y;
-        job.alpha = Math.max(job.alpha, 0.45);
-        canvas.style.cursor = "grabbing";
-      } else {
+      if (job.drag.mode === "node") moveDraggedStoryNode(job, p);
+      else {
         job.camera.x = job.drag.camX + (p.sx - job.drag.sx);
         job.camera.y = job.drag.camY + (p.sy - job.drag.sy);
-        drawStory(job);
-        return;
       }
-      pumpStory(job);
+      canvas.style.cursor = "grabbing";
+      drawStory(job);
     });
-    const endDrag = () => {
+    canvas.addEventListener("pointerup", (ev) => {
       const drag = job.drag;
       job.drag = null;
-      job.alpha = Math.max(job.alpha, 0.35);
-      canvas.style.cursor = "default";
-      pumpStory(job);
+      canvas.style.cursor = "grab";
+      drawStory(job);
       if (!drag || drag.moved || drag.mode !== "node") return;
       const item = job.placed.find((row) => row.node.id === drag.id);
       const href = item ? blogHashForNode(item.node) : "";
       if (href && item.node.id !== job.hubId) location.hash = href;
-    };
-    canvas.addEventListener("pointerup", endDrag);
-    canvas.addEventListener("pointercancel", endDrag);
+      ev.preventDefault();
+    });
+    canvas.addEventListener("pointercancel", () => {
+      job.drag = null;
+      canvas.style.cursor = "grab";
+      drawStory(job);
+    });
   }
 
   function mountStoryGraphs(root) {
@@ -1707,9 +1830,12 @@
         if (!canvas.isConnected) return;
         const payload = storyPayloads.get(canvas.dataset.hub || "");
         if (!payload) return;
+        const count = payload.neighbors.length;
+        const viewH = Math.max(640, Math.min(980, 560 + Math.max(0, count - 6) * 36));
+        canvas.style.height = `${viewH}px`;
         const rect = canvas.getBoundingClientRect();
         const w = Math.max(320, Math.round(rect.width || canvas.clientWidth || 720));
-        const h = Math.max(420, Math.round(rect.height || 520));
+        const h = Math.max(viewH, Math.round(rect.height || viewH));
         canvas.width = Math.floor(w * devicePixelRatio);
         canvas.height = Math.floor(h * devicePixelRatio);
         const placed = placeStoryNodes(payload.hub, payload.neighbors);
@@ -1719,16 +1845,17 @@
           h,
           hubId: payload.hub.id,
           placed,
-          labels: storyLabelBoxes(placed, placed[0].x, placed[0].y),
+          labels: [],
           edges: payload.edges,
           camera: { x: 0, y: 0, scale: 1 },
           drag: null,
-          alpha: 0.85,
-          raf: 0,
         };
         fitStoryCamera(job);
         bindStoryCanvas(canvas, job);
-        pumpStory(job);
+        drawStory(job);
+        document.fonts?.ready?.then(() => {
+          if (canvas.isConnected) drawStory(job);
+        });
       });
     });
   }
@@ -1797,7 +1924,7 @@
     return `
       <section class="analysis-block story-graph-block">
         <h2>ข้อมูลกราฟของข่าวนี้</h2>
-        <p class="muted">ลากวงกลมหรือป้ายชื่อเพื่อขยับโหนด (โหนดที่เชื่อมจะขยับตาม) · ลากพื้นว่างเพื่อเลื่อนมุมมอง · สกอร์ลเพื่อซูม · คลิกโหนดข่าวโดยไม่ลากเพื่อเปิดบล็อกนั้น</p>
+        <p class="muted">ลากวงกลมหรือป้ายชื่อเพื่อขยับโหนด แล้วปล่อยให้ค้างที่นั่น · ลากพื้นที่ว่างเพื่อเลื่อนมุมมอง · สกอร์ลเพื่อซูม · คลิกโหนดข่าวโดยไม่ลากเพื่อเปิดบล็อกนั้น</p>
         <p class="story-graph-actions"><a class="btn-ghost story-open-graph" href="#/brain/${encodeURIComponent(hub.id)}">เปิดในกราฟ</a></p>
         <div class="story-ego-wrap"><canvas class="story-ego-canvas" data-hub="${escapeHtml(hub.id)}" aria-label="ข้อมูลกราฟของข่าวนี้"></canvas></div>
         ${

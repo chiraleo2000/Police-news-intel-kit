@@ -625,7 +625,9 @@ body::before {
   background: #eef3f7;
   border: 1px solid var(--line, #d5ddd8);
   border-radius: 10px;
-  overflow: auto;
+  overflow: hidden;
+  touch-action: none;
+  overscroll-behavior: none;
 }
 
 .post-detail .story-ego-svg,
@@ -639,10 +641,13 @@ body::before {
 }
 
 .post-detail .story-ego-canvas {
-  height: 520px;
+  height: 640px;
+  min-height: 640px;
   background: #f7fafc;
   border-radius: 8px;
   touch-action: none;
+  overscroll-behavior: none;
+  user-select: none;
   cursor: grab;
 }
 
