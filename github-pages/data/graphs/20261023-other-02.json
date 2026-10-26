@@ -1,14 +1,20 @@
 {
  "case_id": "20261023-other-02",
  "title": "สำนักงานตำรวจแห่งชาติจัดพิธีน้อมรำลึกพระมหากรุณาธิคุณสมเด็จพระนางเจ้าสิริกิติ์ เนื่องในวันคล้ายวันสวรรคต",
- "generated_at": "2026-10-26T07:49:36.500Z",
- "node_count": 3,
- "edge_count": 2,
+ "generated_at": "2026-10-26T09:53:06.610Z",
+ "node_count": 4,
+ "edge_count": 3,
  "relations": [
   {
    "label": "สืบสวนโดย",
    "target_id": "30_Entities/Units/ตร.",
    "target_title": "ตร.",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "unresolved:30_Entities/บุคคล/ธัชชัย ปิตะนีละบุตร",
+   "target_title": "30_Entities/บุคคล/ธัชชัย ปิตะนีละบุตร",
    "direction": "out"
   },
   {

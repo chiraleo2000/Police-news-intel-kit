@@ -1,14 +1,20 @@
 {
  "case_id": "20261023-tourist-02",
  "title": "ชายอเมริกันโพสต์คลิปกล้องวงจรปิด อ้างถูกทำร้ายและชิงทรัพย์ในพัทยา",
- "generated_at": "2026-10-26T07:49:36.524Z",
- "node_count": 3,
- "edge_count": 2,
+ "generated_at": "2026-10-26T09:53:06.634Z",
+ "node_count": 4,
+ "edge_count": 3,
  "relations": [
   {
    "label": "สืบสวนโดย",
    "target_id": "30_Entities/Units/สภ.เมืองพัทยา",
    "target_title": "สภ.เมืองพัทยา",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "unresolved:30_Entities/สถานที่/พัทยา",
+   "target_title": "30_Entities/สถานที่/พัทยา",
    "direction": "out"
   },
   {

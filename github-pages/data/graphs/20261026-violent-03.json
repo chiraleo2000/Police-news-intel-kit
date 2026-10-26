@@ -1,9 +1,9 @@
 {
  "case_id": "20261026-violent-03",
  "title": "ตำรวจ สภ.บางเสาธง ตรวจสอบคลิปชายถูกฉุดขึ้นรถที่ตลาด พบผู้ถูกพาตัวปลอดภัย มูลเหตุปัญหาเงิน 36,000 บาท ผู้เกี่ยวข้องไม่ติดใจดำเนินคดี ตามคำให้การ",
- "generated_at": "2026-10-26T07:49:36.661Z",
- "node_count": 5,
- "edge_count": 4,
+ "generated_at": "2026-10-26T09:53:06.772Z",
+ "node_count": 6,
+ "edge_count": 5,
  "relations": [
   {
    "label": "สืบสวนโดย",
@@ -21,6 +21,12 @@
    "label": "สืบสวนโดย",
    "target_id": "30_Entities/Units/สภ.บางเสาธง",
    "target_title": "สภ.บางเสาธง",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "unresolved:30_Entities/สถานที่/บางเสาธง",
+   "target_title": "30_Entities/สถานที่/บางเสาธง",
    "direction": "out"
   },
   {

@@ -7,7 +7,7 @@ import {
   type EnrichOptions,
   type PostV2,
 } from "./enrich.js";
-import { planCaseRelations } from "./relate.js";
+import { planCaseRelations, relPhrase } from "./relate.js";
 import { indexPost } from "./store.js";
 
 const here = path.dirname(fileURLToPath(import.meta.url));
@@ -276,7 +276,7 @@ function writeDayHtml(folder: string, date: string, posts: PostV2[], line: boole
       const cards = list
         .map((p) => {
           const related = (p.related_cases || [])
-            .map((r) => `${esc(r.title)} (${esc(r.relation)})`)
+            .map((r) => `${esc(r.title)} (${esc(relPhrase(r.relation))})`)
             .join("; ");
           return `<h3>${esc(p.title || "")}</h3>
 <div class="m">${esc(p.primary_bureau || "-")} · ${esc(p.status_th || "-")} · ${esc((p.province || []).join(", "))}</div>
@@ -347,6 +347,20 @@ function patchRelationsSection(body: string, caseLines: string[], caseIds: Set<s
   return `${body.slice(0, idx + header.length)}\n${bullets.join("\n")}\n${rest}`;
 }
 
+function replaceSection(body: string, heading: string, content: string): string {
+  const header = `## ${heading}`;
+  const block = content.trim() ? `${header}\n${content.trim()}\n` : "";
+  const idx = body.indexOf(header);
+  if (idx < 0) {
+    if (!block) return body;
+    return `${body.trimEnd()}\n\n${block}`;
+  }
+  const after = body.slice(idx + header.length);
+  const next = after.search(/\n## /);
+  const rest = next < 0 ? "" : after.slice(next);
+  return `${body.slice(0, idx)}${block}${rest.replace(/^\n/, "")}`;
+}
+
 function patchCaseNote(raw: string, post: PostV2, caseIds: Set<string>): string {
   const nl = raw.includes("\r\n") ? "\r\n" : "\n";
   const text = raw.replaceAll("\r\n", "\n");
@@ -355,10 +369,12 @@ function patchCaseNote(raw: string, post: PostV2, caseIds: Set<string>): string 
   const caseLines = (post.related_cases || []).map(
     (r) => `- [[${r.id}|rel:${r.relation || "related_to"}]]`,
   );
-  const body = patchAnalysisRelated(
+  let body = patchAnalysisRelated(
     patchRelationsSection(split.body, caseLines, caseIds),
     post.related_cases || [],
   );
+  body = replaceSection(body, "สำหรับผู้บริหาร", String(post.exec_blurb || ""));
+  body = replaceSection(body, "วิเคราะห์", String(post.analysis_notes || ""));
   const prefix = fm ? `${fm}\n---\n\n` : "";
   const merged = `${prefix}${body.replace(/^\n+/, "")}`;
   const normalized = merged.endsWith("\n") ? merged : `${merged}\n`;

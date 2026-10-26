@@ -1,9 +1,9 @@
 {
  "case_id": "20261022-gamble-sattahip-resort",
  "title": "สภ.สัตหีบร่วมฝ่ายปกครองทลายบ่อนไพ่เก้าเกเคลื่อนที่ในรีสอร์ตบางเสร่ ควบคุมผู้เล่น 26-29 คน",
- "generated_at": "2026-10-26T07:49:36.405Z",
- "node_count": 4,
- "edge_count": 3,
+ "generated_at": "2026-10-26T09:53:06.513Z",
+ "node_count": 5,
+ "edge_count": 4,
  "relations": [
   {
    "label": "จับโดย",
@@ -15,6 +15,12 @@
    "label": "จับโดย",
    "target_id": "30_Entities/Units/สภ.สัตหีบ",
    "target_title": "สภ.สัตหีบ",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "unresolved:30_Entities/สถานที่/สัตหีบ",
+   "target_title": "30_Entities/สถานที่/สัตหีบ",
    "direction": "out"
   },
   {

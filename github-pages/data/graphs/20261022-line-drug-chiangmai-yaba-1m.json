@@ -1,9 +1,9 @@
 {
  "case_id": "20261022-line-drug-chiangmai-yaba-1m",
  "title": "ตชด.335 จับ 2 ผู้ต้องหา ยึดยาบ้ากว่า 1 ล้านเม็ดที่เชียงดาว เชียงใหม่",
- "generated_at": "2026-10-26T07:49:36.417Z",
- "node_count": 4,
- "edge_count": 3,
+ "generated_at": "2026-10-26T09:53:06.525Z",
+ "node_count": 5,
+ "edge_count": 4,
  "relations": [
   {
    "label": "จับโดย",
@@ -15,6 +15,12 @@
    "label": "จับโดย",
    "target_id": "30_Entities/Units/สภ.เชียงดาว",
    "target_title": "สภ.เชียงดาว",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "unresolved:30_Entities/สถานที่/เชียงดาว",
+   "target_title": "30_Entities/สถานที่/เชียงดาว",
    "direction": "out"
   },
   {

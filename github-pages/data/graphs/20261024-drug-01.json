@@ -1,9 +1,9 @@
 {
  "case_id": "20261024-drug-01",
  "title": "รวบ “ดอม” เอเย่นต์ยาเสพติดชาวอเมริกัน ยึดยาเสพติดซุกช่องลับในโซฟา",
- "generated_at": "2026-10-26T07:49:36.551Z",
- "node_count": 6,
- "edge_count": 5,
+ "generated_at": "2026-10-26T09:53:06.660Z",
+ "node_count": 7,
+ "edge_count": 6,
  "relations": [
   {
    "label": "จับโดย",
@@ -18,15 +18,21 @@
    "direction": "out"
   },
   {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บช.สตม.",
+   "target_title": "บช.สตม.",
+   "direction": "out"
+  },
+  {
    "label": "จับโดย",
    "target_id": "30_Entities/Units/สภ.เกาะพะงัน",
    "target_title": "สภ.เกาะพะงัน",
    "direction": "out"
   },
   {
-   "label": "สั่งการโดย",
-   "target_id": "30_Entities/Units/บช.สตม.",
-   "target_title": "บช.สตม.",
+   "label": "ผู้ต้องหา",
+   "target_id": "unresolved:30_Entities/ผู้ต้องหา/ดอม",
+   "target_title": "30_Entities/ผู้ต้องหา/ดอม",
    "direction": "out"
   },
   {

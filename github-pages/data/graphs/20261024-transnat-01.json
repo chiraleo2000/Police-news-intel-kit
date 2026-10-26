@@ -1,28 +1,10 @@
 {
  "case_id": "20261024-transnat-01",
  "title": "สตม.ทลายรังแก๊งคอลเซ็นเตอร์-เว็บพนันจีน \"หงก้วน\" ย่านสายไหม จับ 14 ราย เสียหายกว่า 100 ล้าน",
- "generated_at": "2026-10-26T07:49:36.575Z",
- "node_count": 8,
- "edge_count": 7,
+ "generated_at": "2026-10-26T09:53:06.684Z",
+ "node_count": 10,
+ "edge_count": 9,
  "relations": [
-  {
-   "label": "จับโดย",
-   "target_id": "30_Entities/Units/บก.สส.สตม.",
-   "target_title": "บก.สส.สตม.",
-   "direction": "out"
-  },
-  {
-   "label": "จับโดย",
-   "target_id": "30_Entities/People/สตม.",
-   "target_title": "สตม.",
-   "direction": "out"
-  },
-  {
-   "label": "สั่งการโดย",
-   "target_id": "30_Entities/Units/บช.สตม.",
-   "target_title": "บช.สตม.",
-   "direction": "out"
-  },
   {
    "label": "แจ้งโดย",
    "target_id": "30_Entities/People/ผบ.ตร.",
@@ -33,6 +15,36 @@
    "label": "แจ้งโดย",
    "target_id": "30_Entities/People/ผบช.สตม.",
    "target_title": "ผบช.สตม.",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/People/สตม.",
+   "target_title": "สตม.",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/บก.สส.สตม.",
+   "target_title": "บก.สส.สตม.",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บช.สตม.",
+   "target_title": "บช.สตม.",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "unresolved:30_Entities/สถานที่/สายไหม",
+   "target_title": "30_Entities/สถานที่/สายไหม",
+   "direction": "out"
+  },
+  {
+   "label": "เป้าหมายเครือข่าย",
+   "target_id": "unresolved:30_Entities/ข่ายเครือข่าย/หงก้วน",
+   "target_title": "30_Entities/ข่ายเครือข่าย/หงก้วน",
    "direction": "out"
   },
   {

@@ -1,14 +1,20 @@
 {
  "case_id": "20261025-violent-04",
  "title": "เจ้าของโรงงานวัย 72 ปี ยิงผู้บุกรุกเสียชีวิตที่โกดัง อ.กระทุ่มแบน สมุทรสาคร อ้างป้องกันตัว ตำรวจตรวจสอบข้อเท็จจริง ตามคำให้การ",
- "generated_at": "2026-10-26T07:49:36.622Z",
- "node_count": 3,
- "edge_count": 2,
+ "generated_at": "2026-10-26T09:53:06.731Z",
+ "node_count": 4,
+ "edge_count": 3,
  "relations": [
   {
    "label": "สืบสวนโดย",
    "target_id": "30_Entities/Units/สภ.กระทุ่มแบน",
    "target_title": "สภ.กระทุ่มแบน",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "unresolved:30_Entities/สถานที่/กระทุ่มแบน",
+   "target_title": "30_Entities/สถานที่/กระทุ่มแบน",
    "direction": "out"
   },
   {

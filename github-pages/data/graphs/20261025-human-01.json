@@ -1,9 +1,9 @@
 {
  "case_id": "20261025-human-01",
  "title": "ตำรวจ ปคม. จับหญิงผู้ต้องหาตามหมายจับ ข้อหาค้ามนุษย์ จัดหาเด็กหญิง 16 ปี สองราย ผ่านบัญชี X ช่วยเหลือผู้เสียหายแล้ว",
- "generated_at": "2026-10-26T07:49:36.606Z",
- "node_count": 5,
- "edge_count": 4,
+ "generated_at": "2026-10-26T09:53:06.715Z",
+ "node_count": 6,
+ "edge_count": 5,
  "relations": [
   {
    "label": "จับโดย",
@@ -21,6 +21,12 @@
    "label": "จับโดย",
    "target_id": "30_Entities/Units/บก.ปคม.",
    "target_title": "บก.ปคม.",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "unresolved:30_Entities/บุคคล/วิทยา ศรีประเสริฐภาพ",
+   "target_title": "30_Entities/บุคคล/วิทยา ศรีประเสริฐภาพ",
    "direction": "out"
   },
   {

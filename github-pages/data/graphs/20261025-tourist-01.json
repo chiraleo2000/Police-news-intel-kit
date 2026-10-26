@@ -1,10 +1,22 @@
 {
  "case_id": "20261025-tourist-01",
  "title": "สตม. ตรวจสอบกรณีครอบครัวตามหาพิธีกรชาวดัตช์วัย 70 ปี พบข้อมูลเดินทางออกไทยไป สปป.ลาว ตั้งแต่ปลายปี 2568",
- "generated_at": "2026-10-26T07:49:36.615Z",
- "node_count": 7,
- "edge_count": 6,
+ "generated_at": "2026-10-26T09:53:06.725Z",
+ "node_count": 8,
+ "edge_count": 7,
  "relations": [
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/People/ผบช.สตม.",
+   "target_title": "ผบช.สตม.",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/People/สตม.",
+   "target_title": "สตม.",
+   "direction": "out"
+  },
   {
    "label": "สืบสวนโดย",
    "target_id": "30_Entities/Units/บก.ตม.",
@@ -18,12 +30,6 @@
    "direction": "out"
   },
   {
-   "label": "สืบสวนโดย",
-   "target_id": "30_Entities/People/สตม.",
-   "target_title": "สตม.",
-   "direction": "out"
-  },
-  {
    "label": "สั่งการโดย",
    "target_id": "30_Entities/Units/บช.สตม.",
    "target_title": "บช.สตม.",
@@ -31,8 +37,8 @@
   },
   {
    "label": "แจ้งโดย",
-   "target_id": "30_Entities/People/ผบช.สตม.",
-   "target_title": "ผบช.สตม.",
+   "target_id": "unresolved:30_Entities/บุคคล/เชิงรณ ริมผดี",
+   "target_title": "30_Entities/บุคคล/เชิงรณ ริมผดี",
    "direction": "out"
   },
   {

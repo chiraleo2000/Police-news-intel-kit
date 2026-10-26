@@ -1,20 +1,20 @@
 {
  "case_id": "20261026-police-01",
  "title": "ผบ.ตร. สั่งตำรวจจราจรทั่วประเทศงดสวมหมวกคลุมใบหน้า-ย้ำ “ตักเตือนก่อนปรับ” และปรับแบบขั้นบันได ตามหนังสือสั่งการ ศจร.ตร.",
- "generated_at": "2026-10-26T07:49:36.644Z",
+ "generated_at": "2026-10-26T09:53:06.758Z",
  "node_count": 6,
  "edge_count": 5,
  "relations": [
   {
    "label": "แจ้งโดย",
-   "target_id": "30_Entities/People/ผบ.ตร.",
-   "target_title": "ผบ.ตร.",
+   "target_id": "30_Entities/People/บช.น.",
+   "target_title": "บช.น.",
    "direction": "out"
   },
   {
    "label": "แจ้งโดย",
-   "target_id": "30_Entities/People/บช.น.",
-   "target_title": "บช.น.",
+   "target_id": "30_Entities/People/ผบ.ตร.",
+   "target_title": "ผบ.ตร.",
    "direction": "out"
   },
   {
@@ -25,14 +25,14 @@
   },
   {
    "label": "แจ้งโดย",
-   "target_id": "30_Entities/People/ศจร.ตร.",
-   "target_title": "ศจร.ตร.",
+   "target_id": "30_Entities/People/สำนักงานตำรวจแห่งชาติ",
+   "target_title": "สำนักงานตำรวจแห่งชาติ",
    "direction": "out"
   },
   {
    "label": "แจ้งโดย",
-   "target_id": "30_Entities/People/สำนักงานตำรวจแห่งชาติ",
-   "target_title": "สำนักงานตำรวจแห่งชาติ",
+   "target_id": "30_Entities/People/ศจร.ตร.",
+   "target_title": "ศจร.ตร.",
    "direction": "out"
   }
  ],

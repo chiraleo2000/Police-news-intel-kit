@@ -1,14 +1,20 @@
 {
  "case_id": "20261024-road-01",
  "title": "ระทึก! งานรับบัวบางพลี เรือชนกันกลางคลองสำโรง เจ็บ 8 ราย คู่กรณีซิ่งเรือเผ่นหนี",
- "generated_at": "2026-10-26T07:49:36.572Z",
- "node_count": 3,
- "edge_count": 2,
+ "generated_at": "2026-10-26T09:53:06.681Z",
+ "node_count": 4,
+ "edge_count": 3,
  "relations": [
   {
    "label": "สืบสวนโดย",
    "target_id": "30_Entities/Units/ตำรวจในพื้นที่",
    "target_title": "ตำรวจในพื้นที่",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "unresolved:30_Entities/สถานที่/คลองสำโรง",
+   "target_title": "30_Entities/สถานที่/คลองสำโรง",
    "direction": "out"
   },
   {

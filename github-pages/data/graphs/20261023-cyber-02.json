@@ -1,10 +1,16 @@
 {
  "case_id": "20261023-cyber-02",
  "title": "สตม.บุกบ้านหรูย่านสายไหม ทลายเครือข่ายสแกมเมอร์-เว็บพนันจีน จับ 14 ราย",
- "generated_at": "2026-10-26T07:49:36.460Z",
- "node_count": 6,
- "edge_count": 5,
+ "generated_at": "2026-10-26T09:53:06.570Z",
+ "node_count": 8,
+ "edge_count": 7,
  "relations": [
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/People/ผบ.ตร.",
+   "target_title": "ผบ.ตร.",
+   "direction": "out"
+  },
   {
    "label": "จับโดย",
    "target_id": "30_Entities/People/สตม.",
@@ -18,9 +24,15 @@
    "direction": "out"
   },
   {
-   "label": "แจ้งโดย",
-   "target_id": "30_Entities/People/ผบ.ตร.",
-   "target_title": "ผบ.ตร.",
+   "label": "เกิดที่",
+   "target_id": "unresolved:30_Entities/สถานที่/สายไหม",
+   "target_title": "30_Entities/สถานที่/สายไหม",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "unresolved:30_Entities/บุคคล/นพศิลป์ พูลสวัสดิ์",
+   "target_title": "30_Entities/บุคคล/นพศิลป์ พูลสวัสดิ์",
    "direction": "out"
   },
   {

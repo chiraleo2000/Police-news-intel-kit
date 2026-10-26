@@ -1,20 +1,20 @@
 {
  "case_id": "20261023-env-01",
  "title": "รัฐมนตรีปฏิเสธเกี่ยวข้อง รถบรรทุกติดสติ๊กเกอร์แอบอ้างชื่อเลี่ยงตรวจค้น สั่งดำเนินคดี",
- "generated_at": "2026-10-26T07:49:36.483Z",
+ "generated_at": "2026-10-26T09:53:06.593Z",
  "node_count": 3,
  "edge_count": 2,
  "relations": [
   {
-   "label": "สั่งการโดย",
-   "target_id": "30_Entities/Units/บช.ก.",
-   "target_title": "บช.ก.",
-   "direction": "out"
-  },
-  {
    "label": "แจ้งโดย",
    "target_id": "30_Entities/People/ตำรวจทางหลวง",
    "target_title": "ตำรวจทางหลวง",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บช.ก.",
+   "target_title": "บช.ก.",
    "direction": "out"
   }
  ],

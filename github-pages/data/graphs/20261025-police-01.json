@@ -1,9 +1,9 @@
 {
  "case_id": "20261025-police-01",
  "title": "สน.วังทองหลาง ผนึก S.W.A.T. บก.น.4 ตรวจ 8 สถานบริการยามดึก สุ่มตรวจสารเสพติด 54 ราย ไม่พบผู้กระทำผิด",
- "generated_at": "2026-10-26T07:49:36.609Z",
- "node_count": 5,
- "edge_count": 4,
+ "generated_at": "2026-10-26T09:53:06.719Z",
+ "node_count": 6,
+ "edge_count": 5,
  "relations": [
   {
    "label": "แจ้งโดย",
@@ -21,6 +21,12 @@
    "label": "แจ้งโดย",
    "target_id": "30_Entities/People/สน.วังทองหลาง",
    "target_title": "สน.วังทองหลาง",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "unresolved:30_Entities/สถานที่/วังทองหลาง",
+   "target_title": "30_Entities/สถานที่/วังทองหลาง",
    "direction": "out"
   },
   {

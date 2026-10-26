@@ -1,14 +1,20 @@
 {
  "case_id": "20261025-cyber-01",
  "title": "ตำรวจทางหลวงดักจับผู้ต้องหาตามหมายจับ เครือข่ายฟอกเงินแก๊งคอลเซ็นเตอร์ผ่านแอปซื้อขายทองคำ เสียหายกว่า 8 ล้านบาท ที่นครสวรรค์",
- "generated_at": "2026-10-26T07:49:36.590Z",
- "node_count": 6,
- "edge_count": 5,
+ "generated_at": "2026-10-26T09:53:06.698Z",
+ "node_count": 7,
+ "edge_count": 6,
  "relations": [
   {
    "label": "จับโดย",
    "target_id": "30_Entities/Units/บก.ทล.",
    "target_title": "บก.ทล.",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บช.ก.",
+   "target_title": "บช.ก.",
    "direction": "out"
   },
   {
@@ -25,8 +31,8 @@
   },
   {
    "label": "สั่งการโดย",
-   "target_id": "30_Entities/Units/บช.ก.",
-   "target_title": "บช.ก.",
+   "target_id": "unresolved:30_Entities/บุคคล/บุญลือ ผดุงถิ่น",
+   "target_title": "30_Entities/บุคคล/บุญลือ ผดุงถิ่น",
    "direction": "out"
   },
   {

@@ -1,20 +1,20 @@
 {
  "case_id": "20261026-public-01",
  "title": "คนร้ายไม่ทราบจำนวนเผายางรถยนต์กีดขวางการจราจร 3 จุดหน้ามัสยิดแห่งหนึ่งในเมืองยะลา เจ้าหน้าที่ตรวจสอบและควบคุมเพลิง",
- "generated_at": "2026-10-26T07:49:36.652Z",
+ "generated_at": "2026-10-26T09:53:06.764Z",
  "node_count": 3,
  "edge_count": 2,
  "relations": [
   {
    "label": "สืบสวนโดย",
-   "target_id": "30_Entities/Units/ศูนย์รับแจ้งเหตุ 191",
-   "target_title": "ศูนย์รับแจ้งเหตุ 191",
+   "target_id": "30_Entities/People/สภ.เมืองยะลา",
+   "target_title": "สภ.เมืองยะลา",
    "direction": "out"
   },
   {
    "label": "สืบสวนโดย",
-   "target_id": "30_Entities/People/สภ.เมืองยะลา",
-   "target_title": "สภ.เมืองยะลา",
+   "target_id": "30_Entities/Units/ศูนย์รับแจ้งเหตุ 191",
+   "target_title": "ศูนย์รับแจ้งเหตุ 191",
    "direction": "out"
   }
  ],

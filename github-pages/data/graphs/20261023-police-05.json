@@ -1,10 +1,16 @@
 {
  "case_id": "20261023-police-05",
  "title": "การประชุมมอบนโยบายบริหาร ศปก.ตร. โดย รอง ผบ.ตร.",
- "generated_at": "2026-10-26T07:49:36.509Z",
- "node_count": 5,
- "edge_count": 4,
+ "generated_at": "2026-10-26T09:53:06.619Z",
+ "node_count": 6,
+ "edge_count": 5,
  "relations": [
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/People/ผบ.ตร.",
+   "target_title": "ผบ.ตร.",
+   "direction": "out"
+  },
   {
    "label": "สืบสวนโดย",
    "target_id": "30_Entities/Units/ตร.",
@@ -18,9 +24,9 @@
    "direction": "out"
   },
   {
-   "label": "แจ้งโดย",
-   "target_id": "30_Entities/People/ผบ.ตร.",
-   "target_title": "ผบ.ตร.",
+   "label": "สั่งการโดย",
+   "target_id": "unresolved:30_Entities/บุคคล/ธนพล ศรีโสภา",
+   "target_title": "30_Entities/บุคคล/ธนพล ศรีโสภา",
    "direction": "out"
   },
   {

@@ -1,10 +1,16 @@
 {
  "case_id": "20261023-violent-02",
  "title": "คดีป๋องยังไม่จบ! อัยการพัทยายื่นฟ้องอีกคดี ฆาตกรรม 3 ศพครอบครัวไทย",
- "generated_at": "2026-10-26T07:49:36.532Z",
- "node_count": 2,
- "edge_count": 1,
+ "generated_at": "2026-10-26T09:53:06.642Z",
+ "node_count": 3,
+ "edge_count": 2,
  "relations": [
+  {
+   "label": "เกิดที่",
+   "target_id": "unresolved:30_Entities/สถานที่/พัทยา",
+   "target_title": "30_Entities/สถานที่/พัทยา",
+   "direction": "out"
+  },
   {
    "label": "เกิดที่",
    "target_id": "30_Entities/สถานที่/พัทยา",

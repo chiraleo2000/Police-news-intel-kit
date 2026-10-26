@@ -1,9 +1,9 @@
 {
  "case_id": "20261025-violent-03",
  "title": "ตำรวจนาแก นครพนม ฝากขังชายวัย 62 ปี ข้อหาฆ่าภรรยาโดยเจตนา หลังพบขวานและลายนิ้วมือ ตามข้อกล่าวหา",
- "generated_at": "2026-10-26T07:49:36.620Z",
- "node_count": 4,
- "edge_count": 3,
+ "generated_at": "2026-10-26T09:53:06.730Z",
+ "node_count": 5,
+ "edge_count": 4,
  "relations": [
   {
    "label": "สืบสวนโดย",
@@ -15,6 +15,12 @@
    "label": "สืบสวนโดย",
    "target_id": "30_Entities/Units/สภ.นาแก",
    "target_title": "สภ.นาแก",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "unresolved:30_Entities/สถานที่/นาแก",
+   "target_title": "30_Entities/สถานที่/นาแก",
    "direction": "out"
   },
   {

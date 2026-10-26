@@ -1,22 +1,10 @@
 {
  "case_id": "20261023-police-07",
  "title": "หัวหน้า ตม. นำมาตรการความปลอดภัยนักท่องเที่ยวและป้องกันอาชญากรรมในพัทยา ใช้ AI จดจำใบหน้าตามผู้ต้องหา",
- "generated_at": "2026-10-26T07:49:36.512Z",
- "node_count": 7,
- "edge_count": 6,
+ "generated_at": "2026-10-26T09:53:06.622Z",
+ "node_count": 9,
+ "edge_count": 8,
  "relations": [
-  {
-   "label": "สั่งการโดย",
-   "target_id": "30_Entities/Units/บช.สตม.",
-   "target_title": "บช.สตม.",
-   "direction": "out"
-  },
-  {
-   "label": "แจ้งโดย",
-   "target_id": "30_Entities/People/ตม.",
-   "target_title": "ตม.",
-   "direction": "out"
-  },
   {
    "label": "แจ้งโดย",
    "target_id": "30_Entities/People/ตำรวจท่องเที่ยว",
@@ -27,6 +15,30 @@
    "label": "แจ้งโดย",
    "target_id": "30_Entities/People/ตำรวจภูธรชลบุรี",
    "target_title": "ตำรวจภูธรชลบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บช.สตม.",
+   "target_title": "บช.สตม.",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "unresolved:30_Entities/สถานที่/พัทยา",
+   "target_title": "30_Entities/สถานที่/พัทยา",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/People/ตม.",
+   "target_title": "ตม.",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "unresolved:30_Entities/บุคคล/นพศิลป์ พูลสวัสดิ์",
+   "target_title": "30_Entities/บุคคล/นพศิลป์ พูลสวัสดิ์",
    "direction": "out"
   },
   {

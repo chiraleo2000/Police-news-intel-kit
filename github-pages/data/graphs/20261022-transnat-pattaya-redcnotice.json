@@ -1,14 +1,26 @@
 {
  "case_id": "20261022-transnat-pattaya-redcnotice",
  "title": "สตม.-ตำรวจภาค 2 จับชาวจีนเป้าหมาย Red Notice คดีบ่อนคาสิโนมูลค่า 1.5 พันล้านที่พัทยา",
- "generated_at": "2026-10-26T07:49:36.447Z",
- "node_count": 6,
- "edge_count": 5,
+ "generated_at": "2026-10-26T09:53:06.558Z",
+ "node_count": 7,
+ "edge_count": 6,
  "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/People/สตม.",
+   "target_title": "สตม.",
+   "direction": "out"
+  },
   {
    "label": "จับโดย",
    "target_id": "30_Entities/Units/ตม.จว.ชลบุรี",
    "target_title": "ตม.จว.ชลบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บช.สตม.",
+   "target_title": "บช.สตม.",
    "direction": "out"
   },
   {
@@ -18,15 +30,9 @@
    "direction": "out"
   },
   {
-   "label": "จับโดย",
-   "target_id": "30_Entities/People/สตม.",
-   "target_title": "สตม.",
-   "direction": "out"
-  },
-  {
-   "label": "สั่งการโดย",
-   "target_id": "30_Entities/Units/บช.สตม.",
-   "target_title": "บช.สตม.",
+   "label": "เกิดที่",
+   "target_id": "unresolved:30_Entities/สถานที่/พัทยา",
+   "target_title": "30_Entities/สถานที่/พัทยา",
    "direction": "out"
   },
   {

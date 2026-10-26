@@ -616,6 +616,7 @@
   const REL_TH = {
     investigated_by: "สืบสวนโดย",
     arrested_by: "จับโดย",
+    warrant_from: "หมายจากศาล",
     ordered_by: "สั่งการโดย",
     announced_by: "แจ้งโดย",
     targets_network: "เป้าหมายเครือข่าย",

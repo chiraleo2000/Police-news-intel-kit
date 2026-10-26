@@ -1,8 +1,8 @@
 {
  "case_id": "20261022-drug-hatyai-etomidate",
  "title": "ตำรวจคุ้มครองผู้บริโภคร่วม ตชด.437 จับ 2 ผู้ต้องหา ทลายแหล่งผสมน้ำยาบุหรี่ไฟฟ้าผสมอีโตมิเดต หาดใหญ่",
- "generated_at": "2026-10-26T07:49:36.390Z",
- "node_count": 7,
+ "generated_at": "2026-10-26T09:53:06.500Z",
+ "node_count": 8,
  "edge_count": 7,
  "relations": [
   {
@@ -18,21 +18,21 @@
    "direction": "out"
   },
   {
-   "label": "จับโดย",
-   "target_id": "30_Entities/Units/สภ.หาดใหญ่",
-   "target_title": "สภ.หาดใหญ่",
-   "direction": "out"
-  },
-  {
    "label": "สั่งการโดย",
    "target_id": "30_Entities/Units/บช.ก.",
    "target_title": "บช.ก.",
    "direction": "out"
   },
   {
-   "label": "เกี่ยวข้องกับ",
-   "target_id": "20_Cases/20261023-drug-03",
-   "target_title": "ตชด.437 ร่วม ปคบ. ทลายแหล่งผลิตพอตเคกลางหาดใหญ่ จับ 2 ราย",
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/สภ.หาดใหญ่",
+   "target_title": "สภ.หาดใหญ่",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "unresolved:30_Entities/สถานที่/หาดใหญ่",
+   "target_title": "30_Entities/สถานที่/หาดใหญ่",
    "direction": "out"
   },
   {
@@ -45,7 +45,7 @@
    "label": "เกี่ยวข้องกับ",
    "target_id": "20_Cases/20261023-drug-03",
    "target_title": "ตชด.437 ร่วม ปคบ. ทลายแหล่งผลิตพอตเคกลางหาดใหญ่ จับ 2 ราย",
-   "direction": "in"
+   "direction": "out"
   }
  ],
  "svg": "graphs/20261022-drug-hatyai-etomidate.svg"

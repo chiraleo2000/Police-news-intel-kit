@@ -1,9 +1,9 @@
 {
  "case_id": "20261024-violent-02",
  "title": "ตำรวจท่าศาลาจับผู้ต้องหาตามหมายจับคดีกระทำชำเราเด็ก ตามข้อกล่าวหา",
- "generated_at": "2026-10-26T07:49:36.584Z",
- "node_count": 5,
- "edge_count": 4,
+ "generated_at": "2026-10-26T09:53:06.691Z",
+ "node_count": 6,
+ "edge_count": 5,
  "relations": [
   {
    "label": "จับโดย",
@@ -12,15 +12,21 @@
    "direction": "out"
   },
   {
-   "label": "จับโดย",
+   "label": "หมายจากศาล",
    "target_id": "30_Entities/Units/สภ.ท่าศาลา",
    "target_title": "สภ.ท่าศาลา",
    "direction": "out"
   },
   {
-   "label": "จับโดย",
+   "label": "หมายจากศาล",
    "target_id": "30_Entities/Units/สภ.นาบอน",
    "target_title": "สภ.นาบอน",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "unresolved:30_Entities/สถานที่/ท่าศาลา",
+   "target_title": "30_Entities/สถานที่/ท่าศาลา",
    "direction": "out"
   },
   {

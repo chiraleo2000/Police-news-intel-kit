@@ -1,9 +1,9 @@
 {
  "case_id": "20261025-drug-03",
  "title": "ตำรวจภาค 5 พบยาบ้าราว 2 ล้านเม็ดถูกทิ้งในป่าละเมาะริมถนนเชียงใหม่-พร้าว คาดขบวนการลำเลียงหวั่นด่านเอ็กซเรย์",
- "generated_at": "2026-10-26T07:49:36.596Z",
- "node_count": 6,
- "edge_count": 5,
+ "generated_at": "2026-10-26T09:53:06.704Z",
+ "node_count": 7,
+ "edge_count": 6,
  "relations": [
   {
    "label": "สืบสวนโดย",
@@ -27,6 +27,12 @@
    "label": "สืบสวนโดย",
    "target_id": "30_Entities/Units/สภ.แม่แฝก",
    "target_title": "สภ.แม่แฝก",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "unresolved:30_Entities/บุคคล/ธนะรัชต์ ชุ่มสวัสดิ์",
+   "target_title": "30_Entities/บุคคล/ธนะรัชต์ ชุ่มสวัสดิ์",
    "direction": "out"
   },
   {

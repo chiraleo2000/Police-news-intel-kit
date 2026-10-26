@@ -313,8 +313,16 @@ function networkEdgeOk(state, targetId, label) {
   return isSpecificNetwork(target.title);
 }
 
+function labelForTarget(state, targetId, label) {
+  const title = state.byId.get(targetId)?.title || "";
+  if (label === "จับโดย" && /ศาล/.test(title)) return "หมายจากศาล";
+  if (label === "จับโดย" && /อัยการ/.test(title)) return "แจ้งโดย";
+  return label;
+}
+
 function pushEdge(state, source, targetId, rawLabel) {
-  const label = thaiLabel(rawLabel) || (String(rawLabel || "").trim() && /[ก-๙]/.test(rawLabel) ? String(rawLabel).trim() : "");
+  const named = thaiLabel(rawLabel) || (String(rawLabel || "").trim() && /[ก-๙]/.test(rawLabel) ? String(rawLabel).trim() : "");
+  const label = labelForTarget(state, targetId, named);
   if (!label || !targetId || targetId === source) return;
   if (!networkEdgeOk(state, targetId, label)) return;
   const target = state.byId.get(targetId);
@@ -490,6 +498,33 @@ function computeDegrees(edges) {
   return degrees;
 }
 
+function undirectedCaseKey(a, b) {
+  return a < b ? `${a}|${b}` : `${b}|${a}`;
+}
+
+function collapseCaseEdges(state) {
+  const rest = [];
+  const groups = new Map();
+  for (const edge of state.edges) {
+    const left = state.byId.get(edge.source);
+    const right = state.byId.get(edge.target);
+    if (left?.kind !== "case" || right?.kind !== "case") {
+      rest.push(edge);
+      continue;
+    }
+    const key = undirectedCaseKey(edge.source, edge.target);
+    const list = groups.get(key) || [];
+    list.push(edge);
+    groups.set(key, list);
+  }
+  for (const list of groups.values()) {
+    const follow = list.find((edge) => edge.label === "ติดตามจาก");
+    const chosen = follow || list[0];
+    rest.push(chosen);
+  }
+  return rest;
+}
+
 function build() {
   if (!fs.existsSync(VAULT)) return writeEmptyGraph();
 
@@ -504,6 +539,7 @@ function build() {
     resolveAndPushEdges(node, state);
   }
   absorbPosts(state);
+  state.edges = collapseCaseEdges(state);
 
   for (const node of state.nodes) {
     if (node.kind === "entity") node.entity_group = finalizeEntityGroup(node);

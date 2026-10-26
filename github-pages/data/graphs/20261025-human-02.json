@@ -1,10 +1,16 @@
 {
  "case_id": "20261025-human-02",
  "title": "ตำรวจท่องเที่ยว-ภ.5 จับ 2 ผู้ต้องหา ตามข้อกล่าวหาขบวนการ \"โรแมนซ์สแกม\" หลอกหญิงชาวจีนเข้าไทยแล้วบังคับพาไปชายแดน",
- "generated_at": "2026-10-26T07:49:36.608Z",
+ "generated_at": "2026-10-26T09:53:06.717Z",
  "node_count": 6,
  "edge_count": 5,
  "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/People/บช.ทท.",
+   "target_title": "บช.ทท.",
+   "direction": "out"
+  },
   {
    "label": "จับโดย",
    "target_id": "30_Entities/Units/กก.2 บก.ทท.2",
@@ -15,12 +21,6 @@
    "label": "จับโดย",
    "target_id": "30_Entities/Units/บก.ทท.2",
    "target_title": "บก.ทท.2",
-   "direction": "out"
-  },
-  {
-   "label": "จับโดย",
-   "target_id": "30_Entities/People/บช.ทท.",
-   "target_title": "บช.ทท.",
    "direction": "out"
   },
   {

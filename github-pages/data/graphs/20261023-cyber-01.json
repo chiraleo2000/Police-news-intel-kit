@@ -1,16 +1,10 @@
 {
  "case_id": "20261023-cyber-01",
  "title": "ตร.ไซเบอร์ ทลายเครือข่ายเงินกู้นอกระบบภาคเหนือ จับ 6 ผู้ต้องหา พิษณุโลก",
- "generated_at": "2026-10-26T07:49:36.458Z",
- "node_count": 6,
- "edge_count": 5,
+ "generated_at": "2026-10-26T09:53:06.569Z",
+ "node_count": 7,
+ "edge_count": 6,
  "relations": [
-  {
-   "label": "จับโดย",
-   "target_id": "30_Entities/Units/บก.สอท.4",
-   "target_title": "บก.สอท.4",
-   "direction": "out"
-  },
   {
    "label": "สั่งการโดย",
    "target_id": "30_Entities/People/บช.สอท.",
@@ -21,6 +15,18 @@
    "label": "แจ้งโดย",
    "target_id": "30_Entities/People/ผบช.สอท.",
    "target_title": "ผบช.สอท.",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/บก.สอท.4",
+   "target_title": "บก.สอท.4",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "unresolved:30_Entities/บุคคล/สามารถ นวลมา",
+   "target_title": "30_Entities/บุคคล/สามารถ นวลมา",
    "direction": "out"
   },
   {

@@ -1,10 +1,16 @@
 {
  "case_id": "20261024-violent-04",
  "title": "ตำรวจจับผู้ต้องหาทำร้ายผู้ขับรถหญิงกลางห้าแยกลาดพร้าว หลังมีปากเสียงเรื่องเสียงแตร",
- "generated_at": "2026-10-26T07:49:36.587Z",
- "node_count": 9,
+ "generated_at": "2026-10-26T09:53:06.695Z",
+ "node_count": 10,
  "edge_count": 9,
  "relations": [
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/People/บช.น.",
+   "target_title": "บช.น.",
+   "direction": "out"
+  },
   {
    "label": "จับโดย",
    "target_id": "30_Entities/Units/กก.สส.บก.น.2",
@@ -36,15 +42,9 @@
    "direction": "out"
   },
   {
-   "label": "สั่งการโดย",
-   "target_id": "30_Entities/People/บช.น.",
-   "target_title": "บช.น.",
-   "direction": "out"
-  },
-  {
-   "label": "เกี่ยวข้องกับ",
-   "target_id": "20_Cases/20261025-violent-02",
-   "target_title": "ชายวัย 19 ปี ถูกแจ้ง 3 ข้อหา ทำร้ายร่างกายหญิงขับรถที่ห้าแยกลาดพร้าว อัยการฟ้อง ศาลสั่งขัง นัดพิพากษา 15 ธ.ค. ตามข้อกล่าวหา",
+   "label": "เกิดที่",
+   "target_id": "unresolved:30_Entities/สถานที่/ลาดพร้าว",
+   "target_title": "30_Entities/สถานที่/ลาดพร้าว",
    "direction": "out"
   },
   {

@@ -1,7 +1,7 @@
 {
  "case_id": "20261022-tourist-pattani-pakistani-identity",
  "title": "ตม.6 จับเจ้าของร้านผ้าใหญ่ปัตตานี ชาวปากีสถานวัย 54 ปี สวมสิทธิ์บัตรประชาชนไทย",
- "generated_at": "2026-10-26T07:49:36.442Z",
+ "generated_at": "2026-10-26T09:53:06.548Z",
  "node_count": 4,
  "edge_count": 3,
  "relations": [
@@ -12,15 +12,15 @@
    "direction": "out"
   },
   {
-   "label": "จับโดย",
-   "target_id": "30_Entities/Units/สภ.เมืองปัตตานี",
-   "target_title": "สภ.เมืองปัตตานี",
-   "direction": "out"
-  },
-  {
    "label": "สั่งการโดย",
    "target_id": "30_Entities/Units/บช.สตม.",
    "target_title": "บช.สตม.",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/สภ.เมืองปัตตานี",
+   "target_title": "สภ.เมืองปัตตานี",
    "direction": "out"
   }
  ],

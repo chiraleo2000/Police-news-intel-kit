@@ -1,16 +1,10 @@
 {
  "case_id": "20261024-transnat-02",
  "title": "จับชายจีนถือหนังสือเดินทางกัมพูชา คดีฉ้อโกงลงทุนคริปโตเสียหายกว่า 100 ล้าน",
- "generated_at": "2026-10-26T07:49:36.577Z",
+ "generated_at": "2026-10-26T09:53:06.686Z",
  "node_count": 6,
  "edge_count": 5,
  "relations": [
-  {
-   "label": "จับโดย",
-   "target_id": "30_Entities/Units/ตม.จว.ชลบุรี",
-   "target_title": "ตม.จว.ชลบุรี",
-   "direction": "out"
-  },
   {
    "label": "จับโดย",
    "target_id": "30_Entities/People/บก.ตม.3",
@@ -25,14 +19,20 @@
   },
   {
    "label": "จับโดย",
-   "target_id": "30_Entities/Units/สน.หัวหมาก",
-   "target_title": "สน.หัวหมาก",
+   "target_id": "30_Entities/Units/ตม.จว.ชลบุรี",
+   "target_title": "ตม.จว.ชลบุรี",
    "direction": "out"
   },
   {
    "label": "สั่งการโดย",
    "target_id": "30_Entities/Units/บช.สตม.",
    "target_title": "บช.สตม.",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/สน.หัวหมาก",
+   "target_title": "สน.หัวหมาก",
    "direction": "out"
   }
  ],

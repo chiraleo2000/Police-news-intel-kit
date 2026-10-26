@@ -1,16 +1,10 @@
 {
  "case_id": "20261026-gamble-01",
  "title": "ผบช.สอท. ยืนยันสืบสวนข้อกล่าวอ้างเว็บพนันจ่ายเงินพิเศษให้ ส.ส. ร่วม DSI-ดีอี ตรวจเส้นทางการเงิน ย้ำยังเป็นข้อกล่าวอ้างที่ต้องพิสูจน์",
- "generated_at": "2026-10-26T07:49:36.636Z",
- "node_count": 6,
- "edge_count": 5,
+ "generated_at": "2026-10-26T09:53:06.748Z",
+ "node_count": 7,
+ "edge_count": 6,
  "relations": [
-  {
-   "label": "แจ้งโดย",
-   "target_id": "30_Entities/People/ผบช.สอท.",
-   "target_title": "ผบช.สอท.",
-   "direction": "out"
-  },
   {
    "label": "แจ้งโดย",
    "target_id": "30_Entities/People/DSI",
@@ -27,6 +21,18 @@
    "label": "แจ้งโดย",
    "target_id": "30_Entities/People/บช.สอท.",
    "target_title": "บช.สอท.",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/People/ผบช.สอท.",
+   "target_title": "ผบช.สอท.",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "unresolved:30_Entities/บุคคล/ทินกร รังมาตย์",
+   "target_title": "30_Entities/บุคคล/ทินกร รังมาตย์",
    "direction": "out"
   },
   {

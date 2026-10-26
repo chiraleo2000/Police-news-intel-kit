@@ -1,20 +1,20 @@
 {
  "case_id": "20261026-drug-02",
  "title": "ปปส.ภาค 9 ตรวจสอบเรื่องร้องเรียนสายด่วน 1386 ในตรัง-สงขลา ตรวจค้นบ้านด้วยหมายค้นไม่พบยาเสพติด ขยายผลนักค้ารายสำคัญหลบหนีหมายจับ",
- "generated_at": "2026-10-26T07:49:36.634Z",
+ "generated_at": "2026-10-26T09:53:06.743Z",
  "node_count": 5,
  "edge_count": 4,
  "relations": [
   {
-   "label": "สั่งการโดย",
-   "target_id": "30_Entities/People/บช.ปส.",
-   "target_title": "บช.ปส.",
-   "direction": "out"
-  },
-  {
    "label": "แจ้งโดย",
    "target_id": "30_Entities/People/บก.ปปส.ภ.9",
    "target_title": "บก.ปปส.ภ.9",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/People/บช.ปส.",
+   "target_title": "บช.ปส.",
    "direction": "out"
   },
   {

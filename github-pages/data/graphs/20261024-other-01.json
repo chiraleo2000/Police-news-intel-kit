@@ -1,10 +1,16 @@
 {
  "case_id": "20261024-other-01",
  "title": "ผบช.ทท. เยี่ยมครอบครัวตำรวจท่องเที่ยวในจังหวัดนราธิวาส ย้ำ 'ครอบครัวเดียวกัน'",
- "generated_at": "2026-10-26T07:49:36.561Z",
- "node_count": 5,
- "edge_count": 4,
+ "generated_at": "2026-10-26T09:53:06.670Z",
+ "node_count": 6,
+ "edge_count": 5,
  "relations": [
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/People/กองบัญชาการตำรวจท่องเที่ยว",
+   "target_title": "กองบัญชาการตำรวจท่องเที่ยว",
+   "direction": "out"
+  },
   {
    "label": "สั่งการโดย",
    "target_id": "30_Entities/People/บช.ทท.",
@@ -18,9 +24,9 @@
    "direction": "out"
   },
   {
-   "label": "แจ้งโดย",
-   "target_id": "30_Entities/People/กองบัญชาการตำรวจท่องเที่ยว",
-   "target_title": "กองบัญชาการตำรวจท่องเที่ยว",
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "unresolved:30_Entities/บุคคล/พงศ์ศยาม เมียนขันทอง",
+   "target_title": "30_Entities/บุคคล/พงศ์ศยาม เมียนขันทอง",
    "direction": "out"
   },
   {

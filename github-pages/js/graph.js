@@ -35,6 +35,7 @@
   const REL_TH = {
     investigated_by: "สืบสวนโดย",
     arrested_by: "จับโดย",
+    warrant_from: "หมายจากศาล",
     ordered_by: "สั่งการโดย",
     announced_by: "แจ้งโดย",
     targets_network: "เป้าหมายเครือข่าย",
@@ -115,12 +116,22 @@
       if (raw && !isGenericMention(raw)) specific.add(pairKey(e.source, e.target));
     }
     const want = respectRelation ? filters.relation : "";
+    const seen = new Set();
+    const followPairs = new Set();
+    for (const e of edges) {
+      if (relationLabel(e.label) === "ติดตามจาก") followPairs.add(pairKey(e.source, e.target));
+    }
     return edges.filter((e) => {
       const raw = String(e.label ?? "").trim();
       if (!raw) return false;
       const display = relationLabel(raw);
       if (want) return display === want || raw === want;
-      if (isGenericMention(raw) && specific.has(pairKey(e.source, e.target))) return false;
+      const key = pairKey(e.source, e.target);
+      if (isGenericMention(raw) && specific.has(key)) return false;
+      if (display === "เกี่ยวข้องกับ" && followPairs.has(key)) return false;
+      const once = `${key}\0${display}`;
+      if (seen.has(once)) return false;
+      seen.add(once);
       return true;
     });
   }

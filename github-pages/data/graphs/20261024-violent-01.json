@@ -1,14 +1,20 @@
 {
  "case_id": "20261024-violent-01",
  "title": "ตำรวจบางพลีจับผู้ต้องหาคดีบุกเข้าบ้านพยายามกระทำชำเรา ตามข้อกล่าวหา",
- "generated_at": "2026-10-26T07:49:36.582Z",
- "node_count": 3,
- "edge_count": 2,
+ "generated_at": "2026-10-26T09:53:06.690Z",
+ "node_count": 4,
+ "edge_count": 3,
  "relations": [
   {
    "label": "จับโดย",
    "target_id": "30_Entities/Units/สภ.บางพลี",
    "target_title": "สภ.บางพลี",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "unresolved:30_Entities/สถานที่/บางพลี",
+   "target_title": "30_Entities/สถานที่/บางพลี",
    "direction": "out"
   },
   {

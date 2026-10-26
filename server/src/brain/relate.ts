@@ -397,11 +397,11 @@ function dayDistance(leftDay: string, rightDay: string): number {
 }
 
 export function relPhrase(relation: string): string {
-  if (relation === "follow_up_of") return "ข่าวติดตาม";
-  if (relation === "related_to") return "เรื่องเดียวกัน";
+  if (relation === "follow_up_of" || relation === "ติดตามจาก") return "ติดตามจาก";
+  if (relation === "related_to" || relation === "เกี่ยวข้องกับ") return "เกี่ยวข้องกับ";
   if (relation === "similar_mo") return "รูปแบบคล้าย";
   if (relation === "same_network") return "เครือข่ายเดียวกัน";
-  if (relation === "same_unit_ops") return "หน่วยปฏิบัติการเดียวกัน";
+  if (relation === "same_unit_ops") return "หน่วยเดียวกัน";
   return relation;
 }
 

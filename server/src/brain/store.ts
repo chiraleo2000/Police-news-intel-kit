@@ -1,6 +1,6 @@
 import { getDb } from "../db/index.js";
 import type { PostV2, Rel } from "./enrich.js";
-import { commandersIn, relForStage, unitsOf } from "./enrich.js";
+import { commandersIn, relForStage, relForUnit, unitsOf } from "./enrich.js";
 import { extractPostEntities } from "./entities.js";
 
 export type CaseRow = {
@@ -104,7 +104,7 @@ export function indexPost(post: PostV2, day: string) {
   const stageRel = relForStage(post.case_stage);
   for (const u of units) {
     upsertEntity("unit", u);
-    upsertRelation("case", id, stageRel, "entity", entityId("unit", u));
+    upsertRelation("case", id, relForUnit(u, stageRel), "entity", entityId("unit", u));
   }
   if (post.primary_bureau && post.primary_bureau !== "-" && !units.includes(post.primary_bureau)) {
     upsertEntity("unit", post.primary_bureau);

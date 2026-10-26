@@ -1,20 +1,20 @@
 {
  "case_id": "20261022-human-sakaeo-nrm",
  "title": "ตม.สระแก้วรับตัว 25 คนไทยกลับจากกัมพูชา คัดกรอง NRM พบ 4 รายมีหมายจับ 3 รายเป็นผู้เสียหายค้ามนุษย์",
- "generated_at": "2026-10-26T07:49:36.411Z",
+ "generated_at": "2026-10-26T09:53:06.518Z",
  "node_count": 6,
  "edge_count": 5,
  "relations": [
   {
    "label": "จับโดย",
-   "target_id": "30_Entities/Units/ตม.จว.สระแก้ว",
-   "target_title": "ตม.จว.สระแก้ว",
+   "target_id": "30_Entities/People/บก.ตม.3",
+   "target_title": "บก.ตม.3",
    "direction": "out"
   },
   {
-   "label": "จับโดย",
-   "target_id": "30_Entities/People/บก.ตม.3",
-   "target_title": "บก.ตม.3",
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/People/ผบช.สตม.",
+   "target_title": "ผบช.สตม.",
    "direction": "out"
   },
   {
@@ -24,15 +24,15 @@
    "direction": "out"
   },
   {
-   "label": "สั่งการโดย",
-   "target_id": "30_Entities/Units/บช.สตม.",
-   "target_title": "บช.สตม.",
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/ตม.จว.สระแก้ว",
+   "target_title": "ตม.จว.สระแก้ว",
    "direction": "out"
   },
   {
-   "label": "แจ้งโดย",
-   "target_id": "30_Entities/People/ผบช.สตม.",
-   "target_title": "ผบช.สตม.",
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บช.สตม.",
+   "target_title": "บช.สตม.",
    "direction": "out"
   }
  ],

@@ -1,22 +1,10 @@
 {
  "case_id": "20261024-consumer-01",
  "title": "จับหนุ่ม 19 ซุกแก๊สหัวเราะ 125 ถัง ส่งขายสถานบันเทิง",
- "generated_at": "2026-10-26T07:49:36.539Z",
+ "generated_at": "2026-10-26T09:53:06.650Z",
  "node_count": 5,
  "edge_count": 4,
  "relations": [
-  {
-   "label": "จับโดย",
-   "target_id": "30_Entities/Units/กก.ดส. บช.น.",
-   "target_title": "กก.ดส. บช.น.",
-   "direction": "out"
-  },
-  {
-   "label": "จับโดย",
-   "target_id": "30_Entities/Units/สน.โชคชัย",
-   "target_title": "สน.โชคชัย",
-   "direction": "out"
-  },
   {
    "label": "สั่งการโดย",
    "target_id": "30_Entities/People/บช.น.",
@@ -27,6 +15,18 @@
    "label": "แจ้งโดย",
    "target_id": "30_Entities/People/ผบช.น.",
    "target_title": "ผบช.น.",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/กก.ดส. บช.น.",
+   "target_title": "กก.ดส. บช.น.",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/สน.โชคชัย",
+   "target_title": "สน.โชคชัย",
    "direction": "out"
   }
  ],

@@ -139,8 +139,23 @@ function firstSentences(text: string, maxChars = 220): string {
   if (clean.length <= maxChars) return clean;
   const window = clean.slice(0, maxChars);
   const sp = window.lastIndexOf(" ");
-  const cut = sp > Math.floor(maxChars * 0.55) ? window.slice(0, sp) : window;
-  return `${cut.trimEnd()}…`;
+  const cut = sp > Math.floor(maxChars * 0.62) ? window.slice(0, sp) : window;
+  const dangling = new Set([
+    "ใน", "ที่", "ของ", "และ", "หรือ", "โดย", "จาก", "กับ", "เพื่อ", "แล้ว", "ว่า", "คือ", "เป็น",
+    "ได้", "ไม่", "จะ", "มา", "ไป", "อยู่", "ตาม", "ซึ่ง", "ให้", "ถึง", "กว่า", "หลัง", "ก่อน", "ประเภท", "ข้อหา",
+  ]);
+  const words = cut.trimEnd().split(" ");
+  const endsOpen = (word) =>
+    dangling.has(word) || /^\d{1,4}$/.test(word) || /(?:วันที่|ใน|ที่|ของ|และ|โดย|ประเภท|ข้อหา)$/.test(word);
+  while (words.length > 6 && endsOpen(words[words.length - 1])) words.pop();
+  return words.join(" ").trim();
+}
+
+function finishSentence(text: string): string {
+  const t = text.trim();
+  if (!t) return t;
+  if (/[.…]$/.test(t)) return t;
+  return `${t}.`;
 }
 
 function shortenTitle(title: string, max = 110): string {
@@ -161,9 +176,9 @@ function scaleFacts(post: PostV2): string[] {
   const loss = post.stats?.loss_thb;
   const seized = post.stats?.seized_value_thb;
   if (typeof loss === "number" && loss > 0) out.push(`ความเสียหายที่แหล่งระบุ ${money(loss)}`);
-  if (typeof seized === "number" && seized > 0) out.push(`ของกลาง/อายัดที่แหล่งระบุ ${money(seized)}`);
+  if (typeof seized === "number" && seized > 0) out.push(`ของกลางที่แหล่งระบุ ${money(seized)}`);
   const provinces = Array.isArray(post.province) ? post.province.filter(Boolean) : [];
-  if (provinces.length >= 2) out.push(`ปรากฏหลายจังหวัด: ${provinces.join(", ")}`);
+  if (provinces.length >= 2) out.push(`ข่าวกล่าวถึงจังหวัด ${provinces.join(" ")}`);
   return out;
 }
 
@@ -171,7 +186,7 @@ function openingSentence(post: PostV2): string {
   const where = wherePhrase(post);
   const topic = (post.topic || "เหตุการณ์").trim();
   const essence =
-    firstSentences(String(post.content || ""), 160) || shortenTitle(post.title || "", 120);
+    firstSentences(String(post.content || ""), 320) || shortenTitle(post.title || "", 140);
   if (essence) return essence.endsWith(".") ? essence : `${essence}.`;
   return where ? `เรื่องนี้เป็นข่าว${topic}ในพื้นที่${where}` : `เรื่องนี้เป็นข่าว${topic}`;
 }
@@ -189,24 +204,17 @@ function blurbExtras(post: PostV2): string[] {
 export function buildExecBlurb(post: PostV2): string {
   const status = post.status_th || mapStatus(post.case_stage) || "-";
   const sentences: string[] = [openingSentence(post)];
-  if (status && status !== "-") sentences.push(`สถานะตามที่แหล่งข่าวรายงานคือ${status}`);
+  if (status && status !== "-") sentences.push(`สถานะที่แหล่งข่าวระบุคือ${status}`);
   const extra = blurbExtras(post);
   if (extra.length) sentences.push(extra.join(" "));
-  const tags = (post.tags || []).filter(Boolean).slice(0, 4);
-  if (tags.length && sentences.length < 4) {
-    sentences.push(`ประเด็นที่ปรากฏในแท็ก: ${tags.join(", ")}`);
-  }
   while (sentences.length < 2) sentences.push("ข้อความนี้สรุปจากข่าวเรื่องนี้เท่านั้น");
-  return sentences
-    .slice(0, 4)
-    .map((s) => (s.endsWith(".") ? s : `${s}.`))
-    .join(" ");
+  return sentences.slice(0, 4).map(finishSentence).join(" ");
 }
 
 function noteWhatHappened(post: PostV2): string {
   const essence =
-    firstSentences(String(post.content || ""), 240) || shortenTitle(post.title || "", 160);
-  return `- สาระเหตุการณ์: ${essence || "-"}`;
+    firstSentences(String(post.content || ""), 420) || shortenTitle(post.title || "", 160);
+  return `- เหตุการณ์: ${essence || "-"}`;
 }
 
 function noteActionStatus(post: PostV2): string {
@@ -216,28 +224,28 @@ function noteActionStatus(post: PostV2): string {
   const who = units.length ? units.join(", ") : bureau;
   const op = String(post.police_performance?.operation || "").trim();
   const opBit =
-    op && op !== "N/A" && op !== "-" && op.length <= 120 ? ` · การปฏิบัติที่ระบุ: ${op}` : "";
-  return `- หน่วยและสถานะ: ${who || "-"} · สถานะ ${status}${opBit}`;
-}
-
-function noteTagsMo(post: PostV2): string | null {
-  const tags = (post.tags || []).filter(Boolean);
-  if (!tags.length) return null;
-  return `- รูปแบบ/แท็กที่ปรากฏในข่าว: ${tags.slice(0, 8).join(", ")}`;
+    op && op !== "N/A" && op !== "-" && op.length <= 140 ? ` สิ่งที่ทำตามข่าว: ${op}` : "";
+  return `- หน่วยและสถานะ: ${who || "-"} สถานะ ${status}.${opBit}`;
 }
 
 function noteScale(post: PostV2): string | null {
   const facts = scaleFacts(post);
   if (!facts.length) return null;
-  return `- ขนาด/ขอบเขตตามตัวเลขในแหล่ง: ${facts.join(" · ")}`;
+  return `- ตัวเลขในข่าว: ${facts.join(" · ")}`;
 }
 
 function noteGang(post: PostV2): string | null {
   const gang = specificGangName(post.gang_or_group || "") || "";
   const raw = (post.gang_or_group || "").trim();
-  if (gang) return `- เครือข่าย/กลุ่มที่แหล่งระบุชื่อ: ${gang}`;
-  if (raw && raw !== "-" && raw.length >= 6) return `- กลุ่มที่ปรากฏในฟิลด์: ${raw}`;
+  if (gang) return `- ชื่อกลุ่มที่ข่าวระบุ: ${gang}`;
+  if (raw && raw !== "-" && raw.length >= 6) return `- ชื่อกลุ่มที่ข่าวระบุ: ${raw}`;
   return null;
+}
+
+function linkedTitle(title: string, id: string): string {
+  const t = shortenTitle(String(title || "").trim(), 90);
+  if (/[ก-๙]/.test(t)) return t;
+  return `ข่าวภาษาอังกฤษเรื่องเดียวกัน (${id})`;
 }
 
 export function relatedAnalysisLine(
@@ -250,53 +258,34 @@ function noteRelated(
   related: Array<{ id: string; title: string; relation: string }>,
 ): string {
   if (!related.length) {
-    return "- ความเชื่อมโยง: ยังไม่พบสัญญาณร่วมที่ชัดกับคดีอื่นในชุดนี้ จึงไม่โยงเดา";
+    return "- ความเชื่อมโยง: ไม่มีเส้นไปข่าวอื่น — ไม่ใช่เหตุการณ์เดียวกันหรือการติดตามผลที่ชี้ได้";
   }
   const why = related
-    .map((r) => `${r.title} (${relPhrase(r.relation)}; id ${r.id})`)
-    .join("; ");
-  return `- ความเชื่อมโยงที่มีหลักฐานร่วม: ${why}`;
+    .map((r) => `${relPhrase(r.relation)} «${linkedTitle(r.title, r.id)}»`)
+    .join(" · ");
+  return `- ความเชื่อมโยง: ${why}`;
 }
 
-function noteImplication(post: PostV2): string {
-  const status = post.status_th || mapStatus(post.case_stage) || "";
-  const tags = (post.tags || []).join(" ");
-  const topic = post.topic || "";
-  if (/ติดตาม|หมายจับ|ยังไม่พบ/.test(status)) {
-    return "- นัยปฏิบัติ: อาจต้องคงการติดตามตามหมาย/สถานะที่รายงาน และทบทวนเบาะแสซ้ำจากแหล่งเดิม";
+function noteCaution(post: PostV2): string {
+  const blob = `${post.topic || ""} ${(post.tags || []).join(" ")} ${post.title || ""}`;
+  if (/เด็ก|เยาวชน|ชำเรา|ค้ามนุษย์|ทางเพศ|ล่วงละเมิด/.test(blob)) {
+    return "- ข้อควรระวัง: ไม่เปิดเผยข้อมูลที่ระบุตัวเด็กหรือผู้เสียหาย ผู้ถูกกล่าวหายังไม่ถือว่ากระทำผิดจนกว่าศาลจะพิพากษา";
   }
-  if (/จับกุม|ฝากขัง|ส่งฟ้อง|ยื่นฟ้อง/.test(status)) {
-    return "- นัยปฏิบัติ: มีแนวโน้มต้องคุมหลักฐานของกลางและคำให้การให้ครบก่อนขั้นสอบสวน/อัยการตามที่แหล่งระบุ";
-  }
-  if (/ไซเบอร์|ออนไลน์|พนัน|คอลเซ็นเตอร์|หลอก/.test(`${topic} ${tags}`)) {
-    return "- นัยปฏิบัติ: อาจต้องขยายผลบัญชี/ช่องทางออนไลน์ที่ปรากฏในข่าว โดยยึดเฉพาะข้อเท็จจริงที่มีในแหล่ง";
-  }
-  if (/ยาเสพติด|ของกลาง/.test(`${topic} ${tags}`)) {
-    return "- นัยปฏิบัติ: มีแนวโน้มต้องยืนยันห่วงโซ่ของกลางและเส้นทางขนส่งตามที่แหล่งรายงาน ไม่เติมเส้นทางที่ไม่มีในข่าว";
-  }
-  return "- นัยปฏิบัติ: ใช้เฉพาะข้อเท็จจริงในข่าวนี้เป็นฐานติดตาม ไม่สรุปตัวผู้ต้องหาเกินกว่าที่แหล่งระบุ";
+  return "- ข้อควรระวัง: ผู้ถูกกล่าวหายังไม่ถือว่ากระทำผิดจนกว่าศาลจะพิพากษา";
 }
 
 export function buildAnalysisNotes(
   post: PostV2,
   related: Array<{ id: string; title: string; relation: string }> = [],
 ): string {
-  const lines: string[] = [
-    noteWhatHappened(post),
-    noteActionStatus(post),
-  ];
-  const optional = [noteTagsMo(post), noteScale(post), noteGang(post)];
+  const lines: string[] = [noteWhatHappened(post), noteActionStatus(post)];
+  const optional = [noteScale(post), noteGang(post)];
   for (const line of optional) {
     if (line) lines.push(line);
   }
-  lines.push(
-    noteRelated(related),
-    noteImplication(post),
-    "- จริยธรรม: ผู้ต้องหาตามข้อกล่าวหายังถือเป็นผู้บริสุทธิ์จนกว่าศาลจะมีคำพิพากษา และไม่เปิดเผยข้อมูลระบุตัวผู้เสียหายในคดีทางเพศ/ค้ามนุษย์/เด็ก",
-  );
-  // Keep 4–8 analytical bullets (+ ethics may make 9; trim soft extras first)
-  while (lines.length > 8) {
-    const dropIdx = lines.findIndex((l) => l.startsWith("- กลุ่มที่ปรากฏ") || l.startsWith("- เครือข่าย"));
+  lines.push(noteRelated(related), noteCaution(post));
+  while (lines.length > 7) {
+    const dropIdx = lines.findIndex((l) => l.startsWith("- ชื่อกลุ่ม"));
     if (dropIdx >= 0) lines.splice(dropIdx, 1);
     else lines.splice(2, 1);
   }
@@ -366,6 +355,14 @@ export function relForStage(stage = ""): string {
   if (/หมาย/.test(stage)) return "investigated_by";
   if (/แถลง|ประชาสัมพันธ์|นโยบาย/.test(stage)) return "announced_by";
   return "investigated_by";
+}
+
+/** Courts issue warrants; they do not arrest. Prosecutors charge. */
+export function relForUnit(name: string, stageRel: string): string {
+  const n = String(name || "");
+  if (/ศาล/.test(n)) return "warrant_from";
+  if (/อัยการ/.test(n)) return "announced_by";
+  return stageRel;
 }
 
 export function commandersIn(text: string): string[] {
