@@ -629,12 +629,21 @@ body::before {
 }
 
 .post-detail .story-ego-svg,
-.post-detail .story-ego-img {
+.post-detail .story-ego-img,
+.post-detail .story-ego-canvas {
   display: block;
   width: 100%;
-  max-width: 760px;
+  max-width: none;
   height: auto;
   margin: 0 auto;
+}
+
+.post-detail .story-ego-canvas {
+  height: 520px;
+  background: #f7fafc;
+  border-radius: 8px;
+  touch-action: none;
+  cursor: grab;
 }
 
 .post-detail .story-rel-heading {

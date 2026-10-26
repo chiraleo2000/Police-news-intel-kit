@@ -165,8 +165,9 @@ function wikilinkCut(inner) {
 
 function wikilinkRelLabel(inner, pipe) {
   if (pipe < 0) return "";
-  const rel = /rel:([A-Za-z0-9_]+)/.exec(inner.slice(pipe + 1));
-  return rel ? thaiLabel(rel[1]) : "";
+  const rest = inner.slice(pipe + 1);
+  if (!rest.startsWith("rel:")) return "";
+  return thaiLabel(rest.slice(4).trim());
 }
 
 function extractLinks(body) {
@@ -425,19 +426,25 @@ function safeEntityName(name) {
     .trim();
 }
 
+function adoptExistingEntity(node, ent, alias) {
+  if (!node || node.kind !== "entity") return "";
+  if (!looksLikeUnit(node.title)) {
+    if (ent.group === "ผู้ต้องหา" && node.entity_group === "บุคคล") node.entity_group = "ผู้ต้องหา";
+    if (!node.entity_group) node.entity_group = ent.group;
+    return alias;
+  }
+  if (ent.group === "หน่วย") return alias;
+  return "";
+}
+
 function ensureEntity(state, ent) {
   const name = safeEntityName(ent.name);
   if (!name) return "";
   const id = `30_Entities/${ent.group}/${name}`;
   const alias = state.aliasIndex.get(normalizeKey(name));
   if (alias && state.byId.has(alias)) {
-    const node = state.byId.get(alias);
-    if (node.kind === "entity" && !looksLikeUnit(node.title)) {
-      if (ent.group === "ผู้ต้องหา" && node.entity_group === "บุคคล") node.entity_group = "ผู้ต้องหา";
-      if (!node.entity_group) node.entity_group = ent.group;
-      return alias;
-    }
-    if (node.kind === "entity" && ent.group === "หน่วย") return alias;
+    const reused = adoptExistingEntity(state.byId.get(alias), ent, alias);
+    if (reused) return reused;
   }
   if (state.byId.has(id)) return id;
   const node = blankNode(id, name, ent.group);

@@ -1373,6 +1373,280 @@
     return graph;
   }
 
+  const storyPayloads = new Map();
+  let storyRaf = 0;
+
+  function blogHashForNode(node) {
+    if (!node || node.kind !== "case" || !node.date || !node.case_id) return "";
+    return `#/${node.date}/${encodeURIComponent(node.case_id)}`;
+  }
+
+  function nodeByAnyId(id) {
+    if (!graph || !id) return null;
+    return graph.nodes.find((n) => n.id === id || n.case_id === id) || null;
+  }
+
+  function storyLabel(node) {
+    const max = node.kind === "case" ? 26 : 16;
+    return truncateStory(node.title || node.case_id || node.id, max);
+  }
+
+  function placeStoryNodes(hub, neighbors) {
+    const cx = 480;
+    const cy = 300;
+    const n = Math.max(1, neighbors.length);
+    const radius = 150 + n * 18;
+    const placed = [{ node: hub, x: cx, y: cy, r: 18 }];
+    neighbors.forEach((node, i) => {
+      const angle = (Math.PI * 2 * i) / n - Math.PI / 2;
+      placed.push({
+        node,
+        x: cx + Math.cos(angle) * radius,
+        y: cy + Math.sin(angle) * radius,
+        r: node.kind === "case" ? 14 : 9,
+      });
+    });
+    return placed;
+  }
+
+  function storyLabelBoxes(placed, cx, cy) {
+    const boxes = placed.map((p) => {
+      const text = storyLabel(p.node);
+      const w = Math.max(72, 16 + text.length * 7.4);
+      const h = 20;
+      const dx = p.x - cx;
+      const dy = p.y - cy;
+      const len = Math.hypot(dx, dy) || 1;
+      const ax = p.node.id === placed[0].node.id ? 0 : dx / len;
+      const ay = p.node.id === placed[0].node.id ? 1 : dy / len;
+      return {
+        id: p.node.id,
+        text,
+        w,
+        h,
+        x: p.x + ax * (p.r + 8) - w / 2,
+        y: p.y + ay * (p.r + 10),
+      };
+    });
+    for (let pass = 0; pass < 14; pass += 1) {
+      for (let i = 0; i < boxes.length; i += 1) {
+        for (let j = i + 1; j < boxes.length; j += 1) {
+          const a = boxes[i];
+          const b = boxes[j];
+          const overlapX = Math.min(a.x + a.w, b.x + b.w) - Math.max(a.x, b.x);
+          const overlapY = Math.min(a.y + a.h, b.y + b.h) - Math.max(a.y, b.y);
+          if (overlapX <= 0 || overlapY <= 0) continue;
+          const push = overlapX < overlapY ? overlapX / 2 + 3 : 0;
+          const pushY = overlapY <= overlapX ? overlapY / 2 + 3 : 0;
+          if (a.x <= b.x) {
+            a.x -= push;
+            b.x += push;
+          } else {
+            a.x += push;
+            b.x -= push;
+          }
+          if (a.y <= b.y) {
+            a.y -= pushY;
+            b.y += pushY;
+          } else {
+            a.y += pushY;
+            b.y -= pushY;
+          }
+        }
+      }
+    }
+    return boxes;
+  }
+
+  function storyEdgeLabel(a, b, text) {
+    const mx = a.x + (b.x - a.x) * 0.38;
+    const my = a.y + (b.y - a.y) * 0.38;
+    const dx = b.x - a.x;
+    const dy = b.y - a.y;
+    const len = Math.hypot(dx, dy) || 1;
+    const w = Math.max(52, 12 + text.length * 7);
+    return { x: mx + (-dy / len) * 14 - w / 2, y: my + (dx / len) * 14 - 8, w, h: 16, text };
+  }
+
+  function drawStory(job) {
+    const { ctx, w, h, placed, labels, edges, camera } = job;
+    ctx.setTransform(devicePixelRatio, 0, 0, devicePixelRatio, 0, 0);
+    ctx.clearRect(0, 0, w, h);
+    ctx.save();
+    ctx.translate(camera.x, camera.y);
+    ctx.scale(camera.scale, camera.scale);
+    ctx.lineWidth = 1.4 / camera.scale;
+    ctx.strokeStyle = "#5d7388";
+    ctx.font = `${12 / camera.scale}px Sarabun, Anuphan, sans-serif`;
+    const byPos = new Map(placed.map((p) => [p.node.id, p]));
+    for (const e of edges) {
+      const a = byPos.get(e.source);
+      const b = byPos.get(e.target);
+      if (!a || !b) continue;
+      ctx.beginPath();
+      ctx.moveTo(a.x, a.y);
+      ctx.lineTo(b.x, b.y);
+      ctx.stroke();
+      const name = relationLabel(e.label);
+      if (!name) continue;
+      const pill = storyEdgeLabel(a, b, name);
+      ctx.fillStyle = "#10211e";
+      ctx.fillRect(pill.x, pill.y, pill.w, pill.h);
+      ctx.fillStyle = "#ffffff";
+      ctx.fillText(name, pill.x + 6, pill.y + 12);
+    }
+    const labelById = new Map(labels.map((box) => [box.id, box]));
+    for (const p of placed) {
+      const linked = Boolean(blogHashForNode(p.node)) && p.node.id !== job.hubId;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      const storyFill = { case: "#1a6b5c", entity: "#2c5f8a", crime_type: "#a15c12", daily: "#5a7184", unresolved: "#9b2c2c", other: "#3d5a6c" };
+      ctx.fillStyle = storyFill[p.node.kind] || storyFill.other;
+      ctx.fill();
+      ctx.lineWidth = (linked ? 2.4 : 1.2) / camera.scale;
+      ctx.strokeStyle = linked ? "#0b1c2c" : "#ffffff";
+      ctx.stroke();
+      const box = labelById.get(p.node.id);
+      if (!box) continue;
+      ctx.fillStyle = "rgba(255,255,255,0.96)";
+      ctx.fillRect(box.x, box.y, box.w, box.h);
+      ctx.strokeStyle = "#c5d0da";
+      ctx.lineWidth = 1 / camera.scale;
+      ctx.strokeRect(box.x, box.y, box.w, box.h);
+      ctx.fillStyle = "#1a222c";
+      ctx.fillText(box.text, box.x + 6, box.y + 14);
+    }
+    ctx.restore();
+  }
+
+  function fitStoryCamera(job) {
+    let minX = Infinity;
+    let minY = Infinity;
+    let maxX = -Infinity;
+    let maxY = -Infinity;
+    for (const p of job.placed) {
+      minX = Math.min(minX, p.x - p.r);
+      minY = Math.min(minY, p.y - p.r);
+      maxX = Math.max(maxX, p.x + p.r);
+      maxY = Math.max(maxY, p.y + p.r);
+    }
+    for (const box of job.labels) {
+      minX = Math.min(minX, box.x);
+      minY = Math.min(minY, box.y);
+      maxX = Math.max(maxX, box.x + box.w);
+      maxY = Math.max(maxY, box.y + box.h);
+    }
+    const pad = 28;
+    const bw = Math.max(40, maxX - minX);
+    const bh = Math.max(40, maxY - minY);
+    const scale = Math.min((job.w - pad * 2) / bw, (job.h - pad * 2) / bh);
+    job.camera.scale = Math.min(2.4, Math.max(0.35, scale));
+    job.camera.x = job.w / 2 - ((minX + maxX) / 2) * job.camera.scale;
+    job.camera.y = job.h / 2 - ((minY + maxY) / 2) * job.camera.scale;
+  }
+
+  function hitStoryNode(job, wx, wy) {
+    let best = null;
+    let bestD = Infinity;
+    for (const p of job.placed) {
+      const d = Math.hypot(p.x - wx, p.y - wy);
+      if (d <= p.r + 6 && d < bestD) {
+        best = p;
+        bestD = d;
+      }
+    }
+    return best;
+  }
+
+  function bindStoryCanvas(canvas, job) {
+    const world = (ev) => {
+      const rect = canvas.getBoundingClientRect();
+      const sx = ev.clientX - rect.left;
+      const sy = ev.clientY - rect.top;
+      return {
+        sx,
+        sy,
+        x: (sx - job.camera.x) / job.camera.scale,
+        y: (sy - job.camera.y) / job.camera.scale,
+      };
+    };
+    canvas.addEventListener("wheel", (ev) => {
+      ev.preventDefault();
+      const p = world(ev);
+      const next = Math.min(2.8, Math.max(0.35, job.camera.scale * (ev.deltaY < 0 ? 1.12 : 1 / 1.12)));
+      job.camera.x = p.sx - p.x * next;
+      job.camera.y = p.sy - p.y * next;
+      job.camera.scale = next;
+      drawStory(job);
+    }, { passive: false });
+    canvas.addEventListener("pointerdown", (ev) => {
+      const p = world(ev);
+      const hit = hitStoryNode(job, p.x, p.y);
+      job.drag = hit
+        ? { mode: "node", id: hit.node.id, x: p.x, y: p.y, sx: p.sx, sy: p.sy, moved: false }
+        : { mode: "pan", sx: p.sx, sy: p.sy, camX: job.camera.x, camY: job.camera.y, moved: false };
+      canvas.setPointerCapture(ev.pointerId);
+    });
+    canvas.addEventListener("pointermove", (ev) => {
+      const p = world(ev);
+      if (!job.drag) {
+        const hit = hitStoryNode(job, p.x, p.y);
+        canvas.style.cursor = hit && blogHashForNode(hit.node) && hit.node.id !== job.hubId ? "pointer" : "grab";
+        return;
+      }
+      job.drag.moved = job.drag.moved || Math.hypot(p.sx - job.drag.sx, p.sy - job.drag.sy) > 4;
+      if (job.drag.mode === "node") {
+        const item = job.placed.find((row) => row.node.id === job.drag.id);
+        if (item) {
+          item.x = p.x;
+          item.y = p.y;
+        }
+        job.labels = storyLabelBoxes(job.placed, job.placed[0].x, job.placed[0].y);
+      } else {
+        job.camera.x = job.drag.camX + (p.sx - job.drag.sx);
+        job.camera.y = job.drag.camY + (p.sy - job.drag.sy);
+      }
+      drawStory(job);
+    });
+    canvas.addEventListener("pointerup", (ev) => {
+      const drag = job.drag;
+      job.drag = null;
+      if (!drag || drag.moved || drag.mode !== "node") return;
+      const item = job.placed.find((row) => row.node.id === drag.id);
+      const href = item ? blogHashForNode(item.node) : "";
+      if (href && item.node.id !== job.hubId) location.hash = href;
+    });
+  }
+
+  function mountStoryGraphs(root) {
+    if (storyRaf) cancelAnimationFrame(storyRaf);
+    const canvases = root?.querySelectorAll?.("canvas.story-ego-canvas") || [];
+    canvases.forEach((canvas) => {
+      const payload = storyPayloads.get(canvas.dataset.hub || "");
+      if (!payload) return;
+      const w = Math.max(320, canvas.clientWidth || 720);
+      const h = 520;
+      canvas.width = Math.floor(w * devicePixelRatio);
+      canvas.height = Math.floor(h * devicePixelRatio);
+      canvas.style.height = `${h}px`;
+      const placed = placeStoryNodes(payload.hub, payload.neighbors);
+      const job = {
+        ctx: canvas.getContext("2d"),
+        w,
+        h,
+        hubId: payload.hub.id,
+        placed,
+        labels: storyLabelBoxes(placed, placed[0].x, placed[0].y),
+        edges: payload.edges,
+        camera: { x: 0, y: 0, scale: 1 },
+        drag: null,
+      };
+      fitStoryCamera(job);
+      bindStoryCanvas(canvas, job);
+      drawStory(job);
+    });
+  }
+
   async function storyGraphHtml(post) {
     await ensureGraph();
     const hub = findCaseNode(post);
@@ -1414,7 +1688,7 @@
       if (n && n.id !== hub.id) neighMap.set(n.id, n);
     }
     const uniqNeighbors = [...neighMap.values()];
-    const svg = buildEgoSvg(hub, uniqNeighbors, drawEdges);
+    storyPayloads.set(hub.id, { hub, neighbors: uniqNeighbors, edges: drawEdges });
     const keptEdges = new Set(drawEdges.map((e) => `${e.source}|${e.target}|${e.label}`));
     const shownRels = relations.filter((r) => {
       const source = r.direction === "out" ? hub.id : r.target_id;
@@ -1426,10 +1700,9 @@
       ? `<ul class="story-rel-list">${allRels
           .map((r) => {
             const arrow = r.direction === "in" ? "←" : "→";
-            const href =
-              r.target_kind === "case" && r.target_id
-                ? `#/brain/${encodeURIComponent(r.target_id)}`
-                : `#/brain/${encodeURIComponent(hub.id)}`;
+            const caseNode = r.target_kind === "case" ? nodeByAnyId(r.target_id) : null;
+            const blog = blogHashForNode(caseNode);
+            const href = blog || `#/brain/${encodeURIComponent(r.target_id || hub.id)}`;
             return `<li><span class="story-rel-label">${escapeHtml(relationLabel(r.label) || "กล่าวถึง")}</span> ${arrow} <a href="${href}">${escapeHtml(r.target_title)}</a></li>`;
           })
           .join("")}</ul>`
@@ -1438,9 +1711,9 @@
     return `
       <section class="analysis-block story-graph-block">
         <h2>ข้อมูลกราฟของข่าวนี้</h2>
-        <p class="muted">ฮับคดี + เอนทิตี / ประเภท / คดีเกี่ยวข้อง (จาก graph.json)</p>
+        <p class="muted">ลากพื้นหลังเพื่อเลื่อน · สกอร์ลเพื่อซูม · ลากโหนดเพื่อจัดที่ · คลิกโหนดข่าว (เส้นขอบเข้ม) เพื่อเปิดบล็อกนั้น</p>
         <p class="story-graph-actions"><a class="btn-ghost story-open-graph" href="#/brain/${encodeURIComponent(hub.id)}">เปิดในกราฟ</a></p>
-        <div class="story-ego-wrap">${svg}</div>
+        <div class="story-ego-wrap"><canvas class="story-ego-canvas" data-hub="${escapeHtml(hub.id)}" aria-label="ข้อมูลกราฟของข่าวนี้"></canvas></div>
         ${
           staticSvg
             ? `<p class="muted story-ego-static"><a href="${staticSvg}" target="_blank" rel="noopener">เปิดภาพ SVG</a> · <code>data/graphs/${escapeHtml(caseKey)}.svg</code></p>`
@@ -1484,6 +1757,7 @@
       return mount();
     },
     storyGraphHtml,
+    mountStoryGraphs,
     findCaseNode,
     relationLabel,
   };

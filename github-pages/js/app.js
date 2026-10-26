@@ -629,6 +629,12 @@
     uses_account: "ใช้บัญชี",
   };
 
+  function hrefForPostId(id) {
+    const found = allPosts.find((p) => p.id === id || p.slug === id);
+    if (!found?._date) return `#/r/${currentRange}`;
+    return `#/${found._date}/${encodeURIComponent(found.id || id)}`;
+  }
+
   function relationLabel(raw) {
     if (window.BrainGraph?.relationLabel) return window.BrainGraph.relationLabel(raw);
     const s = String(raw ?? "").trim();
@@ -722,7 +728,7 @@
           ? `<section class="analysis-block"><h2>ความเชื่อมโยง (related_cases)</h2><ul>${post.related_cases
               .map(
                 (r) =>
-                  `<li><a href="#/${escapeHtml(post._date || date)}/${encodeURIComponent(r.id)}">${escapeHtml(r.title || r.id)}</a> <span class="muted">(${escapeHtml(relationLabel(r.relation || "related_to"))})</span></li>`
+                  `<li><a href="${escapeHtml(hrefForPostId(r.id))}">${escapeHtml(r.title || r.id)}</a> <span class="muted">(${escapeHtml(relationLabel(r.relation || "related_to"))})</span></li>`
               )
               .join("")}</ul></section>`
           : `<section class="analysis-block"><h2>ความเชื่อมโยง (related_cases)</h2><p class="muted">ยังไม่พบเรื่องที่เกี่ยวข้องในช่วงที่ค้นได้</p></section>`
@@ -757,6 +763,7 @@
           : ""
       }
     `;
+    window.BrainGraph?.mountStoryGraphs(els.postDetail);
     els.status.textContent = post.title || "";
   }
 
