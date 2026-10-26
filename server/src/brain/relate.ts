@@ -422,7 +422,7 @@ export function specificGangName(g: string): string {
     return "";
   }
   // Still reject bare "เว็บพนัน…" labels even when length ≥ 12
-  if (/^เว็บพนัน/.test(s) && s.length < 18) return "";
+  if (s.startsWith("เว็บพนัน") && s.length < 18) return "";
   if (s === "เว็บพนันออนไลน์" || s === "เว็บพนันต่างประเทศ") return "";
   return s;
 }
@@ -515,9 +515,28 @@ function districtsOf(text: string, provinces: Set<string>): Set<string> {
   return out;
 }
 
+const LATIN_EDGE_PUNCT = new Set([".", "_", "-"]);
+const LATIN_TLDS = new Set(["com", "net", "org", "io", "co", "th"]);
+
+function stripLatinEdgePunct(s: string): string {
+  let start = 0;
+  let end = s.length;
+  while (start < end && LATIN_EDGE_PUNCT.has(s[start]!)) start += 1;
+  while (end > start && LATIN_EDGE_PUNCT.has(s[end - 1]!)) end -= 1;
+  return s.slice(start, end);
+}
+
+function stripKnownTld(token: string): string {
+  const dot = token.lastIndexOf(".");
+  if (dot <= 0) return token;
+  const tld = token.slice(dot + 1).toLowerCase();
+  if (!LATIN_TLDS.has(tld)) return token;
+  return token.slice(0, dot);
+}
+
 function normalizeLatinToken(raw: string): string | null {
-  let token = raw.replace(/^[._-]+/, "").replace(/[._-]+$/, "");
-  token = token.replace(/\.(com|net|org|io|co|th)$/i, "");
+  let token = stripLatinEdgePunct(raw);
+  token = stripKnownTld(token);
   if (token.length < 5 || LATIN_STOP.has(token)) return null;
   if (![...token].some((c) => c >= "a" && c <= "z")) return null;
   return token;
@@ -663,10 +682,8 @@ function numberedUnitsIn(text: string, units: string[]): string[] {
 }
 
 function addLatinMarkers(out: Set<string>, signal: string) {
-  for (const t of latinTokens(signal)) {
-    if (t.length >= 6 || /\d/.test(t)) out.add(`lat:${t}`);
-    else if (t.length >= 5 && !LATIN_STOP.has(t)) out.add(`lat:${t}`);
-  }
+  // latinTokens already drops LATIN_STOP and tokens shorter than 5
+  for (const t of latinTokens(signal)) out.add(`lat:${t}`);
 }
 
 function addQuoteMarkers(out: Set<string>, signal: string) {
@@ -953,9 +970,8 @@ function collectEdges(nodes: CaseNode[], df: Map<string, number>): PlannedEdge[]
       found.push({ a: left.id, b: right.id, score: d.score, via: d.via, follow: d.follow });
     }
   }
-  return found.toSorted(
-    (x, y) => y.score - x.score || x.a.localeCompare(y.a) || x.b.localeCompare(y.b),
-  );
+  found.sort((x, y) => y.score - x.score || x.a.localeCompare(y.a) || x.b.localeCompare(y.b));
+  return found;
 }
 
 function capEdges(found: PlannedEdge[]): PlannedEdge[] {
@@ -972,6 +988,31 @@ function capEdges(found: PlannedEdge[]): PlannedEdge[] {
   return kept;
 }
 
+function pushRelatedPair(rels: Map<string, CaseRel[]>, a: CaseNode, b: CaseNode) {
+  rels.get(a.id)?.push({ id: b.id, title: b.title, relation: "related_to" });
+  rels.get(b.id)?.push({ id: a.id, title: a.title, relation: "related_to" });
+}
+
+function pushFollowPair(rels: Map<string, CaseRel[]>, later: CaseNode, earlier: CaseNode) {
+  rels.get(later.id)?.push({ id: earlier.id, title: earlier.title, relation: "follow_up_of" });
+  rels.get(earlier.id)?.push({ id: later.id, title: later.title, relation: "related_to" });
+}
+
+function dedupeRelLists(rels: Map<string, CaseRel[]>) {
+  for (const list of rels.values()) {
+    const seen = new Set<string>();
+    const dedup: CaseRel[] = [];
+    list.sort((x, y) => x.id.localeCompare(y.id));
+    for (const r of list) {
+      if (seen.has(r.id)) continue;
+      seen.add(r.id);
+      dedup.push(r);
+    }
+    list.length = 0;
+    list.push(...dedup);
+  }
+}
+
 function materializeRels(nodes: CaseNode[], kept: PlannedEdge[]): Map<string, CaseRel[]> {
   const byId = new Map(nodes.map((n) => [n.id, n]));
   const rels = new Map<string, CaseRel[]>();
@@ -980,28 +1021,11 @@ function materializeRels(nodes: CaseNode[], kept: PlannedEdge[]): Map<string, Ca
     const A = byId.get(e.a);
     const B = byId.get(e.b);
     if (!A || !B) continue;
-    const later = laterByDay(A, B);
-    if (e.follow && later) {
-      const earlier = later === A ? B : A;
-      rels.get(later.id)?.push({ id: earlier.id, title: earlier.title, relation: "follow_up_of" });
-      rels.get(earlier.id)?.push({ id: later.id, title: later.title, relation: "related_to" });
-    } else {
-      rels.get(A.id)?.push({ id: B.id, title: B.title, relation: "related_to" });
-      rels.get(B.id)?.push({ id: A.id, title: A.title, relation: "related_to" });
-    }
+    const later = e.follow ? laterByDay(A, B) : null;
+    if (later) pushFollowPair(rels, later, later === A ? B : A);
+    else pushRelatedPair(rels, A, B);
   }
-  for (const list of rels.values()) {
-    const seen = new Set<string>();
-    const dedup: CaseRel[] = [];
-    const sorted = list.toSorted((x, y) => x.id.localeCompare(y.id));
-    for (const r of sorted) {
-      if (seen.has(r.id)) continue;
-      seen.add(r.id);
-      dedup.push(r);
-    }
-    list.length = 0;
-    list.push(...dedup);
-  }
+  dedupeRelLists(rels);
   return rels;
 }
 

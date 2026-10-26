@@ -112,6 +112,17 @@ function coreCaseBody(rawBody: string, title: string): string {
   return ensureTitleHeading(body.trimEnd(), title);
 }
 
+function namedUrlRows(value: unknown, fallbackName: string): Array<{ name: string; url: string }> {
+  if (!Array.isArray(value)) return [];
+  const out: Array<{ name: string; url: string }> = [];
+  for (const item of value) {
+    if (!item || typeof item !== "object") continue;
+    const row = item as { name?: string; url?: string };
+    if (row.url) out.push({ name: row.name || fallbackName, url: row.url });
+  }
+  return out;
+}
+
 function sourceLines(payload: Record<string, unknown>): string[] {
   const lines: string[] = [];
   const seen = new Set<string>();
@@ -123,51 +134,17 @@ function sourceLines(payload: Record<string, unknown>): string[] {
   if (typeof payload.source_url === "string" && payload.source_url) {
     push("แหล่งหลัก", payload.source_url);
   }
-  const refs = payload.references;
-  if (Array.isArray(refs)) {
-    for (const r of refs) {
-      if (r && typeof r === "object") {
-        const row = r as { name?: string; url?: string };
-        if (row.url) push(row.name || "แหล่งอ้างอิง", row.url);
-      }
-    }
+  for (const row of namedUrlRows(payload.references, "แหล่งอ้างอิง")) {
+    push(row.name, row.url);
   }
-  const corr = payload.corroborating_sources;
-  if (Array.isArray(corr)) {
-    for (const s of corr) {
-      if (s && typeof s === "object") {
-        const row = s as { name?: string; url?: string };
-        if (row.url) push(row.name || "แหล่งอื่น", row.url);
-      }
-    }
+  for (const row of namedUrlRows(payload.corroborating_sources, "แหล่งอื่น")) {
+    push(row.name, row.url);
   }
   return lines;
 }
 
-function upsertCaseNote(row: CaseRow, rels: ReturnType<typeof loadRels>) {
-  const dir = path.join(vaultDir(), "20_Cases");
-  fs.mkdirSync(dir, { recursive: true });
-  const file = path.join(dir, `${row.id}.md`);
-  const payload = row.payload_json ? (JSON.parse(row.payload_json) as Record<string, unknown>) : {};
-  const packed = relLines(rels);
-  const blurb = typeof payload.exec_blurb === "string" ? payload.exec_blurb : "";
-  const analysis = typeof payload.analysis_notes === "string" ? payload.analysis_notes : "";
-  let body = "";
-  if (fs.existsSync(file)) {
-    const cur = splitFm(fs.readFileSync(file, "utf8"));
-    if (!cur.generated) return "skipped";
-    body = coreCaseBody(cur.body, row.title);
-  } else {
-    body = `# ${row.title}\n`;
-  }
-  if (blurb) body += `\n\n## สำหรับผู้บริหาร\n${blurb}\n`;
-  if (analysis) body += `\n## วิเคราะห์\n${analysis}\n`;
-  const sources = sourceLines(payload);
-  if (sources.length) body += `\n## แหล่งที่มา\n${sources.join("\n")}\n`;
-  const lines = packed.rels.map((r) => `- [[${r.target}|rel:${r.rel}]]`).join("\n");
-  if (lines) body += `\n## ความสัมพันธ์\n${lines}\n`;
-  const provinces = row.province_json || "[]";
-  const fm = [
+function caseFrontmatter(row: CaseRow, packed: ReturnType<typeof relLines>): string {
+  return [
     "---",
     "type: case",
     "generated: true",
@@ -180,7 +157,7 @@ function upsertCaseNote(row: CaseRow, rels: ReturnType<typeof loadRels>) {
     `status_th: ${yamlEscape(row.status_th || "-")}`,
     `gang_or_group: ${yamlEscape(row.gang_or_group || "-")}`,
     `severity: ${row.severity || "low"}`,
-    `provinces: ${provinces}`,
+    `provinces: ${row.province_json || "[]"}`,
     `rel_units: ${packed.units}`,
     `rel_people: ${packed.people}`,
     `rel_projects: ${packed.projects}`,
@@ -188,7 +165,39 @@ function upsertCaseNote(row: CaseRow, rels: ReturnType<typeof loadRels>) {
     "---",
     "",
   ].join("\n");
-  fs.writeFileSync(file, fm + body.replace(/^\n/, "") + "\n", "utf8");
+}
+
+function appendGeneratedSections(
+  body: string,
+  payload: Record<string, unknown>,
+  packed: ReturnType<typeof relLines>,
+): string {
+  let out = body;
+  const blurb = typeof payload.exec_blurb === "string" ? payload.exec_blurb : "";
+  const analysis = typeof payload.analysis_notes === "string" ? payload.analysis_notes : "";
+  if (blurb) out += `\n\n## สำหรับผู้บริหาร\n${blurb}\n`;
+  if (analysis) out += `\n## วิเคราะห์\n${analysis}\n`;
+  const sources = sourceLines(payload);
+  if (sources.length) out += `\n## แหล่งที่มา\n${sources.join("\n")}\n`;
+  const lines = packed.rels.map((r) => `- [[${r.target}|rel:${r.rel}]]`).join("\n");
+  if (lines) out += `\n## ความสัมพันธ์\n${lines}\n`;
+  return out;
+}
+
+function upsertCaseNote(row: CaseRow, rels: ReturnType<typeof loadRels>) {
+  const dir = path.join(vaultDir(), "20_Cases");
+  fs.mkdirSync(dir, { recursive: true });
+  const file = path.join(dir, `${row.id}.md`);
+  const payload = row.payload_json ? (JSON.parse(row.payload_json) as Record<string, unknown>) : {};
+  const packed = relLines(rels);
+  let body = `# ${row.title}\n`;
+  if (fs.existsSync(file)) {
+    const cur = splitFm(fs.readFileSync(file, "utf8"));
+    if (!cur.generated) return "skipped";
+    body = coreCaseBody(cur.body, row.title);
+  }
+  body = appendGeneratedSections(body, payload, packed);
+  fs.writeFileSync(file, caseFrontmatter(row, packed) + body.replace(/^\n/, "") + "\n", "utf8");
   return "written";
 }
 
