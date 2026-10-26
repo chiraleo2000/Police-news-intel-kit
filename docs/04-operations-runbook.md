@@ -5,13 +5,13 @@
 | เวลา | งาน | ผู้รัน | ผ่านเมื่อ |
 | --- | --- | --- | --- |
 | 05:00 | export-links | Task Scheduler | มี `exports\{DATE}_line_links.xlsx/.json` |
-| 06:00 | Task 1 กฎหมายเทคโนโลยีภาครัฐ | Claude | `run_status(gov-tech-law)` = complete |
-| 06:40 | Task 2 อาชญากรรม/ตำรวจ + LINE | Claude | `run_status(crime-news)` = complete, มี PNG infographic และ `_trends.json` |
+| 08:01 | Task 1 กวาดออนไลน์ + วิเคราะห์ Second Brain ในรอบเดียวกัน | Claude | `run_status` ของ Task 1 = complete |
+| 08:30 | Task 2 ลิงก์ LINE + วิเคราะห์ Second Brain ในรอบเดียวกัน | Claude | `run_status` ของ Task 2 = complete |
 | ต่อเนื่อง | vault-build (incremental) | server | มีโน้ตใหม่ใน `20_Cases` |
 | 07:45 | vault-build (full) | Task Scheduler | log ไม่มี `needs_review` ค้าง |
 | 08:15 | healthcheck | Task Scheduler | ไม่มีแจ้งเตือน (ถ้ามีดูข้อ 3) |
 | 23:30 | backup | Task Scheduler | มีโฟลเดอร์ `backup\{DATE}` |
-| อาทิตย์ 20:00 | Task 3 Second Brain | Claude | `run_status(brain-review)` = complete |
+| — | ไม่มีงานรีวิว Second Brain แยก | — | การวิเคราะห์อยู่ใน Task 1 และ Task 2 |
 
 **เช้าที่ไม่มีแจ้งเตือน = ไม่ต้องทำอะไร** (ดู `10_Daily` ใน Obsidian เมื่ออยากอ่านผล)
 

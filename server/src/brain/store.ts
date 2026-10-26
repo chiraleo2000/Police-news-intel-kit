@@ -84,6 +84,8 @@ export function indexPost(post: PostV2, day: string) {
       analysis_notes: post.analysis_notes || "",
       references: post.references || [],
       related_cases: post.related_cases || [],
+      source_url: post.source_url || "",
+      corroborating_sources: post.corroborating_sources || [],
       content_len: String(post.content || "").length,
       units,
     }),
@@ -197,4 +199,14 @@ export function listRelationsForCase(id: string): Array<Rel & { dst_type: string
 export function caseCount() {
   const row = getDb().prepare(`SELECT COUNT(*) AS n FROM cases`).get() as { n: number };
   return row.n;
+}
+
+/** Wipe case/entity graph tables before a full reindex (keeps LINE/webhook tables). */
+export function resetBrainIndex() {
+  const db = getDb();
+  db.exec(`
+    DELETE FROM relations;
+    DELETE FROM cases;
+    DELETE FROM entities;
+  `);
 }

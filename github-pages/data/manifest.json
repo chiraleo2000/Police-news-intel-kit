@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-26T04:57:23.718Z",
+ "generated_at": "2026-10-26T06:52:59.190Z",
  "schema_version": 1,
  "default_range": "all",
  "days": [
@@ -12,6 +12,11 @@
     {
      "label": "PDF สรุปข่าว 2026-10-26",
      "path": "downloads/2026-10-26_crime.pdf",
+     "kind": "pdf"
+    },
+    {
+     "label": "PDF จาก LINE 2026-10-26",
+     "path": "downloads/2026-10-26_crime_line.pdf",
      "kind": "pdf"
     },
     {

@@ -36,8 +36,8 @@ LINE กลุ่ม → Bot → /line/webhook → DB (แหล่งจริ�
 | เวลา | งาน | ผู้รัน |
 | --- | --- | --- |
 | 05:00 | `export-links` ส่งออกลิงก์ LINE เป็น `.xlsx` + `.json` | server (Windows Task Scheduler) |
-| 06:00 | Task 1 ข่าวกฎหมายเทคโนโลยีภาครัฐ | Claude scheduled task |
-| 06:40 | Task 2 ข่าวอาชญากรรม/ตำรวจ จาก LINE (MCP/DB) | Claude scheduled task |
+| 08:01 | Task 1 กวาดข่าวออนไลน์ + วิเคราะห์ในรอบเดียวกัน | Claude scheduled task |
+| 08:30 | Task 2 ลิงก์ LINE + วิเคราะห์ในรอบเดียวกัน | Claude scheduled task |
 | ต่อเนื่อง | `vault-build` แบบเพิ่มส่วน (debounce 2 นาที หลังได้ entities) | server |
 | 07:45 | `vault-build` เต็มรูปแบบ (ประกันความถูกต้อง) | server |
 | 08:15 | `healthcheck` + แจ้งเตือนถ้าผิดปกติ | server |
@@ -55,8 +55,8 @@ docs/03-obsidian-vault.md         ← โครง vault, รูปแบบโ�
 docs/04-operations-runbook.md     ← ปฏิบัติการรายวัน, แจ้งเตือน, แก้ปัญหา, สำรอง/กู้คืน, ความปลอดภัย
 
 prompts/   (มีแค่ 2 ไฟล์ — ไม่มี task-3)
-  task-1-police-crime-news-pipeline.md      ← 06:00 กวาดออนไลน์ registry 55
-  task-2-LINE-Message-Extract-crime-news.md ← 06:40 LINE via MCP/DB (Excel = export)
+  task-1-police-crime-news-pipeline.md      ← 08:01 กวาดออนไลน์ + วิเคราะห์ในรอบเดียวกัน
+  task-2-LINE-Message-Extract-crime-news.md ← 08:30 LINE + วิเคราะห์ในรอบเดียวกัน
 docs/05-line-webhook-setup.md     ← ตั้งค่า LINE OA + webhook + export + MCP
 reference/   ← งบดิจิทัลปี 2570 สำหรับขั้นวิเคราะห์ BD ใน task 1 และ 2
 scheduled-tasks/

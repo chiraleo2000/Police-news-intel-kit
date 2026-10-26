@@ -165,9 +165,8 @@ setx NEWSHUB_TOKEN "<ค่าเดียวกับ API_TOKEN_CLAUDE>"
 
 | งาน | ไฟล์ | ตั้งเวลา (Asia/Bangkok) |
 | --- | --- | --- |
-| daily-gov-tech-law-news | `prompts\task-1-gov-tech-law.md` | ทุกวัน 06:00 |
-| daily-crime-news | `prompts\task-2-crime-news.md` | ทุกวัน 06:40 |
-| weekly-brain-review | `prompts\task-3-weekly-brain-review.md` | อาทิตย์ 20:00 |
+| daily-gov-tech-law-news | `prompts\task-1-police-crime-news-pipeline.md` | ทุกวัน 08:01 |
+| daily-crime-news | `prompts\task-2-LINE-Message-Extract-crime-news.md` | ทุกวัน 08:30 |
 
 - Claude Desktop (Cowork): ไปที่ **Scheduled** ในแถบซ้าย → สร้างงานใหม่ → วาง prompt → เลือกความถี่ → พิมพ์ `/` เพื่อแนบ plugin/skill → **Save**
 - Claude Code Desktop: บันทึกไฟล์ prompt เป็น `~\.claude\scheduled-tasks\<ชื่องาน>\SKILL.md` (frontmatter `name`/`description` มีอยู่ในไฟล์แล้ว) แล้วตั้งความถี่ในแอป

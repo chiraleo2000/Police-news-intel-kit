@@ -1,11 +1,11 @@
 ---
 name: task-1-police-crime-news-pipeline
 description: >
-  รายวัน 06:00 (Asia/Bangkok) — กวาดครบ registry Batch A–D (เน้นเว็บประชาสัมพันธ์ ตร.)
+  รายวัน 08:01 (Asia/Bangkok) — กวาดครบ registry Batch A–D (เน้นเว็บประชาสัมพันธ์ ตร.)
   ซ้ำได้ตอน scrape แล้วค่อย event-merge · tags 3–5 หัวข้อสำคัญ · taxonomy ขยาย
   → แนวโน้ม 7 วัน · Second Brain + BD×งบ 2570 → JSON/Obsidian/PDF
   ⛔ NO GIT
-schedule: "CRON_TZ=Asia/Bangkok 0 6 * * *"
+schedule: "CRON_TZ=Asia/Bangkok 1 8 * * *"
 trigger:
   - "กวาดข่าวอาชญากรรม"
   - "ข่าวตำรวจ"
@@ -33,7 +33,8 @@ trigger:
 PDF รายวันยังรวมจาก HTML ตามประเภทคดีเหมือนเดิม — ห้าม copy โครงสรุปตาม บช.  
 ตัวอย่างจัดตาม บช. ใช้เป็น **มาตรฐานความลึกของการ์ด** ไม่ใช่โครงเอกสาร
 
-Second Brain: Claude เรียก news-hub ไม่เขียนไฟล์ vault ตรง ๆ  
+Second Brain ทำในรอบนี้ ไม่มี scheduled task แยก  
+เรียก news-hub (`brain_search` / `brain_timeline`) ไม่เขียนไฟล์ vault ตรง ๆ  
 Pages graph เป็น snapshot หลัง `node ops/rebuild-pages-feed.js` เท่านั้น
 
 ## สิ่งที่ต่อยอดจากต้นฉบับ
@@ -569,7 +570,7 @@ vault/30_Entities/{Units|Agencies|Laws|MO|Places|Regions}/...
 ## v1.2 — แก้ไขหลังรอบ 2026-10-22 (บังคับ ทับกฎเดิมเมื่อขัดกัน)
 
 ### ช่วงเวลาข่าว (แก้)
-- Window = **00:00 ของเมื่อวาน (TARGET_DATE-1) ถึงเวลารัน** (Asia/Bangkok) — ครอบคลุม "เมื่อวานทั้งวัน + วันนี้" ไม่ใช่แค่ 24 ชม.ย้อนหลังนับจาก 06:00
+- Window = **00:00 ของเมื่อวาน (TARGET_DATE-1) ถึงเวลารัน** (Asia/Bangkok) — ครอบคลุม "เมื่อวานทั้งวัน + วันนี้" ไม่ใช่แค่ 24 ชม.ย้อนหลังนับจาก 08:01
 - ข่าวที่เหตุเกิดก่อนหน้าต่างแต่เผยแพร่ในหน้าต่าง ให้เก็บได้ (ใช้วันเผยแพร่) · ข่าวต่างประเทศที่ไม่เกี่ยวกับไทย → `skipped_out_of_scope`
 
 ### วินัยการกวาด (แก้ปัญหาดึงน้อย)

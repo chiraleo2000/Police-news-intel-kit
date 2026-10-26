@@ -1,14 +1,11 @@
-# Scheduled tasks — ข่าวตำรวจ
+# Scheduled tasks — มีแค่ 2 อัน
 
-| # | ไฟล์ใน `prompts/` | เวลา (Asia/Bangkok) | ทำอะไร |
+| # | ไฟล์ | เวลา (Asia/Bangkok) | ทำอะไร |
 | --- | --- | --- | --- |
-| 1 | `task-1-police-crime-news-pipeline.md` | ทุกวัน 06:00 | กวาดออนไลน์ registry แล้วเขียนโพสต์ v2 |
-| 2 | `task-2-LINE-Message-Extract-crime-news.md` | ทุกวัน 06:40 | ดึงลิงก์จาก LINE continuous export ของวันนั้น |
-| 3 | `plugin/news-intel/skills/second-brain-update/SKILL.md` | อาทิตย์ 20:00 | รีวิว Second Brain ด้วย `brain_search` / `brain_timeline` / `brain_upsert` |
+| 1 | `prompts/task-1-police-crime-news-pipeline.md` | ทุกวัน 08:01 | กวาดออนไลน์ แล้ววิเคราะห์ต่อหัวข่าวในรอบเดียวกัน |
+| 2 | `prompts/task-2-LINE-Message-Extract-crime-news.md` | ทุกวัน 08:30 | ดึงลิงก์ LINE ของวันนั้น แล้ววิเคราะห์ต่อหัวข่าวในรอบเดียวกัน |
 
-ทั้ง Task 1 และ 2 ต้องค้น `brain_search` ก่อนใส่ `related_cases`  
-โพสต์ยังแยกตามหัวข่าว สรุปเดิมอยู่บน แล้วตามด้วยมุมผู้บริหาร วิเคราะห์ และการ์ดข้อเท็จจริง  
+ไม่มีงานรีวิว Second Brain แยก การค้น `brain_search` การโยงคดี และชั้นวิเคราะห์อยู่ใน Task 1 และ Task 2  
 PDF รายวันรวมจาก HTML ตามประเภทคดี ห้ามจัดบทตาม บช.
 
-วิธีตั้ง: คัดลอกไฟล์ในโฟลเดอร์นี้ไปสร้าง Claude Scheduled Task แล้วอนุมัติอัตโนมัติ  
-แก้ที่ `prompts/` แล้วให้ไฟล์ในโฟลเดอร์นี้ชี้ไฟล์เดียวกัน
+วิธีตั้ง: คัดลอกไฟล์ prompt ทั้งไฟล์ไปวางใน Claude Scheduled Task แล้วอนุมัติอัตโนมัติ

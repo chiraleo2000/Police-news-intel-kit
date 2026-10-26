@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { planCaseRelations, relPhrase, specificGangName } from "./relate.js";
 
 export type Rel = { target: string; rel: string };
 
@@ -24,7 +25,7 @@ export type PostV2 = Record<string, unknown> & {
   related_cases?: Array<{ id: string; title: string; relation: string }>;
   references?: Array<{ name: string; url: string }>;
   format_version?: number;
-  police_performance?: { units_involved?: string[]; outcome?: string };
+  police_performance?: { units_involved?: string[]; outcome?: string; operation?: string; note?: string };
   stats?: { loss_thb?: number | null; seized_value_thb?: number | null };
   source_url?: string;
   corroborating_sources?: Array<{ name?: string; url?: string }>;
@@ -98,6 +99,11 @@ export function referencesOf(post: PostV2): Array<{ name: string; url: string }>
       out.push({ name: s.name || "แหล่งอื่น", url: s.url });
     }
   }
+  for (const r of post.references || []) {
+    if (r?.url && !out.some((x) => x.url === r.url)) {
+      out.push({ name: r.name || "แหล่งอ้างอิง", url: r.url });
+    }
+  }
   return out;
 }
 
@@ -106,8 +112,215 @@ export function money(n: unknown): string {
   return `${Math.round(n).toLocaleString("th-TH")} บาท`;
 }
 
+/** Template blurbs from the first v2 migration — treat as empty so we can rewrite. */
+export function isTemplateBlurb(text: string | undefined): boolean {
+  const t = (text || "").trim();
+  if (!t) return true;
+  return t.startsWith("เรื่องนี้เกี่ยวกับ") || t.startsWith("เรื่องนี้เป็นข่าว");
+}
+
+export function isTemplateAnalysis(text: string | undefined): boolean {
+  const t = (text || "").trim();
+  if (!t) return true;
+  if (t.startsWith("- ประเภทคดี:")) return true;
+  if (t.startsWith("- สาระจากแหล่ง:") && t.includes("ข้อสังเกตอิงเฉพาะข้อเท็จจริง")) return true;
+  return (
+    t.includes("ข้อสังเกตนี้สรุปจากฟิลด์ที่มีอยู่ ไม่ได้เพิ่มข้อเท็จจริงใหม่นอกแหล่งข่าว") &&
+    t.startsWith("- ประเภทคดี:")
+  );
+}
+
+function firstSentences(text: string, maxChars = 220): string {
+  // Avoid regex sentence splits — Thai copy uses "น." / decimals that look like terminators.
+  const clean = String(text || "")
+    .replace(/\s+/g, " ")
+    .trim();
+  if (!clean) return "";
+  if (clean.length <= maxChars) return clean;
+  const window = clean.slice(0, maxChars);
+  const sp = window.lastIndexOf(" ");
+  const cut = sp > Math.floor(maxChars * 0.55) ? window.slice(0, sp) : window;
+  return `${cut.trimEnd()}…`;
+}
+
+function shortenTitle(title: string, max = 110): string {
+  const t = String(title || "").replace(/\s+/g, " ").trim();
+  if (t.length <= max) return t;
+  return `${t.slice(0, max - 1).trimEnd()}…`;
+}
+
+function wherePhrase(post: PostV2): string {
+  const provinces = Array.isArray(post.province) ? post.province.filter(Boolean) : [];
+  if (provinces.length) return provinces.join(" ");
+  if (post.area && post.area !== "-") return post.area;
+  return "";
+}
+
+function scaleFacts(post: PostV2): string[] {
+  const out: string[] = [];
+  const loss = post.stats?.loss_thb;
+  const seized = post.stats?.seized_value_thb;
+  if (typeof loss === "number" && loss > 0) out.push(`ความเสียหายที่แหล่งระบุ ${money(loss)}`);
+  if (typeof seized === "number" && seized > 0) out.push(`ของกลาง/อายัดที่แหล่งระบุ ${money(seized)}`);
+  const provinces = Array.isArray(post.province) ? post.province.filter(Boolean) : [];
+  if (provinces.length >= 2) out.push(`ปรากฏหลายจังหวัด: ${provinces.join(", ")}`);
+  return out;
+}
+
+function openingSentence(post: PostV2): string {
+  const where = wherePhrase(post);
+  const topic = (post.topic || "เหตุการณ์").trim();
+  const essence =
+    firstSentences(String(post.content || ""), 160) || shortenTitle(post.title || "", 120);
+  if (essence) return essence.endsWith(".") ? essence : `${essence}.`;
+  return where ? `เรื่องนี้เป็นข่าว${topic}ในพื้นที่${where}` : `เรื่องนี้เป็นข่าว${topic}`;
+}
+
+function blurbExtras(post: PostV2): string[] {
+  const extra: string[] = [];
+  const bureau = post.primary_bureau && post.primary_bureau !== "-" ? post.primary_bureau : "";
+  const gang = specificGangName(post.gang_or_group || "");
+  if (bureau) extra.push(`หน่วยงานหลักที่ปรากฏในข่าวคือ${bureau}`);
+  if (gang) extra.push(`ชื่อกลุ่มที่ระบุไว้คือ${gang}`);
+  extra.push(...scaleFacts(post));
+  return extra;
+}
+
+export function buildExecBlurb(post: PostV2): string {
+  const status = post.status_th || mapStatus(post.case_stage) || "-";
+  const sentences: string[] = [openingSentence(post)];
+  if (status && status !== "-") sentences.push(`สถานะตามที่แหล่งข่าวรายงานคือ${status}`);
+  const extra = blurbExtras(post);
+  if (extra.length) sentences.push(extra.join(" "));
+  const tags = (post.tags || []).filter(Boolean).slice(0, 4);
+  if (tags.length && sentences.length < 4) {
+    sentences.push(`ประเด็นที่ปรากฏในแท็ก: ${tags.join(", ")}`);
+  }
+  while (sentences.length < 2) sentences.push("ข้อความนี้สรุปจากข่าวเรื่องนี้เท่านั้น");
+  return sentences
+    .slice(0, 4)
+    .map((s) => (s.endsWith(".") ? s : `${s}.`))
+    .join(" ");
+}
+
+function noteWhatHappened(post: PostV2): string {
+  const essence =
+    firstSentences(String(post.content || ""), 240) || shortenTitle(post.title || "", 160);
+  return `- สาระเหตุการณ์: ${essence || "-"}`;
+}
+
+function noteActionStatus(post: PostV2): string {
+  const units = unitsOf(post);
+  const bureau = post.primary_bureau || "-";
+  const status = post.status_th || mapStatus(post.case_stage) || "-";
+  const who = units.length ? units.join(", ") : bureau;
+  const op = String(post.police_performance?.operation || "").trim();
+  const opBit =
+    op && op !== "N/A" && op !== "-" && op.length <= 120 ? ` · การปฏิบัติที่ระบุ: ${op}` : "";
+  return `- หน่วยและสถานะ: ${who || "-"} · สถานะ ${status}${opBit}`;
+}
+
+function noteTagsMo(post: PostV2): string | null {
+  const tags = (post.tags || []).filter(Boolean);
+  if (!tags.length) return null;
+  return `- รูปแบบ/แท็กที่ปรากฏในข่าว: ${tags.slice(0, 8).join(", ")}`;
+}
+
+function noteScale(post: PostV2): string | null {
+  const facts = scaleFacts(post);
+  if (!facts.length) return null;
+  return `- ขนาด/ขอบเขตตามตัวเลขในแหล่ง: ${facts.join(" · ")}`;
+}
+
+function noteGang(post: PostV2): string | null {
+  const gang = specificGangName(post.gang_or_group || "") || "";
+  const raw = (post.gang_or_group || "").trim();
+  if (gang) return `- เครือข่าย/กลุ่มที่แหล่งระบุชื่อ: ${gang}`;
+  if (raw && raw !== "-" && raw.length >= 6) return `- กลุ่มที่ปรากฏในฟิลด์: ${raw}`;
+  return null;
+}
+
+function noteRelated(
+  related: Array<{ id: string; title: string; relation: string }>,
+): string {
+  if (!related.length) {
+    return "- ความเชื่อมโยง: ยังไม่พบสัญญาณร่วมที่ชัดกับคดีอื่นในชุดนี้ จึงไม่โยงเดา";
+  }
+  const why = related
+    .map((r) => `${r.title} (${relPhrase(r.relation)}; id ${r.id})`)
+    .join("; ");
+  return `- ความเชื่อมโยงที่มีหลักฐานร่วม: ${why}`;
+}
+
+function noteImplication(post: PostV2): string {
+  const status = post.status_th || mapStatus(post.case_stage) || "";
+  const tags = (post.tags || []).join(" ");
+  const topic = post.topic || "";
+  if (/ติดตาม|หมายจับ|ยังไม่พบ/.test(status)) {
+    return "- นัยปฏิบัติ: อาจต้องคงการติดตามตามหมาย/สถานะที่รายงาน และทบทวนเบาะแสซ้ำจากแหล่งเดิม";
+  }
+  if (/จับกุม|ฝากขัง|ส่งฟ้อง|ยื่นฟ้อง/.test(status)) {
+    return "- นัยปฏิบัติ: มีแนวโน้มต้องคุมหลักฐานของกลางและคำให้การให้ครบก่อนขั้นสอบสวน/อัยการตามที่แหล่งระบุ";
+  }
+  if (/ไซเบอร์|ออนไลน์|พนัน|คอลเซ็นเตอร์|หลอก/.test(`${topic} ${tags}`)) {
+    return "- นัยปฏิบัติ: อาจต้องขยายผลบัญชี/ช่องทางออนไลน์ที่ปรากฏในข่าว โดยยึดเฉพาะข้อเท็จจริงที่มีในแหล่ง";
+  }
+  if (/ยาเสพติด|ของกลาง/.test(`${topic} ${tags}`)) {
+    return "- นัยปฏิบัติ: มีแนวโน้มต้องยืนยันห่วงโซ่ของกลางและเส้นทางขนส่งตามที่แหล่งรายงาน ไม่เติมเส้นทางที่ไม่มีในข่าว";
+  }
+  return "- นัยปฏิบัติ: ใช้เฉพาะข้อเท็จจริงในข่าวนี้เป็นฐานติดตาม ไม่สรุปตัวผู้ต้องหาเกินกว่าที่แหล่งระบุ";
+}
+
+export function buildAnalysisNotes(
+  post: PostV2,
+  related: Array<{ id: string; title: string; relation: string }> = [],
+): string {
+  const lines: string[] = [
+    noteWhatHappened(post),
+    noteActionStatus(post),
+  ];
+  const optional = [noteTagsMo(post), noteScale(post), noteGang(post)];
+  for (const line of optional) {
+    if (line) lines.push(line);
+  }
+  lines.push(
+    noteRelated(related),
+    noteImplication(post),
+    "- จริยธรรม: ผู้ต้องหาตามข้อกล่าวหายังถือเป็นผู้บริสุทธิ์จนกว่าศาลจะมีคำพิพากษา และไม่เปิดเผยข้อมูลระบุตัวผู้เสียหายในคดีทางเพศ/ค้ามนุษย์/เด็ก",
+  );
+  // Keep 4–8 analytical bullets (+ ethics may make 9; trim soft extras first)
+  while (lines.length > 8) {
+    const dropIdx = lines.findIndex((l) => l.startsWith("- กลุ่มที่ปรากฏ") || l.startsWith("- เครือข่าย"));
+    if (dropIdx >= 0) lines.splice(dropIdx, 1);
+    else lines.splice(2, 1);
+  }
+  return lines.join("\n");
+}
+
+/**
+ * Same-incident / named-network links only. See relate.ts.
+ * Province + topic, a shared tag, or the same broad unit is not a link.
+ */
+export function relatedHeuristic(
+  post: PostV2,
+  day: string,
+  all: Array<{ day: string; post: PostV2 }>,
+): Array<{ id: string; title: string; relation: string }> {
+  const id = String(post.id || "");
+  if (!id) return [];
+  const pool = all.some((row) => String(row.post.id || "") === id) ? all : [{ day, post }, ...all];
+  return planCaseRelations(pool).rels.get(id) || [];
+}
+
+export type EnrichOptions = {
+  /** Rewrite exec_blurb / analysis_notes even if already set (templates always rewritten). */
+  forceAnalysis?: boolean;
+  /** Rebuild related_cases even if already set. */
+  forceRelated?: boolean;
+};
+
 /** Fill v2 fields without replacing content. */
-export function enrichPost(post: PostV2, day: string): PostV2 {
+export function enrichPost(post: PostV2, day: string, opts: EnrichOptions = {}): PostV2 {
   const content = typeof post.content === "string" ? post.content : "";
   const units = unitsOf(post);
   const provinces = Array.isArray(post.province) ? post.province.filter(Boolean) : [];
@@ -115,50 +328,31 @@ export function enrichPost(post: PostV2, day: string): PostV2 {
   const area = post.area || (provinces.length ? provinces.join(", ") : "-");
   const status = post.status_th || mapStatus(post.case_stage);
   const gang = post.gang_or_group || guessGang(post);
-  const loss = post.stats?.loss_thb;
-  const seized = post.stats?.seized_value_thb;
-  let topicLead = "เหตุการณ์ที่ตำรวจ/หน่วยงานเกี่ยวข้อง";
-  if (post.topic) topicLead = post.topic;
-  const titleLead = post.title ? `เรื่องนี้เกี่ยวกับ${topicLead}` : "";
-  const exec =
-    post.exec_blurb ||
-    [
-      titleLead,
-      provinces.length ? `พื้นที่หลักคือ ${provinces.join(", ")}` : "",
-      `สถานะตามที่รายงาน: ${status}`,
-      typeof loss === "number" && loss > 0 ? `มูลค่าความเสียหายที่แหล่งระบุ ${money(loss)}` : "",
-      bureau && bureau !== "-" ? `หน่วยงานหลักที่โยงได้: ${bureau}` : "",
-    ]
-      .filter(Boolean)
-      .join(" ")
-      .replace(/[「」]/g, "");
 
-  const analysis =
-    post.analysis_notes ||
-    [
-      `- ประเภทคดี: ${post.topic || "-"}`,
-      `- พื้นที่: ${area}`,
-      `- สถานะ: ${status}`,
-      `- มูลค่าความเสียหาย: ${money(loss)} · ของกลาง/อายัด: ${money(seized)}`,
-      `- ชื่อกลุ่ม/แก๊ง: ${gang}`,
-      `- หน่วยงาน: ${units.length ? units.join(", ") : bureau}`,
-      `- ระดับความรุนแรงที่ระบบจัด: ${post.severity || "-"} · การยืนยันแหล่ง: ${post.verification || "-"}`,
-      "- ข้อสังเกตนี้สรุปจากฟิลด์ที่มีอยู่ ไม่ได้เพิ่มข้อเท็จจริงใหม่นอกแหล่งข่าว",
-    ].join("\n");
-
-  return {
+  const base: PostV2 = {
     ...post,
     format_version: 2,
     primary_bureau: bureau,
     area,
     status_th: status,
     gang_or_group: gang,
-    exec_blurb: exec,
-    analysis_notes: analysis,
-    related_cases: post.related_cases || [],
-    references: post.references || referencesOf(post),
+    references: post.references?.length ? post.references : referencesOf(post),
     _day: day,
   };
+
+  const rewriteBlurb = opts.forceAnalysis || isTemplateBlurb(post.exec_blurb);
+  const rewriteNotes = opts.forceAnalysis || isTemplateAnalysis(post.analysis_notes);
+  // forceRelated clears here; migrate will refill via relatedHeuristic.
+  const related = opts.forceRelated ? [] : post.related_cases || [];
+
+  base.related_cases = related;
+  base.exec_blurb = rewriteBlurb ? buildExecBlurb(base) : post.exec_blurb;
+  // analysis notes may be refreshed again after related heuristics in migrate
+  base.analysis_notes = rewriteNotes
+    ? buildAnalysisNotes(base, related)
+    : post.analysis_notes;
+
+  return base;
 }
 
 export function relForStage(stage = ""): string {
@@ -178,33 +372,4 @@ export function dayDistance(a: string, b: string): number {
   const db = Date.parse(b);
   if (!Number.isFinite(da) || !Number.isFinite(db)) return 999;
   return Math.abs(da - db) / 86_400_000;
-}
-
-export function relatedHeuristic(
-  post: PostV2,
-  day: string,
-  all: Array<{ day: string; post: PostV2 }>,
-): Array<{ id: string; title: string; relation: string }> {
-  const id = String(post.id || "");
-  const topic = post.topic || "";
-  const provinces = new Set((post.province || []).map(String));
-  const gang = post.gang_or_group && post.gang_or_group !== "-" ? post.gang_or_group : "";
-  const hits: Array<{ id: string; title: string; relation: string }> = [];
-  for (const other of all) {
-    const oid = String(other.post.id || "");
-    if (!oid || oid === id) continue;
-    const sameGang = gang && other.post.gang_or_group === gang;
-    const prov = (other.post.province || []).some((p) => provinces.has(String(p)));
-    const sameTopic = topic && other.post.topic === topic;
-    const near = dayDistance(day, other.day) <= 14;
-    if (sameGang || (prov && sameTopic && near)) {
-      hits.push({
-        id: oid,
-        title: String(other.post.title || oid),
-        relation: "related_to",
-      });
-    }
-    if (hits.length >= 5) break;
-  }
-  return hits;
 }

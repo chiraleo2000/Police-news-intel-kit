@@ -148,8 +148,22 @@ function labeledRels(fm) {
   return out;
 }
 
+function wikilinkCut(inner) {
+  const pipe = inner.indexOf("|");
+  const hash = inner.indexOf("#");
+  const cuts = [pipe, hash].filter((n) => n >= 0);
+  return cuts.length ? Math.min(...cuts) : inner.length;
+}
+
+function wikilinkRelLabel(inner, pipe) {
+  if (pipe < 0) return "mentions";
+  const rel = /rel:(\w+)/.exec(inner.slice(pipe + 1));
+  return rel ? rel[1] : "mentions";
+}
+
 function extractLinks(body) {
-  const out = new Set();
+  const out = [];
+  const seen = new Set();
   let i = 0;
   while (i < body.length) {
     if (!body.startsWith("[[", i)) {
@@ -159,14 +173,19 @@ function extractLinks(body) {
     const end = body.indexOf("]]", i + 2);
     if (end < 0) break;
     const inner = body.slice(i + 2, end);
-    const cut = Math.min(
-      ...[inner.indexOf("|"), inner.indexOf("#")].filter((n) => n >= 0).concat([inner.length]),
-    );
-    const target = inner.slice(0, cut).trim().replaceAll("\\", "/");
-    if (target) out.add(target);
+    const pipe = inner.indexOf("|");
+    const target = inner.slice(0, wikilinkCut(inner)).trim().replaceAll("\\", "/");
+    const label = wikilinkRelLabel(inner, pipe);
+    if (target) {
+      const key = `${target}\0${label}`;
+      if (!seen.has(key)) {
+        seen.add(key);
+        out.push({ target, label });
+      }
+    }
     i = end + 2;
   }
-  return [...out];
+  return out;
 }
 
 function normalizeKey(s) {
@@ -316,8 +335,9 @@ function resolveAndPushEdges(node, state) {
     pushEdge(state, node.id, resolveTarget(state, rel.target), rel.label);
   }
   for (const rawTarget of node.links) {
-    const clean = stripRelSuffix(rawTarget);
-    pushEdge(state, node.id, resolveTarget(state, clean), "mentions");
+    const link = typeof rawTarget === "string" ? { target: rawTarget, label: "mentions" } : rawTarget;
+    const clean = stripRelSuffix(link.target);
+    pushEdge(state, node.id, resolveTarget(state, clean), link.label || "mentions");
   }
 }
 
