@@ -52,6 +52,12 @@ function egoNeighborhood(graph, hub) {
   return { nodes, edges };
 }
 
+function satelliteRadius(kind) {
+  if (kind === "crime_type") return 14;
+  if (kind === "case") return 16;
+  return 11;
+}
+
 function layout(hub, neighbors) {
   const W = 760;
   const H = 440;
@@ -63,7 +69,7 @@ function layout(hub, neighbors) {
   const radius = Math.min(175, 70 + n * 12);
   neighbors.forEach((node, i) => {
     const angle = (Math.PI * 2 * i) / Math.max(1, n) - Math.PI / 2;
-    const r = node.kind === "crime_type" ? 14 : node.kind === "case" ? 16 : 11;
+    const r = satelliteRadius(node.kind);
     positions.set(node.id, {
       x: cx + Math.cos(angle) * radius,
       y: cy + Math.sin(angle) * radius,

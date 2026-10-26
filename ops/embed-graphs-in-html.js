@@ -16,9 +16,28 @@ const GRAPH_CSS =
   ".story-graph h4{margin:8px 0 4px;font-size:16pt}" +
   ".story-graph ul{margin:4px 0 8px;padding-left:1.2em}";
 
+function stripTags(value) {
+  const source = String(value || "");
+  let out = "";
+  let i = 0;
+  while (i < source.length) {
+    if (source[i] !== "<") {
+      out += source[i];
+      i += 1;
+      continue;
+    }
+    const end = source.indexOf(">", i + 1);
+    if (end < 0) {
+      out += source.slice(i);
+      break;
+    }
+    i = end + 1;
+  }
+  return out;
+}
+
 function norm(value) {
-  return String(value || "")
-    .replace(/<[^>]+>/g, "")
+  return stripTags(value)
     .replaceAll(/\s+/g, " ")
     .replaceAll(/[“”„«»"']/g, "")
     .trim();
@@ -131,7 +150,8 @@ for (const folder of fs.readdirSync(documentDir)) {
 }
 
 let embedded = 0;
-for (const file of htmlFiles.sort()) {
+const orderedHtml = htmlFiles.toSorted((a, b) => a.localeCompare(b));
+for (const file of orderedHtml) {
   const result = embedFile(file);
   embedded += result.matched;
   console.log(`${result.file} stories=${result.stories} matched=${result.matched} missed=${result.missed}`);
