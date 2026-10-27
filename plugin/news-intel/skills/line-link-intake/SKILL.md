@@ -9,8 +9,9 @@ description: ใช้เมื่อต้องนำลิงก์ที่�
 
 ## ขั้นตอน
 1. **หลัก:** อ่าน `server/exports/line_intake_continuous.json` (หรือ `.xlsx` แผ่น `line_intake`)  
-   ใช้เฉพาะ `kind=url` และ `received_at` ของ `RUN_DATE` เท่านั้น  
-   **ทางเลือก:** `line_links_get(date=RUN_DATE, status="new")` ถ้าไฟล์ continuous ว่าง/หาย  
+   ใช้เฉพาะ `kind=url` ที่ `received_at` เป็น `RUN_DATE` หรือเป็นเมื่อวานและ `status` ยังเป็น `new`  
+   ตัดหาง `\\n` หรือ `/n/n` ที่ติดท้าย URL ออกก่อนเปิดหน้า  
+   **ทางเลือก:** `line_links_get` ของวันนี้ และของเมื่อวานที่ `status=new` ถ้าไฟล์ continuous ว่าง/หาย  
    แถวมี `{id, received_at, group_alias, url, canonical_url, domain, domain_type, fetchable}`
 2. คัดกรอง (ไม่ต้อง fetch):
    - `fetchable = false` (Facebook, TikTok, Instagram, X, LINE Today ที่ต้อง login ฯลฯ) → mark `skipped` เหตุผล `social_reference_only`

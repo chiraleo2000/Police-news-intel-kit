@@ -2,7 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import ExcelJS from "exceljs";
 import { config } from "../config.js";
-import { audit, getDb, listAllLineFiles, listAllLineLinks } from "../db/index.js";
+import { audit, getDb, listAllLineFiles, listAllLineLinks, repairLineUrlJunk } from "../db/index.js";
 
 export type ContinuousExportResult = {
   ok: boolean;
@@ -20,6 +20,8 @@ export type ContinuousExportResult = {
  */
 export async function writeContinuousIntakeExcel(): Promise<ContinuousExportResult> {
   getDb();
+  const repaired = repairLineUrlJunk();
+  if (repaired) audit("line-export", "url_junk_repaired", `rows=${repaired}`);
   const links = listAllLineLinks();
   const files = listAllLineFiles();
 

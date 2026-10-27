@@ -145,7 +145,7 @@ function firstSentences(text: string, maxChars = 220): string {
     "ได้", "ไม่", "จะ", "มา", "ไป", "อยู่", "ตาม", "ซึ่ง", "ให้", "ถึง", "กว่า", "หลัง", "ก่อน", "ประเภท", "ข้อหา",
   ]);
   const words = cut.trimEnd().split(" ");
-  const endsOpen = (word) =>
+  const endsOpen = (word: string) =>
     dangling.has(word) || /^\d{1,4}$/.test(word) || /(?:วันที่|ใน|ที่|ของ|และ|โดย|ประเภท|ข้อหา)$/.test(word);
   while (words.length > 6 && endsOpen(words[words.length - 1])) words.pop();
   return words.join(" ").trim();

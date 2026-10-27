@@ -83,7 +83,7 @@ Tools:
 - `run_status_get` / `run_status_put` — สถานะรอบก่อน
 - `export_path_hint` — path Excel ถ้าต้องเปิดดูเอง
 
-**กฎ Task-2:** อ่าน `exports/line_intake_continuous.json` (กรองวันที่) เป็นหลัก; MCP เป็นทางเลือก; อย่าใช้ลิงก์ข้ามวัน
+**กฎ Task-2:** อ่าน `exports/line_intake_continuous.json` เป็นหลัก ใช้ลิงก์ของวันนี้ และลิงก์เมื่อวานที่ `status` ยังเป็น `new` MCP เป็นทางเลือก
 
 ## 6) ประเด็น scheduled task (Claude)
 

@@ -1,7 +1,7 @@
 ---
 name: task-2-LINE-Message-Extract-crime-news
 description: >
-  รายวัน 08:30 (Asia/Bangkok) — ดึงลิงก์จาก LINE continuous export (RUN_DATE)
+  รายวัน 08:30 (Asia/Bangkok) — ดึงลิงก์จาก LINE continuous export (วันนี้ + เมื่อวานที่ status ยังเป็น new)
   → กรองตำรวจ/อาชญากรรม/ประชาสัมพันธ์ ตร. → ตรวจซ้ำกับ Task 1 + ผลที่มีอยู่
   → fetch เฉพาะใหม่หรือลิงก์เพิ่มแหล่ง → merge/append → JSON/Obsidian/PDF
   ⛔ NO GIT · ห้ามกวาด registry 55 แหล่ง (นั่นคือ Task 1)
@@ -12,12 +12,12 @@ trigger:
   - "task 2 line links"
 ---
 
-# Task 2 — ดึงลิงก์จาก LINE continuous export (วันนั้นเท่านั้น)
+# Task 2 — ดึงลิงก์จาก LINE continuous export (วันนี้ และเมื่อวานที่ยังไม่ถูกประมวลผล)
 
 ## บทบาท (อ่านก่อน)
 | | Task 1 | **Task 2 (ไฟล์นี้)** |
 | --- | --- | --- |
-| แหล่งข่าว | กวาดเว็บ registry 55 แหล่ง | **เฉพาะ URL จาก LINE continuous export ของ RUN_DATE** |
+| แหล่งข่าว | กวาดเว็บ registry 55 แหล่ง | **URL จาก LINE continuous export ของ RUN_DATE และของเมื่อวานที่ `status` ยังเป็น `new`** |
 | ก่อนหน้า | — | webhook เก็บลิงก์/ไฟล์ตลอดวัน → `server/exports/line_intake_continuous.*` |
 | กฎเนื้อหา/taxonomy/จริยธรรม | ในไฟล์ Task 1 / `police-crime-news-pipeline.md` | **ใช้ชุดเดียวกัน** |
 
@@ -77,19 +77,25 @@ DROP → บันทึกใน Completion Report อย่างเดีย�
 เพดาน: ≤40 URL เข้าชั้น 1; หลังกรองแล้ว fetch เต็ม ≤25 ลิงก์/รอบ (เรียง official ตร. → สื่ออาชญากรรม → อื่น)
 
 ## Run params
-`RUN_DATE` / `TARGET_DATE` = วันนี้ (Asia/Bangkok). Window = รายการที่ `received_at` ขึ้นต้นด้วย `RUN_DATE` เท่านั้น ห้ามตัดด้วยเกณฑ์ 24 ชั่วโมงย้อนหลัง เพราะจะทิ้งลิงก์ของวันเดียวกันที่เข้ามาก่อน 08:30  
+`RUN_DATE` / `TARGET_DATE` = วันนี้ (Asia/Bangkok). `YESTERDAY` = วันก่อน RUN_DATE ตามปฏิทิน Asia/Bangkok  
+Window ของลิงก์:
+- แถวที่ `received_at` ขึ้นต้นด้วย `RUN_DATE` ทั้งหมด รวมลิงก์ที่เข้ามาก่อน 08:30 ของวันนี้
+- แถวที่ `received_at` ขึ้นต้นด้วย `YESTERDAY` และ `status` ยังเป็น `new` เท่านั้น ลิงก์เมื่อวานที่ `used` หรือ `skipped` แล้วไม่ทำซ้ำ
+ห้ามใช้หน้าต่าง 24 ชั่วโมงย้อนหลังจากเวลาเริ่มรอบ เพราะจะทิ้งลิงก์ของวันเดียวกันที่เข้ามาก่อน 08:30 และจะดึงลิงก์เมื่อวานที่ประมวลผลไปแล้วกลับมา  
 รันอัตโนมัติ — ห้ามถามคำถามกลับ  
-`run_status_get(task="task-2")` ถ้าวันนี้ `complete` และไม่มี `force` → `ALREADY_COMPLETE`  
-ไม่มีลิงก์ของ RUN_DATE ใน continuous export → หยุด `PREFLIGHT_FAILED: missing line links for date`
+`run_status_get(task="task-2")` ถ้าวันนี้ `complete` และไม่มีลิงก์เมื่อวานที่ `status=new` และไม่มี `force` → `ALREADY_COMPLETE` ถ้ายังมีลิงก์เมื่อวานที่ `status=new` ให้รันต่อแม้รอบวันนี้เคยจบแล้ว  
+ไม่มีลิงก์ของ RUN_DATE และไม่มีลิงก์เมื่อวานที่ `status=new` → หยุด `PREFLIGHT_FAILED: missing line links for date`
 
 ## อินพุต (บังคับลำดับนี้)
 
 1. **หลัก:** `server/exports/line_intake_continuous.json`  
    - ใช้เฉพาะแถว `kind = "url"`  
-   - และ `received_at` ขึ้นต้นด้วย `RUN_DATE` (เช่น `2026-10-22T...+07:00`)  
+   - `received_at` ขึ้นต้นด้วย `RUN_DATE` หรือ (`received_at` ขึ้นต้นด้วย `YESTERDAY` และ `status` เป็น `new`)  
    - ข้าม `kind = "file"` ในรอบ fetch ข่าว (เก็บเป็น reference ในรายงานได้ แต่ห้ามเปิดไฟล์ไบนารีเป็นข่าว)
-2. **สำรองรูปแบบเดียวกัน:** `server/exports/line_intake_continuous.xlsx` แผ่น `line_intake` (กรองวันเดียวกัน)
-3. **ทางเลือก:** MCP `line_links_get(date=RUN_DATE, status="new")` ถ้าไฟล์ continuous หาย/ว่างผิดปกติ
+2. **สำรองรูปแบบเดียวกัน:** `server/exports/line_intake_continuous.xlsx` แผ่น `line_intake` (กรองชุดเดียวกัน)
+3. **ทางเลือก:** MCP `line_links_get` ถ้าไฟล์ continuous หายหรือว่างผิดปกติ เรียกทั้ง `date=RUN_DATE` และ `date=YESTERDAY, status="new"`
+
+ก่อนเปิดหน้า ให้ตัดหางที่ติดมากับลิงก์ LINE ออกจาก `url` `canonical_url` และ `content` ถ้ามี `\\n` `/n/n` `/n*2` หรือ `//n` ให้ตัดตั้งแต่จุดนั้นจนจบ เช่น `https://dailynews.co.th/news/6306450/n/n*3` เหลือ `https://dailynews.co.th/news/6306450` และ `https://www.cops-magazine.com/topic/158199//n*3` เหลือ `https://www.cops-magazine.com/topic/158199` path จริงอย่าง `/n/breaking/` ไม่ตัด
 
 ฟิลด์ที่ใช้จาก continuous:
 `id, received_at, group_alias, url, canonical_url, domain, domain_type, fetchable, status, line_message_id`
@@ -102,10 +108,11 @@ DROP → บันทึกใน Completion Report อย่างเดีย�
 - Facebook/โซเชียล = reference only ห้ามเปิด · `fetchable=false` → skipped
 - pass = HTTP 200 + title + เนื้อหาข่าวทั้งเรื่อง (ยาวอย่างน้อย 300 ตัวอักษร) · เกณฑ์นี้ไม่ใช่ใบอนุญาตให้หยุดที่ส่วนต้น · อ่านวันที่ พ.ศ.
 - **ตรวจซ้ำก่อนสร้างโพสต์ใหม่ (บังคับ — ประหยัด token + ไม่ซ้ำ blog):**  
-  อ่านผลที่มีอยู่ของ `RUN_DATE` ก่อน fetch/เขียนยาว:
-  1. `github-pages/data/{DATE}_crime.json` + `{DATE}_crime_line.json` + `feed.json` (posts ที่ `_date=RUN_DATE`)
+  อ่านผลที่มีอยู่ของ `RUN_DATE` และของ `YESTERDAY` ก่อน fetch/เขียนยาว:
+  1. `github-pages/data/{DATE}_crime.json` + `{DATE}_crime_line.json` + `feed.json` (posts ที่ `_date` เป็นวันนั้น)
   2. `Document/{DATE}_Crime/` และ `Document/{DATE}_CrimeLine/` ถ้ามี
-  3. `vault/20_Cases/` โน้ตที่ `date: RUN_DATE` (หรือชื่อไฟล์ขึ้นต้นด้วยวันที่)
+  3. `vault/20_Cases/` โน้ตที่ `date` เป็นวันนั้น (หรือชื่อไฟล์ขึ้นต้นด้วยวันที่)
+  ลิงก์เมื่อวานที่ยังเป็น `new` เขียน add-only ลงไฟล์ของ `YESTERDAY` ไม่ย้ายไปกองของวันนี้ และไม่เขียนทับโพสต์ที่มีอยู่แล้ว
   เทียบแต่ละลิงก์ KEEP กับคลังด้วย: `canonical_url` / `source_url` ตรงกัน **หรือ** event-key เดียวกัน  
   (≥3 ใน 4: จังหวัด, วันเกิดเหตุ/จับ, ประเภทคดี, ตัวเลข/ผู้ต้องหา สำคัญ) หรือ title similarity ≥85% + จังหวัด+ประเภทตรง
 - **ผลจากการตรวจซ้ำ — 3 ทาง (เลือกอย่างใดอย่างหนึ่งต่อลิงก์):**
@@ -238,7 +245,7 @@ PDF ประกอบจาก HTML ของแต่ละหัวข่า�
 ## Pipeline — one run
 
 0. Preflight: `run_status_get` → `run_status_put(..., running)` ถ้าต้องรัน
-1. โหลด continuous JSON (หรือ xlsx) → **กรองเฉพาะ RUN_DATE + kind=url**
+1. โหลด continuous JSON (หรือ xlsx) → **kind=url ของ RUN_DATE ทั้งวัน + ของ YESTERDAY ที่ status ยังเป็น new** แล้วตัดหาง `/n/n` หรือ `\\n` ออกจาก URL
 2. กรองพื้นฐาน: social/fetchable=false → skipped; น่าสงสัย → skipped; ≤40 URL
 3. **Token gate — กรองตำรวจ/อาชญากรรม/ประชาสัมพันธ์ ตร. (ชั้น 1 → ชั้น 2)**  
    KEEP เท่านั้น · DROP → `not_crime_or_police`

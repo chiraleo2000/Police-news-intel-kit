@@ -3,6 +3,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { config } from "../config.js";
 import { unlinkStoredFile } from "../line/content.js";
+import { stripLineUrlJunk, stripTracking } from "../line/url.js";
 import { SCHEMA_SQL } from "./schema.js";
 
 let db: Database.Database | null = null;
@@ -153,6 +154,59 @@ export function listLineFiles(date: string): LineFileRow[] {
        ORDER BY received_at ASC`,
     )
     .all(date) as LineFileRow[];
+}
+
+/** Cut a glued `\n\n*2` or `/n/n*2` tail off stored links before the next export. */
+export function repairLineUrlJunk(): number {
+  const database = getDb();
+  const rows = database
+    .prepare(`SELECT id, url, canonical_url, received_date, status FROM line_links`)
+    .all() as Array<{
+      id: number;
+      url: string;
+      canonical_url: string;
+      received_date: string;
+      status: string;
+    }>;
+  const update = database.prepare(
+    `UPDATE line_links SET url = @url, canonical_url = @canonical_url WHERE id = @id`,
+  );
+  const remove = database.prepare(`DELETE FROM line_links WHERE id = ?`);
+  let changed = 0;
+  const tx = database.transaction(() => {
+    for (const row of rows) {
+      let url = stripLineUrlJunk(row.url);
+      let canonical = stripLineUrlJunk(row.canonical_url);
+      try {
+        url = stripTracking(url);
+        canonical = stripTracking(canonical);
+      } catch {
+        /* keep the stripped string when it is not a full URL */
+      }
+      if (url === row.url && canonical === row.canonical_url) continue;
+      const clash = database
+        .prepare(
+          `SELECT id, status FROM line_links WHERE canonical_url = ? AND received_date = ? AND id != ?`,
+        )
+        .get(canonical, row.received_date, row.id) as { id: number; status: string } | undefined;
+      if (clash) {
+        // The same article was stored twice. Drop the copy whose URL still has the junk tail.
+        const dropId = row.status === "new" || clash.status !== "new" ? row.id : clash.id;
+        const keepId = dropId === row.id ? clash.id : row.id;
+        remove.run(dropId);
+        if (keepId === row.id) {
+          update.run({ id: row.id, url, canonical_url: canonical });
+        }
+        audit("line-links", "url_junk_deduped", `dropped=${dropId} kept=${keepId} ${canonical}`);
+        changed += 1;
+        continue;
+      }
+      update.run({ id: row.id, url, canonical_url: canonical });
+      changed += 1;
+    }
+  });
+  tx();
+  return changed;
 }
 
 /** All URL rows (plain text without URLs is never stored). */

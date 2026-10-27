@@ -1,5 +1,6 @@
 import {
   extractUrls,
+  stripLineUrlJunk,
   stripTracking,
   classifyDomain,
   hostnameOf,
@@ -33,5 +34,40 @@ assert(classifyDomain("facebook.com").fetchable === false, "social not fetchable
 assert(classifyDomain("thairath.co.th").domain_type === "media", "media");
 
 assert(hostnameOf("https://WWW.Example.COM/x") === "www.example.com", "host");
+
+const glued = extractUrls(
+  "https://policetv.tv/archives/56020\\n\\n*2\nhttps://www.naewna.com/n/breaking/131252/\\n\\n*4",
+);
+assert(glued.length === 2, `extract glued newlines got ${glued.length}`);
+assert(glued[0] === "https://policetv.tv/archives/56020", `strip literal newline tail ${glued[0]}`);
+assert(
+  glued[1] === "https://www.naewna.com/n/breaking/131252/",
+  `keep real /n/ path ${glued[1]}`,
+);
+assert(
+  stripLineUrlJunk("https://dailynews.co.th/news/6306450/n/n*3") ===
+    "https://dailynews.co.th/news/6306450",
+  "strip canonical /n/n tail",
+);
+assert(
+  stripLineUrlJunk("https://www.bangkokbiznews.com/news/news-update/1257392/n*2") ===
+    "https://www.bangkokbiznews.com/news/news-update/1257392",
+  "strip single /n*2 tail",
+);
+assert(
+  stripLineUrlJunk("https://www.cops-magazine.com/topic/158199//n*3") ===
+    "https://www.cops-magazine.com/topic/158199",
+  "strip //n*3 tail",
+);
+assert(
+  stripLineUrlJunk("https://www.dailynews.co.th/news/6295867//n") ===
+    "https://www.dailynews.co.th/news/6295867",
+  "strip //n tail",
+);
+assert(
+  stripLineUrlJunk("https://www.naewna.com/n/breaking/131252") ===
+    "https://www.naewna.com/n/breaking/131252",
+  "keep a real /n/ path",
+);
 
 console.log("url.test ok");

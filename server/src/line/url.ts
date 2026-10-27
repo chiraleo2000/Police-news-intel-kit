@@ -72,19 +72,33 @@ const SOCIAL_HOSTS = new Set([
   "page.line.me",
 ]);
 
-/** http(s) or bare www. — LINE paste sometimes omits the scheme. */
-const URL_RE = /(?:https?:\/\/|www\.)[^\s<>"'））」』\]]+/gi;
+/** http(s) or bare www. — LINE paste sometimes omits the scheme. Stop before a backslash so a literal \n is not part of the URL. */
+const URL_RE = /(?:https?:\/\/|www\.)[^\s<>"'））」』\]\\]+/gi;
 
 export type DomainType = "official" | "media" | "social" | "unknown";
+
+/**
+ * LINE messages sometimes glue a literal `\n\n` and a marker like `*2` onto a URL.
+ * The URL parser then turns `\` into `/`, so the stored link ends in `/n/n*2`.
+ * Cut that tail off. A real path such as `/n/breaking/...` is left alone.
+ */
+export function stripLineUrlJunk(raw: string): string {
+  let u = raw.trim();
+  u = u.replace(/\\+[nrt].*/i, "");
+  // \n becomes /n after URL parsing, with an optional *2 *3 marker from the LINE message.
+  u = u.replace(/\/+n(?:\/+n)*(?:\*\d+)?$/i, "");
+  u = u.replace(/[.,;:!?。、）)」』\]]+$/g, "");
+  return u;
+}
 
 export function extractUrls(text: string): string[] {
   const found = text.match(URL_RE) ?? [];
   const normalized = found.map((raw) => {
-    let u = raw.replace(/[.,;:!?。、）)」』\]]+$/g, "");
+    let u = stripLineUrlJunk(raw.replace(/[.,;:!?。、）)」』\]]+$/g, ""));
     if (/^www\./i.test(u)) u = `https://${u}`;
     return u;
   });
-  return [...new Set(normalized)];
+  return [...new Set(normalized.filter(Boolean))];
 }
 
 export function hostnameOf(url: string): string {
@@ -237,7 +251,7 @@ export async function canonicalizeUrl(raw: string): Promise<{
   domain_type: DomainType;
   fetchable: boolean;
 }> {
-  const cleaned = stripTracking(raw.trim());
+  const cleaned = stripTracking(stripLineUrlJunk(raw));
   await assertNotSsrf(cleaned);
   let expanded = cleaned;
   try {
@@ -247,7 +261,7 @@ export async function canonicalizeUrl(raw: string): Promise<{
   }
   const cls = classifyDomain(hostnameOf(expanded));
   return {
-    url: raw.trim(),
+    url: stripLineUrlJunk(raw),
     canonical_url: expanded,
     ...cls,
   };
