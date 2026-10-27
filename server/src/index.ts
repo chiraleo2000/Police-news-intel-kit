@@ -261,8 +261,16 @@ app.post("/v1/export/continuous/local", async (req, reply) => {
   if (!isLoopbackAddress(req.ip || "")) {
     return reply.code(403).send({ error: "localhost_only" });
   }
-  const { writeContinuousIntakeExcel } = await import("./export/continuous.js");
-  return writeContinuousIntakeExcel();
+  try {
+    const { writeContinuousIntakeExcel } = await import("./export/continuous.js");
+    return await writeContinuousIntakeExcel();
+  } catch (err) {
+    logFatal("export_failed", err);
+    return reply.code(500).send({
+      ok: false,
+      error: err instanceof Error ? err.message : String(err),
+    });
+  }
 });
 
 function logFatal(kind: string, err: unknown) {

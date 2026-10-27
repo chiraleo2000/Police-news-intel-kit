@@ -66,19 +66,40 @@ function Set-DotEnvValue([string]$Path, [string]$Key, [string]$Value) {
 }
 
 function Test-Health([string]$Url) {
+    $probe = Get-HttpProbe -Url $Url
+    return ($probe -eq 'ok')
+}
+
+function Get-HttpProbe([string]$Url) {
     try {
         $resp = Invoke-WebRequest -Uri $Url -UseBasicParsing -TimeoutSec 12 -Headers @{
-            'ngrok-skip-browser-warning' = '1'
+            'ngrok-skip-browser-warning' = 'true'
+            'User-Agent' = 'news-hub-health/1.0'
         }
-        return ($resp.StatusCode -eq 200 -and $resp.Content -match '"ok"\s*:\s*true')
+        $body = [string]$resp.Content
+        if ($resp.StatusCode -eq 200 -and $body -match '"ok"\s*:\s*true') { return 'ok' }
+        if ($body -match 'ERR_NGROK|ngrok-free\.app|You are about to visit|browser warning') { return 'warning' }
+        return 'down'
     } catch {
-        return $false
+        $msg = $_.Exception.Message
+        if ($msg -match 'ERR_NGROK_6024|ERR_NGROK_8012|browser warning|You are about to visit') { return 'warning' }
+        return 'down'
     }
 }
 
 function Test-PublicHealth([string]$PublicBase) {
     if ([string]::IsNullOrWhiteSpace($PublicBase)) { return $false }
-    return (Test-Health ($PublicBase.TrimEnd('/') + '/health'))
+    $probe = 'down'
+    foreach ($try in 1..3) {
+        $probe = Get-HttpProbe ($PublicBase.TrimEnd('/') + '/health')
+        if ($probe -eq 'ok' -or $probe -eq 'warning') { break }
+        Start-Sleep -Seconds 2
+    }
+    if ($probe -eq 'warning') {
+        Write-Log "public probe got ngrok free warning page for $PublicBase; tunnel kept"
+        return $true
+    }
+    return ($probe -eq 'ok')
 }
 
 function Get-ListenerPid([int]$Port) {
@@ -263,6 +284,11 @@ function Ensure-NewsHub([int]$Port, [bool]$AllowKill) {
 
     $owner = Get-ListenerPid $Port
     if ($owner -gt 0) {
+        # Export can block the process for a few seconds. Wait before treating it as dead.
+        foreach ($i in 1..15) {
+            Start-Sleep -Seconds 1
+            if (Test-Health $localUrl) { return $true }
+        }
         if ($AllowKill) {
             $proc = Get-CimInstance Win32_Process -Filter "ProcessId = $owner"
             $cmd = [string]$proc.CommandLine
