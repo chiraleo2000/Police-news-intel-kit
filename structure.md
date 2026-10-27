@@ -25,6 +25,31 @@ flowchart TD
 
 Task 1 กวาดเว็บเอง ไม่ได้รอไฟล์จาก LINE Task 2 ไม่กวาดเว็บ 55 แหล่ง มันเทียบลิงก์ของวันนี้ และลิงก์เมื่อวานที่สถานะยังเป็น `new` กับข่าวและโน้ตที่ Task 1 ทิ้งไว้ แล้วจึงสร้างข่าวใหม่หรือแนบแหล่งเข้าเรื่องเดิม
 
+## 1.1 เครื่องมือเชื่อมกันอย่างไร
+
+อ่านสามชั้นนี้ก่อนลงรายละเอียดด้านล่าง ชั้นถัดไปไม่ย้อนไปเปิดเว็บแทนชั้นก่อน
+
+| ชั้น | เริ่มเมื่อ | ผลที่ทิ้งไว้ให้ชั้นถัดไป |
+| --- | --- | --- |
+| เก็บลิงก์ | ตลอดวัน | `server/exports/line_intake_continuous.json` และ `.xlsx` |
+| Claude ทำข่าว | 08:01 Task 1 แล้ว 08:30 Task 2 | JSON รายวัน โน้ต `vault/` และ HTML |
+| สคริปต์ประกอบเว็บ | ตอนปิดงานของรอบนั้น | `feed.json` `graph.json` รูปกราฟรายข่าว และ PDF |
+
+MCP เป็นช่องที่ Claude เรียก SQLite ระหว่างทำข่าว เช่น `run_status_get` `line_links_get` `brain_search` มันไม่ใช่ตัวสร้างกราฟบนเว็บ `brain_search` เป็นดัชนีให้เทียบข่าวเก่าก่อนโยงเส้น ผลที่เว็บแสดงอยู่ใน `graph.json`
+
+`source-fetcher` เป็นผู้ช่วยที่ Task 1 ส่งไปกวาดทีละชุดแหล่งด้วย `WebSearch` และ `WebFetch` มันไม่ใช่เซิร์ฟเวอร์และไม่ใช่ skill
+
+## 1.2 ข้อมูลกราฟถูกประกอบอย่างไร
+
+เส้นบนกราฟมาจากสิ่งที่ Claude เขียนเสร็จแล้ว สคริปต์ไม่ได้เปิดข่าวใหม่และไม่ได้รัน skill
+
+1. Claude เขียนโน้ต `vault/20_Cases/{รหัส}.md` พร้อม `rel_units` `rel_people` `rel_projects` `rel_cases` และเขียน `related_cases` ลง JSON ของข่าว
+2. ขั้นปิดงานของรอบนั้นสั่ง `node ops/rebuild-pages-feed.js` คำสั่งนี้อยู่ใน prompt ไม่มีงานกราฟแยกเวลา
+3. `build-obsidian-graph.js` อ่านโน้ตใน `vault/` เป็นโครงหลัก แล้วอ่าน JSON ข่าวเพื่อเติมเส้น `related_cases` และชื่อที่โค้ดเจอในเนื้อโพสต์ จากนั้นเขียน `github-pages/data/graph.json`
+4. `build-case-ego-graphs.js` อ่าน `graph.json` แล้วเขียน `github-pages/data/graphs/{รหัส}.svg` ให้หน้ารายข่าวและ PDF
+
+ถ้ายังไม่มีโน้ตใน `vault/` สคริปต์เขียนกราฟว่าง มันไม่ไปสร้างโน้ตให้เอง
+
 ## 2. ไฟล์คำสั่งกับ skill
 
 skill ไม่ใช่โปรแกรมและไม่ใช่เซิร์ฟเวอร์ เป็นไฟล์ Markdown กติกาใน `plugin/news-intel/skills/<ชื่อ>/SKILL.md` Claude อ่านเมื่อมีคนสั่ง `/crime-news`
@@ -33,13 +58,14 @@ skill ไม่ใช่โปรแกรมและไม่ใช่เซ�
 
 ```mermaid
 flowchart TD
-  T1[ถึงเวลา 08:01 เริ่ม Task 1] --> PR1[ทำตาม prompt ของ Task 1]
-  PR1 --> CL[Claude]
-  T2[ถึงเวลา 08:30 เริ่ม Task 2] --> PR2[ทำตาม prompt ของ Task 2]
-  PR2 --> CL
-  HAND["มีคนสั่ง /crime-news"] --> SK[เปิด skill สามไฟล์]
-  SK --> CL
-  CL --> V[เขียนโน้ต Obsidian]
+  T1[08:01] --> PR1[อ่าน prompt ของ Task 1]
+  PR1 --> CL1[Claude เขียน JSON และโน้ต]
+  CL1 --> SC1[สคริปต์ประกอบ feed กราฟ PDF]
+  T2[08:30] --> PR2[อ่าน prompt ของ Task 2]
+  PR2 --> CL2[Claude เขียน JSON และโน้ตของหัวที่แตะ]
+  CL2 --> SC2[สคริปต์ประกอบ feed กราฟ PDF]
+  HAND["มีคนสั่ง /crime-news"] --> SK[อ่าน skill เป็นกติกา]
+  SK --> CL1
 ```
 
 | รอบ | ไฟล์คำสั่ง | เมื่อถึงเวลาที่ตั้งไว้ |
