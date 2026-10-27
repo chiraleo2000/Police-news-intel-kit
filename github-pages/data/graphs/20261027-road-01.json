@@ -1,0 +1,58 @@
+{
+ "case_id": "20261027-road-01",
+ "title": "ผช.ผบ.ตร. ตรวจสอบเหตุรถบรรทุก 10 ล้อชนรถ 8 คันบนสะพานข้ามแยกตากสิน บาดเจ็บ 2 ราย ตรวจพบแอลกอฮอล์ในลมหายใจคนขับ 223 มิลลิกรัมเปอร์เซ็นต์",
+ "generated_at": "2026-10-27T03:00:03.927Z",
+ "node_count": 9,
+ "edge_count": 8,
+ "relations": [
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/บก.น.8",
+   "target_title": "บก.น.8",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/สน.สำเหร่",
+   "target_title": "สน.สำเหร่",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/ศูนย์บริหารงานจราจร ตร.",
+   "target_title": "ศูนย์บริหารงานจราจร ตร.",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/สะพานข้ามแยกตากสิน",
+   "target_title": "สะพานข้ามแยกตากสิน",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/เขตธนบุรี",
+   "target_title": "เขตธนบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/People/ผช.ผบ.ตร.",
+   "target_title": "ผช.ผบ.ตร.",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/บุคคล/นิธิธร จินตกานนท์",
+   "target_title": "นิธิธร จินตกานนท์",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/บุคคล/โฆษิต บุญทวี",
+   "target_title": "โฆษิต บุญทวี",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261027-road-01.svg"
+}

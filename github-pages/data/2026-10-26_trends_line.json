@@ -1,0 +1,21 @@
+{
+ "baseline": "insufficient",
+ "window_days": 7,
+ "note": "Task 2 LINE · เทียบแนวโน้มไม่ได้เพราะชุดวันนี้มีเพียง 3 เหตุการณ์ใหม่",
+ "by_crime_type": [
+  {
+   "type": "อาชญากรรมไซเบอร์และออนไลน์",
+   "today": 2,
+   "avg_prev_7d": null,
+   "delta_pct": null,
+   "surge": false
+  },
+  {
+   "type": "ยาเสพติด",
+   "today": 1,
+   "avg_prev_7d": null,
+   "delta_pct": null,
+   "surge": false
+  }
+ ]
+}

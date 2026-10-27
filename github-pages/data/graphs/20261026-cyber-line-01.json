@@ -1,0 +1,40 @@
+{
+ "case_id": "20261026-cyber-line-01",
+ "title": "บช.ก.-บก.ป. จับหญิงวัย 32 ปี ตามหมายจับศาลเชียงใหม่ ปมบัญชีม้าแก๊งหลอกลงทุนออนไลน์ ที่ปทุมธานี ตามข้อกล่าวหา",
+ "generated_at": "2026-10-27T03:00:03.880Z",
+ "node_count": 6,
+ "edge_count": 5,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/บช.ก.",
+   "target_title": "บช.ก.",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/บก.ป.",
+   "target_title": "บก.ป.",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/สภ.สันทราย",
+   "target_title": "สภ.สันทราย",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลจังหวัดเชียงใหม่",
+   "target_title": "ศาลจังหวัดเชียงใหม่",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ธัญบุรี",
+   "target_title": "ธัญบุรี",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261026-cyber-line-01.svg"
+}

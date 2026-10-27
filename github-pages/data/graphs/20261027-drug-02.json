@@ -1,0 +1,40 @@
+{
+ "case_id": "20261027-drug-02",
+ "title": "ปปส.ภาค 7 ประชุมคณะอนุกรรมการกลั่นกรองคำขอแจ้งข้อหาสมคบยาเสพติด ครั้งที่ 5/2569 พิจารณา 19 คำขอ ผู้ต้องหา 26 คน อนุมัติ 24 คน ไม่อนุมัติ 2 คน",
+ "generated_at": "2026-10-27T03:00:03.911Z",
+ "node_count": 6,
+ "edge_count": 5,
+ "relations": [
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/ปปส.ภาค 7",
+   "target_title": "ปปส.ภาค 7",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/สำนักงานอัยการภาค 7",
+   "target_title": "สำนักงานอัยการภาค 7",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/ตำรวจภูธรภาค 7",
+   "target_title": "ตำรวจภูธรภาค 7",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/นครปฐม",
+   "target_title": "นครปฐม",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/อธิบดีอัยการภาค 7",
+   "target_title": "อธิบดีอัยการภาค 7",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261027-drug-02.svg"
+}

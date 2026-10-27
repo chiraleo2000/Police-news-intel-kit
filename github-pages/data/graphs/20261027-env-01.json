@@ -1,0 +1,58 @@
+{
+ "case_id": "20261027-env-01",
+ "title": "DSI-ศุลกากร-กรมอุทยานฯ แถลงสกัดขบวนการค้าสัตว์ป่าข้ามชาติ ยึดงาช้าง 3.1 ตัน และซากสัตว์ป่า มูลค่าประมาณ 155 ล้านบาท ซุกในไม้แปรรูปจากแซมเบียที่แหลมฉบัง",
+ "generated_at": "2026-10-27T03:00:03.914Z",
+ "node_count": 9,
+ "edge_count": 8,
+ "relations": [
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/DSI",
+   "target_title": "DSI",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/กรมศุลกากร",
+   "target_title": "กรมศุลกากร",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/กรมอุทยานแห่งชาติ สัตว์ป่า และพันธุ์พืช",
+   "target_title": "กรมอุทยานแห่งชาติ สัตว์ป่า และพันธุ์พืช",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ท่าเรือแหลมฉบัง",
+   "target_title": "ท่าเรือแหลมฉบัง",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ชลบุรี",
+   "target_title": "ชลบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/อธิบดี DSI",
+   "target_title": "อธิบดี DSI",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/อธิบดีกรมศุลกากร",
+   "target_title": "อธิบดีกรมศุลกากร",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/บุคคล/ปิยะ รักสกุล",
+   "target_title": "ปิยะ รักสกุล",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261027-env-01.svg"
+}

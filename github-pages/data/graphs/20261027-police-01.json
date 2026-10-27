@@ -1,0 +1,58 @@
+{
+ "case_id": "20261027-police-01",
+ "title": "ผบช.ทท. สั่งตำรวจท่องเที่ยวช่วยประชาชนและนักท่องเที่ยวป่าตอง ภูเก็ต หลังฝนตกหนักน้ำท่วมขังและดินสไลด์ใช้โดรนสำรวจ ดูแลตลอด 24 ชั่วโมง",
+ "generated_at": "2026-10-27T03:00:03.921Z",
+ "node_count": 9,
+ "edge_count": 8,
+ "relations": [
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บช.ทท.",
+   "target_title": "บช.ทท.",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/ส.ทท.1 กก.2 บก.ทท.3",
+   "target_title": "ส.ทท.1 กก.2 บก.ทท.3",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/สภ.ป่าตอง",
+   "target_title": "สภ.ป่าตอง",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ป่าตอง",
+   "target_title": "ป่าตอง",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ภูเก็ต",
+   "target_title": "ภูเก็ต",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/ผบช.ทท.",
+   "target_title": "ผบช.ทท.",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/บุคคล/พงษ์สยาม มีขันทอง",
+   "target_title": "พงษ์สยาม มีขันทอง",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/บุคคล/เอกชัย ศิริ",
+   "target_title": "เอกชัย ศิริ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261027-police-01.svg"
+}

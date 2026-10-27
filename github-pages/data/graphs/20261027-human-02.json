@@ -1,0 +1,28 @@
+{
+ "case_id": "20261027-human-02",
+ "title": "รองอัยการสูงสุดนำคณะอัยการไทยและผู้แทน สปป.ลาวศึกษาดูงานต่อต้านการแสวงหาประโยชน์ทางเพศจากเด็กทางออนไลน์ที่ออสเตรเลีย ภายใต้โครงการ MAP-TNC",
+ "generated_at": "2026-10-27T03:00:03.920Z",
+ "node_count": 4,
+ "edge_count": 3,
+ "relations": [
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/สำนักงานอัยการสูงสุด",
+   "target_title": "สำนักงานอัยการสูงสุด",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ออสเตรเลีย",
+   "target_title": "ออสเตรเลีย",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/รองอัยการสูงสุด",
+   "target_title": "รองอัยการสูงสุด",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261027-human-02.svg"
+}

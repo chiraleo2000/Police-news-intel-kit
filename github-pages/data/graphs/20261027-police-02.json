@@ -1,0 +1,40 @@
+{
+ "case_id": "20261027-police-02",
+ "title": "ทนายความรายหนึ่งยื่นคัดค้านคำสั่งของ บก.ป. ที่ส่งเรื่องอุปกรณ์ติดตามพิกัดใต้ท้องรถกลับให้ สภ.เมืองนครราชสีมา ขอให้รับเป็นคดีพิเศษ ยังเป็นข้อกล่าวอ้างที่ต้องตรวจสอบ",
+ "generated_at": "2026-10-27T03:00:03.923Z",
+ "node_count": 6,
+ "edge_count": 5,
+ "relations": [
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/บก.ป.",
+   "target_title": "บก.ป.",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/สภ.เมืองนครราชสีมา",
+   "target_title": "สภ.เมืองนครราชสีมา",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/สภ.เมืองอำนาจเจริญ",
+   "target_title": "สภ.เมืองอำนาจเจริญ",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/นครราชสีมา",
+   "target_title": "นครราชสีมา",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/อำนาจเจริญ",
+   "target_title": "อำนาจเจริญ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261027-police-02.svg"
+}

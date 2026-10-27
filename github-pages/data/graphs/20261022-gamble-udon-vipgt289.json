@@ -1,9 +1,9 @@
 {
  "case_id": "20261022-gamble-udon-vipgt289",
  "title": "บก.สอท.5 ทลายเว็บพนัน VIP.GT289TH3 อุดรธานี สมาชิกกว่า 2 แสนราย เงินหมุนเวียนกว่า 120 ล้านบาทต่อปี",
- "generated_at": "2026-10-26T09:53:06.515Z",
- "node_count": 6,
- "edge_count": 5,
+ "generated_at": "2026-10-27T03:00:03.636Z",
+ "node_count": 7,
+ "edge_count": 6,
  "relations": [
   {
    "label": "จับโดย",
@@ -33,6 +33,12 @@
    "label": "บัญชี",
    "target_id": "30_Entities/บัญชี/VIP.GT289TH3",
    "target_title": "VIP.GT289TH3",
+   "direction": "out"
+  },
+  {
+   "label": "บัญชี",
+   "target_id": "30_Entities/บัญชี/VIP.GT289",
+   "target_title": "VIP.GT289",
    "direction": "out"
   }
  ],

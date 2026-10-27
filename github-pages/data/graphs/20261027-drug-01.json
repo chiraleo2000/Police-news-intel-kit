@@ -1,0 +1,46 @@
+{
+ "case_id": "20261027-drug-01",
+ "title": "ตำรวจชุมพรเปลี่ยนเวลาตั้งด่านปฐมพรเป็นช่วงเช้ามืด จับ 2 ผู้ต้องหาจากกระบี่ ลำเลียงยาไอซ์ 41 กิโลกรัมจากเชียงรายซุกในรถเก๋ง",
+ "generated_at": "2026-10-27T03:00:03.910Z",
+ "node_count": 7,
+ "edge_count": 6,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/สภ.เมืองชุมพร",
+   "target_title": "สภ.เมืองชุมพร",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/จุดตรวจปฐมพร",
+   "target_title": "จุดตรวจปฐมพร",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ชุมพร",
+   "target_title": "ชุมพร",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/เชียงราย",
+   "target_title": "เชียงราย",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/กระบี่",
+   "target_title": "กระบี่",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/บุคคล/ปิยพล ฉัตรภูมิ",
+   "target_title": "ปิยพล ฉัตรภูมิ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261027-drug-01.svg"
+}

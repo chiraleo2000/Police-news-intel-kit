@@ -1,0 +1,64 @@
+{
+ "case_id": "20261027-gamble-01",
+ "title": "DSI ประชุมร่วม CIB-บช.สอท.-ปปง. ครั้งที่ 2/2569 สืบสวนกรณีสามีของ สส. รายหนึ่งที่อาจเกี่ยวข้องเครือข่ายสแกมเมอร์และพนันออนไลน์ เตรียมเชิญ ก.ล.ต.และผู้จัดการสินทรัพย์ดิจิทัลให้ถ้อยคำ",
+ "generated_at": "2026-10-27T03:00:03.915Z",
+ "node_count": 10,
+ "edge_count": 9,
+ "relations": [
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/DSI",
+   "target_title": "DSI",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/บช.ก.",
+   "target_title": "บช.ก.",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/บช.สอท.",
+   "target_title": "บช.สอท.",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/ปปง.",
+   "target_title": "ปปง.",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ศูนย์ราชการเฉลิมพระเกียรติฯ แจ้งวัฒนะ",
+   "target_title": "ศูนย์ราชการเฉลิมพระเกียรติฯ แจ้งวัฒนะ",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/People/อธิบดี DSI",
+   "target_title": "อธิบดี DSI",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/บุคคล/ปิยะ รักสกุล",
+   "target_title": "ปิยะ รักสกุล",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/บุคคล/เขมชาติ ประกายหงษ์มณี",
+   "target_title": "เขมชาติ ประกายหงษ์มณี",
+   "direction": "out"
+  },
+  {
+   "label": "ติดตามจาก",
+   "target_id": "20_Cases/20261026-gamble-01",
+   "target_title": "ผบช.สอท. ยืนยันสืบสวนข้อกล่าวอ้างเว็บพนันจ่ายเงินพิเศษให้ ส.ส. ร่วม DSI-ดีอี ตรวจเส้นทางการเงิน ย้ำยังเป็นข้อกล่าวอ้างที่ต้องพิสูจน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261027-gamble-01.svg"
+}

@@ -1,6 +1,14 @@
 {
- "generated_at": "2026-10-26T08:51:12+07:00",
+ "generated_at": "2026-10-27T08:17:23+07:00",
  "days": [
+  {
+   "date": "2026-10-27",
+   "status": "published",
+   "total": 20,
+   "path": "2026-10-27_Crime/2026-10-27_crime.json",
+   "run": "partial",
+   "note": "window 26-27 ต.ค.; scraped 255 บทความ → 20 เหตุการณ์; official PR 5 (<8 → partial); ดู _index.json"
+  },
   {
    "date": "2026-10-26",
    "status": "published",

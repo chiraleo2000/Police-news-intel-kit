@@ -1,0 +1,52 @@
+{
+ "case_id": "20261027-gamble-02",
+ "title": "บก.ปพ. จับผู้ต้องหาตามหมายจับคดีบัญชีม้าเว็บพนันข้ามชาติ “W88” ที่สถานีกลางบางซื่อ หลังขยายผลจากปฏิบัติการของ สภ.โนนนารายณ์ ผู้ถูกจับปฏิเสธ อ้างบัตรเอทีเอ็มหาย",
+ "generated_at": "2026-10-27T03:00:03.917Z",
+ "node_count": 8,
+ "edge_count": 7,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/บก.ปพ.",
+   "target_title": "บก.ปพ.",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/สภ.โนนนารายณ์",
+   "target_title": "สภ.โนนนารายณ์",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลจังหวัดรัตนบุรี",
+   "target_title": "ศาลจังหวัดรัตนบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/สถานีกลางบางซื่อ",
+   "target_title": "สถานีกลางบางซื่อ",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/บุคคล/อรุณ วชิรศรีสุกัญยา",
+   "target_title": "อรุณ วชิรศรีสุกัญยา",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/บุคคล/อภิชน ขันกา",
+   "target_title": "อภิชน ขันกา",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/บุคคล/ไพบูลย์ พิมพ์กำเนิด",
+   "target_title": "ไพบูลย์ พิมพ์กำเนิด",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261027-gamble-02.svg"
+}

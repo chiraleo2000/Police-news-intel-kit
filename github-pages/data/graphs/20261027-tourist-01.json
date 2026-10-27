@@ -1,0 +1,28 @@
+{
+ "case_id": "20261027-tourist-01",
+ "title": "มารดาหญิงไทยวัย 19 ปีที่ตกจากคอนโดพัทยา ขอให้ตำรวจตรวจสอบสาเหตุการเสียชีวิตอีกครั้ง สงสัยแฟนชาวต่างชาติเกี่ยวข้อง ขณะที่ตำรวจเดิมระบุว่าเกิดจากอาการประสาทหลอนหลังใช้ยา",
+ "generated_at": "2026-10-27T03:00:03.930Z",
+ "node_count": 4,
+ "edge_count": 3,
+ "relations": [
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/สภ.เมืองพัทยา",
+   "target_title": "สภ.เมืองพัทยา",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/เขาพระตำหนัก พัทยา",
+   "target_title": "เขาพระตำหนัก พัทยา",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/พัทยา",
+   "target_title": "พัทยา",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261027-tourist-01.svg"
+}

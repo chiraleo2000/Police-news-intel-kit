@@ -1,9 +1,9 @@
 {
  "case_id": "20261023-tourist-01",
  "title": "ตรวจค้น 12 จุดที่พัทยา สอบนอมินีที่ดิน-บ้านหรูมูลค่ากว่า 800 ล้านบาท",
- "generated_at": "2026-10-26T09:53:06.632Z",
- "node_count": 7,
- "edge_count": 6,
+ "generated_at": "2026-10-27T03:00:03.777Z",
+ "node_count": 6,
+ "edge_count": 5,
  "relations": [
   {
    "label": "แจ้งโดย",
@@ -25,20 +25,14 @@
   },
   {
    "label": "เกิดที่",
-   "target_id": "unresolved:30_Entities/สถานที่/พัทยา",
-   "target_title": "30_Entities/สถานที่/พัทยา",
+   "target_id": "30_Entities/Places/พัทยา",
+   "target_title": "พัทยา",
    "direction": "out"
   },
   {
    "label": "แจ้งโดย",
    "target_id": "30_Entities/People/พาณิชย์จังหวัดชลบุรี",
    "target_title": "พาณิชย์จังหวัดชลบุรี",
-   "direction": "out"
-  },
-  {
-   "label": "เกิดที่",
-   "target_id": "30_Entities/สถานที่/พัทยา",
-   "target_title": "พัทยา",
    "direction": "out"
   }
  ],

@@ -1,6 +1,6 @@
 {
- "generated_at": "2026-10-26T09:53:06.773Z",
- "count": 181,
+ "generated_at": "2026-10-27T03:00:03.938Z",
+ "count": 204,
  "cases": [
   {
    "case_id": "20261022-consumer-chiangmai-matcha-customs",
@@ -100,7 +100,7 @@
   {
    "case_id": "20261022-gamble-udon-vipgt289",
    "svg": "graphs/20261022-gamble-udon-vipgt289.svg",
-   "relations": 5
+   "relations": 6
   },
   {
    "case_id": "20261022-human-nongkhai-crossing",
@@ -210,7 +210,7 @@
   {
    "case_id": "20261022-tourist-pattaya-immigration-drive",
    "svg": "graphs/20261022-tourist-pattaya-immigration-drive.svg",
-   "relations": 9
+   "relations": 8
   },
   {
    "case_id": "20261022-transnat-norwegian-redcotice",
@@ -220,12 +220,12 @@
   {
    "case_id": "20261022-transnat-pattaya-redcnotice",
    "svg": "graphs/20261022-transnat-pattaya-redcnotice.svg",
-   "relations": 6
+   "relations": 5
   },
   {
    "case_id": "20261022-transnat-phuket-french-redcnotice",
    "svg": "graphs/20261022-transnat-phuket-french-redcnotice.svg",
-   "relations": 6
+   "relations": 5
   },
   {
    "case_id": "20261022-violent-kanchanaburi-thongphaphum",
@@ -385,7 +385,7 @@
   {
    "case_id": "20261023-organized-03",
    "svg": "graphs/20261023-organized-03.svg",
-   "relations": 4
+   "relations": 3
   },
   {
    "case_id": "20261023-other-01",
@@ -435,7 +435,7 @@
   {
    "case_id": "20261023-police-07",
    "svg": "graphs/20261023-police-07.svg",
-   "relations": 8
+   "relations": 7
   },
   {
    "case_id": "20261023-police-08",
@@ -470,12 +470,12 @@
   {
    "case_id": "20261023-tourist-01",
    "svg": "graphs/20261023-tourist-01.svg",
-   "relations": 6
+   "relations": 5
   },
   {
    "case_id": "20261023-tourist-02",
    "svg": "graphs/20261023-tourist-02.svg",
-   "relations": 3
+   "relations": 2
   },
   {
    "case_id": "20261023-tourist-03",
@@ -525,7 +525,7 @@
   {
    "case_id": "20261023-violent-06",
    "svg": "graphs/20261023-violent-06.svg",
-   "relations": 3
+   "relations": 2
   },
   {
    "case_id": "20261024-consumer-01",
@@ -720,7 +720,7 @@
   {
    "case_id": "20261025-drug-05",
    "svg": "graphs/20261025-drug-05.svg",
-   "relations": 8
+   "relations": 7
   },
   {
    "case_id": "20261025-drug-06",
@@ -823,6 +823,16 @@
    "relations": 1
   },
   {
+   "case_id": "20261026-cyber-line-01",
+   "svg": "graphs/20261026-cyber-line-01.svg",
+   "relations": 5
+  },
+  {
+   "case_id": "20261026-cyber-line-02",
+   "svg": "graphs/20261026-cyber-line-02.svg",
+   "relations": 2
+  },
+  {
    "case_id": "20261026-drug-01",
    "svg": "graphs/20261026-drug-01.svg",
    "relations": 8
@@ -833,6 +843,11 @@
    "relations": 4
   },
   {
+   "case_id": "20261026-drug-line-01",
+   "svg": "graphs/20261026-drug-line-01.svg",
+   "relations": 3
+  },
+  {
    "case_id": "20261026-econ-01",
    "svg": "graphs/20261026-econ-01.svg",
    "relations": 1
@@ -840,7 +855,7 @@
   {
    "case_id": "20261026-gamble-01",
    "svg": "graphs/20261026-gamble-01.svg",
-   "relations": 6
+   "relations": 7
   },
   {
    "case_id": "20261026-gamble-02",
@@ -850,7 +865,7 @@
   {
    "case_id": "20261026-human-01",
    "svg": "graphs/20261026-human-01.svg",
-   "relations": 3
+   "relations": 2
   },
   {
    "case_id": "20261026-human-02",
@@ -905,7 +920,107 @@
   {
    "case_id": "20261026-violent-03",
    "svg": "graphs/20261026-violent-03.svg",
+   "relations": 4
+  },
+  {
+   "case_id": "20261027-cyber-01",
+   "svg": "graphs/20261027-cyber-01.svg",
+   "relations": 10
+  },
+  {
+   "case_id": "20261027-drug-01",
+   "svg": "graphs/20261027-drug-01.svg",
+   "relations": 6
+  },
+  {
+   "case_id": "20261027-drug-02",
+   "svg": "graphs/20261027-drug-02.svg",
    "relations": 5
+  },
+  {
+   "case_id": "20261027-econ-01",
+   "svg": "graphs/20261027-econ-01.svg",
+   "relations": 4
+  },
+  {
+   "case_id": "20261027-env-01",
+   "svg": "graphs/20261027-env-01.svg",
+   "relations": 8
+  },
+  {
+   "case_id": "20261027-gamble-01",
+   "svg": "graphs/20261027-gamble-01.svg",
+   "relations": 9
+  },
+  {
+   "case_id": "20261027-gamble-02",
+   "svg": "graphs/20261027-gamble-02.svg",
+   "relations": 7
+  },
+  {
+   "case_id": "20261027-human-01",
+   "svg": "graphs/20261027-human-01.svg",
+   "relations": 8
+  },
+  {
+   "case_id": "20261027-human-02",
+   "svg": "graphs/20261027-human-02.svg",
+   "relations": 3
+  },
+  {
+   "case_id": "20261027-police-01",
+   "svg": "graphs/20261027-police-01.svg",
+   "relations": 8
+  },
+  {
+   "case_id": "20261027-police-02",
+   "svg": "graphs/20261027-police-02.svg",
+   "relations": 5
+  },
+  {
+   "case_id": "20261027-property-01",
+   "svg": "graphs/20261027-property-01.svg",
+   "relations": 6
+  },
+  {
+   "case_id": "20261027-property-02",
+   "svg": "graphs/20261027-property-02.svg",
+   "relations": 4
+  },
+  {
+   "case_id": "20261027-road-01",
+   "svg": "graphs/20261027-road-01.svg",
+   "relations": 8
+  },
+  {
+   "case_id": "20261027-road-02",
+   "svg": "graphs/20261027-road-02.svg",
+   "relations": 6
+  },
+  {
+   "case_id": "20261027-tourist-01",
+   "svg": "graphs/20261027-tourist-01.svg",
+   "relations": 3
+  },
+  {
+   "case_id": "20261027-violent-01",
+   "svg": "graphs/20261027-violent-01.svg",
+   "relations": 6
+  },
+  {
+   "case_id": "20261027-violent-02",
+   "svg": "graphs/20261027-violent-02.svg",
+   "relations": 3
+  },
+  {
+   "case_id": "20261027-violent-03",
+   "svg": "graphs/20261027-violent-03.svg",
+   "relations": 6
+  },
+  {
+   "case_id": "20261027-violent-04",
+   "svg": "graphs/20261027-violent-04.svg",
+   "relations": 3
   }
  ]
 }

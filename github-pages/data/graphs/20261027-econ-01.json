@@ -1,0 +1,34 @@
+{
+ "case_id": "20261027-econ-01",
+ "title": "ผู้ร้องยื่น DSI ขอให้ตรวจสอบมูลนิธิแห่งหนึ่งกรณี 3 โครงการชายแดนไทย-กัมพูชาที่ตราด และที่มาของเงินบริจาคเรี่ยไร หวั่นโยงฟอกเงิน ยังเป็นเพียงคำร้องที่ต้องพิสูจน์",
+ "generated_at": "2026-10-27T03:00:03.912Z",
+ "node_count": 5,
+ "edge_count": 4,
+ "relations": [
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/DSI",
+   "target_title": "DSI",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/กรมการปกครอง",
+   "target_title": "กรมการปกครอง",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/บ้านท่าเส้น จังหวัดตราด",
+   "target_title": "บ้านท่าเส้น จังหวัดตราด",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ตราด",
+   "target_title": "ตราด",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261027-econ-01.svg"
+}

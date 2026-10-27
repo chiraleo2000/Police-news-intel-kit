@@ -1,9 +1,9 @@
 {
  "case_id": "20261022-transnat-phuket-french-redcnotice",
  "title": "ตม.ภูเก็ตจับชาวฝรั่งเศสวัย 40 ปี เป้าหมายหมายแดงเบลเยียม คดียาเสพติด ที่ป่าตอง",
- "generated_at": "2026-10-26T09:53:06.560Z",
- "node_count": 7,
- "edge_count": 6,
+ "generated_at": "2026-10-27T03:00:03.688Z",
+ "node_count": 6,
+ "edge_count": 5,
  "relations": [
   {
    "label": "จับโดย",
@@ -31,13 +31,7 @@
   },
   {
    "label": "เกิดที่",
-   "target_id": "unresolved:30_Entities/สถานที่/ป่าตอง",
-   "target_title": "30_Entities/สถานที่/ป่าตอง",
-   "direction": "out"
-  },
-  {
-   "label": "เกิดที่",
-   "target_id": "30_Entities/สถานที่/ป่าตอง",
+   "target_id": "30_Entities/Places/ป่าตอง",
    "target_title": "ป่าตอง",
    "direction": "out"
   }

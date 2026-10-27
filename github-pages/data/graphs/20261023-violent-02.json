@@ -1,21 +1,21 @@
 {
  "case_id": "20261023-violent-02",
  "title": "คดีป๋องยังไม่จบ! อัยการพัทยายื่นฟ้องอีกคดี ฆาตกรรม 3 ศพครอบครัวไทย",
- "generated_at": "2026-10-26T09:53:06.642Z",
+ "generated_at": "2026-10-27T03:00:03.787Z",
  "node_count": 3,
  "edge_count": 2,
  "relations": [
   {
    "label": "เกิดที่",
-   "target_id": "unresolved:30_Entities/สถานที่/พัทยา",
-   "target_title": "30_Entities/สถานที่/พัทยา",
+   "target_id": "30_Entities/Places/พัทยา",
+   "target_title": "พัทยา",
    "direction": "out"
   },
   {
-   "label": "เกิดที่",
-   "target_id": "30_Entities/สถานที่/พัทยา",
-   "target_title": "พัทยา",
-   "direction": "out"
+   "label": "ติดตามจาก",
+   "target_id": "20_Cases/20261027-violent-01",
+   "target_title": "จำเลย 4 คนคดีฆ่า 3 ศพครอบครัวไทยที่บางละมุง ให้การรับสารภาพทุกข้อหาต่อศาลจังหวัดพัทยา หลังอัยการฟ้อง 9 ข้อหา ศาลนัดสืบพยานประกอบ 23 พ.ย.",
+   "direction": "in"
   }
  ],
  "svg": "graphs/20261023-violent-02.svg"

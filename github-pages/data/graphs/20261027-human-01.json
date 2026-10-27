@@ -1,0 +1,58 @@
+{
+ "case_id": "20261027-human-01",
+ "title": "ตำรวจทางหลวงแพร่ สกัดรถตู้รับจ้างขนแรงงานต่างด้าวชาวเมียนมา 20 รายจากเชียงรายไปพิษณุโลก ค่าจ้างเที่ยวละ 3,000 บาท ตำรวจสอบสวนกลางเตือนผู้ขับรถรับจ้าง",
+ "generated_at": "2026-10-27T03:00:03.918Z",
+ "node_count": 9,
+ "edge_count": 8,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/บก.ทล.",
+   "target_title": "บก.ทล.",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/ส.ทล.6 กก.5 บก.ทล.",
+   "target_title": "ส.ทล.6 กก.5 บก.ทล.",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/บช.ก.",
+   "target_title": "บช.ก.",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/สภ.สอง",
+   "target_title": "สภ.สอง",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ทางหลวงหมายเลข 103",
+   "target_title": "ทางหลวงหมายเลข 103",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/แพร่",
+   "target_title": "แพร่",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/เชียงราย",
+   "target_title": "เชียงราย",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/พิษณุโลก",
+   "target_title": "พิษณุโลก",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261027-human-01.svg"
+}

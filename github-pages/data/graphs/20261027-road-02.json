@@ -1,0 +1,46 @@
+{
+ "case_id": "20261027-road-02",
+ "title": "ตำรวจจราจร กก.5 บก.จร. ตั้งจุดตรวจควันดำที่เพชรเกษมและรามอินทรา พบผู้ขับกระบะมียาบ้า 17 เม็ด และผู้ต้องหาตามหมายจับคดีลักทรัพย์ศาลแขวงอุบลราชธานี",
+ "generated_at": "2026-10-27T03:00:03.929Z",
+ "node_count": 7,
+ "edge_count": 6,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/กก.5 บก.จร.",
+   "target_title": "กก.5 บก.จร.",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/สน.หลักสอง",
+   "target_title": "สน.หลักสอง",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/สน.โคกคราม",
+   "target_title": "สน.โคกคราม",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลแขวงอุบลราชธานี",
+   "target_title": "ศาลแขวงอุบลราชธานี",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ถนนเพชรเกษม เขตบางแค",
+   "target_title": "ถนนเพชรเกษม เขตบางแค",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ถนนรามอินทรา เขตคันนายาว",
+   "target_title": "ถนนรามอินทรา เขตคันนายาว",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261027-road-02.svg"
+}

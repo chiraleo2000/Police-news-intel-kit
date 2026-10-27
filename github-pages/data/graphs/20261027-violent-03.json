@@ -1,0 +1,46 @@
+{
+ "case_id": "20261027-violent-03",
+ "title": "ตำรวจ สภ.บางเสาธง ติดตามพบชายที่ถูกพาขึ้นรถในคลิปตลาดนางรำ ปลอดภัยแล้ว ต้นเหตุปัญหาเงิน 36,000 บาท ผู้เกี่ยวข้อง 5 คนถูกเชิญสอบปากคำ",
+ "generated_at": "2026-10-27T03:00:03.935Z",
+ "node_count": 7,
+ "edge_count": 6,
+ "relations": [
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/สภ.บางเสาธง",
+   "target_title": "สภ.บางเสาธง",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/สน.ท่าเรือ",
+   "target_title": "สน.ท่าเรือ",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/สน.ลาดพร้าว",
+   "target_title": "สน.ลาดพร้าว",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ตลาดนางรำ",
+   "target_title": "ตลาดนางรำ",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/บางเสาธง",
+   "target_title": "บางเสาธง",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/บุคคล/โสภณ มงคลโสภณรัตน์",
+   "target_title": "โสภณ มงคลโสภณรัตน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261027-violent-03.svg"
+}

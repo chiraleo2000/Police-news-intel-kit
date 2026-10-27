@@ -1,9 +1,9 @@
 {
  "case_id": "20261022-tourist-pattaya-immigration-drive",
  "title": "ผบช.สตม. ประชุมที่พัทยา คุมเข้มความปลอดภัยนักท่องเที่ยว ใช้ AI-จดจำใบหน้าติดตามผู้มีหมายจับ",
- "generated_at": "2026-10-26T09:53:06.551Z",
- "node_count": 10,
- "edge_count": 9,
+ "generated_at": "2026-10-27T03:00:03.682Z",
+ "node_count": 9,
+ "edge_count": 8,
  "relations": [
   {
    "label": "แจ้งโดย",
@@ -37,8 +37,8 @@
   },
   {
    "label": "เกิดที่",
-   "target_id": "unresolved:30_Entities/สถานที่/พัทยา",
-   "target_title": "30_Entities/สถานที่/พัทยา",
+   "target_id": "30_Entities/Places/พัทยา",
+   "target_title": "พัทยา",
    "direction": "out"
   },
   {
@@ -51,12 +51,6 @@
    "label": "เกี่ยวข้องกับบุคคล",
    "target_id": "30_Entities/บุคคล/นภัสินธุ์ พูนสวัสดิ์",
    "target_title": "นภัสินธุ์ พูนสวัสดิ์",
-   "direction": "out"
-  },
-  {
-   "label": "เกิดที่",
-   "target_id": "30_Entities/สถานที่/พัทยา",
-   "target_title": "พัทยา",
    "direction": "out"
   }
  ],

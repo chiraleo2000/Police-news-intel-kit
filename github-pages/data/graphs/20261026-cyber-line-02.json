@@ -1,0 +1,22 @@
+{
+ "case_id": "20261026-cyber-line-02",
+ "title": "ผู้เสียหายกว่า 30 คน รวมตัวร้อง บก.ป. เร่งรัดคดีพรีออเดอร์การ์ด ONE PIECE ไม่ได้รับของ เสียหายรวมกว่า 47 ล้านบาท",
+ "generated_at": "2026-10-27T03:00:03.881Z",
+ "node_count": 3,
+ "edge_count": 2,
+ "relations": [
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/บก.ป.",
+   "target_title": "บก.ป.",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/กรุงเทพมหานคร",
+   "target_title": "กรุงเทพมหานคร",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261026-cyber-line-02.svg"
+}
