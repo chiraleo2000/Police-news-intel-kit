@@ -1,0 +1,58 @@
+{
+ "case_id": "20261028-tourist-01",
+ "title": "ผบช.สตม. สั่งถอนวีซ่าหญิงอิสราเอลวัย 33 ปี หลังก่อความวุ่นวายซ้ำที่เกาะพะงัน ผลักดันพ้นไทยและเสนอขึ้นบัญชีบุคคลต้องห้าม ตามมติคณะกรรมการกลั่นกรองพฤติการณ์คนต่างด้าว",
+ "generated_at": "2026-10-28T03:00:03.014Z",
+ "node_count": 9,
+ "edge_count": 8,
+ "relations": [
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/ตม.6",
+   "target_title": "ตม.6",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/ตม.จว.สุราษฎร์ธานี",
+   "target_title": "ตม.จว.สุราษฎร์ธานี",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/คณะกรรมการกลั่นกรองพฤติการณ์คนต่างด้าว (เกาะพะงัน)",
+   "target_title": "คณะกรรมการกลั่นกรองพฤติการณ์คนต่างด้าว (เกาะพะงัน)",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/เกาะพะงัน",
+   "target_title": "เกาะพะงัน",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/อุทยานแห่งชาติธารเสด็จ",
+   "target_title": "อุทยานแห่งชาติธารเสด็จ",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/นายอำเภอเกาะพะงัน",
+   "target_title": "นายอำเภอเกาะพะงัน",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/โฆษก บก.ตม.6",
+   "target_title": "โฆษก บก.ตม.6",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/บุคคล/เจริญพงษ์ ขันติโล",
+   "target_title": "เจริญพงษ์ ขันติโล",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261028-tourist-01.svg"
+}

@@ -1,0 +1,64 @@
+{
+ "case_id": "20261027-econ-line-01",
+ "title": "บช.ก. ร่วม ACSC แถลง Operation Dark Empire ทลายฟาร์มบัญชีม้านิติบุคคลข้ามชาติ จ้างคนไทยตั้งบริษัทกว่า 1,500 แห่ง จับ 11 ราย โยงผู้เสียหาย 311 คดี เสียหาย 379 ล้านบาท",
+ "generated_at": "2026-10-28T03:00:02.960Z",
+ "node_count": 10,
+ "edge_count": 9,
+ "relations": [
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/บช.ก.",
+   "target_title": "บช.ก.",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/ศูนย์ต่อต้านการฉ้อโกงออนไลน์ (ACSC)",
+   "target_title": "ศูนย์ต่อต้านการฉ้อโกงออนไลน์ (ACSC)",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/กก.2 บก.ป.",
+   "target_title": "กก.2 บก.ป.",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลอาญา",
+   "target_title": "ศาลอาญา",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/อาคารพิทักษ์สันติ",
+   "target_title": "อาคารพิทักษ์สันติ",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/แม่สอด",
+   "target_title": "แม่สอด",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/สระแก้ว",
+   "target_title": "สระแก้ว",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/สะเดา",
+   "target_title": "สะเดา",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/บุคคล/ณัฐศักดิ์ เชาวนาศัย",
+   "target_title": "ณัฐศักดิ์ เชาวนาศัย",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261027-econ-line-01.svg"
+}

@@ -1,0 +1,52 @@
+{
+ "case_id": "20261027-safe-line-01",
+ "title": "ปฏิบัติการตัดบทพ่อทิพย์ ศาลอนุมัติหมายจับ 46 หมาย คดีแจ้งเกิดเท็จให้บุตรต่างด้าวได้สัญชาติไทย ตรวจพบ 50 รายการในกรุงเทพฯ แจ้งความ 29 คดี",
+ "generated_at": "2026-10-28T03:00:02.979Z",
+ "node_count": 8,
+ "edge_count": 7,
+ "relations": [
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/บช.น.",
+   "target_title": "บช.น.",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/กองกำกับการสืบสวนนครบาล 8",
+   "target_title": "กองกำกับการสืบสวนนครบาล 8",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/ป.ป.ท.",
+   "target_title": "ป.ป.ท.",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/กรมการปกครอง",
+   "target_title": "กรมการปกครอง",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/บางขุนเทียน",
+   "target_title": "บางขุนเทียน",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ภาษีเจริญ",
+   "target_title": "ภาษีเจริญ",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/บุคคล/สำราญ นวลมา",
+   "target_title": "สำราญ นวลมา",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261027-safe-line-01.svg"
+}

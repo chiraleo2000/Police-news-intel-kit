@@ -1,0 +1,70 @@
+{
+ "case_id": "20261028-human-02",
+ "title": "ตม.จว.ปราจีนบุรี ร่วมจัดหางานจังหวัด ตรวจ 2 สถานประกอบการในศรีมหาโพธิ จับแรงงานต่างด้าวผิดกฎหมาย 18 ราย เป็นชาวจีน 4 ชาวเมียนมา 14 ส่งดำเนินคดีที่ สภ.ระเบาะไผ่",
+ "generated_at": "2026-10-28T03:00:03.009Z",
+ "node_count": 11,
+ "edge_count": 10,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/ตม.จว.ปราจีนบุรี",
+   "target_title": "ตม.จว.ปราจีนบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บก.ตม.3",
+   "target_title": "บก.ตม.3",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/สนง.จัดหางานจังหวัดปราจีนบุรี",
+   "target_title": "สนง.จัดหางานจังหวัดปราจีนบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/สภ.ระเบาะไผ่",
+   "target_title": "สภ.ระเบาะไผ่",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ศรีมหาโพธิ ปราจีนบุรี",
+   "target_title": "ศรีมหาโพธิ ปราจีนบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/สวญ.ตม.จว.ปราจีนบุรี",
+   "target_title": "สวญ.ตม.จว.ปราจีนบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/บุคคล/นพศิลป์ พูลสวัสดิ์",
+   "target_title": "นพศิลป์ พูลสวัสดิ์",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/บุคคล/ทรงโปรด สิริสุขะ",
+   "target_title": "ทรงโปรด สิริสุขะ",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/บุคคล/นที คุ้มล้วนล้อม",
+   "target_title": "นที คุ้มล้วนล้อม",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/บุคคล/วงศกร วรรณสมบูรณ์",
+   "target_title": "วงศกร วรรณสมบูรณ์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261028-human-02.svg"
+}

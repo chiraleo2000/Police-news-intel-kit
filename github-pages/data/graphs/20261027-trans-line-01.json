@@ -1,0 +1,40 @@
+{
+ "case_id": "20261027-trans-line-01",
+ "title": "บก.ตม.6 ร่วม ตม.สุราษฎร์ธานี จับชายสัญชาติสวีเดน ที่เกาะสมุย ตามหมายจับทางการสวีเดน ปมหลอกดูดเงินเหยื่อ-สวมรอยตำรวจเก็บปืน 9 กระบอก ความเสียหายกว่า 20 ล้านบาท",
+ "generated_at": "2026-10-28T03:00:02.982Z",
+ "node_count": 6,
+ "edge_count": 5,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/บก.ตม.6",
+   "target_title": "บก.ตม.6",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/ตม.จว.สุราษฎร์ธานี",
+   "target_title": "ตม.จว.สุราษฎร์ธานี",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/ตม.จว.ตรัง",
+   "target_title": "ตม.จว.ตรัง",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/บก.สอท.5",
+   "target_title": "บก.สอท.5",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/เกาะสมุย",
+   "target_title": "เกาะสมุย",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261027-trans-line-01.svg"
+}

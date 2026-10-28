@@ -1,0 +1,64 @@
+{
+ "case_id": "20261027-econ-line-02",
+ "title": "บช.ก.-ACSC-ปปง.-ก.ล.ต. แถลงออกหมายจับ 7 ผู้ต้องหา คดีฟอกเงินข้ามประเทศโยกซื้อหุ้นในตลาดหลักทรัพย์ ผู้ต้องหา 6 รายอยู่ต่างประเทศ ยึดอายัดทรัพย์หลายหมื่นล้านบาท",
+ "generated_at": "2026-10-28T03:00:02.961Z",
+ "node_count": 10,
+ "edge_count": 9,
+ "relations": [
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/บช.ก.",
+   "target_title": "บช.ก.",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/ศูนย์ต่อต้านการฉ้อโกงออนไลน์ (ACSC)",
+   "target_title": "ศูนย์ต่อต้านการฉ้อโกงออนไลน์ (ACSC)",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/ปอศ.",
+   "target_title": "ปอศ.",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/ปปง.",
+   "target_title": "ปปง.",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/ก.ล.ต.",
+   "target_title": "ก.ล.ต.",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลอาญา",
+   "target_title": "ศาลอาญา",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/อาคารพิทักษ์สันติ",
+   "target_title": "อาคารพิทักษ์สันติ",
+   "direction": "out"
+  },
+  {
+   "label": "ผู้ต้องหา",
+   "target_id": "30_Entities/People/นายเบน สมิธ",
+   "target_title": "นายเบน สมิธ",
+   "direction": "out"
+  },
+  {
+   "label": "ผู้ต้องหา",
+   "target_id": "30_Entities/People/นายยิม เลียก",
+   "target_title": "นายยิม เลียก",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261027-econ-line-02.svg"
+}

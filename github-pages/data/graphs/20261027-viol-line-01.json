@@ -1,0 +1,34 @@
+{
+ "case_id": "20261027-viol-line-01",
+ "title": "ตำรวจ สภ.ท่าม่วง-ทองผาภูมิ จับผู้ต้องหายิงชายเมียนมาเสียชีวิตในเพิงพักสวนปาล์ม กาญจนบุรี ให้การรับสารภาพ พาทำแผน 2 จุด ฝากขังศาลจังหวัดทองผาภูมิ",
+ "generated_at": "2026-10-28T03:00:02.984Z",
+ "node_count": 5,
+ "edge_count": 4,
+ "relations": [
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/สภ.ทองผาภูมิ",
+   "target_title": "สภ.ทองผาภูมิ",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/สภ.ท่าม่วง",
+   "target_title": "สภ.ท่าม่วง",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/ภ.7",
+   "target_title": "ภ.7",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ทองผาภูมิ",
+   "target_title": "ทองผาภูมิ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261027-viol-line-01.svg"
+}

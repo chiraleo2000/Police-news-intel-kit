@@ -1,0 +1,22 @@
+{
+ "case_id": "20261028-police-01",
+ "title": "ตำรวจท่องเที่ยว (บก.ทท.2) บูรณาการกำลังดูแลความปลอดภัยงานไหลเรือไฟนครพนม 25-26 ต.ค. ใช้โดรนและรถโมบาย ประชาสัมพันธ์สายด่วน 1155",
+ "generated_at": "2026-10-28T03:00:03.013Z",
+ "node_count": 3,
+ "edge_count": 2,
+ "relations": [
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/กองบัญชาการตำรวจท่องเที่ยว",
+   "target_title": "กองบัญชาการตำรวจท่องเที่ยว",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/นครพนม",
+   "target_title": "นครพนม",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261028-police-01.svg"
+}

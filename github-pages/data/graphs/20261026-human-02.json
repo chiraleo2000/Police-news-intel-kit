@@ -1,9 +1,9 @@
 {
  "case_id": "20261026-human-02",
  "title": "กก.ดส.บช.น. จับเยาวชนหญิงวัย 17 ปี ต้องสงสัยเป็นนายหน้าจัดหาเด็กค้าประเวณี ช่วยผู้เสียหายวัย 16 ปีจากโรงแรมย่านบางนา ตามข้อกล่าวหา",
- "generated_at": "2026-10-27T08:25:13.101Z",
- "node_count": 7,
- "edge_count": 6,
+ "generated_at": "2026-10-28T03:00:02.933Z",
+ "node_count": 6,
+ "edge_count": 5,
  "relations": [
   {
    "label": "สั่งการโดย",
@@ -31,13 +31,7 @@
   },
   {
    "label": "เกิดที่",
-   "target_id": "unresolved:30_Entities/สถานที่/บางนา",
-   "target_title": "30_Entities/สถานที่/บางนา",
-   "direction": "out"
-  },
-  {
-   "label": "เกิดที่",
-   "target_id": "30_Entities/สถานที่/บางนา",
+   "target_id": "30_Entities/Places/บางนา",
    "target_title": "บางนา",
    "direction": "out"
   }

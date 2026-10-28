@@ -1,0 +1,94 @@
+{
+ "case_id": "20261028-human-01",
+ "title": "สตม. กก.สส.บก.น.8 และ DOPA N.I.C.E. เปิดปฏิบัติการ “ตัดบทพ่อไทยทิพย์” เฟส 3 ขอศาลออกหมายจับ 46 หมาย จับได้ 24 คน ตรวจดีเอ็นเอเด็ก 24 ราย พบชายไทยในสูติบัตรไม่ใช่บิดาจริง เชื่อมโยงโรงพยาบาล 8 แห่ง",
+ "generated_at": "2026-10-28T03:00:03.007Z",
+ "node_count": 15,
+ "edge_count": 14,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/สตม.",
+   "target_title": "สตม.",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/กก.สส.บก.น.8",
+   "target_title": "กก.สส.บก.น.8",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/กรมการปกครอง DOPA N.I.C.E.",
+   "target_title": "กรมการปกครอง DOPA N.I.C.E.",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "unresolved:30_Entities/Units/ศาล",
+   "target_title": "30_Entities/Units/ศาล",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/โรงพยาบาลเอกชน 8 แห่ง",
+   "target_title": "โรงพยาบาลเอกชน 8 แห่ง",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/อำเภอศรีราชา จังหวัดชลบุรี",
+   "target_title": "อำเภอศรีราชา จังหวัดชลบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/บางขุนเทียน กรุงเทพมหานคร",
+   "target_title": "บางขุนเทียน กรุงเทพมหานคร",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/สมุทรปราการ",
+   "target_title": "สมุทรปราการ",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/ผบช.สตม.",
+   "target_title": "ผบช.สตม.",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/รัฐมนตรีช่วยว่าการกระทรวงมหาดไทย",
+   "target_title": "รัฐมนตรีช่วยว่าการกระทรวงมหาดไทย",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/บุคคล/สำราญ นวลมา",
+   "target_title": "สำราญ นวลมา",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/บุคคล/นพศิลป์ พูลสวัสดิ์",
+   "target_title": "นพศิลป์ พูลสวัสดิ์",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/บุคคล/เชิงรณ ริมผดี",
+   "target_title": "เชิงรณ ริมผดี",
+   "direction": "out"
+  },
+  {
+   "label": "ผู้ต้องหา",
+   "target_id": "30_Entities/ผู้ต้องหา/ตัดบทพ่อไทยทิพย์",
+   "target_title": "ตัดบทพ่อไทยทิพย์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261028-human-01.svg"
+}

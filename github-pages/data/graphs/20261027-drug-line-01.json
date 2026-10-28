@@ -1,0 +1,40 @@
+{
+ "case_id": "20261027-drug-line-01",
+ "title": "ตำรวจ สภ.พุทธมณฑล-บก.สส.ภ.7 จับชายวัย 55 ปี ที่ยิงใส่ตำรวจระหว่างหนีการจับกุมยาเสพติด ใช้โดรนความร้อนล้อมจับในป่าหญ้า ยึดปืนลูกซอง 2 กระบอก ไอซ์ ยาบ้า นครปฐม",
+ "generated_at": "2026-10-28T03:00:02.957Z",
+ "node_count": 6,
+ "edge_count": 5,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/สภ.พุทธมณฑล",
+   "target_title": "สภ.พุทธมณฑล",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/บก.สส.ภ.7",
+   "target_title": "บก.สส.ภ.7",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลจังหวัดทุ่งสง",
+   "target_title": "ศาลจังหวัดทุ่งสง",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลจังหวัดเวียงสระ",
+   "target_title": "ศาลจังหวัดเวียงสระ",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/พุทธมณฑล",
+   "target_title": "พุทธมณฑล",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261027-drug-line-01.svg"
+}

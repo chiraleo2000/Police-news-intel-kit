@@ -1,0 +1,28 @@
+{
+ "case_id": "20261028-env-01",
+ "title": "DSI ผนึกกรมศุลกากร ตรวจตู้คอนเทนเนอร์เสี่ยงลักลอบนำเข้าขยะอิเล็กทรอนิกส์ที่ท่าเรือแหลมฉบัง รับข้อมูลบริษัท 7 รายเพื่อพิจารณาดำเนินการตามกฎหมาย",
+ "generated_at": "2026-10-28T03:00:03.003Z",
+ "node_count": 4,
+ "edge_count": 3,
+ "relations": [
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/กรมสอบสวนคดีพิเศษ (DSI)",
+   "target_title": "กรมสอบสวนคดีพิเศษ (DSI)",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/กรมศุลกากร",
+   "target_title": "กรมศุลกากร",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ท่าเรือแหลมฉบัง",
+   "target_title": "ท่าเรือแหลมฉบัง",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261028-env-01.svg"
+}

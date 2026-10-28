@@ -1,0 +1,40 @@
+{
+ "case_id": "20261028-violent-03",
+ "title": "นักมวยไทยเชียงใหม่ อดีตนักชกเวที ONE ลุมพินี ถูกชายฉกรรจ์ 2 คนรุมชกกลางถนนแม่เหียะ หลังปาดหน้ารถ คิ้วแตก ฟันหัก แจ้งความ สภ.เมืองเชียงใหม่ ตำรวจพบเบาะแสแล้ว",
+ "generated_at": "2026-10-28T03:00:03.019Z",
+ "node_count": 6,
+ "edge_count": 5,
+ "relations": [
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/สภ.เมืองเชียงใหม่",
+   "target_title": "สภ.เมืองเชียงใหม่",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/แม่เหียะ เมืองเชียงใหม่",
+   "target_title": "แม่เหียะ เมืองเชียงใหม่",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ถนนเชียงใหม่-หางดง",
+   "target_title": "ถนนเชียงใหม่-หางดง",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/ผกก.สภ.เมืองเชียงใหม่",
+   "target_title": "ผกก.สภ.เมืองเชียงใหม่",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/บุคคล/ปรัชญา ทิศลา",
+   "target_title": "ปรัชญา ทิศลา",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261028-violent-03.svg"
+}

@@ -1,0 +1,28 @@
+{
+ "case_id": "20261028-drug-01",
+ "title": "ปปส.ภาค 3 ตรวจสอบข้อร้องเรียนยาเสพติดใน อบต. อ.ขุนหาญ ศรีสะเกษ ตรวจปัสสาวะ 65 ราย พบสารเสพติด 6 ราย ขยายผลจับกุม 2 ราย",
+ "generated_at": "2026-10-28T03:00:03.000Z",
+ "node_count": 4,
+ "edge_count": 3,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/ปปส.ภาค 3",
+   "target_title": "ปปส.ภาค 3",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/ศอ.ปส.จ.ศรีสะเกษ",
+   "target_title": "ศอ.ปส.จ.ศรีสะเกษ",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/อ.ขุนหาญ ศรีสะเกษ",
+   "target_title": "อ.ขุนหาญ ศรีสะเกษ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261028-drug-01.svg"
+}

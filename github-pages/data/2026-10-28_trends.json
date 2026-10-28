@@ -1,0 +1,231 @@
+{
+ "baseline": "limited",
+ "window_days": 7,
+ "days_available": 6,
+ "note": "baseline 6 วันย้อนหลัง (<7 วัน: แนวโน้มเป็นข้อมูลบ่งชี้เท่านั้น) surge = วันนี้ >=3 เรื่อง และสูงกว่าค่าเฉลี่ย >=50 เปอร์เซ็นต์",
+ "by_crime_type": [
+  {
+   "type": "คดีชีวิต ร่างกาย และเพศ",
+   "today": 3,
+   "avg_prev_7d": 4.5,
+   "delta_pct": -33.3,
+   "surge": false
+  },
+  {
+   "type": "ค้ามนุษย์ แรงงานผิดกฎหมาย และคุ้มครองเด็ก",
+   "today": 3,
+   "avg_prev_7d": 1.83,
+   "delta_pct": 63.6,
+   "surge": true
+  },
+  {
+   "type": "อาชญากรรมไซเบอร์และออนไลน์",
+   "today": 3,
+   "avg_prev_7d": 3.67,
+   "delta_pct": -18.2,
+   "surge": false
+  },
+  {
+   "type": "คดีเศรษฐกิจ การเงิน และฟอกเงิน",
+   "today": 1,
+   "avg_prev_7d": 1.67,
+   "delta_pct": -40.0,
+   "surge": false
+  },
+  {
+   "type": "สิ่งแวดล้อม ทรัพยากร และสัตว์ป่า",
+   "today": 1,
+   "avg_prev_7d": 0.5,
+   "delta_pct": 100.0,
+   "surge": false
+  },
+  {
+   "type": "พนันและบ่อนผิดกฎหมาย",
+   "today": 1,
+   "avg_prev_7d": 2.33,
+   "delta_pct": -57.1,
+   "surge": false
+  },
+  {
+   "type": "อาชญากรรมที่เกี่ยวข้องกับนักท่องเที่ยวและชาวต่างชาติ",
+   "today": 1,
+   "avg_prev_7d": 2.17,
+   "delta_pct": -53.8,
+   "surge": false
+  },
+  {
+   "type": "การปฏิบัติหน้าที่ ประชาสัมพันธ์ และนโยบายตำรวจ",
+   "today": 1,
+   "avg_prev_7d": 3.0,
+   "delta_pct": -66.7,
+   "surge": false
+  },
+  {
+   "type": "ทุจริตและประพฤติมิชอบของเจ้าหน้าที่รัฐ",
+   "today": 1,
+   "avg_prev_7d": 0.0,
+   "delta_pct": null,
+   "surge": false
+  },
+  {
+   "type": "ยาเสพติด",
+   "today": 1,
+   "avg_prev_7d": 4.33,
+   "delta_pct": -76.9,
+   "surge": false
+  }
+ ],
+ "by_mo": [
+  {
+   "mo": "ฟอกเงิน",
+   "today": 3,
+   "avg_prev_7d": 0.33,
+   "surge": true
+  },
+  {
+   "mo": "บัญชีม้า/ซิมม้า",
+   "today": 3,
+   "avg_prev_7d": 0.33,
+   "surge": true
+  },
+  {
+   "mo": "แรงงานต่างด้าวผิดกฎหมาย",
+   "today": 2,
+   "avg_prev_7d": 0.17,
+   "surge": false
+  },
+  {
+   "mo": "ลำเลียงยาเสพติด",
+   "today": 1,
+   "avg_prev_7d": 0.67,
+   "surge": false
+  },
+  {
+   "mo": "นอมินีธุรกิจต่างชาติ",
+   "today": 1,
+   "avg_prev_7d": 0.67,
+   "surge": false
+  },
+  {
+   "mo": "แอบอ้างเจ้าหน้าที่รัฐ/ตำรวจ",
+   "today": 1,
+   "avg_prev_7d": 0.33,
+   "surge": false
+  },
+  {
+   "mo": "มัลแวร์/แอปดูดเงิน",
+   "today": 1,
+   "avg_prev_7d": 0.17,
+   "surge": false
+  },
+  {
+   "mo": "ค้ามนุษย์บังคับกระทำผิด",
+   "today": 1,
+   "avg_prev_7d": 0.17,
+   "surge": false
+  },
+  {
+   "mo": "พนันออนไลน์",
+   "today": 1,
+   "avg_prev_7d": 0.33,
+   "surge": false
+  }
+ ],
+ "by_province": [
+  {
+   "province": "กรุงเทพมหานคร",
+   "today": 6,
+   "avg_prev_7d": 9.33
+  },
+  {
+   "province": "สมุทรปราการ",
+   "today": 2,
+   "avg_prev_7d": 1.83
+  },
+  {
+   "province": "ชลบุรี",
+   "today": 2,
+   "avg_prev_7d": 3.83
+  },
+  {
+   "province": "สุราษฎร์ธานี",
+   "today": 2,
+   "avg_prev_7d": 0.33
+  },
+  {
+   "province": "เชียงใหม่",
+   "today": 2,
+   "avg_prev_7d": 0.67
+  },
+  {
+   "province": "นครปฐม",
+   "today": 1,
+   "avg_prev_7d": 0.67
+  },
+  {
+   "province": "ตรัง",
+   "today": 1,
+   "avg_prev_7d": 0.33
+  },
+  {
+   "province": "เพชรบุรี",
+   "today": 1,
+   "avg_prev_7d": 0.5
+  },
+  {
+   "province": "อุดรธานี",
+   "today": 1,
+   "avg_prev_7d": 0.5
+  },
+  {
+   "province": "สงขลา",
+   "today": 1,
+   "avg_prev_7d": 1.5
+  },
+  {
+   "province": "พังงา",
+   "today": 1,
+   "avg_prev_7d": 0.0
+  },
+  {
+   "province": "นครราชสีมา",
+   "today": 1,
+   "avg_prev_7d": 0.5
+  },
+  {
+   "province": "กาญจนบุรี",
+   "today": 1,
+   "avg_prev_7d": 1.17
+  },
+  {
+   "province": "นนทบุรี",
+   "today": 1,
+   "avg_prev_7d": 1.17
+  },
+  {
+   "province": "นครพนม",
+   "today": 1,
+   "avg_prev_7d": 0.5
+  },
+  {
+   "province": "สุโขทัย",
+   "today": 1,
+   "avg_prev_7d": 0.17
+  },
+  {
+   "province": "อุตรดิตถ์",
+   "today": 1,
+   "avg_prev_7d": 0.0
+  },
+  {
+   "province": "ศรีสะเกษ",
+   "today": 1,
+   "avg_prev_7d": 0.17
+  },
+  {
+   "province": "ปราจีนบุรี",
+   "today": 1,
+   "avg_prev_7d": 0.0
+  }
+ ]
+}

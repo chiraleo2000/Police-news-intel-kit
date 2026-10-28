@@ -1,0 +1,64 @@
+{
+ "case_id": "20261028-cyber-03",
+ "title": "ตม.6 ร่วม ตม.จว.สุราษฎร์ธานี ตม.จว.ตรัง และ บก.สอท.5 จับชายสวีเดนตามหมายจับทางการสวีเดนที่เกาะสมุย ถูกกล่าวหาหลอกให้ลง AnyDesk ดูดเงินเหยื่อ สวมรอยตำรวจเก็บปืน 9 กระบอก ความเสียหายกว่า 20 ล้านบาท",
+ "generated_at": "2026-10-28T03:00:02.998Z",
+ "node_count": 10,
+ "edge_count": 9,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/ตม.6",
+   "target_title": "ตม.6",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/ตม.จว.สุราษฎร์ธานี",
+   "target_title": "ตม.จว.สุราษฎร์ธานี",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/ตม.จว.ตรัง",
+   "target_title": "ตม.จว.ตรัง",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/บก.สอท.5",
+   "target_title": "บก.สอท.5",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/เกาะสมุย",
+   "target_title": "เกาะสมุย",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/โฆษก บก.ตม.6",
+   "target_title": "โฆษก บก.ตม.6",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/บุคคล/สำราญ นวลมา",
+   "target_title": "สำราญ นวลมา",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/บุคคล/นพศิลป์ พูลสวัสดิ์",
+   "target_title": "นพศิลป์ พูลสวัสดิ์",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/บุคคล/เจริญพงษ์ ขันติโล",
+   "target_title": "เจริญพงษ์ ขันติโล",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261028-cyber-03.svg"
+}

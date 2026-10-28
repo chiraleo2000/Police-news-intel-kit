@@ -1,0 +1,46 @@
+{
+ "case_id": "20261028-violent-01",
+ "title": "ตำรวจ สภ.พุทธมณฑลจับชายวัย 55 ปี ผู้ยิงใส่ตำรวจขณะเข้าตรวจสอบกรณีนัดส่งยาเสพติด หลังปิดล้อมค้นหาข้ามคืนที่คลองโยง นครปฐม พบปืนลูกซอง 2 กระบอก ไอซ์ และยาบ้า มีหมายจับพยายามฆ่า-ขับรถประมาท",
+ "generated_at": "2026-10-28T03:00:03.016Z",
+ "node_count": 7,
+ "edge_count": 6,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/สภ.พุทธมณฑล",
+   "target_title": "สภ.พุทธมณฑล",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/ภ.จว.นครปฐม",
+   "target_title": "ภ.จว.นครปฐม",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/กก.สส.ภ.7",
+   "target_title": "กก.สส.ภ.7",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/คลองโยง พุทธมณฑล นครปฐม",
+   "target_title": "คลองโยง พุทธมณฑล นครปฐม",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/ผกก.สภ.พุทธมณฑล",
+   "target_title": "ผกก.สภ.พุทธมณฑล",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/ผบก.ภ.จว.นครปฐม",
+   "target_title": "ผบก.ภ.จว.นครปฐม",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261028-violent-01.svg"
+}

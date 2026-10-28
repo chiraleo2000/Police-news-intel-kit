@@ -1,0 +1,46 @@
+{
+ "case_id": "20261027-cons-line-01",
+ "title": "บก.ปคบ. ร่วม สบส. และแพทยสภา บุกจับ 2 หญิงเปิดตรวจอัลตราซาวด์หลอดเลือดลำคอเก็บ 900 บาทต่อคน ในร้านอาหารย่านบางนา ข้อหาประกอบวิชาชีพเวชกรรมโดยไม่ได้รับอนุญาต",
+ "generated_at": "2026-10-28T03:00:02.950Z",
+ "node_count": 7,
+ "edge_count": 6,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/บก.ปคบ.",
+   "target_title": "บก.ปคบ.",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/กก.4 บก.ปคบ.",
+   "target_title": "กก.4 บก.ปคบ.",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/กรมสนับสนุนบริการสุขภาพ (สบส.)",
+   "target_title": "กรมสนับสนุนบริการสุขภาพ (สบส.)",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/แพทยสภา",
+   "target_title": "แพทยสภา",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/บางนา",
+   "target_title": "บางนา",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/บุคคล/ณัฐศักดิ์ เชาวนาศัย",
+   "target_title": "ณัฐศักดิ์ เชาวนาศัย",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261027-cons-line-01.svg"
+}

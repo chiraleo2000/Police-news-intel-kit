@@ -1,0 +1,52 @@
+{
+ "case_id": "20261028-corrupt-01",
+ "title": "ป.ป.ท. ร่วม สภ.สวรรคโลก จับอดีตพนักงานไปรษณีย์ระดับ 7 ตามหมายจับศาลอาญาคดีทุจริตภาค 6 ข้อหายักยอกเงินค่าพัสดุเก็บเงินปลายทางและเงินในตู้นิรภัย รวม 210,738 บาท",
+ "generated_at": "2026-10-28T03:00:02.994Z",
+ "node_count": 8,
+ "edge_count": 7,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/สำนักงาน ป.ป.ท.",
+   "target_title": "สำนักงาน ป.ป.ท.",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/กอท. ป.ป.ท.",
+   "target_title": "กอท. ป.ป.ท.",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/สภ.สวรรคโลก",
+   "target_title": "สภ.สวรรคโลก",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "unresolved:30_Entities/Units/ศาลอาญาคดีทุจริตและประพฤติมิชอบภาค 6",
+   "target_title": "30_Entities/Units/ศาลอาญาคดีทุจริตและประพฤติมิชอบภาค 6",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/อำเภอสวรรคโลก สุโขทัย",
+   "target_title": "อำเภอสวรรคโลก สุโขทัย",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ที่ทำการไปรษณีย์ตรอน อุตรดิตถ์",
+   "target_title": "ที่ทำการไปรษณีย์ตรอน อุตรดิตถ์",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/เลขาธิการคณะกรรมการ ป.ป.ท.",
+   "target_title": "เลขาธิการคณะกรรมการ ป.ป.ท.",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261028-corrupt-01.svg"
+}

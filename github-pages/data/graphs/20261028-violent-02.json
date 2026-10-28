@@ -1,0 +1,52 @@
+{
+ "case_id": "20261028-violent-02",
+ "title": "ตำรวจ สภ.ทองผาภูมิ จับชายเมียนมาผู้ต้องหายิงเพื่อนร่วมชาติเสียชีวิตในเพิงพักสวนปาล์ม กาญจนบุรี หลังตั้งรางวัลนำจับ 20,000 บาท ผู้ต้องหารับสารภาพ นำชี้จุดซ่อนปืน ส่งฝากขังศาลจังหวัดทองผาภูมิ",
+ "generated_at": "2026-10-28T03:00:03.017Z",
+ "node_count": 8,
+ "edge_count": 7,
+ "relations": [
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/สภ.ทองผาภูมิ",
+   "target_title": "สภ.ทองผาภูมิ",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/สภ.ท่าม่วง",
+   "target_title": "สภ.ท่าม่วง",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "unresolved:30_Entities/Units/ศาลจังหวัดทองผาภูมิ",
+   "target_title": "30_Entities/Units/ศาลจังหวัดทองผาภูมิ",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ท่าขนุน ทองผาภูมิ กาญจนบุรี",
+   "target_title": "ท่าขนุน ทองผาภูมิ กาญจนบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/ผกก.สภ.ทองผาภูมิ",
+   "target_title": "ผกก.สภ.ทองผาภูมิ",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/บุคคล/ปริญญา ใคร่ครวญ",
+   "target_title": "ปริญญา ใคร่ครวญ",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ทองผาภูมิ",
+   "target_title": "ทองผาภูมิ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261028-violent-02.svg"
+}
