@@ -1,0 +1,58 @@
+{
+ "case_id": "20261029-drug-02",
+ "title": "บช.น. ตั้ง กก.สปพ. จับคนขับรถสิบล้อขนยาบ้า 6.47 ล้านเม็ด ซุกใต้กองข้าวโพดที่นครสวรรค์ ขยายผลเครือข่ายที่เคยจับ 5 ครั้ง มูลค่าของกลางกว่า 200 ล้านบาท",
+ "generated_at": "2026-10-29T02:00:02.697Z",
+ "node_count": 9,
+ "edge_count": 8,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/บช.น.",
+   "target_title": "บช.น.",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/บก.สปพ.",
+   "target_title": "บก.สปพ.",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/อ.บรรพตพิสัย จ.นครสวรรค์",
+   "target_title": "อ.บรรพตพิสัย จ.นครสวรรค์",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/อ.ไทรน้อย จ.นนทบุรี",
+   "target_title": "อ.ไทรน้อย จ.นนทบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/ผบช.น.",
+   "target_title": "ผบช.น.",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/บุคคล/สยาม บุญสม",
+   "target_title": "สยาม บุญสม",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/บุคคล/ธีรเดช ธรรมสุธีร์",
+   "target_title": "ธีรเดช ธรรมสุธีร์",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/บุคคล/ประสงค์ อานมณี",
+   "target_title": "ประสงค์ อานมณี",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261029-drug-02.svg"
+}

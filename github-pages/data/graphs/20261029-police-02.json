@@ -1,0 +1,46 @@
+{
+ "case_id": "20261029-police-02",
+ "title": "ศอ.ปส.ตร. มอบโล่เชิดชู 107 รางวัลผลงานปราบปรามและป้องกันยาเสพติดดีเด่น ปี 2569 ภ.5 ได้อันดับ 1 ระดับกองบัญชาการ",
+ "generated_at": "2026-10-29T02:00:02.712Z",
+ "node_count": 7,
+ "edge_count": 6,
+ "relations": [
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/ศอ.ปส.ตร.",
+   "target_title": "ศอ.ปส.ตร.",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/ภ.5",
+   "target_title": "ภ.5",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/บก.สส.ภ.5",
+   "target_title": "บก.สส.ภ.5",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/กรุงเทพมหานคร",
+   "target_title": "กรุงเทพมหานคร",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/รอง ผบ.ตร.",
+   "target_title": "รอง ผบ.ตร.",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/บุคคล/อิทธิพล อัจฉริยะประดิษฐ์",
+   "target_title": "อิทธิพล อัจฉริยะประดิษฐ์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261029-police-02.svg"
+}

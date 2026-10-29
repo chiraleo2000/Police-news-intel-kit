@@ -1,0 +1,46 @@
+{
+ "case_id": "20261029-consumer-02",
+ "title": "ปศุสัตว์-ตำรวจคุ้มครองผู้บริโภค ตรวจรถพ่วง 22 ล้อ 2 คันที่ด่านกักกันสัตว์ชะอำ พบอกไก่ 26 ตัน ใช้ใบอนุญาตขนซากสัตว์ปลอม ขยายผลตรวจโกดังไม่จดทะเบียนที่ปทุมธานี พื้นที่เฝ้าระวังไข้หวัดนก",
+ "generated_at": "2026-10-29T02:00:02.690Z",
+ "node_count": 7,
+ "edge_count": 6,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/กรมปศุสัตว์",
+   "target_title": "กรมปศุสัตว์",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/ศูนย์พระพิรุณ",
+   "target_title": "ศูนย์พระพิรุณ",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/ฉก.พญาไท",
+   "target_title": "ฉก.พญาไท",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/กองบังคับการตำรวจปราบปรามการกระทำความผิดเกี่ยวกับการคุ้มครองผู้บริโภค",
+   "target_title": "กองบังคับการตำรวจปราบปรามการกระทำความผิดเกี่ยวกับการคุ้มครองผู้บริโภค",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ด่านกักกันสัตว์เพชรบุรี อ.ชะอำ",
+   "target_title": "ด่านกักกันสัตว์เพชรบุรี อ.ชะอำ",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/อ.ธัญบุรี จ.ปทุมธานี",
+   "target_title": "อ.ธัญบุรี จ.ปทุมธานี",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261029-consumer-02.svg"
+}

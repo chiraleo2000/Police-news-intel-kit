@@ -1,0 +1,88 @@
+{
+ "case_id": "20261029-drug-01",
+ "title": "ตำรวจ บก.น.1 จับ 2 ผู้ต้องหาขนไอซ์ 210 กก. ซุกกระสอบในรถตู้ที่ปั๊มน้ำมันถนนกาญจนาภิเษก บางบอน ผบ.ตร.สั่งการ เร่งขยายผลยึดทรัพย์เครือข่าย",
+ "generated_at": "2026-10-29T02:00:02.695Z",
+ "node_count": 14,
+ "edge_count": 13,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/บก.น.1",
+   "target_title": "บก.น.1",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บช.น.",
+   "target_title": "บช.น.",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/บช.ปส.",
+   "target_title": "บช.ปส.",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/ศอ.ปส.ตร.",
+   "target_title": "ศอ.ปส.ตร.",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ปั๊มน้ำมัน ถนนกาญจนาภิเษก เขตบางบอน",
+   "target_title": "ปั๊มน้ำมัน ถนนกาญจนาภิเษก เขตบางบอน",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/ผบ.ตร.",
+   "target_title": "ผบ.ตร.",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/รอง ผบ.ตร.-ผอ.ศอ.ปส.ตร.",
+   "target_title": "รอง ผบ.ตร./ผอ.ศอ.ปส.ตร.",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/บุคคล/สำราญ นวลมา",
+   "target_title": "สำราญ นวลมา",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/บุคคล/อิทธิพล อัจฉริยะประดิษฐ์",
+   "target_title": "อิทธิพล อัจฉริยะประดิษฐ์",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/บุคคล/กฤษฎา กาญจนอลงกรณ์",
+   "target_title": "กฤษฎา กาญจนอลงกรณ์",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/บุคคล/ธีรเดช ธรรมสุธีร์",
+   "target_title": "ธีรเดช ธรรมสุธีร์",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/บุคคล/ศักยะ แสงวรรณ",
+   "target_title": "ศักยะ แสงวรรณ",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/บุคคล/วิชัย สนสกุล",
+   "target_title": "วิชัย สนสกุล",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261029-drug-01.svg"
+}

@@ -1,0 +1,235 @@
+{
+ "baseline": "limited",
+ "window_days": 7,
+ "days_available": 7,
+ "note": "baseline 7 วันย้อนหลัง (<7 วัน: แนวโน้มเป็นข้อมูลบ่งชี้เท่านั้น) surge = วันนี้ >=3 เรื่อง และสูงกว่าค่าเฉลี่ย >=50 เปอร์เซ็นต์",
+ "by_crime_type": [
+  {
+   "type": "ยาเสพติด",
+   "today": 6,
+   "avg_prev_7d": 3.86,
+   "delta_pct": 55.6,
+   "surge": true
+  },
+  {
+   "type": "คดีชีวิต ร่างกาย และเพศ",
+   "today": 3,
+   "avg_prev_7d": 4.29,
+   "delta_pct": -30.0,
+   "surge": false
+  },
+  {
+   "type": "คดีทรัพย์สิน",
+   "today": 2,
+   "avg_prev_7d": 2.14,
+   "delta_pct": -6.7,
+   "surge": false
+  },
+  {
+   "type": "คุ้มครองผู้บริโภคและสินค้าผิดกฎหมาย",
+   "today": 2,
+   "avg_prev_7d": 1.14,
+   "delta_pct": 75.0,
+   "surge": false
+  },
+  {
+   "type": "อาชญากรรมไซเบอร์และออนไลน์",
+   "today": 2,
+   "avg_prev_7d": 3.57,
+   "delta_pct": -44.0,
+   "surge": false
+  },
+  {
+   "type": "การปฏิบัติหน้าที่ ประชาสัมพันธ์ และนโยบายตำรวจ",
+   "today": 2,
+   "avg_prev_7d": 2.71,
+   "delta_pct": -26.3,
+   "surge": false
+  },
+  {
+   "type": "ความปลอดภัยทางหลวงและการสกัดจับ",
+   "today": 1,
+   "avg_prev_7d": 0.71,
+   "delta_pct": 40.0,
+   "surge": false
+  },
+  {
+   "type": "ค้ามนุษย์ แรงงานผิดกฎหมาย และคุ้มครองเด็ก",
+   "today": 1,
+   "avg_prev_7d": 2.0,
+   "delta_pct": -50.0,
+   "surge": false
+  },
+  {
+   "type": "อาชญากรรมข้ามชาติและความร่วมมือระหว่างประเทศ",
+   "today": 1,
+   "avg_prev_7d": 1.14,
+   "delta_pct": -12.5,
+   "surge": false
+  },
+  {
+   "type": "คดีเศรษฐกิจ การเงิน และฟอกเงิน",
+   "today": 1,
+   "avg_prev_7d": 1.57,
+   "delta_pct": -36.4,
+   "surge": false
+  }
+ ],
+ "by_mo": [
+  {
+   "mo": "ลำเลียงยาเสพติด",
+   "today": 4,
+   "avg_prev_7d": 0.57,
+   "surge": true
+  },
+  {
+   "mo": "สินค้า/ยาปลอม",
+   "today": 2,
+   "avg_prev_7d": 0.43,
+   "surge": false
+  },
+  {
+   "mo": "เจ้าหน้าที่รัฐร่วมขบวนการ",
+   "today": 1,
+   "avg_prev_7d": 0.0,
+   "surge": false
+  },
+  {
+   "mo": "ลักลอบจ้างแรงงานต่างด้าว",
+   "today": 1,
+   "avg_prev_7d": 0.0,
+   "surge": false
+  },
+  {
+   "mo": "หลอกซื้อขายออนไลน์",
+   "today": 1,
+   "avg_prev_7d": 0.0,
+   "surge": false
+  },
+  {
+   "mo": "บัญชีม้า/ซิมม้า",
+   "today": 1,
+   "avg_prev_7d": 0.29,
+   "surge": false
+  },
+  {
+   "mo": "ฟอกเงิน",
+   "today": 1,
+   "avg_prev_7d": 0.29,
+   "surge": false
+  },
+  {
+   "mo": "หลอกให้โอนคริปโต",
+   "today": 1,
+   "avg_prev_7d": 0.0,
+   "surge": false
+  }
+ ],
+ "by_province": [
+  {
+   "province": "กรุงเทพมหานคร",
+   "today": 6,
+   "avg_prev_7d": 8.86
+  },
+  {
+   "province": "เชียงใหม่",
+   "today": 3,
+   "avg_prev_7d": 0.86
+  },
+  {
+   "province": "ชลบุรี",
+   "today": 2,
+   "avg_prev_7d": 3.57
+  },
+  {
+   "province": "อยุธยา",
+   "today": 2,
+   "avg_prev_7d": 0.0
+  },
+  {
+   "province": "เพชรบุรี",
+   "today": 2,
+   "avg_prev_7d": 0.57
+  },
+  {
+   "province": "ปทุมธานี",
+   "today": 2,
+   "avg_prev_7d": 0.43
+  },
+  {
+   "province": "สมุทรสงคราม",
+   "today": 2,
+   "avg_prev_7d": 0.0
+  },
+  {
+   "province": "สุราษฎร์ธานี",
+   "today": 2,
+   "avg_prev_7d": 0.57
+  },
+  {
+   "province": "บึงกาฬ",
+   "today": 1,
+   "avg_prev_7d": 0.14
+  },
+  {
+   "province": "ขอนแก่น",
+   "today": 1,
+   "avg_prev_7d": 0.43
+  },
+  {
+   "province": "บุรีรัมย์",
+   "today": 1,
+   "avg_prev_7d": 0.43
+  },
+  {
+   "province": "นครสวรรค์",
+   "today": 1,
+   "avg_prev_7d": 0.14
+  },
+  {
+   "province": "นนทบุรี",
+   "today": 1,
+   "avg_prev_7d": 1.14
+  },
+  {
+   "province": "เชียงราย",
+   "today": 1,
+   "avg_prev_7d": 0.57
+  },
+  {
+   "province": "อุบลราชธานี",
+   "today": 1,
+   "avg_prev_7d": 0.0
+  },
+  {
+   "province": "ระยอง",
+   "today": 1,
+   "avg_prev_7d": 0.29
+  },
+  {
+   "province": "สมุทรสาคร",
+   "today": 1,
+   "avg_prev_7d": 0.43
+  },
+  {
+   "province": "สมุทรปราการ",
+   "today": 1,
+   "avg_prev_7d": 1.86
+  },
+  {
+   "province": "ยะลา",
+   "today": 1,
+   "avg_prev_7d": 0.43
+  },
+  {
+   "province": "ปัตตานี",
+   "today": 1,
+   "avg_prev_7d": 0.71
+  },
+  {
+   "province": "นราธิวาส",
+   "today": 1,
+   "avg_prev_7d": 0.71
+  }
+ ]
+}

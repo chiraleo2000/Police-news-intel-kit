@@ -1,0 +1,52 @@
+{
+ "case_id": "20261029-property-01",
+ "title": "ตำรวจทางหลวง บก.ทล. ร่วม สภ.สิรินธร จับ 2 วัยรุ่นตระเวนงัดตู้ไฟและตัดสายไฟทางหลวงหมายเลข 217 ทางเข้าเขื่อนสิรินธร อุบลฯ ขายทองแดงได้ 600 บาท เสียหายหลักแสน ใช้เวลา 46 ชั่วโมง เตือนร้านรับซื้อของเก่า",
+ "generated_at": "2026-10-29T02:00:02.713Z",
+ "node_count": 8,
+ "edge_count": 7,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/บก.ทล.",
+   "target_title": "บก.ทล.",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/สภ.สิรินธร",
+   "target_title": "สภ.สิรินธร",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/แขวงทางหลวงอุบลราชธานีที่ 2",
+   "target_title": "แขวงทางหลวงอุบลราชธานีที่ 2",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลจังหวัดอุบลราชธานี",
+   "target_title": "ศาลจังหวัดอุบลราชธานี",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ทางหลวงหมายเลข 217 ทางเข้าเขื่อนสิรินธร",
+   "target_title": "ทางหลวงหมายเลข 217 ทางเข้าเขื่อนสิรินธร",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/ผบก.ทล.",
+   "target_title": "ผบก.ทล.",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/บุคคล/บุญลือ ผดุงถิ่น",
+   "target_title": "บุญลือ ผดุงถิ่น",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261029-property-01.svg"
+}

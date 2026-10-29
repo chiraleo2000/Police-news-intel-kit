@@ -1,0 +1,46 @@
+{
+ "case_id": "20261029-drug-03",
+ "title": "ทหารชุดเจ้าตาก-ฉก.ผาเมือง ปะทะลักลอบขนยาเสพติด แม่สาย เชียงราย ยึดไอซ์ 261.5 กก. 7 กระสอบ ส่งตำรวจ สภ.แม่สาย ต่อเนื่องจากยึดยาบ้า 4 ล้านเม็ดเมื่อ 2 วันก่อน",
+ "generated_at": "2026-10-29T02:00:02.698Z",
+ "node_count": 7,
+ "edge_count": 6,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/ฉก.ผาเมือง",
+   "target_title": "ฉก.ผาเมือง",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/หน่วยเฉพาะกิจเจ้าตาก",
+   "target_title": "หน่วยเฉพาะกิจเจ้าตาก",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/สภ.แม่สาย",
+   "target_title": "สภ.แม่สาย",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ต.เกาะช้าง อ.แม่สาย จ.เชียงราย",
+   "target_title": "ต.เกาะช้าง อ.แม่สาย จ.เชียงราย",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/ผบ.ฉก.ผาเมือง",
+   "target_title": "ผบ.ฉก.ผาเมือง",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/นายอำเภอแม่สาย",
+   "target_title": "นายอำเภอแม่สาย",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261029-drug-03.svg"
+}
