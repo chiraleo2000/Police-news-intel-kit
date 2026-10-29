@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-29T03:07:36.155Z",
+ "generated_at": "2026-10-29T03:55:04.427Z",
  "count": 262,
  "cases": [
   {
@@ -1195,7 +1195,7 @@
   {
    "case_id": "20261029-drug-06",
    "svg": "graphs/20261029-drug-06.svg",
-   "relations": 5
+   "relations": 0
   },
   {
    "case_id": "20261029-drug-07",

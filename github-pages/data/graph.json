@@ -1,24 +1,24 @@
 {
- "generated_at": "2026-10-29T03:07:35.564Z",
+ "generated_at": "2026-10-29T03:55:03.779Z",
  "schema_version": 2,
  "source": "vault/",
  "note": "Derived from Obsidian wikilinks. Local vault/ is the knowledge store; this file powers Pages ข้อมูลกราฟ.",
  "stats": {
-  "nodes": 980,
-  "edges": 1129,
+  "nodes": 976,
+  "edges": 1124,
   "unresolved": 53,
   "by_kind": {
    "daily": 6,
    "case": 262,
-   "entity": 640,
+   "entity": 636,
    "crime_type": 17,
    "other": 2,
    "unresolved": 53
   },
   "by_entity_group": {
-   "หน่วย": 400,
+   "หน่วย": 398,
    "บุคคล": 92,
-   "สถานที่": 122,
+   "สถานที่": 120,
    "ข่ายเครือข่าย": 13,
    "บัญชี": 7,
    "ผู้ต้องหา": 6
@@ -26,12 +26,12 @@
   "by_label": {
    "สืบสวนโดย": 172,
    "จับโดย": 259,
-   "สั่งการโดย": 125,
+   "สั่งการโดย": 124,
    "แจ้งโดย": 165,
    "บัญชี": 17,
-   "เกิดที่": 205,
+   "เกิดที่": 203,
    "เป้าหมายเครือข่าย": 14,
-   "เกี่ยวข้องกับบุคคล": 114,
+   "เกี่ยวข้องกับบุคคล": 112,
    "ผู้ต้องหา": 17,
    "หมายจากศาล": 23,
    "ภายใต้โครงการ": 1,
@@ -4275,16 +4275,16 @@
    "kind": "case",
    "folder": "20_Cases",
    "entity_group": null,
-   "date": "2026-10-28",
+   "date": null,
    "case_id": "20261029-drug-06",
-   "crime_type": "ยาเสพติด",
-   "bureau": "ปปส.ภาค 7",
-   "area": "สมุทรสงครามและเพชรบุรี",
-   "status": "เสร็จสิ้นภารกิจหารือ ไม่มีคดีหรือผู้ถูกกล่าวหา",
+   "crime_type": null,
+   "bureau": null,
+   "area": null,
+   "status": null,
    "tags": [],
-   "excerpt": "ประเภท: ยาเสพติด หน่วย: ปปส.ภาค 7 หน่วย: ภ.จว.เพชรบุรี สำนักงาน ปปส.ภาค 7 แจ้งว่าเมื่อวันที่ 27 ตุลาคม 2569 ผู้อำนวยการ ปปส.ภาค 7 พร้อมคณะเข้าพบผู้ว่าราชการจังหวัดสมุทรสงครามเพื่อแนะนำตัวในโอกาสเข้ารับตำแหน่ง แลกเปลี่ยนข้อมูลสถานการณ์ยาเสพติด และหารือขับเคลื่อนศูนย์พักฟื้นผู้ติดยาเสพติด \"บ้านพิชิตใจแม่กลอง\" จากนั้นเข้าพบผู้ว่าฯ เพชรบุรีและประธานคณะกรรมการเข…",
+   "excerpt": "type: case generated: true format version: 2 case id: \"20261029 drug 06\" date: 2026 10 28 crime type: \"ยาเสพติด\" bureau: \"ปปส.ภาค 7\" area: \"สมุทรสงครามและเพชรบุรี\" status th: \"เสร็จสิ้นภารกิจหารือ ไม่มีคดีหรือผู้ถูกกล่าวหา\" gang or group: \"ไม่มี\" severity: low provinces: [\"สมุทรสงคราม\",\"เพชรบุรี\"] rel units: [{\"target\":\"30 Entities/Units/ปปส.ภาค 7\",\"rel\":\"ส…",
    "path": "20_Cases/20261029-drug-06.md",
-   "degree": 5
+   "degree": 0
   },
   {
    "id": "20_Cases/20261029-drug-07",
@@ -5695,23 +5695,6 @@
    "tags": [],
    "excerpt": "20261029 drug 08 ปปส.ภาค 9 ร่วมประชุม ศอ.ปส.จ.สงขลา ถ่ายทอดแผนสงครามยาเสพติด 6 เดือน พื้นที่พิเศษ",
    "path": "30_Entities/People/ผวจ.สงขลา.md",
-   "degree": 1
-  },
-  {
-   "id": "30_Entities/People/ผอ.ปปส.ภ.7",
-   "title": "ผอ.ปปส.ภ.7",
-   "kind": "entity",
-   "folder": "30_Entities/People",
-   "entity_group": "หน่วย",
-   "date": null,
-   "case_id": null,
-   "crime_type": null,
-   "bureau": null,
-   "area": null,
-   "status": null,
-   "tags": [],
-   "excerpt": "20261029 drug 06 ผอ.ปปส.ภ.7 เข้าพบผู้ว่าฯ สมุทรสงคราม ผู้ว่าฯ เพชรบุรี และ ผบก.ภ.จว.เพชรบุรี หารื 20261029 drug 09 ปปส.ภาค 7 ถ่ายทอดนโยบายปี 2570 ใน ศอ.ปส.จ. ราชบุรี กาญจนบุรี สุพรรณบุรี นครปฐม ย",
-   "path": "30_Entities/People/ผอ.ปปส.ภ.7.md",
    "degree": 1
   },
   {
@@ -7636,23 +7619,6 @@
    "degree": 1
   },
   {
-   "id": "30_Entities/Places/สมุทรสงคราม",
-   "title": "สมุทรสงคราม",
-   "kind": "entity",
-   "folder": "30_Entities/Places",
-   "entity_group": "สถานที่",
-   "date": null,
-   "case_id": null,
-   "crime_type": null,
-   "bureau": null,
-   "area": null,
-   "status": null,
-   "tags": [],
-   "excerpt": "20261029 drug 06 ผอ.ปปส.ภ.7 เข้าพบผู้ว่าฯ สมุทรสงคราม ผู้ว่าฯ เพชรบุรี และ ผบก.ภ.จว.เพชรบุรี หารื",
-   "path": "30_Entities/Places/สมุทรสงคราม.md",
-   "degree": 1
-  },
-  {
    "id": "30_Entities/Places/สระแก้ว",
    "title": "สระแก้ว",
    "kind": "entity",
@@ -8126,23 +8092,6 @@
    "tags": [],
    "excerpt": "20261028 cyber 02 บก.ป. บช.ก. เปิดปฏิบัติการ “Operation Dark Empire” ทลายฟาร์มบัญชีม้านิติบุคคลข้า",
    "path": "30_Entities/Places/เชียงใหม่.md",
-   "degree": 1
-  },
-  {
-   "id": "30_Entities/Places/เพชรบุรี",
-   "title": "เพชรบุรี",
-   "kind": "entity",
-   "folder": "30_Entities/Places",
-   "entity_group": "สถานที่",
-   "date": null,
-   "case_id": null,
-   "crime_type": null,
-   "bureau": null,
-   "area": null,
-   "status": null,
-   "tags": [],
-   "excerpt": "20261029 drug 06 ผอ.ปปส.ภ.7 เข้าพบผู้ว่าฯ สมุทรสงคราม ผู้ว่าฯ เพชรบุรี และ ผบก.ภ.จว.เพชรบุรี หารื",
-   "path": "30_Entities/Places/เพชรบุรี.md",
    "degree": 1
   },
   {
@@ -10846,7 +10795,7 @@
    "tags": [],
    "excerpt": "20261027 drug 02 ปปส.ภาค 7 ประชุมคณะอนุกรรมการกลั่นกรองคำขอแจ้งข้อหาสมคบยาเสพติด ครั้งที่ 5/2569 พิจารณา 19 คำขอ ผู้ต้องหา 26 คน อนุมัติ 24 คน ไม่อนุมัติ 2 คน 20261029 drug 06 ผอ.ปปส.ภ.7 เข้าพบผู้ว่าฯ สมุทรสงคราม ผู้ว่าฯ เพชรบุรี และ ผบก.ภ.จว.เพชรบุรี หารือบูรณาการแก้ปัญหายาเสพติด ขับเคลื่อนศูนย์พักฟื้น \"บ้านพิชิตใจแม่กลอง\" 20261029 econ 02 อนุกรรมการตรวจสอ…",
    "path": "30_Entities/Units/ปปส.ภาค 7.md",
-   "degree": 3
+   "degree": 2
   },
   {
    "id": "30_Entities/Units/ปปส.ภาค 9",
@@ -11339,23 +11288,6 @@
    "tags": [],
    "excerpt": "20261025 drug 02 ตำรวจภูธรมุกดาหารสกัดจับรถลำเลียงยาบ้า 2.62 ล้านเม็ด พร้อมรถสเก๊านำทาง คุมตัว 4 ผู้ต้องหา ตามข้อกล่าวหา",
    "path": "30_Entities/Units/ภ.จว.มุกดาหาร.md",
-   "degree": 1
-  },
-  {
-   "id": "30_Entities/Units/ภ.จว.เพชรบุรี",
-   "title": "ภ.จว.เพชรบุรี",
-   "kind": "entity",
-   "folder": "30_Entities/Units",
-   "entity_group": "หน่วย",
-   "date": null,
-   "case_id": null,
-   "crime_type": null,
-   "bureau": null,
-   "area": null,
-   "status": null,
-   "tags": [],
-   "excerpt": "20261029 drug 06 ผอ.ปปส.ภ.7 เข้าพบผู้ว่าฯ สมุทรสงคราม ผู้ว่าฯ เพชรบุรี และ ผบก.ภ.จว.เพชรบุรี หารือบูรณาการแก้ปัญหายาเสพติด ขับเคลื่อนศูนย์พักฟื้น \"บ้านพิชิตใจแม่กลอง\"",
-   "path": "30_Entities/Units/ภ.จว.เพชรบุรี.md",
    "degree": 1
   },
   {
@@ -21027,31 +20959,6 @@
    "source": "20_Cases/20261029-drug-05",
    "target": "30_Entities/Projects/ยุทธการตัดเนื้อร้าย",
    "label": "ภายใต้โครงการ"
-  },
-  {
-   "source": "20_Cases/20261029-drug-06",
-   "target": "30_Entities/Units/ปปส.ภาค 7",
-   "label": "สั่งการโดย"
-  },
-  {
-   "source": "20_Cases/20261029-drug-06",
-   "target": "30_Entities/Units/ภ.จว.เพชรบุรี",
-   "label": "เกี่ยวข้องกับบุคคล"
-  },
-  {
-   "source": "20_Cases/20261029-drug-06",
-   "target": "30_Entities/Places/สมุทรสงคราม",
-   "label": "เกิดที่"
-  },
-  {
-   "source": "20_Cases/20261029-drug-06",
-   "target": "30_Entities/Places/เพชรบุรี",
-   "label": "เกิดที่"
-  },
-  {
-   "source": "20_Cases/20261029-drug-06",
-   "target": "30_Entities/People/ผอ.ปปส.ภ.7",
-   "label": "เกี่ยวข้องกับบุคคล"
   },
   {
    "source": "20_Cases/20261029-drug-07",

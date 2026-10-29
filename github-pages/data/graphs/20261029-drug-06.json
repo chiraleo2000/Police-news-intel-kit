@@ -1,40 +1,9 @@
 {
  "case_id": "20261029-drug-06",
  "title": "ผอ.ปปส.ภ.7 เข้าพบผู้ว่าฯ สมุทรสงคราม ผู้ว่าฯ เพชรบุรี และ ผบก.ภ.จว.เพชรบุรี หารือบูรณาการแก้ปัญหายาเสพติด ขับเคลื่อนศูนย์พักฟื้น \"บ้านพิชิตใจแม่กลอง\"",
- "generated_at": "2026-10-29T03:07:36.121Z",
- "node_count": 6,
- "edge_count": 5,
- "relations": [
-  {
-   "label": "สั่งการโดย",
-   "target_id": "30_Entities/Units/ปปส.ภาค 7",
-   "target_title": "ปปส.ภาค 7",
-   "direction": "out"
-  },
-  {
-   "label": "เกี่ยวข้องกับบุคคล",
-   "target_id": "30_Entities/Units/ภ.จว.เพชรบุรี",
-   "target_title": "ภ.จว.เพชรบุรี",
-   "direction": "out"
-  },
-  {
-   "label": "เกิดที่",
-   "target_id": "30_Entities/Places/สมุทรสงคราม",
-   "target_title": "สมุทรสงคราม",
-   "direction": "out"
-  },
-  {
-   "label": "เกิดที่",
-   "target_id": "30_Entities/Places/เพชรบุรี",
-   "target_title": "เพชรบุรี",
-   "direction": "out"
-  },
-  {
-   "label": "เกี่ยวข้องกับบุคคล",
-   "target_id": "30_Entities/People/ผอ.ปปส.ภ.7",
-   "target_title": "ผอ.ปปส.ภ.7",
-   "direction": "out"
-  }
- ],
+ "generated_at": "2026-10-29T03:55:04.392Z",
+ "node_count": 1,
+ "edge_count": 0,
+ "relations": [],
  "svg": "graphs/20261029-drug-06.svg"
 }
