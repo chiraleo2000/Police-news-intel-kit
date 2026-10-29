@@ -1,0 +1,64 @@
+{
+ "case_id": "20261029-police-03",
+ "title": "ผบ.ตร. ห่วงใยครู ตชด. บ้านโกแประ แม่สะเรียง บาดเจ็บที่ดวงตาจากประทัดระเบิดขณะตรวจประทัดตกที่ลำห้วยเพื่อความปลอดภัยของนักเรียน สั่งส่งเฮลิคอปเตอร์ตำรวจรับมารักษาที่ รพ.ตำรวจ",
+ "generated_at": "2026-10-29T02:56:20.471Z",
+ "node_count": 10,
+ "edge_count": 9,
+ "relations": [
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/สำนักงานตำรวจแห่งชาติ",
+   "target_title": "สำนักงานตำรวจแห่งชาติ",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/ตชด.",
+   "target_title": "ตชด.",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/รพ.ตำรวจ",
+   "target_title": "รพ.ตำรวจ",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ศูนย์การเรียนตำรวจตระเวนชายแดนบ้านโกแประ",
+   "target_title": "ศูนย์การเรียนตำรวจตระเวนชายแดนบ้านโกแประ",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/ผบ.ตร.",
+   "target_title": "ผบ.ตร.",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/รองโฆษก ตร.",
+   "target_title": "รองโฆษก ตร.",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/บุคคล/หญิง บุณยนุช",
+   "target_title": "หญิง บุณยนุช",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/บุคคล/หญิง อายุ",
+   "target_title": "หญิง อายุ",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/สถานที่/แม่สะเรียง",
+   "target_title": "แม่สะเรียง",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261029-police-03.svg"
+}

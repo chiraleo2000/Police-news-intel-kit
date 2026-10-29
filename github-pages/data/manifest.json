@@ -1,12 +1,12 @@
 {
- "generated_at": "2026-10-29T02:36:10.527Z",
+ "generated_at": "2026-10-29T02:56:19.388Z",
  "schema_version": 1,
  "default_range": "all",
  "days": [
   {
    "date": "2026-10-29",
    "status": "published",
-   "total": 27,
+   "total": 35,
    "crime_file": "2026-10-29_crime.json",
    "downloads": [
     {

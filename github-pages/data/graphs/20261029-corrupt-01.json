@@ -1,0 +1,40 @@
+{
+ "case_id": "20261029-corrupt-01",
+ "title": "โฆษก อสส. ชี้แจงคลิปเสียงอ้างเป็นอัยการช่วยพลิกคดีได้ ผู้พูดไม่ใช่พนักงานอัยการแต่เป็นอดีตอัยการที่ ก.อ. มีมติให้ออกจากราชการ ผู้เสียหายยื่น ป.ป.ช. แล้ว",
+ "generated_at": "2026-10-29T02:56:20.438Z",
+ "node_count": 6,
+ "edge_count": 5,
+ "relations": [
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/สำนักงานอัยการสูงสุด",
+   "target_title": "สำนักงานอัยการสูงสุด",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/ก.อ.",
+   "target_title": "ก.อ.",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/ป.ป.ช.",
+   "target_title": "ป.ป.ช.",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลอาญาคดีทุจริตและประพฤติมิชอบกลาง",
+   "target_title": "ศาลอาญาคดีทุจริตและประพฤติมิชอบกลาง",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/โฆษก อสส.",
+   "target_title": "โฆษก อสส.",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261029-corrupt-01.svg"
+}

@@ -1,0 +1,58 @@
+{
+ "case_id": "20261029-human-03",
+ "title": "ตม.จว.เพชรบุรีร่วมจัดหางานจังหวัด ตรวจพบแรงงานเมียนมา 3 คน ที่เขาย้อย คนหนึ่งอยู่เกินกำหนด 109 วัน อีกคนหลุดระบบใบอนุญาตทำงาน ผู้ให้พักพิงถูกแจ้งข้อหาช่วยเหลือผู้กระทำผิด",
+ "generated_at": "2026-10-29T02:56:20.466Z",
+ "node_count": 9,
+ "edge_count": 8,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/ตม.จว.เพชรบุรี",
+   "target_title": "ตม.จว.เพชรบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บก.ตม.3",
+   "target_title": "บก.ตม.3",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/สำนักงานจัดหางานจังหวัดเพชรบุรี",
+   "target_title": "สำนักงานจัดหางานจังหวัดเพชรบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/สภ.เขาย้อย",
+   "target_title": "สภ.เขาย้อย",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/อำเภอเขาย้อย",
+   "target_title": "อำเภอเขาย้อย",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/ผบก.ตม.3",
+   "target_title": "ผบก.ตม.3",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/บุคคล/ทรงโปรด สิริสุขะ",
+   "target_title": "ทรงโปรด สิริสุขะ",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/สถานที่/เขาย้อย",
+   "target_title": "เขาย้อย",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261029-human-03.svg"
+}

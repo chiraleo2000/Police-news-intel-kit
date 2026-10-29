@@ -1,0 +1,34 @@
+{
+ "case_id": "20261029-police-05",
+ "title": "ครอบครัวชายถูกจับหลังเหตุทะเลาะกับตำรวจลาดตระเวนร้านอาหารพระราม 2 กล่าวหาถูกทำร้ายในห้องสอบสวน ผกก.สน.บางมดปฏิเสธ เปิดกล้องวงจรปิดให้ดู เปิดทางร้องเรียนและตรวจสอบเพิ่ม",
+ "generated_at": "2026-10-29T02:56:20.475Z",
+ "node_count": 5,
+ "edge_count": 4,
+ "relations": [
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/สน.บางมด",
+   "target_title": "สน.บางมด",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/สำนักงานตำรวจแห่งชาติ",
+   "target_title": "สำนักงานตำรวจแห่งชาติ",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ถนนพระราม 2",
+   "target_title": "ถนนพระราม 2",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/ผกก.สน.บางมด",
+   "target_title": "ผกก.สน.บางมด",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261029-police-05.svg"
+}

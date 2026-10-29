@@ -1,0 +1,64 @@
+{
+ "case_id": "20261029-env-01",
+ "title": "กระทรวงอุตสาหกรรมจับมือ ปปง. ผลักดันความผิดสิ่งแวดล้อมเป็นความผิดมูลฐานฟอกเงิน หวังยึดทรัพย์ผู้บงการกากอุตสาหกรรมถึงนอมินี คาดมีผลกลางปี 2570 ระดม 50 ชุดตรวจโรงงานเสี่ยง",
+ "generated_at": "2026-10-29T02:56:20.461Z",
+ "node_count": 10,
+ "edge_count": 9,
+ "relations": [
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/กระทรวงอุตสาหกรรม",
+   "target_title": "กระทรวงอุตสาหกรรม",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/ปปง.",
+   "target_title": "ปปง.",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/กรมโรงงานอุตสาหกรรม",
+   "target_title": "กรมโรงงานอุตสาหกรรม",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/เขตพัฒนาพิเศษภาคตะวันออก",
+   "target_title": "เขตพัฒนาพิเศษภาคตะวันออก",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/จังหวัดปราจีนบุรี",
+   "target_title": "จังหวัดปราจีนบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/จังหวัดสมุทรปราการ",
+   "target_title": "จังหวัดสมุทรปราการ",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/รัฐมนตรีว่าการกระทรวงอุตสาหกรรม",
+   "target_title": "รัฐมนตรีว่าการกระทรวงอุตสาหกรรม",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/ปลัดกระทรวงอุตสาหกรรม",
+   "target_title": "ปลัดกระทรวงอุตสาหกรรม",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/เลขาธิการ ปปง.",
+   "target_title": "เลขาธิการ ปปง.",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261029-env-01.svg"
+}

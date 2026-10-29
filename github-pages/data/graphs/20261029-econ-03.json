@@ -1,0 +1,82 @@
+{
+ "case_id": "20261029-econ-03",
+ "title": "นายกรัฐมนตรีสั่งทุกหน่วยเดินหน้าปราบเครือข่ายฟอกเงินข้ามชาติ “เบน สมิธ-ยิม เลียก” ไม่เว้นใคร ตำรวจได้หมายจับ 6 ราย ผู้ต้องหารายที่ 7 เข้าพบพนักงานสอบสวนและปฏิเสธข้อกล่าวหา",
+ "generated_at": "2026-10-29T02:56:20.460Z",
+ "node_count": 13,
+ "edge_count": 12,
+ "relations": [
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/สำนักงานตำรวจแห่งชาติ",
+   "target_title": "สำนักงานตำรวจแห่งชาติ",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/ปปง.",
+   "target_title": "ปปง.",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/DSI",
+   "target_title": "DSI",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/ป.ป.ท.",
+   "target_title": "ป.ป.ท.",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/ป.ป.ส.",
+   "target_title": "ป.ป.ส.",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/ก.ล.ต.",
+   "target_title": "ก.ล.ต.",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/กองบัญชาการตำรวจแห่งชาติ",
+   "target_title": "กองบัญชาการตำรวจแห่งชาติ",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/นายกรัฐมนตรี",
+   "target_title": "นายกรัฐมนตรี",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/ผบ.ตร.",
+   "target_title": "ผบ.ตร.",
+   "direction": "out"
+  },
+  {
+   "label": "เป้าหมายเครือข่าย",
+   "target_id": "30_Entities/Projects/เครือข่ายเบน สมิธ-ยิม เลียก",
+   "target_title": "เครือข่ายเบน สมิธ-ยิม เลียก",
+   "direction": "out"
+  },
+  {
+   "label": "ผู้ต้องหา",
+   "target_id": "30_Entities/ผู้ต้องหา/เบน สมิธ-ยิม เลียก",
+   "target_title": "เบน สมิธ-ยิม เลียก",
+   "direction": "out"
+  },
+  {
+   "label": "ติดตามจาก",
+   "target_id": "20_Cases/20261028-econ-01",
+   "target_title": "ตำรวจ ACSC-บช.ก. ร่วม ก.ล.ต.-ปปง. แถลงออกหมายจับ 6 คน เครือข่ายฟอกเงินข้ามชาติ “เบน สมิธ-ยิม เลียก” ซ่อนเงินผ่านธนาคารและกองทุนต่างประเทศก่อนซื้อหุ้นไทย ปปง. อายัดทรัพย์ ผู้ต้องหาหนึ่งรายถูกควบคุมตัวแล้ว",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261029-econ-03.svg"
+}

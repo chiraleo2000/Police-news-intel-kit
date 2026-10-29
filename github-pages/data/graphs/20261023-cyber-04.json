@@ -1,7 +1,7 @@
 {
  "case_id": "20261023-cyber-04",
  "title": "แจ้งเตือน พบช่องโหว่ PHP2Shell เสี่ยงถูกควบคุมเซิร์ฟเวอร์จากภายนอก",
- "generated_at": "2026-10-29T02:36:12.232Z",
+ "generated_at": "2026-10-29T02:56:20.156Z",
  "node_count": 2,
  "edge_count": 1,
  "relations": [

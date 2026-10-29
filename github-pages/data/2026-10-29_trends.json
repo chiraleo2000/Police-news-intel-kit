@@ -12,11 +12,32 @@
    "surge": true
   },
   {
+   "type": "การปฏิบัติหน้าที่ ประชาสัมพันธ์ และนโยบายตำรวจ",
+   "today": 5,
+   "avg_prev_7d": 2.71,
+   "delta_pct": 84.2,
+   "surge": true
+  },
+  {
    "type": "คดีชีวิต ร่างกาย และเพศ",
    "today": 3,
    "avg_prev_7d": 4.29,
    "delta_pct": -30.0,
    "surge": false
+  },
+  {
+   "type": "คดีเศรษฐกิจ การเงิน และฟอกเงิน",
+   "today": 3,
+   "avg_prev_7d": 1.57,
+   "delta_pct": 90.9,
+   "surge": true
+  },
+  {
+   "type": "ค้ามนุษย์ แรงงานผิดกฎหมาย และคุ้มครองเด็ก",
+   "today": 3,
+   "avg_prev_7d": 2.0,
+   "delta_pct": 50.0,
+   "surge": true
   },
   {
    "type": "อาชญากรรมไซเบอร์และออนไลน์",
@@ -47,20 +68,6 @@
    "surge": false
   },
   {
-   "type": "การปฏิบัติหน้าที่ ประชาสัมพันธ์ และนโยบายตำรวจ",
-   "today": 2,
-   "avg_prev_7d": 2.71,
-   "delta_pct": -26.3,
-   "surge": false
-  },
-  {
-   "type": "คดีเศรษฐกิจ การเงิน และฟอกเงิน",
-   "today": 2,
-   "avg_prev_7d": 1.57,
-   "delta_pct": 27.3,
-   "surge": false
-  },
-  {
    "type": "ความปลอดภัยทางหลวงและการสกัดจับ",
    "today": 1,
    "avg_prev_7d": 0.71,
@@ -68,10 +75,17 @@
    "surge": false
   },
   {
-   "type": "ค้ามนุษย์ แรงงานผิดกฎหมาย และคุ้มครองเด็ก",
+   "type": "ทุจริตและประพฤติมิชอบของเจ้าหน้าที่รัฐ",
    "today": 1,
-   "avg_prev_7d": 2.0,
-   "delta_pct": -50.0,
+   "avg_prev_7d": 0.14,
+   "delta_pct": 600.0,
+   "surge": false
+  },
+  {
+   "type": "สิ่งแวดล้อม ทรัพยากร และสัตว์ป่า",
+   "today": 1,
+   "avg_prev_7d": 0.57,
+   "delta_pct": 75.0,
    "surge": false
   }
  ],
@@ -83,21 +97,27 @@
    "surge": true
   },
   {
+   "mo": "ฟอกเงิน",
+   "today": 5,
+   "avg_prev_7d": 0.29,
+   "surge": true
+  },
+  {
    "mo": "สินค้า/ยาปลอม",
    "today": 2,
    "avg_prev_7d": 0.43,
    "surge": false
   },
   {
-   "mo": "ฟอกเงิน",
-   "today": 2,
-   "avg_prev_7d": 0.29,
-   "surge": false
-  },
-  {
    "mo": "เจ้าหน้าที่รัฐร่วมขบวนการ",
    "today": 1,
    "avg_prev_7d": 0.0,
+   "surge": false
+  },
+  {
+   "mo": "ค้ามนุษย์บังคับกระทำผิด",
+   "today": 1,
+   "avg_prev_7d": 0.14,
    "surge": false
   },
   {
@@ -131,17 +151,34 @@
    "surge": false
   },
   {
+   "mo": "แอบอ้างเจ้าหน้าที่รัฐ/ตำรวจ",
+   "today": 1,
+   "avg_prev_7d": 0.29,
+   "surge": false
+  },
+  {
    "mo": "หลอกให้โอนคริปโต",
    "today": 1,
    "avg_prev_7d": 0.0,
+   "surge": false
+  },
+  {
+   "mo": "แรงงานต่างด้าวผิดกฎหมาย",
+   "today": 1,
+   "avg_prev_7d": 0.14,
    "surge": false
   }
  ],
  "by_province": [
   {
    "province": "กรุงเทพมหานคร",
-   "today": 6,
+   "today": 10,
    "avg_prev_7d": 8.86
+  },
+  {
+   "province": "เพชรบุรี",
+   "today": 3,
+   "avg_prev_7d": 0.57
   },
   {
    "province": "เชียงใหม่",
@@ -164,9 +201,9 @@
    "avg_prev_7d": 0.0
   },
   {
-   "province": "เพชรบุรี",
+   "province": "ระยอง",
    "today": 2,
-   "avg_prev_7d": 0.57
+   "avg_prev_7d": 0.29
   },
   {
    "province": "ปทุมธานี",
@@ -177,6 +214,11 @@
    "province": "สมุทรสงคราม",
    "today": 2,
    "avg_prev_7d": 0.0
+  },
+  {
+   "province": "สมุทรปราการ",
+   "today": 2,
+   "avg_prev_7d": 1.86
   },
   {
    "province": "สุราษฎร์ธานี",
@@ -214,14 +256,14 @@
    "avg_prev_7d": 1.14
   },
   {
+   "province": "พิษณุโลก",
+   "today": 1,
+   "avg_prev_7d": 0.57
+  },
+  {
    "province": "อุบลราชธานี",
    "today": 1,
    "avg_prev_7d": 0.0
-  },
-  {
-   "province": "ระยอง",
-   "today": 1,
-   "avg_prev_7d": 0.29
   },
   {
    "province": "สมุทรสาคร",
@@ -229,14 +271,19 @@
    "avg_prev_7d": 0.43
   },
   {
-   "province": "สมุทรปราการ",
+   "province": "ปราจีนบุรี",
    "today": 1,
-   "avg_prev_7d": 1.86
+   "avg_prev_7d": 0.14
   },
   {
    "province": "สงขลา",
    "today": 1,
    "avg_prev_7d": 1.43
+  },
+  {
+   "province": "แม่ฮ่องสอน",
+   "today": 1,
+   "avg_prev_7d": 0.29
   },
   {
    "province": "ยะลา",
