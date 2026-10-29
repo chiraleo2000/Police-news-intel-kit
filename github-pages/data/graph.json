@@ -1,24 +1,24 @@
 {
- "generated_at": "2026-10-29T02:56:19.839Z",
+ "generated_at": "2026-10-29T03:07:35.564Z",
  "schema_version": 2,
  "source": "vault/",
  "note": "Derived from Obsidian wikilinks. Local vault/ is the knowledge store; this file powers Pages ข้อมูลกราฟ.",
  "stats": {
-  "nodes": 985,
-  "edges": 1137,
+  "nodes": 980,
+  "edges": 1129,
   "unresolved": 53,
   "by_kind": {
    "daily": 6,
    "case": 262,
-   "entity": 645,
+   "entity": 640,
    "crime_type": 17,
    "other": 2,
    "unresolved": 53
   },
   "by_entity_group": {
-   "หน่วย": 402,
+   "หน่วย": 400,
    "บุคคล": 92,
-   "สถานที่": 125,
+   "สถานที่": 122,
    "ข่ายเครือข่าย": 13,
    "บัญชี": 7,
    "ผู้ต้องหา": 6
@@ -26,12 +26,12 @@
   "by_label": {
    "สืบสวนโดย": 172,
    "จับโดย": 259,
-   "สั่งการโดย": 128,
+   "สั่งการโดย": 125,
    "แจ้งโดย": 165,
    "บัญชี": 17,
-   "เกิดที่": 209,
+   "เกิดที่": 205,
    "เป้าหมายเครือข่าย": 14,
-   "เกี่ยวข้องกับบุคคล": 115,
+   "เกี่ยวข้องกับบุคคล": 114,
    "ผู้ต้องหา": 17,
    "หมายจากศาล": 23,
    "ภายใต้โครงการ": 1,
@@ -4326,16 +4326,16 @@
    "kind": "case",
    "folder": "20_Cases",
    "entity_group": null,
-   "date": "2026-10-29",
+   "date": null,
    "case_id": "20261029-drug-09",
-   "crime_type": "ยาเสพติด",
-   "bureau": "ปปส.ภาค 7",
-   "area": "ราชบุรี กาญจนบุรี สุพรรณบุรี นครปฐม",
-   "status": "ประชุมเสร็จสิ้น ไม่มีผู้ถูกกล่าวหารายบุคคล",
+   "crime_type": null,
+   "bureau": null,
+   "area": null,
+   "status": null,
    "tags": [],
-   "excerpt": "ประเภท: ยาเสพติด หน่วย: ปปส.ภาค 7 หน่วย: ศอ.ปส.จ.ราชบุรี หน่วย: ศอ.ปส.จ.กาญจนบุรี หน่วย: ศอ.ปส.จ.สุพรรณบุรี หน่วย: ศอ.ปส.จ.นครปฐม สำนักงาน ปปส.ภาค 7 แจ้งว่าเมื่อวันที่ 27 28 ตุลาคม 2569 ผู้แทนเข้าร่วมประชุมคณะกรรมการ ศอ.ปส.จ. ของราชบุรี (ครั้งที่ 10/2569) กาญจนบุรี (10/2569) สุพรรณบุรี (10/2569) และนครปฐม (ครั้งที่ 1/2570) ที่นครปฐม ปปส.ภ.7 รายงานเรื่องร้อง…",
+   "excerpt": "type: case generated: true format version: 2 case id: \"20261029 drug 09\" date: 2026 10 29 crime type: \"ยาเสพติด\" bureau: \"ปปส.ภาค 7\" area: \"ราชบุรี กาญจนบุรี สุพรรณบุรี นครปฐม\" status th: \"ประชุมเสร็จสิ้น ไม่มีผู้ถูกกล่าวหารายบุคคล\" gang or group: \"ไม่มี\" severity: low provinces: [\"ราชบุรี\",\"กาญจนบุรี\",\"สุพรรณบุรี\",\"นครปฐม\"] rel units: [{\"target\":\"30 Entiti…",
    "path": "20_Cases/20261029-drug-09.md",
-   "degree": 8
+   "degree": 0
   },
   {
    "id": "20_Cases/20261029-econ-01",
@@ -5712,7 +5712,7 @@
    "tags": [],
    "excerpt": "20261029 drug 06 ผอ.ปปส.ภ.7 เข้าพบผู้ว่าฯ สมุทรสงคราม ผู้ว่าฯ เพชรบุรี และ ผบก.ภ.จว.เพชรบุรี หารื 20261029 drug 09 ปปส.ภาค 7 ถ่ายทอดนโยบายปี 2570 ใน ศอ.ปส.จ. ราชบุรี กาญจนบุรี สุพรรณบุรี นครปฐม ย",
    "path": "30_Entities/People/ผอ.ปปส.ภ.7.md",
-   "degree": 2
+   "degree": 1
   },
   {
    "id": "30_Entities/People/พาณิชย์จังหวัดชลบุรี",
@@ -6497,23 +6497,6 @@
    "degree": 1
   },
   {
-   "id": "30_Entities/Places/กาญจนบุรี",
-   "title": "กาญจนบุรี",
-   "kind": "entity",
-   "folder": "30_Entities/Places",
-   "entity_group": "สถานที่",
-   "date": null,
-   "case_id": null,
-   "crime_type": null,
-   "bureau": null,
-   "area": null,
-   "status": null,
-   "tags": [],
-   "excerpt": "20261029 drug 09 ปปส.ภาค 7 ถ่ายทอดนโยบายปี 2570 ใน ศอ.ปส.จ. ราชบุรี กาญจนบุรี สุพรรณบุรี นครปฐม ย",
-   "path": "30_Entities/Places/กาญจนบุรี.md",
-   "degree": 1
-  },
-  {
    "id": "30_Entities/Places/ขอนแก่น",
    "title": "ขอนแก่น",
    "kind": "entity",
@@ -7140,7 +7123,7 @@
    "tags": [],
    "excerpt": "20261027 drug 02 ปปส.ภาค 7 ประชุมคณะอนุกรรมการกลั่นกรองคำขอแจ้งข้อหาสมคบยาเสพติด ครั้งที่ 5/2569 20261029 drug 09 ปปส.ภาค 7 ถ่ายทอดนโยบายปี 2570 ใน ศอ.ปส.จ. ราชบุรี กาญจนบุรี สุพรรณบุรี นครปฐม ย 20261029 econ 02 อนุกรรมการตรวจสอบทรัพย์สิน ภาค 1 และภาค 7 ประชุมพิจารณาสำนวนยึด อายัดทรัพย์เครือ",
    "path": "30_Entities/Places/นครปฐม.md",
-   "degree": 3
+   "degree": 2
   },
   {
    "id": "30_Entities/Places/นครพนม",
@@ -7483,23 +7466,6 @@
    "degree": 1
   },
   {
-   "id": "30_Entities/Places/ราชบุรี",
-   "title": "ราชบุรี",
-   "kind": "entity",
-   "folder": "30_Entities/Places",
-   "entity_group": "สถานที่",
-   "date": null,
-   "case_id": null,
-   "crime_type": null,
-   "bureau": null,
-   "area": null,
-   "status": null,
-   "tags": [],
-   "excerpt": "20261029 drug 09 ปปส.ภาค 7 ถ่ายทอดนโยบายปี 2570 ใน ศอ.ปส.จ. ราชบุรี กาญจนบุรี สุพรรณบุรี นครปฐม ย",
-   "path": "30_Entities/Places/ราชบุรี.md",
-   "degree": 1
-  },
-  {
    "id": "30_Entities/Places/ลาดพร้าว 71",
    "title": "ลาดพร้าว 71",
    "kind": "entity",
@@ -7735,23 +7701,6 @@
    "tags": [],
    "excerpt": "20261027 econ line 01 บช.ก. ร่วม ACSC แถลง Operation Dark Empire ทลายฟาร์มบัญชีม้านิติบุคคลข้ามชาติ จ้",
    "path": "30_Entities/Places/สะเดา.md",
-   "degree": 1
-  },
-  {
-   "id": "30_Entities/Places/สุพรรณบุรี",
-   "title": "สุพรรณบุรี",
-   "kind": "entity",
-   "folder": "30_Entities/Places",
-   "entity_group": "สถานที่",
-   "date": null,
-   "case_id": null,
-   "crime_type": null,
-   "bureau": null,
-   "area": null,
-   "status": null,
-   "tags": [],
-   "excerpt": "20261029 drug 09 ปปส.ภาค 7 ถ่ายทอดนโยบายปี 2570 ใน ศอ.ปส.จ. ราชบุรี กาญจนบุรี สุพรรณบุรี นครปฐม ย",
-   "path": "30_Entities/Places/สุพรรณบุรี.md",
    "degree": 1
   },
   {
@@ -10897,7 +10846,7 @@
    "tags": [],
    "excerpt": "20261027 drug 02 ปปส.ภาค 7 ประชุมคณะอนุกรรมการกลั่นกรองคำขอแจ้งข้อหาสมคบยาเสพติด ครั้งที่ 5/2569 พิจารณา 19 คำขอ ผู้ต้องหา 26 คน อนุมัติ 24 คน ไม่อนุมัติ 2 คน 20261029 drug 06 ผอ.ปปส.ภ.7 เข้าพบผู้ว่าฯ สมุทรสงคราม ผู้ว่าฯ เพชรบุรี และ ผบก.ภ.จว.เพชรบุรี หารือบูรณาการแก้ปัญหายาเสพติด ขับเคลื่อนศูนย์พักฟื้น \"บ้านพิชิตใจแม่กลอง\" 20261029 econ 02 อนุกรรมการตรวจสอ…",
    "path": "30_Entities/Units/ปปส.ภาค 7.md",
-   "degree": 4
+   "degree": 3
   },
   {
    "id": "30_Entities/Units/ปปส.ภาค 9",
@@ -11509,40 +11458,6 @@
    "tags": [],
    "excerpt": "โน้ตสำหรับค้นหาใน Obsidian ไม่ใส่รายชื่อคดีทั้งก้อน — ใช้ Bases หรือ backlink",
    "path": "30_Entities/Units/ศปก.ตร..md",
-   "degree": 1
-  },
-  {
-   "id": "30_Entities/Units/ศอ.ปส.จ.นครปฐม",
-   "title": "ศอ.ปส.จ.นครปฐม",
-   "kind": "entity",
-   "folder": "30_Entities/Units",
-   "entity_group": "หน่วย",
-   "date": null,
-   "case_id": null,
-   "crime_type": null,
-   "bureau": null,
-   "area": null,
-   "status": null,
-   "tags": [],
-   "excerpt": "20261029 drug 09 ปปส.ภาค 7 ถ่ายทอดนโยบายปี 2570 ใน ศอ.ปส.จ. ราชบุรี กาญจนบุรี สุพรรณบุรี นครปฐม ย้ำสกัดกั้นเครือข่าย ยึดทรัพย์ และจัดการเจ้าหน้าที่รัฐที่เกี่ยวข้องยาเสพติด",
-   "path": "30_Entities/Units/ศอ.ปส.จ.นครปฐม.md",
-   "degree": 1
-  },
-  {
-   "id": "30_Entities/Units/ศอ.ปส.จ.ราชบุรี",
-   "title": "ศอ.ปส.จ.ราชบุรี",
-   "kind": "entity",
-   "folder": "30_Entities/Units",
-   "entity_group": "หน่วย",
-   "date": null,
-   "case_id": null,
-   "crime_type": null,
-   "bureau": null,
-   "area": null,
-   "status": null,
-   "tags": [],
-   "excerpt": "20261029 drug 09 ปปส.ภาค 7 ถ่ายทอดนโยบายปี 2570 ใน ศอ.ปส.จ. ราชบุรี กาญจนบุรี สุพรรณบุรี นครปฐม ย้ำสกัดกั้นเครือข่าย ยึดทรัพย์ และจัดการเจ้าหน้าที่รัฐที่เกี่ยวข้องยาเสพติด",
-   "path": "30_Entities/Units/ศอ.ปส.จ.ราชบุรี.md",
    "degree": 1
   },
   {
@@ -21176,46 +21091,6 @@
   {
    "source": "20_Cases/20261029-drug-08",
    "target": "30_Entities/People/ผวจ.สงขลา",
-   "label": "เกี่ยวข้องกับบุคคล"
-  },
-  {
-   "source": "20_Cases/20261029-drug-09",
-   "target": "30_Entities/Units/ปปส.ภาค 7",
-   "label": "สั่งการโดย"
-  },
-  {
-   "source": "20_Cases/20261029-drug-09",
-   "target": "30_Entities/Units/ศอ.ปส.จ.นครปฐม",
-   "label": "สั่งการโดย"
-  },
-  {
-   "source": "20_Cases/20261029-drug-09",
-   "target": "30_Entities/Units/ศอ.ปส.จ.ราชบุรี",
-   "label": "สั่งการโดย"
-  },
-  {
-   "source": "20_Cases/20261029-drug-09",
-   "target": "30_Entities/Places/ราชบุรี",
-   "label": "เกิดที่"
-  },
-  {
-   "source": "20_Cases/20261029-drug-09",
-   "target": "30_Entities/Places/กาญจนบุรี",
-   "label": "เกิดที่"
-  },
-  {
-   "source": "20_Cases/20261029-drug-09",
-   "target": "30_Entities/Places/สุพรรณบุรี",
-   "label": "เกิดที่"
-  },
-  {
-   "source": "20_Cases/20261029-drug-09",
-   "target": "30_Entities/Places/นครปฐม",
-   "label": "เกิดที่"
-  },
-  {
-   "source": "20_Cases/20261029-drug-09",
-   "target": "30_Entities/People/ผอ.ปปส.ภ.7",
    "label": "เกี่ยวข้องกับบุคคล"
   },
   {
