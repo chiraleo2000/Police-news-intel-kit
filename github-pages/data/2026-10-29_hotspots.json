@@ -17,6 +17,18 @@
   ]
  },
  {
+  "province": "เชียงราย",
+  "region": "ภาคเหนือ",
+  "count": 2,
+  "top_crime_types": [
+   "ยาเสพติด"
+  ],
+  "post_ids": [
+   "20261029-drug-03",
+   "20261029-drug-07"
+  ]
+ },
+ {
   "province": "สมุทรสงคราม",
   "region": "ภาคตะวันตก",
   "count": 2,
@@ -89,17 +101,6 @@
   ]
  },
  {
-  "province": "เชียงราย",
-  "region": "ภาคเหนือ",
-  "count": 1,
-  "top_crime_types": [
-   "ยาเสพติด"
-  ],
-  "post_ids": [
-   "20261029-drug-03"
-  ]
- },
- {
   "province": "อยุธยา",
   "region": "ภาคกลาง",
   "count": 1,
@@ -155,6 +156,17 @@
   ]
  },
  {
+  "province": "สงขลา",
+  "region": "ภาคใต้",
+  "count": 1,
+  "top_crime_types": [
+   "ยาเสพติด"
+  ],
+  "post_ids": [
+   "20261029-drug-08"
+  ]
+ },
+ {
   "province": "ยะลา",
   "region": "ภาคใต้",
   "count": 1,
@@ -163,6 +175,28 @@
   ],
   "post_ids": [
    "20261029-police-01"
+  ]
+ },
+ {
+  "province": "พระนครศรีอยุธยา",
+  "region": "ภาคกลาง",
+  "count": 1,
+  "top_crime_types": [
+   "คดีเศรษฐกิจ การเงิน และฟอกเงิน"
+  ],
+  "post_ids": [
+   "20261029-econ-02"
+  ]
+ },
+ {
+  "province": "ราชบุรี",
+  "region": "กรุงเทพฯ และปริมณฑล",
+  "count": 1,
+  "top_crime_types": [
+   "ยาเสพติด"
+  ],
+  "post_ids": [
+   "20261029-drug-09"
   ]
  }
 ]

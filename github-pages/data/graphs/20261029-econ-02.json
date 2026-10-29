@@ -1,0 +1,34 @@
+{
+ "case_id": "20261029-econ-02",
+ "title": "อนุกรรมการตรวจสอบทรัพย์สิน ภาค 1 และภาค 7 ประชุมพิจารณาสำนวนยึด-อายัดทรัพย์เครือข่ายยาเสพติด ภาค 7 เห็นชอบเสนอ 10 คดี",
+ "generated_at": "2026-10-29T02:30:03.248Z",
+ "node_count": 5,
+ "edge_count": 4,
+ "relations": [
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/ปปส.ภาค 7",
+   "target_title": "ปปส.ภาค 7",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/ปปส.ภาค 1",
+   "target_title": "ปปส.ภาค 1",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/นครปฐม",
+   "target_title": "นครปฐม",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/พระนครศรีอยุธยา",
+   "target_title": "พระนครศรีอยุธยา",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261029-econ-02.svg"
+}

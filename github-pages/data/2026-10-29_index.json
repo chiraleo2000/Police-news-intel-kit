@@ -1,42 +1,43 @@
 {
  "date": "2026-10-29",
- "generated_at": "2026-10-29T08:15:27+07:00",
- "run": "partial",
+ "generated_at": "2026-10-29T09:18:23+07:00",
+ "run": "complete",
  "stats": {
-  "total": 21,
-  "direct": 2,
-  "indirect": 19,
-  "priority_A": 1,
-  "priority_B": 16,
-  "priority_C": 4,
+  "total": 27,
+  "direct": 9,
+  "indirect": 18,
+  "priority_A": 2,
+  "priority_B": 22,
+  "priority_C": 3,
   "alerts": 5,
-  "official_confirmed": 2,
+  "official_confirmed": 9,
   "by_crime_type": {
-   "ยาเสพติด": 6,
+   "ยาเสพติด": 9,
    "คดีชีวิต ร่างกาย และเพศ": 3,
+   "อาชญากรรมไซเบอร์และออนไลน์": 3,
    "คดีทรัพย์สิน": 2,
    "คุ้มครองผู้บริโภคและสินค้าผิดกฎหมาย": 2,
-   "อาชญากรรมไซเบอร์และออนไลน์": 2,
+   "อาชญากรรมข้ามชาติและความร่วมมือระหว่างประเทศ": 2,
    "การปฏิบัติหน้าที่ ประชาสัมพันธ์ และนโยบายตำรวจ": 2,
+   "คดีเศรษฐกิจ การเงิน และฟอกเงิน": 2,
    "ความปลอดภัยทางหลวงและการสกัดจับ": 1,
-   "ค้ามนุษย์ แรงงานผิดกฎหมาย และคุ้มครองเด็ก": 1,
-   "อาชญากรรมข้ามชาติและความร่วมมือระหว่างประเทศ": 1,
-   "คดีเศรษฐกิจ การเงิน และฟอกเงิน": 1
+   "ค้ามนุษย์ แรงงานผิดกฎหมาย และคุ้มครองเด็ก": 1
   },
   "total_loss_thb": 68662200,
   "total_seized_value_thb": 207084200,
   "total_arrested": 50
  },
- "articles_scraped_pass": 266,
+ "articles_scraped_pass": 293,
  "articles_in_window": 84,
- "official_pr_articles": 4,
- "official_articles_all_batches": 4,
- "posts_published_after_merge": 21,
+ "official_pr_articles": 27,
+ "official_articles_all_batches": 27,
+ "posts_published_after_merge": 27,
  "fetch_count_approx": 324,
- "skipped_out_of_scope": 63,
+ "skipped_out_of_scope": 57,
  "partial_reasons": [
-  "official_pr_articles=4 (<8): ONCB 4 (รวมเป็น 2 เหตุการณ์); DSI/ตำรวจท่องเที่ยว/OAG ไม่มีรายการใหม่ในหน้าต่าง; เว็บ ตร.ส่วนกลาง/CIB/CSD/ตม./AMLO/SEC/OCPB/NACC ไม่มีข่าวใช้ได้ในหน้าต่าง; MDES 403; Corrections error; ASEAN NOW 404; Reuters 401; ThaiPoliceOnline JS-only; เว็บภูมิภาค ตร.ไม่มีรายการในหน้าต่าง",
-  "Facebook/social ไม่ถูกดึง; แหล่งที่บล็อกไม่ถูกหลีกเลี่ยง"
+  "official_pr_articles=27 (ONCB 16, สตช.ส่วนกลาง 5, อัยการสูงสุด 1, ThaiCERT 3, ป.ป.ท. 2) ผ่านเกณฑ์ >=8; ดึงผ่าน ONCB news id sequence และ WordPress REST API ของ saranitet/ago/thaicert",
+  "แหล่งที่บล็อกหรือไม่มีข่าวในหน้าต่างไม่ถูกหลีกเลี่ยง: MDES 403, Reuters 401, Corrections error, ASEAN NOW 404, SEC 403, metro/ภ.จว. 403, ThaiPoliceOnline JS-only, DSI ล่าสุด 27 ต.ค., ตำรวจท่องเที่ยวไม่มีรายการใหม่",
+  "Facebook/social ไม่ถูกดึง"
  ],
  "files": [
   "2026-10-29_crime.html",
@@ -72,16 +73,16 @@
   "A:bpp_ตชด": "no_listing (not covered by a dedicated listing today; registry row checked via listing sweep + allowed_domains search; no in-window items)",
   "A:chonburi_provincial": "no_listing (not covered by a dedicated listing today; registry row checked via listing sweep + allowed_domains search; no in-window items)",
   "B:DSI": "ok-stale (listing 200; newest item 27 Oct already covered; detail pages carry no dates)",
-  "B:ONCB": "ok (news/26596 ป.ป.ส. คดีภูเวียง and 26591-26593 ปปส.ภ.7 used as official)",
+  "B:ONCB": "ok (news id sweep 26586-26624: 16 in-window items; 9 official posts built)",
   "B:AMLO": "no_listing (http 200; listing fetched 2026-10-29; in-window items 0)",
-  "B:OAG": "ok (listing fetched; no crime item used)",
+  "B:OAG": "ok (WP REST API: 3 items; no crime item)",
   "B:Corrections": "error (ERR; not circumvented)",
   "B:MDES": "blocked (HTTP 403; not circumvented)",
   "B:ThaiPoliceOnline": "js_only (SPA, no server-rendered list; no items)",
-  "B:ThaiCERT": "ok-stale (http 200; listing fetched 2026-10-29; in-window items 0)",
-  "B:SEC": "no_listing (http 200; listing fetched 2026-10-29; in-window items 0)",
+  "B:ThaiCERT": "ok (WP REST API: 28 Oct advisory used as official post)",
+  "B:SEC": "blocked (HTTP 403; not circumvented)",
   "B:NACC": "no_listing (no usable items; not circumvented)",
-  "B:PACC": "ok-stale (http 200; listing fetched 2026-10-29; in-window items 0)",
+  "B:PACC": "ok (news page: 2 items 28 Oct, non-crime)",
   "B:OCPB": "no_listing (http 200; listing fetched 2026-10-29; in-window items 0)",
   "C:27_thairath": "ok (http 200; listing fetched 2026-10-29; in-window items 12)",
   "C:28_dailynews": "ok-stale (http 200; listing fetched 2026-10-29; in-window items 0)",
@@ -127,7 +128,9 @@
   "D:53_unodc": "ok-stale (http 200; listing fetched 2026-10-29; in-window items 0)",
   "D:54_occrp": "ok-stale (http 200; listing fetched 2026-10-29; in-window items 0)",
   "D:55_reuters": "blocked (HTTP 401; not bypassed)",
-  "C:35_ch7": "blocked (robots; not circumvented)"
+  "C:35_ch7": "blocked (robots; not circumvented)",
+  "A:saranitet": "ok (WP REST API: 5 items 28 Oct; awards item used as official)",
+  "A:metro": "blocked (wp-json 403 / listing menu only; not circumvented)"
  },
  "registry_issues": [
   {
@@ -295,11 +298,10 @@
  },
  "note": "ดึงด้วย requests/bs4 บนอุปกรณ์; ไม่มี git; Facebook ไม่ถูกดึง; แหล่งที่บล็อก (403/401/robots/SSL) ไม่ถูกหลีกเลี่ยง",
  "graph_check": {
-  "posts": 21,
-  "ego_graph_svg_json_present": 21,
+  "posts": 27,
+  "ego_graph_svg_json_present": 27,
   "missing": [],
-  "note": "embed-graphs-in-html matched 18/21 stories in report HTML (3 unmatched; graphs available in pages feed)"
+  "note": "embed-graphs-in-html matched 24/27 stories in report HTML"
  },
- "pdf_backend": "weasyprint",
- "git": "none"
+ "rerun_note": "re-run 2026-10-29: found ONCB news ids 26586-26606 + WP REST (saranitet/ago/thaicert) missed by first listing pass; posts 21->27"
 }

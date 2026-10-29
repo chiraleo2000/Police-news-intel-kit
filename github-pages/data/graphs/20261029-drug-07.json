@@ -1,0 +1,34 @@
+{
+ "case_id": "20261029-drug-07",
+ "title": "ปปส.ภาค 5 ลงพื้นที่ชายแดนเชียงราย ติดตามไฟส่องสว่างริมโขง อ.เชียงของ และแผนสกัดกั้นยาเสพติดสารตั้งต้นที่ด่านเชียงแสน",
+ "generated_at": "2026-10-29T02:30:03.243Z",
+ "node_count": 5,
+ "edge_count": 4,
+ "relations": [
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/ปปส.ภาค 5",
+   "target_title": "ปปส.ภาค 5",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/จังหวัดเชียงราย",
+   "target_title": "จังหวัดเชียงราย",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/อ.เชียงของ เชียงราย",
+   "target_title": "อ.เชียงของ เชียงราย",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/อ.เชียงแสน เชียงราย",
+   "target_title": "อ.เชียงแสน เชียงราย",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261029-drug-07.svg"
+}

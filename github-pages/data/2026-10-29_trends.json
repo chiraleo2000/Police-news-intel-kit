@@ -6,9 +6,9 @@
  "by_crime_type": [
   {
    "type": "ยาเสพติด",
-   "today": 6,
+   "today": 9,
    "avg_prev_7d": 3.86,
-   "delta_pct": 55.6,
+   "delta_pct": 133.3,
    "surge": true
   },
   {
@@ -16,6 +16,13 @@
    "today": 3,
    "avg_prev_7d": 4.29,
    "delta_pct": -30.0,
+   "surge": false
+  },
+  {
+   "type": "อาชญากรรมไซเบอร์และออนไลน์",
+   "today": 3,
+   "avg_prev_7d": 3.57,
+   "delta_pct": -16.0,
    "surge": false
   },
   {
@@ -33,10 +40,10 @@
    "surge": false
   },
   {
-   "type": "อาชญากรรมไซเบอร์และออนไลน์",
+   "type": "อาชญากรรมข้ามชาติและความร่วมมือระหว่างประเทศ",
    "today": 2,
-   "avg_prev_7d": 3.57,
-   "delta_pct": -44.0,
+   "avg_prev_7d": 1.14,
+   "delta_pct": 75.0,
    "surge": false
   },
   {
@@ -44,6 +51,13 @@
    "today": 2,
    "avg_prev_7d": 2.71,
    "delta_pct": -26.3,
+   "surge": false
+  },
+  {
+   "type": "คดีเศรษฐกิจ การเงิน และฟอกเงิน",
+   "today": 2,
+   "avg_prev_7d": 1.57,
+   "delta_pct": 27.3,
    "surge": false
   },
   {
@@ -59,26 +73,12 @@
    "avg_prev_7d": 2.0,
    "delta_pct": -50.0,
    "surge": false
-  },
-  {
-   "type": "อาชญากรรมข้ามชาติและความร่วมมือระหว่างประเทศ",
-   "today": 1,
-   "avg_prev_7d": 1.14,
-   "delta_pct": -12.5,
-   "surge": false
-  },
-  {
-   "type": "คดีเศรษฐกิจ การเงิน และฟอกเงิน",
-   "today": 1,
-   "avg_prev_7d": 1.57,
-   "delta_pct": -36.4,
-   "surge": false
   }
  ],
  "by_mo": [
   {
    "mo": "ลำเลียงยาเสพติด",
-   "today": 4,
+   "today": 6,
    "avg_prev_7d": 0.57,
    "surge": true
   },
@@ -86,6 +86,12 @@
    "mo": "สินค้า/ยาปลอม",
    "today": 2,
    "avg_prev_7d": 0.43,
+   "surge": false
+  },
+  {
+   "mo": "ฟอกเงิน",
+   "today": 2,
+   "avg_prev_7d": 0.29,
    "surge": false
   },
   {
@@ -101,6 +107,18 @@
    "surge": false
   },
   {
+   "mo": "ขายยาเสพติดออนไลน์",
+   "today": 1,
+   "avg_prev_7d": 0.0,
+   "surge": false
+  },
+  {
+   "mo": "แอปอันตรายแอบอ้าง",
+   "today": 1,
+   "avg_prev_7d": 0.0,
+   "surge": false
+  },
+  {
    "mo": "หลอกซื้อขายออนไลน์",
    "today": 1,
    "avg_prev_7d": 0.0,
@@ -108,12 +126,6 @@
   },
   {
    "mo": "บัญชีม้า/ซิมม้า",
-   "today": 1,
-   "avg_prev_7d": 0.29,
-   "surge": false
-  },
-  {
-   "mo": "ฟอกเงิน",
    "today": 1,
    "avg_prev_7d": 0.29,
    "surge": false
@@ -142,6 +154,11 @@
    "avg_prev_7d": 3.57
   },
   {
+   "province": "เชียงราย",
+   "today": 2,
+   "avg_prev_7d": 0.57
+  },
+  {
    "province": "อยุธยา",
    "today": 2,
    "avg_prev_7d": 0.0
@@ -165,6 +182,11 @@
    "province": "สุราษฎร์ธานี",
    "today": 2,
    "avg_prev_7d": 0.57
+  },
+  {
+   "province": "นครปฐม",
+   "today": 2,
+   "avg_prev_7d": 0.71
   },
   {
    "province": "บึงกาฬ",
@@ -192,11 +214,6 @@
    "avg_prev_7d": 1.14
   },
   {
-   "province": "เชียงราย",
-   "today": 1,
-   "avg_prev_7d": 0.57
-  },
-  {
    "province": "อุบลราชธานี",
    "today": 1,
    "avg_prev_7d": 0.0
@@ -217,6 +234,11 @@
    "avg_prev_7d": 1.86
   },
   {
+   "province": "สงขลา",
+   "today": 1,
+   "avg_prev_7d": 1.43
+  },
+  {
    "province": "ยะลา",
    "today": 1,
    "avg_prev_7d": 0.43
@@ -230,6 +252,26 @@
    "province": "นราธิวาส",
    "today": 1,
    "avg_prev_7d": 0.71
+  },
+  {
+   "province": "พระนครศรีอยุธยา",
+   "today": 1,
+   "avg_prev_7d": 0.14
+  },
+  {
+   "province": "ราชบุรี",
+   "today": 1,
+   "avg_prev_7d": 0.14
+  },
+  {
+   "province": "กาญจนบุรี",
+   "today": 1,
+   "avg_prev_7d": 1.14
+  },
+  {
+   "province": "สุพรรณบุรี",
+   "today": 1,
+   "avg_prev_7d": 0.14
   }
  ]
 }

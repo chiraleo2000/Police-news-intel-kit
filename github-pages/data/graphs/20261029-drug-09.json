@@ -1,0 +1,58 @@
+{
+ "case_id": "20261029-drug-09",
+ "title": "ปปส.ภาค 7 ถ่ายทอดนโยบายปี 2570 ใน ศอ.ปส.จ. ราชบุรี กาญจนบุรี สุพรรณบุรี นครปฐม ย้ำสกัดกั้นเครือข่าย ยึดทรัพย์ และจัดการเจ้าหน้าที่รัฐที่เกี่ยวข้องยาเสพติด",
+ "generated_at": "2026-10-29T02:30:03.245Z",
+ "node_count": 9,
+ "edge_count": 8,
+ "relations": [
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/ปปส.ภาค 7",
+   "target_title": "ปปส.ภาค 7",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/ศอ.ปส.จ.นครปฐม",
+   "target_title": "ศอ.ปส.จ.นครปฐม",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/ศอ.ปส.จ.ราชบุรี",
+   "target_title": "ศอ.ปส.จ.ราชบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ราชบุรี",
+   "target_title": "ราชบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/กาญจนบุรี",
+   "target_title": "กาญจนบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/สุพรรณบุรี",
+   "target_title": "สุพรรณบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/นครปฐม",
+   "target_title": "นครปฐม",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/ผอ.ปปส.ภ.7",
+   "target_title": "ผอ.ปปส.ภ.7",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261029-drug-09.svg"
+}

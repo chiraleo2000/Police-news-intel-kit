@@ -1,0 +1,28 @@
+{
+ "case_id": "20261029-transnat-02",
+ "title": "ป.ป.ส. ร่วมประชุมคณะทำงานย่อย BIMSTEC ครั้งที่ 10 ที่ธากา ประเมินยาบ้าและไอซ์จากสามเหลี่ยมทองคำยังกระทบไทย เมียนมา บังกลาเทศ",
+ "generated_at": "2026-10-29T02:30:03.257Z",
+ "node_count": 4,
+ "edge_count": 3,
+ "relations": [
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/สำนักงาน ป.ป.ส.",
+   "target_title": "สำนักงาน ป.ป.ส.",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/BIMSTEC",
+   "target_title": "BIMSTEC",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/กรุงธากา บังกลาเทศ",
+   "target_title": "กรุงธากา บังกลาเทศ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261029-transnat-02.svg"
+}
