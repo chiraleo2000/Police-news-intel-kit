@@ -1,0 +1,70 @@
+{
+ "case_id": "20261030-tourist-02",
+ "title": "ตม.ชุมพรจับหญิงจีนอายุ 41 ปีที่สวมสิทธิบัตรประชาชนไทยนาน 28 ปี ย้ายทะเบียนบ้าน 9 ครั้ง พบจดบริษัทและถือครองที่ดิน 7 แปลง มูลค่ากว่า 57 ล้านบาท รวมโรงคัดบรรจุทุเรียน",
+ "generated_at": "2026-10-30T02:30:04.042Z",
+ "node_count": 11,
+ "edge_count": 10,
+ "relations": [
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บก.ตม.6",
+   "target_title": "บก.ตม.6",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/ตม.จว.ชุมพร",
+   "target_title": "ตม.จว.ชุมพร",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/ภ.จว.ชุมพร",
+   "target_title": "ภ.จว.ชุมพร",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลจังหวัดหลังสวน",
+   "target_title": "ศาลจังหวัดหลังสวน",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/อำเภอหลังสวน",
+   "target_title": "อำเภอหลังสวน",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/อำเภอไทยเจริญ",
+   "target_title": "อำเภอไทยเจริญ",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/โฆษก บก.ตม.6",
+   "target_title": "โฆษก บก.ตม.6",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/ผบช.สตม.",
+   "target_title": "ผบช.สตม.",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/บุคคล/นพศิลป์ พูลสวัสดิ์",
+   "target_title": "นพศิลป์ พูลสวัสดิ์",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/บุคคล/เจริญพงษ์ ขันติโล",
+   "target_title": "เจริญพงษ์ ขันติโล",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261030-tourist-02.svg"
+}

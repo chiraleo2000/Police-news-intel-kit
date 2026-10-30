@@ -1,0 +1,40 @@
+{
+ "case_id": "20261030-drug-05",
+ "title": "ปปส.ภาค 8 ประชุมกลั่นกรองคำขออนุมัติแจ้งข้อหาคดียาเสพติดร้ายแรง พิจารณา 22 คำขอ ผู้ต้องหา 30 ราย เห็นชอบเสนอเลขาธิการ ป.ป.ส. 24 ราย ไม่อนุมัติ 6 ราย เพราะพยานหลักฐานไม่พอ",
+ "generated_at": "2026-10-30T02:30:04.029Z",
+ "node_count": 6,
+ "edge_count": 5,
+ "relations": [
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/ปปส.ภ.8",
+   "target_title": "ปปส.ภ.8",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/สำนักงาน ป.ป.ส.",
+   "target_title": "สำนักงาน ป.ป.ส.",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/ตำรวจภูธรภาค 8",
+   "target_title": "ตำรวจภูธรภาค 8",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/อัยการภาค 8",
+   "target_title": "อัยการภาค 8",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/อธิบดีอัยการภาค 8",
+   "target_title": "อธิบดีอัยการภาค 8",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261030-drug-05.svg"
+}

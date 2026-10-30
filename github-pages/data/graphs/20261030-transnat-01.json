@@ -1,0 +1,40 @@
+{
+ "case_id": "20261030-transnat-01",
+ "title": "กระทรวงยุติธรรมไทย-จีนลงนามโครงการภายใต้กองทุนพิเศษแม่โขง-ล้านช้าง 2026 อบรมสืบสวนอาชญากรรมข้ามชาติ แชร์ข่าวกรองเจ้าหน้าที่ 5 ประเทศลุ่มน้ำโขง รับมือคอลเซ็นเตอร์ ค้ามนุษย์ ยาเสพติด",
+ "generated_at": "2026-10-30T02:30:04.043Z",
+ "node_count": 6,
+ "edge_count": 5,
+ "relations": [
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/กระทรวงยุติธรรม",
+   "target_title": "กระทรวงยุติธรรม",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/DSI",
+   "target_title": "DSI",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/สำนักงาน ป.ป.ส.",
+   "target_title": "สำนักงาน ป.ป.ส.",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/ปลัดกระทรวงยุติธรรม",
+   "target_title": "ปลัดกระทรวงยุติธรรม",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/เอกอัครราชทูตจีนประจำไทย",
+   "target_title": "เอกอัครราชทูตจีนประจำไทย",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261030-transnat-01.svg"
+}

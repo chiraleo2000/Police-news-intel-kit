@@ -1,6 +1,6 @@
 {
- "generated_at": "2026-10-29T07:00:04.722Z",
- "count": 262,
+ "generated_at": "2026-10-30T02:30:04.045Z",
+ "count": 287,
  "cases": [
   {
    "case_id": "20261022-consumer-chiangmai-matcha-customs",
@@ -90,7 +90,7 @@
   {
    "case_id": "20261022-gamble-dsi-shuffle",
    "svg": "graphs/20261022-gamble-dsi-shuffle.svg",
-   "relations": 5
+   "relations": 3
   },
   {
    "case_id": "20261022-gamble-sattahip-resort",
@@ -590,7 +590,7 @@
   {
    "case_id": "20261024-gamble-02",
    "svg": "graphs/20261024-gamble-02.svg",
-   "relations": 5
+   "relations": 3
   },
   {
    "case_id": "20261024-gamble-03",
@@ -1155,7 +1155,7 @@
   {
    "case_id": "20261029-cyber-01",
    "svg": "graphs/20261029-cyber-01.svg",
-   "relations": 15
+   "relations": 17
   },
   {
    "case_id": "20261029-cyber-02",
@@ -1166,6 +1166,11 @@
    "case_id": "20261029-cyber-03",
    "svg": "graphs/20261029-cyber-03.svg",
    "relations": 1
+  },
+  {
+   "case_id": "20261029-cyber-line-01",
+   "svg": "graphs/20261029-cyber-line-01.svg",
+   "relations": 6
   },
   {
    "case_id": "20261029-drug-01",
@@ -1211,6 +1216,11 @@
    "case_id": "20261029-drug-09",
    "svg": "graphs/20261029-drug-09.svg",
    "relations": 0
+  },
+  {
+   "case_id": "20261029-drug-line-01",
+   "svg": "graphs/20261029-drug-line-01.svg",
+   "relations": 15
   },
   {
    "case_id": "20261029-econ-01",
@@ -1278,6 +1288,11 @@
    "relations": 7
   },
   {
+   "case_id": "20261029-safe-line-01",
+   "svg": "graphs/20261029-safe-line-01.svg",
+   "relations": 2
+  },
+  {
    "case_id": "20261029-transnat-01",
    "svg": "graphs/20261029-transnat-01.svg",
    "relations": 9
@@ -1300,7 +1315,7 @@
   {
    "case_id": "20261029-violent-03",
    "svg": "graphs/20261029-violent-03.svg",
-   "relations": 4
+   "relations": 5
   },
   {
    "case_id": "20261029-violent-04",
@@ -1311,6 +1326,116 @@
    "case_id": "20261029-violent-05",
    "svg": "graphs/20261029-violent-05.svg",
    "relations": 5
+  },
+  {
+   "case_id": "20261030-cyber-01",
+   "svg": "graphs/20261030-cyber-01.svg",
+   "relations": 11
+  },
+  {
+   "case_id": "20261030-cyber-02",
+   "svg": "graphs/20261030-cyber-02.svg",
+   "relations": 10
+  },
+  {
+   "case_id": "20261030-cyber-03",
+   "svg": "graphs/20261030-cyber-03.svg",
+   "relations": 2
+  },
+  {
+   "case_id": "20261030-cyber-04",
+   "svg": "graphs/20261030-cyber-04.svg",
+   "relations": 1
+  },
+  {
+   "case_id": "20261030-cyber-05",
+   "svg": "graphs/20261030-cyber-05.svg",
+   "relations": 1
+  },
+  {
+   "case_id": "20261030-drug-01",
+   "svg": "graphs/20261030-drug-01.svg",
+   "relations": 7
+  },
+  {
+   "case_id": "20261030-drug-02",
+   "svg": "graphs/20261030-drug-02.svg",
+   "relations": 14
+  },
+  {
+   "case_id": "20261030-drug-03",
+   "svg": "graphs/20261030-drug-03.svg",
+   "relations": 9
+  },
+  {
+   "case_id": "20261030-drug-04",
+   "svg": "graphs/20261030-drug-04.svg",
+   "relations": 7
+  },
+  {
+   "case_id": "20261030-drug-05",
+   "svg": "graphs/20261030-drug-05.svg",
+   "relations": 5
+  },
+  {
+   "case_id": "20261030-env-01",
+   "svg": "graphs/20261030-env-01.svg",
+   "relations": 7
+  },
+  {
+   "case_id": "20261030-gamble-01",
+   "svg": "graphs/20261030-gamble-01.svg",
+   "relations": 7
+  },
+  {
+   "case_id": "20261030-human-01",
+   "svg": "graphs/20261030-human-01.svg",
+   "relations": 8
+  },
+  {
+   "case_id": "20261030-human-02",
+   "svg": "graphs/20261030-human-02.svg",
+   "relations": 7
+  },
+  {
+   "case_id": "20261030-human-03",
+   "svg": "graphs/20261030-human-03.svg",
+   "relations": 4
+  },
+  {
+   "case_id": "20261030-other-01",
+   "svg": "graphs/20261030-other-01.svg",
+   "relations": 3
+  },
+  {
+   "case_id": "20261030-police-01",
+   "svg": "graphs/20261030-police-01.svg",
+   "relations": 4
+  },
+  {
+   "case_id": "20261030-public-01",
+   "svg": "graphs/20261030-public-01.svg",
+   "relations": 9
+  },
+  {
+   "case_id": "20261030-tourist-01",
+   "svg": "graphs/20261030-tourist-01.svg",
+   "relations": 8
+  },
+  {
+   "case_id": "20261030-tourist-02",
+   "svg": "graphs/20261030-tourist-02.svg",
+   "relations": 10
+  },
+  {
+   "case_id": "20261030-transnat-01",
+   "svg": "graphs/20261030-transnat-01.svg",
+   "relations": 5
+  },
+  {
+   "case_id": "20261030-violent-01",
+   "svg": "graphs/20261030-violent-01.svg",
+   "relations": 6
   }
  ]
 }

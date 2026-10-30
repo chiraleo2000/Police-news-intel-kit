@@ -1,0 +1,52 @@
+{
+ "case_id": "20261030-human-02",
+ "title": "ตม.ประจวบฯ จับชายเมียนมาอายุ 42 ปี รับจ้างจัดเอกสารและขับรถพาแรงงานต่างด้าวทำใบอนุญาตทำงานโดยคิดค่าบริการ ข้อหาทำงานนอกเหนือสิทธิและผิดเงื่อนไข",
+ "generated_at": "2026-10-30T02:30:04.034Z",
+ "node_count": 8,
+ "edge_count": 7,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/ตม.จว.ประจวบคีรีขันธ์",
+   "target_title": "ตม.จว.ประจวบคีรีขันธ์",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บก.ตม.3",
+   "target_title": "บก.ตม.3",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/สตม.",
+   "target_title": "สตม.",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/สภ.เมืองประจวบคีรีขันธ์",
+   "target_title": "สภ.เมืองประจวบคีรีขันธ์",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ศูนย์บริหารการทะเบียนภาค 7 สาขาประจวบ",
+   "target_title": "ศูนย์บริหารการทะเบียนภาค 7 สาขาประจวบ",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/อำเภอเมืองประจวบคีรีขันธ์",
+   "target_title": "อำเภอเมืองประจวบคีรีขันธ์",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/ผกก.ตม.จว.ประจวบคีรีขันธ์",
+   "target_title": "ผกก.ตม.จว.ประจวบคีรีขันธ์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261030-human-02.svg"
+}

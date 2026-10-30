@@ -1,0 +1,34 @@
+{
+ "case_id": "20261030-human-03",
+ "title": "ตม.เชียงใหม่ตรวจร้านหมูปิ้งถนนทุ่งโฮเต็ล จับแรงงานเมียนมา 2 รายที่ใบอนุญาตระบุเป็นกรรมกรแต่ปิ้งหมูปิ้ง ไม่แจ้งเปลี่ยนนายจ้างและลักษณะงานภายใน 15 วัน",
+ "generated_at": "2026-10-30T02:30:04.035Z",
+ "node_count": 5,
+ "edge_count": 4,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/ตม.จว.เชียงใหม่",
+   "target_title": "ตม.จว.เชียงใหม่",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/สภ.แม่ปิง",
+   "target_title": "สภ.แม่ปิง",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ถนนทุ่งโฮเต็ล",
+   "target_title": "ถนนทุ่งโฮเต็ล",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ตำบลวัดเกต",
+   "target_title": "ตำบลวัดเกต",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261030-human-03.svg"
+}

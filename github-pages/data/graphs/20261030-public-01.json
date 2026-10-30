@@ -1,0 +1,64 @@
+{
+ "case_id": "20261030-public-01",
+ "title": "ผบช.น. ตั้งคณะพนักงานสอบสวนคดี ม.112 เพจ Godd Dam ที่ สน.บางเขน ย้ำต้องพิสูจน์ตัวผู้โพสต์ให้ชัด ประสานตำรวจไซเบอร์และสันติบาล ไม่เร่งรัดสำนวน",
+ "generated_at": "2026-10-30T02:30:04.039Z",
+ "node_count": 10,
+ "edge_count": 9,
+ "relations": [
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/บช.น.",
+   "target_title": "บช.น.",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/สน.บางเขน",
+   "target_title": "สน.บางเขน",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/ตำรวจสันติบาล",
+   "target_title": "ตำรวจสันติบาล",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/บช.สอท.",
+   "target_title": "บช.สอท.",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/เขตบางเขน",
+   "target_title": "เขตบางเขน",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/ผบช.น.",
+   "target_title": "ผบช.น.",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/บุคคล/สยาม บุญสม",
+   "target_title": "สยาม บุญสม",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับ",
+   "target_id": "20_Cases/20261029-cyber-01",
+   "target_title": "ตำรวจไซเบอร์ บก.สอท.1 จับกุมแอดมินเพจ Godd Dam ตามหมายจับศาลอาญา ปมสลิป 7 ล้านบาท ค้นหอพักย่านบางเขน แจ้ง 2 ข้อหา ผู้ต้องหาปฏิเสธว่าไม่ใช่เจ้าของเพจ เตรียมฝากขัง 29 ต.ค.",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับ",
+   "target_id": "20_Cases/20261030-cyber-01",
+   "target_title": "นายกฯ มอบทนายแจ้งความเอาผิดผู้ดูแลเพจ Godd Dam และ สส. ผู้แชร์สลิป 7 ล้านบาท ตร.ไซเบอร์ปฏิเสธว่านายกฯ สั่งจับ ผู้ต้องหาปฏิเสธทุกข้อกล่าวหา ตำรวจเตรียมคัดค้านประกันตัว",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261030-public-01.svg"
+}

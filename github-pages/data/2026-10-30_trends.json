@@ -1,0 +1,234 @@
+{
+ "baseline": "limited",
+ "window_days": 7,
+ "days_available": 8,
+ "note": "baseline 8 วันย้อนหลัง (<7 วัน: แนวโน้มเป็นข้อมูลบ่งชี้เท่านั้น) surge = วันนี้ >=3 เรื่อง และสูงกว่าค่าเฉลี่ย >=50 เปอร์เซ็นต์",
+ "by_crime_type": [
+  {
+   "type": "ยาเสพติด",
+   "today": 5,
+   "avg_prev_7d": 4.5,
+   "delta_pct": 11.1,
+   "surge": false
+  },
+  {
+   "type": "อาชญากรรมไซเบอร์และออนไลน์",
+   "today": 5,
+   "avg_prev_7d": 3.5,
+   "delta_pct": 42.9,
+   "surge": false
+  },
+  {
+   "type": "ค้ามนุษย์ แรงงานผิดกฎหมาย และคุ้มครองเด็ก",
+   "today": 3,
+   "avg_prev_7d": 2.12,
+   "delta_pct": 41.2,
+   "surge": false
+  },
+  {
+   "type": "อาชญากรรมที่เกี่ยวข้องกับนักท่องเที่ยวและชาวต่างชาติ",
+   "today": 2,
+   "avg_prev_7d": 1.75,
+   "delta_pct": 14.3,
+   "surge": false
+  },
+  {
+   "type": "คดีชีวิต ร่างกาย และเพศ",
+   "today": 1,
+   "avg_prev_7d": 4.12,
+   "delta_pct": -75.8,
+   "surge": false
+  },
+  {
+   "type": "พนันและบ่อนผิดกฎหมาย",
+   "today": 1,
+   "avg_prev_7d": 1.88,
+   "delta_pct": -46.7,
+   "surge": false
+  },
+  {
+   "type": "สิ่งแวดล้อม ทรัพยากร และสัตว์ป่า",
+   "today": 1,
+   "avg_prev_7d": 0.62,
+   "delta_pct": 60.0,
+   "surge": false
+  },
+  {
+   "type": "ความสงบเรียบร้อยและความมั่นคงภายใน",
+   "today": 1,
+   "avg_prev_7d": 0.62,
+   "delta_pct": 60.0,
+   "surge": false
+  },
+  {
+   "type": "อาชญากรรมข้ามชาติและความร่วมมือระหว่างประเทศ",
+   "today": 1,
+   "avg_prev_7d": 1.25,
+   "delta_pct": -20.0,
+   "surge": false
+  },
+  {
+   "type": "อื่น ๆ",
+   "today": 1,
+   "avg_prev_7d": 0.5,
+   "delta_pct": 100.0,
+   "surge": false
+  },
+  {
+   "type": "การปฏิบัติหน้าที่ ประชาสัมพันธ์ และนโยบายตำรวจ",
+   "today": 1,
+   "avg_prev_7d": 3.0,
+   "delta_pct": -66.7,
+   "surge": false
+  }
+ ],
+ "by_mo": [
+  {
+   "mo": "ลำเลียงยาเสพติด",
+   "today": 4,
+   "avg_prev_7d": 0.5,
+   "surge": true
+  },
+  {
+   "mo": "บัญชีม้า/ซิมม้า",
+   "today": 3,
+   "avg_prev_7d": 0.25,
+   "surge": true
+  },
+  {
+   "mo": "นอมินีธุรกิจต่างชาติ",
+   "today": 2,
+   "avg_prev_7d": 0.5,
+   "surge": false
+  },
+  {
+   "mo": "แรงงานต่างด้าวผิดกฎหมาย",
+   "today": 2,
+   "avg_prev_7d": 0.12,
+   "surge": false
+  },
+  {
+   "mo": "แอบอ้างเจ้าหน้าที่รัฐ/ตำรวจ",
+   "today": 1,
+   "avg_prev_7d": 0.25,
+   "surge": false
+  },
+  {
+   "mo": "ข่มขู่ทางเพศ",
+   "today": 1,
+   "avg_prev_7d": 0.0,
+   "surge": false
+  },
+  {
+   "mo": "พนันออนไลน์",
+   "today": 1,
+   "avg_prev_7d": 0.25,
+   "surge": false
+  },
+  {
+   "mo": "หลอกลงทุนคริปโต/สินทรัพย์ดิจิทัล",
+   "today": 1,
+   "avg_prev_7d": 0.0,
+   "surge": false
+  },
+  {
+   "mo": "ลิงก์ปลอม/ฟิชชิง",
+   "today": 1,
+   "avg_prev_7d": 0.0,
+   "surge": false
+  },
+  {
+   "mo": "มัลแวร์/แอปดูดเงิน",
+   "today": 1,
+   "avg_prev_7d": 0.12,
+   "surge": false
+  }
+ ],
+ "by_province": [
+  {
+   "province": "กรุงเทพมหานคร",
+   "today": 7,
+   "avg_prev_7d": 9.0
+  },
+  {
+   "province": "นครพนม",
+   "today": 2,
+   "avg_prev_7d": 0.5
+  },
+  {
+   "province": "บุรีรัมย์",
+   "today": 2,
+   "avg_prev_7d": 0.5
+  },
+  {
+   "province": "เชียงใหม่",
+   "today": 2,
+   "avg_prev_7d": 1.12
+  },
+  {
+   "province": "ลำปาง",
+   "today": 1,
+   "avg_prev_7d": 0.0
+  },
+  {
+   "province": "มุกดาหาร",
+   "today": 1,
+   "avg_prev_7d": 0.25
+  },
+  {
+   "province": "ชลบุรี",
+   "today": 1,
+   "avg_prev_7d": 3.38
+  },
+  {
+   "province": "กาญจนบุรี",
+   "today": 1,
+   "avg_prev_7d": 1.12
+  },
+  {
+   "province": "ราชบุรี",
+   "today": 1,
+   "avg_prev_7d": 0.25
+  },
+  {
+   "province": "ตรัง",
+   "today": 1,
+   "avg_prev_7d": 0.38
+  },
+  {
+   "province": "เชียงราย",
+   "today": 1,
+   "avg_prev_7d": 0.75
+  },
+  {
+   "province": "ภูเก็ต",
+   "today": 1,
+   "avg_prev_7d": 0.75
+  },
+  {
+   "province": "นครนายก",
+   "today": 1,
+   "avg_prev_7d": 0.0
+  },
+  {
+   "province": "ชุมพร",
+   "today": 1,
+   "avg_prev_7d": 0.12
+  },
+  {
+   "province": "ยโสธร",
+   "today": 1,
+   "avg_prev_7d": 0.0
+  },
+  {
+   "province": "อุดรธานี",
+   "today": 1,
+   "avg_prev_7d": 0.5
+  },
+  {
+   "province": "ประจวบคีรีขันธ์",
+   "today": 1,
+   "avg_prev_7d": 0.38
+  }
+ ]
+}

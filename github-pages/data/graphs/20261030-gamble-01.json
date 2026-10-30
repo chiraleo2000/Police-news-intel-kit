@@ -1,0 +1,52 @@
+{
+ "case_id": "20261030-gamble-01",
+ "title": "DSI เตรียมเชิญ ก.ล.ต. ให้ข้อมูลสินทรัพย์ดิจิทัลสัปดาห์หน้า ตรวจเส้นเงินลูกค้าแพลตฟอร์ม Bitkub-Maxbit โยงเว็บพนัน Shuffle เรื่องสืบสวนที่ 148/2569 เชิญพยานแล้วหลายปาก",
+ "generated_at": "2026-10-30T02:30:04.031Z",
+ "node_count": 8,
+ "edge_count": 7,
+ "relations": [
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/DSI",
+   "target_title": "DSI",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/ก.ล.ต.",
+   "target_title": "ก.ล.ต.",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/บช.สอท.",
+   "target_title": "บช.สอท.",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/กระทรวงยุติธรรม",
+   "target_title": "กระทรวงยุติธรรม",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/ปลัดกระทรวงยุติธรรม",
+   "target_title": "ปลัดกระทรวงยุติธรรม",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/ผอ.กองคดีเทคโนโลยีและสารสนเทศ DSI",
+   "target_title": "ผอ.กองคดีเทคโนโลยีและสารสนเทศ DSI",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/บุคคล/เขมชาติ ประกายหงษ์มณี",
+   "target_title": "เขมชาติ ประกายหงษ์มณี",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261030-gamble-01.svg"
+}

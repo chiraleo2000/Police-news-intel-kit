@@ -1,0 +1,46 @@
+{
+ "case_id": "20261029-cyber-line-01",
+ "title": "ตำรวจ บก.ป. จับหญิงอายุ 28 ปี ที่เขตจอมทอง ตามหมายจับศาลอาญาธนบุรี ปมเปิดบัญชีให้ผู้อื่นใช้ในคดีหลอกทำงานออนไลน์ผ่านไลน์ ผู้เสียหายวัยใกล้เกษียณสูญเงินสุทธิราว 3.5 แสนบาท",
+ "generated_at": "2026-10-30T02:30:03.971Z",
+ "node_count": 7,
+ "edge_count": 6,
+ "relations": [
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บช.ก.",
+   "target_title": "บช.ก.",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/บก.ป.",
+   "target_title": "บก.ป.",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/กก.5 บก.ป.",
+   "target_title": "กก.5 บก.ป.",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/สน.บางขุนเทียน",
+   "target_title": "สน.บางขุนเทียน",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลอาญาธนบุรี",
+   "target_title": "ศาลอาญาธนบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/เขตจอมทอง",
+   "target_title": "เขตจอมทอง",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261029-cyber-line-01.svg"
+}

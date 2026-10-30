@@ -1,9 +1,9 @@
 {
  "case_id": "20261022-gamble-dsi-shuffle",
  "title": "DSI สอบเว็บคาสิโนคริปโต shuffle.com เร่งหาผู้เล่นชาวไทยผ่านบัญชีธนาคาร เงินไหลเวียนราว 118 ล้านบาท",
- "generated_at": "2026-10-29T07:00:04.401Z",
- "node_count": 6,
- "edge_count": 5,
+ "generated_at": "2026-10-30T02:30:03.681Z",
+ "node_count": 4,
+ "edge_count": 3,
  "relations": [
   {
    "label": "สืบสวนโดย",
@@ -15,18 +15,6 @@
    "label": "สืบสวนโดย",
    "target_id": "30_Entities/Units/กองคดีเทคโนโลยีและสารสนเทศ",
    "target_title": "กองคดีเทคโนโลยีและสารสนเทศ",
-   "direction": "out"
-  },
-  {
-   "label": "บัญชี",
-   "target_id": "unresolved:30_Entities/บัญชี/shuffle.com",
-   "target_title": "30_Entities/บัญชี/shuffle.com",
-   "direction": "out"
-  },
-  {
-   "label": "บัญชี",
-   "target_id": "30_Entities/บัญชี/shuffle.com",
-   "target_title": "shuffle.com",
    "direction": "out"
   },
   {

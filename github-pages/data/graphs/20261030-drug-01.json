@@ -1,0 +1,52 @@
+{
+ "case_id": "20261030-drug-01",
+ "title": "ศุลกากรแม่สายตรวจพบยาบ้า 2.74 ล้านเม็ดและหัวพอดบุหรี่ไฟฟ้า 458 ชุดซุกในที่นอนและโซฟาบนรถกระบะทะเบียนเมียนมา มูลค่าราว 137 ล้านบาท จับ 2 ผู้ต้องหาชาวเมียนมา",
+ "generated_at": "2026-10-30T02:30:04.023Z",
+ "node_count": 8,
+ "edge_count": 7,
+ "relations": [
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/กรมศุลกากร",
+   "target_title": "กรมศุลกากร",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/ด่านศุลกากรแม่สาย",
+   "target_title": "ด่านศุลกากรแม่สาย",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/สภ.แม่สาย",
+   "target_title": "สภ.แม่สาย",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ด่านพรมแดนแม่สาย",
+   "target_title": "ด่านพรมแดนแม่สาย",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/อำเภอแม่สาย",
+   "target_title": "อำเภอแม่สาย",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/อธิบดีกรมศุลกากร",
+   "target_title": "อธิบดีกรมศุลกากร",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/นายด่านศุลกากรแม่สาย",
+   "target_title": "นายด่านศุลกากรแม่สาย",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261030-drug-01.svg"
+}

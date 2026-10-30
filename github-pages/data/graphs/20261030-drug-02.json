@@ -1,0 +1,94 @@
+{
+ "case_id": "20261030-drug-02",
+ "title": "ตำรวจสืบสวน บก.น.7 ขยายผลคดียาบ้า 8.99 ล้านเม็ด ยึดไอซ์ 400 กก.ซุกบ้านเช่าบางละมุงและรถยนต์ จับ 5 ผู้ต้องหา รอง ผบ.ตร.แถลง ผู้ต้องหาสารภาพรับค่าจ้างขนราว 4 แสนบาท",
+ "generated_at": "2026-10-30T02:30:04.024Z",
+ "node_count": 15,
+ "edge_count": 14,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/กก.สส.บก.น.7",
+   "target_title": "กก.สส.บก.น.7",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/บก.น.7",
+   "target_title": "บก.น.7",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บช.น.",
+   "target_title": "บช.น.",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/ศอ.ปส.ตร.",
+   "target_title": "ศอ.ปส.ตร.",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/บช.ปส.",
+   "target_title": "บช.ปส.",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ตำบลหนองปรือ",
+   "target_title": "ตำบลหนองปรือ",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/อำเภอบางละมุง",
+   "target_title": "อำเภอบางละมุง",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/รอง ผบ.ตร.-ผอ.ศอ.ปส.ตร.",
+   "target_title": "รอง ผบ.ตร./ผอ.ศอ.ปส.ตร.",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/ผบช.น.",
+   "target_title": "ผบช.น.",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/บุคคล/อิทธิพล อัจฉริยะประดิษฐ์",
+   "target_title": "อิทธิพล อัจฉริยะประดิษฐ์",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/บุคคล/สยาม บุญสม",
+   "target_title": "สยาม บุญสม",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/บุคคล/เทพปทาน นิพิวรรณ์",
+   "target_title": "เทพปทาน นิพิวรรณ์",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/บุคคล/อัษฎาวุธ ขวัญเมือง",
+   "target_title": "อัษฎาวุธ ขวัญเมือง",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/บางละมุง",
+   "target_title": "บางละมุง",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261030-drug-02.svg"
+}

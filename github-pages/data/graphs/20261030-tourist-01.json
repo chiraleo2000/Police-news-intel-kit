@@ -1,0 +1,58 @@
+{
+ "case_id": "20261030-tourist-01",
+ "title": "ตม.ภูเก็ตจับหญิงจีนตามหมายจับศาลภูเก็ต ใช้คนไทยถือหุ้นแทนทำธุรกิจวิลล่า 50 ล้านบาท พบบัญชีถูกระงับโยงบัญชีม้า 9 คดี เงินหมุนเวียนกว่า 100 ล้านบาท ถอนวีซ่าแล้ว",
+ "generated_at": "2026-10-30T02:30:04.041Z",
+ "node_count": 9,
+ "edge_count": 8,
+ "relations": [
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บก.ตม.6",
+   "target_title": "บก.ตม.6",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/ตม.จว.ภูเก็ต",
+   "target_title": "ตม.จว.ภูเก็ต",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/สตม.",
+   "target_title": "สตม.",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลจังหวัดภูเก็ต",
+   "target_title": "ศาลจังหวัดภูเก็ต",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ตำบลราไวย์",
+   "target_title": "ตำบลราไวย์",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/อำเภอเมืองภูเก็ต",
+   "target_title": "อำเภอเมืองภูเก็ต",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/โฆษก บก.ตม.6",
+   "target_title": "โฆษก บก.ตม.6",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/บุคคล/เจริญพงษ์ ขันติโล",
+   "target_title": "เจริญพงษ์ ขันติโล",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261030-tourist-01.svg"
+}

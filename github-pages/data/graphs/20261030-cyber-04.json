@@ -1,0 +1,16 @@
+{
+ "case_id": "20261030-cyber-04",
+ "title": "ThaiCERT เตือนพบการสแกนหาระบบ Oracle E-Business Suite ที่ยังไม่อัปเดตแพตช์ช่องโหว่ระดับวิกฤต CVE-2026-101767 ใช้เจาะระบบได้โดยไม่ต้องยืนยันตัวตน พบระบบเปิดสาธารณะกว่า 670 เครื่องทั่วโลก",
+ "generated_at": "2026-10-30T02:30:04.020Z",
+ "node_count": 2,
+ "edge_count": 1,
+ "relations": [
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/ThaiCERT",
+   "target_title": "ThaiCERT",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261030-cyber-04.svg"
+}

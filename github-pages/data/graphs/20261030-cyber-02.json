@@ -1,0 +1,70 @@
+{
+ "case_id": "20261030-cyber-02",
+ "title": "คอมมานโด บก.ปพ. จับหญิงวัย 38 ปี ตามหมายจับศาลเชียงใหม่ ผู้ต้องหาแก๊งแอบอ้างเป็นตำรวจหลอกตามเงินคืน เหยื่อกดลิงก์โอน 64 ครั้ง สูญ 8.16 ล้านบาท",
+ "generated_at": "2026-10-30T02:30:04.018Z",
+ "node_count": 11,
+ "edge_count": 10,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/บก.ปพ.",
+   "target_title": "บก.ปพ.",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/สภ.ภูพิงคราชนิเวศน์",
+   "target_title": "สภ.ภูพิงคราชนิเวศน์",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลจังหวัดเชียงใหม่",
+   "target_title": "ศาลจังหวัดเชียงใหม่",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ถนนกำแพงเพชร 6",
+   "target_title": "ถนนกำแพงเพชร 6",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/เขตจตุจักร",
+   "target_title": "เขตจตุจักร",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/จังหวัดเชียงใหม่",
+   "target_title": "จังหวัดเชียงใหม่",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/ผบก.ปพ.",
+   "target_title": "ผบก.ปพ.",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/บุคคล/อรุณ วชิรศรีสุกัญยา",
+   "target_title": "อรุณ วชิรศรีสุกัญยา",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/บุคคล/อภิชน ขันกา",
+   "target_title": "อภิชน ขันกา",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/บุคคล/ไพบูลย์ พิมพ์กำเนิด",
+   "target_title": "ไพบูลย์ พิมพ์กำเนิด",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261030-cyber-02.svg"
+}

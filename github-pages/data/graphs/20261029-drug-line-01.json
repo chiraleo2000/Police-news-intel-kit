@@ -1,0 +1,100 @@
+{
+ "case_id": "20261029-drug-line-01",
+ "title": "ตำรวจ ภ.6 แถลงขยายผลคดียาบ้า 3 ล้านเม็ดที่พิจิตร จับเพิ่ม 3 ราย รวม 5 ผู้ต้องหา ยึดรถ 12 คัน ทองคำและเงินสด มูลค่ากว่า 15 ล้านบาท",
+ "generated_at": "2026-10-30T02:30:03.984Z",
+ "node_count": 16,
+ "edge_count": 15,
+ "relations": [
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/ภ.6",
+   "target_title": "ภ.6",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/บก.สส.ภ.6",
+   "target_title": "บก.สส.ภ.6",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/กก.สส.1 บก.สส.ภ.6",
+   "target_title": "กก.สส.1 บก.สส.ภ.6",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/สภ.วชิรบารมี",
+   "target_title": "สภ.วชิรบารมี",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลจังหวัดพิจิตร",
+   "target_title": "ศาลจังหวัดพิจิตร",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/พิจิตร",
+   "target_title": "พิจิตร",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/อำเภอแม่สาย",
+   "target_title": "อำเภอแม่สาย",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/นครราชสีมา",
+   "target_title": "นครราชสีมา",
+   "direction": "out"
+  },
+  {
+   "label": "ผู้ต้องหา",
+   "target_id": "30_Entities/People/คมศักดิ์ (โชค)",
+   "target_title": "คมศักดิ์ (โชค)",
+   "direction": "out"
+  },
+  {
+   "label": "ผู้ต้องหา",
+   "target_id": "30_Entities/People/พงศกร (เพชร)",
+   "target_title": "พงศกร (เพชร)",
+   "direction": "out"
+  },
+  {
+   "label": "ผู้ต้องหา",
+   "target_id": "30_Entities/People/ไข่ คัง เหม่า",
+   "target_title": "ไข่ คัง เหม่า",
+   "direction": "out"
+  },
+  {
+   "label": "ผู้ต้องหา",
+   "target_id": "30_Entities/People/ปรัชญา (เติร์ก)",
+   "target_title": "ปรัชญา (เติร์ก)",
+   "direction": "out"
+  },
+  {
+   "label": "ผู้ต้องหา",
+   "target_id": "30_Entities/People/บวรทัต (อี้)",
+   "target_title": "บวรทัต (อี้)",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/บุคคล/วรวัฒน์ มะลิ",
+   "target_title": "วรวัฒน์ มะลิ",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/บุคคล/ณัฐวุฒิ ภาคภูมิ",
+   "target_title": "ณัฐวุฒิ ภาคภูมิ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261029-drug-line-01.svg"
+}

@@ -1,0 +1,64 @@
+{
+ "case_id": "20261030-drug-03",
+ "title": "ตำรวจลำปางตรวจพบยาบ้าราว 4 ล้านเม็ดในถุงดำ 20 ใบ ถูกทิ้งซุกพงหญ้าหน้าวัดกู่คำ เมืองลำปาง ยังไม่มีผู้ต้องหา เร่งแกะรอยกล้องวงจรปิด",
+ "generated_at": "2026-10-30T02:30:04.026Z",
+ "node_count": 10,
+ "edge_count": 9,
+ "relations": [
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/สภ.เมืองลำปาง",
+   "target_title": "สภ.เมืองลำปาง",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/ภ.จว.ลำปาง",
+   "target_title": "ภ.จว.ลำปาง",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/กอ.รมน.ลำปาง",
+   "target_title": "กอ.รมน.ลำปาง",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/วัดกู่คำ ต.ต้นธงชัย",
+   "target_title": "วัดกู่คำ ต.ต้นธงชัย",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/อำเภอเมืองลำปาง",
+   "target_title": "อำเภอเมืองลำปาง",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/รอง ผบก.ภ.จว.ลำปาง",
+   "target_title": "รอง ผบก.ภ.จว.ลำปาง",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/นายอำเภอเมืองลำปาง",
+   "target_title": "นายอำเภอเมืองลำปาง",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/บุคคล/ธานี ตันจันทร์กุล",
+   "target_title": "ธานี ตันจันทร์กุล",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/บุคคล/ชูวิทย์ กองแก้ว",
+   "target_title": "ชูวิทย์ กองแก้ว",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261030-drug-03.svg"
+}

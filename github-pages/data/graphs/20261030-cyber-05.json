@@ -1,0 +1,16 @@
+{
+ "case_id": "20261030-cyber-05",
+ "title": "ThaiCERT แจ้งเตือนเหตุโจมตีบริการ Cloud VPS ในญี่ปุ่น ข้อมูลลูกค้าถูกนำออกและมีธุรกรรมผิดปกติ ผู้โจมตีอาจใช้ RDP Drive Redirection คัดลอกข้อมูลจากเครื่องผู้ใช้ แนะนำให้ผู้ดูแลระบบเร่งตรวจสอบ",
+ "generated_at": "2026-10-30T02:30:04.022Z",
+ "node_count": 2,
+ "edge_count": 1,
+ "relations": [
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/ThaiCERT",
+   "target_title": "ThaiCERT",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261030-cyber-05.svg"
+}
