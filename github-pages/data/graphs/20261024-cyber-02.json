@@ -1,7 +1,7 @@
 {
  "case_id": "20261024-cyber-02",
  "title": "แจ้งเตือน พบการโจมตีช่องโหว่ Plex2Shell ใน Plex Media Server เสี่ยงถูกควบคุมระบบและติดตั้ง Crypto Miner",
- "generated_at": "2026-10-30T02:30:03.802Z",
+ "generated_at": "2026-10-30T07:00:05.558Z",
  "node_count": 2,
  "edge_count": 1,
  "relations": [
