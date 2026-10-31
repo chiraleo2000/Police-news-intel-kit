@@ -1,0 +1,46 @@
+{
+ "case_id": "20261031-human-02",
+ "title": "ตม.ปทุมธานี สนธิ 5 หน่วยตรวจหอพักคลองหลวง 3 จุด จับเมียนมา 4 รายลอบเข้าเมือง-อยู่เกินกำหนด เปรียบเทียบปรับ-ดำเนินคดีผู้ดูแลที่พักที่ไม่แจ้งที่พักอาศัย",
+ "generated_at": "2026-10-31T02:30:10.542Z",
+ "node_count": 7,
+ "edge_count": 6,
+ "relations": [
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บก.ตม.3",
+   "target_title": "บก.ตม.3",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/ตม.จว.ปทุมธานี",
+   "target_title": "ตม.จว.ปทุมธานี",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/สภ.คลองหลวง",
+   "target_title": "สภ.คลองหลวง",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/คลองหลวง ปทุมธานี",
+   "target_title": "คลองหลวง ปทุมธานี",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/ผบก.ตม.3",
+   "target_title": "ผบก.ตม.3",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/ผบช.สตม.",
+   "target_title": "ผบช.สตม.",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261031-human-02.svg"
+}

@@ -1,0 +1,34 @@
+{
+ "case_id": "20261031-econ-02",
+ "title": "ปปง.แถลงคืนเงินผู้เสียหายคดีฉ้อโกง 3 รายคดี 9.58 ล้านบาท เยียวยาผู้เสียหายค้ามนุษย์ 197,023 บาท และส่งทรัพย์คดียาเสพติดเข้าคลัง 524,211 บาท รวมกว่า 10.3 ล้านบาท",
+ "generated_at": "2026-10-31T02:30:10.536Z",
+ "node_count": 5,
+ "edge_count": 4,
+ "relations": [
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/ปปง.",
+   "target_title": "ปปง.",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/พม.",
+   "target_title": "พม.",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/กระทรวงการคลัง",
+   "target_title": "กระทรวงการคลัง",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ทั่วประเทศ",
+   "target_title": "ทั่วประเทศ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261031-econ-02.svg"
+}

@@ -1,0 +1,40 @@
+{
+ "case_id": "20261031-cyber-02",
+ "title": "กองปราบจับ 14 ผู้ต้องหาตามหมายจับศาลอาญา เครือข่ายโรแมนซ์สแกมชักชวนเทรดหุ้นผ่านแอปปลอม ความเสียหายกว่า 200 ล้านบาท ใน 10 จังหวัด",
+ "generated_at": "2026-10-31T02:30:10.527Z",
+ "node_count": 6,
+ "edge_count": 5,
+ "relations": [
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/บช.ก.",
+   "target_title": "บช.ก.",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/บก.ป.",
+   "target_title": "บก.ป.",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลอาญา",
+   "target_title": "ศาลอาญา",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/กรุงเทพมหานคร",
+   "target_title": "กรุงเทพมหานคร",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/ผบช.ก.",
+   "target_title": "ผบช.ก.",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261031-cyber-02.svg"
+}

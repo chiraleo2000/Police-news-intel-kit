@@ -1,0 +1,34 @@
+{
+ "case_id": "20261031-human-03",
+ "title": "ฝ่ายปกครองและ สภ.เมืองระยอง ตรวจแคมป์ก่อสร้างโรงพยาบาล จับแรงงานเมียนมา 42 ราย เป็นชาย 28 หญิง 14 เตรียมขยายผลถึงนายจ้าง",
+ "generated_at": "2026-10-31T02:30:10.543Z",
+ "node_count": 5,
+ "edge_count": 4,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/สภ.เมืองระยอง",
+   "target_title": "สภ.เมืองระยอง",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/อำเภอเมืองระยอง",
+   "target_title": "อำเภอเมืองระยอง",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/เมืองระยอง ระยอง",
+   "target_title": "เมืองระยอง ระยอง",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/นายอำเภอเมืองระยอง",
+   "target_title": "นายอำเภอเมืองระยอง",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261031-human-03.svg"
+}

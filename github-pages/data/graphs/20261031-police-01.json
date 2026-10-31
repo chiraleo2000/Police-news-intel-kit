@@ -1,0 +1,28 @@
+{
+ "case_id": "20261031-police-01",
+ "title": "ผบ.ตร. ประชุมบริหาร ตร. ครั้งที่ 5/2569 กำชับตำรวจทั่วประเทศลงพื้นที่ฟังปัญหาประชาชน ปราบยาเสพติดสิ้นขบวนการ และเร่งแก้ปัญหาพนักงานสอบสวน",
+ "generated_at": "2026-10-31T02:30:10.545Z",
+ "node_count": 4,
+ "edge_count": 3,
+ "relations": [
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/สำนักงานตำรวจแห่งชาติ",
+   "target_title": "สำนักงานตำรวจแห่งชาติ",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/สำนักงานตำรวจแห่งชาติ",
+   "target_title": "สำนักงานตำรวจแห่งชาติ",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/ผบ.ตร.",
+   "target_title": "ผบ.ตร.",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261031-police-01.svg"
+}

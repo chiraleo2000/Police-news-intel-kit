@@ -1,0 +1,46 @@
+{
+ "case_id": "20261031-tourist-01",
+ "title": "ตำรวจภูธรจังหวัดพังงาและหน่วยความมั่นคง ตรวจค้น 4 จุดตามหมายศาลตะกั่วป่า เก็บหลักฐานนอมินีธุรกิจที่พัก-วิลล่าของทุนต่างด้าว ทรัพย์รวมกว่า 13.6 ล้านบาท",
+ "generated_at": "2026-10-31T02:30:10.551Z",
+ "node_count": 7,
+ "edge_count": 6,
+ "relations": [
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/ภ.8",
+   "target_title": "ภ.8",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/บก.สส.ภ.จว.พังงา",
+   "target_title": "บก.สส.ภ.จว.พังงา",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลจังหวัดตะกั่วป่า",
+   "target_title": "ศาลจังหวัดตะกั่วป่า",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ตะกั่วป่า",
+   "target_title": "ตะกั่วป่า",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/เขาหลัก",
+   "target_title": "เขาหลัก",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/ผบก.ภ.จว.พังงา",
+   "target_title": "ผบก.ภ.จว.พังงา",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261031-tourist-01.svg"
+}

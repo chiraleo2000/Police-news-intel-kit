@@ -1,0 +1,22 @@
+{
+ "case_id": "20261031-violent-01",
+ "title": "ผู้อำนวยการโรงเรียนจีนบ้านห้วยซิง อำเภอแม่ฟ้าหลวง เชียงราย ถูกคนร้าย 2 คนคลุมหน้ายิงเสียชีวิต สภ.แม่ฟ้าหลวงเร่งล่าตัวคนร้าย",
+ "generated_at": "2026-10-31T02:30:10.553Z",
+ "node_count": 3,
+ "edge_count": 2,
+ "relations": [
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/สภ.แม่ฟ้าหลวง",
+   "target_title": "สภ.แม่ฟ้าหลวง",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/แม่ฟ้าหลวง เชียงราย",
+   "target_title": "แม่ฟ้าหลวง เชียงราย",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261031-violent-01.svg"
+}

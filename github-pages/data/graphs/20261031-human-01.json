@@ -1,0 +1,46 @@
+{
+ "case_id": "20261031-human-01",
+ "title": "ตำรวจจุดตรวจแม่ท้อ ตาก สกัดรถพบชาวจีน 3 คนถูกใส่กุญแจมือ ปิดปาก มัดเท้า จับชาย 4 คนข้อหาหน่วงเหนี่ยวกักขัง รอง ผบ.ตร. สั่งขยายผลโยงแก๊งส่งไปทำงานสแกมในเมียนมา",
+ "generated_at": "2026-10-31T02:30:10.541Z",
+ "node_count": 7,
+ "edge_count": 6,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/สภ.แม่ท้อ",
+   "target_title": "สภ.แม่ท้อ",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/ภ.6",
+   "target_title": "ภ.6",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/ศูนย์ต่อต้านการค้ามนุษย์ ตร.",
+   "target_title": "ศูนย์ต่อต้านการค้ามนุษย์ ตร.",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/จุดตรวจแม่ท้อ",
+   "target_title": "จุดตรวจแม่ท้อ",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/รอง ผบ.ตร. ผู้อำนวยการศูนย์ต่อต้านการค้ามนุษย์ ตร.",
+   "target_title": "รอง ผบ.ตร. ผู้อำนวยการศูนย์ต่อต้านการค้ามนุษย์ ตร.",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/ผบช.ภ.6",
+   "target_title": "ผบช.ภ.6",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261031-human-01.svg"
+}

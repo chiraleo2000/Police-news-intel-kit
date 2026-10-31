@@ -1,0 +1,58 @@
+{
+ "case_id": "20261031-drug-01",
+ "title": "บช.ก.-ป.ป.ส.ภาค 9 ขยายผลเครือข่ายยาเสพติดเมืองตรัง จับเพิ่ม 6 ราย ยึดยาบ้า 8.7 แสนเม็ดและเคตามีน 8 กก. อายัดทรัพย์เครือข่ายกว่า 21 ล้านบาท โยงเหตุขว้างระเบิดบ้านเรือน",
+ "generated_at": "2026-10-31T02:30:10.532Z",
+ "node_count": 9,
+ "edge_count": 8,
+ "relations": [
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/บช.ก.",
+   "target_title": "บช.ก.",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/บก.ป.",
+   "target_title": "บก.ป.",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/บก.สส.ภ.9",
+   "target_title": "บก.สส.ภ.9",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/ปปส.ภาค 9",
+   "target_title": "ปปส.ภาค 9",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ตรัง",
+   "target_title": "ตรัง",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/ผบช.ก.",
+   "target_title": "ผบช.ก.",
+   "direction": "out"
+  },
+  {
+   "label": "เป้าหมายเครือข่าย",
+   "target_id": "30_Entities/Projects/เครือข่ายของนายสันติสุข (จริง)",
+   "target_title": "เครือข่ายของนายสันติสุข (จริง)",
+   "direction": "out"
+  },
+  {
+   "label": "เป้าหมายเครือข่าย",
+   "target_id": "30_Entities/ข่ายเครือข่าย/เครือข่ายของนายสันติสุข (จริง) เมืองตรัง",
+   "target_title": "เครือข่ายของนายสันติสุข (จริง) เมืองตรัง",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261031-drug-01.svg"
+}

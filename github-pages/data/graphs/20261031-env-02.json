@@ -1,0 +1,34 @@
+{
+ "case_id": "20261031-env-02",
+ "title": "ดีเอสไอตรวจฟาร์มไก่เอกชนที่เพชรบูรณ์ พื้นที่ครอบครองราว 1,778 ไร่ เป็นเขต ส.ป.ก. 1,043 ไร่ จ่อรับเป็นคดีพิเศษหากพบบุกรุก",
+ "generated_at": "2026-10-31T02:30:10.539Z",
+ "node_count": 5,
+ "edge_count": 4,
+ "relations": [
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/DSI",
+   "target_title": "DSI",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/ส.ป.ก.",
+   "target_title": "ส.ป.ก.",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/สำนักงานที่ดินจังหวัดเพชรบูรณ์",
+   "target_title": "สำนักงานที่ดินจังหวัดเพชรบูรณ์",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/เมืองเพชรบูรณ์ เพชรบูรณ์",
+   "target_title": "เมืองเพชรบูรณ์ เพชรบูรณ์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261031-env-02.svg"
+}

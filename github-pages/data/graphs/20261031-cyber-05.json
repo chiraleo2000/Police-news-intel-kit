@@ -1,0 +1,46 @@
+{
+ "case_id": "20261031-cyber-05",
+ "title": "บก.ปอศ. ตรวจค้นบ้านพักที่อุบลราชธานี ปิดเว็บ nanamovies.com ผู้ถูกกล่าวหาละเมิดลิขสิทธิ์ภาพยนตร์เพื่อการค้า ตัวแทนบริษัทหนังกว่า 10 บริษัทร่วมร้องทุกข์",
+ "generated_at": "2026-10-31T02:30:10.531Z",
+ "node_count": 7,
+ "edge_count": 6,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/บก.ปอศ.",
+   "target_title": "บก.ปอศ.",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/CIB",
+   "target_title": "CIB",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/กรมทรัพย์สินทางปัญญา",
+   "target_title": "กรมทรัพย์สินทางปัญญา",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/เมืองอุบลราชธานี",
+   "target_title": "เมืองอุบลราชธานี",
+   "direction": "out"
+  },
+  {
+   "label": "เป้าหมายเครือข่าย",
+   "target_id": "30_Entities/Projects/เว็บ nanamovies.com",
+   "target_title": "เว็บ nanamovies.com",
+   "direction": "out"
+  },
+  {
+   "label": "เป้าหมายเครือข่าย",
+   "target_id": "30_Entities/ข่ายเครือข่าย/เว็บไซต์ nanamovies.com",
+   "target_title": "เว็บไซต์ nanamovies.com",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261031-cyber-05.svg"
+}

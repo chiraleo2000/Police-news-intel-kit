@@ -1,0 +1,40 @@
+{
+ "case_id": "20261031-drug-03",
+ "title": "ป.ป.ส.ภาค 6 ตรวจค้นที่สุโขทัย ยุทธการตัดเนื้อร้ายครั้งที่ 28 พบข้าราชการครูเสพยาด้วยวิธีฉีด ขยายผลจับผู้ช่วยพยาบาลผู้ถูกกล่าวหาว่าจำหน่ายไอซ์",
+ "generated_at": "2026-10-31T02:30:10.534Z",
+ "node_count": 6,
+ "edge_count": 5,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/ปปส.ภาค 6",
+   "target_title": "ปปส.ภาค 6",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/สภ.กงไกรลาศ",
+   "target_title": "สภ.กงไกรลาศ",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/กอ.รมน.",
+   "target_title": "กอ.รมน.",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/กงไกรลาศ สุโขทัย",
+   "target_title": "กงไกรลาศ สุโขทัย",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/เลขาธิการ ป.ป.ส.",
+   "target_title": "เลขาธิการ ป.ป.ส.",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261031-drug-03.svg"
+}

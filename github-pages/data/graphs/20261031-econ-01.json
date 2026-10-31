@@ -1,0 +1,40 @@
+{
+ "case_id": "20261031-econ-01",
+ "title": "ผู้ร้องเรียนยื่นกองปราบตรวจเส้นทางเงินบริจาคมูลนิธิองค์กรทำดี ปมบัญชีรับบริจาค ก่อสร้างพูลวิลล่าภูเก็ต และสัญญาก่อสร้าง 50 ล้านบาท ประธานมูลนิธิตั้งทนายดูแลคดี",
+ "generated_at": "2026-10-31T02:30:10.535Z",
+ "node_count": 6,
+ "edge_count": 5,
+ "relations": [
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/บก.ป.",
+   "target_title": "บก.ป.",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/กรมการปกครอง",
+   "target_title": "กรมการปกครอง",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ภูเก็ต",
+   "target_title": "ภูเก็ต",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ปทุมธานี",
+   "target_title": "ปทุมธานี",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/ปนัดดา วงศ์ผู้ดี (ประธานมูลนิธิ ตามข่าว)",
+   "target_title": "ปนัดดา วงศ์ผู้ดี (ประธานมูลนิธิ ตามข่าว)",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261031-econ-01.svg"
+}

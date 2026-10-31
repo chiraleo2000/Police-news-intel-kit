@@ -1,0 +1,28 @@
+{
+ "case_id": "20261031-consumer-01",
+ "title": "บก.สส.ภ.1 จับ 4 ผู้ต้องหาค้าแก๊สหัวเราะ ยึด 607 ถัง เงินสด 7.7 แสนบาท ทอง 20 บาท หลังพนักงานธนาคารสะกิดตำรวจเมื่อพบการเบิกเงิน 6 แสนบาท",
+ "generated_at": "2026-10-31T02:30:10.522Z",
+ "node_count": 4,
+ "edge_count": 3,
+ "relations": [
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บช.ภ.1",
+   "target_title": "บช.ภ.1",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/บก.สส.ภ.1",
+   "target_title": "บก.สส.ภ.1",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/รังสิต ปทุมธานี",
+   "target_title": "รังสิต ปทุมธานี",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261031-consumer-01.svg"
+}

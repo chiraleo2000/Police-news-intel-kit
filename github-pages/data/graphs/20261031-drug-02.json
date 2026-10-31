@@ -1,0 +1,28 @@
+{
+ "case_id": "20261031-drug-02",
+ "title": "ดีเอสไอร่วม ตชด.ภาค 2 จับเครือข่ายค้ายาเสพติดที่สกลนคร 3 ราย ยึดยาบ้ากว่า 6 แสนเม็ด",
+ "generated_at": "2026-10-31T02:30:10.533Z",
+ "node_count": 4,
+ "edge_count": 3,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/DSI",
+   "target_title": "DSI",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/ตชด.ภาค 2",
+   "target_title": "ตชด.ภาค 2",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/สกลนคร",
+   "target_title": "สกลนคร",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261031-drug-02.svg"
+}

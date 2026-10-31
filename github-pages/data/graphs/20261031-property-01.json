@@ -1,0 +1,28 @@
+{
+ "case_id": "20261031-property-01",
+ "title": "สน.เพชรเกษม จับหญิง 47 ปีที่ราชบุรี ตามหมายจับศาลแขวงบางบอน ข้อหายักยอกทรัพย์ ไม่คืนเงิน 45,800 บาทที่ชาวจีนโอนผิดบัญชี",
+ "generated_at": "2026-10-31T02:30:10.547Z",
+ "node_count": 4,
+ "edge_count": 3,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/สน.เพชรเกษม",
+   "target_title": "สน.เพชรเกษม",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลแขวงบางบอน",
+   "target_title": "ศาลแขวงบางบอน",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/เมืองราชบุรี ราชบุรี",
+   "target_title": "เมืองราชบุรี ราชบุรี",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261031-property-01.svg"
+}

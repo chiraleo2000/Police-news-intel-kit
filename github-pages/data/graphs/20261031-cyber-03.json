@@ -1,0 +1,40 @@
+{
+ "case_id": "20261031-cyber-03",
+ "title": "ปคบ.จับ 2 ผู้ต้องหาตามหมายจับศาลปราจีนบุรีที่ลพบุรี หลอกขายไอดีเกมออนไลน์ราคา 30,000 บาท ผู้ต้องหาหลักรับว่าทำมา 8 เดือน",
+ "generated_at": "2026-10-31T02:30:10.528Z",
+ "node_count": 6,
+ "edge_count": 5,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/บก.ปคบ.",
+   "target_title": "บก.ปคบ.",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/ศปอส.ตร.",
+   "target_title": "ศปอส.ตร.",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลจังหวัดปราจีนบุรี",
+   "target_title": "ศาลจังหวัดปราจีนบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ชัยบาดาล ลพบุรี",
+   "target_title": "ชัยบาดาล ลพบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/ผบช.ก.",
+   "target_title": "ผบช.ก.",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261031-cyber-03.svg"
+}

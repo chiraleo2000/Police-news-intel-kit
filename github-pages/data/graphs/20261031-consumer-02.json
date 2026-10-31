@@ -1,0 +1,34 @@
+{
+ "case_id": "20261031-consumer-02",
+ "title": "นาวิกโยธิน หน่วยเฉพาะกิจที่ 182 จับเรือประมงกัมพูชาลอบขนอาหารทะเล 5.2 ตัน มูลค่าไม่ต่ำกว่า 2 ล้านบาท ที่อ่าวตราด คุมตัวชาวกัมพูชา 2 ราย",
+ "generated_at": "2026-10-31T02:30:10.524Z",
+ "node_count": 5,
+ "edge_count": 4,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/ฉก.นาวิกโยธินที่ 182",
+   "target_title": "ฉก.นาวิกโยธินที่ 182",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/สภ.คลองใหญ่",
+   "target_title": "สภ.คลองใหญ่",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/ศุลกากรคลองใหญ่",
+   "target_title": "ศุลกากรคลองใหญ่",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/คลองใหญ่ ตราด",
+   "target_title": "คลองใหญ่ ตราด",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261031-consumer-02.svg"
+}

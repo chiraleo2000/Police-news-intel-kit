@@ -1,0 +1,46 @@
+{
+ "case_id": "20261031-cyber-01",
+ "title": "ศาลอาญาไม่ให้ประกันตัวผู้ต้องหา 26 ปี ปมเพจ Godd Dam โพสต์สลิปโอนเงิน 7 ล้านบาทปลอม ตำรวจ บก.สอท.4 ส่งฝากขังและคุมตัวเข้าเรือนจำ",
+ "generated_at": "2026-10-31T02:30:10.526Z",
+ "node_count": 7,
+ "edge_count": 6,
+ "relations": [
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/บช.สอท.",
+   "target_title": "บช.สอท.",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/บก.สอท.4",
+   "target_title": "บก.สอท.4",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลอาญา",
+   "target_title": "ศาลอาญา",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ศาลอาญา",
+   "target_title": "ศาลอาญา",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/พนักงานสอบสวน บก.สอท.4",
+   "target_title": "พนักงานสอบสวน บก.สอท.4",
+   "direction": "out"
+  },
+  {
+   "label": "ติดตามจาก",
+   "target_id": "20_Cases/20261030-cyber-01",
+   "target_title": "นายกฯ มอบทนายแจ้งความเอาผิดผู้ดูแลเพจ Godd Dam และ สส. ผู้แชร์สลิป 7 ล้านบาท ตร.ไซเบอร์ปฏิเสธว่านายกฯ สั่งจับ ผู้ต้องหาปฏิเสธทุกข้อกล่าวหา ตำรวจเตรียมคัดค้านประกันตัว",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261031-cyber-01.svg"
+}
