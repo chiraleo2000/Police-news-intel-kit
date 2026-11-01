@@ -1,0 +1,28 @@
+{
+ "case_id": "20261101-env-01",
+ "title": "ประธานมูลนิธิองค์กรทำดีเข้าให้ปากคำ สภ.บ้านนา นครนายก ก่อนนัด 12 พ.ย. มอบสัญญาซื้อขายที่ดิน ปมตรวจสอบการใช้ที่ราชพัสดุ ต.ศรีกะอาง",
+ "generated_at": "2026-11-01T02:30:33.223Z",
+ "node_count": 4,
+ "edge_count": 3,
+ "relations": [
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/สภ.บ้านนา",
+   "target_title": "สภ.บ้านนา",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ศรีกะอาง นครนายก",
+   "target_title": "ศรีกะอาง นครนายก",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/ประธานมูลนิธิ (ผู้ให้ปากคำ)",
+   "target_title": "ประธานมูลนิธิ (ผู้ให้ปากคำ)",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261101-env-01.svg"
+}

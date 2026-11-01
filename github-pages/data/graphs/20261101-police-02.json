@@ -1,0 +1,46 @@
+{
+ "case_id": "20261101-police-02",
+ "title": "ผบช.ทท. นำตำรวจท่องเที่ยว เทศกิจ และ สน.ชนะสงคราม รวม 95 นาย ปล่อยแถวดูแลถนนข้าวสารคืนฮาโลวีน ขณะที่ ผู้ช่วย ผบ.ตร. ตรวจพัฒน์พงษ์และจุดตรวจใยแมงมุม ภ.5-ภ.6",
+ "generated_at": "2026-11-01T02:30:33.226Z",
+ "node_count": 7,
+ "edge_count": 6,
+ "relations": [
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บช.ทท.",
+   "target_title": "บช.ทท.",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ถนนข้าวสาร พระนคร",
+   "target_title": "ถนนข้าวสาร พระนคร",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/ผบช.ทท.",
+   "target_title": "ผบช.ทท.",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/ผู้ช่วย ผบ.ตร.",
+   "target_title": "ผู้ช่วย ผบ.ตร.",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/บุคคล/พงษ์สยาม มีขันทอง",
+   "target_title": "พงษ์สยาม มีขันทอง",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/บุคคล/หลังปล่อยแถว ผบช",
+   "target_title": "หลังปล่อยแถว ผบช",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261101-police-02.svg"
+}

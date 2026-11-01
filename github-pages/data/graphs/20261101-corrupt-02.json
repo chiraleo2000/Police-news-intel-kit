@@ -1,0 +1,16 @@
+{
+ "case_id": "20261101-corrupt-02",
+ "title": "ศาลอาญาคดีทุจริตฯ ภาค 4 นัดไต่สวนมูลฟ้อง 17 ธ.ค. ปม ผอ.กกต.ร้อยเอ็ดพวก 4 คน ถูกกล่าวหาละเว้นหน้าที่เรื่องเลือกตั้งนายก อบจ.",
+ "generated_at": "2026-11-01T02:30:33.211Z",
+ "node_count": 2,
+ "edge_count": 1,
+ "relations": [
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ร้อยเอ็ด",
+   "target_title": "ร้อยเอ็ด",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261101-corrupt-02.svg"
+}

@@ -1,0 +1,52 @@
+{
+ "case_id": "20261101-cyber-01",
+ "title": "สน.ทองหล่อเตรียมออกหมายเรียก \"ไอซ์ รักชนก\" และเจ้าของเพจ Godd Dam ข้อหาหมิ่นประมาทด้วยการโฆษณา ปมสลิปโอนเงิน 7 ล้านบาท รอพยานผู้ร้องทุกข์อีก 1 ปาก",
+ "generated_at": "2026-11-01T02:30:33.212Z",
+ "node_count": 8,
+ "edge_count": 7,
+ "relations": [
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/สน.ทองหล่อ",
+   "target_title": "สน.ทองหล่อ",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/บช.สอท.",
+   "target_title": "บช.สอท.",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/สน.ทองหล่อ",
+   "target_title": "สน.ทองหล่อ",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/ผกก.สน.ทองหล่อ",
+   "target_title": "ผกก.สน.ทองหล่อ",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/บุคคล/รัฐธนนท์ เอกฐิติกุลพัทธ์",
+   "target_title": "รัฐธนนท์ เอกฐิติกุลพัทธ์",
+   "direction": "out"
+  },
+  {
+   "label": "บัญชี",
+   "target_id": "30_Entities/บัญชี/ไอซ์ รักชนก",
+   "target_title": "ไอซ์ รักชนก",
+   "direction": "out"
+  },
+  {
+   "label": "ติดตามจาก",
+   "target_id": "20_Cases/20261031-cyber-01",
+   "target_title": "ศาลอาญาไม่ให้ประกันตัวผู้ต้องหา 26 ปี ปมเพจ Godd Dam โพสต์สลิปโอนเงิน 7 ล้านบาทปลอม ตำรวจ บก.สอท.4 ส่งฝากขังและคุมตัวเข้าเรือนจำ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261101-cyber-01.svg"
+}

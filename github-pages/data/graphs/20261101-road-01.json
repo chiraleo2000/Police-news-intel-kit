@@ -1,0 +1,22 @@
+{
+ "case_id": "20261101-road-01",
+ "title": "ชาวเวียดนามเมาแล้วขับ SUV พุ่งชนร้านค้าหน้าร้านสะดวกซื้อ บางบัวทอง นนทบุรี เสียหายราว 7 แสนบาท แอลกอฮอล์ 123 มก.% ตำรวจดำเนินคดี ไกล่เกลี่ยผิดนัด",
+ "generated_at": "2026-11-01T02:30:33.228Z",
+ "node_count": 3,
+ "edge_count": 2,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/สภ.บางบัวทอง",
+   "target_title": "สภ.บางบัวทอง",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/บางบัวทอง นนทบุรี",
+   "target_title": "บางบัวทอง นนทบุรี",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261101-road-01.svg"
+}

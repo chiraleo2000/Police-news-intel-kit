@@ -1,0 +1,40 @@
+{
+ "case_id": "20261101-violent-02",
+ "title": "ตำรวจ สน.ดินแดงจับชายเมียนมา 23 ปี ที่ปั๊ม ปตท.บางปะอิน อยุธยา ผู้ต้องหาฆ่ารัดคอหญิงไทยวัย 20 ปีในห้องพัก ให้การว่าเสพยาจนมึนเมา",
+ "generated_at": "2026-11-01T02:30:33.233Z",
+ "node_count": 6,
+ "edge_count": 5,
+ "relations": [
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บช.น.",
+   "target_title": "บช.น.",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บก.น.1",
+   "target_title": "บก.น.1",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/สน.ดินแดง",
+   "target_title": "สน.ดินแดง",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ดินแดง กรุงเทพมหานคร",
+   "target_title": "ดินแดง กรุงเทพมหานคร",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/ผบช.น.",
+   "target_title": "ผบช.น.",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261101-violent-02.svg"
+}

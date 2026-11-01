@@ -1,0 +1,70 @@
+{
+ "case_id": "20261101-drug-02",
+ "title": "สตม.ร่วม ป.ป.ส. จับชาวจีน 3 ราย ผู้ต้องหาตามหมายจับจีนคดีส่งออกไอซ์ซุกในขนมไทยไปจีน ที่ กทม. และพัทยา ยึดไอซ์ 81.7 กรัม",
+ "generated_at": "2026-11-01T02:30:33.218Z",
+ "node_count": 11,
+ "edge_count": 10,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/บช.สตม.",
+   "target_title": "บช.สตม.",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/ปส.",
+   "target_title": "ปส.",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/สน.ยานนาวา",
+   "target_title": "สน.ยานนาวา",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/กรุงเทพมหานคร",
+   "target_title": "กรุงเทพมหานคร",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/พัทยา",
+   "target_title": "พัทยา",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/ผบช.สตม.",
+   "target_title": "ผบช.สตม.",
+   "direction": "out"
+  },
+  {
+   "label": "ผู้ต้องหา",
+   "target_id": "30_Entities/People/MR. WEN",
+   "target_title": "MR. WEN",
+   "direction": "out"
+  },
+  {
+   "label": "ผู้ต้องหา",
+   "target_id": "30_Entities/People/MS. FANG",
+   "target_title": "MS. FANG",
+   "direction": "out"
+  },
+  {
+   "label": "ผู้ต้องหา",
+   "target_id": "30_Entities/People/MR. ZHANG",
+   "target_title": "MR. ZHANG",
+   "direction": "out"
+  },
+  {
+   "label": "เป้าหมายเครือข่าย",
+   "target_id": "30_Entities/Projects/เครือข่ายส่งออกไอซ์ซุกขนมไทยไปจีน",
+   "target_title": "เครือข่ายส่งออกไอซ์ซุกขนมไทยไปจีน",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261101-drug-02.svg"
+}

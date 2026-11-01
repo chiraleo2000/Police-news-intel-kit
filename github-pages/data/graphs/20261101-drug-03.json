@@ -1,0 +1,40 @@
+{
+ "case_id": "20261101-drug-03",
+ "title": "สตม.ร่วม ป.ป.ส.-สน.นิมิตรใหม่ ตรวจโกดังแบ่งบรรจุกัญชาของบริษัทต้องสงสัยนอมินีที่คลองสามวา จับต่างด้าว 14 ราย พบผู้ต้องหาหมายจับเวียดนามคดียาเสพติด",
+ "generated_at": "2026-11-01T02:30:33.219Z",
+ "node_count": 6,
+ "edge_count": 5,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/บช.สตม.",
+   "target_title": "บช.สตม.",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/ปส.",
+   "target_title": "ปส.",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/สน.นิมิตรใหม่",
+   "target_title": "สน.นิมิตรใหม่",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/คลองสามวา กรุงเทพมหานคร",
+   "target_title": "คลองสามวา กรุงเทพมหานคร",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/ผบช.สตม.",
+   "target_title": "ผบช.สตม.",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261101-drug-03.svg"
+}

@@ -1,0 +1,28 @@
+{
+ "case_id": "20261101-police-01",
+ "title": "ผบ.ตร.สั่งตำรวจทั่วประเทศลงพื้นที่ฟังปัญหาประชาชน ถึงที่เกิดเหตุให้เร็ว และขยายผลทลายโครงสร้างเครือข่ายยาเสพติดถึงผู้ค้ารายย่อย ในประชุมบริหาร ตร. ครั้งที่ 5/2569",
+ "generated_at": "2026-11-01T02:30:33.225Z",
+ "node_count": 4,
+ "edge_count": 3,
+ "relations": [
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/สำนักงานตำรวจแห่งชาติ",
+   "target_title": "สำนักงานตำรวจแห่งชาติ",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/กรุงเทพมหานคร",
+   "target_title": "กรุงเทพมหานคร",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/ผบ.ตร.",
+   "target_title": "ผบ.ตร.",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261101-police-01.svg"
+}

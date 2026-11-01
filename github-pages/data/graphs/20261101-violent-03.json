@@ -1,0 +1,28 @@
+{
+ "case_id": "20261101-violent-03",
+ "title": "ตำรวจ สภ.คูคต ลำลูกกา ปทุมธานี สอบสวนเหตุหญิงกัมพูชาวัย 37 ปีเสียชีวิตในห้องพัก พบรอยช้ำที่คอ น้องชายสงสัยสามี ตำรวจตรวจกล้องวงจรปิดและติดตามตัว",
+ "generated_at": "2026-11-01T02:30:33.234Z",
+ "node_count": 4,
+ "edge_count": 3,
+ "relations": [
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/สภ.คูคต",
+   "target_title": "สภ.คูคต",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/คูคต ลำลูกกา ปทุมธานี",
+   "target_title": "คูคต ลำลูกกา ปทุมธานี",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/สารวัตรเวรสอบสวน สภ.คูคต",
+   "target_title": "สารวัตรเวรสอบสวน สภ.คูคต",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261101-violent-03.svg"
+}
