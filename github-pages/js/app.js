@@ -968,11 +968,17 @@
     els.status.textContent = "ไม่มีข้อมูลในคลัง";
   }
 
+  let lastRouteTab = "";
+
   async function route() {
     if (!bootstrapped) return;
     const parsed = parseHash();
     const range = RANGE_VALUES.has(parsed.range) ? parsed.range : DEFAULT_RANGE;
     syncRange(range);
+    if (lastRouteTab === "brain" && parsed.tab !== "brain") {
+      window.GraphRag?.clearChat?.();
+    }
+    lastRouteTab = parsed.tab;
     setActiveTab(parsed.tab);
 
     if (redirectToCanonicalHash(parsed, range)) return;

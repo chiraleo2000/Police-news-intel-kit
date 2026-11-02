@@ -1118,7 +1118,6 @@
     if (input) input.value = question;
     const empty = document.getElementById("brain-chat-empty");
     if (empty) empty.hidden = true;
-    log.querySelectorAll("[data-rag-focus]").forEach((btn) => btn.closest("p")?.remove());
     const turn = document.createElement("article");
     turn.className = "chat-turn";
     turn.innerHTML = `<div class="chat-bubble chat-user">${escapeHtml(question)}</div><div class="chat-bubble chat-assistant"><p class="muted">กำลังให้โมเดลวิเคราะห์จากกราฟ…</p></div>`;
@@ -1137,16 +1136,29 @@
       return;
     }
     lastFocusIds = result.focusIds || [];
+    if (lastFocusIds.length) window.BrainGraph?.focusOnIds?.(lastFocusIds);
+    else window.BrainGraph?.clearFocus?.();
     const reply = await askModel(question, result);
     thread.push({ question, result, llmText: reply.ok ? reply.text : "" });
-    const focusBtn =
-      lastFocusIds.length > 0
-        ? `<p><button type="button" class="btn-ghost" data-rag-focus>โฟกัสกราฟเฉพาะกลุ่มนี้</button></p>`
-        : "";
     assistant.innerHTML = reply.ok
-      ? `<p class="rag-narration-body">${escapeHtml(reply.text)}</p>${focusBtn}`
-      : `<p class="rag-warn">${escapeHtml(reply.reason || "เรียกโมเดลไม่สำเร็จ")}</p>${focusBtn}`;
+      ? `<p class="rag-narration-body">${escapeHtml(reply.text)}</p>`
+      : `<p class="rag-warn">${escapeHtml(reply.reason || "เรียกโมเดลไม่สำเร็จ")}</p>`;
     log.scrollTop = log.scrollHeight;
+  }
+
+  function clearChat() {
+    thread.length = 0;
+    lastFocusIds = [];
+    chatQueue = Promise.resolve();
+    const input = document.getElementById("brain-question");
+    if (input) input.value = "";
+    const log = document.getElementById("brain-chat-log");
+    if (log) {
+      log.querySelectorAll(".chat-turn").forEach((el) => el.remove());
+      const empty = document.getElementById("brain-chat-empty");
+      if (empty) empty.hidden = false;
+    }
+    window.BrainGraph?.clearFocus?.();
   }
 
   function bindAsk() {
@@ -1159,6 +1171,7 @@
       ev.preventDefault();
       ask(input?.value || "");
     });
+    document.getElementById("brain-chat-clear")?.addEventListener("click", () => clearChat());
     document.querySelectorAll("[data-example]").forEach((btn) => {
       const idx = Number(btn.getAttribute("data-example"));
       const q = EXAMPLES[idx] || btn.textContent || "";
@@ -1166,11 +1179,6 @@
         if (input) input.value = q;
         ask(q);
       });
-    });
-    document.getElementById("brain-chat-log")?.addEventListener("click", (ev) => {
-      const btn = ev.target.closest("[data-rag-focus]");
-      if (!btn) return;
-      window.BrainGraph?.focusOnIds?.(lastFocusIds);
     });
   }
 
@@ -1181,6 +1189,7 @@
     },
     answerQuestion,
     bindAsk,
+    clearChat,
     buildIndex,
     answerFromIndex,
   };
