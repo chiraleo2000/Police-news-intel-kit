@@ -13,17 +13,17 @@
 | `feed.json` | รายการข่าวรวม (UX หลัก) |
 | `manifest.json` | ช่วงวัน / ดาวน์โหลด / ไฟล์ประกอบ |
 | `{DATE}_crime.json` | แหล่งความจริงรายวัน + KPI |
-| `graph.json` | ข้อมูลกราฟ — จาก `vault/` wikilinks (แท็บ ข้อมูลกราฟ) |
+| `graph.json` | ข้อมูลกราฟ (แท็บ ข้อมูลกราฟ) — สร้างใน private จาก vault แล้ว sync มา |
 | `graphs/{case_id}.svg` | Ego subgraph ต่อหัวข่าว (แสดงในหน้ารายโพสต์ + ฝัง PDF/MD) |
 | `graphs/{case_id}.json` | สรุป relations ของคดีนั้น |
 
 ทางเลือก: `{DATE}_hotspots.json`, `{DATE}_alerts.json`
 
-`graph.json` + `graphs/*` สร้างด้วย `rebuild-pages-feed.js` → `build-obsidian-graph.js` + `build-case-ego-graphs.js` · ดู `docs/obsidian-second-brain.md`
+`graph.json` + `graphs/*` + feed/downloads ถูกสร้างและอัปเดตใน workspace **`police-news-intel-private`** (`ops/rebuild-pages-feed.js`, build graph จาก vault) แล้ว sync เข้าโฟลเดอร์นี้ — **ไม่มี** `ops/rebuild-pages-feed.js`, `vault/`, หรือ `Document/` ใน public kit
 
 ## ดาวน์โหลด (แท็บ PDF)
 
-วางไฟล์สรุปรายวันที่นี่ (ไม่ใช่ JSON):
+วางไฟล์สรุปรายวันที่นี่ (ไม่ใช่ JSON) — โดยปกติ private เป็นคน copy มาให้:
 
 | ไฟล์ | ใช้ทำอะไร |
 | --- | --- |
@@ -31,13 +31,13 @@
 | `downloads/{DATE}_infographic.png` | Infographic |
 | `downloads/{DATE}_crime_line.pdf` | PDF จาก Task 2 (LINE) |
 
-หลังไปป์ไลน์สร้างไฟล์ใน `Document/{DATE}_Crime/` ให้รัน:
+หลังไปป์ไลน์สร้างไฟล์ใน private `Document/{DATE}_Crime/` ให้รันที่ **private**:
 
 ```bat
 node ops/rebuild-pages-feed.js
 ```
 
-สคริปต์จะ copy PDF/PNG เข้า `data/downloads/` และอัปเดต `manifest.downloads` อัตโนมัติ
+จากนั้น sync/publish เข้า public `github-pages/data/`
 
 ## `manifest.json`
 
@@ -85,10 +85,6 @@ node ops/rebuild-pages-feed.js
 
 **ทุกโพสต์ต้องมี `_date` (YYYY-MM-DD)** ไม่งั้นช่วงวันจะกรองไม่เจอ
 
-## สร้าง feed จากไฟล์รายวัน (บนเครื่อง)
+## อัปเดต feed / graph (บนเครื่อง)
 
-```bat
-node ops/rebuild-pages-feed.js
-```
-
-จากนั้น commit + push → Actions จะอัปเดต Pages อัตโนมัติ
+รัน rebuild ใน **`police-news-intel-private`** แล้ว publish มาที่นี่ — ไม่รันสคริปต์ rebuild จาก public kit

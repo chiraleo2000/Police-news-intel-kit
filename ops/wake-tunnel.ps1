@@ -1,5 +1,14 @@
-# Starts MCP, the single-port gateway, LM Studio on the configured port, and one ngrok tunnel.
-# Reads ops/tunnel.config.json. Repo root is the parent of ops/. Never listens on or routes to 7988.
+﻿# Starts MCP, the single-port gateway, LM Studio on the configured port, and one ngrok tunnel
+# for THIS public kit's optional RAG only (gateway :8790 by default).
+#
+# Isolation (hard rule) — never collide with police-news-intel-private LINE / tor:
+#   - Never Stop-Process ngrok (not by name, not "all", not other agents).
+#   - Never bind, probe-kill, recycle, or route to port 18080 (LINE hub).
+#   - Never touch ngrok-line.log, police-news-intel-private paths, or the tor
+#     reserved host fresh-currently-elk.ngrok-free.app.
+#   - Only manage the RAG tunnel for gatewayPort from tunnel.config.json;
+#     write github-pages/data/tunnel.json (and optionally git-push that file).
+#   - Never listens on or routes to 7988.
 $ErrorActionPreference = "Stop"
 
 $OpsDir = if ($PSScriptRoot) { $PSScriptRoot } else { Split-Path -Parent $MyInvocation.MyCommand.Path }
@@ -7,6 +16,10 @@ $RepoRoot = Split-Path -Parent $OpsDir
 $ConfigPath = Join-Path $OpsDir "tunnel.config.json"
 $script:LogPath = Join-Path $RepoRoot "logs\wake-tunnel.log"
 $script:Retries = @(5, 15, 30)
+$script:ForbiddenPorts = @(18080, 8080, 7988)
+$script:ReservedHosts = @("fresh-currently-elk.ngrok-free.app")
+$script:NgrokWebAddr = "127.0.0.1:4045"
+$script:NgrokLogRel = "logs/ngrok-rag.log"
 
 function Write-Log {
     param([Parameter(Mandatory = $true)][string]$Message)
@@ -29,7 +42,7 @@ function Format-JsonString {
 
 function Test-TcpOpen {
     param([Parameter(Mandatory = $true)][int]$Port)
-    if ($Port -eq 7988) { return $false }
+    if ($script:ForbiddenPorts -contains $Port) { return $false }
     $client = New-Object System.Net.Sockets.TcpClient
     try {
         $task = $client.ConnectAsync("127.0.0.1", $Port)
@@ -68,8 +81,8 @@ function Assert-AllowedPort {
         [Parameter(Mandatory = $true)][int]$Port,
         [Parameter(Mandatory = $true)][string]$Name
     )
-    if ($Port -eq 7988) {
-        Write-Log "refusing $Name port 7988"
+    if ($script:ForbiddenPorts -contains $Port) {
+        Write-Log "refusing $Name port $Port (owned by LINE/tor/other kits; RAG uses gateway/mcp/llm only)"
         exit 1
     }
     if ($Port -lt 1 -or $Port -gt 65535) {
@@ -173,6 +186,21 @@ function Start-Lms {
     }
 }
 
+function Test-ReservedPublicUrl {
+    param([string]$PublicUrl)
+    if ([string]::IsNullOrWhiteSpace($PublicUrl)) { return $false }
+    try {
+        $uri = [Uri]$PublicUrl
+        $hostName = $uri.Host.ToLowerInvariant()
+    } catch {
+        return $false
+    }
+    foreach ($reserved in @($script:ReservedHosts)) {
+        if ($hostName -eq $reserved.ToLowerInvariant()) { return $true }
+    }
+    return $false
+}
+
 function Test-NgrokTargetsPort {
     param(
         [Parameter(Mandatory = $true)]$Tunnel,
@@ -188,13 +216,26 @@ function Test-NgrokTargetsPort {
         return $false
     }
     if ($uri.Port -ne $Port) { return $false }
+    if ($script:ForbiddenPorts -contains $uri.Port) { return $false }
     $hostName = $uri.Host
     return $hostName -eq "127.0.0.1" -or $hostName -eq "localhost" -or $hostName -eq "::1"
 }
 
+function Get-NgrokApiPorts {
+    $ports = New-Object System.Collections.Generic.List[int]
+    if ($script:NgrokWebAddr -match ':(\d+)\s*$') {
+        [void]$ports.Add([int]$Matches[1])
+    }
+    foreach ($p in @(4045, 4040, 4041, 4042)) {
+        if (-not $ports.Contains($p)) { [void]$ports.Add($p) }
+    }
+    return @($ports)
+}
+
 function Get-NgrokHttpsUrl {
     param([Parameter(Mandatory = $true)][int]$GatewayPort)
-    foreach ($apiPort in @(4040, 4042)) {
+    Assert-AllowedPort $GatewayPort "ngrok-lookup"
+    foreach ($apiPort in @(Get-NgrokApiPorts)) {
         try {
             $response = Invoke-RestMethod -Uri "http://127.0.0.1:${apiPort}/api/tunnels" -TimeoutSec 3
         } catch {
@@ -204,6 +245,10 @@ function Get-NgrokHttpsUrl {
         foreach ($tunnel in @($response.tunnels)) {
             $public = [string]$tunnel.public_url
             if ($public -notlike "https://*") { continue }
+            if (Test-ReservedPublicUrl -PublicUrl $public) {
+                Write-Log "ignoring reserved tor host tunnel $public"
+                continue
+            }
             if (-not (Test-NgrokTargetsPort -Tunnel $tunnel -Port $GatewayPort)) {
                 Write-Log "ignoring https tunnel $public because it does not forward to 127.0.0.1:${GatewayPort}"
                 continue
@@ -220,10 +265,11 @@ function Ensure-Ngrok {
         [Parameter(Mandatory = $true)][string]$CommandName,
         [Parameter(Mandatory = $true)][int]$GatewayPort
     )
+    # Intentionally never Stop-Process ngrok — leave LINE :18080 / tor tunnels alone.
     Assert-AllowedPort $GatewayPort "ngrok"
     $existing = Get-NgrokHttpsUrl -GatewayPort $GatewayPort
     if ($existing) {
-        Write-Log "ngrok https tunnel already present; not starting another"
+        Write-Log "RAG ngrok https tunnel already present; not starting another"
         return $existing
     }
     $ngrokPath = Resolve-ToolPath $CommandName
@@ -231,20 +277,33 @@ function Ensure-Ngrok {
         Write-Log "ngrok command not found: $CommandName"
         return $null
     }
-    Write-Log "starting ngrok http $GatewayPort"
+
+    $logRel = $script:NgrokLogRel -replace "/", "\"
+    if ([System.IO.Path]::IsPathRooted($logRel)) {
+        $ngrokLogPath = $logRel
+    } else {
+        $ngrokLogPath = Join-Path $RepoRoot $logRel
+    }
+    $logDir = Split-Path -Parent $ngrokLogPath
+    if ($logDir -and -not (Test-Path -LiteralPath $logDir)) {
+        New-Item -ItemType Directory -Path $logDir -Force | Out-Null
+    }
+    # Own inspect + log only — never ngrok-line.log / private kit paths.
+    $arguments = "http --log `"$ngrokLogPath`" --web-addr $($script:NgrokWebAddr) $GatewayPort"
+    Write-Log "starting RAG ngrok: $arguments"
     try {
-        $proc = Start-Background -FileName $ngrokPath -Arguments "http $GatewayPort"
-        Write-Log "started ngrok pid $($proc.Id)"
+        $proc = Start-Background -FileName $ngrokPath -Arguments $arguments
+        Write-Log "started RAG ngrok pid $($proc.Id) (no Stop-Process of other ngrok)"
     } catch {
         Write-Log "failed to start ngrok: $($_.Exception.Message)"
     }
     foreach ($delay in @($script:Retries)) {
-        Write-Log "waiting ${delay}s for ngrok https tunnel"
+        Write-Log "waiting ${delay}s for RAG ngrok https tunnel"
         Start-Sleep -Seconds ([int]$delay)
         $found = Get-NgrokHttpsUrl -GatewayPort $GatewayPort
         if ($found) { return $found }
     }
-    Write-Log "ngrok https tunnel still not available"
+    Write-Log "RAG ngrok https tunnel still not available"
     return $null
 }
 
@@ -256,6 +315,10 @@ function Get-HttpsOrigin {
         return $null
     }
     if ($uri.Scheme -ne "https" -or [string]::IsNullOrWhiteSpace($uri.Authority)) { return $null }
+    if (Test-ReservedPublicUrl -PublicUrl $PublicUrl) {
+        Write-Log "refusing reserved tor host as tunnel base: $PublicUrl"
+        return $null
+    }
     return ("{0}://{1}" -f $uri.Scheme, $uri.Authority).TrimEnd("/")
 }
 
@@ -338,8 +401,29 @@ try {
             $script:LogPath = Join-Path $RepoRoot ($logSetting -replace "/", "\")
         }
     }
+    if ($script:LogPath -match 'ngrok-line\.log$' -or $script:LogPath -match 'police-news-intel-private') {
+        Write-Log "refusing log path that belongs to LINE/private kit: $script:LogPath"
+        exit 1
+    }
     $script:Retries = @($config.retries | ForEach-Object { [int]$_ })
     if ($script:Retries.Count -eq 0) { throw "retries must list at least one delay" }
+
+    if ($null -ne $config.forbiddenPorts) {
+        $script:ForbiddenPorts = @($config.forbiddenPorts | ForEach-Object { [int]$_ })
+    }
+    if ($null -ne $config.reservedHosts) {
+        $script:ReservedHosts = @($config.reservedHosts | ForEach-Object { [string]$_ })
+    }
+    $webAddr = [string]$config.ngrokWebAddr
+    if (-not [string]::IsNullOrWhiteSpace($webAddr)) { $script:NgrokWebAddr = $webAddr.Trim() }
+    $ngrokLogCfg = [string]$config.ngrokLog
+    if (-not [string]::IsNullOrWhiteSpace($ngrokLogCfg)) {
+        if ($ngrokLogCfg -match 'ngrok-line\.log' -or $ngrokLogCfg -match 'police-news-intel-private') {
+            Write-Log "refusing ngrokLog that belongs to LINE/private kit: $ngrokLogCfg"
+            exit 1
+        }
+        $script:NgrokLogRel = $ngrokLogCfg.Trim()
+    }
 
     $gatewayPort = [int]$config.gatewayPort
     $mcpPort = [int]$config.mcpPort
@@ -356,7 +440,7 @@ try {
     $push = $false
     if ($config.push -eq $true) { $push = $true }
 
-    Write-Log "wake started repo=$RepoRoot gateway=$gatewayPort mcp=$mcpPort llm=$llmPort"
+    Write-Log "wake started repo=$RepoRoot gateway=$gatewayPort mcp=$mcpPort llm=$llmPort (RAG only; never touch :18080 / tor)"
     Start-RepoNode -ScriptName "mcp/server.mjs" -Port $mcpPort -ExtraEnv @{ PAGES_BASE = $pagesBase }
     Start-RepoNode -ScriptName "gateway/server.mjs" -Port $gatewayPort
     [void](Wait-Port -Port $mcpPort -Label "mcp $mcpPort")

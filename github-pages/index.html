@@ -225,7 +225,7 @@
         <div class="brain-workspace">
           <div class="brain-stage">
             <canvas id="brain-canvas" width="1600" height="900" aria-label="ข้อมูลกราฟ"></canvas>
-            <aside id="brain-detail" class="brain-detail" aria-live="polite"></aside>
+            <aside id="brain-detail" class="brain-detail" aria-label="รายละเอียดโหนดที่เลือก" aria-live="polite"></aside>
           </div>
           <aside class="brain-chat" aria-label="แชทถามจากกราฟ">
             <div class="brain-chat-log" id="brain-chat-log">
@@ -249,8 +249,8 @@
         </div>
 
         <p class="muted" id="brain-empty" hidden>
-          ยังไม่มี <code>data/graph.json</code> — รัน
-          <code>node ops/build-obsidian-graph.js</code> แล้ว publish
+          ยังไม่มี <code>data/graph.json</code> — สร้างและ publish จาก
+          <code>police-news-intel-private</code>
         </p>
       </div>
     </section>

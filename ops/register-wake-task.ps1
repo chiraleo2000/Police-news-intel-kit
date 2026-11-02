@@ -32,7 +32,7 @@ $xml = @"
 <?xml version="1.0" encoding="UTF-16"?>
 <Task version="1.4" xmlns="http://schemas.microsoft.com/windows/2004/02/mit/task">
   <RegistrationInfo>
-    <Description>Start MCP, the gateway, LM Studio, and the ngrok tunnel to port 8790 after logon, resume, or the daily fallback, then publish github-pages/data/tunnel.json so the GitHub Pages chat can call Gemma.</Description>
+    <Description>Start this kit's RAG only (MCP, gateway :8790, LM Studio, dedicated ngrok). Never stop other ngrok or touch LINE :18080 / tor. Then publish github-pages/data/tunnel.json for Pages chat.</Description>
   </RegistrationInfo>
   <Triggers>
     <LogonTrigger>

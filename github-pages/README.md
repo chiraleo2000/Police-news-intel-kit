@@ -14,13 +14,12 @@
 Repo: https://github.com/chiraleo2000/Police-news-intel-kit (public)  
 Deploy: GitHub Actions → workflow `Deploy GitHub Pages` (โฟลเดอร์ `github-pages/`)
 
-ตั้ง `GITHUB_PAGES_BASE_URL=https://chiraleo2000.github.io/Police-news-intel-kit` ใน `server/.env`  
-ให้ Completion Report ของ Task 1/2 พิมพ์ลิงก์เต็มอัตโนมัติ
-
 ---
 
-เว็บอ่านอย่างเดียว ดึง JSON จาก `data/` ไม่มี backend  
-ไปป์ไลน์ (Claude / news-hub) **copy ไฟล์เข้า `data/`** แล้วคนหรือ CI เป็นคน `git push` (skill ห้ามให้ Claude push เอง)
+เว็บอ่านอย่างเดียว ดึง JSON จาก `data/` ไม่มี backend ใน repo นี้
+
+**ต้นทางข้อมูล / rebuild:** workspace **`police-news-intel-private`** เป็นคน scrape, สร้าง `Document/`, อ่าน `vault/`, รัน `ops/rebuild-pages-feed.js` แล้ว sync/push เข้า `github-pages/` ที่นี่  
+ตั้ง `GITHUB_PAGES_BASE_URL` ใน **private** `server/.env` (ไม่มี path นั้นใน public)
 
 ## โครง
 
@@ -49,8 +48,13 @@ cd /d path\to\police-news-intel-kit
 npx --yes serve github-pages
 ```
 
-## เชื่อมกับ skill
+## ไฟล์ที่ private ซิงค์มา
 
-- Task 1: `github-pages/data/{DATE}_crime.json` (+ hotspots / alerts / trends / bd_leads) + PDF ใน `data/downloads/`
-- Task 2 (LINE): `github-pages/data/{DATE}_crime_line.json` (+ `*_line`) + PDF line
-- อัปเดต `github-pages/data/manifest.json` (prepend, add-only) รวม `downloads[]`
+- Task 1: `data/{DATE}_crime.json` (+ hotspots / alerts / trends / bd_leads) + PDF ใน `data/downloads/`
+- Task 2 (LINE): `data/{DATE}_crime_line.json` (+ `*_line`) + PDF line
+- `data/manifest.json` (prepend, add-only) รวม `downloads[]`
+- `data/graph.json` / `data/graphs/*` สร้างใน private จาก vault แล้ว sync มา
+
+## Optional RAG บนเครื่อง
+
+แชทกราฟใช้ MCP/gateway/LM ผ่าน `ops/wake-tunnel.ps1` ที่ราก repo — ดู README ราก · ไม่เกี่ยวกับ LINE hub `:18080`
