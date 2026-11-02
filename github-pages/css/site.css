@@ -1257,17 +1257,17 @@ body.is-brain .site-footer {
   display: none;
 }
 
-.brain-ask-examples {
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
+.rag-evidence {
+  margin-top: 0.75rem;
+  padding-top: 0.55rem;
+  border-top: 1px solid var(--line);
 }
 
-.brain-example {
-  white-space: normal;
-  text-align: left;
-  line-height: 1.45;
-  height: auto;
+.rag-evidence > summary {
+  cursor: pointer;
+  color: var(--slate);
+  font-size: 0.9rem;
+  margin-bottom: 0.45rem;
 }
 
 .chat-turn {
