@@ -226,26 +226,27 @@
     if (!graph) return [];
     let nodes;
     if (focusIds && focusIds.size) {
+      // Keep every id from the latest question filter, even if those cases are not linked to each other.
       nodes = graph.nodes.filter((n) => focusIds.has(n.id) || n.id === selectedId);
-    } else {
-      nodes = graph.nodes.filter(passesBaseFilters);
-      if (filters.crimeType) {
-        const caseIds = new Set(nodes.filter((n) => n.kind === "case").map((n) => n.id));
-        const linked = new Set(caseIds);
-        for (const e of graph.edges || []) {
-          if (caseIds.has(e.source)) linked.add(e.target);
-          if (caseIds.has(e.target)) linked.add(e.source);
-        }
-        nodes = nodes.filter((n) => n.kind === "case" || n.kind === "crime_type" || linked.has(n.id));
+      return nodes;
+    }
+    nodes = graph.nodes.filter(passesBaseFilters);
+    if (filters.crimeType) {
+      const caseIds = new Set(nodes.filter((n) => n.kind === "case").map((n) => n.id));
+      const linked = new Set(caseIds);
+      for (const e of graph.edges || []) {
+        if (caseIds.has(e.source)) linked.add(e.target);
+        if (caseIds.has(e.target)) linked.add(e.source);
       }
-      if (filters.isolate && selectedId) {
-        const keep = neighborIds(selectedId);
-        nodes = nodes.filter((n) => keep.has(n.id));
-      }
+      nodes = nodes.filter((n) => n.kind === "case" || n.kind === "crime_type" || linked.has(n.id));
+    }
+    if (filters.isolate && selectedId) {
+      const keep = neighborIds(selectedId);
+      nodes = nodes.filter((n) => keep.has(n.id));
     }
     // Default path: after every filter, drop nodes with no remaining visible edge.
     // The selected node may stay. Uncheck "ซ่อนไร้ลิงก์" to keep isolates on the overview.
-    if ((focusIds && focusIds.size) || filters.hideOrphans || filters.relation) {
+    if (filters.hideOrphans || filters.relation) {
       nodes = dropUnlinked(nodes);
     }
     return nodes;
@@ -2095,14 +2096,17 @@
   }
 
   function setDateWindow(from, to) {
-    filters.dateFrom = from || "";
-    filters.dateTo = to || "";
+    const nextFrom = from || "";
+    const nextTo = to || "";
+    const changed = filters.dateFrom !== nextFrom || filters.dateTo !== nextTo;
+    filters.dateFrom = nextFrom;
+    filters.dateTo = nextTo;
     const fromEl = $("brain-date-from");
     const toEl = $("brain-date-to");
     if (fromEl && fromEl.value !== filters.dateFrom) fromEl.value = filters.dateFrom;
     if (toEl && toEl.value !== filters.dateTo) toEl.value = filters.dateTo;
-    focusIds = null;
-    if (graph) restartSim(true, true);
+    // Do not clear question focus here; ask flow owns focusIds.
+    if (changed && graph) restartSim(Boolean(focusIds && focusIds.size), Boolean(focusIds && focusIds.size));
   }
 
   function focusOnIds(ids) {
@@ -2111,7 +2115,8 @@
     filters.isolate = false;
     if ($("brain-isolate")) $("brain-isolate").checked = false;
     if (!graph) return;
-    restartSim(true, true);
+    // Refit the camera so the filtered subgraph is visibly different from the full graph.
+    restartSim(false, true);
   }
 
   function clearFocus() {

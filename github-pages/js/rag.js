@@ -13,7 +13,7 @@
 
   const EXAMPLES = [
     "ผมต้องการทราบว่ากรมศุลกากรมีการห้ามปรามการเข้ามาของยาเสพติดตอนนี้ได้จำนวนทั้งหมดเท่าไร่",
-    "ท่างรองตำรวจคนหนึ่งกำลังจะขึ้นตำแหน่งเป็น ผบ.ตำรวจ เขามีผลงานที่ผ่านมาอะไรบ้าง",
+    "ตอนนี้ผลงานของ ผู้บัญชาการตำรวจแห่งชาติปัจจุบันมีอะไรบ้าง",
     "ใครเป็นเลขาธิการ ก.ล.ต. ตอนนี้",
   ];
 
@@ -302,30 +302,102 @@
     };
   }
 
-  function matchHubs(question, index) {
+  function extractKeywords(question, index) {
     const aliased = applyTitleAliases(question, index.alias);
     const qn = norm(aliased);
+    const candidates = [];
+    const addCandidate = (kind, title, minLen = 2) => {
+      const text = String(title || "").trim();
+      const key = norm(text);
+      if (!text || key.length < minLen) return;
+      candidates.push({ kind, title: text, key, len: key.length });
+    };
+
+    for (const title of index.positionTitles || []) addCandidate("position", title, 2);
+    for (const parent of index.parents || []) {
+      addCandidate("org", parent.title, 3);
+      const rule = (index.alias.parents || []).find((p) => (p.title || "") === parent.title) || {};
+      if (rule.contains) addCandidate("org", parent.title, 3);
+      // Prefer the canonical parent title when the contains-token matches.
+      if (rule.contains) {
+        candidates.push({
+          kind: "org",
+          title: parent.title,
+          key: norm(rule.contains),
+          len: norm(rule.contains).length,
+          display: parent.title,
+        });
+      }
+    }
+    for (const title of index.crimeTypes || []) addCandidate("crime", title, 3);
+    for (const ent of index.hubEntities || []) {
+      addCandidate("entity", ent.title, 3);
+      if (ent.current_holder) addCandidate("holder", ent.current_holder, 3);
+    }
+
+    const kindRank = { position: 0, org: 1, entity: 2, holder: 3, crime: 4 };
+    candidates.sort(
+      (a, b) => b.len - a.len || (kindRank[a.kind] ?? 9) - (kindRank[b.kind] ?? 9)
+    );
+    const keywords = [];
+    const spans = [];
+    const seen = new Set();
+    for (const item of candidates) {
+      let from = 0;
+      while (from <= qn.length - item.len) {
+        const at = qn.indexOf(item.key, from);
+        if (at < 0) break;
+        const end = at + item.len;
+        const overlaps = spans.some(([start, stop]) => at < stop && end > start);
+        if (!overlaps) {
+          spans.push([at, end]);
+          const title = item.display || item.title;
+          const dedupe = `${item.kind}:${norm(title)}`;
+          if (!seen.has(dedupe)) {
+            seen.add(dedupe);
+            keywords.push({ kind: item.kind, title });
+          }
+          break;
+        }
+        from = at + 1;
+      }
+    }
+
+    return {
+      aliased,
+      qn,
+      keywords,
+      positionHits: keywords.filter((item) => item.kind === "position").map((item) => item.title),
+    };
+  }
+
+  function matchHubs(question, index) {
+    const { keywords } = extractKeywords(question, index);
     const hubs = [];
     const seen = new Set();
+    const wantedOrg = new Set(keywords.filter((item) => item.kind === "org").map((item) => norm(item.title)));
+    const wantedEntity = new Set(keywords.filter((item) => item.kind === "entity").map((item) => norm(item.title)));
+    const wantedHolder = new Set(keywords.filter((item) => item.kind === "holder").map((item) => norm(item.title)));
+    const wantedPos = new Set(keywords.filter((item) => item.kind === "position").map((item) => norm(item.title)));
+
     for (const parent of index.parents) {
-      const title = norm(parent.title);
-      const rule = (index.alias.parents || []).find((p) => (p.title || "") === parent.title) || {};
-      const token = norm(rule.contains || "");
-      const hitTitle = title && qn.includes(title);
-      const hitToken = token.length >= 3 && qn.includes(token);
-      if (!hitTitle && !hitToken) continue;
-      if (seen.has(parent.key)) continue;
+      const hit = wantedOrg.has(norm(parent.title));
+      if (!hit || seen.has(parent.key)) continue;
       seen.add(parent.key);
       hubs.push(parent);
     }
+
     const absorbed = new Set();
     for (const hub of hubs) for (const id of hub.memberIds) absorbed.add(id);
     const entities = index.hubEntities.slice().sort((a, b) => norm(b.title).length - norm(a.title).length);
     for (const ent of entities) {
-      const t = norm(ent.title);
-      if (t.length < 4 || !qn.includes(t)) continue;
+      const hitTitle = wantedEntity.has(norm(ent.title));
+      const hitHolder = Boolean(ent.current_holder) && wantedHolder.has(norm(ent.current_holder));
+      const hitPos = positionSegments(ent.position).some((seg) => wantedPos.has(norm(seg)));
+      if (!hitTitle && !hitHolder && !hitPos) continue;
       if (absorbed.has(ent.id) || seen.has(ent.id)) continue;
-      if (hubs.some((h) => norm(h.title).includes(t) && norm(h.title) !== t)) continue;
+      const t = norm(ent.title);
+      if (hitTitle && hubs.some((h) => norm(h.title).includes(t) && norm(h.title) !== t)) continue;
       seen.add(ent.id);
       hubs.push({
         key: ent.id,
@@ -337,10 +409,36 @@
         roleWarning: roleWarningFor(ent.title, index.alias),
         position: ent.position || "",
         current_holder: ent.current_holder || "",
+        matchedBy: hitHolder ? "holder" : hitPos ? "position" : "title",
       });
       absorbed.add(ent.id);
     }
+    hubs._keywords = keywords;
     return hubs;
+  }
+
+  function expandFocusIds(ids, index, opts = {}) {
+    const seed = new Set((ids || []).filter(Boolean));
+    const out = new Set(seed);
+    const maxExtra = Number.isFinite(opts.maxExtra) ? opts.maxExtra : 40;
+    let added = 0;
+    for (const id of seed) {
+      if (added >= maxExtra) break;
+      for (const edge of index.edges || []) {
+        if (added >= maxExtra) break;
+        let other = null;
+        if (edge.source === id) other = edge.target;
+        else if (edge.target === id) other = edge.source;
+        if (!other || out.has(other)) continue;
+        const node = index.nodesById.get(other);
+        if (!node) continue;
+        if (node.kind === "crime_type" || (node.kind === "entity" && HUB_GROUPS.has(node.entity_group))) {
+          out.add(other);
+          added += 1;
+        }
+      }
+    }
+    return [...out];
   }
 
   function linkedCases(hub, index, opts) {
@@ -636,9 +734,11 @@
     if (!question) {
       return emptyResult("ยังไม่มีคำถาม จึงไม่รายงานจำนวน", { intent, dateFrom, dateTo });
     }
-    const aliased = applyTitleAliases(question, index.alias);
-    const positions = mentionedPositions(aliased, index.positionTitles || []);
+    const extracted = extractKeywords(question, index);
+    const aliased = extracted.aliased;
+    const positions = extracted.positionHits || mentionedPositions(aliased, index.positionTitles || []);
     const hubs = matchHubs(question, index);
+    const keywords = extracted.keywords || hubs._keywords || [];
     const holderHits = [];
     for (const title of positions) {
       const info = holderForTitle(title, index);
@@ -647,8 +747,24 @@
       pushNodeHub(hubs, index.nodesById.get(info.orgId), index);
       pushNodeHub(hubs, index.nodesById.get(info.personId), index);
     }
+    // Shared roles like ผบ.ตร. after folding: attach a virtual hub so retrieval still has a name.
+    for (const title of positions) {
+      if (holderHits.some((hit) => norm(hit.title) === norm(title))) continue;
+      if (hubs.some((hub) => norm(hub.title) === norm(title))) continue;
+      hubs.push({
+        key: `position:${title}`,
+        id: `position:${title}`,
+        title,
+        entity_group: "บุคคล",
+        virtual: true,
+        memberIds: [],
+        roleWarning: true,
+        position: title,
+        current_holder: "",
+      });
+    }
     const loose = positions.filter((title) => !holderHits.some((hit) => norm(hit.title) === norm(title)));
-    if (!hubs.length && !loose.length) {
+    if (!hubs.length && !loose.length && !keywords.length) {
       return emptyResult("ไม่พบหน่วยงาน บุคคล หรือสถานที่ในคลังที่ตรงกับคำถามนี้ จึงไม่รายงานจำนวน", {
         intent,
         crimeTypes,
@@ -705,11 +821,21 @@
       focusIds.push(id);
     };
     for (const hub of hubs) {
-      pushFocus(hub.id);
+      if (!hub.virtual) pushFocus(hub.id);
       for (const id of hub.memberIds) pushFocus(id);
     }
     for (const row of evidenceRows) pushFocus(row.node.id);
     for (const row of oldRows) pushFocus(row.node.id);
+    for (const kw of keywords) {
+      if (kw.kind !== "crime") continue;
+      const crimeNode = [...index.nodesById.values()].find(
+        (node) => node.kind === "crime_type" && norm(node.title) === norm(kw.title)
+      );
+      if (crimeNode) pushFocus(crimeNode.id);
+    }
+    const expandedFocus = expandFocusIds(focusIds, index);
+    focusIds.length = 0;
+    for (const id of expandedFocus) focusIds.push(id);
     const quantities = groupQuantities(evidenceRows);
     const oldLinks = hubs
       .map((hub) => {
@@ -781,6 +907,7 @@
       oldLinks,
       evidence,
       warnings,
+      keywords,
       focusIds,
     };
   }
@@ -924,6 +1051,7 @@
       intent: result.intent,
       caseCount: result.caseCount,
       crimeTypes: result.crimeTypes || [],
+      keywords: result.keywords || [],
       warnings: result.warnings || [],
       window: result.windowNote || "",
       holder: result.holder || null,
@@ -1136,8 +1264,17 @@
       return;
     }
     lastFocusIds = result.focusIds || [];
-    if (lastFocusIds.length) window.BrainGraph?.focusOnIds?.(lastFocusIds);
-    else window.BrainGraph?.clearFocus?.();
+    if (lastFocusIds.length) {
+      window.BrainGraph?.focusOnIds?.(lastFocusIds);
+      const meta = document.getElementById("brain-meta");
+      if (meta) {
+        const labels = (result.keywords || []).map((item) => item.title).filter(Boolean);
+        const note = labels.length ? labels.slice(0, 4).join(", ") : `${lastFocusIds.length} โหนด`;
+        meta.textContent = `กรองตามคำถาม · ${note}`;
+      }
+    } else {
+      window.BrainGraph?.clearFocus?.();
+    }
     const reply = await askModel(question, result);
     thread.push({ question, result, llmText: reply.ok ? reply.text : "" });
     assistant.innerHTML = reply.ok
