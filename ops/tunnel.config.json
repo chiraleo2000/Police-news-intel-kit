@@ -1,0 +1,13 @@
+{
+  "gatewayPort": 8790,
+  "mcpPort": 8787,
+  "llmPort": 1234,
+  "model": "google/gemma-4-e2b",
+  "pagesBase": "https://chiraleo2000.github.io/Police-news-intel-kit",
+  "lms": "C:\\Users\\AI-PC-DEV\\.lmstudio\\bin\\lms.exe",
+  "ngrok": "ngrok",
+  "dailyTime": "07:30",
+  "push": true,
+  "retries": [5, 15, 30],
+  "log": "logs/wake-tunnel.log"
+}

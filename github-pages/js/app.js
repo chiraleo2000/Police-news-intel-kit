@@ -2,7 +2,7 @@
  * Police News Briefing — static reader
  * Primary: data/feed.json (all posts)
  * Fallback: data/manifest.json + {DATE}_crime.json
- * Routes: #/r/{1|3|7|14|30|90|all} · #/{DATE}/{postId} · #/brain · #/downloads/r/{range}
+ * Routes: #/r/{1|3|7|14|30|90|all} · #/{DATE}/{postId} · #/brain · #/downloads/r/{range} · #/connect
  */
 (() => {
   const F = window.NewsFormat;
@@ -24,9 +24,11 @@
     tabNews: document.getElementById("tab-news"),
     tabBrain: document.getElementById("tab-brain"),
     tabDownloads: document.getElementById("tab-downloads"),
+    tabConnect: document.getElementById("tab-connect"),
     viewNews: document.getElementById("view-news"),
     viewBrain: document.getElementById("view-brain"),
     viewDownloads: document.getElementById("view-downloads"),
+    viewConnect: document.getElementById("view-connect"),
     rangeSelect: document.getElementById("range-select"),
     downloadRangeSelect: document.getElementById("download-range-select"),
     toolbar: document.getElementById("toolbar"),
@@ -133,6 +135,9 @@
     const raw = (location.hash || "#/").replace(/^#\/?/, "");
     const parts = raw.split("/").filter(Boolean);
 
+    if (parts[0] === "connect") {
+      return { tab: "connect", range: currentRange, date: null, postId: null, nodeId: null };
+    }
     if (parts[0] === "downloads") {
       const range =
         parts[1] === "r" && RANGE_VALUES.has(parts[2]) ? parts[2] : currentRange;
@@ -175,6 +180,10 @@
     postId = null,
     nodeId = null,
   } = {}) {
+    if (tab === "connect") {
+      location.hash = "#/connect";
+      return;
+    }
     if (tab === "downloads") {
       location.hash = `#/downloads/r/${range || DEFAULT_RANGE}`;
       return;
@@ -331,6 +340,7 @@
       const dd = (b._date || "").localeCompare(a._date || "");
       return dd || String(b.published_at || "").localeCompare(String(a.published_at || ""));
     });
+    window.GraphRag?.setPosts(allPosts);
 
     // Ensure manifest days cover posts
     if (!manifest.days.length && allPosts.length) {
@@ -902,12 +912,15 @@
     const isNews = tab === "news";
     const isBrain = tab === "brain";
     const isDownloads = tab === "downloads";
+    const isConnect = tab === "connect";
     els.tabNews.classList.toggle("is-active", isNews);
     els.tabBrain?.classList.toggle("is-active", isBrain);
     els.tabDownloads.classList.toggle("is-active", isDownloads);
+    els.tabConnect?.classList.toggle("is-active", isConnect);
     els.viewNews.hidden = !isNews;
     if (els.viewBrain) els.viewBrain.hidden = !isBrain;
     els.viewDownloads.hidden = !isDownloads;
+    if (els.viewConnect) els.viewConnect.hidden = !isConnect;
     document.body.classList.toggle("is-brain", isBrain);
     const main = document.getElementById("main");
     if (main) main.classList.toggle("main-brain", isBrain);
@@ -969,6 +982,12 @@
       return;
     }
 
+    if (parsed.tab === "connect") {
+      fillConnectForm();
+      els.status.textContent = "เชื่อมต่อ · เก็บค่าในเบราว์เซอร์นี้";
+      return;
+    }
+
     if (!allPosts.length && !manifest.days.length) {
       handleEmpty();
       return;
@@ -998,6 +1017,7 @@
   els.tabDownloads.addEventListener("click", () =>
     setHash({ tab: "downloads", range: currentRange })
   );
+  els.tabConnect?.addEventListener("click", () => setHash({ tab: "connect" }));
   els.topicChips.addEventListener("click", (e) => {
     const btn = e.target.closest("[data-topic]");
     if (!btn) return;
@@ -1023,6 +1043,92 @@
       renderPostList(currentPosts);
     }, 160);
   });
+
+  function readConnectForm() {
+    return {
+      publicBase: document.getElementById("connect-public-base")?.value || "",
+    };
+  }
+
+  async function refreshDerivedUrls() {
+    const info = await window.NewsConnect?.resolve?.();
+    const llm = document.getElementById("connect-llm-url");
+    const mcp = document.getElementById("connect-mcp-url");
+    if (llm) llm.textContent = info?.llm || "—";
+    if (mcp) mcp.textContent = info?.mcp || "—";
+    return info;
+  }
+
+  async function fillConnectForm() {
+    const settings = window.NewsConnect?.load?.() || { publicBase: "" };
+    const base = document.getElementById("connect-public-base");
+    if (base) base.value = settings.publicBase || "";
+    const info = await refreshDerivedUrls();
+    const status = document.getElementById("connect-status");
+    if (status && info && !info.ok) status.textContent = info.reason || "";
+  }
+
+  function saveConnectForm() {
+    const status = document.getElementById("connect-status");
+    if (!window.NewsConnect?.save) {
+      if (status) status.textContent = "ยังโหลดตัวตั้งค่าไม่สำเร็จ";
+      return null;
+    }
+    const saved = window.NewsConnect.save(readConnectForm());
+    if (status) status.textContent = "บันทึกแล้วในเบราว์เซอร์นี้";
+    refreshDerivedUrls();
+    return saved;
+  }
+
+  function bindConnect() {
+    document.getElementById("connect-save")?.addEventListener("click", saveConnectForm);
+    document.getElementById("connect-public-base")?.addEventListener("change", saveConnectForm);
+    document.getElementById("connect-test")?.addEventListener("click", async () => {
+      const status = document.getElementById("connect-status");
+      saveConnectForm();
+      if (status) status.textContent = "กำลังทดสอบ MCP…";
+      try {
+        const result = await window.NewsConnect.testMcp();
+        const names = result?.names?.length ? ` · ${result.names.join(", ")}` : "";
+        if (status) status.textContent = `${result?.message || "ทดสอบไม่สำเร็จ"}${names}`;
+      } catch {
+        if (status) status.textContent = "เชื่อมต่อ MCP ไม่ได้ เซิร์ฟเวอร์อาจยังไม่ทำงาน หรือถูกบล็อกด้วย CORS";
+      }
+    });
+    document.getElementById("connect-test-llm")?.addEventListener("click", async () => {
+      const status = document.getElementById("connect-status");
+      const reply = document.getElementById("connect-llm-reply");
+      saveConnectForm();
+      if (reply) {
+        reply.hidden = true;
+        reply.textContent = "";
+      }
+      if (status) status.textContent = "กำลังทดสอบ LLM…";
+      try {
+        const result = await window.NewsConnect.testLlm();
+        if (result?.ok) {
+          if (status) status.textContent = "โมเดลตอบกลับแล้ว";
+          if (reply) {
+            reply.hidden = false;
+            reply.textContent = result.text || "";
+          }
+        } else if (status) {
+          status.textContent = result?.reason || "ทดสอบ LLM ไม่สำเร็จ";
+        }
+      } catch {
+        if (status) status.textContent = "เรียกโมเดลไม่สำเร็จ เพราะเครือข่ายหรือถูกบล็อก";
+      }
+    });
+    fillConnectForm();
+  }
+
+  window.NewsApp = {
+    getPosts() {
+      return allPosts;
+    },
+  };
+
+  bindConnect();
 
   window.addEventListener("hashchange", () => {
     route().catch((e) => {

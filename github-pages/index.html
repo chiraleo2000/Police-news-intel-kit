@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Anuphan:wght@400;500;600;700&family=Sarabun:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/site.css?v=20261026p" />
+  <link rel="stylesheet" href="css/site.css?v=20261102c" />
 </head>
 <body>
   <a class="skip-link" href="#main">ข้ามไปเนื้อหา</a>
@@ -34,6 +34,7 @@
     <button type="button" class="top-tab is-active" data-tab="news" id="tab-news">รายการข่าว</button>
     <button type="button" class="top-tab" data-tab="brain" id="tab-brain">ข้อมูลกราฟ</button>
     <button type="button" class="top-tab" data-tab="downloads" id="tab-downloads">ดาวน์โหลด PDF</button>
+    <button type="button" class="top-tab" data-tab="connect" id="tab-connect">เชื่อมต่อ</button>
   </nav>
 
   <main id="main" class="wrap">
@@ -140,10 +141,10 @@
             <div id="brain-kind-checks" class="brain-checks brain-checks-row">
               <label><input type="checkbox" data-kind-check="case" checked /> คดี</label>
               <label><input type="checkbox" data-kind-check="entity" checked /> เอนทิตี</label>
-              <label><input type="checkbox" data-kind-check="crime_type" checked /> ประเภท</label>
-              <label><input type="checkbox" data-kind-check="daily" checked /> รายวัน</label>
-              <label><input type="checkbox" data-kind-check="unresolved" checked /> ลิงก์ค้าง</label>
-              <label><input type="checkbox" data-kind-check="other" checked /> อื่น</label>
+              <label><input type="checkbox" data-kind-check="crime_type" /> ประเภท</label>
+              <label><input type="checkbox" data-kind-check="daily" /> รายวัน</label>
+              <label><input type="checkbox" data-kind-check="unresolved" /> ลิงก์ค้าง</label>
+              <label><input type="checkbox" data-kind-check="other" /> อื่น</label>
             </div>
           </fieldset>
 
@@ -199,7 +200,7 @@
           </label>
 
           <label class="brain-check">
-            <input type="checkbox" id="brain-hide-orphans" />
+            <input type="checkbox" id="brain-hide-orphans" checked />
             ซ่อนไร้ลิงก์
           </label>
           <label class="brain-check">
@@ -218,12 +219,32 @@
         <div class="brain-legend-row">
           <div class="brain-legend" id="brain-legend" aria-label="คำอธิบายสี — คลิกเพื่อโฟกัสชนิด"></div>
           <span class="muted" id="brain-meta"></span>
-          <span class="muted brain-hint">โหนดใหญ่ = ข่าว · ลากพื้นหลังเลื่อน · ลากจุดจัดตำแหน่ง · สกอร์ลซูม · ดับเบิลคลิกโหนด = เฉพาะเพื่อนบ้าน · ป้ายเส้นเป็นภาษาไทย</span>
+          <span class="muted brain-hint">โหนดใหญ่ = หน่วยงาน บุคคล หรือสถานที่ · จุดเล็ก = หัวข่าว · ลากพื้นหลังเลื่อน · ลากจุดจัดตำแหน่ง · สกอร์ลซูม · ดับเบิลคลิกโหนด = เฉพาะเพื่อนบ้าน · ป้ายเส้นเป็นภาษาไทย</span>
         </div>
 
-        <div class="brain-stage">
-          <canvas id="brain-canvas" width="1600" height="900" aria-label="ข้อมูลกราฟ"></canvas>
-          <aside id="brain-detail" class="brain-detail" aria-live="polite"></aside>
+        <div class="brain-workspace">
+          <div class="brain-stage">
+            <canvas id="brain-canvas" width="1600" height="900" aria-label="ข้อมูลกราฟ"></canvas>
+            <aside id="brain-detail" class="brain-detail" aria-live="polite"></aside>
+          </div>
+          <aside class="brain-chat" aria-label="แชทถามจากกราฟ">
+            <div class="brain-chat-log" id="brain-chat-log">
+              <div class="brain-chat-empty" id="brain-chat-empty">
+                <p class="brain-kind">ถามจากกราฟ</p>
+                <p>เลือกตัวอย่าง หรือพิมพ์คำถามด้านล่าง</p>
+                <div class="brain-ask-examples">
+                  <button type="button" class="btn-ghost brain-example" data-example="0">ผมต้องการทราบว่ากรมศุลกากรมีการห้ามปรามการเข้ามาของยาเสพติดตอนนี้ได้จำนวนทั้งหมดเท่าไร่</button>
+                  <button type="button" class="btn-ghost brain-example" data-example="1">ท่างรองตำรวจคนหนึ่งกำลังจะขึ้นตำแหน่งเป็น ผบ.ตำรวจ เขามีผลงานที่ผ่านมาอะไรบ้าง</button>
+                  <button type="button" class="btn-ghost brain-example" data-example="2">ใครเป็นเลขาธิการ ก.ล.ต. ตอนนี้</button>
+                </div>
+              </div>
+            </div>
+            <form class="brain-chat-form" id="brain-chat-form">
+              <label class="sr-only" for="brain-question">ถามจากกราฟ</label>
+              <input id="brain-question" type="text" placeholder="ถามจำนวนข่าว ผลงาน หรือผู้ดำรงตำแหน่ง…" autocomplete="off" />
+              <button type="submit" class="btn-ghost" id="brain-ask-submit">ส่ง</button>
+            </form>
+          </aside>
         </div>
 
         <p class="muted" id="brain-empty" hidden>
@@ -259,6 +280,35 @@
       </section>
     </section>
 
+    <section id="view-connect" class="view-connect" hidden>
+      <section class="hero hero-compact">
+        <p class="hero-kicker">ค่าในเบราว์เซอร์นี้เท่านั้น</p>
+        <h1>เชื่อมต่อ</h1>
+        <p class="hero-lead">แชทเรียก Gemma ผ่านฐาน HTTPS ถ้าเว้นว่าง หน้านี้จะอ่าน data/tunnel.json แล้วประกอบที่อยู่ LLM กับ MCP เอง ค่าที่พิมพ์เก็บเฉพาะในเบราว์เซอร์นี้</p>
+      </section>
+      <section class="panel connect-panel">
+        <div class="connect-grid">
+          <label class="brain-field">
+            <span>ฐาน HTTPS (ไม่บังคับ)</span>
+            <input id="connect-public-base" type="url" placeholder="https://….ngrok-free.app" autocomplete="off" />
+          </label>
+        </div>
+        <dl class="connect-derived">
+          <div><dt>LLM</dt><dd><code id="connect-llm-url">…</code></dd></div>
+          <div><dt>MCP</dt><dd><code id="connect-mcp-url">…</code></dd></div>
+        </dl>
+        <p class="muted">โมเดล google/gemma-4-e2b · LLM คือ {ฐาน}/1234/v1/chat/completions · MCP คือ {ฐาน}/8787/mcp</p>
+        <div class="connect-actions">
+          <button type="button" class="btn-ghost" id="connect-save">บันทึก</button>
+          <button type="button" class="btn-ghost" id="connect-test">ทดสอบ MCP</button>
+          <button type="button" class="btn-ghost" id="connect-test-llm">ทดสอบ LLM</button>
+        </div>
+        <p class="muted" id="connect-status" aria-live="polite"></p>
+        <pre id="connect-llm-reply" class="connect-llm-reply" hidden></pre>
+        <p class="muted">ทดสอบ MCP ส่ง JSON-RPC <code>tools/list</code> ถ้าชื่อเครื่องมือมี graph จะไม่ผ่าน เพราะห้ามเปิดกราฟภาพรวม ทดสอบ LLM ส่งข้อความสั้น ๆ แล้วแสดงข้อความที่โมเดลตอบ</p>
+      </section>
+    </section>
+
     <output id="status" class="status">กำลังโหลด…</output>
   </main>
 
@@ -270,7 +320,9 @@
   </footer>
 
   <script src="js/format.js?v=20261026b" defer></script>
-  <script src="js/graph.js?v=20261026r" defer></script>
-  <script src="js/app.js?v=20261026p" defer></script>
+  <script src="js/positions.js?v=20261102c" defer></script>
+  <script src="js/graph.js?v=20261102c" defer></script>
+  <script src="js/rag.js?v=20261102c" defer></script>
+  <script src="js/app.js?v=20261102c" defer></script>
 </body>
 </html>

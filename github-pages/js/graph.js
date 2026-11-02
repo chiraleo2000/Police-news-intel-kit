@@ -1,6 +1,6 @@
 /**
  * ข้อมูลกราฟ — Obsidian-like force layout over data/graph.json
- * Case (news) nodes are hubs; entity / crime_type are smaller satellites.
+ * Hub entities (หน่วย / บุคคล / สถานที่) are the large nodes; case headlines are small satellites.
  * Zoom / pan / fit-to-view scale with graph size.
  * Also builds per-story ego SVG for post detail views.
  */
@@ -24,13 +24,16 @@
     other: "อื่น",
   };
   const KIND_HELP = {
-    case: "โหนดหลัก — หัวข่าว/คดีใน vault/20_Cases (ใหญ่กว่าโหนดอื่น)",
-    entity: "โหนดย่อย — หน่วย / จังหวัด / คน / กฎหมาย / MO ใน vault/30_Entities",
-    crime_type: "โหนดย่อยรวมประเภท ใน vault/40_CrimeTypes",
-    daily: "สรุปรายวัน (ไม่ใช่ผลหลัก)",
-    unresolved: "[[ลิงก์]] ที่ยังไม่มีโน้ตปลายทาง — ควรแก้ชื่อหรือสร้างโน้ต",
-    other: "โน้ตอื่นในคลัง",
+    case: "จุดเล็ก — หัวข่าว/คดีใน vault/20_Cases เกาะรอบหน่วยงาน บุคคล หรือสถานที่",
+    entity: "โหนดหลักเมื่อเป็นหน่วยงาน บุคคล หรือสถานที่ — ยิ่งมีเส้นมากยิ่งใหญ่",
+    crime_type: "ประเภทอาชญากรรม — ปิดไว้เป็นค่าเริ่มต้น",
+    daily: "สรุปรายวัน — ปิดไว้เป็นค่าเริ่มต้น",
+    unresolved: "[[ลิงก์]] ที่ยังไม่มีโน้ตปลายทาง — ปิดไว้เป็นค่าเริ่มต้น",
+    other: "โน้ตอื่นในคลัง — ปิดไว้เป็นค่าเริ่มต้น",
   };
+  const HUB_GROUPS = new Set(["หน่วย", "บุคคล", "สถานที่"]);
+  const DEFAULT_KINDS = ["case", "entity"];
+  const ALL_KINDS = ["case", "entity", "crime_type", "daily", "unresolved", "other"];
   /** English edge labels in graph.json → Thai on screen. Thai labels pass through. */
   const REL_TH = {
     investigated_by: "สืบสวนโดย",
@@ -58,7 +61,7 @@
   let camera = { x: 0, y: 0, scale: 1 };
   let pendingFit = false;
   let filters = {
-    kinds: new Set(["case", "entity", "crime_type", "daily", "unresolved", "other"]),
+    kinds: new Set(DEFAULT_KINDS),
     q: "",
     minDegree: 0,
     dateFrom: "",
@@ -66,11 +69,13 @@
     entityGroup: "",
     bureau: "",
     crimeType: "",
-    hideOrphans: false,
+    hideOrphans: true,
     isolate: false,
     showLabels: "auto",
     relation: "",
   };
+  /** When set, the canvas shows only these node ids (ask-panel focus). */
+  let focusIds = null;
   let bound = false;
 
   const els = {};
@@ -144,7 +149,16 @@
   async function loadGraph() {
     const res = await fetch(`data/graph.json?t=${Date.now()}`, { cache: "no-store" });
     if (!res.ok) throw new Error("graph.json not found — run node ops/build-obsidian-graph.js");
-    return res.json();
+    const data = await res.json();
+    let registry = { offices: [], title_prefixes: [] };
+    try {
+      const pres = await fetch(`data/positions.json?t=${Date.now()}`, { cache: "no-store" });
+      if (pres.ok) registry = await pres.json();
+    } catch {
+      /* the graph still draws if the office list is missing */
+    }
+    if (window.PositionFold?.foldPositions) return window.PositionFold.foldPositions(data, registry);
+    return data;
   }
 
   function neighborIds(id) {
@@ -183,7 +197,7 @@
   function matchesQuery(n) {
     const q = filters.q.trim().toLowerCase();
     if (!q) return true;
-    const hay = `${n.title} ${n.id} ${(n.tags || []).join(" ")} ${n.crime_type || ""} ${n.bureau || ""} ${n.area || ""} ${n.entity_group || ""}`.toLowerCase();
+    const hay = `${n.title} ${n.id} ${(n.tags || []).join(" ")} ${n.crime_type || ""} ${n.bureau || ""} ${n.area || ""} ${n.entity_group || ""} ${n.position || ""} ${n.position_org || ""} ${n.current_holder || ""}`.toLowerCase();
     return hay.includes(q);
   }
 
@@ -197,31 +211,42 @@
     );
   }
 
+  function dropUnlinked(nodes) {
+    const ids = new Set(nodes.map((n) => n.id));
+    const edges = usableEdges((graph.edges || []).filter((e) => ids.has(e.source) && ids.has(e.target)));
+    const touched = new Set();
+    for (const e of edges) {
+      touched.add(e.source);
+      touched.add(e.target);
+    }
+    return nodes.filter((n) => touched.has(n.id) || n.id === selectedId);
+  }
+
   function visibleNodes() {
     if (!graph) return [];
-    let nodes = graph.nodes.filter(passesBaseFilters);
-    if (filters.crimeType) {
-      const caseIds = new Set(nodes.filter((n) => n.kind === "case").map((n) => n.id));
-      const linked = new Set(caseIds);
-      for (const e of graph.edges || []) {
-        if (caseIds.has(e.source)) linked.add(e.target);
-        if (caseIds.has(e.target)) linked.add(e.source);
+    let nodes;
+    if (focusIds && focusIds.size) {
+      nodes = graph.nodes.filter((n) => focusIds.has(n.id) || n.id === selectedId);
+    } else {
+      nodes = graph.nodes.filter(passesBaseFilters);
+      if (filters.crimeType) {
+        const caseIds = new Set(nodes.filter((n) => n.kind === "case").map((n) => n.id));
+        const linked = new Set(caseIds);
+        for (const e of graph.edges || []) {
+          if (caseIds.has(e.source)) linked.add(e.target);
+          if (caseIds.has(e.target)) linked.add(e.source);
+        }
+        nodes = nodes.filter((n) => n.kind === "case" || n.kind === "crime_type" || linked.has(n.id));
       }
-      nodes = nodes.filter((n) => n.kind === "case" || n.kind === "crime_type" || linked.has(n.id));
-    }
-    if (filters.isolate && selectedId) {
-      const keep = neighborIds(selectedId);
-      nodes = nodes.filter((n) => keep.has(n.id));
-    }
-    if (filters.hideOrphans || filters.relation) {
-      const ids = new Set(nodes.map((n) => n.id));
-      const edges = usableEdges((graph.edges || []).filter((e) => ids.has(e.source) && ids.has(e.target)));
-      const touched = new Set();
-      for (const e of edges) {
-        touched.add(e.source);
-        touched.add(e.target);
+      if (filters.isolate && selectedId) {
+        const keep = neighborIds(selectedId);
+        nodes = nodes.filter((n) => keep.has(n.id));
       }
-      nodes = nodes.filter((n) => touched.has(n.id) || n.id === selectedId);
+    }
+    // Default path: after every filter, drop nodes with no remaining visible edge.
+    // The selected node may stay. Uncheck "ซ่อนไร้ลิงก์" to keep isolates on the overview.
+    if ((focusIds && focusIds.size) || filters.hideOrphans || filters.relation) {
+      nodes = dropUnlinked(nodes);
     }
     return nodes;
   }
@@ -248,29 +273,30 @@
     return { w: side * 1.2, h: side };
   }
 
+  function isHubEntity(n) {
+    return n?.kind === "entity" && HUB_GROUPS.has(n.entity_group);
+  }
+
   function nodeRadius(n) {
     const deg = Math.sqrt(n.degree || 0);
+    if (isHubEntity(n)) return 10 + Math.min(16, deg * 1.65);
     switch (n.kind) {
       case "case":
-        return 12 + Math.min(11, deg * 1.55);
+        return 3.4 + Math.min(1.8, deg * 0.22);
       case "crime_type":
-        return 7 + Math.min(7, deg * 0.85);
-      case "entity":
-        return 4.2 + Math.min(4.5, deg * 0.5);
       case "daily":
-        return 5.5;
       case "unresolved":
         return 4;
       default:
-        return 5;
+        return 4.2;
     }
   }
 
   function massOf(n) {
-    if (n.kind === "case") return 1.8;
-    if (n.kind === "crime_type") return 1.25;
-    if (n.kind === "entity") return 0.7;
-    return 1;
+    if (isHubEntity(n)) return 2.4;
+    if (n.kind === "case") return 0.45;
+    if (n.kind === "crime_type") return 0.6;
+    return 0.8;
   }
 
   function idealLinkLength(l) {
@@ -347,7 +373,7 @@
 
   function stepNode(n, w, h, alpha) {
     const pad = 40;
-    const pull = n.kind === "case" ? 0.00055 : 0.0014;
+    const pull = isHubEntity(n) ? 0.0004 : n.kind === "case" ? 0.00115 : 0.0014;
     n.vx += (w / 2 - n.x) * pull * alpha;
     n.vy += (h / 2 - n.y) * pull * alpha;
     if (drag?.mode === "node" && drag.id === n.id) {
@@ -543,9 +569,13 @@
     ctx.arc(n.x, n.y, discRadius(r, active), 0, Math.PI * 2);
     ctx.fillStyle = color;
     ctx.fill();
-    if (n.kind === "case") {
-      ctx.strokeStyle = "rgba(255,255,255,0.28)";
-      ctx.lineWidth = 1.2 / camera.scale;
+    if (isHubEntity(n)) {
+      ctx.strokeStyle = "rgba(255,255,255,0.38)";
+      ctx.lineWidth = 1.5 / camera.scale;
+      ctx.stroke();
+    } else if (n.kind === "case") {
+      ctx.strokeStyle = "rgba(255,255,255,0.16)";
+      ctx.lineWidth = 0.8 / camera.scale;
       ctx.stroke();
     }
     if (active) {
@@ -559,8 +589,8 @@
     for (const n of nodes) {
       const { r, active, dim, color } = nodeVisual(n, neigh);
       ctx.globalAlpha = dim ? 0.18 : 1;
-      // Soft Obsidian-like halo (stronger on case hubs)
-      if (!dim && (n.kind === "case" || active)) drawNodeHalo(ctx, n, r, color, active);
+      // Soft halo on hub entities (หน่วยงาน / บุคคล / สถานที่) and the active node.
+      if (!dim && (isHubEntity(n) || active)) drawNodeHalo(ctx, n, r, color, active);
       drawNodeDisc(ctx, n, r, color, active);
       ctx.globalAlpha = 1;
     }
@@ -569,20 +599,24 @@
   function shouldShowLabel(n, neigh, showAll) {
     if (showAll) return true;
     if (n.id === selectedId || n.id === hoverId) return true;
-    if (neigh?.has(n.id)) return true;
-    if (n.kind === "case") {
-      if (camera.scale < 0.45) return (n.degree || 0) >= 6;
-      if (camera.scale < 0.85) return (n.degree || 0) >= 3;
-      return true;
+    if (neigh?.has(n.id) && (isHubEntity(n) || camera.scale > 0.9)) return true;
+    if (isHubEntity(n)) {
+      if (camera.scale < 0.4) return (n.degree || 0) >= 6;
+      if (camera.scale < 0.8) return (n.degree || 0) >= 3;
+      return (n.degree || 0) >= 1;
     }
-    if (n.kind === "crime_type") return camera.scale > 0.75 && (n.degree || 0) >= 3;
-    return camera.scale > 1.1 && (n.degree || 0) >= 4;
+    if (n.kind === "case") return camera.scale > 1.15 && (n.degree || 0) >= 2;
+    if (n.kind === "crime_type") return camera.scale > 1.25 && (n.degree || 0) >= 4;
+    return camera.scale > 1.35 && (n.degree || 0) >= 5;
   }
 
-  function labelKindRank(kind) {
-    if (kind === "case") return 0;
-    if (kind === "crime_type") return 1;
-    return 2;
+  function labelKindRank(node) {
+    const n = typeof node === "string" ? { kind: node } : node;
+    if (isHubEntity(n)) return 0;
+    if (n?.kind === "entity") return 1;
+    if (n?.kind === "case") return 2;
+    if (n?.kind === "crime_type") return 3;
+    return 4;
   }
 
   function labelDrawCap(showAll, count) {
@@ -591,32 +625,34 @@
     return 48;
   }
 
-  function labelLimit(kind) {
-    if (kind === "case") {
-      if (camera.scale > 1.4) return 36;
-      return 24;
-    }
-    if (kind === "prop") return 22;
-    return 18;
+  function labelLimit(kind, node) {
+    if (node && isHubEntity(node)) return camera.scale > 1.15 ? 34 : 22;
+    if (kind === "case") return camera.scale > 1.4 ? 18 : 14;
+    if (kind === "prop") return 36;
+    return 16;
   }
 
-  function truncateLabel(title, kind) {
-    const max = labelLimit(kind);
+  function truncateLabel(title, kind, node) {
+    const max = labelLimit(kind, node);
     if (title.length <= max) return title;
     return title.slice(0, max - 1) + "…";
   }
 
   function nodePropLines(n, active) {
     if (!active) return [];
+    const lines = [];
+    if (n.position) lines.push(truncateLabel(`ตำแหน่ง ${n.position}`, "prop"));
+    if (n.current_holder) lines.push(truncateLabel(`ผู้ดำรงตำแหน่งปัจจุบัน ${n.current_holder}`, "prop"));
     if (n.kind === "case") {
-      return [n.bureau, n.area, n.crime_type]
-        .filter((x) => x && String(x) !== "-")
-        .map((x) => truncateLabel(String(x), "prop"));
+      lines.push(
+        ...[n.bureau, n.area, n.crime_type]
+          .filter((x) => x && String(x) !== "-")
+          .map((x) => truncateLabel(String(x), "prop"))
+      );
+    } else if (n.kind === "entity" && n.entity_group) {
+      lines.push(truncateLabel(String(n.entity_group), "prop"));
     }
-    if (n.kind === "entity" && n.entity_group) {
-      return [truncateLabel(String(n.entity_group), "prop")];
-    }
-    return [];
+    return lines.slice(0, 4);
   }
 
   function nodeLabelJobs(ctx, nodes, neigh, vw, vh, occupied) {
@@ -633,8 +669,8 @@
       return true;
     });
     labeled.sort((a, b) => {
-      const ka = labelKindRank(a.kind);
-      const kb = labelKindRank(b.kind);
+      const ka = labelKindRank(a);
+      const kb = labelKindRank(b);
       if (ka !== kb) return ka - kb;
       return (b.degree || 0) - (a.degree || 0);
     });
@@ -649,7 +685,7 @@
       const outsideFocus = neigh && !neigh.has(n.id) && n.id !== selectedId && n.id !== hoverId;
       if (outsideFocus && camera.scale < 0.85) continue;
       const active = n.id === selectedId || n.id === hoverId;
-      const label = truncateLabel(n.title, n.kind);
+      const label = truncateLabel(n.title, n.kind, n);
       const x = n.x + nodeRadius(n) + 8;
       const y = n.y + 4 / camera.scale;
       const titlePx = active ? fontPx + 1 : fontPx;
@@ -837,7 +873,7 @@
         <div class="brain-detail-placeholder">
           <p class="brain-kind">เลือกโหนด</p>
           <h3>คลิกจุดบนกราฟ</h3>
-          <p class="muted">โหนดใหญ่ = หัวข่าว · โหนดเล็ก = เอนทิตี/ประเภท (แบบ Obsidian)</p>
+          <p class="muted">โหนดใหญ่ = หน่วยงาน บุคคล หรือสถานที่ · จุดเล็ก = หัวข่าวที่เชื่อมกับโหนดนั้น</p>
         </div>`;
       requestDraw();
       return;
@@ -861,6 +897,8 @@
         ${node.crime_type ? `<div><dt>ประเภท</dt><dd>${escapeHtml(node.crime_type)}</dd></div>` : ""}
         ${node.status ? `<div><dt>สถานะ</dt><dd>${escapeHtml(node.status)}</dd></div>` : ""}
         ${node.entity_group ? `<div><dt>กลุ่มเอนทิตี</dt><dd>${escapeHtml(node.entity_group)}</dd></div>` : ""}
+        ${node.position ? `<div><dt>ตำแหน่ง</dt><dd>${escapeHtml(node.position)}</dd></div>` : ""}
+        ${node.current_holder ? `<div><dt>ผู้ดำรงตำแหน่งปัจจุบัน</dt><dd>${escapeHtml(node.current_holder)}</dd></div>` : ""}
         <div><dt>องศาลิงก์</dt><dd>${node.degree || 0}</dd></div>
       </dl>
       ${tagsHtml}
@@ -1023,9 +1061,9 @@
     if (!els.help) return;
     els.help.innerHTML = `
       <h3>ข้อมูลกราฟคืออะไร?</h3>
-      <p>สำเนากราฟจากคลัง Obsidian ตอน publish — โหนดใหญ่คือหัวข่าว (คดี)
-      โหนดเล็กคือเอนทิตี/ประเภทที่คดีพูดถึง ป้ายเส้นเป็นภาษาไทย (เช่น จับโดย, สืบสวนโดย, เกี่ยวข้องกับ, กล่าวถึง)
-      เมื่อซูมเข้า ชี้ หรือเลือกโหนด จะเห็นคุณสมบัติบนโหนด (หน่วยงาน พื้นที่ ประเภท หรือกลุ่มเอนทิตี)</p>
+      <p>สำเนากราฟจากคลัง Obsidian ตอน publish — โหนดใหญ่คือหน่วยงาน บุคคล และสถานที่ที่เชื่อมหลายข่าว
+      จุดเล็กคือหัวข่าวที่เกาะโหนดนั้น ป้ายเส้นเป็นภาษาไทย (เช่น จับโดย, สืบสวนโดย, เกิดที่)
+      เมื่อซูมเข้า ชี้ หรือเลือกโหนด จะเห็นคุณสมบัติบนโหนด</p>
       <h3>วิธีใช้</h3>
       <ul>
         <li><strong>คลิก</strong> จุด = เปิดรายละเอียด</li>
@@ -1037,14 +1075,15 @@
       </ul>
       <h3>ขนาดโหนด</h3>
       <ul>
-        <li><strong>คดี (ข่าว)</strong> — ใหญ่ที่สุด เป็นฮับหลัก</li>
-        <li><strong>ประเภท</strong> — กลาง</li>
-        <li><strong>เอนทิตี</strong> — เล็ก เกาะรอบคดี</li>
+        <li><strong>หน่วยงาน บุคคล สถานที่</strong> — ใหญ่ตามจำนวนเส้น เป็นฮับหลัก</li>
+        <li><strong>คดี (ข่าว)</strong> — จุดเล็ก เกาะรอบฮับ</li>
+        <li><strong>ประเภท / รายวัน / ลิงก์ค้าง</strong> — เล็ก และปิดไว้เป็นค่าเริ่มต้น</li>
       </ul>
     `;
   }
 
   function applyFiltersFromDom() {
+    focusIds = null;
     filters.q = $("brain-search")?.value || "";
     filters.minDegree = Number($("brain-min-degree")?.value || 0);
     filters.dateFrom = $("brain-date-from")?.value || "";
@@ -1065,8 +1104,9 @@
   }
 
   function resetAll() {
+    focusIds = null;
     filters = {
-      kinds: new Set(["case", "entity", "crime_type", "daily", "unresolved", "other"]),
+      kinds: new Set(DEFAULT_KINDS),
       q: "",
       minDegree: 0,
       dateFrom: "",
@@ -1074,7 +1114,7 @@
       entityGroup: "",
       bureau: "",
       crimeType: "",
-      hideOrphans: false,
+      hideOrphans: true,
       isolate: false,
       showLabels: "auto",
       relation: "",
@@ -1090,7 +1130,7 @@
     if ($("brain-bureau")) $("brain-bureau").value = "";
     if ($("brain-crime-type")) $("brain-crime-type").value = "";
     if ($("brain-relation")) $("brain-relation").value = "";
-    if ($("brain-hide-orphans")) $("brain-hide-orphans").checked = false;
+    if ($("brain-hide-orphans")) $("brain-hide-orphans").checked = true;
     if ($("brain-isolate")) $("brain-isolate").checked = false;
     if ($("brain-labels")) $("brain-labels").value = "auto";
     syncKindChecks();
@@ -1222,7 +1262,7 @@
       }
       if (els.empty) els.empty.hidden = true;
       if (els.status) {
-        els.status.textContent = "ข้อมูลกราฟ · โหนดใหญ่ = ข่าว · ซูมเพื่ออ่านป้ายและคุณสมบัติ";
+        els.status.textContent = "ข้อมูลกราฟ · โหนดใหญ่ = หน่วยงาน บุคคล สถานที่ · ซูมเพื่ออ่านป้าย";
       }
       renderHelp();
       fillEntityGroups();
@@ -1258,6 +1298,7 @@
     );
     $("brain-hide-orphans")?.addEventListener("change", onFilter);
     $("brain-isolate")?.addEventListener("change", (e) => {
+      focusIds = null;
       filters.isolate = e.target.checked;
       restartSim(true, true);
       showDetail(selectedId ? graph.nodes.find((n) => n.id === selectedId) : null);
@@ -1268,9 +1309,10 @@
     $("brain-legend")?.addEventListener("click", (e) => {
       const btn = e.target.closest("[data-kind]");
       if (!btn) return;
+      focusIds = null;
       const k = btn.dataset.kind;
       if (filters.kinds.has(k) && filters.kinds.size === 1) {
-        filters.kinds = new Set(["case", "entity", "crime_type", "daily", "unresolved", "other"]);
+        filters.kinds = new Set(ALL_KINDS);
       } else if (filters.kinds.has(k) && filters.kinds.size > 1) {
         filters.kinds = new Set([k]);
       } else {
@@ -1431,7 +1473,7 @@
           `<text x="${p.x.toFixed(1)}" y="${(p.y + p.r + 14).toFixed(1)}" text-anchor="middle" font-size="9" font-weight="600" fill="#1a222c" font-family="Sarabun, Anuphan, sans-serif">${escapeHtml(title)}</text>`
       );
       if (node.id === hub.id) {
-        const props = [hub.bureau, hub.area, hub.crime_type, hub.status]
+        const props = [hub.position, hub.bureau, hub.area, hub.crime_type, hub.status]
           .filter((x) => x && x !== "-")
           .slice(0, 3);
         props.forEach((line, i) => {
@@ -1439,10 +1481,13 @@
             `<text x="${p.x.toFixed(1)}" y="${(p.y + p.r + 26 + i * 11).toFixed(1)}" text-anchor="middle" font-size="8" fill="#4a5a68" font-family="Sarabun, Anuphan, sans-serif">${escapeHtml(truncateStory(line, 30))}</text>`
           );
         });
-      } else if (node.kind === "entity" && node.entity_group) {
-        parts.push(
-          `<text x="${p.x.toFixed(1)}" y="${(p.y + p.r + 26).toFixed(1)}" text-anchor="middle" font-size="8" fill="#4a5a68" font-family="Sarabun, Anuphan, sans-serif">${escapeHtml(truncateStory(node.entity_group, 20))}</text>`
-        );
+      } else {
+        const subtitle = node.position || (node.kind === "entity" ? node.entity_group : "");
+        if (subtitle) {
+          parts.push(
+            `<text x="${p.x.toFixed(1)}" y="${(p.y + p.r + 26).toFixed(1)}" text-anchor="middle" font-size="8" fill="#4a5a68" font-family="Sarabun, Anuphan, sans-serif">${escapeHtml(truncateStory(subtitle, 22))}</text>`
+          );
+        }
       }
     }
 
@@ -1606,6 +1651,7 @@
     const hubAt = screenOfStory(job, hub.x, hub.y);
     const boxes = job.placed.map((p) => {
       const lines = storyLabelLines(storyLabel(p.node));
+      if (p.node.position) lines.push(truncateStory(String(p.node.position), 18));
       job.ctx.font = "600 11px Sarabun, Anuphan, sans-serif";
       const longest = lines.reduce((max, line) => Math.max(max, job.ctx.measureText(line).width), 20);
       const w = Math.max(56, Math.ceil(longest) + 12);
@@ -2048,6 +2094,31 @@
       </section>`;
   }
 
+  function setDateWindow(from, to) {
+    filters.dateFrom = from || "";
+    filters.dateTo = to || "";
+    const fromEl = $("brain-date-from");
+    const toEl = $("brain-date-to");
+    if (fromEl && fromEl.value !== filters.dateFrom) fromEl.value = filters.dateFrom;
+    if (toEl && toEl.value !== filters.dateTo) toEl.value = filters.dateTo;
+    focusIds = null;
+    if (graph) restartSim(true, true);
+  }
+
+  function focusOnIds(ids) {
+    const set = new Set((ids || []).map((id) => String(id || "")).filter(Boolean));
+    focusIds = set.size ? set : null;
+    filters.isolate = false;
+    if ($("brain-isolate")) $("brain-isolate").checked = false;
+    if (!graph) return;
+    restartSim(true, true);
+  }
+
+  function clearFocus() {
+    focusIds = null;
+    if (graph) restartSim(true, true);
+  }
+
   window.BrainGraph = {
     async show() {
       wireOnce();
@@ -2071,6 +2142,10 @@
         renderLegend();
         restartSim(true, true);
       }
+      const statusEl = $("brain-status");
+      if (statusEl && !statusEl.textContent) {
+        statusEl.textContent = "ข้อมูลกราฟ · โหนดใหญ่ = หน่วยงาน บุคคล สถานที่ · ซูมเพื่ออ่านป้าย";
+      }
     },
     select(id) {
       selectById(id);
@@ -2084,5 +2159,11 @@
     mountStoryGraphs,
     findCaseNode,
     relationLabel,
+    getGraph() {
+      return graph;
+    },
+    focusOnIds,
+    clearFocus,
+    setDateWindow,
   };
 })();
