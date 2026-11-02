@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Anuphan:wght@400;500;600;700&family=Sarabun:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/site.css?v=20261102d" />
+  <link rel="stylesheet" href="css/site.css?v=20261102c" />
 </head>
 <body>
   <a class="skip-link" href="#main">ข้ามไปเนื้อหา</a>
@@ -231,12 +231,17 @@
             <div class="brain-chat-log" id="brain-chat-log">
               <div class="brain-chat-empty" id="brain-chat-empty">
                 <p class="brain-kind">ถามจากกราฟ</p>
-                <p>พิมพ์คำถามด้านล่าง ระบบจะค้นหลักฐานจากกราฟแล้วให้โมเดลวิเคราะห์เอง</p>
+                <p>เลือกตัวอย่าง หรือพิมพ์คำถามด้านล่าง</p>
+                <div class="brain-ask-examples">
+                  <button type="button" class="btn-ghost brain-example" data-example="0">ผมต้องการทราบว่ากรมศุลกากรมีการห้ามปรามการเข้ามาของยาเสพติดตอนนี้ได้จำนวนทั้งหมดเท่าไร่</button>
+                  <button type="button" class="btn-ghost brain-example" data-example="1">ท่างรองตำรวจคนหนึ่งกำลังจะขึ้นตำแหน่งเป็น ผบ.ตำรวจ เขามีผลงานที่ผ่านมาอะไรบ้าง</button>
+                  <button type="button" class="btn-ghost brain-example" data-example="2">ใครเป็นเลขาธิการ ก.ล.ต. ตอนนี้</button>
+                </div>
               </div>
             </div>
             <form class="brain-chat-form" id="brain-chat-form">
               <label class="sr-only" for="brain-question">ถามจากกราฟ</label>
-              <input id="brain-question" type="text" placeholder="พิมพ์คำถาม…" autocomplete="off" />
+              <input id="brain-question" type="text" placeholder="ถามจำนวนข่าว ผลงาน หรือผู้ดำรงตำแหน่ง…" autocomplete="off" />
               <button type="submit" class="btn-ghost" id="brain-ask-submit">ส่ง</button>
             </form>
           </aside>
@@ -315,9 +320,9 @@
   </footer>
 
   <script src="js/format.js?v=20261026b" defer></script>
-  <script src="js/positions.js?v=20261102d" defer></script>
-  <script src="js/graph.js?v=20261102d" defer></script>
+  <script src="js/positions.js?v=20261102c" defer></script>
+  <script src="js/graph.js?v=20261102c" defer></script>
   <script src="js/rag.js?v=20261102d" defer></script>
-  <script src="js/app.js?v=20261102d" defer></script>
+  <script src="js/app.js?v=20261102c" defer></script>
 </body>
 </html>

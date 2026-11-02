@@ -9,7 +9,13 @@
   const MEASURE_ORDER = ["เม็ด", "กรัม", "กก.", "กิโลกรัม", "ลิตร", "ล้าน"];
   const LLM_MODEL = "google/gemma-4-e2b";
   const NARRATION_RULE =
-    "คุณเป็นผู้วิเคราะห์ข่าวจากหลักฐาน JSON ที่ให้มาเท่านั้น ตอบคำถามของผู้ใช้เป็นภาษาไทยด้วยน้ำเสียงของนักวิเคราะห์ ไม่ต้องเลียนแบบหัวข้อสำเร็จรูปเช่น คำตอบจากกราฟ หรือ พบ N ข่าว ให้สรุปและอธิบายจากหลักฐานเอง กล่าวถึง property ตำแหน่งและชื่อผู้ดำรงตำแหน่งเมื่อมีใน JSON ห้ามแต่งชื่อคนหรือตัวเลขที่ไม่มีใน JSON นี้ ห้ามรวมหน่วยนับที่ต่างกันเป็นยอดเดียว ถ้าข้อมูลไม่พอให้บอกว่าไม่มีในหลักฐาน";
+    "คุณตอบคำถามผู้ใช้เป็นภาษาไทย โดยวิเคราะห์จาก JSON หลักฐานที่ให้มาเท่านั้น ห้ามแสดงหัวข้อแบบคำตอบจากกราฟ ห้ามแต่งชื่อคนหรือตัวเลขที่ไม่มีใน JSON ห้ามรวมหน่วยนับที่ต่างกันเป็นยอดเดียว ถ้ามีตำแหน่งหรือผู้ดำรงตำแหน่งใน JSON ให้กล่าวถึง ถ้าข้อมูลไม่พอให้บอกว่าไม่มีในหลักฐาน";
+
+  const EXAMPLES = [
+    "ผมต้องการทราบว่ากรมศุลกากรมีการห้ามปรามการเข้ามาของยาเสพติดตอนนี้ได้จำนวนทั้งหมดเท่าไร่",
+    "ท่างรองตำรวจคนหนึ่งกำลังจะขึ้นตำแหน่งเป็น ผบ.ตำรวจ เขามีผลงานที่ผ่านมาอะไรบ้าง",
+    "ใครเป็นเลขาธิการ ก.ล.ต. ตอนนี้",
+  ];
 
   let postsOverride = null;
   let indexCache = null;
@@ -826,7 +832,7 @@
 
   function renderResult(result, opts = {}) {
     if (!result?.ok && result?.caseCount == null) {
-      return `<div class="rag-answer"><p class="brain-kind">หลักฐานที่ดึงได้</p><h3>ไม่พบข้อมูลที่ตรงกัน</h3><p>${escapeHtml(result?.message || "ไม่รายงานจำนวน")}</p></div>`;
+      return `<div class="rag-answer"><p class="brain-kind">คำตอบจากกราฟ</p><h3>ไม่พบข้อมูลที่ตรงกัน</h3><p>${escapeHtml(result?.message || "ไม่รายงานจำนวน")}</p></div>`;
     }
     const warnings = (result.warnings || [])
       .map((w) => `<p class="rag-warn">${escapeHtml(w)}</p>`)
@@ -892,7 +898,7 @@
       .join("");
     const listTitle = result.intent === "timeline" ? "ลำดับข่าว" : "ข่าวที่ตรงเงื่อนไข";
     return `<div class="rag-answer">
-      <p class="brain-kind">หลักฐานที่ดึงได้</p>
+      <p class="brain-kind">คำตอบจากกราฟ</p>
       <h3>${escapeHtml(result.message || "")}</h3>
       ${warnings}
       ${holderBlock}
@@ -1115,7 +1121,7 @@
     log.querySelectorAll("[data-rag-focus]").forEach((btn) => btn.closest("p")?.remove());
     const turn = document.createElement("article");
     turn.className = "chat-turn";
-    turn.innerHTML = `<div class="chat-bubble chat-user">${escapeHtml(question)}</div><div class="chat-bubble chat-assistant"><p class="muted">กำลังค้นหลักฐานแล้วให้โมเดลวิเคราะห์…</p></div>`;
+    turn.innerHTML = `<div class="chat-bubble chat-user">${escapeHtml(question)}</div><div class="chat-bubble chat-assistant"><p class="muted">กำลังให้โมเดลวิเคราะห์จากกราฟ…</p></div>`;
     log.appendChild(turn);
     log.scrollTop = log.scrollHeight;
     if (input) input.value = "";
@@ -1127,19 +1133,19 @@
       window.BrainGraph?.setDateWindow?.(dateFrom, dateTo);
       result = await answerQuestion(question, { dateFrom, dateTo });
     } catch (err) {
-      assistant.innerHTML = `<p>ค้นไม่สำเร็จ ${escapeHtml(err?.message || "")}</p>`;
+      assistant.innerHTML = `<p class="rag-warn">ค้นไม่สำเร็จ ${escapeHtml(err?.message || "")}</p>`;
       return;
     }
     lastFocusIds = result.focusIds || [];
-    assistant.innerHTML = `<p class="muted">กำลังให้โมเดลวิเคราะห์จากหลักฐาน…</p>`;
-    log.scrollTop = log.scrollHeight;
     const reply = await askModel(question, result);
     thread.push({ question, result, llmText: reply.ok ? reply.text : "" });
-    const analysis = reply.ok
-      ? `<p class="rag-narration-body">${escapeHtml(reply.text)}</p>`
-      : `<p class="rag-warn">${escapeHtml(reply.reason || "เรียกโมเดลไม่สำเร็จ")}</p>`;
-    const evidence = renderResult(result, { focus: true });
-    assistant.innerHTML = `${analysis}<details class="rag-evidence"><summary>หลักฐานจากกราฟ</summary>${evidence}</details>`;
+    const focusBtn =
+      lastFocusIds.length > 0
+        ? `<p><button type="button" class="btn-ghost" data-rag-focus>โฟกัสกราฟเฉพาะกลุ่มนี้</button></p>`
+        : "";
+    assistant.innerHTML = reply.ok
+      ? `<p class="rag-narration-body">${escapeHtml(reply.text)}</p>${focusBtn}`
+      : `<p class="rag-warn">${escapeHtml(reply.reason || "เรียกโมเดลไม่สำเร็จ")}</p>${focusBtn}`;
     log.scrollTop = log.scrollHeight;
   }
 
@@ -1152,6 +1158,14 @@
     form?.addEventListener("submit", (ev) => {
       ev.preventDefault();
       ask(input?.value || "");
+    });
+    document.querySelectorAll("[data-example]").forEach((btn) => {
+      const idx = Number(btn.getAttribute("data-example"));
+      const q = EXAMPLES[idx] || btn.textContent || "";
+      btn.addEventListener("click", () => {
+        if (input) input.value = q;
+        ask(q);
+      });
     });
     document.getElementById("brain-chat-log")?.addEventListener("click", (ev) => {
       const btn = ev.target.closest("[data-rag-focus]");
