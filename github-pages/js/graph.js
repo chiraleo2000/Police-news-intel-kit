@@ -1423,88 +1423,6 @@
     return t.slice(0, max - 1) + "…";
   }
 
-  function egoKindColor(kind) {
-    return KIND_COLOR[kind] || KIND_COLOR.other;
-  }
-
-  function egoSatelliteRadius(kind) {
-    if (kind === "crime_type") return 13;
-    if (kind === "case") return 15;
-    return 10;
-  }
-
-  function buildEgoSvg(hub, neighbors, edges) {
-    const W = 720;
-    const H = 400;
-    const cx = W / 2;
-    const cy = H / 2 + 10;
-    const positions = new Map();
-    positions.set(hub.id, { x: cx, y: cy, r: 20 });
-    const n = neighbors.length;
-    const radius = Math.min(160, 64 + n * 11);
-    neighbors.forEach((node, i) => {
-      const angle = (Math.PI * 2 * i) / Math.max(1, n) - Math.PI / 2;
-      const r = egoSatelliteRadius(node.kind);
-      positions.set(node.id, {
-        x: cx + Math.cos(angle) * radius,
-        y: cy + Math.sin(angle) * radius,
-        r,
-      });
-    });
-
-    const parts = [];
-    for (const e of edges) {
-      const a = positions.get(e.source);
-      const b = positions.get(e.target);
-      if (!a || !b) continue;
-      const mx = (a.x + b.x) / 2;
-      const my = (a.y + b.y) / 2;
-      parts.push(
-        `<line x1="${a.x.toFixed(1)}" y1="${a.y.toFixed(1)}" x2="${b.x.toFixed(1)}" y2="${b.y.toFixed(1)}" stroke="#6a7c8e" stroke-width="1.5" opacity="0.8"/>`
-      );
-      const relName = relationLabel(e.label);
-      if (relName) {
-        const shown = truncateStory(relName, 18);
-        const pillW = Math.max(56, 14 + shown.length * 7.2);
-        parts.push(
-          `<rect x="${(mx - pillW / 2).toFixed(1)}" y="${(my - 9).toFixed(1)}" width="${pillW.toFixed(1)}" height="16" rx="8" fill="#10211e" stroke="#7dd3c0"/>` +
-            `<text x="${mx.toFixed(1)}" y="${(my + 3).toFixed(1)}" text-anchor="middle" font-size="8.5" font-weight="700" fill="#ffffff" font-family="Sarabun, Anuphan, sans-serif">${escapeHtml(shown)}</text>`
-        );
-      }
-    }
-
-    for (const node of [hub, ...neighbors]) {
-      const p = positions.get(node.id);
-      if (!p) continue;
-      const title = truncateStory(node.title, node.id === hub.id ? 34 : 24);
-      const pillW = Math.min(200, 10 + title.length * 6.8);
-      parts.push(
-        `<circle cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="${p.r}" fill="${egoKindColor(node.kind)}" stroke="#fff" stroke-width="2"/>`,
-        `<rect x="${(p.x - pillW / 2).toFixed(1)}" y="${(p.y + p.r + 4).toFixed(1)}" width="${pillW.toFixed(1)}" height="16" rx="8" fill="rgba(255,255,255,0.95)" stroke="#c5d0da"/>` +
-          `<text x="${p.x.toFixed(1)}" y="${(p.y + p.r + 14).toFixed(1)}" text-anchor="middle" font-size="9" font-weight="600" fill="#1a222c" font-family="Sarabun, Anuphan, sans-serif">${escapeHtml(title)}</text>`
-      );
-      if (node.id === hub.id) {
-        const props = [hub.position, hub.bureau, hub.area, hub.crime_type, hub.status]
-          .filter((x) => x && x !== "-")
-          .slice(0, 3);
-        props.forEach((line, i) => {
-          parts.push(
-            `<text x="${p.x.toFixed(1)}" y="${(p.y + p.r + 26 + i * 11).toFixed(1)}" text-anchor="middle" font-size="8" fill="#4a5a68" font-family="Sarabun, Anuphan, sans-serif">${escapeHtml(truncateStory(line, 30))}</text>`
-          );
-        });
-      } else {
-        const subtitle = node.position || (node.kind === "entity" ? node.entity_group : "");
-        if (subtitle) {
-          parts.push(
-            `<text x="${p.x.toFixed(1)}" y="${(p.y + p.r + 26).toFixed(1)}" text-anchor="middle" font-size="8" fill="#4a5a68" font-family="Sarabun, Anuphan, sans-serif">${escapeHtml(truncateStory(subtitle, 22))}</text>`
-          );
-        }
-      }
-    }
-
-    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" width="100%" height="auto" class="story-ego-svg" role="img" aria-label="ข้อมูลกราฟของข่าวนี้">${parts.join("")}</svg>`;
-  }
-
   function relationsFromPost(post, graphRels) {
     const list = [...(graphRels || [])];
     const seen = new Set(list.map((r) => `${r.label}|${r.target_id}`));
@@ -1657,52 +1575,63 @@
     return [text.slice(0, mid).trim(), text.slice(mid).trim()];
   }
 
+  function storyLabelBoxFromPlaced(job, p, hubAt) {
+    const lines = storyLabelLines(storyLabel(p.node));
+    if (p.node.position) lines.push(truncateStory(String(p.node.position), 18));
+    job.ctx.font = "600 11px Sarabun, Anuphan, sans-serif";
+    const longest = lines.reduce((max, line) => Math.max(max, job.ctx.measureText(line).width), 20);
+    const w = Math.max(56, Math.ceil(longest) + 12);
+    const h = 6 + lines.length * 14;
+    const at = screenOfStory(job, p.x, p.y);
+    let dx = at.x - hubAt.x;
+    let dy = at.y - hubAt.y;
+    let len = Math.hypot(dx, dy);
+    if (len < 1) {
+      dx = 0;
+      dy = -1;
+      len = 1;
+    }
+    const reach = p.r * job.camera.scale + 12;
+    let x = at.x + (dx / len) * (reach + w / 2) - w / 2;
+    let y = at.y + (dy / len) * (reach + h / 2) - h / 2;
+    if (y < 8 || y + h > job.h - 8) {
+      const side = at.x > job.w * 0.55 ? 1 : -1;
+      x = at.x + side * (p.r * job.camera.scale + 14);
+      if (side < 0) x -= w;
+      y = at.y - h / 2;
+    }
+    return {
+      id: p.node.id,
+      text: lines.join(" "),
+      lines,
+      w,
+      h,
+      x,
+      y,
+      fontPx: 11,
+      lineH: 14,
+      anchorX: at.x,
+      anchorY: at.y,
+    };
+  }
+
+  function placeHubStoryLabel(hubBox, boxes, job) {
+    const reach = (job.placed[0].r || 24) * job.camera.scale + 18;
+    hubBox.x = hubBox.anchorX - hubBox.w / 2;
+    hubBox.y = hubBox.anchorY - reach - hubBox.h;
+    clampStoryBox(hubBox, job.w, job.h);
+    for (let pass = 0; pass < 10; pass += 1) {
+      for (const box of boxes) {
+        if (box !== hubBox) shoveOff(box, hubBox, job.h);
+      }
+    }
+    for (const box of boxes) clampStoryBox(box, job.w, job.h);
+  }
+
   function storyScreenLabels(job) {
     const hub = job.placed[0];
     const hubAt = screenOfStory(job, hub.x, hub.y);
-    const boxes = job.placed.map((p) => {
-      const lines = storyLabelLines(storyLabel(p.node));
-      if (p.node.position) lines.push(truncateStory(String(p.node.position), 18));
-      job.ctx.font = "600 11px Sarabun, Anuphan, sans-serif";
-      const longest = lines.reduce((max, line) => Math.max(max, job.ctx.measureText(line).width), 20);
-      const w = Math.max(56, Math.ceil(longest) + 12);
-      const h = 6 + lines.length * 14;
-      const at = screenOfStory(job, p.x, p.y);
-      let dx = at.x - hubAt.x;
-      let dy = at.y - hubAt.y;
-      let len = Math.hypot(dx, dy);
-      if (len < 1) {
-        dx = 0;
-        dy = -1;
-        len = 1;
-      }
-      const reach = p.r * job.camera.scale + 12;
-      const cx = at.x + (dx / len) * (reach + w / 2);
-      const cy = at.y + (dy / len) * (reach + h / 2);
-      let x = cx - w / 2;
-      let y = cy - h / 2;
-      const offTop = y < 8;
-      const offBottom = y + h > job.h - 8;
-      if (offTop || offBottom) {
-        const side = at.x > job.w * 0.55 ? 1 : -1;
-        x = at.x + side * (p.r * job.camera.scale + 14);
-        if (side < 0) x -= w;
-        y = at.y - h / 2;
-      }
-      return {
-        id: p.node.id,
-        text: lines.join(" "),
-        lines,
-        w,
-        h,
-        x,
-        y,
-        fontPx: 11,
-        lineH: 14,
-        anchorX: at.x,
-        anchorY: at.y,
-      };
-    });
+    const boxes = job.placed.map((p) => storyLabelBoxFromPlaced(job, p, hubAt));
     separateStoryBoxes(boxes);
     for (let pass = 0; pass < 4; pass += 1) {
       for (const box of boxes) liftLabelOffNode(box);
@@ -1710,18 +1639,7 @@
     }
     for (const box of boxes) clampStoryBox(box, job.w, job.h);
     const hubBox = boxes.find((box) => box.id === job.hubId);
-    if (hubBox) {
-      const reach = (job.placed[0].r || 24) * job.camera.scale + 18;
-      hubBox.x = hubBox.anchorX - hubBox.w / 2;
-      hubBox.y = hubBox.anchorY - reach - hubBox.h;
-      clampStoryBox(hubBox, job.w, job.h);
-      for (let pass = 0; pass < 10; pass += 1) {
-        for (const box of boxes) {
-          if (box !== hubBox) shoveOff(box, hubBox, job.h);
-        }
-      }
-      for (const box of boxes) clampStoryBox(box, job.w, job.h);
-    }
+    if (hubBox) placeHubStoryLabel(hubBox, boxes, job);
     for (const box of boxes) liftLabelOffNode(box);
     return boxes;
   }
@@ -2020,8 +1938,10 @@
         fitStoryCamera(job);
         bindStoryCanvas(canvas, job);
         drawStory(job);
-        document.fonts?.ready?.then(() => {
+        void document.fonts?.ready?.then(() => {
           if (canvas.isConnected) drawStory(job);
+        }).catch(() => {
+          /* font load failure is non-fatal; canvas already drew with fallbacks */
         });
       });
     });
@@ -2105,18 +2025,16 @@
       </section>`;
   }
 
-  function setDateWindow(from, to) {
-    const nextFrom = from || "";
-    const nextTo = to || "";
-    const changed = filters.dateFrom !== nextFrom || filters.dateTo !== nextTo;
-    filters.dateFrom = nextFrom;
-    filters.dateTo = nextTo;
+  function setDateWindow(from = "", to = "") {
+    const changed = filters.dateFrom !== from || filters.dateTo !== to;
+    filters.dateFrom = from;
+    filters.dateTo = to;
     const fromEl = $("brain-date-from");
     const toEl = $("brain-date-to");
     if (fromEl && fromEl.value !== filters.dateFrom) fromEl.value = filters.dateFrom;
     if (toEl && toEl.value !== filters.dateTo) toEl.value = filters.dateTo;
     // Do not clear question focus here; ask flow owns focusIds.
-    if (changed && graph) restartSim(Boolean(focusIds && focusIds.size), Boolean(focusIds && focusIds.size));
+    if (changed && graph) restartSim(Boolean(focusIds?.size), Boolean(focusIds?.size));
   }
 
   function focusOnIds(ids) {
