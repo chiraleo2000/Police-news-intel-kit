@@ -1,0 +1,40 @@
+{
+ "case_id": "20261102-corrupt-01",
+ "title": "ป.ป.ช. ภาค 6 ลงตรวจโครงการขุดลอกแม่น้ำ ต.บ้านแก่ง อ.ตรอน อุตรดิตถ์ พบเครื่องจักรเข้าพื้นที่ก่อนประกาศผู้ชนะ และไม่พบสันดอนทรายตามโครงการ",
+ "generated_at": "2026-11-02T02:30:07.190Z",
+ "node_count": 6,
+ "edge_count": 5,
+ "relations": [
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/ป.ป.ช. ภาค 6",
+   "target_title": "ป.ป.ช. ภาค 6",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/กรมเจ้าท่า",
+   "target_title": "กรมเจ้าท่า",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/ตำรวจภูธรจังหวัดอุตรดิตถ์",
+   "target_title": "ตำรวจภูธรจังหวัดอุตรดิตถ์",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ต.บ้านแก่ง อ.ตรอน อุตรดิตถ์",
+   "target_title": "ต.บ้านแก่ง อ.ตรอน อุตรดิตถ์",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/ผู้ช่วยเลขาธิการ ป.ป.ช. ภาค 6",
+   "target_title": "ผู้ช่วยเลขาธิการ ป.ป.ช. ภาค 6",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261102-corrupt-01.svg"
+}

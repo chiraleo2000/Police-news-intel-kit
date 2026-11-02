@@ -1,0 +1,46 @@
+{
+ "case_id": "20261102-organized-01",
+ "title": "ตำรวจน้ำแหลมงอบ-ทัพเรือภาคที่ 1 จับ 5 ผู้ต้องหา ยึดกระสุน AK-47 32,400 นัด ที่ปากคลองท่าหาด ตราด ชี้เครือข่ายเดียวกับเหตุ 21 ส.ค. 2569",
+ "generated_at": "2026-11-02T02:30:07.202Z",
+ "node_count": 7,
+ "edge_count": 6,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/ตำรวจน้ำแหลมงอบ",
+   "target_title": "ตำรวจน้ำแหลมงอบ",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/ทัพเรือภาคที่ 1",
+   "target_title": "ทัพเรือภาคที่ 1",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/กองข่าวทหารเรือ (ขว.ทร.)",
+   "target_title": "กองข่าวทหารเรือ (ขว.ทร.)",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/กรมเจ้าท่า",
+   "target_title": "กรมเจ้าท่า",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ปากคลองท่าหาด ต.แสนตุ้ง ตราด",
+   "target_title": "ปากคลองท่าหาด ต.แสนตุ้ง ตราด",
+   "direction": "out"
+  },
+  {
+   "label": "ผู้ต้องหา",
+   "target_id": "30_Entities/People/ผู้ต้องหา 5 ราย (ชาวไทย 4 ชาวกัมพูชา 1)",
+   "target_title": "ผู้ต้องหา 5 ราย (ชาวไทย 4 ชาวกัมพูชา 1)",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261102-organized-01.svg"
+}

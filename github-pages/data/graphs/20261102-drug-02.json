@@ -1,0 +1,46 @@
+{
+ "case_id": "20261102-drug-02",
+ "title": "ป.ป.ส. ภาค 7 ร่วมหลายหน่วยล้อมตรวจปาร์ตี้บนแพที่แควน้อย กาญจนบุรี ตรวจปัสสาวะผู้ร่วมงาน 14 ราย พบสารเสพติด 8 ราย จับ 2 ผู้ต้องหาครอบครองยาเสพติด",
+ "generated_at": "2026-11-02T02:30:07.193Z",
+ "node_count": 7,
+ "edge_count": 6,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/สำนักงาน ป.ป.ส. ภาค 7",
+   "target_title": "สำนักงาน ป.ป.ส. ภาค 7",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/บก.ปปส.ภ.7",
+   "target_title": "บก.ปปส.ภ.7",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/นปส.กาญจนบุรี (บช.ปส.)",
+   "target_title": "นปส.กาญจนบุรี (บช.ปส.)",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/สภ.เมืองกาญจนบุรี",
+   "target_title": "สภ.เมืองกาญจนบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/แควน้อย ต.หนองหญ้า กาญจนบุรี",
+   "target_title": "แควน้อย ต.หนองหญ้า กาญจนบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "ผู้ต้องหา",
+   "target_id": "30_Entities/People/ผู้ต้องหา 2 ราย อายุ 34 ปี",
+   "target_title": "ผู้ต้องหา 2 ราย อายุ 34 ปี",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261102-drug-02.svg"
+}

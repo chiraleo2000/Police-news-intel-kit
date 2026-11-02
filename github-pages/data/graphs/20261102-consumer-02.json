@@ -1,0 +1,28 @@
+{
+ "case_id": "20261102-consumer-02",
+ "title": "ศุลกากรภาคที่ 2 ยึดบุหรี่ต่างประเทศไม่มีอากรแสตมป์ 654,000 มวน มูลค่ากว่า 3.27 ล้านบาท ที่ส่งผ่านบริษัทขนส่งเอกชนในโคราช",
+ "generated_at": "2026-11-02T02:30:07.189Z",
+ "node_count": 4,
+ "edge_count": 3,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/กรมศุลกากร",
+   "target_title": "กรมศุลกากร",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/สำนักงานศุลกากรภาคที่ 2",
+   "target_title": "สำนักงานศุลกากรภาคที่ 2",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/จ.นครราชสีมา",
+   "target_title": "จ.นครราชสีมา",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261102-consumer-02.svg"
+}

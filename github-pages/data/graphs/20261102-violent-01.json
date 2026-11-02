@@ -1,0 +1,40 @@
+{
+ "case_id": "20261102-violent-01",
+ "title": "ผู้ขับกระบะมอบตัว สภ.แม่ปิง เชียงใหม่ หลังชนผู้ช่วยพยาบาลที่จอดช่วยผู้บาดเจ็บจากเหตุวัยรุ่น 2 กลุ่มตีกัน เสียชีวิต ตำรวจไม่เชื่อคำให้การ ตามตัวสมาชิกทั้งสองกลุ่ม",
+ "generated_at": "2026-11-02T02:30:07.205Z",
+ "node_count": 6,
+ "edge_count": 5,
+ "relations": [
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/สภ.แม่ปิง",
+   "target_title": "สภ.แม่ปิง",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/ตำรวจภูธรภาค 5",
+   "target_title": "ตำรวจภูธรภาค 5",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/เชียงใหม่",
+   "target_title": "เชียงใหม่",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/รอง ผบช.ภ.5",
+   "target_title": "รอง ผบช.ภ.5",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/บุคคล/ธวัชชัย พงษ์วิวัฒน์",
+   "target_title": "ธวัชชัย พงษ์วิวัฒน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261102-violent-01.svg"
+}

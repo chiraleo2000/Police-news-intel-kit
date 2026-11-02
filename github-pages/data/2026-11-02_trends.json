@@ -1,0 +1,195 @@
+{
+ "baseline": "limited",
+ "window_days": 7,
+ "days_available": 11,
+ "note": "baseline 11 วันย้อนหลัง (<7 วัน: แนวโน้มเป็นข้อมูลบ่งชี้เท่านั้น) surge = วันนี้ >=3 เรื่อง และสูงกว่าค่าเฉลี่ย >=50 เปอร์เซ็นต์",
+ "by_crime_type": [
+  {
+   "type": "คดีเศรษฐกิจ การเงิน และฟอกเงิน",
+   "today": 3,
+   "avg_prev_7d": 1.55,
+   "delta_pct": 94.1,
+   "surge": true
+  },
+  {
+   "type": "คดีชีวิต ร่างกาย และเพศ",
+   "today": 2,
+   "avg_prev_7d": 3.45,
+   "delta_pct": -42.1,
+   "surge": false
+  },
+  {
+   "type": "ยาเสพติด",
+   "today": 2,
+   "avg_prev_7d": 4.36,
+   "delta_pct": -54.2,
+   "surge": false
+  },
+  {
+   "type": "คุ้มครองผู้บริโภคและสินค้าผิดกฎหมาย",
+   "today": 2,
+   "avg_prev_7d": 1.09,
+   "delta_pct": 83.3,
+   "surge": false
+  },
+  {
+   "type": "พนันและบ่อนผิดกฎหมาย",
+   "today": 2,
+   "avg_prev_7d": 1.45,
+   "delta_pct": 37.5,
+   "surge": false
+  },
+  {
+   "type": "อาชญากรรมข้ามชาติและความร่วมมือระหว่างประเทศ",
+   "today": 1,
+   "avg_prev_7d": 1.0,
+   "delta_pct": 0.0,
+   "surge": false
+  },
+  {
+   "type": "คดีอุกฉกรรจ์ ผู้มีอิทธิพล และอาวุธ",
+   "today": 1,
+   "avg_prev_7d": 0.27,
+   "delta_pct": 266.7,
+   "surge": false
+  },
+  {
+   "type": "คดีทรัพย์สิน",
+   "today": 1,
+   "avg_prev_7d": 1.73,
+   "delta_pct": -42.1,
+   "surge": false
+  },
+  {
+   "type": "ค้ามนุษย์ แรงงานผิดกฎหมาย และคุ้มครองเด็ก",
+   "today": 1,
+   "avg_prev_7d": 2.09,
+   "delta_pct": -52.2,
+   "surge": false
+  },
+  {
+   "type": "ทุจริตและประพฤติมิชอบของเจ้าหน้าที่รัฐ",
+   "today": 1,
+   "avg_prev_7d": 0.45,
+   "delta_pct": 120.0,
+   "surge": false
+  },
+  {
+   "type": "อาชญากรรมไซเบอร์และออนไลน์",
+   "today": 1,
+   "avg_prev_7d": 3.73,
+   "delta_pct": -73.2,
+   "surge": false
+  }
+ ],
+ "by_mo": [
+  {
+   "mo": "ลำเลียงยาเสพติด",
+   "today": 2,
+   "avg_prev_7d": 0.36,
+   "surge": false
+  },
+  {
+   "mo": "บัญชีม้า/ซิมม้า",
+   "today": 1,
+   "avg_prev_7d": 0.18,
+   "surge": false
+  },
+  {
+   "mo": "ฟอกเงิน",
+   "today": 1,
+   "avg_prev_7d": 0.18,
+   "surge": false
+  },
+  {
+   "mo": "พนันออนไลน์",
+   "today": 1,
+   "avg_prev_7d": 0.18,
+   "surge": false
+  },
+  {
+   "mo": "บ่อน/คาสิโนผิดกฎหมาย",
+   "today": 1,
+   "avg_prev_7d": 0.09,
+   "surge": false
+  },
+  {
+   "mo": "ลิงก์ปลอม/ฟิชชิง",
+   "today": 1,
+   "avg_prev_7d": 0.0,
+   "surge": false
+  }
+ ],
+ "by_province": [
+  {
+   "province": "กรุงเทพมหานคร",
+   "today": 4,
+   "avg_prev_7d": 9.09
+  },
+  {
+   "province": "ฉะเชิงเทรา",
+   "today": 1,
+   "avg_prev_7d": 0.18
+  },
+  {
+   "province": "ระนอง",
+   "today": 1,
+   "avg_prev_7d": 0.0
+  },
+  {
+   "province": "เพชรบุรี",
+   "today": 1,
+   "avg_prev_7d": 0.73
+  },
+  {
+   "province": "เชียงใหม่",
+   "today": 1,
+   "avg_prev_7d": 1.0
+  },
+  {
+   "province": "สงขลา",
+   "today": 1,
+   "avg_prev_7d": 1.0
+  },
+  {
+   "province": "ตราด",
+   "today": 1,
+   "avg_prev_7d": 0.27
+  },
+  {
+   "province": "สตูล",
+   "today": 1,
+   "avg_prev_7d": 0.0
+  },
+  {
+   "province": "กระบี่",
+   "today": 1,
+   "avg_prev_7d": 0.09
+  },
+  {
+   "province": "บึงกาฬ",
+   "today": 1,
+   "avg_prev_7d": 0.18
+  },
+  {
+   "province": "อุตรดิตถ์",
+   "today": 1,
+   "avg_prev_7d": 0.09
+  },
+  {
+   "province": "กาญจนบุรี",
+   "today": 1,
+   "avg_prev_7d": 1.0
+  },
+  {
+   "province": "ภูเก็ต",
+   "today": 1,
+   "avg_prev_7d": 0.91
+  },
+  {
+   "province": "นครราชสีมา",
+   "today": 1,
+   "avg_prev_7d": 0.36
+  }
+ ]
+}

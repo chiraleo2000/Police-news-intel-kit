@@ -1,0 +1,64 @@
+{
+ "case_id": "20261102-gamble-01",
+ "title": "ตำรวจไซเบอร์ บก.สอท.2 ทลายฐานเว็บพนัน pharuey ที่ กระบี่ จับแอดมินอายุ 27 ปี พบสมาชิกกว่า 140,000 ราย เงินหมุนเวียนเฉลี่ยกว่า 10 ล้านบาทต่อเดือน",
+ "generated_at": "2026-11-02T02:30:07.198Z",
+ "node_count": 10,
+ "edge_count": 9,
+ "relations": [
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บช.สอท.",
+   "target_title": "บช.สอท.",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/บก.สอท.2",
+   "target_title": "บก.สอท.2",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลจังหวัดกระบี่",
+   "target_title": "ศาลจังหวัดกระบี่",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/สภ.คลองท่อม",
+   "target_title": "สภ.คลองท่อม",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ต.คลองพน อ.คลองท่อม กระบี่",
+   "target_title": "ต.คลองพน อ.คลองท่อม กระบี่",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/ผบช.สอท.",
+   "target_title": "ผบช.สอท.",
+   "direction": "out"
+  },
+  {
+   "label": "ผู้ต้องหา",
+   "target_id": "30_Entities/People/แอดมินเว็บ pharuey (อายุ 27 ปี)",
+   "target_title": "แอดมินเว็บ pharuey (อายุ 27 ปี)",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/บุคคล/ทินกร รังมาตย์",
+   "target_title": "ทินกร รังมาตย์",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/บุคคล/อรุษ แสงจันทร์",
+   "target_title": "อรุษ แสงจันทร์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261102-gamble-01.svg"
+}

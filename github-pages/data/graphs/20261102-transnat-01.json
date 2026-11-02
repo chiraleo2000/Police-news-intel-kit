@@ -1,0 +1,64 @@
+{
+ "case_id": "20261102-transnat-01",
+ "title": "สตม. จับชายสัญชาติอินเดียที่ระนอง ผู้ที่ทางการอินเดียต้องการตัวตามหมายจับข้อหาพยายามฆ่า ฆาตกรรม กรรโชกทรัพย์ เตรียมเพิกถอนการอนุญาตอยู่ในไทยและผลักดันกลับ",
+ "generated_at": "2026-11-02T02:30:07.204Z",
+ "node_count": 10,
+ "edge_count": 9,
+ "relations": [
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บช.สตม.",
+   "target_title": "บช.สตม.",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/บก.สส.สตม.",
+   "target_title": "บก.สส.สตม.",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/บก.ตม.6",
+   "target_title": "บก.ตม.6",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/ตม.จว.ระนอง",
+   "target_title": "ตม.จว.ระนอง",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/สถานเอกอัครราชทูตอินเดีย",
+   "target_title": "สถานเอกอัครราชทูตอินเดีย",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลปาเตียลาเฮ้าส์ นิวเดลี",
+   "target_title": "ศาลปาเตียลาเฮ้าส์ นิวเดลี",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ต.บางริ้น อ.เมือง ระนอง",
+   "target_title": "ต.บางริ้น อ.เมือง ระนอง",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/ผบช.สตม.",
+   "target_title": "ผบช.สตม.",
+   "direction": "out"
+  },
+  {
+   "label": "ผู้ต้องหา",
+   "target_id": "30_Entities/People/ผู้ถูกกล่าวหาสัญชาติอินเดีย (โยเกซ ตามข่าว)",
+   "target_title": "ผู้ถูกกล่าวหาสัญชาติอินเดีย (โยเกซ ตามข่าว)",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261102-transnat-01.svg"
+}

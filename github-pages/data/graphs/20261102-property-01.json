@@ -1,0 +1,34 @@
+{
+ "case_id": "20261102-property-01",
+ "title": "ตำรวจสืบสวนสตูลจับ 2 ชายอายุ 30 และ 21 ปี ขณะปีนเสาสัญญาณมือถือที่ ควนกาหลง ยึดอุปกรณ์ 20 รายการ ผู้ต้องหาเป็นอดีตพนักงานค่ายมือถือ ก่อเหตุแล้ว 3 จุด",
+ "generated_at": "2026-11-02T02:30:07.203Z",
+ "node_count": 5,
+ "edge_count": 4,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/ตำรวจสืบสวนภูธรจังหวัดสตูล",
+   "target_title": "ตำรวจสืบสวนภูธรจังหวัดสตูล",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/ตำรวจภูธรจังหวัดสตูล",
+   "target_title": "ตำรวจภูธรจังหวัดสตูล",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/อ.ควนกาหลง สตูล",
+   "target_title": "อ.ควนกาหลง สตูล",
+   "direction": "out"
+  },
+  {
+   "label": "ผู้ต้องหา",
+   "target_id": "30_Entities/People/ผู้ต้องหา 2 ราย อายุ 30 และ 21 ปี",
+   "target_title": "ผู้ต้องหา 2 ราย อายุ 30 และ 21 ปี",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261102-property-01.svg"
+}

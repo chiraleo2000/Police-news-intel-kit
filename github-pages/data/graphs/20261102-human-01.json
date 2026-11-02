@@ -1,0 +1,40 @@
+{
+ "case_id": "20261102-human-01",
+ "title": "ฝ่ายปกครองและตำรวจบึงกาฬตรวจสถานบริการไม่มีใบอนุญาตในเมืองบึงกาฬ พบเด็กและเยาวชนต่ำกว่า 20 ปี 36 คน อายุน้อยที่สุด 12 ปี เตรียมเสนอผู้ว่าฯ สั่งปิด 5 ปี",
+ "generated_at": "2026-11-02T02:30:07.201Z",
+ "node_count": 6,
+ "edge_count": 5,
+ "relations": [
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/ฝ่ายปกครองจังหวัดบึงกาฬ",
+   "target_title": "ฝ่ายปกครองจังหวัดบึงกาฬ",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/ตำรวจภูธรจังหวัดบึงกาฬ",
+   "target_title": "ตำรวจภูธรจังหวัดบึงกาฬ",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/สภ.เมืองบึงกาฬ",
+   "target_title": "สภ.เมืองบึงกาฬ",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ต.บึงกาฬ อ.เมือง บึงกาฬ",
+   "target_title": "ต.บึงกาฬ อ.เมือง บึงกาฬ",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/ปลัดจังหวัดบึงกาฬ",
+   "target_title": "ปลัดจังหวัดบึงกาฬ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261102-human-01.svg"
+}

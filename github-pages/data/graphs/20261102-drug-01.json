@@ -1,0 +1,58 @@
+{
+ "case_id": "20261102-drug-01",
+ "title": "สน.พลับพลาไชย 1 จับสามีภรรยา 2 คนข้างสถานี ขยายผลยึดรถ 6 ล้อ ที่ปั๊มน้ำมันเพชรบุรี พบยาบ้า 900,000 เม็ด ปืน 2 กระบอก ซ่อนในรถส่งของบริจาคน้ำท่วม",
+ "generated_at": "2026-11-02T02:30:07.192Z",
+ "node_count": 9,
+ "edge_count": 8,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/สน.พลับพลาไชย 1",
+   "target_title": "สน.พลับพลาไชย 1",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บช.น.",
+   "target_title": "บช.น.",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/กก.1 บก.ปส.4 บช.ปส.",
+   "target_title": "กก.1 บก.ปส.4 บช.ปส.",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ป้อมปราบศัตรูพ่าย กรุงเทพมหานคร",
+   "target_title": "ป้อมปราบศัตรูพ่าย กรุงเทพมหานคร",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ต.ห้วยโลง อ.เขาย้อย เพชรบุรี",
+   "target_title": "ต.ห้วยโลง อ.เขาย้อย เพชรบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/ผบช.น.",
+   "target_title": "ผบช.น.",
+   "direction": "out"
+  },
+  {
+   "label": "ผู้ต้องหา",
+   "target_id": "30_Entities/People/ผู้ต้องหาชาย อายุ 42 ปี",
+   "target_title": "ผู้ต้องหาชาย อายุ 42 ปี",
+   "direction": "out"
+  },
+  {
+   "label": "ผู้ต้องหา",
+   "target_id": "30_Entities/People/ผู้ต้องหาหญิง อายุ 29 ปี",
+   "target_title": "ผู้ต้องหาหญิง อายุ 29 ปี",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261102-drug-01.svg"
+}
