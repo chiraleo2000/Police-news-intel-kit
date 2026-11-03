@@ -1,0 +1,22 @@
+{
+ "case_id": "20261103-property-01",
+ "title": "สภ.วิชิต ภูเก็ต จับชายอายุ 31 ปี ผู้ต้องหาดักตีศีรษะหญิงอายุ 23 ปีที่ขี่รถจักรยานยนต์กลับจากทำงาน หวังชิงทรัพย์ ใกล้ ม.อ.ภูเก็ต",
+ "generated_at": "2026-11-03T02:30:04.978Z",
+ "node_count": 3,
+ "edge_count": 2,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/สภ.วิชิต",
+   "target_title": "สภ.วิชิต",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ต.วิชิต อ.เมือง ภูเก็ต",
+   "target_title": "ต.วิชิต อ.เมือง ภูเก็ต",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261103-property-01.svg"
+}

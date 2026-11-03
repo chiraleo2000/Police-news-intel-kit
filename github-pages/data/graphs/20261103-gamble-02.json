@@ -1,0 +1,64 @@
+{
+ "case_id": "20261103-gamble-02",
+ "title": "ตำรวจไซเบอร์แถลงทลาย 2 เครือข่ายเว็บพนัน HENG-36B และ PHARUEY เงินหมุนเวียนรวมกว่า 2,020 ล้านบาทต่อปี จับผู้เกี่ยวข้อง 5 ราย เร่งตามหาเจ้าของเว็บ",
+ "generated_at": "2026-11-03T02:30:04.973Z",
+ "node_count": 10,
+ "edge_count": 9,
+ "relations": [
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บช.สอท.",
+   "target_title": "บช.สอท.",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/บก.สอท.2",
+   "target_title": "บก.สอท.2",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลจังหวัดนนทบุรี",
+   "target_title": "ศาลจังหวัดนนทบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/บก.สอท.2 นนทบุรี",
+   "target_title": "บก.สอท.2 นนทบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/บุคคล/ทินกร รังมาตย์",
+   "target_title": "ทินกร รังมาตย์",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/บุคคล/อรุษ แสงจันทร์",
+   "target_title": "อรุษ แสงจันทร์",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/บุคคล/ศิริวัฒน์ ดีพอ",
+   "target_title": "ศิริวัฒน์ ดีพอ",
+   "direction": "out"
+  },
+  {
+   "label": "บัญชี",
+   "target_id": "30_Entities/บัญชี/HENG-36B",
+   "target_title": "HENG-36B",
+   "direction": "out"
+  },
+  {
+   "label": "ติดตามจาก",
+   "target_id": "20_Cases/20261102-gamble-01",
+   "target_title": "ตำรวจไซเบอร์ บก.สอท.2 ทลายฐานเว็บพนัน pharuey ที่ กระบี่ จับแอดมินอายุ 27 ปี พบสมาชิกกว่า 140,000 ราย เงินหมุนเวียนเฉลี่ยกว่า 10 ล้านบาทต่อเดือน",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261103-gamble-02.svg"
+}

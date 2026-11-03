@@ -1,0 +1,58 @@
+{
+ "case_id": "20261103-drug-01",
+ "title": "บช.ปส. แถลง 2 คดี จับผู้ขนไอซ์ 50 กก. ที่ กำแพงแสน นครปฐม และจับคนขับรถขนยาบ้าราว 5 ล้านเม็ดที่ สกลนคร ขยายผลหาผู้สั่งการ",
+ "generated_at": "2026-11-03T02:30:04.959Z",
+ "node_count": 9,
+ "edge_count": 8,
+ "relations": [
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บช.ปส.",
+   "target_title": "บช.ปส.",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/บก.ปส.4",
+   "target_title": "บก.ปส.4",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/บก.ปส.2",
+   "target_title": "บก.ปส.2",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/กำแพงแสน นครปฐม",
+   "target_title": "กำแพงแสน นครปฐม",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/เมืองสกลนคร",
+   "target_title": "เมืองสกลนคร",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/ผบช.ปส.",
+   "target_title": "ผบช.ปส.",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/บุคคล/ภูมินทร์ พุ่มพันธุ์ม่วง",
+   "target_title": "ภูมินทร์ พุ่มพันธุ์ม่วง",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/สถานที่/กำแพงแสน",
+   "target_title": "กำแพงแสน",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261103-drug-01.svg"
+}

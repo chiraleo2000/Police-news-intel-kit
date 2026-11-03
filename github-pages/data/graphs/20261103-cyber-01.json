@@ -1,0 +1,46 @@
+{
+ "case_id": "20261103-cyber-01",
+ "title": "บก.สอท.2 แถลงรวบ 5 ผู้ต้องหา 2 เครือข่ายสแกมเมอร์ ถอนเงินเหยื่อซื้อทองอำพรางเส้นเงินส่งผู้สั่งการชาวจีน และเพจปลอมหลอกขายต้นมะกอก เหยื่อสูญกว่า 6.48 ล้านบาท",
+ "generated_at": "2026-11-03T02:30:04.955Z",
+ "node_count": 7,
+ "edge_count": 6,
+ "relations": [
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บช.สอท.",
+   "target_title": "บช.สอท.",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/บก.สอท.2",
+   "target_title": "บก.สอท.2",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลจังหวัดนนทบุรี",
+   "target_title": "ศาลจังหวัดนนทบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/บางบัวทอง นนทบุรี",
+   "target_title": "บางบัวทอง นนทบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/เมืองทองธานี นนทบุรี",
+   "target_title": "เมืองทองธานี นนทบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "เป้าหมายเครือข่าย",
+   "target_id": "30_Entities/Projects/เครือข่ายบัญชีม้าส่งเงินให้ผู้สั่งการชาวจีน",
+   "target_title": "เครือข่ายบัญชีม้าส่งเงินให้ผู้สั่งการชาวจีน",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261103-cyber-01.svg"
+}

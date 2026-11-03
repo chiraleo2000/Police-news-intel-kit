@@ -1,0 +1,46 @@
+{
+ "case_id": "20261103-econ-01",
+ "title": "ดีเอสไอประชุมครั้งที่ 3/2569 กับ บช.สอท. และ ปปง. ตรวจเส้นทางการเงินและสินทรัพย์ดิจิทัลโยงเว็บ Shuffle เชิญผู้ประกอบการสินทรัพย์ดิจิทัลในไทยชี้แจง",
+ "generated_at": "2026-11-03T02:30:04.962Z",
+ "node_count": 7,
+ "edge_count": 6,
+ "relations": [
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/กรมสอบสวนคดีพิเศษ",
+   "target_title": "กรมสอบสวนคดีพิเศษ",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/บช.สอท.",
+   "target_title": "บช.สอท.",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/ปปง.",
+   "target_title": "ปปง.",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/กรมสอบสวนคดีพิเศษ แจ้งวัฒนะ กรุงเทพฯ",
+   "target_title": "กรมสอบสวนคดีพิเศษ แจ้งวัฒนะ กรุงเทพฯ",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/อธิบดีกรมสอบสวนคดีพิเศษ",
+   "target_title": "อธิบดีกรมสอบสวนคดีพิเศษ",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับ",
+   "target_id": "20_Cases/20261103-gamble-01",
+   "target_title": "ตำรวจไซเบอร์แจงคดีเว็บพนัน Shuffle ไม่ได้ละเลย ตั้ง 80 ชุดปฏิบัติการ ได้ข้อมูลเส้นเงินจากเอ็กซ์เชนจ์ 3 แห่ง ชี้ต้องจับผู้เล่นในไทยก่อนเพื่อขยายผลถึงผู้จัดในต่างประเทศ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261103-econ-01.svg"
+}

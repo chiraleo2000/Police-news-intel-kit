@@ -1,0 +1,34 @@
+{
+ "case_id": "20261102-drug-line-01",
+ "title": "บช.ปส. ร่วม สภ.ท่าหลวง ลพบุรี ไล่สกัดรถขนยาบ้าบนถนนลำนารายณ์–ซับสนุ่น ยึดยาบ้าเกือบ 1.2 ล้านเม็ด จับ 4 ผู้ต้องหา คนขับรับสารภาพรับจ้างขนจากอุบลราชธานี 15,000 บาท",
+ "generated_at": "2026-11-03T02:30:04.936Z",
+ "node_count": 5,
+ "edge_count": 4,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/บช.ปส.",
+   "target_title": "บช.ปส.",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/สภ.ท่าหลวง",
+   "target_title": "สภ.ท่าหลวง",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/อำเภอท่าหลวง",
+   "target_title": "อำเภอท่าหลวง",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ลพบุรี",
+   "target_title": "ลพบุรี",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261102-drug-line-01.svg"
+}

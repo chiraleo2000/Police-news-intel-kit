@@ -1,0 +1,52 @@
+{
+ "case_id": "20261102-property-line-01",
+ "title": "ตำรวจ กก.5 บก.ป. จับพนักงานขายอายุ 32 ปี ที่หน้าคอนโดสุขุมวิท 31 ตามหมายจับศาลอาญาพระโขนง ปมปลอมใบสั่งซื้อของลูกค้าให้บริษัทส่งสินค้า แล้วนำไปขายต่อ ความเสียหายกว่า 29 ล้านบาท",
+ "generated_at": "2026-11-03T02:30:04.950Z",
+ "node_count": 8,
+ "edge_count": 7,
+ "relations": [
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บช.ก.",
+   "target_title": "บช.ก.",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/บก.ป.",
+   "target_title": "บก.ป.",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/กก.5 บก.ป.",
+   "target_title": "กก.5 บก.ป.",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/สน.โคกคราม",
+   "target_title": "สน.โคกคราม",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลอาญาพระโขนง",
+   "target_title": "ศาลอาญาพระโขนง",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/เขตวัฒนา",
+   "target_title": "เขตวัฒนา",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/สถานที่/พระโขนง",
+   "target_title": "พระโขนง",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261102-property-line-01.svg"
+}

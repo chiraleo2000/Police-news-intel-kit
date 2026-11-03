@@ -1,0 +1,46 @@
+{
+ "case_id": "20261103-tourist-02",
+ "title": "ตม.สมุทรปราการ ตรวจอาคารที่พักใน อ.บางพลี จับหญิงชาวฟิลิปปินส์ อายุ 31 ปี อยู่เกินกำหนด 932 วัน ส่งพนักงานสอบสวน ผบช.สตม. ย้ำปราบเครือข่ายข้ามชาติ",
+ "generated_at": "2026-11-03T02:30:04.994Z",
+ "node_count": 7,
+ "edge_count": 6,
+ "relations": [
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บช.สตม.",
+   "target_title": "บช.สตม.",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/ตม.3",
+   "target_title": "ตม.3",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/ตม.สมุทรปราการ",
+   "target_title": "ตม.สมุทรปราการ",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ต.บางพลีใหญ่ อ.บางพลี สมุทรปราการ",
+   "target_title": "ต.บางพลีใหญ่ อ.บางพลี สมุทรปราการ",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/ผบช.สตม.",
+   "target_title": "ผบช.สตม.",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/สถานที่/บางพลี",
+   "target_title": "บางพลี",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261103-tourist-02.svg"
+}

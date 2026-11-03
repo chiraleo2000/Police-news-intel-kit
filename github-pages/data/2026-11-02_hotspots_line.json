@@ -1,0 +1,24 @@
+[
+ {
+  "province": "กรุงเทพมหานคร",
+  "region": "กรุงเทพฯ และปริมณฑล",
+  "count": 1,
+  "top_crime_types": [
+   "คดีทรัพย์สิน"
+  ],
+  "post_ids": [
+   "20261102-property-line-01"
+  ]
+ },
+ {
+  "province": "ลพบุรี",
+  "region": "ภาคกลาง",
+  "count": 1,
+  "top_crime_types": [
+   "ยาเสพติด"
+  ],
+  "post_ids": [
+   "20261102-drug-line-01"
+  ]
+ }
+]

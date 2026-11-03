@@ -1,0 +1,34 @@
+{
+ "case_id": "20261103-property-03",
+ "title": "สน.ท่าข้ามจับชายอายุ 42 ปี ต้องสงสัยลักรถเมอร์เซเดสเบนซ์จากบ้านพักที่บางขุนเทียน หลังแกล้งเป็นผู้ซื้อ แอบติด GPS ค้นห้องพบไอซ์ 1.92 กรัม กระสุนปืน 19 นัด รวมของกลาง 43 รายการ",
+ "generated_at": "2026-11-03T02:30:04.985Z",
+ "node_count": 5,
+ "edge_count": 4,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/สน.ท่าข้าม",
+   "target_title": "สน.ท่าข้าม",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลอาญาธนบุรี",
+   "target_title": "ศาลอาญาธนบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/แขวงท่าข้าม บางขุนเทียน กรุงเทพฯ",
+   "target_title": "แขวงท่าข้าม บางขุนเทียน กรุงเทพฯ",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/บุคคล/วิชยานนท์ เอกตาแสง",
+   "target_title": "วิชยานนท์ เอกตาแสง",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261103-property-03.svg"
+}

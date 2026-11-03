@@ -1,0 +1,34 @@
+{
+ "case_id": "20261103-police-01",
+ "title": "ผบช.ทท. ให้การต้อนรับคณะผู้แทนสถานเอกอัครราชทูตเกาหลีใต้ หารือความร่วมมือดูแลความปลอดภัยนักท่องเที่ยวและชาวเกาหลีในไทย ประชาสัมพันธ์แอป Tourist Police และสายด่วน 1155",
+ "generated_at": "2026-11-03T02:30:04.976Z",
+ "node_count": 5,
+ "edge_count": 4,
+ "relations": [
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บช.ทท.",
+   "target_title": "บช.ทท.",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/กองบัญชาการตำรวจท่องเที่ยว กรุงเทพฯ",
+   "target_title": "กองบัญชาการตำรวจท่องเที่ยว กรุงเทพฯ",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/ผู้บัญชาการตำรวจท่องเที่ยว",
+   "target_title": "ผู้บัญชาการตำรวจท่องเที่ยว",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/บุคคล/พงษ์สยาม มีขันทอง",
+   "target_title": "พงษ์สยาม มีขันทอง",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261103-police-01.svg"
+}

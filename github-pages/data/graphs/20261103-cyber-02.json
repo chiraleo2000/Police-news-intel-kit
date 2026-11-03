@@ -1,0 +1,34 @@
+{
+ "case_id": "20261103-cyber-02",
+ "title": "สปป.ลาวส่งตัว 40 คนไทย แก๊งฉ้อโกงโทรคมนาคมและพนันออนไลน์ ที่ด่านท่าลี่ เลย ตม.ตรวจพบมีหมายจับติดตัว 10 ราย ส่งเข้าศูนย์คัดกรองเลย",
+ "generated_at": "2026-11-03T02:30:04.956Z",
+ "node_count": 5,
+ "edge_count": 4,
+ "relations": [
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/ตม.",
+   "target_title": "ตม.",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/จังหวัดเลย",
+   "target_title": "จังหวัดเลย",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ด่านน้ำเหือง อ.ท่าลี่ เลย",
+   "target_title": "ด่านน้ำเหือง อ.ท่าลี่ เลย",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/นายอำเภอท่าลี่",
+   "target_title": "นายอำเภอท่าลี่",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261103-cyber-02.svg"
+}

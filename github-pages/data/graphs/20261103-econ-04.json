@@ -1,0 +1,22 @@
+{
+ "case_id": "20261103-econ-04",
+ "title": "ผู้เสียหายกว่า 20 คนแจ้งความ สภ.บ่อวิน ศรีราชา ชลบุรี กล่าวหาหญิงอายุ 41 ปี ผู้จัดวงออมเงินและหมุนเวียนเงินกว่า 400 กลุ่ม หายไปพร้อมเงินกว่า 10 ล้านบาท",
+ "generated_at": "2026-11-03T02:30:04.967Z",
+ "node_count": 3,
+ "edge_count": 2,
+ "relations": [
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/สภ.บ่อวิน",
+   "target_title": "สภ.บ่อวิน",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/อ.ศรีราชา ชลบุรี",
+   "target_title": "อ.ศรีราชา ชลบุรี",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261103-econ-04.svg"
+}
