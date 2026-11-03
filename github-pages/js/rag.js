@@ -9,7 +9,7 @@
   const MEASURE_ORDER = ["เม็ด", "กรัม", "กก.", "กิโลกรัม", "ลิตร", "ล้าน"];
   const LLM_MODEL = "google/gemma-4-e2b";
   const NARRATION_RULE =
-    "คุณตอบคำถามผู้ใช้เป็นภาษาไทย โดยวิเคราะห์จาก JSON หลักฐานที่ให้มาเท่านั้น อธิบายโหนดที่เกี่ยวข้อง ความเชื่อมโยง และข่าวอื่นที่ร่วมโหนดเมื่อมีใน relatedThroughNodes หรือ hubs ห้ามแสดงหัวข้อแบบคำตอบจากกราฟ ห้ามแต่งชื่อคนหรือตัวเลขที่ไม่มีใน JSON ห้ามรวมหน่วยนับที่ต่างกันเป็นยอดเดียว ถ้ามีตำแหน่งหรือผู้ดำรงตำแหน่งใน JSON ให้กล่าวถึง ถ้าข้อมูลไม่พอให้บอกว่าไม่มีในหลักฐาน";
+    "คุณตอบคำถามผู้ใช้เป็นภาษาไทยให้จบทุกหัวข้อ ห้ามหยุดกลางประโยคหรือกลางรายการ โดยวิเคราะห์จาก JSON หลักฐานที่ให้มาเท่านั้น อธิบายโหนดที่เกี่ยวข้อง ความเชื่อมโยง และข่าวอื่นที่ร่วมโหนดเมื่อมีใน relatedThroughNodes หรือ hubs ห้ามแสดงหัวข้อแบบคำตอบจากกราฟ ห้ามแต่งชื่อคนหรือตัวเลขที่ไม่มีใน JSON ห้ามรวมหน่วยนับที่ต่างกันเป็นยอดเดียว ถ้ามีตำแหน่งหรือผู้ดำรงตำแหน่งใน JSON ให้กล่าวถึง ถ้าข้อมูลไม่พอให้บอกว่าไม่มีในหลักฐาน";
 
   const EXAMPLES = [
     "ผมต้องการทราบว่ากรมศุลกากรมีการห้ามปรามการเข้ามาของยาเสพติดตอนนี้ได้จำนวนทั้งหมดเท่าไร่",
@@ -1102,7 +1102,7 @@
     return `เซิร์ฟเวอร์ตอบรหัส ${status}`;
   }
 
-  async function completeChat(url, messages) {
+  async function completeChatOnce(url, messages) {
     let res;
     try {
       res = await fetch(url, {
@@ -1115,7 +1115,7 @@
         body: JSON.stringify({
           model: LLM_MODEL,
           temperature: 0.2,
-          max_tokens: 1024,
+          max_tokens: 8192,
           messages,
         }),
       });
@@ -1133,9 +1133,62 @@
       return { ok: false, reason: "เซิร์ฟเวอร์ตอบกลับไม่ใช่ JSON" };
     }
     if (!res.ok) return { ok: false, reason: llmFailureReason(res.status, data) };
-    const text = data?.choices?.[0]?.message?.content || "";
-    if (!String(text).trim()) return { ok: false, reason: "โมเดลไม่ส่งข้อความกลับ" };
-    return { ok: true, text: String(text).trim() };
+    const text = String(data?.choices?.[0]?.message?.content || "");
+    if (!text.trim()) return { ok: false, reason: "โมเดลไม่ส่งข้อความกลับ" };
+    return {
+      ok: true,
+      text,
+      truncated: data?.choices?.[0]?.finish_reason === "length",
+    };
+  }
+
+  async function completeChat(url, messages) {
+    const convo = messages.map((message) => ({ role: message.role, content: message.content }));
+    let text = "";
+    for (let pass = 0; pass < 4; pass += 1) {
+      const once = await completeChatOnce(url, convo);
+      if (!once.ok) return text.trim() ? { ok: true, text: text.trim() } : once;
+      text += once.text;
+      if (!once.truncated) break;
+      convo.push({ role: "assistant", content: once.text });
+      convo.push({
+        role: "user",
+        content: "คำตอบยังไม่จบ เขียนต่อจากอักขระสุดท้ายทันที ห้ามขึ้นต้นใหม่และห้ามย้ำส่วนที่เขียนไปแล้ว",
+      });
+    }
+    return { ok: true, text: text.trim() };
+  }
+
+  function renderModelText(raw) {
+    const lines = escapeHtml(raw).replace(/\r\n/g, "\n").split("\n");
+    const html = [];
+    let list = null;
+    let ordered = false;
+    const flush = () => {
+      if (!list) return;
+      html.push(ordered ? `<ol>${list.join("")}</ol>` : `<ul>${list.join("")}</ul>`);
+      list = null;
+    };
+    const inline = (line) => line.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
+    for (const line of lines) {
+      const item = line.match(/^\s*(?:[-*]|\d+\.)\s+(.*)$/);
+      if (item) {
+        const nextOrdered = /^\s*\d+\./.test(line);
+        if (!list || ordered !== nextOrdered) {
+          flush();
+          list = [];
+          ordered = nextOrdered;
+        }
+        list.push(`<li>${inline(item[1])}</li>`);
+        continue;
+      }
+      flush();
+      if (!line.trim()) continue;
+      const heading = line.match(/^#{1,3}\s+(.*)$/);
+      html.push(heading ? `<h4>${inline(heading[1])}</h4>` : `<p>${inline(line)}</p>`);
+    }
+    flush();
+    return html.join("");
   }
 
   function priorMessages() {
@@ -1292,7 +1345,7 @@
     const reply = await askModel(question, result);
     thread.push({ question, result, llmText: reply.ok ? reply.text : "" });
     const analysis = reply.ok
-      ? `<p class="rag-narration-body">${escapeHtml(reply.text)}</p>`
+      ? `<div class="rag-narration-body">${renderModelText(reply.text)}</div>`
       : `<p class="rag-warn">${escapeHtml(reply.reason || "เรียกโมเดลไม่สำเร็จ — หลักฐานด้านบนยังใช้ได้")}</p>`;
     assistant.innerHTML = `<details class="rag-evidence"><summary>หลักฐานจากกราฟ · โหนด ความเชื่อมโยง และข่าวที่เกี่ยวข้อง</summary>${evidence}</details><section class="rag-llm"><p class="brain-kind">ผลจากโมเดล</p>${analysis}</section>`;
     assistant.querySelector(".rag-llm")?.scrollIntoView({ block: "nearest" });
