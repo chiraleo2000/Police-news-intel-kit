@@ -1115,7 +1115,7 @@
         body: JSON.stringify({
           model: LLM_MODEL,
           temperature: 0.2,
-          max_tokens: 8192,
+          max_tokens: -1,
           messages,
         }),
       });
@@ -1145,11 +1145,14 @@
   async function completeChat(url, messages) {
     const convo = messages.map((message) => ({ role: message.role, content: message.content }));
     let text = "";
-    for (let pass = 0; pass < 4; pass += 1) {
+    let previous = "";
+    while (true) {
       const once = await completeChatOnce(url, convo);
       if (!once.ok) return text.trim() ? { ok: true, text: text.trim() } : once;
+      if (!once.text || once.text === previous) break;
       text += once.text;
       if (!once.truncated) break;
+      previous = once.text;
       convo.push({ role: "assistant", content: once.text });
       convo.push({
         role: "user",
