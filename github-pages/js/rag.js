@@ -9,7 +9,7 @@
   const MEASURE_ORDER = ["เม็ด", "กรัม", "กก.", "กิโลกรัม", "ลิตร", "ล้าน"];
   const LLM_MODEL = "google/gemma-4-e2b";
   const NARRATION_RULE =
-    "คุณตอบคำถามผู้ใช้เป็นภาษาไทย โดยวิเคราะห์จาก JSON หลักฐานที่ให้มาเท่านั้น ห้ามแสดงหัวข้อแบบคำตอบจากกราฟ ห้ามแต่งชื่อคนหรือตัวเลขที่ไม่มีใน JSON ห้ามรวมหน่วยนับที่ต่างกันเป็นยอดเดียว ถ้ามีตำแหน่งหรือผู้ดำรงตำแหน่งใน JSON ให้กล่าวถึง ถ้าข้อมูลไม่พอให้บอกว่าไม่มีในหลักฐาน";
+    "คุณตอบคำถามผู้ใช้เป็นภาษาไทย โดยวิเคราะห์จาก JSON หลักฐานที่ให้มาเท่านั้น อธิบายโหนดที่เกี่ยวข้อง ความเชื่อมโยง และข่าวอื่นที่ร่วมโหนดเมื่อมีใน relatedThroughNodes หรือ hubs ห้ามแสดงหัวข้อแบบคำตอบจากกราฟ ห้ามแต่งชื่อคนหรือตัวเลขที่ไม่มีใน JSON ห้ามรวมหน่วยนับที่ต่างกันเป็นยอดเดียว ถ้ามีตำแหน่งหรือผู้ดำรงตำแหน่งใน JSON ให้กล่าวถึง ถ้าข้อมูลไม่พอให้บอกว่าไม่มีในหลักฐาน";
 
   const EXAMPLES = [
     "ผมต้องการทราบว่ากรมศุลกากรมีการห้ามปรามการเข้ามาของยาเสพติดตอนนี้ได้จำนวนทั้งหมดเท่าไร่",
@@ -1062,6 +1062,16 @@
         position: hub.position || "",
         current_holder: hub.current_holder || "",
       })),
+      relatedThroughNodes: (result.oldLinks || []).map((group) => ({
+        relation: group.relation,
+        hubTitle: group.hubTitle,
+        cases: (group.cases || []).slice(0, 8).map((item) => ({
+          title: item.title,
+          date: item.date,
+          crime_type: item.crime_type,
+          href: item.href,
+        })),
+      })),
       quantities: (result.quantities || []).map((group) => ({
         unit: group.unit,
         note: group.note,
@@ -1246,9 +1256,10 @@
     if (input) input.value = question;
     const empty = document.getElementById("brain-chat-empty");
     if (empty) empty.hidden = true;
+    log.querySelectorAll("[data-rag-focus]").forEach((btn) => btn.closest("p")?.remove());
     const turn = document.createElement("article");
     turn.className = "chat-turn";
-    turn.innerHTML = `<div class="chat-bubble chat-user">${escapeHtml(question)}</div><div class="chat-bubble chat-assistant"><p class="muted">กำลังให้โมเดลวิเคราะห์จากกราฟ…</p></div>`;
+    turn.innerHTML = `<div class="chat-bubble chat-user">${escapeHtml(question)}</div><div class="chat-bubble chat-assistant"><p class="muted">กำลังค้นหลักฐานแล้วให้โมเดลวิเคราะห์…</p></div>`;
     log.appendChild(turn);
     log.scrollTop = log.scrollHeight;
     if (input) input.value = "";
@@ -1275,11 +1286,15 @@
     } else {
       window.BrainGraph?.clearFocus?.();
     }
+    const evidence = renderResult(result, { focus: true });
+    assistant.innerHTML = `<div class="rag-evidence-live">${evidence}</div><p class="muted">กำลังให้โมเดลวิเคราะห์จากหลักฐาน…</p>`;
+    log.scrollTop = log.scrollHeight;
     const reply = await askModel(question, result);
     thread.push({ question, result, llmText: reply.ok ? reply.text : "" });
-    assistant.innerHTML = reply.ok
+    const analysis = reply.ok
       ? `<p class="rag-narration-body">${escapeHtml(reply.text)}</p>`
-      : `<p class="rag-warn">${escapeHtml(reply.reason || "เรียกโมเดลไม่สำเร็จ")}</p>`;
+      : `<p class="rag-warn">${escapeHtml(reply.reason || "เรียกโมเดลไม่สำเร็จ — ยังใช้หลักฐานจากกราฟด้านล่างได้")}</p>`;
+    assistant.innerHTML = `${analysis}<details class="rag-evidence" open><summary>หลักฐานจากกราฟ · โหนด ความเชื่อมโยง และข่าวที่เกี่ยวข้อง</summary>${evidence}</details>`;
     log.scrollTop = log.scrollHeight;
   }
 
@@ -1316,6 +1331,11 @@
         if (input) input.value = q;
         ask(q);
       });
+    });
+    document.getElementById("brain-chat-log")?.addEventListener("click", (ev) => {
+      const btn = ev.target.closest("[data-rag-focus]");
+      if (!btn) return;
+      window.BrainGraph?.focusOnIds?.(lastFocusIds);
     });
   }
 

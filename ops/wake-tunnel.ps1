@@ -149,6 +149,63 @@ function Start-RepoNode {
     }
 }
 
+function Test-LmsModelReady {
+    param(
+        [Parameter(Mandatory = $true)][int]$Port,
+        [Parameter(Mandatory = $true)][string]$Model
+    )
+    Assert-AllowedPort $Port "lms-check"
+    try {
+        $response = Invoke-RestMethod -Uri "http://127.0.0.1:${Port}/v1/models" -TimeoutSec 8
+    } catch {
+        return $false
+    }
+    foreach ($item in @($response.data)) {
+        $id = [string]$item.id
+        if ($id -eq $Model -or $id.StartsWith("$Model/")) { return $true }
+    }
+    return $false
+}
+
+function Invoke-LmsLoad {
+    param(
+        [Parameter(Mandatory = $true)][string]$LmsPath,
+        [Parameter(Mandatory = $true)][string]$Model
+    )
+    # -y is required for Task Scheduler / hibernate wake: without it, lms load can
+    # wait on an interactive prompt forever and the model never becomes ready.
+    # Do not pass --identifier: reusing the same id after resume exits 1 with
+    # "already exists" even when the model is the one we want.
+    $arguments = @("load", $Model, "-y")
+    Write-Log "trying lms $($arguments -join ' ')"
+    $prevEap = $ErrorActionPreference
+    $ErrorActionPreference = "Continue"
+    try {
+        $output = & $LmsPath @arguments 2>&1
+        $code = $LASTEXITCODE
+    } catch {
+        Write-Log "lms load threw: $($_.Exception.Message)"
+        return $false
+    } finally {
+        $ErrorActionPreference = $prevEap
+    }
+    $joined = (@($output) | ForEach-Object { "$_" }) -join "`n"
+    foreach ($line in @($output)) {
+        $text = "$line".Trim()
+        if ($text) { Write-Log "lms: $text" }
+    }
+    if ($joined -match '(?i)already (loaded|exists)') {
+        Write-Log "lms reports model already present; treating as success"
+        return $true
+    }
+    if ($null -ne $code -and $code -ne 0) {
+        Write-Log "lms load failed with exit code $code"
+        return $false
+    }
+    Write-Log "lms load command finished"
+    return $true
+}
+
 function Start-Lms {
     param(
         [Parameter(Mandatory = $true)][string]$LmsPath,
@@ -160,6 +217,7 @@ function Start-Lms {
         Write-Log "lms not found at $LmsPath; skipping LM Studio"
         return
     }
+
     if (Test-TcpOpen $Port) {
         Write-Log "LM Studio already listening on 127.0.0.1:${Port}"
     } else {
@@ -171,19 +229,44 @@ function Start-Lms {
         } catch {
             Write-Log "failed to start lms: $($_.Exception.Message)"
         }
-        [void](Wait-Port -Port $Port -Label "lms $Port")
     }
-    try {
-        Write-Log "trying lms load $Model"
-        & $LmsPath load $Model
-        if ($null -ne $LASTEXITCODE -and $LASTEXITCODE -ne 0) {
-            Write-Log "lms load failed with exit code $LASTEXITCODE"
-        } else {
-            Write-Log "lms load completed"
+
+    if (-not (Wait-Port -Port $Port -Label "lms $Port")) {
+        Write-Log "lms server port $Port never became ready; cannot load $Model"
+        return
+    }
+
+    if (Test-LmsModelReady -Port $Port -Model $Model) {
+        Write-Log "model $Model already listed on 127.0.0.1:${Port}/v1/models"
+        return
+    }
+
+    # After hibernate the OpenAI port can accept TCP before the JIT/runtime is ready.
+    $delays = @(0, 20, 40, 60)
+    foreach ($delay in $delays) {
+        if ($delay -gt 0) {
+            Write-Log "waiting ${delay}s before retrying lms load $Model"
+            Start-Sleep -Seconds $delay
+            if (-not (Test-TcpOpen $Port)) {
+                Write-Log "lms port $Port closed during retries; restarting server"
+                try {
+                    $proc = Start-Background -FileName $LmsPath -Arguments "server start -p $Port --cors"
+                    Write-Log "restarted lms pid $($proc.Id)"
+                } catch {
+                    Write-Log "failed to restart lms: $($_.Exception.Message)"
+                }
+                [void](Wait-Port -Port $Port -Label "lms $Port")
+            }
         }
-    } catch {
-        Write-Log "lms load failed: $($_.Exception.Message)"
+        [void](Invoke-LmsLoad -LmsPath $LmsPath -Model $Model)
+        Start-Sleep -Seconds 3
+        if (Test-LmsModelReady -Port $Port -Model $Model) {
+            Write-Log "verified model $Model on 127.0.0.1:${Port}/v1/models"
+            return
+        }
+        Write-Log "model $Model not ready yet on /v1/models"
     }
+    Write-Log "gave up loading $Model after retries"
 }
 
 function Test-ReservedPublicUrl {

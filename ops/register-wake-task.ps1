@@ -43,7 +43,7 @@ $xml = @"
     <EventTrigger>
       <Enabled>true</Enabled>
       <Subscription>$(Escape-XmlText $query)</Subscription>
-      <Delay>PT45S</Delay>
+      <Delay>PT2M</Delay>
     </EventTrigger>
     <CalendarTrigger>
       <StartBoundary>$(Escape-XmlText $startBoundary)</StartBoundary>
@@ -61,7 +61,7 @@ $xml = @"
     </Principal>
   </Principals>
   <Settings>
-    <MultipleInstancesPolicy>IgnoreNew</MultipleInstancesPolicy>
+    <MultipleInstancesPolicy>Queue</MultipleInstancesPolicy>
     <DisallowStartIfOnBatteries>false</DisallowStartIfOnBatteries>
     <StopIfGoingOnBatteries>false</StopIfGoingOnBatteries>
     <AllowHardTerminate>true</AllowHardTerminate>
