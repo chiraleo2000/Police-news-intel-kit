@@ -1,14 +1,14 @@
 {
  "case_id": "20261027-gamble-01",
  "title": "DSI ประชุมร่วม CIB-บช.สอท.-ปปง. ครั้งที่ 2/2569 สืบสวนกรณีสามีของ สส. รายหนึ่งที่อาจเกี่ยวข้องเครือข่ายสแกมเมอร์และพนันออนไลน์ เตรียมเชิญ ก.ล.ต.และผู้จัดการสินทรัพย์ดิจิทัลให้ถ้อยคำ",
- "generated_at": "2026-11-03T02:30:04.643Z",
+ "generated_at": "2026-11-03T02:57:33.714Z",
  "node_count": 11,
  "edge_count": 10,
  "relations": [
   {
    "label": "สืบสวนโดย",
-   "target_id": "30_Entities/Units/DSI",
-   "target_title": "DSI",
+   "target_id": "30_Entities/Units/ดีเอสไอ",
+   "target_title": "ดีเอสไอ",
    "direction": "out"
   },
   {

@@ -1,7 +1,7 @@
 {
  "case_id": "20261022-human-sakaeo-nrm",
  "title": "ตม.สระแก้วรับตัว 25 คนไทยกลับจากกัมพูชา คัดกรอง NRM พบ 4 รายมีหมายจับ 3 รายเป็นผู้เสียหายค้ามนุษย์",
- "generated_at": "2026-11-03T02:30:04.376Z",
+ "generated_at": "2026-11-03T02:57:33.433Z",
  "node_count": 6,
  "edge_count": 5,
  "relations": [
@@ -19,8 +19,8 @@
   },
   {
    "label": "จับโดย",
-   "target_id": "30_Entities/People/สตม.",
-   "target_title": "สตม.",
+   "target_id": "30_Entities/Units/ตม.",
+   "target_title": "ตม.",
    "direction": "out"
   },
   {

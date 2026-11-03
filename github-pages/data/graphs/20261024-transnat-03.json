@@ -1,9 +1,9 @@
 {
  "case_id": "20261024-transnat-03",
  "title": "ตม.รวบนักธุรกิจหญิงจีน หนีหมายจับคดีศุลกากร เสียหายกว่า 500 ล้านบาท",
- "generated_at": "2026-11-03T02:30:04.538Z",
- "node_count": 6,
- "edge_count": 5,
+ "generated_at": "2026-11-03T02:57:33.615Z",
+ "node_count": 5,
+ "edge_count": 4,
  "relations": [
   {
    "label": "จับโดย",
@@ -13,8 +13,8 @@
   },
   {
    "label": "จับโดย",
-   "target_id": "30_Entities/People/สตม.",
-   "target_title": "สตม.",
+   "target_id": "30_Entities/Units/ตม.",
+   "target_title": "ตม.",
    "direction": "out"
   },
   {
@@ -27,12 +27,6 @@
    "label": "สั่งการโดย",
    "target_id": "30_Entities/Units/บช.สตม.",
    "target_title": "บช.สตม.",
-   "direction": "out"
-  },
-  {
-   "label": "จับโดย",
-   "target_id": "30_Entities/People/ตม.",
-   "target_title": "ตม.",
    "direction": "out"
   }
  ],

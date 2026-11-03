@@ -1,20 +1,20 @@
 {
  "case_id": "20261024-gamble-01",
  "title": "ตำรวจไซเบอร์บุกทลายเว็บพนัน taipei999 สงขลา เงินสะพัด 379 ล้าน",
- "generated_at": "2026-11-03T02:30:04.517Z",
- "node_count": 6,
+ "generated_at": "2026-11-03T02:57:33.594Z",
+ "node_count": 5,
  "edge_count": 5,
  "relations": [
   {
    "label": "สั่งการโดย",
-   "target_id": "30_Entities/People/บช.สอท.",
+   "target_id": "30_Entities/Units/บช.สอท.",
    "target_title": "บช.สอท.",
    "direction": "out"
   },
   {
    "label": "จับโดย",
-   "target_id": "30_Entities/Units/ตำรวจไซเบอร์",
-   "target_title": "ตำรวจไซเบอร์",
+   "target_id": "30_Entities/Units/บช.สอท.",
+   "target_title": "บช.สอท.",
    "direction": "out"
   },
   {

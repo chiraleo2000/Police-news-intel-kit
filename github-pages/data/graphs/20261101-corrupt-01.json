@@ -1,14 +1,14 @@
 {
  "case_id": "20261101-corrupt-01",
  "title": "DSI เผยศาลอาญาคดีทุจริตฯ กลางพิพากษาจำคุก \"กำนันนก\" พวก สูงสุด 3 ปี ปรับรายละ 22.5 ล้านบาท คดีฮั้วประมูลถนนนครปฐม 44.9 ล้านบาท",
- "generated_at": "2026-11-03T02:30:04.901Z",
+ "generated_at": "2026-11-03T02:57:33.916Z",
  "node_count": 5,
  "edge_count": 4,
  "relations": [
   {
    "label": "สืบสวนโดย",
-   "target_id": "30_Entities/Units/DSI",
-   "target_title": "DSI",
+   "target_id": "30_Entities/Units/ดีเอสไอ",
+   "target_title": "ดีเอสไอ",
    "direction": "out"
   },
   {

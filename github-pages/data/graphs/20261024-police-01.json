@@ -1,7 +1,7 @@
 {
  "case_id": "20261024-police-01",
  "title": "โผตำรวจ ปี 69 ผบ.ตร.สั่งแต่งตั้ง รอง ผบก. ถึง สว. ยึดอาวุโสควบผลงานจริง ขีดเส้น 30 พ.ย.",
- "generated_at": "2026-11-03T02:30:04.523Z",
+ "generated_at": "2026-11-03T02:57:33.601Z",
  "node_count": 3,
  "edge_count": 2,
  "relations": [
@@ -13,8 +13,8 @@
   },
   {
    "label": "แจ้งโดย",
-   "target_id": "30_Entities/People/สำนักงานตำรวจแห่งชาติ",
-   "target_title": "สำนักงานตำรวจแห่งชาติ",
+   "target_id": "30_Entities/Units/ตร.",
+   "target_title": "ตร.",
    "direction": "out"
   }
  ],

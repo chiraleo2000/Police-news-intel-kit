@@ -1,13 +1,13 @@
 {
  "case_id": "20261023-drug-04",
  "title": "ตำรวจปราบยาเสพติดจ่อเรียกอินฟลูเอนเซอร์ที่พ่นควันกลางไลฟ์ ตรวจค้นห้องพักแต่ไม่พบของผิดกฎหมาย",
- "generated_at": "2026-11-03T02:30:04.434Z",
+ "generated_at": "2026-11-03T02:57:33.498Z",
  "node_count": 5,
  "edge_count": 4,
  "relations": [
   {
    "label": "สืบสวนโดย",
-   "target_id": "30_Entities/People/บช.ปส.",
+   "target_id": "30_Entities/Units/บช.ปส.",
    "target_title": "บช.ปส.",
    "direction": "out"
   },

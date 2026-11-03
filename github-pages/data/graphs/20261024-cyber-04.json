@@ -1,14 +1,14 @@
 {
  "case_id": "20261024-cyber-04",
  "title": "DE ผนึก Meta ยกระดับยืนยันตัวตนผู้ลงโฆษณาออนไลน์ เตรียมใช้ No ID, No Ads ต้นเดือน พ.ย.",
- "generated_at": "2026-11-03T02:30:04.508Z",
+ "generated_at": "2026-11-03T02:57:33.584Z",
  "node_count": 4,
  "edge_count": 3,
  "relations": [
   {
    "label": "แจ้งโดย",
-   "target_id": "30_Entities/People/ETDA",
-   "target_title": "ETDA",
+   "target_id": "30_Entities/Units/ThaiCERT",
+   "target_title": "ThaiCERT",
    "direction": "out"
   },
   {
@@ -19,7 +19,7 @@
   },
   {
    "label": "แจ้งโดย",
-   "target_id": "30_Entities/People/กระทรวงดีอี",
+   "target_id": "30_Entities/Units/กระทรวงดีอี",
    "target_title": "กระทรวงดีอี",
    "direction": "out"
   }

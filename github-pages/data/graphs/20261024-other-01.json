@@ -1,19 +1,19 @@
 {
  "case_id": "20261024-other-01",
  "title": "ผบช.ทท. เยี่ยมครอบครัวตำรวจท่องเที่ยวในจังหวัดนราธิวาส ย้ำ 'ครอบครัวเดียวกัน'",
- "generated_at": "2026-11-03T02:30:04.521Z",
- "node_count": 6,
+ "generated_at": "2026-11-03T02:57:33.599Z",
+ "node_count": 5,
  "edge_count": 5,
  "relations": [
   {
    "label": "แจ้งโดย",
-   "target_id": "30_Entities/People/กองบัญชาการตำรวจท่องเที่ยว",
-   "target_title": "กองบัญชาการตำรวจท่องเที่ยว",
+   "target_id": "30_Entities/Units/บช.ทท.",
+   "target_title": "บช.ทท.",
    "direction": "out"
   },
   {
    "label": "สั่งการโดย",
-   "target_id": "30_Entities/People/บช.ทท.",
+   "target_id": "30_Entities/Units/บช.ทท.",
    "target_title": "บช.ทท.",
    "direction": "out"
   },

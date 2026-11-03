@@ -1,14 +1,14 @@
 {
  "case_id": "20261022-cyber-dsi-crypto-mining-power",
  "title": "DSI จับผู้ต้องหาตามหมายจับ คดีลักไฟฟ้าขุดเหรียญดิจิทัลในโกดังเช่า สมุทรสาคร",
- "generated_at": "2026-11-03T02:30:04.349Z",
+ "generated_at": "2026-11-03T02:57:33.406Z",
  "node_count": 4,
  "edge_count": 3,
  "relations": [
   {
    "label": "จับโดย",
-   "target_id": "30_Entities/People/DSI",
-   "target_title": "DSI",
+   "target_id": "30_Entities/Units/ดีเอสไอ",
+   "target_title": "ดีเอสไอ",
    "direction": "out"
   },
   {

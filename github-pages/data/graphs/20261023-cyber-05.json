@@ -1,19 +1,19 @@
 {
  "case_id": "20261023-cyber-05",
  "title": "ดีอี หารือคณะทำงานจัดทำแนวปฏิบัติที่ดี ป้องกันและปราบปรามอาชญากรรมทางเทคโนโลยี",
- "generated_at": "2026-11-03T02:30:04.427Z",
+ "generated_at": "2026-11-03T02:57:33.488Z",
  "node_count": 3,
  "edge_count": 2,
  "relations": [
   {
    "label": "แจ้งโดย",
-   "target_id": "30_Entities/People/กระทรวงดีอี",
+   "target_id": "30_Entities/Units/กระทรวงดีอี",
    "target_title": "กระทรวงดีอี",
    "direction": "out"
   },
   {
    "label": "แจ้งโดย",
-   "target_id": "30_Entities/People/บช.สอท.",
+   "target_id": "30_Entities/Units/บช.สอท.",
    "target_title": "บช.สอท.",
    "direction": "out"
   }

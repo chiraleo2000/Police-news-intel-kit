@@ -1,7 +1,7 @@
 {
  "case_id": "20261025-tourist-01",
  "title": "สตม. ตรวจสอบกรณีครอบครัวตามหาพิธีกรชาวดัตช์วัย 70 ปี พบข้อมูลเดินทางออกไทยไป สปป.ลาว ตั้งแต่ปลายปี 2568",
- "generated_at": "2026-11-03T02:30:04.572Z",
+ "generated_at": "2026-11-03T02:57:33.653Z",
  "node_count": 8,
  "edge_count": 7,
  "relations": [
@@ -13,8 +13,8 @@
   },
   {
    "label": "สืบสวนโดย",
-   "target_id": "30_Entities/People/สตม.",
-   "target_title": "สตม.",
+   "target_id": "30_Entities/Units/ตม.",
+   "target_title": "ตม.",
    "direction": "out"
   },
   {

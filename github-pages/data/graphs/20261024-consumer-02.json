@@ -1,14 +1,14 @@
 {
  "case_id": "20261024-consumer-02",
  "title": "กมธ.คุ้มครองผู้บริโภค จี้ สพฐ. ร่วมเยียวยา ผู้ปกครอง-นักเรียนทัศนศึกษาจีนทิพย์",
- "generated_at": "2026-11-03T02:30:04.502Z",
+ "generated_at": "2026-11-03T02:57:33.576Z",
  "node_count": 3,
  "edge_count": 2,
  "relations": [
   {
    "label": "สืบสวนโดย",
-   "target_id": "30_Entities/Units/กองปราบปราม",
-   "target_title": "กองปราบปราม",
+   "target_id": "30_Entities/Units/บก.ป.",
+   "target_title": "บก.ป.",
    "direction": "out"
   },
   {

@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-03T02:30:05.000Z",
+ "generated_at": "2026-11-03T02:57:34.017Z",
  "count": 375,
  "cases": [
   {
@@ -655,7 +655,7 @@
   {
    "case_id": "20261024-transnat-03",
    "svg": "graphs/20261024-transnat-03.svg",
-   "relations": 5
+   "relations": 4
   },
   {
    "case_id": "20261024-transnat-04",

@@ -1,19 +1,19 @@
 {
  "case_id": "20261023-econ-01",
  "title": "ปฏิบัติการ BLACK TRACE ทลายขบวนขุดบิตคอยน์ผิดกฎหมาย ยึดอสังหาริมทรัพย์กว่า 185 ล้านบาท",
- "generated_at": "2026-11-03T02:30:04.439Z",
+ "generated_at": "2026-11-03T02:57:33.504Z",
  "node_count": 6,
  "edge_count": 5,
  "relations": [
   {
    "label": "สืบสวนโดย",
-   "target_id": "30_Entities/People/DSI",
-   "target_title": "DSI",
+   "target_id": "30_Entities/Units/ดีเอสไอ",
+   "target_title": "ดีเอสไอ",
    "direction": "out"
   },
   {
    "label": "สืบสวนโดย",
-   "target_id": "30_Entities/People/ปปง.",
+   "target_id": "30_Entities/Units/ปปง.",
    "target_title": "ปปง.",
    "direction": "out"
   },
@@ -31,7 +31,7 @@
   },
   {
    "label": "สืบสวนโดย",
-   "target_id": "30_Entities/People/ตม.",
+   "target_id": "30_Entities/Units/ตม.",
    "target_title": "ตม.",
    "direction": "out"
   }

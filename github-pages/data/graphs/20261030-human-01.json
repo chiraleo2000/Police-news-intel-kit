@@ -1,14 +1,14 @@
 {
  "case_id": "20261030-human-01",
  "title": "DSI จับช่างซ่อมมือถือบุรีรัมย์ขยายผลเครือข่ายเผยแพร่-จำหน่ายสื่อลามกอนาจารผ่านเว็บและ Telegram “Asianclip” สมาชิกราว 20,000 คน พบคลิปกว่า 100,000 คลิป ผู้เสียหายกว่า 100 ราย ส่วนใหญ่เด็กต่ำกว่า 18 ปี",
- "generated_at": "2026-11-03T02:30:04.847Z",
+ "generated_at": "2026-11-03T02:57:33.859Z",
  "node_count": 9,
  "edge_count": 8,
  "relations": [
   {
    "label": "จับโดย",
-   "target_id": "30_Entities/Units/DSI",
-   "target_title": "DSI",
+   "target_id": "30_Entities/Units/ดีเอสไอ",
+   "target_title": "ดีเอสไอ",
    "direction": "out"
   },
   {

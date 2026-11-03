@@ -1,13 +1,13 @@
 {
  "case_id": "20261024-violent-04",
  "title": "ตำรวจจับผู้ต้องหาทำร้ายผู้ขับรถหญิงกลางห้าแยกลาดพร้าว หลังมีปากเสียงเรื่องเสียงแตร",
- "generated_at": "2026-11-03T02:30:04.545Z",
+ "generated_at": "2026-11-03T02:57:33.624Z",
  "node_count": 10,
  "edge_count": 9,
  "relations": [
   {
    "label": "สั่งการโดย",
-   "target_id": "30_Entities/People/บช.น.",
+   "target_id": "30_Entities/Units/บช.น.",
    "target_title": "บช.น.",
    "direction": "out"
   },

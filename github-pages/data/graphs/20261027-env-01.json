@@ -1,14 +1,14 @@
 {
  "case_id": "20261027-env-01",
  "title": "DSI-ศุลกากร-กรมอุทยานฯ แถลงสกัดขบวนการค้าสัตว์ป่าข้ามชาติ ยึดงาช้าง 3.1 ตัน และซากสัตว์ป่า มูลค่าประมาณ 155 ล้านบาท ซุกในไม้แปรรูปจากแซมเบียที่แหลมฉบัง",
- "generated_at": "2026-11-03T02:30:04.642Z",
+ "generated_at": "2026-11-03T02:57:33.712Z",
  "node_count": 9,
  "edge_count": 8,
  "relations": [
   {
    "label": "สืบสวนโดย",
-   "target_id": "30_Entities/Units/DSI",
-   "target_title": "DSI",
+   "target_id": "30_Entities/Units/ดีเอสไอ",
+   "target_title": "ดีเอสไอ",
    "direction": "out"
   },
   {

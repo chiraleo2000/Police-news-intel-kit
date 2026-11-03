@@ -1,13 +1,13 @@
 {
  "case_id": "20261022-consumer-n2o-latphrao",
  "title": "ตำรวจนครบาลจับวัยรุ่น 19 ปี ขายแก๊สหัวเราะ ยึดของกลางกว่า 6 แสนบาท",
- "generated_at": "2026-11-03T02:30:04.344Z",
+ "generated_at": "2026-11-03T02:57:33.401Z",
  "node_count": 2,
  "edge_count": 1,
  "relations": [
   {
    "label": "จับโดย",
-   "target_id": "30_Entities/People/บช.น.",
+   "target_id": "30_Entities/Units/บช.น.",
    "target_title": "บช.น.",
    "direction": "out"
   }

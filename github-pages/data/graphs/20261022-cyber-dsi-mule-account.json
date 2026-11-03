@@ -1,14 +1,14 @@
 {
  "case_id": "20261022-cyber-dsi-mule-account",
  "title": "DSI จับเจ้าของบัญชีธนาคารที่ถูกใช้รับเงินเหยื่อและซื้อคริปโต คดีพิเศษที่ 6/2568",
- "generated_at": "2026-11-03T02:30:04.352Z",
+ "generated_at": "2026-11-03T02:57:33.409Z",
  "node_count": 3,
  "edge_count": 2,
  "relations": [
   {
    "label": "จับโดย",
-   "target_id": "30_Entities/People/DSI",
-   "target_title": "DSI",
+   "target_id": "30_Entities/Units/ดีเอสไอ",
+   "target_title": "ดีเอสไอ",
    "direction": "out"
   },
   {

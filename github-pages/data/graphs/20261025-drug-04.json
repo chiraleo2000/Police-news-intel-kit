@@ -1,13 +1,13 @@
 {
  "case_id": "20261025-drug-04",
  "title": "บช.ปส. สกัดรถกระบะซ่อนยาบ้า 924,000 เม็ดที่พัทลุง สองสามีภรรยาผู้ต้องหาอุ้มทารกพรางตา; ชัยภูมิจับหญิงวัย 18 ปี ข้อหาเสนอสินบน 1 แสนบาท",
- "generated_at": "2026-11-03T02:30:04.555Z",
+ "generated_at": "2026-11-03T02:57:33.635Z",
  "node_count": 5,
  "edge_count": 4,
  "relations": [
   {
    "label": "จับโดย",
-   "target_id": "30_Entities/People/บช.ปส.",
+   "target_id": "30_Entities/Units/บช.ปส.",
    "target_title": "บช.ปส.",
    "direction": "out"
   },

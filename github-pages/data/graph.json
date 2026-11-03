@@ -1,23 +1,23 @@
 {
- "generated_at": "2026-11-03T02:30:04.056Z",
+ "generated_at": "2026-11-03T02:57:33.131Z",
  "schema_version": 2,
  "source": "vault/",
  "note": "Derived from Obsidian wikilinks. Local vault/ is the knowledge store; this file powers Pages ข้อมูลกราฟ.",
  "stats": {
-  "nodes": 1418,
-  "edges": 1703,
+  "nodes": 1387,
+  "edges": 1702,
   "unresolved": 53,
   "by_kind": {
    "daily": 11,
    "case": 375,
-   "entity": 960,
+   "entity": 927,
    "crime_type": 17,
-   "other": 2,
+   "other": 4,
    "unresolved": 53
   },
   "by_entity_group": {
-   "หน่วย": 562,
-   "บุคคล": 141,
+   "หน่วย": 531,
+   "บุคคล": 139,
    "สถานที่": 219,
    "ข่ายเครือข่าย": 23,
    "บัญชี": 8,
@@ -25,7 +25,7 @@
   },
   "by_label": {
    "สืบสวนโดย": 234,
-   "จับโดย": 342,
+   "จับโดย": 341,
    "สั่งการโดย": 182,
    "แจ้งโดย": 235,
    "บัญชี": 15,
@@ -357,7 +357,7 @@
    "date": "2026-10-22",
    "case_id": "20261022-cyber-dsi-crypto-mining-power",
    "crime_type": "อาชญากรรมไซเบอร์และออนไลน์",
-   "bureau": "DSI",
+   "bureau": "ดีเอสไอ",
    "area": "กรุงเทพมหานคร, สมุทรสาคร",
    "status": "จับกุมแล้ว",
    "tags": [],
@@ -391,7 +391,7 @@
    "date": "2026-10-22",
    "case_id": "20261022-cyber-dsi-mule-account",
    "crime_type": "อาชญากรรมไซเบอร์และออนไลน์",
-   "bureau": "DSI",
+   "bureau": "ดีเอสไอ",
    "area": "กรุงเทพมหานคร",
    "status": "จับกุมแล้ว",
    "tags": [],
@@ -578,7 +578,7 @@
    "date": "2026-10-22",
    "case_id": "20261022-gamble-dsi-shuffle",
    "crime_type": "พนันและบ่อนผิดกฎหมาย",
-   "bureau": "DSI",
+   "bureau": "ดีเอสไอ",
    "area": "กรุงเทพมหานคร",
    "status": "ติดตามตัว",
    "tags": [],
@@ -2091,7 +2091,7 @@
    "date": "2026-10-24",
    "case_id": "20261024-consumer-02",
    "crime_type": "คุ้มครองผู้บริโภคและสินค้าผิดกฎหมาย",
-   "bureau": "กองปราบปราม",
+   "bureau": "บก.ป.",
    "area": "กรุงเทพมหานคร",
    "status": "อยู่ระหว่างสอบสวน",
    "tags": [],
@@ -2329,7 +2329,7 @@
    "date": "2026-10-24",
    "case_id": "20261024-police-01",
    "crime_type": "การปฏิบัติหน้าที่ ประชาสัมพันธ์ และนโยบายตำรวจ",
-   "bureau": "สำนักงานตำรวจแห่งชาติ",
+   "bureau": "ตร.",
    "area": "กรุงเทพมหานคร",
    "status": "แถลง/ประชาสัมพันธ์",
    "tags": [],
@@ -2505,7 +2505,7 @@
    "tags": [],
    "excerpt": "ประเภท: อาชญากรรมข้ามชาติและความร่วมมือระหว่างประเทศ หน่วย: สตม. หน่วย: บก.ตม.1 หน่วย: บก.สส.สตม. หน่วย: ตม. ตำรวจตรวจคนเข้าเมือง บก.ตม.1 จับกุมหญิงชาวจีนอายุ 36 ปี นักธุรกิจ ที่พักย่านสุขุมวิท เขตคลองเตย กรุงเทพฯ เมื่อวันที่ 23 ต.ค. 2569 ตามข้อมูลหมายจับของทางการจีน ซึ่งประสานผ่านสถานเอกอัครราชทูตจีนและกองการต่างประเทศ สำนักงานตำรวจแห่งชาติ ผู้ถูกกล่าวหาว่…",
    "path": "20_Cases/20261024-transnat-03.md",
-   "degree": 5
+   "degree": 4
   },
   {
    "id": "20_Cases/20261024-transnat-04",
@@ -3150,7 +3150,7 @@
    "date": "2026-10-26",
    "case_id": "20261026-drug-line-01",
    "crime_type": "ยาเสพติด",
-   "bureau": "สำนักงาน ป.ป.ส.",
+   "bureau": "ป.ป.ส.",
    "area": "พิษณุโลก",
    "status": "จับกุมแล้ว ส่งพนักงานสอบสวนดำเนินคดี ขยายผลเครือข่าย",
    "tags": [
@@ -3515,7 +3515,7 @@
    "date": "2026-10-26",
    "case_id": "20261027-econ-01",
    "crime_type": "คดีเศรษฐกิจ การเงิน และฟอกเงิน",
-   "bureau": "DSI",
+   "bureau": "ดีเอสไอ",
    "area": "ตราด",
    "status": "รับเรื่องร้องทุกข์ ยังไม่มีผลพิจารณา",
    "tags": [],
@@ -3572,7 +3572,7 @@
    "date": "2026-10-26",
    "case_id": "20261027-env-01",
    "crime_type": "สิ่งแวดล้อม ทรัพยากร และสัตว์ป่า",
-   "bureau": "DSI",
+   "bureau": "ดีเอสไอ",
    "area": "ชลบุรี",
    "status": "ตรวจยึดของกลาง รับเป็นคดีพิเศษ อยู่ระหว่างสืบสวนขยายผล",
    "tags": [],
@@ -3589,7 +3589,7 @@
    "date": "2026-10-26",
    "case_id": "20261027-gamble-01",
    "crime_type": "พนันและบ่อนผิดกฎหมาย",
-   "bureau": "DSI",
+   "bureau": "ดีเอสไอ",
    "area": "กรุงเทพมหานคร",
    "status": "อยู่ระหว่างสืบสวนและรวบรวมพยานหลักฐาน ยังไม่มีผู้ต้องหา",
    "tags": [],
@@ -3904,7 +3904,7 @@
    "date": "2026-10-27",
    "case_id": "20261028-corrupt-01",
    "crime_type": "ทุจริตและประพฤติมิชอบของเจ้าหน้าที่รัฐ",
-   "bureau": "สำนักงาน ป.ป.ท.",
+   "bureau": "ป.ป.ท.",
    "area": "อำเภอสวรรคโลก สุโขทัย",
    "status": "จับกุมตามหมายจับ ส่งศาลอาญาคดีทุจริตภาค 6",
    "tags": [],
@@ -4006,7 +4006,7 @@
    "date": "2026-10-27",
    "case_id": "20261028-env-01",
    "crime_type": "สิ่งแวดล้อม ทรัพยากร และสัตว์ป่า",
-   "bureau": "กรมสอบสวนคดีพิเศษ (DSI)",
+   "bureau": "ดีเอสไอ",
    "area": "ท่าเรือแหลมฉบัง ชลบุรี",
    "status": "อยู่ระหว่างตรวจสอบข้อเท็จจริง ยังไม่มีการกล่าวหาบุคคล",
    "tags": [],
@@ -4023,7 +4023,7 @@
    "date": "2026-10-27",
    "case_id": "20261028-gamble-01",
    "crime_type": "พนันและบ่อนผิดกฎหมาย",
-   "bureau": "DSI",
+   "bureau": "ดีเอสไอ",
    "area": "กรุงเทพมหานคร",
    "status": "DSI รับข้อมูลเพิ่ม ยังไม่มีผู้ถูกแจ้งข้อกล่าวหา",
    "tags": [],
@@ -4040,7 +4040,7 @@
    "date": "2026-10-27",
    "case_id": "20261028-human-01",
    "crime_type": "ค้ามนุษย์ แรงงานผิดกฎหมาย และคุ้มครองเด็ก",
-   "bureau": "สตม.",
+   "bureau": "ตม.",
    "area": "กรุงเทพมหานคร",
    "status": "ศาลออกหมายจับ 46 หมาย จับกุมได้ 24 คน ขยายผลต่อ",
    "tags": [],
@@ -4074,7 +4074,7 @@
    "date": "2026-10-28",
    "case_id": "20261028-human-03",
    "crime_type": "ค้ามนุษย์ แรงงานผิดกฎหมาย และคุ้มครองเด็ก",
-   "bureau": "สตม.",
+   "bureau": "ตม.",
    "area": "สนามบินสุวรรณภูมิ สมุทรปราการ",
    "status": "จับกุม เตรียมส่งห้องกักรอส่งตัวไปจีน ตรวจสอบเพิกถอนสถานะ",
    "tags": [],
@@ -4261,7 +4261,7 @@
    "date": "2026-10-28",
    "case_id": "20261029-cyber-03",
    "crime_type": "อาชญากรรมไซเบอร์และออนไลน์",
-   "bureau": "ThaiCERT (ETDA)",
+   "bureau": "ThaiCERT",
    "area": "ทั่วประเทศ",
    "status": "ออกคำเตือน ยังไม่พบการโจมตีจริงตามที่ Microsoft ระบุ",
    "tags": [],
@@ -4366,7 +4366,7 @@
    "date": "2026-10-28",
    "case_id": "20261029-drug-05",
    "crime_type": "ยาเสพติด",
-   "bureau": "สำนักงาน ป.ป.ส.",
+   "bureau": "ป.ป.ส.",
    "area": "บึงกาฬ (จับกุมที่ชลบุรีและขอนแก่น)",
    "status": "ศาลชั้นต้นมีคำพิพากษา จำเลยมีสิทธิอุทธรณ์ตามกฎหมาย",
    "tags": [],
@@ -4505,7 +4505,7 @@
    "date": "2026-10-29",
    "case_id": "20261029-econ-03",
    "crime_type": "คดีเศรษฐกิจ การเงิน และฟอกเงิน",
-   "bureau": "สำนักงานตำรวจแห่งชาติ",
+   "bureau": "ตร.",
    "area": "กรุงเทพมหานคร",
    "status": "ศาลออกหมายจับ 6 ราย ผู้ต้องหารายที่ 7 เข้าพบพนักงานสอบสวนและปฏิเสธ ปปง. อายัดทรัพย์ต่อเนื่อง",
    "tags": [],
@@ -4590,7 +4590,7 @@
    "date": "2026-10-28",
    "case_id": "20261029-police-01",
    "crime_type": "การปฏิบัติหน้าที่ ประชาสัมพันธ์ และนโยบายตำรวจ",
-   "bureau": "สำนักงานตำรวจแห่งชาติ",
+   "bureau": "ตร.",
    "area": "3 จังหวัดชายแดนภาคใต้",
    "status": "ชี้แจงแล้ว ยังไม่มีตัวเลขงบที่ถูกปรับลด ขอใช้งบกลางอยู่ระหว่างพิจารณา",
    "tags": [],
@@ -4624,7 +4624,7 @@
    "date": "2026-10-28",
    "case_id": "20261029-police-03",
    "crime_type": "การปฏิบัติหน้าที่ ประชาสัมพันธ์ และนโยบายตำรวจ",
-   "bureau": "สำนักงานตำรวจแห่งชาติ",
+   "bureau": "ตร.",
    "area": "ต.แม่คง อ.แม่สะเรียง แม่ฮ่องสอน",
    "status": "ผ่าตัดที่ รพ.ศรีสังวาลย์แล้ว ส่งตัวรักษาต่อที่ รพ.ตำรวจ",
    "tags": [],
@@ -4729,7 +4729,7 @@
    "date": "2026-10-28",
    "case_id": "20261029-transnat-02",
    "crime_type": "อาชญากรรมข้ามชาติและความร่วมมือระหว่างประเทศ",
-   "bureau": "สำนักงาน ป.ป.ส.",
+   "bureau": "ป.ป.ส.",
    "area": "กรุงธากา บังกลาเทศ (ผู้แทนไทย)",
    "status": "ประชุมเสร็จสิ้น ไม่มีผู้ถูกกล่าวหา",
    "tags": [],
@@ -5018,7 +5018,7 @@
    "date": "2026-10-29",
    "case_id": "20261030-gamble-01",
    "crime_type": "พนันและบ่อนผิดกฎหมาย",
-   "bureau": "DSI",
+   "bureau": "ดีเอสไอ",
    "area": "กรุงเทพมหานคร",
    "status": "อยู่ระหว่างสืบสวนข้อเท็จจริง (เรื่องสืบสวนที่ 148/2569) ยังไม่มีผู้ต้องหา",
    "tags": [],
@@ -5035,7 +5035,7 @@
    "date": "2026-10-29",
    "case_id": "20261030-human-01",
    "crime_type": "ค้ามนุษย์ แรงงานผิดกฎหมาย และคุ้มครองเด็ก",
-   "bureau": "DSI",
+   "bureau": "ดีเอสไอ",
    "area": "บุรีรัมย์",
    "status": "จับกุมผู้ต้องหารายที่ 4 ตามหมายจับศาลอาญา ยึดของกลาง 15 รายการ ขยายผลตรวจสอบผู้เกี่ยวข้อง",
    "tags": [],
@@ -5358,7 +5358,7 @@
    "date": "2026-10-30",
    "case_id": "20261031-drug-02",
    "crime_type": "ยาเสพติด",
-   "bureau": "DSI",
+   "bureau": "ดีเอสไอ",
    "area": "สกลนคร",
    "status": "จับกุม 3 ราย ยึดยาบ้า อยู่ระหว่างขยายผล",
    "tags": [],
@@ -5443,7 +5443,7 @@
    "date": "2026-10-30",
    "case_id": "20261031-env-02",
    "crime_type": "สิ่งแวดล้อม ทรัพยากร และสัตว์ป่า",
-   "bureau": "DSI",
+   "bureau": "ดีเอสไอ",
    "area": "เมืองเพชรบูรณ์ เพชรบูรณ์",
    "status": "อยู่ระหว่างตรวจสอบสิทธิครอบครอง ยังไม่มีข้อกล่าวหา",
    "tags": [],
@@ -5511,7 +5511,7 @@
    "date": "2026-10-30",
    "case_id": "20261031-police-01",
    "crime_type": "การปฏิบัติหน้าที่ ประชาสัมพันธ์ และนโยบายตำรวจ",
-   "bureau": "สำนักงานตำรวจแห่งชาติ",
+   "bureau": "ตร.",
    "area": "สำนักงานตำรวจแห่งชาติ",
    "status": "ประกาศนโยบาย",
    "tags": [],
@@ -5647,7 +5647,7 @@
    "date": "2026-10-31",
    "case_id": "20261101-corrupt-01",
    "crime_type": "ทุจริตและประพฤติมิชอบของเจ้าหน้าที่รัฐ",
-   "bureau": "DSI",
+   "bureau": "ดีเอสไอ",
    "area": "นครปฐม",
    "status": "ศาลชั้นต้นพิพากษาแล้ว 28 ต.ค. 2569 (คดียังไม่ถึงที่สุดตามข่าว)",
    "tags": [],
@@ -5834,7 +5834,7 @@
    "date": "2026-10-30",
    "case_id": "20261101-police-01",
    "crime_type": "การปฏิบัติหน้าที่ ประชาสัมพันธ์ และนโยบายตำรวจ",
-   "bureau": "สำนักงานตำรวจแห่งชาติ",
+   "bureau": "ตร.",
    "area": "กรุงเทพมหานคร",
    "status": "ประกาศนโยบาย ยังไม่มีผลปฏิบัติตามข่าว",
    "tags": [],
@@ -6384,7 +6384,7 @@
    "date": "2026-11-02",
    "case_id": "20261103-econ-01",
    "crime_type": "คดีเศรษฐกิจ การเงิน และฟอกเงิน",
-   "bureau": "DSI",
+   "bureau": "ดีเอสไอ",
    "area": "กรมสอบสวนคดีพิเศษ แจ้งวัฒนะ กรุงเทพฯ",
    "status": "อยู่ระหว่างตรวจสอบเส้นทางการเงินและสินทรัพย์ดิจิทัล ยังไม่มีการแจ้งข้อกล่าวหา",
    "tags": [],
@@ -6716,40 +6716,6 @@
    "degree": 1
   },
   {
-   "id": "30_Entities/People/DSI",
-   "title": "DSI",
-   "kind": "entity",
-   "folder": "30_Entities/People",
-   "entity_group": "หน่วย",
-   "date": null,
-   "case_id": null,
-   "crime_type": null,
-   "bureau": null,
-   "area": null,
-   "status": null,
-   "tags": [],
-   "excerpt": "โน้ตสำหรับค้นหาใน Obsidian ไม่ใส่รายชื่อคดีทั้งก้อน — ใช้ Bases หรือ backlink",
-   "path": "30_Entities/People/DSI.md",
-   "degree": 7
-  },
-  {
-   "id": "30_Entities/People/ETDA",
-   "title": "ETDA",
-   "kind": "entity",
-   "folder": "30_Entities/People",
-   "entity_group": "หน่วย",
-   "date": null,
-   "case_id": null,
-   "crime_type": null,
-   "bureau": null,
-   "area": null,
-   "status": null,
-   "tags": [],
-   "excerpt": "โน้ตสำหรับค้นหาใน Obsidian ไม่ใส่รายชื่อคดีทั้งก้อน — ใช้ Bases หรือ backlink",
-   "path": "30_Entities/People/ETDA.md",
-   "degree": 2
-  },
-  {
    "id": "30_Entities/People/Meta",
    "title": "Meta",
    "kind": "entity",
@@ -6835,23 +6801,6 @@
    "degree": 1
   },
   {
-   "id": "30_Entities/People/ThaiCERT",
-   "title": "ThaiCERT",
-   "kind": "entity",
-   "folder": "30_Entities/People",
-   "entity_group": "หน่วย",
-   "date": null,
-   "case_id": null,
-   "crime_type": null,
-   "bureau": null,
-   "area": null,
-   "status": null,
-   "tags": [],
-   "excerpt": "โน้ตสำหรับค้นหาใน Obsidian ไม่ใส่รายชื่อคดีทั้งก้อน — ใช้ Bases หรือ backlink",
-   "path": "30_Entities/People/ThaiCERT.md",
-   "degree": 4
-  },
-  {
    "id": "30_Entities/People/กก.3 บก.ทท.3",
    "title": "กก.3 บก.ทท.3",
    "kind": "entity",
@@ -6934,57 +6883,6 @@
    "tags": [],
    "excerpt": "โน้ตสำหรับค้นหาใน Obsidian ไม่ใส่รายชื่อคดีทั้งก้อน — ใช้ Bases หรือ backlink",
    "path": "30_Entities/People/กระทรวง อว..md",
-   "degree": 1
-  },
-  {
-   "id": "30_Entities/People/กระทรวงดิจิทัลเพื่อเศรษฐกิจและสังคม",
-   "title": "กระทรวงดิจิทัลเพื่อเศรษฐกิจและสังคม",
-   "kind": "entity",
-   "folder": "30_Entities/People",
-   "entity_group": "หน่วย",
-   "date": null,
-   "case_id": null,
-   "crime_type": null,
-   "bureau": null,
-   "area": null,
-   "status": null,
-   "tags": [],
-   "excerpt": "โน้ตสำหรับค้นหาใน Obsidian ไม่ใส่รายชื่อคดีทั้งก้อน — ใช้ Bases หรือ backlink",
-   "path": "30_Entities/People/กระทรวงดิจิทัลเพื่อเศรษฐกิจและสังคม.md",
-   "degree": 1
-  },
-  {
-   "id": "30_Entities/People/กระทรวงดีอี",
-   "title": "กระทรวงดีอี",
-   "kind": "entity",
-   "folder": "30_Entities/People",
-   "entity_group": "หน่วย",
-   "date": null,
-   "case_id": null,
-   "crime_type": null,
-   "bureau": null,
-   "area": null,
-   "status": null,
-   "tags": [],
-   "excerpt": "โน้ตสำหรับค้นหาใน Obsidian ไม่ใส่รายชื่อคดีทั้งก้อน — ใช้ Bases หรือ backlink",
-   "path": "30_Entities/People/กระทรวงดีอี.md",
-   "degree": 5
-  },
-  {
-   "id": "30_Entities/People/กองบัญชาการตำรวจท่องเที่ยว",
-   "title": "กองบัญชาการตำรวจท่องเที่ยว",
-   "kind": "entity",
-   "folder": "30_Entities/People",
-   "entity_group": "หน่วย",
-   "date": null,
-   "case_id": null,
-   "crime_type": null,
-   "bureau": null,
-   "area": null,
-   "status": null,
-   "tags": [],
-   "excerpt": "โน้ตสำหรับค้นหาใน Obsidian ไม่ใส่รายชื่อคดีทั้งก้อน — ใช้ Bases หรือ backlink",
-   "path": "30_Entities/People/กองบัญชาการตำรวจท่องเที่ยว.md",
    "degree": 1
   },
   {
@@ -7088,57 +6986,6 @@
    "excerpt": "20261028 econ 01 ตำรวจ ACSC บช.ก. ร่วม ก.ล.ต. ปปง. แถลงออกหมายจับ 6 คน เครือข่ายฟอกเงินข้ามชาติ “",
    "path": "30_Entities/People/ณัฐกร.md",
    "degree": 1
-  },
-  {
-   "id": "30_Entities/People/ตม.",
-   "title": "ตม.",
-   "kind": "entity",
-   "folder": "30_Entities/People",
-   "entity_group": "บุคคล",
-   "date": null,
-   "case_id": null,
-   "crime_type": null,
-   "bureau": null,
-   "area": null,
-   "status": null,
-   "tags": [],
-   "excerpt": "โน้ตสำหรับค้นหาใน Obsidian ไม่ใส่รายชื่อคดีทั้งก้อน — ใช้ Bases หรือ backlink",
-   "path": "30_Entities/People/ตม..md",
-   "degree": 4
-  },
-  {
-   "id": "30_Entities/People/ตำรวจทางหลวง",
-   "title": "ตำรวจทางหลวง",
-   "kind": "entity",
-   "folder": "30_Entities/People",
-   "entity_group": "หน่วย",
-   "date": null,
-   "case_id": null,
-   "crime_type": null,
-   "bureau": null,
-   "area": null,
-   "status": null,
-   "tags": [],
-   "excerpt": "โน้ตสำหรับค้นหาใน Obsidian ไม่ใส่รายชื่อคดีทั้งก้อน — ใช้ Bases หรือ backlink",
-   "path": "30_Entities/People/ตำรวจทางหลวง.md",
-   "degree": 1
-  },
-  {
-   "id": "30_Entities/People/ตำรวจท่องเที่ยว",
-   "title": "ตำรวจท่องเที่ยว",
-   "kind": "entity",
-   "folder": "30_Entities/People",
-   "entity_group": "หน่วย",
-   "date": null,
-   "case_id": null,
-   "crime_type": null,
-   "bureau": null,
-   "area": null,
-   "status": null,
-   "tags": [],
-   "excerpt": "โน้ตสำหรับค้นหาใน Obsidian ไม่ใส่รายชื่อคดีทั้งก้อน — ใช้ Bases หรือ backlink",
-   "path": "30_Entities/People/ตำรวจท่องเที่ยว.md",
-   "degree": 3
   },
   {
    "id": "30_Entities/People/ตำรวจภูธรชลบุรี",
@@ -7430,74 +7277,6 @@
    "degree": 1
   },
   {
-   "id": "30_Entities/People/บช.ทท.",
-   "title": "บช.ทท.",
-   "kind": "entity",
-   "folder": "30_Entities/People",
-   "entity_group": "หน่วย",
-   "date": null,
-   "case_id": null,
-   "crime_type": null,
-   "bureau": null,
-   "area": null,
-   "status": null,
-   "tags": [],
-   "excerpt": "โน้ตสำหรับค้นหาใน Obsidian ไม่ใส่รายชื่อคดีทั้งก้อน — ใช้ Bases หรือ backlink",
-   "path": "30_Entities/People/บช.ทท..md",
-   "degree": 10
-  },
-  {
-   "id": "30_Entities/People/บช.น.",
-   "title": "บช.น.",
-   "kind": "entity",
-   "folder": "30_Entities/People",
-   "entity_group": "หน่วย",
-   "date": null,
-   "case_id": null,
-   "crime_type": null,
-   "bureau": null,
-   "area": null,
-   "status": null,
-   "tags": [],
-   "excerpt": "โน้ตสำหรับค้นหาใน Obsidian ไม่ใส่รายชื่อคดีทั้งก้อน — ใช้ Bases หรือ backlink",
-   "path": "30_Entities/People/บช.น..md",
-   "degree": 10
-  },
-  {
-   "id": "30_Entities/People/บช.ปส.",
-   "title": "บช.ปส.",
-   "kind": "entity",
-   "folder": "30_Entities/People",
-   "entity_group": "หน่วย",
-   "date": null,
-   "case_id": null,
-   "crime_type": null,
-   "bureau": null,
-   "area": null,
-   "status": null,
-   "tags": [],
-   "excerpt": "โน้ตสำหรับค้นหาใน Obsidian ไม่ใส่รายชื่อคดีทั้งก้อน — ใช้ Bases หรือ backlink",
-   "path": "30_Entities/People/บช.ปส..md",
-   "degree": 7
-  },
-  {
-   "id": "30_Entities/People/บช.สอท.",
-   "title": "บช.สอท.",
-   "kind": "entity",
-   "folder": "30_Entities/People",
-   "entity_group": "หน่วย",
-   "date": null,
-   "case_id": null,
-   "crime_type": null,
-   "bureau": null,
-   "area": null,
-   "status": null,
-   "tags": [],
-   "excerpt": "โน้ตสำหรับค้นหาใน Obsidian ไม่ใส่รายชื่อคดีทั้งก้อน — ใช้ Bases หรือ backlink",
-   "path": "30_Entities/People/บช.สอท..md",
-   "degree": 14
-  },
-  {
    "id": "30_Entities/People/บวรทัต (อี้)",
    "title": "บวรทัต (อี้)",
    "kind": "entity",
@@ -7530,23 +7309,6 @@
    "excerpt": "20261031 econ 01 ผู้ร้องเรียนยื่นกองปราบตรวจเส้นทางเงินบริจาคมูลนิธิองค์กรทำดี ปมบัญชีรับบริจาค ก",
    "path": "30_Entities/People/ปนัดดา วงศ์ผู้ดี (ประธานมูลนิธิ ตามข่าว).md",
    "degree": 1
-  },
-  {
-   "id": "30_Entities/People/ปปง.",
-   "title": "ปปง.",
-   "kind": "entity",
-   "folder": "30_Entities/People",
-   "entity_group": "หน่วย",
-   "date": null,
-   "case_id": null,
-   "crime_type": null,
-   "bureau": null,
-   "area": null,
-   "status": null,
-   "tags": [],
-   "excerpt": "โน้ตสำหรับค้นหาใน Obsidian ไม่ใส่รายชื่อคดีทั้งก้อน — ใช้ Bases หรือ backlink",
-   "path": "30_Entities/People/ปปง..md",
-   "degree": 2
   },
   {
    "id": "30_Entities/People/ปปส.ภาค 9",
@@ -8943,23 +8705,6 @@
    "degree": 2
   },
   {
-   "id": "30_Entities/People/สตม.",
-   "title": "สตม.",
-   "kind": "entity",
-   "folder": "30_Entities/People",
-   "entity_group": "หน่วย",
-   "date": null,
-   "case_id": null,
-   "crime_type": null,
-   "bureau": null,
-   "area": null,
-   "status": null,
-   "tags": [],
-   "excerpt": "โน้ตสำหรับค้นหาใน Obsidian ไม่ใส่รายชื่อคดีทั้งก้อน — ใช้ Bases หรือ backlink",
-   "path": "30_Entities/People/สตม..md",
-   "degree": 12
-  },
-  {
    "id": "30_Entities/People/สน.วังทองหลาง",
    "title": "สน.วังทองหลาง",
    "kind": "entity",
@@ -9079,23 +8824,6 @@
    "degree": 1
   },
   {
-   "id": "30_Entities/People/สำนักงานตำรวจแห่งชาติ",
-   "title": "สำนักงานตำรวจแห่งชาติ",
-   "kind": "entity",
-   "folder": "30_Entities/People",
-   "entity_group": "หน่วย",
-   "date": null,
-   "case_id": null,
-   "crime_type": null,
-   "bureau": null,
-   "area": null,
-   "status": null,
-   "tags": [],
-   "excerpt": "โน้ตสำหรับค้นหาใน Obsidian ไม่ใส่รายชื่อคดีทั้งก้อน — ใช้ Bases หรือ backlink",
-   "path": "30_Entities/People/สำนักงานตำรวจแห่งชาติ.md",
-   "degree": 2
-  },
-  {
    "id": "30_Entities/People/อธิบดี DSI",
    "title": "อธิบดี DSI",
    "kind": "entity",
@@ -9195,23 +8923,6 @@
    "tags": [],
    "excerpt": "20261029 police 04 อธิบดีอัยการสำนักงานการสอบสวนรับนโยบาย อสส. “ยักษ์ไร้กระบอง” เตรียมเสนอตั้งเจ้าห",
    "path": "30_Entities/People/อธิบดีอัยการสำนักงานการสอบสวน.md",
-   "degree": 1
-  },
-  {
-   "id": "30_Entities/People/อัยการสูงสุด",
-   "title": "อัยการสูงสุด",
-   "kind": "entity",
-   "folder": "30_Entities/People",
-   "entity_group": "บุคคล",
-   "date": null,
-   "case_id": null,
-   "crime_type": null,
-   "bureau": null,
-   "area": null,
-   "status": null,
-   "tags": [],
-   "excerpt": "20261029 police 04 อธิบดีอัยการสำนักงานการสอบสวนรับนโยบาย อสส. “ยักษ์ไร้กระบอง” เตรียมเสนอตั้งเจ้าห",
-   "path": "30_Entities/People/อัยการสูงสุด.md",
    "degree": 1
   },
   {
@@ -9552,40 +9263,6 @@
    "tags": [],
    "excerpt": "20261103 police 01 ผบช.ทท. ให้การต้อนรับคณะผู้แทนสถานเอกอัครราชทูตเกาหลีใต้ หารือความร่วมมือดูแลควา",
    "path": "30_Entities/Places/กองบัญชาการตำรวจท่องเที่ยว กรุงเทพฯ.md",
-   "degree": 1
-  },
-  {
-   "id": "30_Entities/Places/กองบัญชาการตำรวจสอบสวนกลาง",
-   "title": "กองบัญชาการตำรวจสอบสวนกลาง",
-   "kind": "entity",
-   "folder": "30_Entities/Places",
-   "entity_group": "หน่วย",
-   "date": null,
-   "case_id": null,
-   "crime_type": null,
-   "bureau": null,
-   "area": null,
-   "status": null,
-   "tags": [],
-   "excerpt": "20261101 econ 01 \"ออยศรี\" เข้าให้ปากคำเพิ่มที่ บช.ก. ปมเส้นทางเงินบริจาคมูลนิธิองค์กรทำดี พร้อมมอ",
-   "path": "30_Entities/Places/กองบัญชาการตำรวจสอบสวนกลาง.md",
-   "degree": 1
-  },
-  {
-   "id": "30_Entities/Places/กองบัญชาการตำรวจแห่งชาติ",
-   "title": "กองบัญชาการตำรวจแห่งชาติ",
-   "kind": "entity",
-   "folder": "30_Entities/Places",
-   "entity_group": "หน่วย",
-   "date": null,
-   "case_id": null,
-   "crime_type": null,
-   "bureau": null,
-   "area": null,
-   "status": null,
-   "tags": [],
-   "excerpt": "20261029 econ 03 นายกรัฐมนตรีสั่งทุกหน่วยเดินหน้าปราบเครือข่ายฟอกเงินข้ามชาติ “เบน สมิธ ยิม เลียก",
-   "path": "30_Entities/Places/กองบัญชาการตำรวจแห่งชาติ.md",
    "degree": 1
   },
   {
@@ -10966,23 +10643,6 @@
    "degree": 1
   },
   {
-   "id": "30_Entities/Places/บก.ปอศ.",
-   "title": "บก.ปอศ.",
-   "kind": "entity",
-   "folder": "30_Entities/Places",
-   "entity_group": "หน่วย",
-   "date": null,
-   "case_id": null,
-   "crime_type": null,
-   "bureau": null,
-   "area": null,
-   "status": null,
-   "tags": [],
-   "excerpt": "20261102 econ 02 บก.ปอศ. รับคดีร้องเรียนมูลนิธิองค์กรทำดีไว้สอบสวน เบื้องต้นอาจเข้าข่ายฉ้อโกงประช",
-   "path": "30_Entities/Places/บก.ปอศ..md",
-   "degree": 1
-  },
-  {
    "id": "30_Entities/Places/บก.สอท.2 นนทบุรี",
    "title": "บก.สอท.2 นนทบุรี",
    "kind": "entity",
@@ -11899,23 +11559,6 @@
    "excerpt": "20261027 econ line 01 บช.ก. ร่วม ACSC แถลง Operation Dark Empire ทลายฟาร์มบัญชีม้านิติบุคคลข้ามชาติ จ้",
    "path": "30_Entities/Places/สะเดา.md",
    "degree": 2
-  },
-  {
-   "id": "30_Entities/Places/สำนักงานตำรวจแห่งชาติ",
-   "title": "สำนักงานตำรวจแห่งชาติ",
-   "kind": "entity",
-   "folder": "30_Entities/Places",
-   "entity_group": "หน่วย",
-   "date": null,
-   "case_id": null,
-   "crime_type": null,
-   "bureau": null,
-   "area": null,
-   "status": null,
-   "tags": [],
-   "excerpt": "20261031 police 01 ผบ.ตร. ประชุมบริหาร ตร. ครั้งที่ 5/2569 กำชับตำรวจทั่วประเทศลงพื้นที่ฟังปัญหาประ",
-   "path": "30_Entities/Places/สำนักงานตำรวจแห่งชาติ.md",
-   "degree": 1
   },
   {
    "id": "30_Entities/Places/สุขุมวิท ซอย 4-11",
@@ -13346,23 +12989,6 @@
    "degree": 1
   },
   {
-   "id": "30_Entities/Units/CIB",
-   "title": "CIB",
-   "kind": "entity",
-   "folder": "30_Entities/Units",
-   "entity_group": "หน่วย",
-   "date": null,
-   "case_id": null,
-   "crime_type": null,
-   "bureau": null,
-   "area": null,
-   "status": null,
-   "tags": [],
-   "excerpt": "20261031 cyber 05 บก.ปอศ. ตรวจค้นบ้านพักที่อุบลราชธานี ปิดเว็บ nanamovies.com ผู้ถูกกล่าวหาละเมิดลิขสิทธิ์ภาพยนตร์เพื่อการค้า ตัวแทนบริษัทหนังกว่า 10 บริษัทร่วมร้องทุกข์",
-   "path": "30_Entities/Units/CIB.md",
-   "degree": 1
-  },
-  {
    "id": "30_Entities/Units/Destiny Rescue",
    "title": "Destiny Rescue",
    "kind": "entity",
@@ -13397,23 +13023,6 @@
    "degree": 1
   },
   {
-   "id": "30_Entities/Units/DSI",
-   "title": "DSI",
-   "kind": "entity",
-   "folder": "30_Entities/Units",
-   "entity_group": "หน่วย",
-   "date": null,
-   "case_id": null,
-   "crime_type": null,
-   "bureau": null,
-   "area": null,
-   "status": null,
-   "tags": [],
-   "excerpt": "20261026 gamble 01 ผบช.สอท. ยืนยันสืบสวนข้อกล่าวอ้างเว็บพนันจ่ายเงินพิเศษให้ ส.ส. ร่วม DSI ดีอี ตรวจเส้นทางการเงิน ย้ำยังเป็นข้อกล่าวอ้างที่ต้องพิสูจน์ 20261027 env 01 DSI ศุลกากร กรมอุทยานฯ แถลงสกัดขบวนการค้าสัตว์ป่าข้ามชาติ ยึดงาช้าง 3.1 ตัน และซากสัตว์ป่า มูลค่าประมาณ 155 ล้านบาท ซุกในไม้แปรรูปจากแซมเบียที่แหลมฉบัง 20261027 gamble 01 DSI ประชุมร่วม CIB บ…",
-   "path": "30_Entities/Units/DSI.md",
-   "degree": 11
-  },
-  {
    "id": "30_Entities/Units/ThaiCERT",
    "title": "ThaiCERT",
    "kind": "entity",
@@ -13428,7 +13037,7 @@
    "tags": [],
    "excerpt": "20261024 cyber 01 แจ้งเตือน ช่องโหว่ระดับ Critical ใน GitLab เสี่ยงถูกสั่งรันคำสั่งโดยไม่ต้องยืนยันตัวตน 20261024 cyber 02 แจ้งเตือน พบการโจมตีช่องโหว่ Plex2Shell ใน Plex Media Server เสี่ยงถูกควบคุมระบบและติดตั้ง Crypto Miner 20261029 cyber 03 ThaiCERT เตือนช่องโหว่ CVE 2026 80097 ใน Microsoft Authenticator บน Android เสี่ยงแอปอันตรายแอบอ้างขอ Token บัญชีอ…",
    "path": "30_Entities/Units/ThaiCERT.md",
-   "degree": 3
+   "degree": 9
   },
   {
    "id": "30_Entities/Units/TICAC",
@@ -13703,23 +13312,6 @@
    "degree": 2
   },
   {
-   "id": "30_Entities/Units/กก.ดส. บช.น.",
-   "title": "กก.ดส. บช.น.",
-   "kind": "entity",
-   "folder": "30_Entities/Units",
-   "entity_group": "หน่วย",
-   "date": null,
-   "case_id": null,
-   "crime_type": null,
-   "bureau": null,
-   "area": null,
-   "status": null,
-   "tags": [],
-   "excerpt": "20261024 consumer 01 จับหนุ่ม 19 ซุกแก๊สหัวเราะ 125 ถัง ส่งขายสถานบันเทิง",
-   "path": "30_Entities/Units/กก.ดส. บช.น..md",
-   "degree": 1
-  },
-  {
    "id": "30_Entities/Units/กก.ดส.บช.น.",
    "title": "กก.ดส.บช.น.",
    "kind": "entity",
@@ -13734,7 +13326,7 @@
    "tags": [],
    "excerpt": "20261026 human 02 กก.ดส.บช.น. จับเยาวชนหญิงวัย 17 ปี ต้องสงสัยเป็นนายหน้าจัดหาเด็กค้าประเวณี ช่วยผู้เสียหายวัย 16 ปีจากโรงแรมย่านบางนา ตามข้อกล่าวหา 20261026 violent 02 กก.ดส.บช.น. จับชายวัย 47 ปี หนีหมายจับคดีข่มขืนเยาวชนวัย 17 ปี นานเกือบ 7 ปี พบทำงานขับมอเตอร์ไซค์รับจ้างย่านลาดพร้าว ตามหมายศาลอาญา",
    "path": "30_Entities/Units/กก.ดส.บช.น..md",
-   "degree": 2
+   "degree": 3
   },
   {
    "id": "30_Entities/Units/กก.ปพ.",
@@ -14060,40 +13652,6 @@
    "degree": 1
   },
   {
-   "id": "30_Entities/Units/กรมสอบสวนคดีพิเศษ (DSI)",
-   "title": "กรมสอบสวนคดีพิเศษ (DSI)",
-   "kind": "entity",
-   "folder": "30_Entities/Units",
-   "entity_group": "หน่วย",
-   "date": null,
-   "case_id": null,
-   "crime_type": null,
-   "bureau": null,
-   "area": null,
-   "status": null,
-   "tags": [],
-   "excerpt": "20261022 tourist dsi nominee DSI ส่งหลักฐานให้มหาดไทยทบทวนสัญชาติ นักธุรกิจต่างชาติ ขยายผลนอมินีถือครองที่ดิน 20261022 cyber dsi crypto mining power DSI จับผู้ต้องหาตามหมายจับ คดีลักไฟฟ้าขุดเหรียญดิจิทัลในโกดังเช่า สมุทรสาคร 20261022 cyber dsi mule account DSI จับเจ้าของบัญชีธนาคารที่ถูกใช้รับเงินเหยื่อและซื้อคริปโต คดีพิเศษที่ 6/2568 20261022 gamble dsi sh…",
-   "path": "30_Entities/Units/กรมสอบสวนคดีพิเศษ (DSI).md",
-   "degree": 1
-  },
-  {
-   "id": "30_Entities/Units/กรมสอบสวนคดีพิเศษ",
-   "title": "กรมสอบสวนคดีพิเศษ",
-   "kind": "entity",
-   "folder": "30_Entities/Units",
-   "entity_group": "หน่วย",
-   "date": null,
-   "case_id": null,
-   "crime_type": null,
-   "bureau": null,
-   "area": null,
-   "status": null,
-   "tags": [],
-   "excerpt": "20261103 econ 01 ดีเอสไอประชุมครั้งที่ 3/2569 กับ บช.สอท. และ ปปง. ตรวจเส้นทางการเงินและสินทรัพย์ดิจิทัลโยงเว็บ Shuffle เชิญผู้ประกอบการสินทรัพย์ดิจิทัลในไทยชี้แจง",
-   "path": "30_Entities/Units/กรมสอบสวนคดีพิเศษ.md",
-   "degree": 1
-  },
-  {
    "id": "30_Entities/Units/กรมอุทยานแห่งชาติ สัตว์ป่า และพันธุ์พืช",
    "title": "กรมอุทยานแห่งชาติ สัตว์ป่า และพันธุ์พืช",
    "kind": "entity",
@@ -14160,6 +13718,23 @@
    "excerpt": "20261031 econ 02 ปปง.แถลงคืนเงินผู้เสียหายคดีฉ้อโกง 3 รายคดี 9.58 ล้านบาท เยียวยาผู้เสียหายค้ามนุษย์ 197,023 บาท และส่งทรัพย์คดียาเสพติดเข้าคลัง 524,211 บาท รวมกว่า 10.3 ล้านบาท",
    "path": "30_Entities/Units/กระทรวงการคลัง.md",
    "degree": 1
+  },
+  {
+   "id": "30_Entities/Units/กระทรวงดีอี",
+   "title": "กระทรวงดีอี",
+   "kind": "entity",
+   "folder": "30_Entities/Units",
+   "entity_group": "หน่วย",
+   "date": null,
+   "case_id": null,
+   "crime_type": null,
+   "bureau": null,
+   "area": null,
+   "status": null,
+   "tags": [],
+   "excerpt": "20261024 cyber 04 DE ผนึก Meta ยกระดับยืนยันตัวตนผู้ลงโฆษณาออนไลน์ เตรียมใช้ No ID, No Ads ต้นเดือน พ.ย.",
+   "path": "30_Entities/Units/กระทรวงดีอี.md",
+   "degree": 6
   },
   {
    "id": "30_Entities/Units/กระทรวงยุติธรรม",
@@ -14417,40 +13992,6 @@
    "degree": 1
   },
   {
-   "id": "30_Entities/Units/กองบัญชาการตำรวจท่องเที่ยว",
-   "title": "กองบัญชาการตำรวจท่องเที่ยว",
-   "kind": "entity",
-   "folder": "30_Entities/Units",
-   "entity_group": "หน่วย",
-   "date": null,
-   "case_id": null,
-   "crime_type": null,
-   "bureau": null,
-   "area": null,
-   "status": null,
-   "tags": [],
-   "excerpt": "20261024 other 01 ผบช.ทท. เยี่ยมครอบครัวตำรวจท่องเที่ยวในจังหวัดนราธิวาส ย้ำ 'ครอบครัวเดียวกัน' 20261028 police 01 ตำรวจท่องเที่ยว (บก.ทท.2) บูรณาการกำลังดูแลความปลอดภัยงานไหลเรือไฟนครพนม 25 26 ต.ค. ใช้โดรนและรถโมบาย ประชาสัมพันธ์สายด่วน 1155",
-   "path": "30_Entities/Units/กองบัญชาการตำรวจท่องเที่ยว.md",
-   "degree": 1
-  },
-  {
-   "id": "30_Entities/Units/กองปราบปราม",
-   "title": "กองปราบปราม",
-   "kind": "entity",
-   "folder": "30_Entities/Units",
-   "entity_group": "หน่วย",
-   "date": null,
-   "case_id": null,
-   "crime_type": null,
-   "bureau": null,
-   "area": null,
-   "status": null,
-   "tags": [],
-   "excerpt": "20261024 consumer 02 กมธ.คุ้มครองผู้บริโภค จี้ สพฐ. ร่วมเยียวยา ผู้ปกครอง นักเรียนทัศนศึกษาจีนทิพย์ 20261102 econ 03 ตม.สงขลา ร่วมกองปราบปราม จับชายอายุ 35 ปีที่ด่านสะเดา ตามหมายจับศาลอาญา ข้อหาฉ้อโกง ฟอกเงิน และเกี่ยวข้ององค์กรอาชญากรรมข้ามชาติ ขณะเดินทางกลับจากมาเลเซีย",
-   "path": "30_Entities/Units/กองปราบปราม.md",
-   "degree": 2
-  },
-  {
    "id": "30_Entities/Units/กองร้อย ตชด.335",
    "title": "กองร้อย ตชด.335",
    "kind": "entity",
@@ -14686,7 +14227,7 @@
    "tags": [],
    "excerpt": "20261024 gamble 02 ดีเอสไอรวบรวมข้อมูล Shuffle เชื่อมโยง 49 ลูกค้า ธุรกรรมกว่า 100 ล้านบาท",
    "path": "30_Entities/Units/ดีเอสไอ.md",
-   "degree": 1
+   "degree": 21
   },
   {
    "id": "30_Entities/Units/ด่าน ตม.เชียงแสน",
@@ -14839,7 +14380,7 @@
    "tags": [],
    "excerpt": "20261024 transnat 03 ตม.รวบนักธุรกิจหญิงจีน หนีหมายจับคดีศุลกากร เสียหายกว่า 500 ล้านบาท 20261103 cyber 02 สปป.ลาวส่งตัว 40 คนไทย แก๊งฉ้อโกงโทรคมนาคมและพนันออนไลน์ ที่ด่านท่าลี่ เลย ตม.ตรวจพบมีหมายจับติดตัว 10 ราย ส่งเข้าศูนย์คัดกรองเลย",
    "path": "30_Entities/Units/ตม..md",
-   "degree": 1
+   "degree": 21
   },
   {
    "id": "30_Entities/Units/ตม.3",
@@ -15264,7 +14805,7 @@
    "tags": [],
    "excerpt": "โน้ตสำหรับค้นหาใน Obsidian ไม่ใส่รายชื่อคดีทั้งก้อน — ใช้ Bases หรือ backlink",
    "path": "30_Entities/Units/ตร..md",
-   "degree": 6
+   "degree": 16
   },
   {
    "id": "30_Entities/Units/ตำรวจ สภ.บางพลี (ตามพื้นที่)",
@@ -15539,23 +15080,6 @@
    "degree": 4
   },
   {
-   "id": "30_Entities/Units/ตำรวจไซเบอร์",
-   "title": "ตำรวจไซเบอร์",
-   "kind": "entity",
-   "folder": "30_Entities/Units",
-   "entity_group": "หน่วย",
-   "date": null,
-   "case_id": null,
-   "crime_type": null,
-   "bureau": null,
-   "area": null,
-   "status": null,
-   "tags": [],
-   "excerpt": "20261024 gamble 01 ตำรวจไซเบอร์บุกทลายเว็บพนัน taipei999 สงขลา เงินสะพัด 379 ล้าน",
-   "path": "30_Entities/Units/ตำรวจไซเบอร์.md",
-   "degree": 1
-  },
-  {
    "id": "30_Entities/Units/ทหาร",
    "title": "ทหาร",
    "kind": "entity",
@@ -15607,8 +15131,8 @@
    "degree": 1
   },
   {
-   "id": "30_Entities/Units/ธนาคารแห่งประเทศไทย",
-   "title": "ธนาคารแห่งประเทศไทย",
+   "id": "30_Entities/Units/ธปท.",
+   "title": "ธปท.",
    "kind": "entity",
    "folder": "30_Entities/Units",
    "entity_group": "หน่วย",
@@ -15619,8 +15143,8 @@
    "area": null,
    "status": null,
    "tags": [],
-   "excerpt": "20261102 econ 01 บก.ปอศ. บุกค้นบริษัทที่ บางเขน กทม. จับกรรมการอายุ 38 ปี ปมเว็บรับแลกเงินหยวนและโอนเงินระหว่างประเทศโดยไม่ได้รับอนุญาต พบบัญชีเกี่ยวข้อง 5 บัญชี หมุนเวียนกว่า 170 ล้านบาท",
-   "path": "30_Entities/Units/ธนาคารแห่งประเทศไทย.md",
+   "excerpt": "โหนดมาตรฐาน (Task 3). aliases: ธนาคารแห่งประเทศไทย; BOT",
+   "path": "30_Entities/Units/ธปท..md",
    "degree": 1
   },
   {
@@ -15808,7 +15332,7 @@
    "tags": [],
    "excerpt": "20261025 gamble 01 กองปราบฯ ทลายเครือข่ายเว็บพนันออนไลน์ในชลบุรี จับ 8 ราย ขยายผลจากโรงงานผลิตบัญชีม้าพัทลุง ตามข้อกล่าวหา 20261025 cyber 01 ตำรวจทางหลวงดักจับผู้ต้องหาตามหมายจับ เครือข่ายฟอกเงินแก๊งคอลเซ็นเตอร์ผ่านแอปซื้อขายทองคำ เสียหายกว่า 8 ล้านบาท ที่นครสวรรค์ 20261027 human 01 ตำรวจทางหลวงแพร่ สกัดรถตู้รับจ้างขนแรงงานต่างด้าวชาวเมียนมา 20 รายจากเชียงร…",
    "path": "30_Entities/Units/บก.ทล..md",
-   "degree": 8
+   "degree": 9
   },
   {
    "id": "30_Entities/Units/บก.น.1",
@@ -15927,7 +15451,7 @@
    "tags": [],
    "excerpt": "20261025 gamble 01 กองปราบฯ ทลายเครือข่ายเว็บพนันออนไลน์ในชลบุรี จับ 8 ราย ขยายผลจากโรงงานผลิตบัญชีม้าพัทลุง ตามข้อกล่าวหา 20261026 cyber 01 บก.ป. (CIB) จับหญิงวัย 26 ปี ตามหมายจับ แก๊งหลอกเปิดร้านออนไลน์ ทำภารกิจเพิ่มยอดขาย ผู้เสียหายโอน 25 ครั้ง สูญ 14.7 ล้านบาท ตามข้อกล่าวหา 20261027 police 02 ทนายความรายหนึ่งยื่นคัดค้านคำสั่งของ บก.ป. ที่ส่งเรื่องอุปกรณ…",
    "path": "30_Entities/Units/บก.ป..md",
-   "degree": 13
+   "degree": 15
   },
   {
    "id": "30_Entities/Units/บก.ปคบ.",
@@ -16080,7 +15604,7 @@
    "tags": [],
    "excerpt": "โน้ตสำหรับค้นหาใน Obsidian ไม่ใส่รายชื่อคดีทั้งก้อน — ใช้ Bases หรือ backlink 20261028 econ 01 ตำรวจ ACSC บช.ก. ร่วม ก.ล.ต. ปปง. แถลงออกหมายจับ 6 คน เครือข่ายฟอกเงินข้ามชาติ “เบน สมิธ ยิม เลียก” ซ่อนเงินผ่านธนาคารและกองทุนต่างประเทศก่อนซื้อหุ้นไทย ปปง. อายัดทรัพย์ ผู้ต้องหาหนึ่งรายถูกควบคุมตัวแล้ว 20261031 cyber 05 บก.ปอศ. ตรวจค้นบ้านพักที่อุบลราชธานี ปิดเว…",
    "path": "30_Entities/Units/บก.ปอศ..md",
-   "degree": 7
+   "degree": 8
   },
   {
    "id": "30_Entities/Units/บก.รน.",
@@ -16369,7 +15893,7 @@
    "tags": [],
    "excerpt": "20261025 gamble 01 กองปราบฯ ทลายเครือข่ายเว็บพนันออนไลน์ในชลบุรี จับ 8 ราย ขยายผลจากโรงงานผลิตบัญชีม้าพัทลุง ตามข้อกล่าวหา 20261026 cyber 01 บก.ป. (CIB) จับหญิงวัย 26 ปี ตามหมายจับ แก๊งหลอกเปิดร้านออนไลน์ ทำภารกิจเพิ่มยอดขาย ผู้เสียหายโอน 25 ครั้ง สูญ 14.7 ล้านบาท ตามข้อกล่าวหา 20261027 human 01 ตำรวจทางหลวงแพร่ สกัดรถตู้รับจ้างขนแรงงานต่างด้าวชาวเมียนมา 20…",
    "path": "30_Entities/Units/บช.ก..md",
-   "degree": 34
+   "degree": 36
   },
   {
    "id": "30_Entities/Units/บช.ทท.",
@@ -16386,7 +15910,7 @@
    "tags": [],
    "excerpt": "20261025 human 02 ตำรวจท่องเที่ยว ภ.5 จับ 2 ผู้ต้องหา ตามข้อกล่าวหาขบวนการ \"โรแมนซ์สแกม\" หลอกหญิงชาวจีนเข้าไทยแล้วบังคับพาไปชายแดน 20261025 police 02 ผบช.ทท. ปล่อยแถวตำรวจท่องเที่ยวเดินตรวจย่านการค้าหาดใหญ่ ประมาณ 100 นาย เสริมความเชื่อมั่นนักท่องเที่ยว พร้อมตรวจสายตรวจม้าชายหาดสมิหลา 20261027 police 01 ผบช.ทท. สั่งตำรวจท่องเที่ยวช่วยประชาชนและนักท่องเที่ยว…",
    "path": "30_Entities/Units/บช.ทท..md",
-   "degree": 4
+   "degree": 19
   },
   {
    "id": "30_Entities/Units/บช.น.",
@@ -16403,7 +15927,7 @@
    "tags": [],
    "excerpt": "20261025 drug 01 บช.น. สตม. จับชายต่างชาติวัย 54 ปี ในคอนโดห้วยขวาง ตรวจยึดไอซ์ 15 กรัม ตามข้อกล่าวหามอมยาแอบถ่ายคลิป พำนักเกินกำหนด 2,095 วัน 20261026 police 01 ผบ.ตร. สั่งตำรวจจราจรทั่วประเทศงดสวมหมวกคลุมใบหน้า ย้ำ “ตักเตือนก่อนปรับ” และปรับแบบขั้นบันได ตามหนังสือสั่งการ ศจร.ตร. 20261027 safe line 01 ปฏิบัติการ \"ตัดบทพ่อทิพย์\" ศาลอนุมัติหมายจับ 46 หมาย คด…",
    "path": "30_Entities/Units/บช.น..md",
-   "degree": 9
+   "degree": 19
   },
   {
    "id": "30_Entities/Units/บช.ปส.",
@@ -16420,7 +15944,7 @@
    "tags": [],
    "excerpt": "20261025 drug 04 บช.ปส. สกัดรถกระบะซ่อนยาบ้า 924,000 เม็ดที่พัทลุง สองสามีภรรยาผู้ต้องหาอุ้มทารกพรางตา; ชัยภูมิจับหญิงวัย 18 ปี ข้อหาเสนอสินบน 1 แสนบาท 20261029 drug 01 ตำรวจ บก.น.1 จับ 2 ผู้ต้องหาขนไอซ์ 210 กก. ซุกกระสอบในรถตู้ที่ปั๊มน้ำมันถนนกาญจนาภิเษก บางบอน ผบ.ตร.สั่งการ เร่งขยายผลยึดทรัพย์เครือข่าย 20261029 police 02 ศอ.ปส.ตร. มอบโล่เชิดชู 107 รางวัลผ…",
    "path": "30_Entities/Units/บช.ปส..md",
-   "degree": 5
+   "degree": 12
   },
   {
    "id": "30_Entities/Units/บช.ภ.1",
@@ -16488,7 +16012,7 @@
    "tags": [],
    "excerpt": "20261024 cyber 03 Cyber Police Arrest Scam Gang Targeting Retired Nurse, Posing as Comptroller Generals Department Officials, Defrauding Over 1.8 Million Baht 20261024 property 02 ตำรวจไซเบอร์ทลายแหล่งผลิตอาวุธปืนเถื่อนขายออนไลน์ ฉะเชิงเทรา จับผู้ต้องหา 1 ราย 20261025 cyber 02 บช.สอท. จับบัญชีม้าเครือข่ายกลุ่มลับแพร่คลิปลามก ชักชวนพนันออนไลน์ ตามหมายจับ ยัง…",
    "path": "30_Entities/Units/บช.สอท..md",
-   "degree": 14
+   "degree": 29
   },
   {
    "id": "30_Entities/Units/บมจ.ท่าอากาศยานไทย",
@@ -16556,7 +16080,7 @@
    "tags": [],
    "excerpt": "20261027 safe line 01 ปฏิบัติการ \"ตัดบทพ่อทิพย์\" ศาลอนุมัติหมายจับ 46 หมาย คดีแจ้งเกิดเท็จให้บุตรต่างด 20261029 econ 03 นายกรัฐมนตรีสั่งทุกหน่วยเดินหน้าปราบเครือข่ายฟอกเงินข้ามชาติ “เบน สมิธ ยิม เลียก” ไม่เว้นใคร ตำรวจได้หมายจับ 6 ราย ผู้ต้องหารายที่ 7 เข้าพบพนักงานสอบสวนและปฏิเสธข้อกล่าวหา",
    "path": "30_Entities/Units/ป.ป.ท..md",
-   "degree": 2
+   "degree": 3
   },
   {
    "id": "30_Entities/Units/ป.ป.ส. ภาค 6",
@@ -16590,7 +16114,7 @@
    "tags": [],
    "excerpt": "20261029 econ 03 นายกรัฐมนตรีสั่งทุกหน่วยเดินหน้าปราบเครือข่ายฟอกเงินข้ามชาติ “เบน สมิธ ยิม เลียก” ไม่เว้นใคร ตำรวจได้หมายจับ 6 ราย ผู้ต้องหารายที่ 7 เข้าพบพนักงานสอบสวนและปฏิเสธข้อกล่าวหา 20261029 police 04 อธิบดีอัยการสำนักงานการสอบสวนรับนโยบาย อสส. “ยักษ์ไร้กระบอง” เตรียมเสนอตั้งเจ้าหน้าที่สืบสวนสังกัดอัยการ 20 อัตรา ย้อนปฏิบัติการครั้งแรกที่อัยการนำกำลั…",
    "path": "30_Entities/Units/ป.ป.ส..md",
-   "degree": 1
+   "degree": 7
   },
   {
    "id": "30_Entities/Units/ป.ป.ส.กทม.",
@@ -16624,7 +16148,7 @@
    "tags": [],
    "excerpt": "โน้ตสำหรับค้นหาใน Obsidian ไม่ใส่รายชื่อคดีทั้งก้อน — ใช้ Bases หรือ backlink 20261027 gamble 01 DSI ประชุมร่วม CIB บช.สอท. ปปง. ครั้งที่ 2/2569 สืบสวนกรณีสามีของ สส. รายหนึ่งที่อาจเกี่ยวข้องเครือข่ายสแกมเมอร์และพนันออนไลน์ เตรียมเชิญ ก.ล.ต.และผู้จัดการสินทรัพย์ดิจิทัลให้ถ้อยคำ 20261027 econ line 02 บช.ก. ACSC ปปง. ก.ล.ต. แถลงออกหมายจับ 7 ผู้ต้องหา คดีฟอกเง…",
    "path": "30_Entities/Units/ปปง..md",
-   "degree": 9
+   "degree": 11
   },
   {
    "id": "30_Entities/Units/ปปส.ภ.8",
@@ -17423,7 +16947,7 @@
    "tags": [],
    "excerpt": "20261025 cyber 02 บช.สอท. จับบัญชีม้าเครือข่ายกลุ่มลับแพร่คลิปลามก ชักชวนพนันออนไลน์ ตามหมายจับ ยังตามล่าแอดมิน",
    "path": "30_Entities/Units/ศตคม.ตร..md",
-   "degree": 1
+   "degree": 2
   },
   {
    "id": "30_Entities/Units/ศปก.ตร.",
@@ -18072,23 +17596,6 @@
    "degree": 1
   },
   {
-   "id": "30_Entities/Units/ศูนย์ต่อต้านการค้ามนุษย์ ตร.",
-   "title": "ศูนย์ต่อต้านการค้ามนุษย์ ตร.",
-   "kind": "entity",
-   "folder": "30_Entities/Units",
-   "entity_group": "หน่วย",
-   "date": null,
-   "case_id": null,
-   "crime_type": null,
-   "bureau": null,
-   "area": null,
-   "status": null,
-   "tags": [],
-   "excerpt": "20261031 human 01 ตำรวจจุดตรวจแม่ท้อ ตาก สกัดรถพบชาวจีน 3 คนถูกใส่กุญแจมือ ปิดปาก มัดเท้า จับชาย 4 คนข้อหาหน่วงเหนี่ยวกักขัง รอง ผบ.ตร. สั่งขยายผลโยงแก๊งส่งไปทำงานสแกมในเมียนมา",
-   "path": "30_Entities/Units/ศูนย์ต่อต้านการค้ามนุษย์ ตร..md",
-   "degree": 1
-  },
-  {
    "id": "30_Entities/Units/ศูนย์ต่อต้านการฉ้อโกงออนไลน์ (ACSC)",
    "title": "ศูนย์ต่อต้านการฉ้อโกงออนไลน์ (ACSC)",
    "kind": "entity",
@@ -18291,23 +17798,6 @@
    "excerpt": "20261031 env 02 ดีเอสไอตรวจฟาร์มไก่เอกชนที่เพชรบูรณ์ พื้นที่ครอบครองราว 1,778 ไร่ เป็นเขต ส.ป.ก. 1,043 ไร่ จ่อรับเป็นคดีพิเศษหากพบบุกรุก",
    "path": "30_Entities/Units/ส.ป.ก..md",
    "degree": 1
-  },
-  {
-   "id": "30_Entities/Units/สตม.",
-   "title": "สตม.",
-   "kind": "entity",
-   "folder": "30_Entities/Units",
-   "entity_group": "หน่วย",
-   "date": null,
-   "case_id": null,
-   "crime_type": null,
-   "bureau": null,
-   "area": null,
-   "status": null,
-   "tags": [],
-   "excerpt": "20261024 transnat 01 สตม.ทลายรังแก๊งคอลเซ็นเตอร์ เว็บพนันจีน \"หงก้วน\" ย่านสายไหม จับ 14 ราย เสียหายกว่า 100 ล้าน 20261024 transnat 02 จับชายจีนถือหนังสือเดินทางกัมพูชา คดีฉ้อโกงลงทุนคริปโตเสียหายกว่า 100 ล้าน 20261024 transnat 03 ตม.รวบนักธุรกิจหญิงจีน หนีหมายจับคดีศุลกากร เสียหายกว่า 500 ล้านบาท 20261025 drug 01 บช.น. สตม. จับชายต่างชาติวัย 54 ปี ในคอนโดห้…",
-   "path": "30_Entities/Units/สตม..md",
-   "degree": 5
   },
   {
    "id": "30_Entities/Units/สถานีตำรวจพัทยา",
@@ -20469,23 +19959,6 @@
    "degree": 1
   },
   {
-   "id": "30_Entities/Units/สำนักงาน ป.ป.ท.",
-   "title": "สำนักงาน ป.ป.ท.",
-   "kind": "entity",
-   "folder": "30_Entities/Units",
-   "entity_group": "หน่วย",
-   "date": null,
-   "case_id": null,
-   "crime_type": null,
-   "bureau": null,
-   "area": null,
-   "status": null,
-   "tags": [],
-   "excerpt": "20261028 corrupt 01 ป.ป.ท. ร่วม สภ.สวรรคโลก จับอดีตพนักงานไปรษณีย์ระดับ 7 ตามหมายจับศาลอาญาคดีทุจริตภาค 6 ข้อหายักยอกเงินค่าพัสดุเก็บเงินปลายทางและเงินในตู้นิรภัย รวม 210,738 บาท",
-   "path": "30_Entities/Units/สำนักงาน ป.ป.ท..md",
-   "degree": 1
-  },
-  {
    "id": "30_Entities/Units/สำนักงาน ป.ป.ส. ภาค 7",
    "title": "สำนักงาน ป.ป.ส. ภาค 7",
    "kind": "entity",
@@ -20501,23 +19974,6 @@
    "excerpt": "20261102 drug 02 ป.ป.ส. ภาค 7 ร่วมหลายหน่วยล้อมตรวจปาร์ตี้บนแพที่แควน้อย กาญจนบุรี ตรวจปัสสาวะผู้ร่วมงาน 14 ราย พบสารเสพติด 8 ราย จับ 2 ผู้ต้องหาครอบครองยาเสพติด",
    "path": "30_Entities/Units/สำนักงาน ป.ป.ส. ภาค 7.md",
    "degree": 1
-  },
-  {
-   "id": "30_Entities/Units/สำนักงาน ป.ป.ส.",
-   "title": "สำนักงาน ป.ป.ส.",
-   "kind": "entity",
-   "folder": "30_Entities/Units",
-   "entity_group": "หน่วย",
-   "date": null,
-   "case_id": null,
-   "crime_type": null,
-   "bureau": null,
-   "area": null,
-   "status": null,
-   "tags": [],
-   "excerpt": "20261026 drug line 01 ป.ป.ส. จับตำรวจสังกัด ภ.6 พร้อมพวก 1 ราย พิษณุโลก ยึดยาบ้า 87 เม็ด ไอซ์ 0.92 กรั 20261029 drug 05 สำนักงาน ป.ป.ส. เผย ศาลจังหวัดบึงกาฬพิพากษาจำคุกตลอดชีวิต 4 จำเลย คดีเครือข่ายค้ายาข้ามชาติ \"ภูเวียง\" รวมอดีตตำรวจ ภ.4 หลังยึดยาบ้า 1.59 ล้านเม็ด 20261029 transnat 02 ป.ป.ส. ร่วมประชุมคณะทำงานย่อย BIMSTEC ครั้งที่ 10 ที่ธากา ประเมินยาบ้าแล…",
-   "path": "30_Entities/Units/สำนักงาน ป.ป.ส..md",
-   "degree": 6
   },
   {
    "id": "30_Entities/Units/สำนักงานการสอบสวน (อสส.)",
@@ -20552,23 +20008,6 @@
    "excerpt": "20261029 human 03 ตม.จว.เพชรบุรีร่วมจัดหางานจังหวัด ตรวจพบแรงงานเมียนมา 3 คน ที่เขาย้อย คนหนึ่งอยู่เกินกำหนด 109 วัน อีกคนหลุดระบบใบอนุญาตทำงาน ผู้ให้พักพิงถูกแจ้งข้อหาช่วยเหลือผู้กระทำผิด",
    "path": "30_Entities/Units/สำนักงานจัดหางานจังหวัดเพชรบุรี.md",
    "degree": 1
-  },
-  {
-   "id": "30_Entities/Units/สำนักงานตำรวจแห่งชาติ",
-   "title": "สำนักงานตำรวจแห่งชาติ",
-   "kind": "entity",
-   "folder": "30_Entities/Units",
-   "entity_group": "หน่วย",
-   "date": null,
-   "case_id": null,
-   "crime_type": null,
-   "bureau": null,
-   "area": null,
-   "status": null,
-   "tags": [],
-   "excerpt": "20261024 police 01 โผตำรวจ ปี 69 ผบ.ตร.สั่งแต่งตั้ง รอง ผบก. ถึง สว. ยึดอาวุโสควบผลงานจริง ขีดเส้น 30 พ.ย. 20261026 police 01 ผบ.ตร. สั่งตำรวจจราจรทั่วประเทศงดสวมหมวกคลุมใบหน้า ย้ำ “ตักเตือนก่อนปรับ” และปรับแบบขั้นบันได ตามหนังสือสั่งการ ศจร.ตร. 20261029 drug 01 ตำรวจ บก.น.1 จับ 2 ผู้ต้องหาขนไอซ์ 210 กก. ซุกกระสอบในรถตู้ที่ปั๊มน้ำมันถนนกาญจนาภิเษก บางบอน ผบ…",
-   "path": "30_Entities/Units/สำนักงานตำรวจแห่งชาติ.md",
-   "degree": 6
   },
   {
    "id": "30_Entities/Units/สำนักงานที่ดินจังหวัดเพชรบูรณ์",
@@ -20670,7 +20109,7 @@
    "tags": [],
    "excerpt": "20261027 human 02 รองอัยการสูงสุดนำคณะอัยการไทยและผู้แทน สปป.ลาวศึกษาดูงานต่อต้านการแสวงหาประโยชน์ทางเพศจากเด็กทางออนไลน์ที่ออสเตรเลีย ภายใต้โครงการ MAP TNC 20261029 corrupt 01 โฆษก อสส. ชี้แจงคลิปเสียงอ้างเป็นอัยการช่วยพลิกคดีได้ ผู้พูดไม่ใช่พนักงานอัยการแต่เป็นอดีตอัยการที่ ก.อ. มีมติให้ออกจากราชการ ผู้เสียหายยื่น ป.ป.ช. แล้ว 20261029 police 04 อธิบดีอัยก…",
    "path": "30_Entities/Units/สำนักงานอัยการสูงสุด.md",
-   "degree": 5
+   "degree": 6
   },
   {
    "id": "30_Entities/Units/สืบนครบาล 2",
@@ -21180,6 +20619,40 @@
    "tags": [],
    "excerpt": "หน้ารวมประเภทคดี ใช้เป็นคุณสมบัติของคดี ไม่ฝังรายการ คดี ทั้งคลัง กรองใน Bases จาก crime type แทน 20261030 other 01 ศาลอุทธรณ์ภาค 4 อ่านคำพิพากษาคดีหมิ่นประมาทโดยการโฆษณาปมเงิน 25 ล้านบาท แก้โทษจำเลย 2 ราย คือทนายตั้มกับนักธุรกิจหญิง คนละ 1 ปีไม่รอลงอาญา ยกฟ้องโจทก์รายหนึ่ง จำเลยหนึ่งได้ปล่อยชั่วคราวระหว่างฎีกา",
    "path": "40_CrimeTypes/อื่น ๆ.md",
+   "degree": 0
+  },
+  {
+   "id": "_system/canonical-entities",
+   "title": "ชื่อมาตรฐาน (canonical entities)",
+   "kind": "other",
+   "folder": "_system",
+   "entity_group": null,
+   "date": null,
+   "case_id": null,
+   "crime_type": null,
+   "bureau": null,
+   "area": null,
+   "status": null,
+   "tags": [],
+   "excerpt": "server อ่านไฟล์นี้ตอน vault build และตอน brain search / brain upsert เพื่อรวมชื่อให้ตรงกัน รูปแบบแต่ละบรรทัด: ชื่อไฟล์ที่ใช้ | ชนิด | aliases (คั่นด้วย ;) ชื่อไฟล์ต้องไม่มีอักขระ / \\ : ? \" < | อาชญากรรมไซเบอร์และออนไลน์ | crime type | CYBER คดีเศรษฐกิจ การเงิน และฟอกเงิน | crime type | ECON ยาเสพติด | crime type | DRUG ค้ามนุษย์ แรงงานผิดกฎหมาย และคุ้มครองเ…",
+   "path": "_system/canonical-entities.md",
+   "degree": 0
+  },
+  {
+   "id": "_system/README",
+   "title": "news-intel vault — คู่มือสั้น",
+   "kind": "other",
+   "folder": "_system",
+   "entity_group": null,
+   "date": null,
+   "case_id": null,
+   "crime_type": null,
+   "bureau": null,
+   "area": null,
+   "status": null,
+   "tags": [],
+   "excerpt": "vault นี้มี สองส่วน แยกกันชัดเจน เพื่อไม่ให้ server กับมนุษย์เขียนทับกัน | ส่วน | โฟลเดอร์ | ใครเขียน | หมายเหตุ | | | | | | | สร้างอัตโนมัติ | 10 Daily , 20 Cases , 30 Entities , 40 CrimeTypes , 50 Trends | server ( vault build ) เท่านั้น | มี generated: true ; แก้ด้วยมือแล้วจะถูกเขียนทับ | | มนุษย์เขียน | 00 Inbox , 60 Notes , 70 Canvas | คุณ | ลิงก์ไปยัง…",
+   "path": "_system/README.md",
    "degree": 0
   },
   {
@@ -24251,7 +23724,7 @@
   },
   {
    "source": "20_Cases/20261022-consumer-n2o-latphrao",
-   "target": "30_Entities/People/บช.น.",
+   "target": "30_Entities/Units/บช.น.",
    "label": "จับโดย"
   },
   {
@@ -24276,7 +23749,7 @@
   },
   {
    "source": "20_Cases/20261022-cyber-dsi-crypto-mining-power",
-   "target": "30_Entities/People/DSI",
+   "target": "30_Entities/Units/ดีเอสไอ",
    "label": "จับโดย"
   },
   {
@@ -24291,7 +23764,7 @@
   },
   {
    "source": "20_Cases/20261022-cyber-dsi-impersonation-bangkok",
-   "target": "30_Entities/People/บช.น.",
+   "target": "30_Entities/Units/บช.น.",
    "label": "สั่งการโดย"
   },
   {
@@ -24306,7 +23779,7 @@
   },
   {
    "source": "20_Cases/20261022-cyber-dsi-mule-account",
-   "target": "30_Entities/People/DSI",
+   "target": "30_Entities/Units/ดีเอสไอ",
    "label": "จับโดย"
   },
   {
@@ -24321,7 +23794,7 @@
   },
   {
    "source": "20_Cases/20261022-cyber-mdes-fake-police-page",
-   "target": "30_Entities/People/กระทรวงดีอี",
+   "target": "30_Entities/Units/กระทรวงดีอี",
    "label": "แจ้งโดย"
   },
   {
@@ -24336,12 +23809,12 @@
   },
   {
    "source": "20_Cases/20261022-cyber-thaicert-vulnerability-alerts",
-   "target": "30_Entities/People/ThaiCERT",
+   "target": "30_Entities/Units/ThaiCERT",
    "label": "แจ้งโดย"
   },
   {
    "source": "20_Cases/20261022-cyber-thaicert-vulnerability-alerts",
-   "target": "30_Entities/People/บช.สอท.",
+   "target": "30_Entities/Units/บช.สอท.",
    "label": "สั่งการโดย"
   },
   {
@@ -24431,7 +23904,7 @@
   },
   {
    "source": "20_Cases/20261022-drug-sisaket-cut-the-cancer-23",
-   "target": "30_Entities/People/บช.ปส.",
+   "target": "30_Entities/Units/บช.ปส.",
    "label": "สั่งการโดย"
   },
   {
@@ -24471,7 +23944,7 @@
   },
   {
    "source": "20_Cases/20261022-econ-loanshark-phitsanulok",
-   "target": "30_Entities/People/บช.สอท.",
+   "target": "30_Entities/Units/บช.สอท.",
    "label": "จับโดย"
   },
   {
@@ -24486,7 +23959,7 @@
   },
   {
    "source": "20_Cases/20261022-gamble-dsi-shuffle",
-   "target": "30_Entities/People/DSI",
+   "target": "30_Entities/Units/ดีเอสไอ",
    "label": "สืบสวนโดย"
   },
   {
@@ -24511,7 +23984,7 @@
   },
   {
    "source": "20_Cases/20261022-gamble-udon-vipgt289",
-   "target": "30_Entities/People/บช.สอท.",
+   "target": "30_Entities/Units/บช.สอท.",
    "label": "จับโดย"
   },
   {
@@ -24556,7 +24029,7 @@
   },
   {
    "source": "20_Cases/20261022-human-sakaeo-nrm",
-   "target": "30_Entities/People/สตม.",
+   "target": "30_Entities/Units/ตม.",
    "label": "จับโดย"
   },
   {
@@ -24596,7 +24069,7 @@
   },
   {
    "source": "20_Cases/20261022-line-cyber-samui-crypto-fraud",
-   "target": "30_Entities/People/บช.สอท.",
+   "target": "30_Entities/Units/บช.สอท.",
    "label": "สั่งการโดย"
   },
   {
@@ -24631,7 +24104,7 @@
   },
   {
    "source": "20_Cases/20261022-line-drug-tak-yaba-750k",
-   "target": "30_Entities/People/บช.ปส.",
+   "target": "30_Entities/Units/บช.ปส.",
    "label": "สั่งการโดย"
   },
   {
@@ -24746,7 +24219,7 @@
   },
   {
    "source": "20_Cases/20261022-police-tourist-police-1155",
-   "target": "30_Entities/People/บช.ทท.",
+   "target": "30_Entities/Units/บช.ทท.",
    "label": "แจ้งโดย"
   },
   {
@@ -24766,7 +24239,7 @@
   },
   {
    "source": "20_Cases/20261022-property-latphrao-copper",
-   "target": "30_Entities/People/บช.น.",
+   "target": "30_Entities/Units/บช.น.",
    "label": "สั่งการโดย"
   },
   {
@@ -24796,7 +24269,7 @@
   },
   {
    "source": "20_Cases/20261022-tourist-dsi-nominee",
-   "target": "30_Entities/People/DSI",
+   "target": "30_Entities/Units/ดีเอสไอ",
    "label": "แจ้งโดย"
   },
   {
@@ -24816,7 +24289,7 @@
   },
   {
    "source": "20_Cases/20261022-tourist-dsi-nominee",
-   "target": "30_Entities/People/ปปง.",
+   "target": "30_Entities/Units/ปปง.",
    "label": "แจ้งโดย"
   },
   {
@@ -24856,7 +24329,7 @@
   },
   {
    "source": "20_Cases/20261022-tourist-pattaya-immigration-drive",
-   "target": "30_Entities/People/ตำรวจท่องเที่ยว",
+   "target": "30_Entities/Units/บช.ทท.",
    "label": "แจ้งโดย"
   },
   {
@@ -24871,7 +24344,7 @@
   },
   {
    "source": "20_Cases/20261022-tourist-pattaya-immigration-drive",
-   "target": "30_Entities/People/สตม.",
+   "target": "30_Entities/Units/ตม.",
    "label": "แจ้งโดย"
   },
   {
@@ -24901,12 +24374,12 @@
   },
   {
    "source": "20_Cases/20261022-transnat-norwegian-redcotice",
-   "target": "30_Entities/People/ตม.",
+   "target": "30_Entities/Units/ตม.",
    "label": "จับโดย"
   },
   {
    "source": "20_Cases/20261022-transnat-pattaya-redcnotice",
-   "target": "30_Entities/People/สตม.",
+   "target": "30_Entities/Units/ตม.",
    "label": "จับโดย"
   },
   {
@@ -25026,7 +24499,7 @@
   },
   {
    "source": "20_Cases/20261023-cyber-01",
-   "target": "30_Entities/People/บช.สอท.",
+   "target": "30_Entities/Units/บช.สอท.",
    "label": "สั่งการโดย"
   },
   {
@@ -25056,7 +24529,7 @@
   },
   {
    "source": "20_Cases/20261023-cyber-02",
-   "target": "30_Entities/People/สตม.",
+   "target": "30_Entities/Units/ตม.",
    "label": "จับโดย"
   },
   {
@@ -25076,7 +24549,7 @@
   },
   {
    "source": "20_Cases/20261023-cyber-03",
-   "target": "30_Entities/People/บช.สอท.",
+   "target": "30_Entities/Units/บช.สอท.",
    "label": "สั่งการโดย"
   },
   {
@@ -25086,22 +24559,22 @@
   },
   {
    "source": "20_Cases/20261023-cyber-04",
-   "target": "30_Entities/People/ThaiCERT",
+   "target": "30_Entities/Units/ThaiCERT",
    "label": "สืบสวนโดย"
   },
   {
    "source": "20_Cases/20261023-cyber-05",
-   "target": "30_Entities/People/กระทรวงดีอี",
+   "target": "30_Entities/Units/กระทรวงดีอี",
    "label": "แจ้งโดย"
   },
   {
    "source": "20_Cases/20261023-cyber-05",
-   "target": "30_Entities/People/บช.สอท.",
+   "target": "30_Entities/Units/บช.สอท.",
    "label": "แจ้งโดย"
   },
   {
    "source": "20_Cases/20261023-cyber-06",
-   "target": "30_Entities/People/ETDA",
+   "target": "30_Entities/Units/ThaiCERT",
    "label": "แจ้งโดย"
   },
   {
@@ -25111,7 +24584,7 @@
   },
   {
    "source": "20_Cases/20261023-cyber-06",
-   "target": "30_Entities/People/กระทรวงดีอี",
+   "target": "30_Entities/Units/กระทรวงดีอี",
    "label": "แจ้งโดย"
   },
   {
@@ -25121,7 +24594,7 @@
   },
   {
    "source": "20_Cases/20261023-drug-02",
-   "target": "30_Entities/People/บช.ปส.",
+   "target": "30_Entities/Units/บช.ปส.",
    "label": "แจ้งโดย"
   },
   {
@@ -25156,7 +24629,7 @@
   },
   {
    "source": "20_Cases/20261023-drug-04",
-   "target": "30_Entities/People/บช.ปส.",
+   "target": "30_Entities/Units/บช.ปส.",
    "label": "สืบสวนโดย"
   },
   {
@@ -25201,12 +24674,12 @@
   },
   {
    "source": "20_Cases/20261023-econ-01",
-   "target": "30_Entities/People/DSI",
+   "target": "30_Entities/Units/ดีเอสไอ",
    "label": "สืบสวนโดย"
   },
   {
    "source": "20_Cases/20261023-econ-01",
-   "target": "30_Entities/People/ปปง.",
+   "target": "30_Entities/Units/ปปง.",
    "label": "สืบสวนโดย"
   },
   {
@@ -25221,7 +24694,7 @@
   },
   {
    "source": "20_Cases/20261023-econ-01",
-   "target": "30_Entities/People/ตม.",
+   "target": "30_Entities/Units/ตม.",
    "label": "สืบสวนโดย"
   },
   {
@@ -25251,7 +24724,7 @@
   },
   {
    "source": "20_Cases/20261023-env-01",
-   "target": "30_Entities/People/ตำรวจทางหลวง",
+   "target": "30_Entities/Units/บก.ทล.",
    "label": "แจ้งโดย"
   },
   {
@@ -25271,7 +24744,7 @@
   },
   {
    "source": "20_Cases/20261023-gamble-01",
-   "target": "30_Entities/People/บช.สอท.",
+   "target": "30_Entities/Units/บช.สอท.",
    "label": "สั่งการโดย"
   },
   {
@@ -25321,7 +24794,7 @@
   },
   {
    "source": "20_Cases/20261023-human-03",
-   "target": "30_Entities/People/กระทรวงดีอี",
+   "target": "30_Entities/Units/กระทรวงดีอี",
    "label": "แจ้งโดย"
   },
   {
@@ -25381,7 +24854,7 @@
   },
   {
    "source": "20_Cases/20261023-other-01",
-   "target": "30_Entities/People/บช.ทท.",
+   "target": "30_Entities/Units/บช.ทท.",
    "label": "สืบสวนโดย"
   },
   {
@@ -25416,7 +24889,7 @@
   },
   {
    "source": "20_Cases/20261023-police-02",
-   "target": "30_Entities/People/บช.ทท.",
+   "target": "30_Entities/Units/บช.ทท.",
    "label": "สืบสวนโดย"
   },
   {
@@ -25426,7 +24899,7 @@
   },
   {
    "source": "20_Cases/20261023-police-03",
-   "target": "30_Entities/People/บช.ทท.",
+   "target": "30_Entities/Units/บช.ทท.",
    "label": "สืบสวนโดย"
   },
   {
@@ -25481,7 +24954,7 @@
   },
   {
    "source": "20_Cases/20261023-police-07",
-   "target": "30_Entities/People/ตำรวจท่องเที่ยว",
+   "target": "30_Entities/Units/บช.ทท.",
    "label": "แจ้งโดย"
   },
   {
@@ -25501,7 +24974,7 @@
   },
   {
    "source": "20_Cases/20261023-police-07",
-   "target": "30_Entities/People/ตม.",
+   "target": "30_Entities/Units/ตม.",
    "label": "แจ้งโดย"
   },
   {
@@ -25511,7 +24984,7 @@
   },
   {
    "source": "20_Cases/20261023-police-08",
-   "target": "30_Entities/People/DSI",
+   "target": "30_Entities/Units/ดีเอสไอ",
    "label": "สืบสวนโดย"
   },
   {
@@ -25606,12 +25079,12 @@
   },
   {
    "source": "20_Cases/20261023-tourist-04",
-   "target": "30_Entities/People/บช.ทท.",
+   "target": "30_Entities/Units/บช.ทท.",
    "label": "สืบสวนโดย"
   },
   {
    "source": "20_Cases/20261023-tourist-04",
-   "target": "30_Entities/People/สตม.",
+   "target": "30_Entities/Units/ตม.",
    "label": "สืบสวนโดย"
   },
   {
@@ -25631,7 +25104,7 @@
   },
   {
    "source": "20_Cases/20261023-transnat-01",
-   "target": "30_Entities/People/สตม.",
+   "target": "30_Entities/Units/ตม.",
    "label": "จับโดย"
   },
   {
@@ -25696,7 +25169,7 @@
   },
   {
    "source": "20_Cases/20261024-consumer-01",
-   "target": "30_Entities/People/บช.น.",
+   "target": "30_Entities/Units/บช.น.",
    "label": "สั่งการโดย"
   },
   {
@@ -25706,7 +25179,7 @@
   },
   {
    "source": "20_Cases/20261024-consumer-01",
-   "target": "30_Entities/Units/กก.ดส. บช.น.",
+   "target": "30_Entities/Units/กก.ดส.บช.น.",
    "label": "จับโดย"
   },
   {
@@ -25716,7 +25189,7 @@
   },
   {
    "source": "20_Cases/20261024-consumer-02",
-   "target": "30_Entities/Units/กองปราบปราม",
+   "target": "30_Entities/Units/บก.ป.",
    "label": "สืบสวนโดย"
   },
   {
@@ -25726,17 +25199,17 @@
   },
   {
    "source": "20_Cases/20261024-cyber-01",
-   "target": "30_Entities/People/ThaiCERT",
+   "target": "30_Entities/Units/ThaiCERT",
    "label": "แจ้งโดย"
   },
   {
    "source": "20_Cases/20261024-cyber-02",
-   "target": "30_Entities/People/ThaiCERT",
+   "target": "30_Entities/Units/ThaiCERT",
    "label": "แจ้งโดย"
   },
   {
    "source": "20_Cases/20261024-cyber-03",
-   "target": "30_Entities/People/บช.สอท.",
+   "target": "30_Entities/Units/บช.สอท.",
    "label": "จับโดย"
   },
   {
@@ -25751,7 +25224,7 @@
   },
   {
    "source": "20_Cases/20261024-cyber-04",
-   "target": "30_Entities/People/ETDA",
+   "target": "30_Entities/Units/ThaiCERT",
    "label": "แจ้งโดย"
   },
   {
@@ -25761,7 +25234,7 @@
   },
   {
    "source": "20_Cases/20261024-cyber-04",
-   "target": "30_Entities/People/กระทรวงดีอี",
+   "target": "30_Entities/Units/กระทรวงดีอี",
    "label": "แจ้งโดย"
   },
   {
@@ -25821,7 +25294,7 @@
   },
   {
    "source": "20_Cases/20261024-econ-01",
-   "target": "30_Entities/People/บช.ทท.",
+   "target": "30_Entities/Units/บช.ทท.",
    "label": "สั่งการโดย"
   },
   {
@@ -25836,12 +25309,12 @@
   },
   {
    "source": "20_Cases/20261024-gamble-01",
-   "target": "30_Entities/People/บช.สอท.",
+   "target": "30_Entities/Units/บช.สอท.",
    "label": "สั่งการโดย"
   },
   {
    "source": "20_Cases/20261024-gamble-01",
-   "target": "30_Entities/Units/ตำรวจไซเบอร์",
+   "target": "30_Entities/Units/บช.สอท.",
    "label": "จับโดย"
   },
   {
@@ -25861,12 +25334,12 @@
   },
   {
    "source": "20_Cases/20261024-other-01",
-   "target": "30_Entities/People/กองบัญชาการตำรวจท่องเที่ยว",
+   "target": "30_Entities/Units/บช.ทท.",
    "label": "แจ้งโดย"
   },
   {
    "source": "20_Cases/20261024-other-01",
-   "target": "30_Entities/People/บช.ทท.",
+   "target": "30_Entities/Units/บช.ทท.",
    "label": "สั่งการโดย"
   },
   {
@@ -25886,7 +25359,7 @@
   },
   {
    "source": "20_Cases/20261024-police-01",
-   "target": "30_Entities/People/สำนักงานตำรวจแห่งชาติ",
+   "target": "30_Entities/Units/ตร.",
    "label": "แจ้งโดย"
   },
   {
@@ -25901,7 +25374,7 @@
   },
   {
    "source": "20_Cases/20261024-property-02",
-   "target": "30_Entities/People/บช.สอท.",
+   "target": "30_Entities/Units/บช.สอท.",
    "label": "จับโดย"
   },
   {
@@ -25971,12 +25444,12 @@
   },
   {
    "source": "20_Cases/20261024-tourist-01",
-   "target": "30_Entities/People/ตำรวจท่องเที่ยว",
+   "target": "30_Entities/Units/บช.ทท.",
    "label": "แจ้งโดย"
   },
   {
    "source": "20_Cases/20261024-tourist-01",
-   "target": "30_Entities/People/บช.ทท.",
+   "target": "30_Entities/Units/บช.ทท.",
    "label": "สั่งการโดย"
   },
   {
@@ -25991,7 +25464,7 @@
   },
   {
    "source": "20_Cases/20261024-transnat-01",
-   "target": "30_Entities/People/สตม.",
+   "target": "30_Entities/Units/ตม.",
    "label": "จับโดย"
   },
   {
@@ -26021,7 +25494,7 @@
   },
   {
    "source": "20_Cases/20261024-transnat-02",
-   "target": "30_Entities/People/สตม.",
+   "target": "30_Entities/Units/ตม.",
    "label": "จับโดย"
   },
   {
@@ -26046,7 +25519,7 @@
   },
   {
    "source": "20_Cases/20261024-transnat-03",
-   "target": "30_Entities/People/สตม.",
+   "target": "30_Entities/Units/ตม.",
    "label": "จับโดย"
   },
   {
@@ -26060,13 +25533,8 @@
    "label": "สั่งการโดย"
   },
   {
-   "source": "20_Cases/20261024-transnat-03",
-   "target": "30_Entities/People/ตม.",
-   "label": "จับโดย"
-  },
-  {
    "source": "20_Cases/20261024-transnat-04",
-   "target": "30_Entities/People/บช.สอท.",
+   "target": "30_Entities/Units/บช.สอท.",
    "label": "สั่งการโดย"
   },
   {
@@ -26106,7 +25574,7 @@
   },
   {
    "source": "20_Cases/20261024-violent-04",
-   "target": "30_Entities/People/บช.น.",
+   "target": "30_Entities/Units/บช.น.",
    "label": "สั่งการโดย"
   },
   {
@@ -26171,7 +25639,7 @@
   },
   {
    "source": "20_Cases/20261025-cyber-02",
-   "target": "30_Entities/People/บช.สอท.",
+   "target": "30_Entities/Units/บช.สอท.",
    "label": "จับโดย"
   },
   {
@@ -26206,7 +25674,7 @@
   },
   {
    "source": "20_Cases/20261025-drug-01",
-   "target": "30_Entities/People/บช.น.",
+   "target": "30_Entities/Units/บช.น.",
    "label": "จับโดย"
   },
   {
@@ -26221,7 +25689,7 @@
   },
   {
    "source": "20_Cases/20261025-drug-01",
-   "target": "30_Entities/People/สตม.",
+   "target": "30_Entities/Units/ตม.",
    "label": "จับโดย"
   },
   {
@@ -26291,7 +25759,7 @@
   },
   {
    "source": "20_Cases/20261025-drug-04",
-   "target": "30_Entities/People/บช.ปส.",
+   "target": "30_Entities/Units/บช.ปส.",
    "label": "จับโดย"
   },
   {
@@ -26346,7 +25814,7 @@
   },
   {
    "source": "20_Cases/20261025-drug-07",
-   "target": "30_Entities/People/บช.ปส.",
+   "target": "30_Entities/Units/บช.ปส.",
    "label": "สั่งการโดย"
   },
   {
@@ -26421,7 +25889,7 @@
   },
   {
    "source": "20_Cases/20261025-human-02",
-   "target": "30_Entities/People/บช.ทท.",
+   "target": "30_Entities/Units/บช.ทท.",
    "label": "จับโดย"
   },
   {
@@ -26476,7 +25944,7 @@
   },
   {
    "source": "20_Cases/20261025-police-02",
-   "target": "30_Entities/People/บช.ทท.",
+   "target": "30_Entities/Units/บช.ทท.",
    "label": "แจ้งโดย"
   },
   {
@@ -26511,7 +25979,7 @@
   },
   {
    "source": "20_Cases/20261025-tourist-01",
-   "target": "30_Entities/People/สตม.",
+   "target": "30_Entities/Units/ตม.",
    "label": "สืบสวนโดย"
   },
   {
@@ -26536,7 +26004,7 @@
   },
   {
    "source": "20_Cases/20261025-violent-01",
-   "target": "30_Entities/People/บช.น.",
+   "target": "30_Entities/Units/บช.น.",
    "label": "สั่งการโดย"
   },
   {
@@ -26706,7 +26174,7 @@
   },
   {
    "source": "20_Cases/20261026-drug-01",
-   "target": "30_Entities/People/สตม.",
+   "target": "30_Entities/Units/ตม.",
    "label": "แจ้งโดย"
   },
   {
@@ -26731,7 +26199,7 @@
   },
   {
    "source": "20_Cases/20261026-drug-02",
-   "target": "30_Entities/People/บช.ปส.",
+   "target": "30_Entities/Units/บช.ปส.",
    "label": "สั่งการโดย"
   },
   {
@@ -26746,7 +26214,7 @@
   },
   {
    "source": "20_Cases/20261026-drug-line-01",
-   "target": "30_Entities/Units/สำนักงาน ป.ป.ส.",
+   "target": "30_Entities/Units/ป.ป.ส.",
    "label": "จับโดย"
   },
   {
@@ -26766,17 +26234,17 @@
   },
   {
    "source": "20_Cases/20261026-gamble-01",
-   "target": "30_Entities/People/DSI",
+   "target": "30_Entities/Units/ดีเอสไอ",
    "label": "แจ้งโดย"
   },
   {
    "source": "20_Cases/20261026-gamble-01",
-   "target": "30_Entities/People/กระทรวงดิจิทัลเพื่อเศรษฐกิจและสังคม",
+   "target": "30_Entities/Units/กระทรวงดีอี",
    "label": "แจ้งโดย"
   },
   {
    "source": "20_Cases/20261026-gamble-01",
-   "target": "30_Entities/People/บช.สอท.",
+   "target": "30_Entities/Units/บช.สอท.",
    "label": "แจ้งโดย"
   },
   {
@@ -26811,7 +26279,7 @@
   },
   {
    "source": "20_Cases/20261026-human-02",
-   "target": "30_Entities/People/บช.น.",
+   "target": "30_Entities/Units/บช.น.",
    "label": "สั่งการโดย"
   },
   {
@@ -26836,7 +26304,7 @@
   },
   {
    "source": "20_Cases/20261026-police-01",
-   "target": "30_Entities/People/บช.น.",
+   "target": "30_Entities/Units/บช.น.",
    "label": "แจ้งโดย"
   },
   {
@@ -26851,7 +26319,7 @@
   },
   {
    "source": "20_Cases/20261026-police-01",
-   "target": "30_Entities/People/สำนักงานตำรวจแห่งชาติ",
+   "target": "30_Entities/Units/ตร.",
    "label": "แจ้งโดย"
   },
   {
@@ -26936,7 +26404,7 @@
   },
   {
    "source": "20_Cases/20261026-violent-02",
-   "target": "30_Entities/People/บช.น.",
+   "target": "30_Entities/Units/บช.น.",
    "label": "สั่งการโดย"
   },
   {
@@ -27111,7 +26579,7 @@
   },
   {
    "source": "20_Cases/20261027-econ-01",
-   "target": "30_Entities/Units/DSI",
+   "target": "30_Entities/Units/ดีเอสไอ",
    "label": "แจ้งโดย"
   },
   {
@@ -27216,7 +26684,7 @@
   },
   {
    "source": "20_Cases/20261027-env-01",
-   "target": "30_Entities/Units/DSI",
+   "target": "30_Entities/Units/ดีเอสไอ",
    "label": "สืบสวนโดย"
   },
   {
@@ -27251,7 +26719,7 @@
   },
   {
    "source": "20_Cases/20261027-gamble-01",
-   "target": "30_Entities/Units/DSI",
+   "target": "30_Entities/Units/ดีเอสไอ",
    "label": "สืบสวนโดย"
   },
   {
@@ -27686,7 +27154,7 @@
   },
   {
    "source": "20_Cases/20261028-corrupt-01",
-   "target": "30_Entities/Units/สำนักงาน ป.ป.ท.",
+   "target": "30_Entities/Units/ป.ป.ท.",
    "label": "จับโดย"
   },
   {
@@ -27901,7 +27369,7 @@
   },
   {
    "source": "20_Cases/20261028-env-01",
-   "target": "30_Entities/Units/กรมสอบสวนคดีพิเศษ (DSI)",
+   "target": "30_Entities/Units/ดีเอสไอ",
    "label": "สืบสวนโดย"
   },
   {
@@ -27916,7 +27384,7 @@
   },
   {
    "source": "20_Cases/20261028-gamble-01",
-   "target": "30_Entities/Units/DSI",
+   "target": "30_Entities/Units/ดีเอสไอ",
    "label": "สืบสวนโดย"
   },
   {
@@ -27936,7 +27404,7 @@
   },
   {
    "source": "20_Cases/20261028-human-01",
-   "target": "30_Entities/Units/สตม.",
+   "target": "30_Entities/Units/ตม.",
    "label": "จับโดย"
   },
   {
@@ -28036,7 +27504,7 @@
   },
   {
    "source": "20_Cases/20261028-police-01",
-   "target": "30_Entities/Units/กองบัญชาการตำรวจท่องเที่ยว",
+   "target": "30_Entities/Units/บช.ทท.",
    "label": "สั่งการโดย"
   },
   {
@@ -28471,7 +27939,7 @@
   },
   {
    "source": "20_Cases/20261029-drug-05",
-   "target": "30_Entities/Units/สำนักงาน ป.ป.ส.",
+   "target": "30_Entities/Units/ป.ป.ส.",
    "label": "สืบสวนโดย"
   },
   {
@@ -28646,7 +28114,7 @@
   },
   {
    "source": "20_Cases/20261029-econ-03",
-   "target": "30_Entities/Units/สำนักงานตำรวจแห่งชาติ",
+   "target": "30_Entities/Units/ตร.",
    "label": "สืบสวนโดย"
   },
   {
@@ -28656,7 +28124,7 @@
   },
   {
    "source": "20_Cases/20261029-econ-03",
-   "target": "30_Entities/Units/DSI",
+   "target": "30_Entities/Units/ดีเอสไอ",
    "label": "สั่งการโดย"
   },
   {
@@ -28676,7 +28144,7 @@
   },
   {
    "source": "20_Cases/20261029-econ-03",
-   "target": "30_Entities/Places/กองบัญชาการตำรวจแห่งชาติ",
+   "target": "30_Entities/Units/ตร.",
    "label": "เกิดที่"
   },
   {
@@ -28821,7 +28289,7 @@
   },
   {
    "source": "20_Cases/20261029-police-01",
-   "target": "30_Entities/Units/สำนักงานตำรวจแห่งชาติ",
+   "target": "30_Entities/Units/ตร.",
    "label": "แจ้งโดย"
   },
   {
@@ -28876,7 +28344,7 @@
   },
   {
    "source": "20_Cases/20261029-police-03",
-   "target": "30_Entities/Units/สำนักงานตำรวจแห่งชาติ",
+   "target": "30_Entities/Units/ตร.",
    "label": "สั่งการโดย"
   },
   {
@@ -28921,7 +28389,7 @@
   },
   {
    "source": "20_Cases/20261029-police-04",
-   "target": "30_Entities/People/อัยการสูงสุด",
+   "target": "30_Entities/Units/สำนักงานอัยการสูงสุด",
    "label": "เกี่ยวข้องกับบุคคล"
   },
   {
@@ -28931,7 +28399,7 @@
   },
   {
    "source": "20_Cases/20261029-police-05",
-   "target": "30_Entities/Units/สำนักงานตำรวจแห่งชาติ",
+   "target": "30_Entities/Units/ตร.",
    "label": "แจ้งโดย"
   },
   {
@@ -28986,7 +28454,7 @@
   },
   {
    "source": "20_Cases/20261029-transnat-01",
-   "target": "30_Entities/Units/สตม.",
+   "target": "30_Entities/Units/ตม.",
    "label": "จับโดย"
   },
   {
@@ -29011,7 +28479,7 @@
   },
   {
    "source": "20_Cases/20261029-transnat-02",
-   "target": "30_Entities/Units/สำนักงาน ป.ป.ส.",
+   "target": "30_Entities/Units/ป.ป.ส.",
    "label": "สั่งการโดย"
   },
   {
@@ -29371,7 +28839,7 @@
   },
   {
    "source": "20_Cases/20261030-drug-05",
-   "target": "30_Entities/Units/สำนักงาน ป.ป.ส.",
+   "target": "30_Entities/Units/ป.ป.ส.",
    "label": "สั่งการโดย"
   },
   {
@@ -29426,7 +28894,7 @@
   },
   {
    "source": "20_Cases/20261030-gamble-01",
-   "target": "30_Entities/Units/DSI",
+   "target": "30_Entities/Units/ดีเอสไอ",
    "label": "สืบสวนโดย"
   },
   {
@@ -29456,7 +28924,7 @@
   },
   {
    "source": "20_Cases/20261030-human-01",
-   "target": "30_Entities/Units/DSI",
+   "target": "30_Entities/Units/ดีเอสไอ",
    "label": "จับโดย"
   },
   {
@@ -29496,7 +28964,7 @@
   },
   {
    "source": "20_Cases/20261030-human-02",
-   "target": "30_Entities/Units/สตม.",
+   "target": "30_Entities/Units/ตม.",
    "label": "สั่งการโดย"
   },
   {
@@ -29611,7 +29079,7 @@
   },
   {
    "source": "20_Cases/20261030-tourist-01",
-   "target": "30_Entities/Units/สตม.",
+   "target": "30_Entities/Units/ตม.",
    "label": "สั่งการโดย"
   },
   {
@@ -29681,12 +29149,12 @@
   },
   {
    "source": "20_Cases/20261030-transnat-01",
-   "target": "30_Entities/Units/DSI",
+   "target": "30_Entities/Units/ดีเอสไอ",
    "label": "แจ้งโดย"
   },
   {
    "source": "20_Cases/20261030-transnat-01",
-   "target": "30_Entities/Units/สำนักงาน ป.ป.ส.",
+   "target": "30_Entities/Units/ป.ป.ส.",
    "label": "แจ้งโดย"
   },
   {
@@ -29876,7 +29344,7 @@
   },
   {
    "source": "20_Cases/20261031-cyber-05",
-   "target": "30_Entities/Units/CIB",
+   "target": "30_Entities/Units/บช.ก.",
    "label": "สั่งการโดย"
   },
   {
@@ -29931,7 +29399,7 @@
   },
   {
    "source": "20_Cases/20261031-drug-02",
-   "target": "30_Entities/Units/DSI",
+   "target": "30_Entities/Units/ดีเอสไอ",
    "label": "จับโดย"
   },
   {
@@ -30036,7 +29504,7 @@
   },
   {
    "source": "20_Cases/20261031-env-02",
-   "target": "30_Entities/Units/DSI",
+   "target": "30_Entities/Units/ดีเอสไอ",
    "label": "สืบสวนโดย"
   },
   {
@@ -30066,7 +29534,7 @@
   },
   {
    "source": "20_Cases/20261031-human-01",
-   "target": "30_Entities/Units/ศูนย์ต่อต้านการค้ามนุษย์ ตร.",
+   "target": "30_Entities/Units/ศตคม.ตร.",
    "label": "สั่งการโดย"
   },
   {
@@ -30136,12 +29604,12 @@
   },
   {
    "source": "20_Cases/20261031-police-01",
-   "target": "30_Entities/Units/สำนักงานตำรวจแห่งชาติ",
+   "target": "30_Entities/Units/ตร.",
    "label": "สั่งการโดย"
   },
   {
    "source": "20_Cases/20261031-police-01",
-   "target": "30_Entities/Places/สำนักงานตำรวจแห่งชาติ",
+   "target": "30_Entities/Units/ตร.",
    "label": "เกิดที่"
   },
   {
@@ -30251,7 +29719,7 @@
   },
   {
    "source": "20_Cases/20261031-tourist-02",
-   "target": "30_Entities/Units/สตม.",
+   "target": "30_Entities/Units/ตม.",
    "label": "สั่งการโดย"
   },
   {
@@ -30276,7 +29744,7 @@
   },
   {
    "source": "20_Cases/20261101-corrupt-01",
-   "target": "30_Entities/Units/DSI",
+   "target": "30_Entities/Units/ดีเอสไอ",
    "label": "สืบสวนโดย"
   },
   {
@@ -30481,7 +29949,7 @@
   },
   {
    "source": "20_Cases/20261101-econ-01",
-   "target": "30_Entities/Places/กองบัญชาการตำรวจสอบสวนกลาง",
+   "target": "30_Entities/Units/บช.ก.",
    "label": "เกิดที่"
   },
   {
@@ -30511,7 +29979,7 @@
   },
   {
    "source": "20_Cases/20261101-police-01",
-   "target": "30_Entities/Units/สำนักงานตำรวจแห่งชาติ",
+   "target": "30_Entities/Units/ตร.",
    "label": "สั่งการโดย"
   },
   {
@@ -30831,7 +30299,7 @@
   },
   {
    "source": "20_Cases/20261102-econ-01",
-   "target": "30_Entities/Units/ธนาคารแห่งประเทศไทย",
+   "target": "30_Entities/Units/ธปท.",
    "label": "แจ้งโดย"
   },
   {
@@ -30856,7 +30324,7 @@
   },
   {
    "source": "20_Cases/20261102-econ-02",
-   "target": "30_Entities/Places/บก.ปอศ.",
+   "target": "30_Entities/Units/บก.ปอศ.",
    "label": "เกิดที่"
   },
   {
@@ -30886,7 +30354,7 @@
   },
   {
    "source": "20_Cases/20261102-econ-03",
-   "target": "30_Entities/Units/กองปราบปราม",
+   "target": "30_Entities/Units/บก.ป.",
    "label": "สืบสวนโดย"
   },
   {
@@ -31246,7 +30714,7 @@
   },
   {
    "source": "20_Cases/20261103-drug-02",
-   "target": "30_Entities/Units/สำนักงาน ป.ป.ส.",
+   "target": "30_Entities/Units/ป.ป.ส.",
    "label": "แจ้งโดย"
   },
   {
@@ -31266,7 +30734,7 @@
   },
   {
    "source": "20_Cases/20261103-econ-01",
-   "target": "30_Entities/Units/กรมสอบสวนคดีพิเศษ",
+   "target": "30_Entities/Units/ดีเอสไอ",
    "label": "สืบสวนโดย"
   },
   {

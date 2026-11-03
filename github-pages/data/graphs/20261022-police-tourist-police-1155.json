@@ -1,13 +1,13 @@
 {
  "case_id": "20261022-police-tourist-police-1155",
  "title": "ตำรวจท่องเที่ยวเดินหน้าดูแลนักท่องเที่ยวชาวจีนและทั่วโลก ย้ำสายด่วน 1155 ตลอด 24 ชั่วโมง",
- "generated_at": "2026-11-03T02:30:04.396Z",
+ "generated_at": "2026-11-03T02:57:33.454Z",
  "node_count": 4,
  "edge_count": 3,
  "relations": [
   {
    "label": "แจ้งโดย",
-   "target_id": "30_Entities/People/บช.ทท.",
+   "target_id": "30_Entities/Units/บช.ทท.",
    "target_title": "บช.ทท.",
    "direction": "out"
   },
