@@ -1402,6 +1402,14 @@ body.is-brain .site-footer {
   white-space: pre-wrap;
 }
 
+.rag-llm {
+  margin-top: 0.75rem;
+  padding: 0.75rem 0.8rem;
+  border: 1px solid var(--teal);
+  border-radius: var(--radius);
+  background: #fff;
+}
+
 .rag-evidence {
   margin-top: 0.7rem;
 }

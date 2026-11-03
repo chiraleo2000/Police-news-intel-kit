@@ -959,7 +959,7 @@
 
   function renderResult(result, opts = {}) {
     if (!result?.ok && result?.caseCount == null) {
-      return `<div class="rag-answer"><p class="brain-kind">คำตอบจากกราฟ</p><h3>ไม่พบข้อมูลที่ตรงกัน</h3><p>${escapeHtml(result?.message || "ไม่รายงานจำนวน")}</p></div>`;
+      return `<div class="rag-answer"><p class="brain-kind">หลักฐานที่ค้นจากกราฟรอบนี้</p><h3>ไม่พบข้อมูลที่ตรงกัน</h3><p>${escapeHtml(result?.message || "ไม่รายงานจำนวน")}</p></div>`;
     }
     const warnings = (result.warnings || [])
       .map((w) => `<p class="rag-warn">${escapeHtml(w)}</p>`)
@@ -1025,7 +1025,8 @@
       .join("");
     const listTitle = result.intent === "timeline" ? "ลำดับข่าว" : "ข่าวที่ตรงเงื่อนไข";
     return `<div class="rag-answer">
-      <p class="brain-kind">คำตอบจากกราฟ</p>
+      <p class="brain-kind">หลักฐานที่ค้นจากกราฟรอบนี้</p>
+      <p class="muted">สรุปการค้นนี้สร้างจากโหนดและข่าวที่ตรงคำถามรอบนี้ ไม่ใช่ข้อความสำเร็จรูป</p>
       <h3>${escapeHtml(result.message || "")}</h3>
       ${warnings}
       ${holderBlock}
@@ -1083,13 +1084,11 @@
           href: item.href,
         })),
       })),
-      evidence: (result.evidence || []).map((item) => ({
+      evidence: (result.evidence || []).slice(0, 12).map((item) => ({
         title: item.title,
-        excerpt: item.excerpt,
+        excerpt: String(item.excerpt || "").slice(0, 180),
         date: item.date,
         href: item.href,
-        pdf: item.pdf,
-        infographic: item.infographic,
         position: item.position || "",
       })),
     };
@@ -1116,6 +1115,7 @@
         body: JSON.stringify({
           model: LLM_MODEL,
           temperature: 0.2,
+          max_tokens: 1024,
           messages,
         }),
       });
@@ -1287,15 +1287,15 @@
       window.BrainGraph?.clearFocus?.();
     }
     const evidence = renderResult(result, { focus: true });
-    assistant.innerHTML = `<div class="rag-evidence-live">${evidence}</div><p class="muted">กำลังให้โมเดลวิเคราะห์จากหลักฐาน…</p>`;
-    log.scrollTop = log.scrollHeight;
+    assistant.innerHTML = `<details class="rag-evidence" open><summary>หลักฐานจากกราฟ · โหนด ความเชื่อมโยง และข่าวที่เกี่ยวข้อง</summary>${evidence}</details><section class="rag-llm"><p class="brain-kind">ผลจากโมเดล</p><p class="muted">กำลังให้โมเดลเขียนจากหลักฐานด้านบน…</p></section>`;
+    assistant.querySelector(".rag-llm")?.scrollIntoView({ block: "nearest" });
     const reply = await askModel(question, result);
     thread.push({ question, result, llmText: reply.ok ? reply.text : "" });
     const analysis = reply.ok
       ? `<p class="rag-narration-body">${escapeHtml(reply.text)}</p>`
-      : `<p class="rag-warn">${escapeHtml(reply.reason || "เรียกโมเดลไม่สำเร็จ — ยังใช้หลักฐานจากกราฟด้านล่างได้")}</p>`;
-    assistant.innerHTML = `${analysis}<details class="rag-evidence" open><summary>หลักฐานจากกราฟ · โหนด ความเชื่อมโยง และข่าวที่เกี่ยวข้อง</summary>${evidence}</details>`;
-    log.scrollTop = log.scrollHeight;
+      : `<p class="rag-warn">${escapeHtml(reply.reason || "เรียกโมเดลไม่สำเร็จ — หลักฐานด้านบนยังใช้ได้")}</p>`;
+    assistant.innerHTML = `<details class="rag-evidence"><summary>หลักฐานจากกราฟ · โหนด ความเชื่อมโยง และข่าวที่เกี่ยวข้อง</summary>${evidence}</details><section class="rag-llm"><p class="brain-kind">ผลจากโมเดล</p>${analysis}</section>`;
+    assistant.querySelector(".rag-llm")?.scrollIntoView({ block: "nearest" });
   }
 
   function clearChat() {
