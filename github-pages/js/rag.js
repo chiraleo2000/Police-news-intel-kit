@@ -938,45 +938,49 @@
       for (const id of hub.memberIds) pushFocus(id);
     }
     for (const row of evidenceRows) pushFocus(row.node.id);
-    for (const row of oldRows) pushFocus(row.node.id);
-    for (const kw of keywords) {
-      if (kw.kind !== "crime") continue;
+    if (keepOld) for (const row of oldRows) pushFocus(row.node.id);
+    for (const title of crimeTypes) {
       const crimeNode = [...index.nodesById.values()].find(
-        (node) => node.kind === "crime_type" && norm(node.title) === norm(kw.title)
+        (node) => node.kind === "crime_type" && norm(node.title) === norm(title)
       );
       if (crimeNode) pushFocus(crimeNode.id);
     }
-    const expandedFocus = expandFocusIds(focusIds, index);
-    focusIds.length = 0;
-    for (const id of expandedFocus) focusIds.push(id);
+    if (keepOld) {
+      const expandedFocus = expandFocusIds(focusIds, index);
+      focusIds.length = 0;
+      for (const id of expandedFocus) focusIds.push(id);
+    }
     const quantities = groupQuantities(evidenceRows);
-    const oldLinks = hubs
-      .map((hub) => {
-        const memberIds = new Set(hub.memberIds);
-        const cases = oldEvidence.filter((item) => {
-          const row = oldRows.find((r) => r.node.id === item.nodeId);
-          if (!row) return false;
-          for (const via of row.via) if (memberIds.has(via)) return true;
-          return false;
-        });
-        return {
-          hubTitle: hub.title,
-          entityGroup: hub.entity_group,
-          relation: shareRelation(hub.entity_group),
-          cases: cases.map((item) => ({
-            id: item.id,
-            date: item.date,
-            title: item.title,
-            href: item.href,
-            crime_type: item.crime_type,
-          })),
-        };
-      })
-      .filter((group) => group.cases.length);
+    const oldLinks = keepOld
+      ? hubs
+          .map((hub) => {
+            const memberIds = new Set(hub.memberIds);
+            const cases = oldEvidence.filter((item) => {
+              const row = oldRows.find((r) => r.node.id === item.nodeId);
+              if (!row) return false;
+              for (const via of row.via) if (memberIds.has(via)) return true;
+              return false;
+            });
+            return {
+              hubTitle: hub.title,
+              entityGroup: hub.entity_group,
+              relation: shareRelation(hub.entity_group),
+              cases: cases.map((item) => ({
+                id: item.id,
+                date: item.date,
+                title: item.title,
+                href: item.href,
+                crime_type: item.crime_type,
+              })),
+            };
+          })
+          .filter((group) => group.cases.length)
+      : [];
     const windowNote =
       !dateFrom && !dateTo ? "ทุกวันที่ในคลัง" : `${dateFrom || "…"} ถึง ${dateTo || "…"}`;
-    const names = hubs.length ? hubs.map((hub) => hub.title).join(", ") : positions.join(", ");
+    const names = facetLabels(selectedFacets).join(" · ");
     const primaryHolder = holderHits[0] || null;
+    const matched = filterMode === "and" ? "ตรงทุกเงื่อนไข" : "ตรงเงื่อนไข";
     let message = "";
     if (intent === "office" && primaryHolder) {
       message = `${primaryHolder.name} ดำรงตำแหน่ง${primaryHolder.title}`;
@@ -985,16 +989,25 @@
           ? ` และมีข่าวของ ${primaryHolder.org} ${evidence.length} ข่าว`
           : ` และมีข่าวที่เชื่อมในกราฟ ${evidence.length} ข่าว`;
       }
+      if (filterMode === "and") message += ` · ${matched} ${names}`;
     } else if (!evidence.length) {
-      message = `พบ ${names} แต่ไม่มีข่าวที่ตรงเงื่อนไขในช่วง ${windowNote}`;
+      message = `พบ ${names} แต่ไม่มีข่าวที่${matched}ในช่วง ${windowNote}`;
     } else if (intent === "count") {
-      message = `พบ ${evidence.length} ข่าวที่เชื่อมกับ ${names}`;
+      message =
+        filterMode === "and"
+          ? `พบ ${evidence.length} ข่าวที่${matched} (${names})`
+          : `พบ ${evidence.length} ข่าวที่เชื่อมกับ ${names}`;
     } else if (intent === "timeline") {
-      message = `ลำดับข่าวที่เชื่อมกับ ${names} จำนวน ${evidence.length} ข่าว`;
+      message =
+        filterMode === "and"
+          ? `ลำดับข่าวที่${matched} (${names}) จำนวน ${evidence.length} ข่าว`
+          : `ลำดับข่าวที่เชื่อมกับ ${names} จำนวน ${evidence.length} ข่าว`;
     } else {
-      message = `รายการข่าวที่เชื่อมกับ ${names} จำนวน ${evidence.length} ข่าว`;
+      message =
+        filterMode === "and"
+          ? `รายการข่าวที่${matched} (${names}) จำนวน ${evidence.length} ข่าว`
+          : `รายการข่าวที่เชื่อมกับ ${names} จำนวน ${evidence.length} ข่าว`;
     }
-    if (crimeTypes.length) message += ` · ประเภท ${crimeTypes.join(", ")}`;
     return {
       ok: true,
       message,
@@ -1003,6 +1016,8 @@
       dateFrom,
       dateTo,
       windowNote,
+      filterMode,
+      selectedFacets,
       hubs: hubs.map((hub) => ({
         id: hub.id,
         title: hub.title,
@@ -1078,9 +1093,10 @@
       .map((w) => `<p class="rag-warn">${escapeHtml(w)}</p>`)
       .join("");
     const hubLine = (result.hubs || []).map((h) => escapeHtml(h.title)).join(", ");
-    const crimeLine = (result.crimeTypes || []).length
-      ? ` · ประเภท ${escapeHtml(result.crimeTypes.join(", "))}`
-      : "";
+    const labels = facetLabels(result.selectedFacets);
+    const facetNote = labels.length
+      ? `${escapeHtml(labels.join(" · "))}${result.filterMode === "and" ? " · ทุกเงื่อนไข" : ""}`
+      : `${hubLine}${(result.crimeTypes || []).length ? ` · ประเภท ${escapeHtml(result.crimeTypes.join(", "))}` : ""}`;
     const holderBlock = result.holder?.name
       ? `<p class="rag-holder">ผู้ดำรงตำแหน่งปัจจุบัน <strong>${escapeHtml(result.holder.name)}</strong>${
           result.holder.position ? ` · ${escapeHtml(result.holder.position)}` : ""
@@ -1143,14 +1159,16 @@
       <h3>${escapeHtml(result.message || "")}</h3>
       ${warnings}
       ${holderBlock}
-      <p class="muted">${escapeHtml(result.windowNote || "")}${hubLine ? ` · ${hubLine}` : ""}${crimeLine}</p>
+      <p class="muted">${escapeHtml(result.windowNote || "")}${facetNote ? ` · ${facetNote}` : ""}</p>
       ${countBlock}
       ${qty ? `<section><h4>ตัวเลขจากข้อความข่าว แยกตามหน่วยนับ</h4>${qty}</section>` : ""}
       ${list ? `<section><h4>${listTitle}</h4><ol class="rag-cases">${list}</ol></section>` : ""}
       ${
         old
           ? `<section><h4>ข่าวอื่นที่ร่วมโหนด</h4><p class="muted">เส้นนี้ใช้ในแผงผลลัพธ์และตอนโฟกัส ไม่ได้ลากบนกราฟภาพรวม</p>${old}</section>`
-          : `<p class="muted">ไม่มีข่าวอื่นที่ร่วมโหนดนี้นอกจากรายการด้านบน</p>`
+          : result.filterMode === "and"
+            ? `<p class="muted">แสดงเฉพาะข่าวที่ตรงทุกเงื่อนไขที่เลือก ไม่รวมข่าวที่ร่วมโหนดแต่คนละประเภทหรือคนละหน่วยงาน</p>`
+            : `<p class="muted">ไม่มีข่าวอื่นที่ร่วมโหนดนี้นอกจากรายการด้านบน</p>`
       }
       ${
         opts.focus !== false && (result.focusIds || []).length
@@ -1166,6 +1184,8 @@
       caseCount: result.caseCount,
       crimeTypes: result.crimeTypes || [],
       keywords: result.keywords || [],
+      selectedFacets: result.selectedFacets || {},
+      filterMode: result.filterMode || "single",
       warnings: result.warnings || [],
       window: result.windowNote || "",
       holder: result.holder || null,
@@ -1203,6 +1223,7 @@
         date: item.date,
         href: item.href,
         position: item.position || "",
+        crime_type: item.crime_type || "",
       })),
     };
   }
@@ -1448,9 +1469,10 @@
       window.BrainGraph?.focusOnIds?.(lastFocusIds);
       const meta = document.getElementById("brain-meta");
       if (meta) {
-        const labels = (result.keywords || []).map((item) => item.title).filter(Boolean);
-        const note = labels.length ? labels.slice(0, 4).join(", ") : `${lastFocusIds.length} โหนด`;
-        meta.textContent = `กรองตามคำถาม · ${note}`;
+        const labels = facetLabels(result.selectedFacets);
+        const note = labels.length ? labels.join(" · ") : `${lastFocusIds.length} โหนด`;
+        meta.textContent =
+          result.filterMode === "and" ? `กรองตามคำถาม · ${note} · ทุกเงื่อนไข` : `กรองตามคำถาม · ${note}`;
       }
     } else {
       window.BrainGraph?.clearFocus?.();
