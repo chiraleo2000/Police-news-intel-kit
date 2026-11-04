@@ -8,26 +8,78 @@
   const PERSON_LABELS = new Set(["สั่งการโดย", "เกี่ยวข้องกับบุคคล", "แจ้งโดย", "สืบสวนโดย"]);
   const MEASURE_ORDER = ["เม็ด", "กรัม", "กก.", "กิโลกรัม", "ลิตร", "ล้าน"];
   const TOPIC_GROUPS = [
-    { title: "ฆาตกรรม", terms: ["ฆาตกรรม", "ฆ่า"] },
+    { title: "ฆาตกรรม", terms: ["ฆาตกรรม", "คดีฆ่า", "ลงมือฆ่า", "ฆ่า"] },
     { title: "ทำร้ายร่างกาย", terms: ["ทำร้ายร่างกาย", "ทำร้าย"] },
-    { title: "ชิงทรัพย์", terms: ["ชิงทรัพย์", "ปล้น"] },
-    { title: "ข่มขืน", terms: ["ข่มขืน"] },
-    { title: "ยาบ้า", terms: ["ยาบ้า"] },
-    { title: "ไอซ์", terms: ["ยาไอซ์", "ไอซ์"] },
-    { title: "ฟอกเงิน", terms: ["ฟอกเงิน"] },
-    { title: "บัญชีม้า", terms: ["บัญชีม้า"] },
-    { title: "พนัน", terms: ["พนันออนไลน์", "บ่อนการพนัน", "บ่อน"] },
-    { title: "ค้ามนุษย์", terms: ["ค้ามนุษย์"] },
-    { title: "ไซเบอร์", terms: ["อาชญากรรมไซเบอร์", "ไซเบอร์", "คอลเซ็นเตอร์"] },
+    { title: "ชิงทรัพย์", terms: ["ชิงทรัพย์", "ปล้นทรัพย์", "ปล้น"] },
+    { title: "ลักทรัพย์", terms: ["ลักทรัพย์", "โจรกรรม", "ขโมย"] },
+    { title: "ข่มขืน", terms: ["ข่มขืนกระทำชำเรา", "ข่มขืน"] },
+  ];
+  const CRIME_ALIASES = [
+    {
+      title: "ยาเสพติด",
+      phrases: ["คดียาเสพติด", "ยาเสพติด", "สารเสพติด", "ยาบ้า", "ยาไอซ์", "ไอซ์", "เฮโรอีน", "เคตามีน", "กัญชา", "โคเคน", "ยาอี"],
+    },
+    {
+      title: "อาชญากรรมไซเบอร์และออนไลน์",
+      phrases: ["อาชญากรรมไซเบอร์", "มิจฉาชีพออนไลน์", "คอลเซ็นเตอร์", "แก๊งคอล", "สแกมเมอร์", "ไซเบอร์"],
+    },
+    {
+      title: "พนันและบ่อนผิดกฎหมาย",
+      phrases: ["พนันออนไลน์", "เว็บพนัน", "บ่อนการพนัน", "การพนัน", "บ่อน"],
+    },
+    {
+      title: "ค้ามนุษย์ แรงงานผิดกฎหมาย และคุ้มครองเด็ก",
+      phrases: ["ค้ามนุษย์", "แรงงานเถื่อน", "ลักลอบแรงงาน", "คุ้มครองเด็ก"],
+    },
+    {
+      title: "คดีเศรษฐกิจ การเงิน และฟอกเงิน",
+      phrases: ["ฟอกเงิน", "บัญชีม้า", "หลอกลงทุน", "ฉ้อโกง"],
+    },
+    {
+      title: "ทุจริตและประพฤติมิชอบของเจ้าหน้าที่รัฐ",
+      phrases: ["ประพฤติมิชอบ", "ทุจริต"],
+    },
+    {
+      title: "สิ่งแวดล้อม ทรัพยากร และสัตว์ป่า",
+      phrases: ["สัตว์ป่า", "งาช้าง", "ทรัพยากรธรรมชาติ"],
+    },
+    {
+      title: "อาชญากรรมที่เกี่ยวข้องกับนักท่องเที่ยวและชาวต่างชาติ",
+      phrases: ["นักท่องเที่ยว", "ชาวต่างชาติ"],
+    },
+    {
+      title: "คดีอุกฉกรรจ์ ผู้มีอิทธิพล และอาวุธ",
+      phrases: ["ผู้มีอิทธิพล", "อาวุธปืน", "อาวุธเถื่อน"],
+    },
+    {
+      title: "คดีทรัพย์สิน",
+      phrases: ["คดีทรัพย์สิน", "ทรัพย์สิน"],
+    },
   ];
   const POSITION_ALIASES = [
     { title: "ผู้ช่วย ผบ.ตร.", phrases: ["ผู้ช่วยผู้บัญชาการตำรวจแห่งชาติ", "ผู้ช่วย ผบ.ตร.", "ผช.ผบ.ตร."] },
     { title: "รอง ผบ.ตร.", phrases: ["รองผู้บัญชาการตำรวจแห่งชาติ", "รอง ผบ.ตร."] },
     { title: "ผบ.ตร.", phrases: ["ผู้บัญชาการตำรวจแห่งชาติ", "ผบ.ตร."] },
   ];
+  const SPAN_GUARDS = [
+    "แพร่ระบาด",
+    "การแพร่ระบาด",
+    "แพร่กระจาย",
+    "แพร่เชื้อ",
+    "แพร่หลาย",
+    "แพร่ภาพ",
+    "แพร่ข่าว",
+    "แพร่พันธุ์",
+    "ร่วมฉลอง",
+    "พิธีฉลอง",
+    "ฉลองชัย",
+    "ฉลองปีใหม่",
+    "งานฉลอง",
+    "นาแก้ว",
+  ];
   const LLM_MODEL = "google/gemma-4-e2b";
   const NARRATION_RULE =
-    "คุณตอบภาษาไทยจาก JSON ที่ส่งมาเท่านั้น ห้ามใช้ความรู้ภายนอก ห้ามเรียกเครื่องมือ และห้ามแต่งชื่อ คน ตำแหน่ง หรือตัวเลขที่ไม่มีใน JSON เล่าและนับเฉพาะ evidence ถ้า relatedThroughNodes ว่างห้ามเล่าข่าวอื่น ถ้าคำถามระบุตำแหน่ง ให้ยึด selectedFacets.positions กับ hubs ของตำแหน่งนั้น ห้ามขยายเป็นข่าวทั้งหน่วยงานแม่ ถ้ามี holder ให้บอกชื่อและตำแหน่งจาก holder เท่านั้น ถ้าไม่มีหลักฐานของคนหรือตำแหน่งที่ถามให้บอกว่าไม่มีในคลัง ห้ามรวมหน่วยนับที่ต่างกัน";
+    "คุณตอบภาษาไทยจาก JSON ที่ส่งมาเท่านั้น ห้ามใช้ความรู้ภายนอก ห้ามเรียกเครื่องมือ และห้ามแต่งชื่อ คน ตำแหน่ง หรือตัวเลขที่ไม่มีใน JSON เล่าและนับเฉพาะ evidence ถ้า relatedThroughNodes ว่างห้ามเล่าข่าวอื่น ถ้าคำถามระบุตำแหน่ง ให้ยึด selectedFacets.positions กับ hubs ของตำแหน่งนั้น ห้ามขยายเป็นข่าวทั้งหน่วยงานแม่ ถ้ามี holder ให้บอกชื่อและตำแหน่งจาก holder เท่านั้น ถ้าไม่มีหลักฐานของคนหรือตำแหน่งที่ถามให้บอกว่าไม่มีในคลัง ถ้าถามว่าเกิดขึ้นที่ไหน ให้ใช้ places ใน evidence เท่านั้น ห้ามตีคำธรรมดาเป็นจังหวัดเมื่อไม่อยู่ใน selectedFacets ห้ามรวมหน่วยนับที่ต่างกัน";
 
   const EXAMPLES = [
     "ผมต้องการทราบว่ากรมศุลกากรมีการห้ามปรามการเข้ามาของยาเสพติดตอนนี้ได้จำนวนทั้งหมดเท่าไร่",
@@ -324,12 +376,31 @@
     return positionTitles;
   }
 
+  function rememberPlace(map, nodesById, caseId, otherId) {
+    const caseNode = nodesById.get(caseId);
+    const place = nodesById.get(otherId);
+    if (caseNode?.kind !== "case" || place?.kind !== "entity" || place.entity_group !== "สถานที่") return;
+    const list = map.get(caseId) || [];
+    if (!list.includes(place.title)) list.push(place.title);
+    map.set(caseId, list);
+  }
+
+  function placesByCase(nodesById, edges) {
+    const map = new Map();
+    for (const edge of edges || []) {
+      rememberPlace(map, nodesById, edge.source, edge.target);
+      rememberPlace(map, nodesById, edge.target, edge.source);
+    }
+    return map;
+  }
+
   function buildIndex(graph, posts, alias) {
     const nodes = graph?.nodes || [];
     const edges = graph?.edges || [];
+    const nodesById = new Map(nodes.map((n) => [n.id, n]));
     const { parents, entityParent } = indexParents(nodes, alias);
     return {
-      nodesById: new Map(nodes.map((n) => [n.id, n])),
+      nodesById,
       casesById: new Map(nodes.filter((n) => n.kind === "case").map((n) => [n.id, n])),
       postsById: indexPosts(posts),
       edges,
@@ -338,6 +409,7 @@
       entityParent,
       hubEntities: nodes.filter((n) => n.kind === "entity" && HUB_GROUPS.has(n.entity_group)),
       positionTitles: indexPositions(nodes),
+      placeTitlesByCase: placesByCase(nodesById, edges),
       alias: alias || {},
     };
   }
@@ -422,10 +494,10 @@
     pushCandidate(org, "org", "orgs", parent.title, 3, { key: rule.contains, display: parent.title, rank: 1 });
   }
 
-  function addPositionAliases(person) {
-    for (const alias of POSITION_ALIASES) {
+  function addAliasPhrases(bucket, aliases, kind, facet) {
+    for (const alias of aliases) {
       for (const phrase of alias.phrases) {
-        pushCandidate(person, "position", "positions", alias.title, 2, { key: phrase, display: alias.title, rank: 0 });
+        pushCandidate(bucket, kind, facet, alias.title, 2, { key: phrase, display: alias.title, rank: 0 });
       }
     }
   }
@@ -438,8 +510,9 @@
     for (const ent of index.hubEntities || []) addEntityCandidate(place, org, person, ent);
     for (const parent of index.parents || []) addParentCandidate(org, parent, index);
     for (const title of index.positionTitles || []) pushCandidate(person, "position", "positions", title, 2, { rank: 0 });
-    addPositionAliases(person);
+    addAliasPhrases(person, POSITION_ALIASES, "position", "positions");
     for (const title of index.crimeTypes || []) pushCandidate(crime, "crime", "crimes", title, 3);
+    addAliasPhrases(crime, CRIME_ALIASES, "crime", "crimes");
     const topics = [];
     for (const group of TOPIC_GROUPS) {
       for (const term of group.terms) {
@@ -472,18 +545,28 @@
     }
   }
 
+  function guardCandidates() {
+    return SPAN_GUARDS.map((phrase) => {
+      const key = norm(phrase);
+      return { kind: "guard", facet: "guards", title: phrase, key, len: key.length, rank: 0 };
+    });
+  }
+
   function extractKeywords(question, index) {
     const aliased = applyTitleAliases(question, index.alias);
     const qn = norm(aliased);
     const buckets = keywordBuckets(index);
     const crimeHits = claimPool(qn, buckets.crime);
     const claimed = withoutNestedSpans([
+      ...claimPool(qn, guardCandidates()),
       ...claimPool(qn, buckets.place),
       ...claimPool(qn, buckets.org),
       ...claimPool(qn, buckets.person),
       ...crimeHits,
       ...claimPool(qn, buckets.topics),
-    ]).map(({ kind, facet, title }) => ({ kind, facet, title }));
+    ])
+      .filter((item) => item.kind !== "guard")
+      .map(({ kind, facet, title }) => ({ kind, facet, title }));
     const selectedFacets = facetsFrom(claimed);
     addCrimeFallback(claimed, selectedFacets, crimeHits, aliased, index);
     return {
@@ -752,6 +835,7 @@
       pdf: date ? `downloads/${date}_crime.pdf` : "",
       infographic: date ? `downloads/${date}_infographic.png` : "",
       crime_type: row.node.crime_type || "",
+      places: (index.placeTitlesByCase.get(row.node.id) || []).slice(0, 4),
       labels: [...row.labels],
       org: orgNames(row, index, canonicalTitle),
       position: row.node.position || "",
@@ -1485,10 +1569,11 @@
     const when = item.date ? escapeHtml(item.date) : "";
     const graphWhen = item.graphDate && item.graphDate !== item.date ? ` · วันที่ในกราฟ ${escapeHtml(item.graphDate)}` : "";
     const crime = item.crime_type ? ` · ${escapeHtml(item.crime_type)}` : "";
+    const places = (item.places || []).length ? ` · ${escapeHtml(item.places.join(", "))}` : "";
     const org = item.org ? ` · ${escapeHtml(item.org)}` : "";
     const excerpt = item.excerpt ? `<p>${escapeHtml(item.excerpt)}</p>` : "";
     const fileLine = files ? `<p class="rag-files">${files}</p>` : "";
-    return `<li><a href="${escapeHtml(item.href)}">${escapeHtml(item.title)}</a><p class="muted">${when}${graphWhen}${crime}${org}</p>${excerpt}${fileLine}</li>`;
+    return `<li><a href="${escapeHtml(item.href)}">${escapeHtml(item.title)}</a><p class="muted">${when}${graphWhen}${crime}${places}${org}</p>${excerpt}${fileLine}</li>`;
   }
 
   function oldCaseItem(item) {
@@ -1588,6 +1673,7 @@
         href: item.href,
         position: item.position || "",
         crime_type: item.crime_type || "",
+        places: item.places || [],
       })),
     };
   }
