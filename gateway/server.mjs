@@ -6,8 +6,9 @@ const HOST = "127.0.0.1";
 const DEFAULT_PORT = 8790;
 const ALLOWED_PORTS = new Set(["1234", "8787"]);
 
+const ALLOW_ORIGIN = "https://chiraleo2000.github.io";
 const CORS_HEADERS = {
-  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Origin": ALLOW_ORIGIN,
   "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
   "Access-Control-Allow-Headers": "Content-Type, Authorization, Accept, ngrok-skip-browser-warning",
 };
@@ -51,7 +52,7 @@ function sendJson(res, status, body) {
 }
 
 function routeOf(rawUrl) {
-  const raw = rawUrl && rawUrl.startsWith("/") ? rawUrl : `/${rawUrl || ""}`;
+  const raw = rawUrl?.startsWith("/") ? rawUrl : `/${rawUrl || ""}`;
   const queryAt = raw.indexOf("?");
   const pathname = queryAt === -1 ? raw : raw.slice(0, queryAt);
   const search = queryAt === -1 ? "" : raw.slice(queryAt);

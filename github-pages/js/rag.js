@@ -26,7 +26,10 @@
 
   function norm(s) {
     return String(s ?? "")
-      .replace(/[\u200b\u200c\u200d\ufeff]/g, "")
+      .replaceAll("\u200b", "")
+      .replaceAll("\u200c", "")
+      .replaceAll("\u200d", "")
+      .replaceAll("\ufeff", "")
       .replace(/\s+/g, " ")
       .trim()
       .toLowerCase();
@@ -41,9 +44,7 @@
   }
 
   function parseNum(raw) {
-    let s = String(raw ?? "").trim();
-    if (/^\d{1,3}(,\d{3})+(\.\d+)?$/.test(s)) s = s.replace(/,/g, "");
-    else s = s.replace(/,/g, "");
+    const s = String(raw ?? "").trim().replaceAll(",", "");
     const n = Number(s);
     return Number.isFinite(n) ? n : null;
   }
@@ -227,17 +228,17 @@
     return kept;
   }
 
-  function buildIndex(graph, posts, alias) {
-    const nodes = graph?.nodes || [];
-    const edges = graph?.edges || [];
-    const nodesById = new Map(nodes.map((n) => [n.id, n]));
-    const casesById = new Map(nodes.filter((n) => n.kind === "case").map((n) => [n.id, n]));
+  function indexPosts(posts) {
     const postsById = new Map();
     for (const post of posts || []) {
       if (post?.id) postsById.set(String(post.id), post);
       if (post?.slug) postsById.set(String(post.slug), post);
     }
-    const crimeTypes = [
+    return postsById;
+  }
+
+  function crimeTypeTitles(nodes) {
+    return [
       ...new Set(
         nodes
           .filter((n) => n.kind === "crime_type" && n.title)
@@ -245,59 +246,80 @@
           .concat(nodes.filter((n) => n.kind === "case" && n.crime_type).map((n) => n.crime_type))
       ),
     ];
+  }
+
+  function isParentMember(node, title, token) {
+    if (node.kind !== "entity") return false;
+    const text = norm(node.title);
+    if (title && text === title) return true;
+    return Boolean(token) && text.includes(token);
+  }
+
+  function parentHub(nodes, rule, alias) {
+    const title = norm(rule.title || "");
+    const token = norm(rule.contains || "");
+    const members = nodes.filter((node) => isParentMember(node, title, token));
+    const exact = members
+      .filter((node) => norm(node.title) === title)
+      .sort((a, b) => (b.degree || 0) - (a.degree || 0));
+    const real = exact[0] || null;
+    const id = real?.id || rule.virtual_id || `hub:${rule.title || members.length}`;
+    return {
+      key: id,
+      id,
+      title: rule.title || real?.title || "",
+      entity_group: rule.entity_group || real?.entity_group || "หน่วย",
+      virtual: !real,
+      memberIds: members.map((node) => node.id),
+      roleWarning: roleWarningFor(rule.title || "", alias),
+      position: real?.position || "",
+      current_holder: real?.current_holder || "",
+    };
+  }
+
+  function indexParents(nodes, alias) {
     const parents = [];
     const entityParent = new Map();
     for (const rule of alias?.parents || []) {
-      const title = norm(rule.title || "");
-      const token = norm(rule.contains || "");
-      const members = nodes.filter((n) => {
-        if (n.kind !== "entity") return false;
-        const t = norm(n.title);
-        if (title && t === title) return true;
-        return Boolean(token) && t.includes(token);
-      });
-      const exact = members
-        .filter((n) => norm(n.title) === title)
-        .sort((a, b) => (b.degree || 0) - (a.degree || 0));
-      const real = exact[0] || null;
-      const id = real?.id || rule.virtual_id || `hub:${rule.title || members.length}`;
-      const hub = {
-        key: id,
-        id,
-        title: rule.title || real?.title || "",
-        entity_group: rule.entity_group || real?.entity_group || "หน่วย",
-        virtual: !real,
-        memberIds: members.map((n) => n.id),
-        roleWarning: roleWarningFor(rule.title || "", alias),
-        position: real?.position || "",
-        current_holder: real?.current_holder || "",
-      };
+      const hub = parentHub(nodes, rule, alias);
       parents.push(hub);
-      for (const member of members) {
-        if (!entityParent.has(member.id)) entityParent.set(member.id, hub);
+      for (const id of hub.memberIds) {
+        if (!entityParent.has(id)) entityParent.set(id, hub);
       }
     }
-    const hubEntities = nodes.filter((n) => n.kind === "entity" && HUB_GROUPS.has(n.entity_group));
+    return { parents, entityParent };
+  }
+
+  function collectPositions(node, seenPos, positionTitles) {
+    for (const seg of positionSegments(node.position)) {
+      const key = norm(seg);
+      if (!key || seenPos.has(key)) continue;
+      seenPos.add(key);
+      positionTitles.push(seg);
+    }
+  }
+
+  function indexPositions(nodes) {
     const positionTitles = [];
     const seenPos = new Set();
-    for (const node of nodes) {
-      for (const seg of positionSegments(node.position)) {
-        const key = norm(seg);
-        if (!key || seenPos.has(key)) continue;
-        seenPos.add(key);
-        positionTitles.push(seg);
-      }
-    }
+    for (const node of nodes) collectPositions(node, seenPos, positionTitles);
+    return positionTitles;
+  }
+
+  function buildIndex(graph, posts, alias) {
+    const nodes = graph?.nodes || [];
+    const edges = graph?.edges || [];
+    const { parents, entityParent } = indexParents(nodes, alias);
     return {
-      nodesById,
-      casesById,
-      postsById,
+      nodesById: new Map(nodes.map((n) => [n.id, n])),
+      casesById: new Map(nodes.filter((n) => n.kind === "case").map((n) => [n.id, n])),
+      postsById: indexPosts(posts),
       edges,
-      crimeTypes,
+      crimeTypes: crimeTypeTitles(nodes),
       parents,
       entityParent,
-      hubEntities,
-      positionTitles,
+      hubEntities: nodes.filter((n) => n.kind === "entity" && HUB_GROUPS.has(n.entity_group)),
+      positionTitles: indexPositions(nodes),
       alias: alias || {},
     };
   }
@@ -353,60 +375,81 @@
     ];
   }
 
-  function extractKeywords(question, index) {
-    const aliased = applyTitleAliases(question, index.alias);
-    const qn = norm(aliased);
+  function pushCandidate(bucket, kind, facet, title, minLen, extra = {}) {
+    const text = String(extra.display || title || "").trim();
+    const key = norm(extra.key != null ? extra.key : text);
+    if (!text || key.length < minLen) return;
+    bucket.push({ kind, facet, title: text, key, len: key.length, rank: extra.rank ?? 5 });
+  }
+
+  function addEntityCandidate(place, org, person, ent) {
+    if (ent.entity_group === "สถานที่") {
+      pushCandidate(place, "place", "places", ent.title, 3);
+      return;
+    }
+    if (ent.entity_group === "หน่วย") {
+      pushCandidate(org, "org", "orgs", ent.title, 3, { rank: 2 });
+      return;
+    }
+    if (ent.entity_group !== "บุคคล") return;
+    pushCandidate(person, "person", "people", ent.title, 3, { rank: 1 });
+    if (ent.current_holder) pushCandidate(person, "holder", "people", ent.current_holder, 3, { rank: 2 });
+  }
+
+  function addParentCandidate(org, parent, index) {
+    pushCandidate(org, "org", "orgs", parent.title, 2, { rank: 1 });
+    const rule = (index.alias.parents || []).find((item) => (item.title || "") === parent.title) || {};
+    if (!rule.contains) return;
+    pushCandidate(org, "org", "orgs", parent.title, 3, { key: rule.contains, display: parent.title, rank: 1 });
+  }
+
+  function keywordBuckets(index) {
     const place = [];
     const org = [];
     const person = [];
     const crime = [];
-    const add = (bucket, kind, facet, title, minLen, extra = {}) => {
-      const text = String(extra.display || title || "").trim();
-      const key = norm(extra.key != null ? extra.key : text);
-      if (!text || key.length < minLen) return;
-      bucket.push({ kind, facet, title: text, key, len: key.length, rank: extra.rank ?? 5 });
+    for (const ent of index.hubEntities || []) addEntityCandidate(place, org, person, ent);
+    for (const parent of index.parents || []) addParentCandidate(org, parent, index);
+    for (const title of index.positionTitles || []) pushCandidate(person, "position", "positions", title, 2, { rank: 0 });
+    for (const title of index.crimeTypes || []) pushCandidate(crime, "crime", "crimes", title, 3);
+    return { place, org, person, crime };
+  }
+
+  function titlesFor(items, facet) {
+    return items.filter((item) => item.facet === facet).map((item) => item.title);
+  }
+
+  function facetsFrom(claimed) {
+    return {
+      places: titlesFor(claimed, "places"),
+      orgs: titlesFor(claimed, "orgs"),
+      people: titlesFor(claimed, "people"),
+      crimes: titlesFor(claimed, "crimes"),
+      positions: titlesFor(claimed, "positions"),
     };
+  }
 
-    for (const ent of index.hubEntities || []) {
-      if (ent.entity_group === "สถานที่") add(place, "place", "places", ent.title, 3);
-      else if (ent.entity_group === "หน่วย") add(org, "org", "orgs", ent.title, 3, { rank: 2 });
-      else if (ent.entity_group === "บุคคล") {
-        add(person, "person", "people", ent.title, 3, { rank: 1 });
-        if (ent.current_holder) add(person, "holder", "people", ent.current_holder, 3, { rank: 2 });
-      }
+  function addCrimeFallback(claimed, selectedFacets, crimeHits, aliased, index) {
+    if (crimeHits.length || selectedFacets.crimes.length) return;
+    for (const title of detectCrimeTypes(aliased, index.crimeTypes)) {
+      claimed.push({ kind: "crime", facet: "crimes", title });
+      selectedFacets.crimes.push(title);
     }
-    for (const parent of index.parents || []) {
-      add(org, "org", "orgs", parent.title, 2, { rank: 1 });
-      const rule = (index.alias.parents || []).find((p) => (p.title || "") === parent.title) || {};
-      if (rule.contains) {
-        add(org, "org", "orgs", parent.title, 3, { key: rule.contains, display: parent.title, rank: 1 });
-      }
-    }
-    for (const title of index.positionTitles || []) add(person, "position", "positions", title, 2, { rank: 0 });
-    for (const title of index.crimeTypes || []) add(crime, "crime", "crimes", title, 3);
+  }
 
-    const crimeHits = claimPool(qn, crime);
+  function extractKeywords(question, index) {
+    const aliased = applyTitleAliases(question, index.alias);
+    const qn = norm(aliased);
+    const buckets = keywordBuckets(index);
+    const crimeHits = claimPool(qn, buckets.crime);
     const claimed = withoutNestedSpans([
-      ...claimPool(qn, place),
-      ...claimPool(qn, org),
-      ...claimPool(qn, person),
+      ...claimPool(qn, buckets.place),
+      ...claimPool(qn, buckets.org),
+      ...claimPool(qn, buckets.person),
       ...crimeHits,
     ]).map(({ kind, facet, title }) => ({ kind, facet, title }));
-
-    const selectedFacets = {
-      places: claimed.filter((item) => item.facet === "places").map((item) => item.title),
-      orgs: claimed.filter((item) => item.facet === "orgs").map((item) => item.title),
-      people: claimed.filter((item) => item.facet === "people").map((item) => item.title),
-      crimes: claimed.filter((item) => item.facet === "crimes").map((item) => item.title),
-      positions: claimed.filter((item) => item.facet === "positions").map((item) => item.title),
-    };
-    if (!crimeHits.length && !selectedFacets.crimes.length) {
-      for (const title of detectCrimeTypes(aliased, index.crimeTypes)) {
-        claimed.push({ kind: "crime", facet: "crimes", title });
-        selectedFacets.crimes.push(title);
-      }
-    }
-
+    const selectedFacets = facetsFrom(claimed);
+    addCrimeFallback(claimed, selectedFacets, crimeHits, aliased, index);
     return {
       aliased,
       qn,
@@ -416,56 +459,127 @@
     };
   }
 
+  function wantedSet(keys, kind) {
+    return new Set(keys.filter((item) => item.kind === kind).map((item) => norm(item.title)));
+  }
+
+  function absorbMembers(hubs) {
+    const absorbed = new Set();
+    for (const hub of hubs) {
+      for (const id of hub.memberIds) absorbed.add(id);
+    }
+    return absorbed;
+  }
+
+  function entityHits(ent, wanted) {
+    const titleKey = norm(ent.title);
+    const hitPlace = ent.entity_group === "สถานที่" && wanted.place.has(titleKey);
+    const hitOrg = ent.entity_group === "หน่วย" && wanted.org.has(titleKey);
+    const hitPerson = ent.entity_group === "บุคคล" && wanted.person.has(titleKey);
+    return {
+      titleKey,
+      hitPlace,
+      hitOrg,
+      hitPerson,
+      hitTitle: Boolean(hitPlace || hitOrg || hitPerson),
+      hitHolder: Boolean(ent.current_holder) && wanted.holder.has(norm(ent.current_holder)),
+      hitPos: positionSegments(ent.position).some((seg) => wanted.pos.has(norm(seg))),
+    };
+  }
+
+  function entityFacet(hit) {
+    if (hit.hitPlace) return "places";
+    if (hit.hitPerson || hit.hitHolder) return "people";
+    if (hit.hitPos && !hit.hitOrg) return "positions";
+    return "orgs";
+  }
+
+  function matchedBy(hit) {
+    if (hit.hitHolder) return "holder";
+    if (hit.hitPos && !hit.hitTitle) return "position";
+    return "title";
+  }
+
+  function coveredByLongerHub(hubs, titleKey, hitTitle) {
+    if (!hitTitle) return false;
+    return hubs.some((hub) => {
+      const hubTitle = norm(hub.title);
+      return hubTitle.includes(titleKey) && hubTitle !== titleKey;
+    });
+  }
+
+  function pushMatchedEntity(hubs, ent, hit, index) {
+    hubs.push({
+      key: ent.id,
+      id: ent.id,
+      title: ent.title,
+      entity_group: ent.entity_group,
+      virtual: false,
+      memberIds: [ent.id],
+      roleWarning: roleWarningFor(ent.title, index.alias),
+      position: ent.position || "",
+      current_holder: ent.current_holder || "",
+      matchedBy: matchedBy(hit),
+      facet: entityFacet(hit),
+    });
+  }
+
+  function addEntityHub(hubs, ent, wanted, absorbed, seen, index) {
+    const hit = entityHits(ent, wanted);
+    if (!hit.hitTitle && !hit.hitHolder && !hit.hitPos) return;
+    if (absorbed.has(ent.id) || seen.has(ent.id)) return;
+    if (coveredByLongerHub(hubs, hit.titleKey, hit.hitTitle)) return;
+    seen.add(ent.id);
+    pushMatchedEntity(hubs, ent, hit, index);
+    absorbed.add(ent.id);
+  }
+
   function matchHubs(question, index, keywords) {
     const keys = keywords || extractKeywords(question, index).keywords;
     const hubs = [];
     const seen = new Set();
-    const wantedOrg = new Set(keys.filter((item) => item.kind === "org").map((item) => norm(item.title)));
-    const wantedPlace = new Set(keys.filter((item) => item.kind === "place").map((item) => norm(item.title)));
-    const wantedPerson = new Set(keys.filter((item) => item.kind === "person").map((item) => norm(item.title)));
-    const wantedHolder = new Set(keys.filter((item) => item.kind === "holder").map((item) => norm(item.title)));
-    const wantedPos = new Set(keys.filter((item) => item.kind === "position").map((item) => norm(item.title)));
-
+    const wanted = {
+      org: wantedSet(keys, "org"),
+      place: wantedSet(keys, "place"),
+      person: wantedSet(keys, "person"),
+      holder: wantedSet(keys, "holder"),
+      pos: wantedSet(keys, "position"),
+    };
     for (const parent of index.parents) {
-      const hit = wantedOrg.has(norm(parent.title));
-      if (!hit || seen.has(parent.key)) continue;
+      if (!wanted.org.has(norm(parent.title)) || seen.has(parent.key)) continue;
       seen.add(parent.key);
       hubs.push({ ...parent, facet: "orgs" });
     }
-
-    const absorbed = new Set();
-    for (const hub of hubs) for (const id of hub.memberIds) absorbed.add(id);
+    const absorbed = absorbMembers(hubs);
     const entities = index.hubEntities.slice().sort((a, b) => norm(b.title).length - norm(a.title).length);
-    for (const ent of entities) {
-      const titleKey = norm(ent.title);
-      const hitPlace = ent.entity_group === "สถานที่" && wantedPlace.has(titleKey);
-      const hitOrg = ent.entity_group === "หน่วย" && wantedOrg.has(titleKey);
-      const hitPerson = ent.entity_group === "บุคคล" && wantedPerson.has(titleKey);
-      const hitTitle = hitPlace || hitOrg || hitPerson;
-      const hitHolder = Boolean(ent.current_holder) && wantedHolder.has(norm(ent.current_holder));
-      const hitPos = positionSegments(ent.position).some((seg) => wantedPos.has(norm(seg)));
-      if (!hitTitle && !hitHolder && !hitPos) continue;
-      if (absorbed.has(ent.id) || seen.has(ent.id)) continue;
-      if (hitTitle && hubs.some((h) => norm(h.title).includes(titleKey) && norm(h.title) !== titleKey)) continue;
-      seen.add(ent.id);
-      const facet = hitPlace ? "places" : hitPerson || hitHolder ? "people" : hitPos && !hitOrg ? "positions" : "orgs";
-      hubs.push({
-        key: ent.id,
-        id: ent.id,
-        title: ent.title,
-        entity_group: ent.entity_group,
-        virtual: false,
-        memberIds: [ent.id],
-        roleWarning: roleWarningFor(ent.title, index.alias),
-        position: ent.position || "",
-        current_holder: ent.current_holder || "",
-        matchedBy: hitHolder ? "holder" : hitPos && !hitTitle ? "position" : "title",
-        facet,
-      });
-      absorbed.add(ent.id);
-    }
+    for (const ent of entities) addEntityHub(hubs, ent, wanted, absorbed, seen, index);
     hubs._keywords = keys;
     return hubs;
+  }
+
+  function otherEnd(edge, id) {
+    if (edge.source === id) return edge.target;
+    if (edge.target === id) return edge.source;
+    return "";
+  }
+
+  function focusable(node) {
+    if (!node) return false;
+    if (node.kind === "crime_type") return true;
+    return node.kind === "entity" && HUB_GROUPS.has(node.entity_group);
+  }
+
+  function expandFrom(id, index, out, added, maxExtra) {
+    if (added >= maxExtra) return added;
+    for (const edge of index.edges || []) {
+      if (added >= maxExtra) break;
+      const other = otherEnd(edge, id);
+      if (!other || out.has(other)) continue;
+      if (!focusable(index.nodesById.get(other))) continue;
+      out.add(other);
+      added += 1;
+    }
+    return added;
   }
 
   function expandFocusIds(ids, index, opts = {}) {
@@ -474,65 +588,67 @@
     const maxExtra = Number.isFinite(opts.maxExtra) ? opts.maxExtra : 40;
     let added = 0;
     for (const id of seed) {
+      added = expandFrom(id, index, out, added, maxExtra);
       if (added >= maxExtra) break;
-      for (const edge of index.edges || []) {
-        if (added >= maxExtra) break;
-        let other = null;
-        if (edge.source === id) other = edge.target;
-        else if (edge.target === id) other = edge.source;
-        if (!other || out.has(other)) continue;
-        const node = index.nodesById.get(other);
-        if (!node) continue;
-        if (node.kind === "crime_type" || (node.kind === "entity" && HUB_GROUPS.has(node.entity_group))) {
-          out.add(other);
-          added += 1;
-        }
-      }
     }
     return [...out];
+  }
+
+  function edgeCaseLink(edge, members) {
+    if (members.has(edge.source)) return { entId: edge.source, caseId: edge.target };
+    if (members.has(edge.target)) return { entId: edge.target, caseId: edge.source };
+    return null;
+  }
+
+  function caseDates(node, index) {
+    const postId = node.case_id || String(node.id).replace(/^20_Cases\//, "");
+    const post = index.postsById.get(String(postId)) || null;
+    const routeDate = post?._date || node.date || "";
+    return { post, postId: String(postId), routeDate, filterDate: node.date || routeDate };
+  }
+
+  function skippedByWindow(filterDate, opts) {
+    if (!opts.applyWindow || (!opts.dateFrom && !opts.dateTo)) return false;
+    if (!filterDate) return true;
+    if (opts.dateFrom && filterDate < opts.dateFrom) return true;
+    return Boolean(opts.dateTo && filterDate > opts.dateTo);
+  }
+
+  function blockedCase(node, dates, opts, label) {
+    if (opts.personEdges && !PERSON_LABELS.has(label)) return true;
+    if (opts.applyCrime && opts.crimeTypes?.length && !opts.crimeTypes.includes(node.crime_type || "")) return true;
+    return skippedByWindow(dates.filterDate, opts);
+  }
+
+  function ensureCaseRow(found, node, dates) {
+    if (!found.has(node.id)) {
+      found.set(node.id, {
+        node,
+        post: dates.post,
+        postId: dates.postId,
+        routeDate: dates.routeDate,
+        filterDate: dates.filterDate,
+        labels: new Set(),
+        via: new Set(),
+      });
+    }
+    return found.get(node.id);
   }
 
   function linkedCases(hub, index, opts) {
     const members = new Set(hub.memberIds);
     const found = new Map();
     for (const edge of index.edges) {
-      let entId = null;
-      let caseId = null;
-      if (members.has(edge.source)) {
-        entId = edge.source;
-        caseId = edge.target;
-      } else if (members.has(edge.target)) {
-        entId = edge.target;
-        caseId = edge.source;
-      } else continue;
-      const node = index.casesById.get(caseId);
+      const link = edgeCaseLink(edge, members);
+      if (!link) continue;
+      const node = index.casesById.get(link.caseId);
       if (!node) continue;
       const label = String(edge.label || "").trim();
-      if (opts.personEdges && !PERSON_LABELS.has(label)) continue;
-      if (opts.applyCrime && opts.crimeTypes?.length && !opts.crimeTypes.includes(node.crime_type || "")) continue;
-      const postId = node.case_id || String(node.id).replace(/^20_Cases\//, "");
-      const post = index.postsById.get(String(postId)) || null;
-      const routeDate = post?._date || node.date || "";
-      const filterDate = node.date || routeDate;
-      if (opts.applyWindow && (opts.dateFrom || opts.dateTo)) {
-        if (!filterDate) continue;
-        if (opts.dateFrom && filterDate < opts.dateFrom) continue;
-        if (opts.dateTo && filterDate > opts.dateTo) continue;
-      }
-      if (!found.has(node.id)) {
-        found.set(node.id, {
-          node,
-          post,
-          postId: String(postId),
-          routeDate,
-          filterDate,
-          labels: new Set(),
-          via: new Set(),
-        });
-      }
-      const row = found.get(node.id);
+      const dates = caseDates(node, index);
+      if (blockedCase(node, dates, opts, label)) continue;
+      const row = ensureCaseRow(found, node, dates);
       if (label) row.labels.add(label);
-      row.via.add(entId);
+      row.via.add(link.entId);
     }
     return [...found.values()];
   }
@@ -604,37 +720,122 @@
     };
   }
 
+  const QTY_UNITS = ["กิโลกรัม", "กรัม", "กก.", "กก", "เม็ด", "ลิตร"];
+
+  function isDigit(ch) {
+    return ch >= "0" && ch <= "9";
+  }
+
+  function skipSpaces(src, index) {
+    let i = index;
+    while (src[i] === " " || src[i] === "\t" || src[i] === "\n" || src[i] === "\r") i += 1;
+    return i;
+  }
+
+  function readQuantityNumber(src, start) {
+    let i = start;
+    let sawDigit = false;
+    let sawDot = false;
+    while (i < src.length) {
+      const ch = src[i];
+      if (isDigit(ch)) {
+        sawDigit = true;
+        i += 1;
+      } else if (ch === "," && sawDigit) {
+        i += 1;
+      } else if (ch === "." && sawDigit && !sawDot) {
+        sawDot = true;
+        i += 1;
+      } else break;
+    }
+    if (!sawDigit) return null;
+    return { raw: src.slice(start, i), end: i };
+  }
+
+  function matchUnit(src, index) {
+    for (const unit of QTY_UNITS) {
+      if (src.startsWith(unit, index)) return unit;
+    }
+    return "";
+  }
+
+  function squeeze(text) {
+    return String(text || "").split(/\s+/).join(" ").trim();
+  }
+
+  function pushQuantity(hits, spans, hit) {
+    hits.push(hit);
+    spans.push(hit.span);
+  }
+
+  function quantityFrom(src, start) {
+    const num = readQuantityNumber(src, start);
+    if (!num) return null;
+    let cursor = skipSpaces(src, num.end);
+    let million = false;
+    if (src.startsWith("ล้าน", cursor)) {
+      million = true;
+      cursor = skipSpaces(src, cursor + "ล้าน".length);
+    }
+    const unit = matchUnit(src, cursor);
+    if (!unit) return { end: num.end };
+    const base = parseNum(num.raw);
+    if (base == null) return { end: num.end };
+    const displayEnd = cursor + unit.length;
+    return {
+      end: displayEnd,
+      hit: {
+        unit: unit === "กก" ? "กก." : unit,
+        value: million ? base * 1000000 : base,
+        display: squeeze(src.slice(start, displayEnd)),
+        span: [start, displayEnd],
+      },
+    };
+  }
+
+  function bareMillion(src, start, spans) {
+    const num = readQuantityNumber(src, start);
+    if (!num) return start + 1;
+    const cursor = skipSpaces(src, num.end);
+    if (!src.startsWith("ล้าน", cursor)) return num.end;
+    const end = cursor + "ล้าน".length;
+    if (spans.some(([a, b]) => start < b && end > a)) return end;
+    const base = parseNum(num.raw);
+    if (base == null) return end;
+    return {
+      end,
+      hit: {
+        unit: "ล้าน",
+        value: base,
+        display: squeeze(src.slice(start, end)),
+        span: [start, end],
+      },
+    };
+  }
+
   function extractQuantities(text) {
     const src = String(text || "");
     const hits = [];
     const spans = [];
-    const re = /(\d{1,3}(?:,\d{3})+|\d+(?:\.\d+)?)\s*(ล้าน)?\s*(กิโลกรัม|กรัม|กก\.?|เม็ด|ลิตร)/g;
-    let m;
-    while ((m = re.exec(src))) {
-      const base = parseNum(m[1]);
-      if (base == null) continue;
-      let unit = m[3];
-      if (unit === "กก") unit = "กก.";
-      const value = m[2] ? base * 1000000 : base;
-      hits.push({
-        unit,
-        value,
-        display: m[0].replace(/\s+/g, " ").trim(),
-      });
-      spans.push([m.index, m.index + m[0].length]);
+    let i = 0;
+    while (i < src.length) {
+      if (!isDigit(src[i])) {
+        i += 1;
+        continue;
+      }
+      const found = quantityFrom(src, i);
+      if (found?.hit) pushQuantity(hits, spans, found.hit);
+      i = found?.end || i + 1;
     }
-    const reMillion = /(\d{1,3}(?:,\d{3})+|\d+(?:\.\d+)?)\s*ล้าน/g;
-    while ((m = reMillion.exec(src))) {
-      const start = m.index;
-      const end = start + m[0].length;
-      if (spans.some(([a, b]) => start < b && end > a)) continue;
-      const base = parseNum(m[1]);
-      if (base == null) continue;
-      hits.push({
-        unit: "ล้าน",
-        value: base,
-        display: m[0].replace(/\s+/g, " ").trim(),
-      });
+    i = 0;
+    while (i < src.length) {
+      if (!isDigit(src[i])) {
+        i += 1;
+        continue;
+      }
+      const found = bareMillion(src, i, spans);
+      if (typeof found === "object" && found.hit) hits.push(found.hit);
+      i = typeof found === "number" ? found : found.end;
     }
     return hits;
   }
@@ -705,33 +906,21 @@
     };
   }
 
-  function caseRow(node, index) {
-    const postId = node.case_id || String(node.id).replace(/^20_Cases\//, "");
-    const post = index.postsById.get(String(postId)) || null;
-    const routeDate = post?._date || node.date || "";
-    return {
-      node,
-      post,
-      postId: String(postId),
-      routeDate,
-      filterDate: node.date || routeDate,
-      labels: new Set(),
-      via: new Set(),
-    };
-  }
-
   function rowsCarrying(index, opts, predicate) {
     const rows = [];
     for (const node of index.casesById.values()) {
       if (!predicate(node)) continue;
-      const row = caseRow(node, index);
-      if (opts.applyCrime && opts.crimeTypes?.length && !opts.crimeTypes.includes(node.crime_type || "")) continue;
-      if (opts.applyWindow && (opts.dateFrom || opts.dateTo)) {
-        if (!row.filterDate) continue;
-        if (opts.dateFrom && row.filterDate < opts.dateFrom) continue;
-        if (opts.dateTo && row.filterDate > opts.dateTo) continue;
-      }
-      rows.push(row);
+      const dates = caseDates(node, index);
+      if (blockedCase(node, dates, opts, "")) continue;
+      rows.push({
+        node,
+        post: dates.post,
+        postId: dates.postId,
+        routeDate: dates.routeDate,
+        filterDate: dates.filterDate,
+        labels: new Set(),
+        via: new Set(),
+      });
     }
     return rows;
   }
@@ -755,33 +944,52 @@
     return rowsCarrying(index, opts, (node) => positionSegments(node.position).some((seg) => norm(seg) === want));
   }
 
+  function carriesTitle(node, want) {
+    return positionSegments(node.position).some((seg) => norm(seg) === want);
+  }
+
+  function holderOrg(nodes, carries) {
+    const withHolder = nodes.find(
+      (node) => node.kind === "entity" && node.entity_group === "หน่วย" && node.current_holder && carries(node)
+    );
+    if (withHolder) return withHolder;
+    return nodes.find((node) => node.kind === "entity" && node.entity_group === "หน่วย" && carries(node)) || null;
+  }
+
+  function firstOrgTitle(person) {
+    return String(person?.position_org || "")
+      .split(" · ")
+      .map((part) => part.trim())
+      .find(Boolean) || "";
+  }
+
   function holderForTitle(title, index) {
     const want = norm(title);
     const nodes = [...index.nodesById.values()];
-    const carries = (node) => positionSegments(node.position).some((seg) => norm(seg) === want);
+    const carries = (node) => carriesTitle(node, want);
     const person = nodes.find((node) => node.kind === "entity" && node.entity_group === "บุคคล" && carries(node));
-    const org =
-      nodes.find((node) => node.kind === "entity" && node.entity_group === "หน่วย" && node.current_holder && carries(node)) ||
-      nodes.find((node) => node.kind === "entity" && node.entity_group === "หน่วย" && carries(node));
+    const org = holderOrg(nodes, carries);
     const name = String(org?.current_holder || person?.title || "").trim();
     if (!name) return null;
-    const orgFromPerson = String(person?.position_org || "")
-      .split(" · ")
-      .map((part) => part.trim())
-      .filter(Boolean)[0];
     return {
       title,
       name,
-      org: org?.title || orgFromPerson || "",
+      org: org?.title || firstOrgTitle(person),
       orgId: org?.id || "",
       personId: person?.id || "",
     };
   }
 
+  function facetForGroup(group) {
+    if (group === "สถานที่") return "places";
+    if (group === "บุคคล") return "people";
+    return "orgs";
+  }
+
   function pushNodeHub(hubs, node, index, facet) {
     if (!node) return;
     if (hubs.some((hub) => hub.id === node.id || hub.memberIds?.includes(node.id))) return;
-    const groupFacet = node.entity_group === "สถานที่" ? "places" : node.entity_group === "บุคคล" ? "people" : "orgs";
+    const groupFacet = facetForGroup(node.entity_group);
     hubs.push({
       key: node.id,
       id: node.id,
@@ -799,8 +1007,10 @@
   function rowsForHubList(hubList, index, opts) {
     const lists = [];
     for (const hub of hubList) {
-      lists.push(linkedCases(hub, index, { ...opts, personEdges: usesPersonEdges(hub) }));
-      lists.push(rowsForHubPosition(hub, index, opts));
+      lists.push(
+        linkedCases(hub, index, { ...opts, personEdges: usesPersonEdges(hub) }),
+        rowsForHubPosition(hub, index, opts)
+      );
     }
     return mergeRows(lists);
   }
@@ -809,56 +1019,250 @@
     return `โหนด «${title}» เป็นตำแหน่งหรือบทบาทที่ใช้ร่วมกัน ไม่ใช่บุคคลคนเดียวที่ระบุตัวตนได้`;
   }
 
+  function virtualPositionHub(title) {
+    return {
+      key: `position:${title}`,
+      id: `position:${title}`,
+      title,
+      entity_group: "บุคคล",
+      virtual: true,
+      memberIds: [],
+      roleWarning: true,
+      position: title,
+      current_holder: "",
+      facet: "positions",
+    };
+  }
+
+  function attachHolders(hubs, positions, index) {
+    const holderHits = [];
+    for (const title of positions) rememberHolder(hubs, holderHits, title, index);
+    for (const title of positions) rememberLoosePosition(hubs, holderHits, title);
+    const loose = positions.filter((title) => !holderHits.some((hit) => norm(hit.title) === norm(title)));
+    return { holderHits, loose };
+  }
+
+  function rememberHolder(hubs, holderHits, title, index) {
+    const info = holderForTitle(title, index);
+    if (!info) return;
+    holderHits.push(info);
+    pushNodeHub(hubs, index.nodesById.get(info.orgId), index, "people");
+    pushNodeHub(hubs, index.nodesById.get(info.personId), index, "people");
+  }
+
+  function rememberLoosePosition(hubs, holderHits, title) {
+    if (holderHits.some((hit) => norm(hit.title) === norm(title))) return;
+    if (hubs.some((hub) => norm(hub.title) === norm(title))) return;
+    hubs.push(virtualPositionHub(title));
+  }
+
+  function facetCountOf(selectedFacets, crimeTypes) {
+    const personFacet = Boolean(selectedFacets.people.length || selectedFacets.positions.length);
+    const count = [selectedFacets.places.length, selectedFacets.orgs.length, personFacet ? 1 : 0, crimeTypes.length]
+      .filter(Boolean).length;
+    return { personFacet, count, filterMode: count > 1 ? "and" : "single" };
+  }
+
+  function personRows(hubs, index, loose, dated) {
+    const personLists = [
+      rowsForHubList(
+        hubs.filter((hub) => hub.facet === "people" || hub.facet === "positions"),
+        index,
+        dated
+      ),
+    ];
+    for (const title of loose) personLists.push(rowsForExactPosition(title, index, dated));
+    return mergeRows(personLists);
+  }
+
+  function evidenceSets(hubs, index, loose, selectedFacets, crimeTypes, personFacet, dated) {
+    const sets = [];
+    if (selectedFacets.places.length) {
+      sets.push(rowsForHubList(hubs.filter((hub) => hub.facet === "places"), index, dated));
+    }
+    if (selectedFacets.orgs.length) {
+      sets.push(rowsForHubList(hubs.filter((hub) => hub.facet === "orgs"), index, dated));
+    }
+    if (personFacet) sets.push(personRows(hubs, index, loose, dated));
+    if (crimeTypes.length) {
+      sets.push(rowsCarrying(index, { ...dated, crimeTypes, applyCrime: true }, () => true));
+    }
+    return sets;
+  }
+
+  function olderRows(filterMode, crimeTypes, hubs, index, loose, evidenceRows) {
+    if (filterMode !== "single" || crimeTypes.length) return [];
+    const open = { applyCrime: false, applyWindow: false };
+    const evidenceIds = new Set(evidenceRows.map((row) => row.node.id));
+    return sortRows(
+      mergeRows([
+        rowsForHubList(hubs, index, open),
+        ...loose.map((title) => rowsForExactPosition(title, index, open)),
+      ]).filter((row) => !evidenceIds.has(row.node.id)),
+      "list"
+    );
+  }
+
+  function decorateRows(rows, index, canonicalTitle) {
+    return rows.map((row) => {
+      const item = toEvidence(row, index, canonicalTitle);
+      row.org = item.org;
+      row.title = item.title;
+      row.date = item.date;
+      row.href = item.href;
+      return item;
+    });
+  }
+
+  function addWarning(warnings, seen, text) {
+    if (!text || seen.has(text)) return;
+    seen.add(text);
+    warnings.push(text);
+  }
+
+  function collectWarnings(hubs, loose) {
+    const warnings = [];
+    const seen = new Set();
+    for (const hub of hubs) {
+      if (hub.roleWarning) addWarning(warnings, seen, sharedRoleWarning(hub.title));
+    }
+    for (const title of loose) addWarning(warnings, seen, sharedRoleWarning(title));
+    return warnings;
+  }
+
+  function crimeNodeId(index, title) {
+    const crimeNode = [...index.nodesById.values()].find(
+      (node) => node.kind === "crime_type" && norm(node.title) === norm(title)
+    );
+    return crimeNode?.id || "";
+  }
+
+  function pushHubFocus(push, hub) {
+    if (!hub.virtual) push(hub.id);
+    for (const id of hub.memberIds) push(id);
+  }
+
+  function focusIdsFor(index, hubs, evidenceRows, oldRows, crimeTypes, keepOld) {
+    const focusIds = [];
+    const seen = new Set();
+    const push = (id) => {
+      if (!id || seen.has(id) || !index.nodesById.has(id)) return;
+      seen.add(id);
+      focusIds.push(id);
+    };
+    for (const hub of hubs) pushHubFocus(push, hub);
+    for (const row of evidenceRows) push(row.node.id);
+    if (keepOld) {
+      for (const row of oldRows) push(row.node.id);
+    }
+    for (const title of crimeTypes) push(crimeNodeId(index, title));
+    if (!keepOld) return focusIds;
+    return expandFocusIds(focusIds, index);
+  }
+
+  function linkedVia(item, oldRows, memberIds) {
+    const row = oldRows.find((entry) => entry.node.id === item.nodeId);
+    if (!row) return false;
+    for (const via of row.via) {
+      if (memberIds.has(via)) return true;
+    }
+    return false;
+  }
+
+  function slimCase(item) {
+    return {
+      id: item.id,
+      date: item.date,
+      title: item.title,
+      href: item.href,
+      crime_type: item.crime_type,
+    };
+  }
+
+  function oldLinkGroup(hub, oldEvidence, oldRows) {
+    const memberIds = new Set(hub.memberIds);
+    const cases = oldEvidence.filter((item) => linkedVia(item, oldRows, memberIds)).map(slimCase);
+    return {
+      hubTitle: hub.title,
+      entityGroup: hub.entity_group,
+      relation: shareRelation(hub.entity_group),
+      cases,
+    };
+  }
+
+  function oldLinksFor(hubs, oldEvidence, oldRows) {
+    return hubs.map((hub) => oldLinkGroup(hub, oldEvidence, oldRows)).filter((group) => group.cases.length);
+  }
+
+  function windowNoteFor(dateFrom, dateTo) {
+    if (!dateFrom && !dateTo) return "ทุกวันที่ในคลัง";
+    return `${dateFrom || "…"} ถึง ${dateTo || "…"}`;
+  }
+
+  function officeNews(holder, count) {
+    if (holder.org) return ` และมีข่าวของ ${holder.org} ${count} ข่าว`;
+    return ` และมีข่าวที่เชื่อมในกราฟ ${count} ข่าว`;
+  }
+
+  function answerMessage(ctx) {
+    const matched = ctx.filterMode === "and" ? "ตรงทุกเงื่อนไข" : "ตรงเงื่อนไข";
+    if (ctx.intent === "office" && ctx.primaryHolder) return officeMessage(ctx, matched);
+    if (!ctx.evidence.length) return `พบ ${ctx.names} แต่ไม่มีข่าวที่${matched}ในช่วง ${ctx.windowNote}`;
+    if (ctx.intent === "count") return countMessage(ctx, matched);
+    if (ctx.intent === "timeline") return listMessage(ctx, matched, "ลำดับข่าวที่");
+    return listMessage(ctx, matched, "รายการข่าวที่");
+  }
+
+  function officeMessage(ctx, matched) {
+    let message = `${ctx.primaryHolder.name} ดำรงตำแหน่ง${ctx.primaryHolder.title}`;
+    if (ctx.evidence.length) message += officeNews(ctx.primaryHolder, ctx.evidence.length);
+    if (ctx.filterMode === "and") message += ` · ${matched} ${ctx.names}`;
+    return message;
+  }
+
+  function countMessage(ctx, matched) {
+    if (ctx.filterMode === "and") return `พบ ${ctx.evidence.length} ข่าวที่${matched} (${ctx.names})`;
+    return `พบ ${ctx.evidence.length} ข่าวที่เชื่อมกับ ${ctx.names}`;
+  }
+
+  function listMessage(ctx, matched, prefix) {
+    if (ctx.filterMode === "and") return `${prefix}${matched} (${ctx.names}) จำนวน ${ctx.evidence.length} ข่าว`;
+    return `${prefix}เชื่อมกับ ${ctx.names} จำนวน ${ctx.evidence.length} ข่าว`;
+  }
+
+  function publicHub(hub, index) {
+    const node = index.nodesById.get(hub.id);
+    return {
+      id: hub.id,
+      title: hub.title,
+      entity_group: hub.entity_group,
+      virtual: hub.virtual,
+      roleWarning: hub.roleWarning,
+      position: hub.position || node?.position || "",
+      current_holder: hub.current_holder || node?.current_holder || "",
+    };
+  }
+
+  function holderSummary(primaryHolder) {
+    if (!primaryHolder) return null;
+    return { name: primaryHolder.name, position: primaryHolder.title, org: primaryHolder.org };
+  }
+
   function answerFromIndex(index, text, opts = {}) {
     const question = String(text || "").trim();
     const dateFrom = opts.dateFrom || "";
     const dateTo = opts.dateTo || "";
     const intent = detectIntent(question);
-    if (!question) {
-      return emptyResult("ยังไม่มีคำถาม จึงไม่รายงานจำนวน", { intent, dateFrom, dateTo });
-    }
+    if (!question) return emptyResult("ยังไม่มีคำถาม จึงไม่รายงานจำนวน", { intent, dateFrom, dateTo });
     const extracted = extractKeywords(question, index);
-    const aliased = extracted.aliased;
     const selectedFacets = extracted.selectedFacets;
     const keywords = extracted.keywords || [];
     const crimeTypes = selectedFacets.crimes.slice();
-    const positions = extracted.positionHits || mentionedPositions(aliased, index.positionTitles || []);
+    const positions = extracted.positionHits || mentionedPositions(extracted.aliased, index.positionTitles || []);
     const hubs = matchHubs(question, index, keywords);
-    const holderHits = [];
-    for (const title of positions) {
-      const info = holderForTitle(title, index);
-      if (!info) continue;
-      holderHits.push(info);
-      pushNodeHub(hubs, index.nodesById.get(info.orgId), index, "people");
-      pushNodeHub(hubs, index.nodesById.get(info.personId), index, "people");
-    }
-    // Shared roles like ผบ.ตร. after folding: attach a virtual hub so retrieval still has a name.
-    for (const title of positions) {
-      if (holderHits.some((hit) => norm(hit.title) === norm(title))) continue;
-      if (hubs.some((hub) => norm(hub.title) === norm(title))) continue;
-      hubs.push({
-        key: `position:${title}`,
-        id: `position:${title}`,
-        title,
-        entity_group: "บุคคล",
-        virtual: true,
-        memberIds: [],
-        roleWarning: true,
-        position: title,
-        current_holder: "",
-        facet: "positions",
-      });
-    }
-    const loose = positions.filter((title) => !holderHits.some((hit) => norm(hit.title) === norm(title)));
-    const personFacet = Boolean(selectedFacets.people.length || selectedFacets.positions.length);
-    const facetCount = [
-      selectedFacets.places.length,
-      selectedFacets.orgs.length,
-      personFacet ? 1 : 0,
-      crimeTypes.length,
-    ].filter(Boolean).length;
-    const filterMode = facetCount > 1 ? "and" : "single";
-    if (!facetCount) {
+    const attached = attachHolders(hubs, positions, index);
+    const facets = facetCountOf(selectedFacets, crimeTypes);
+    if (!facets.count) {
       return emptyResult("ไม่พบหน่วยงาน บุคคล สถานที่ หรือประเภทคดีในคลังที่ตรงกับคำถามนี้ จึงไม่รายงานจำนวน", {
         intent,
         crimeTypes,
@@ -869,213 +1273,96 @@
       });
     }
     const dated = { dateFrom, dateTo, applyCrime: false, applyWindow: true };
-    const open = { applyCrime: false, applyWindow: false };
-    const sets = [];
-    if (selectedFacets.places.length) {
-      sets.push(rowsForHubList(hubs.filter((hub) => hub.facet === "places"), index, dated));
-    }
-    if (selectedFacets.orgs.length) {
-      sets.push(rowsForHubList(hubs.filter((hub) => hub.facet === "orgs"), index, dated));
-    }
-    if (personFacet) {
-      const personLists = [
-        rowsForHubList(
-          hubs.filter((hub) => hub.facet === "people" || hub.facet === "positions"),
-          index,
-          dated
-        ),
-      ];
-      for (const title of loose) personLists.push(rowsForExactPosition(title, index, dated));
-      sets.push(mergeRows(personLists));
-    }
-    if (crimeTypes.length) {
-      sets.push(
-        rowsCarrying(index, { dateFrom, dateTo, crimeTypes, applyCrime: true, applyWindow: true }, () => true)
-      );
-    }
-    const evidenceRows = sortRows(intersectRows(sets), intent);
-    const evidenceIds = new Set(evidenceRows.map((row) => row.node.id));
-    const keepOld = filterMode === "single" && !crimeTypes.length;
-    const oldRows = keepOld
-      ? sortRows(
-          mergeRows([
-            rowsForHubList(hubs, index, open),
-            ...loose.map((title) => rowsForExactPosition(title, index, open)),
-          ]).filter((row) => !evidenceIds.has(row.node.id)),
-          "list"
-        )
-      : [];
+    const evidenceRows = sortRows(
+      intersectRows(evidenceSets(hubs, index, attached.loose, selectedFacets, crimeTypes, facets.personFacet, dated)),
+      intent
+    );
+    const oldRows = olderRows(facets.filterMode, crimeTypes, hubs, index, attached.loose, evidenceRows);
     const canonicalTitle = hubs.length === 1 ? hubs[0].title : "";
-    const evidence = evidenceRows.map((row) => {
-      const item = toEvidence(row, index, canonicalTitle);
-      row.org = item.org;
-      row.title = item.title;
-      row.date = item.date;
-      row.href = item.href;
-      return item;
-    });
+    const evidence = decorateRows(evidenceRows, index, canonicalTitle);
     const oldEvidence = oldRows.map((row) => toEvidence(row, index, canonicalTitle));
-    const warnings = [];
-    const warnSeen = new Set();
-    const addWarn = (text) => {
-      if (!text || warnSeen.has(text)) return;
-      warnSeen.add(text);
-      warnings.push(text);
-    };
-    for (const hub of hubs) {
-      if (hub.roleWarning) addWarn(sharedRoleWarning(hub.title));
-    }
-    for (const title of loose) addWarn(sharedRoleWarning(title));
-    const focusIds = [];
-    const seenFocus = new Set();
-    const pushFocus = (id) => {
-      if (!id || seenFocus.has(id) || !index.nodesById.has(id)) return;
-      seenFocus.add(id);
-      focusIds.push(id);
-    };
-    for (const hub of hubs) {
-      if (!hub.virtual) pushFocus(hub.id);
-      for (const id of hub.memberIds) pushFocus(id);
-    }
-    for (const row of evidenceRows) pushFocus(row.node.id);
-    if (keepOld) for (const row of oldRows) pushFocus(row.node.id);
-    for (const title of crimeTypes) {
-      const crimeNode = [...index.nodesById.values()].find(
-        (node) => node.kind === "crime_type" && norm(node.title) === norm(title)
-      );
-      if (crimeNode) pushFocus(crimeNode.id);
-    }
-    if (keepOld) {
-      const expandedFocus = expandFocusIds(focusIds, index);
-      focusIds.length = 0;
-      for (const id of expandedFocus) focusIds.push(id);
-    }
-    const quantities = groupQuantities(evidenceRows);
-    const oldLinks = keepOld
-      ? hubs
-          .map((hub) => {
-            const memberIds = new Set(hub.memberIds);
-            const cases = oldEvidence.filter((item) => {
-              const row = oldRows.find((r) => r.node.id === item.nodeId);
-              if (!row) return false;
-              for (const via of row.via) if (memberIds.has(via)) return true;
-              return false;
-            });
-            return {
-              hubTitle: hub.title,
-              entityGroup: hub.entity_group,
-              relation: shareRelation(hub.entity_group),
-              cases: cases.map((item) => ({
-                id: item.id,
-                date: item.date,
-                title: item.title,
-                href: item.href,
-                crime_type: item.crime_type,
-              })),
-            };
-          })
-          .filter((group) => group.cases.length)
-      : [];
-    const windowNote =
-      !dateFrom && !dateTo ? "ทุกวันที่ในคลัง" : `${dateFrom || "…"} ถึง ${dateTo || "…"}`;
+    const keepOld = facets.filterMode === "single" && !crimeTypes.length;
     const names = facetLabels(selectedFacets).join(" · ");
-    const primaryHolder = holderHits[0] || null;
-    const matched = filterMode === "and" ? "ตรงทุกเงื่อนไข" : "ตรงเงื่อนไข";
-    let message = "";
-    if (intent === "office" && primaryHolder) {
-      message = `${primaryHolder.name} ดำรงตำแหน่ง${primaryHolder.title}`;
-      if (evidence.length) {
-        message += primaryHolder.org
-          ? ` และมีข่าวของ ${primaryHolder.org} ${evidence.length} ข่าว`
-          : ` และมีข่าวที่เชื่อมในกราฟ ${evidence.length} ข่าว`;
-      }
-      if (filterMode === "and") message += ` · ${matched} ${names}`;
-    } else if (!evidence.length) {
-      message = `พบ ${names} แต่ไม่มีข่าวที่${matched}ในช่วง ${windowNote}`;
-    } else if (intent === "count") {
-      message =
-        filterMode === "and"
-          ? `พบ ${evidence.length} ข่าวที่${matched} (${names})`
-          : `พบ ${evidence.length} ข่าวที่เชื่อมกับ ${names}`;
-    } else if (intent === "timeline") {
-      message =
-        filterMode === "and"
-          ? `ลำดับข่าวที่${matched} (${names}) จำนวน ${evidence.length} ข่าว`
-          : `ลำดับข่าวที่เชื่อมกับ ${names} จำนวน ${evidence.length} ข่าว`;
-    } else {
-      message =
-        filterMode === "and"
-          ? `รายการข่าวที่${matched} (${names}) จำนวน ${evidence.length} ข่าว`
-          : `รายการข่าวที่เชื่อมกับ ${names} จำนวน ${evidence.length} ข่าว`;
-    }
+    const primaryHolder = attached.holderHits[0] || null;
     return {
       ok: true,
-      message,
+      message: answerMessage({
+        intent,
+        primaryHolder,
+        evidence,
+        filterMode: facets.filterMode,
+        names,
+        windowNote: windowNoteFor(dateFrom, dateTo),
+      }),
       intent,
       crimeTypes,
       dateFrom,
       dateTo,
-      windowNote,
-      filterMode,
+      windowNote: windowNoteFor(dateFrom, dateTo),
+      filterMode: facets.filterMode,
       selectedFacets,
-      hubs: hubs.map((hub) => ({
-        id: hub.id,
-        title: hub.title,
-        entity_group: hub.entity_group,
-        virtual: hub.virtual,
-        roleWarning: hub.roleWarning,
-        position: hub.position || index.nodesById.get(hub.id)?.position || "",
-        current_holder: hub.current_holder || index.nodesById.get(hub.id)?.current_holder || "",
-      })),
-      holder: primaryHolder
-        ? { name: primaryHolder.name, position: primaryHolder.title, org: primaryHolder.org }
-        : null,
+      hubs: hubs.map((hub) => publicHub(hub, index)),
+      holder: holderSummary(primaryHolder),
       caseCount: evidence.length,
-      quantities,
-      oldLinks,
+      quantities: groupQuantities(evidenceRows),
+      oldLinks: keepOld ? oldLinksFor(hubs, oldEvidence, oldRows) : [],
       evidence,
-      warnings,
+      warnings: collectWarnings(hubs, attached.loose),
       keywords,
-      focusIds,
+      focusIds: focusIdsFor(index, hubs, evidenceRows, oldRows, crimeTypes, keepOld),
     };
+  }
+  async function fetchJson(url) {
+    const res = await fetch(`${url}?t=${Date.now()}`, { cache: "no-store" });
+    if (!res.ok) return null;
+    return res.json();
+  }
+
+  async function foldGraph(graph) {
+    if (graph.positions_folded || !window.PositionFold?.foldPositions) return graph;
+    let registry = { offices: [], title_prefixes: [] };
+    try {
+      const loaded = await fetchJson("data/positions.json");
+      if (loaded) registry = loaded;
+    } catch {
+      /* fold with an empty registry rather than skipping the graph */
+    }
+    return window.PositionFold.foldPositions(graph, registry);
+  }
+
+  async function loadGraph() {
+    const live = window.BrainGraph?.getGraph?.() || null;
+    if (live) return live;
+    const res = await fetch(`data/graph.json?t=${Date.now()}`, { cache: "no-store" });
+    if (!res.ok) throw new Error("ไม่พบ data/graph.json");
+    return foldGraph(await res.json());
+  }
+
+  async function loadPosts() {
+    if (postsOverride?.length) return postsOverride;
+    const live = window.NewsApp?.getPosts?.() || null;
+    if (live?.length) return live;
+    try {
+      const feed = await fetchJson("data/feed.json");
+      return feed?.posts || [];
+    } catch {
+      return [];
+    }
+  }
+
+  async function loadAlias() {
+    try {
+      return (await fetchJson("data/entity-aliases.json")) || { parents: [] };
+    } catch {
+      return { parents: [] };
+    }
   }
 
   async function ensureIndex() {
     if (indexCache) return indexCache;
-    let graph = window.BrainGraph?.getGraph?.() || null;
-    if (!graph) {
-      const res = await fetch(`data/graph.json?t=${Date.now()}`, { cache: "no-store" });
-      if (!res.ok) throw new Error("ไม่พบ data/graph.json");
-      graph = await res.json();
-      if (!graph.positions_folded && window.PositionFold?.foldPositions) {
-        let registry = { offices: [], title_prefixes: [] };
-        try {
-          const pres = await fetch(`data/positions.json?t=${Date.now()}`, { cache: "no-store" });
-          if (pres.ok) registry = await pres.json();
-        } catch {
-          /* fold with an empty registry rather than skipping the graph */
-        }
-        graph = window.PositionFold.foldPositions(graph, registry);
-      }
-    }
-    let posts = postsOverride;
-    if (!posts?.length && window.NewsApp?.getPosts) posts = window.NewsApp.getPosts();
-    if (!posts?.length) {
-      try {
-        const res = await fetch(`data/feed.json?t=${Date.now()}`, { cache: "no-store" });
-        const feed = res.ok ? await res.json() : null;
-        posts = feed?.posts || [];
-      } catch {
-        posts = [];
-      }
-    }
-    let alias = { parents: [] };
-    try {
-      const res = await fetch(`data/entity-aliases.json?t=${Date.now()}`, { cache: "no-store" });
-      if (res.ok) alias = await res.json();
-    } catch {
-      /* rollup stays empty */
-    }
+    const graph = await loadGraph();
+    const posts = await loadPosts();
+    const alias = await loadAlias();
     indexCache = buildIndex(graph, posts, alias);
     return indexCache;
   }
@@ -1085,99 +1372,109 @@
     return answerFromIndex(index, text, opts || {});
   }
 
-  function renderResult(result, opts = {}) {
-    if (!result?.ok && result?.caseCount == null) {
-      return `<div class="rag-answer"><p class="brain-kind">หลักฐานที่ค้นจากกราฟรอบนี้</p><h3>ไม่พบข้อมูลที่ตรงกัน</h3><p>${escapeHtml(result?.message || "ไม่รายงานจำนวน")}</p></div>`;
-    }
-    const warnings = (result.warnings || [])
-      .map((w) => `<p class="rag-warn">${escapeHtml(w)}</p>`)
-      .join("");
-    const hubLine = (result.hubs || []).map((h) => escapeHtml(h.title)).join(", ");
+  function emptyAnswer(result) {
+    return `<div class="rag-answer"><p class="brain-kind">หลักฐานที่ค้นจากกราฟรอบนี้</p><h3>ไม่พบข้อมูลที่ตรงกัน</h3><p>${escapeHtml(result?.message || "ไม่รายงานจำนวน")}</p></div>`;
+  }
+
+  function facetNoteText(result) {
     const labels = facetLabels(result.selectedFacets);
-    const facetNote = labels.length
-      ? `${escapeHtml(labels.join(" · "))}${result.filterMode === "and" ? " · ทุกเงื่อนไข" : ""}`
-      : `${hubLine}${(result.crimeTypes || []).length ? ` · ประเภท ${escapeHtml(result.crimeTypes.join(", "))}` : ""}`;
-    const holderBlock = result.holder?.name
-      ? `<p class="rag-holder">ผู้ดำรงตำแหน่งปัจจุบัน <strong>${escapeHtml(result.holder.name)}</strong>${
-          result.holder.position ? ` · ${escapeHtml(result.holder.position)}` : ""
-        }${result.holder.org ? ` · ${escapeHtml(result.holder.org)}` : ""}</p>`
-      : "";
-    const countBlock =
-      result.caseCount == null
-        ? ""
-        : `<p class="rag-count"><strong>${result.caseCount}</strong> ข่าว</p><p class="muted">จำนวนนี้คือนับข่าวที่เชื่อมในกราฟ ไม่ใช่ยอดยึดอย่างเป็นทางการ</p>`;
-    const qty = (result.quantities || [])
-      .map((group) => {
-        const items = (group.items || [])
-          .map(
-            (item) =>
-              `<li><span class="rag-qty">${escapeHtml(item.display)}</span>${
-                item.org ? ` · ${escapeHtml(item.org)}` : ""
-              } · <a href="${escapeHtml(item.href)}">${escapeHtml(item.title)}</a></li>`
-          )
-          .join("");
-        return `<section class="rag-qty-group"><h4>${escapeHtml(group.unit)}</h4><p class="muted">${escapeHtml(group.note)}</p><ul>${items}</ul></section>`;
-      })
-      .join("");
-    const list = (result.evidence || [])
+    if (labels.length) {
+      const suffix = result.filterMode === "and" ? " · ทุกเงื่อนไข" : "";
+      return `${escapeHtml(labels.join(" · "))}${suffix}`;
+    }
+    const hubLine = (result.hubs || []).map((hub) => escapeHtml(hub.title)).join(", ");
+    if (!(result.crimeTypes || []).length) return hubLine;
+    return `${hubLine} · ประเภท ${escapeHtml(result.crimeTypes.join(", "))}`;
+  }
+
+  function holderBlock(holder) {
+    if (!holder?.name) return "";
+    const position = holder.position ? ` · ${escapeHtml(holder.position)}` : "";
+    const org = holder.org ? ` · ${escapeHtml(holder.org)}` : "";
+    return `<p class="rag-holder">ผู้ดำรงตำแหน่งปัจจุบัน <strong>${escapeHtml(holder.name)}</strong>${position}${org}</p>`;
+  }
+
+  function countBlock(caseCount) {
+    if (caseCount == null) return "";
+    return `<p class="rag-count"><strong>${caseCount}</strong> ข่าว</p><p class="muted">จำนวนนี้คือนับข่าวที่เชื่อมในกราฟ ไม่ใช่ยอดยึดอย่างเป็นทางการ</p>`;
+  }
+
+  function fileLink(path, label) {
+    if (!path) return "";
+    return `<a href="data/${escapeHtml(path)}">${label}</a>`;
+  }
+
+  function quantitySection(group) {
+    const items = (group.items || [])
       .map((item) => {
-        const files = [
-          item.pdf ? `<a href="data/${escapeHtml(item.pdf)}">PDF</a>` : "",
-          item.infographic ? `<a href="data/${escapeHtml(item.infographic)}">Infographic</a>` : "",
-        ]
-          .filter(Boolean)
-          .join(" · ");
-        const when = item.date ? escapeHtml(item.date) : "";
-        const graphWhen =
-          item.graphDate && item.graphDate !== item.date
-            ? ` · วันที่ในกราฟ ${escapeHtml(item.graphDate)}`
-            : "";
-        return `<li><a href="${escapeHtml(item.href)}">${escapeHtml(item.title)}</a><p class="muted">${when}${graphWhen}${
-          item.crime_type ? ` · ${escapeHtml(item.crime_type)}` : ""
-        }${item.org ? ` · ${escapeHtml(item.org)}` : ""}</p>${
-          item.excerpt ? `<p>${escapeHtml(item.excerpt)}</p>` : ""
-        }${files ? `<p class="rag-files">${files}</p>` : ""}</li>`;
+        const org = item.org ? ` · ${escapeHtml(item.org)}` : "";
+        return `<li><span class="rag-qty">${escapeHtml(item.display)}</span>${org} · <a href="${escapeHtml(item.href)}">${escapeHtml(item.title)}</a></li>`;
       })
       .join("");
-    const old = (result.oldLinks || [])
-      .map((group) => {
-        const items = (group.cases || [])
-          .map(
-            (item) =>
-              `<li><a href="${escapeHtml(item.href)}">${escapeHtml(item.title)}</a> <span class="muted">${escapeHtml(item.date || "")}${
-                item.crime_type ? ` · ${escapeHtml(item.crime_type)}` : ""
-              }</span></li>`
-          )
-          .join("");
-        return `<section><h4>${escapeHtml(group.relation)} · ${escapeHtml(group.hubTitle)}</h4><ul>${items}</ul></section>`;
-      })
-      .join("");
+    return `<section class="rag-qty-group"><h4>${escapeHtml(group.unit)}</h4><p class="muted">${escapeHtml(group.note)}</p><ul>${items}</ul></section>`;
+  }
+
+  function evidenceItem(item) {
+    const files = [fileLink(item.pdf, "PDF"), fileLink(item.infographic, "Infographic")].filter(Boolean).join(" · ");
+    const when = item.date ? escapeHtml(item.date) : "";
+    const graphWhen = item.graphDate && item.graphDate !== item.date ? ` · วันที่ในกราฟ ${escapeHtml(item.graphDate)}` : "";
+    const crime = item.crime_type ? ` · ${escapeHtml(item.crime_type)}` : "";
+    const org = item.org ? ` · ${escapeHtml(item.org)}` : "";
+    const excerpt = item.excerpt ? `<p>${escapeHtml(item.excerpt)}</p>` : "";
+    const fileLine = files ? `<p class="rag-files">${files}</p>` : "";
+    return `<li><a href="${escapeHtml(item.href)}">${escapeHtml(item.title)}</a><p class="muted">${when}${graphWhen}${crime}${org}</p>${excerpt}${fileLine}</li>`;
+  }
+
+  function oldCaseItem(item) {
+    const crime = item.crime_type ? ` · ${escapeHtml(item.crime_type)}` : "";
+    return `<li><a href="${escapeHtml(item.href)}">${escapeHtml(item.title)}</a> <span class="muted">${escapeHtml(item.date || "")}${crime}</span></li>`;
+  }
+
+  function oldGroup(group) {
+    const items = (group.cases || []).map(oldCaseItem).join("");
+    return `<section><h4>${escapeHtml(group.relation)} · ${escapeHtml(group.hubTitle)}</h4><ul>${items}</ul></section>`;
+  }
+
+  function oldSection(result, oldHtml) {
+    if (oldHtml) {
+      return `<section><h4>ข่าวอื่นที่ร่วมโหนด</h4><p class="muted">เส้นนี้ใช้ในแผงผลลัพธ์และตอนโฟกัส ไม่ได้ลากบนกราฟภาพรวม</p>${oldHtml}</section>`;
+    }
+    if (result.filterMode === "and") {
+      return `<p class="muted">แสดงเฉพาะข่าวที่ตรงทุกเงื่อนไขที่เลือก ไม่รวมข่าวที่ร่วมโหนดแต่คนละประเภทหรือคนละหน่วยงาน</p>`;
+    }
+    return `<p class="muted">ไม่มีข่าวอื่นที่ร่วมโหนดนี้นอกจากรายการด้านบน</p>`;
+  }
+
+  function focusButton(opts, result) {
+    if (opts.focus === false || !(result.focusIds || []).length) return "";
+    return `<p><button type="button" class="btn-ghost" data-rag-focus>โฟกัสกราฟเฉพาะกลุ่มนี้</button></p>`;
+  }
+
+  function renderResult(result, opts = {}) {
+    if (!result?.ok && result?.caseCount == null) return emptyAnswer(result);
+    const warnings = (result.warnings || []).map((w) => `<p class="rag-warn">${escapeHtml(w)}</p>`).join("");
+    const note = facetNoteText(result);
+    const qty = (result.quantities || []).map(quantitySection).join("");
+    const list = (result.evidence || []).map(evidenceItem).join("");
+    const old = (result.oldLinks || []).map(oldGroup).join("");
     const listTitle = result.intent === "timeline" ? "ลำดับข่าว" : "ข่าวที่ตรงเงื่อนไข";
+    const qtySection = qty ? `<section><h4>ตัวเลขจากข้อความข่าว แยกตามหน่วยนับ</h4>${qty}</section>` : "";
+    const listSection = list ? `<section><h4>${listTitle}</h4><ol class="rag-cases">${list}</ol></section>` : "";
+    const noteLine = note ? ` · ${note}` : "";
     return `<div class="rag-answer">
       <p class="brain-kind">หลักฐานที่ค้นจากกราฟรอบนี้</p>
       <p class="muted">สรุปการค้นนี้สร้างจากโหนดและข่าวที่ตรงคำถามรอบนี้ ไม่ใช่ข้อความสำเร็จรูป</p>
       <h3>${escapeHtml(result.message || "")}</h3>
       ${warnings}
-      ${holderBlock}
-      <p class="muted">${escapeHtml(result.windowNote || "")}${facetNote ? ` · ${facetNote}` : ""}</p>
-      ${countBlock}
-      ${qty ? `<section><h4>ตัวเลขจากข้อความข่าว แยกตามหน่วยนับ</h4>${qty}</section>` : ""}
-      ${list ? `<section><h4>${listTitle}</h4><ol class="rag-cases">${list}</ol></section>` : ""}
-      ${
-        old
-          ? `<section><h4>ข่าวอื่นที่ร่วมโหนด</h4><p class="muted">เส้นนี้ใช้ในแผงผลลัพธ์และตอนโฟกัส ไม่ได้ลากบนกราฟภาพรวม</p>${old}</section>`
-          : result.filterMode === "and"
-            ? `<p class="muted">แสดงเฉพาะข่าวที่ตรงทุกเงื่อนไขที่เลือก ไม่รวมข่าวที่ร่วมโหนดแต่คนละประเภทหรือคนละหน่วยงาน</p>`
-            : `<p class="muted">ไม่มีข่าวอื่นที่ร่วมโหนดนี้นอกจากรายการด้านบน</p>`
-      }
-      ${
-        opts.focus !== false && (result.focusIds || []).length
-          ? `<p><button type="button" class="btn-ghost" data-rag-focus>โฟกัสกราฟเฉพาะกลุ่มนี้</button></p>`
-          : ""
-      }
+      ${holderBlock(result.holder)}
+      <p class="muted">${escapeHtml(result.windowNote || "")}${noteLine}</p>
+      ${countBlock(result.caseCount)}
+      ${qtySection}
+      ${listSection}
+      ${oldSection(result, old)}
+      ${focusButton(opts, result)}
     </div>`;
   }
-
   function narrationPayload(result) {
     return {
       intent: result.intent,
@@ -1287,17 +1584,48 @@
       text += once.text;
       if (!once.truncated) break;
       previous = once.text;
-      convo.push({ role: "assistant", content: once.text });
-      convo.push({
-        role: "user",
-        content: "คำตอบยังไม่จบ เขียนต่อจากอักขระสุดท้ายทันที ห้ามขึ้นต้นใหม่และห้ามย้ำส่วนที่เขียนไปแล้ว",
-      });
+      convo.push(
+        { role: "assistant", content: once.text },
+        {
+          role: "user",
+          content: "คำตอบยังไม่จบ เขียนต่อจากอักขระสุดท้ายทันที ห้ามขึ้นต้นใหม่และห้ามย้ำส่วนที่เขียนไปแล้ว",
+        }
+      );
     }
     return { ok: true, text: text.trim() };
   }
 
+  function markerText(line, index) {
+    if (line[index] !== " " && line[index] !== "\t") return null;
+    let j = index;
+    while (line[j] === " " || line[j] === "\t") j += 1;
+    return line.slice(j);
+  }
+
+  function listItem(line) {
+    let i = 0;
+    while (line[i] === " " || line[i] === "\t") i += 1;
+    if (line[i] === "-" || line[i] === "*") {
+      const text = markerText(line, i + 1);
+      return text == null ? null : { ordered: false, text };
+    }
+    let j = i;
+    while (line[j] >= "0" && line[j] <= "9") j += 1;
+    if (j === i || line[j] !== ".") return null;
+    const text = markerText(line, j + 1);
+    return text == null ? null : { ordered: true, text };
+  }
+
+  function headingText(line) {
+    let i = 0;
+    while (i < 3 && line[i] === "#") i += 1;
+    if (!i) return null;
+    const text = markerText(line, i);
+    return text;
+  }
+
   function renderModelText(raw) {
-    const lines = escapeHtml(raw).replace(/\r\n/g, "\n").split("\n");
+    const lines = escapeHtml(raw).replaceAll("\r\n", "\n").split("\n");
     const html = [];
     let list = null;
     let ordered = false;
@@ -1308,21 +1636,21 @@
     };
     const inline = (line) => line.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
     for (const line of lines) {
-      const item = line.match(/^\s*(?:[-*]|\d+\.)\s+(.*)$/);
+      const item = listItem(line);
       if (item) {
-        const nextOrdered = /^\s*\d+\./.test(line);
-        if (!list || ordered !== nextOrdered) {
+        if (!list || ordered !== item.ordered) {
           flush();
           list = [];
-          ordered = nextOrdered;
+          ordered = item.ordered;
         }
-        list.push(`<li>${inline(item[1])}</li>`);
+        list.push(`<li>${inline(item.text)}</li>`);
         continue;
       }
       flush();
       if (!line.trim()) continue;
-      const heading = line.match(/^#{1,3}\s+(.*)$/);
-      html.push(heading ? `<h4>${inline(heading[1])}</h4>` : `<p>${inline(line)}</p>`);
+      const heading = headingText(line);
+      const body = heading == null ? `<p>${inline(line)}</p>` : `<h4>${inline(heading)}</h4>`;
+      html.push(body);
     }
     flush();
     return html.join("");
@@ -1439,6 +1767,31 @@
     return chatQueue;
   }
 
+  function applyBrainFocus(result) {
+    lastFocusIds = result.focusIds || [];
+    if (!lastFocusIds.length) {
+      window.BrainGraph?.clearFocus?.();
+      return;
+    }
+    window.BrainGraph?.focusOnIds?.(lastFocusIds);
+    const meta = document.getElementById("brain-meta");
+    if (!meta) return;
+    const labels = facetLabels(result.selectedFacets);
+    const note = labels.length ? labels.join(" · ") : `${lastFocusIds.length} โหนด`;
+    meta.textContent = result.filterMode === "and" ? `กรองตามคำถาม · ${note} · ทุกเงื่อนไข` : `กรองตามคำถาม · ${note}`;
+  }
+
+  function replyHtml(reply) {
+    if (reply.ok) return `<div class="rag-narration-body">${renderModelText(reply.text)}</div>`;
+    return `<p class="rag-warn">${escapeHtml(reply.reason || "เรียกโมเดลไม่สำเร็จ — หลักฐานด้านบนยังใช้ได้")}</p>`;
+  }
+
+  function assistantHtml(evidence, analysis) {
+    const open = analysis ? "" : " open";
+    const body = analysis || `<p class="muted">กำลังให้โมเดลเขียนจากหลักฐานด้านบน…</p>`;
+    return `<details class="rag-evidence"${open}><summary>หลักฐานจากกราฟ · โหนด ความเชื่อมโยง และข่าวที่เกี่ยวข้อง</summary>${evidence}</details><section class="rag-llm"><p class="brain-kind">ผลจากโมเดล</p>${body}</section>`;
+  }
+
   async function askNow(question) {
     const log = document.getElementById("brain-chat-log");
     const input = document.getElementById("brain-question");
@@ -1464,28 +1817,13 @@
       assistant.innerHTML = `<p class="rag-warn">ค้นไม่สำเร็จ ${escapeHtml(err?.message || "")}</p>`;
       return;
     }
-    lastFocusIds = result.focusIds || [];
-    if (lastFocusIds.length) {
-      window.BrainGraph?.focusOnIds?.(lastFocusIds);
-      const meta = document.getElementById("brain-meta");
-      if (meta) {
-        const labels = facetLabels(result.selectedFacets);
-        const note = labels.length ? labels.join(" · ") : `${lastFocusIds.length} โหนด`;
-        meta.textContent =
-          result.filterMode === "and" ? `กรองตามคำถาม · ${note} · ทุกเงื่อนไข` : `กรองตามคำถาม · ${note}`;
-      }
-    } else {
-      window.BrainGraph?.clearFocus?.();
-    }
+    applyBrainFocus(result);
     const evidence = renderResult(result, { focus: true });
-    assistant.innerHTML = `<details class="rag-evidence" open><summary>หลักฐานจากกราฟ · โหนด ความเชื่อมโยง และข่าวที่เกี่ยวข้อง</summary>${evidence}</details><section class="rag-llm"><p class="brain-kind">ผลจากโมเดล</p><p class="muted">กำลังให้โมเดลเขียนจากหลักฐานด้านบน…</p></section>`;
+    assistant.innerHTML = assistantHtml(evidence, "");
     assistant.querySelector(".rag-llm")?.scrollIntoView({ block: "nearest" });
     const reply = await askModel(question, result);
     thread.push({ question, result, llmText: reply.ok ? reply.text : "" });
-    const analysis = reply.ok
-      ? `<div class="rag-narration-body">${renderModelText(reply.text)}</div>`
-      : `<p class="rag-warn">${escapeHtml(reply.reason || "เรียกโมเดลไม่สำเร็จ — หลักฐานด้านบนยังใช้ได้")}</p>`;
-    assistant.innerHTML = `<details class="rag-evidence"><summary>หลักฐานจากกราฟ · โหนด ความเชื่อมโยง และข่าวที่เกี่ยวข้อง</summary>${evidence}</details><section class="rag-llm"><p class="brain-kind">ผลจากโมเดล</p>${analysis}</section>`;
+    assistant.innerHTML = assistantHtml(evidence, replyHtml(reply));
     assistant.querySelector(".rag-llm")?.scrollIntoView({ block: "nearest" });
   }
 
@@ -1512,15 +1850,15 @@
     askBound = true;
     form?.addEventListener("submit", (ev) => {
       ev.preventDefault();
-      ask(input?.value || "");
+      void ask(input?.value || "");
     });
     document.getElementById("brain-chat-clear")?.addEventListener("click", () => clearChat());
     document.querySelectorAll("[data-example]").forEach((btn) => {
-      const idx = Number(btn.getAttribute("data-example"));
+      const idx = Number(btn.dataset.example);
       const q = EXAMPLES[idx] || btn.textContent || "";
       btn.addEventListener("click", () => {
         if (input) input.value = q;
-        ask(q);
+        void ask(q);
       });
     });
     document.getElementById("brain-chat-log")?.addEventListener("click", (ev) => {
