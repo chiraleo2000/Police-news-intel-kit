@@ -79,7 +79,9 @@
   ];
   const LLM_MODEL = "google/gemma-4-e2b";
   const NARRATION_RULE =
-    "คุณตอบภาษาไทยจาก JSON ที่ส่งมาเท่านั้น ห้ามใช้ความรู้ภายนอก ห้ามเรียกเครื่องมือ และห้ามแต่งชื่อ คน ตำแหน่ง หรือตัวเลขที่ไม่มีใน JSON เล่าและนับเฉพาะ evidence ถ้า relatedThroughNodes ว่างห้ามเล่าข่าวอื่น ถ้าคำถามระบุตำแหน่ง ให้ยึด selectedFacets.positions กับ hubs ของตำแหน่งนั้น ห้ามขยายเป็นข่าวทั้งหน่วยงานแม่ ถ้ามี holder ให้บอกชื่อและตำแหน่งจาก holder เท่านั้น ถ้าไม่มีหลักฐานของคนหรือตำแหน่งที่ถามให้บอกว่าไม่มีในคลัง ถ้าถามว่าเกิดขึ้นที่ไหน ให้ใช้ places ใน evidence เท่านั้น ห้ามตีคำธรรมดาเป็นจังหวัดเมื่อไม่อยู่ใน selectedFacets ห้ามรวมหน่วยนับที่ต่างกัน";
+    "คุณตอบเป็นภาษาไทยแบบอธิบายให้จบ ห้ามตอบสั้นเพียงประโยคเดียว ใช้เฉพาะ JSON ที่ส่งมา ห้ามใช้ความรู้ภายนอกและห้ามแต่งชื่อหรือตัวเลข " +
+    "เริ่มด้วยคำตอบตรงคำถามจาก caseCount selectedFacets และ places แล้วอธิบายทีละข่าวใน evidence ว่านำหัวข้อ วันที่ ประเภทคดี สถานที่ และข้อความ excerpt มาจากคลังข่าวใดเพื่อยืนยัน " +
+    "ทุกข่าวที่อ้างต้องมี title และ date ที่อยู่ใน JSON ถ้า relatedThroughNodes ว่างห้ามเล่าข่าวนอก evidence ถ้าหลักฐานไม่พอให้บอกว่าไม่มีในคลังและระบุเงื่อนไขที่ค้น ห้ามรวมหน่วยนับที่ต่างกัน";
 
   const EXAMPLES = [
     "ผมต้องการทราบว่ากรมศุลกากรมีการห้ามปรามการเข้ามาของยาเสพติดตอนนี้ได้จำนวนทั้งหมดเท่าไร่",
@@ -394,7 +396,27 @@
     return map;
   }
 
+  function ensureCrimeLinks(graph) {
+    const nodes = graph?.nodes || [];
+    const edges = graph?.edges || [];
+    const byTitle = new Map();
+    for (const node of nodes) {
+      if (node.kind === "crime_type" && node.title) byTitle.set(node.title, node);
+    }
+    const seen = new Set(edges.map((edge) => `${edge.source}|${edge.target}|${edge.label}`));
+    for (const node of nodes) {
+      if (node.kind !== "case") continue;
+      const crime = byTitle.get(String(node.crime_type || "").trim());
+      if (!crime) continue;
+      const key = `${node.id}|${crime.id}|ประเภท`;
+      if (seen.has(key)) continue;
+      seen.add(key);
+      edges.push({ source: node.id, target: crime.id, label: "ประเภท" });
+    }
+  }
+
   function buildIndex(graph, posts, alias, words) {
+    ensureCrimeLinks(graph);
     const nodes = graph?.nodes || [];
     const edges = graph?.edges || [];
     const nodesById = new Map(nodes.map((n) => [n.id, n]));
@@ -1674,7 +1696,7 @@
       keywords: result.keywords || [],
       selectedFacets: result.selectedFacets || {},
       filterMode: result.filterMode || "single",
-      policy: "ตอบจาก evidence holder และ selectedFacets ใน JSON นี้เท่านั้น ห้ามใช้ความรู้นอกคลัง",
+      policy: "อธิบายยาวจาก evidence เท่านั้น ทุกข่าวที่อ้างต้องบอก title วันที่ และว่าข้อความมาจาก excerpt ในคลัง",
       warnings: result.warnings || [],
       window: result.windowNote || "",
       holder: result.holder || null,
@@ -1708,7 +1730,7 @@
       })),
       evidence: (result.evidence || []).slice(0, 20).map((item) => ({
         title: item.title,
-        excerpt: String(item.excerpt || "").slice(0, 180),
+        excerpt: String(item.excerpt || "").slice(0, 420),
         date: item.date,
         href: item.href,
         position: item.position || "",

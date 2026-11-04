@@ -146,6 +146,30 @@
     return presentEdges(edges, true);
   }
 
+  function attachCrimeTypeEdges(data) {
+    const nodes = data?.nodes || [];
+    const edges = data?.edges || [];
+    if (data && !data.edges) data.edges = edges;
+    const byTitle = new Map();
+    for (const node of nodes) {
+      if (node.kind === "crime_type" && node.title) byTitle.set(node.title, node);
+    }
+    const seen = new Set(edges.map((edge) => `${edge.source}|${edge.target}|${edge.label}`));
+    for (const node of nodes) {
+      if (node.kind !== "case") continue;
+      const title = String(node.crime_type || "").trim();
+      const crime = byTitle.get(title);
+      if (!crime) continue;
+      const key = `${node.id}|${crime.id}|ประเภท`;
+      if (seen.has(key)) continue;
+      seen.add(key);
+      edges.push({ source: node.id, target: crime.id, label: "ประเภท" });
+      node.degree = (node.degree || 0) + 1;
+      crime.degree = (crime.degree || 0) + 1;
+    }
+    return data;
+  }
+
   async function loadGraph() {
     const res = await fetch(`data/graph.json?t=${Date.now()}`, { cache: "no-store" });
     if (!res.ok) throw new Error("graph.json not found — rebuild/publish from police-news-intel-private");
@@ -157,8 +181,9 @@
     } catch {
       /* the graph still draws if the office list is missing */
     }
-    if (window.PositionFold?.foldPositions) return window.PositionFold.foldPositions(data, registry);
-    return data;
+    const linked = attachCrimeTypeEdges(data);
+    if (window.PositionFold?.foldPositions) return window.PositionFold.foldPositions(linked, registry);
+    return linked;
   }
 
   function neighborIds(id) {
