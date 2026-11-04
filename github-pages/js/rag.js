@@ -79,9 +79,9 @@
   ];
   const LLM_MODEL = "google/gemma-4-e2b";
   const NARRATION_RULE =
-    "คุณตอบเป็นภาษาไทยแบบอธิบายให้จบ ห้ามตอบสั้นเพียงประโยคเดียว ใช้เฉพาะ JSON ที่ส่งมา ห้ามใช้ความรู้ภายนอกและห้ามแต่งชื่อหรือตัวเลข " +
-    "เริ่มด้วยคำตอบตรงคำถามจาก caseCount selectedFacets และ places แล้วอธิบายทีละข่าวใน evidence ว่านำหัวข้อ วันที่ ประเภทคดี สถานที่ และข้อความ excerpt มาจากคลังข่าวใดเพื่อยืนยัน " +
-    "ทุกข่าวที่อ้างต้องมี title และ date ที่อยู่ใน JSON ถ้า relatedThroughNodes ว่างห้ามเล่าข่าวนอก evidence ถ้าหลักฐานไม่พอให้บอกว่าไม่มีในคลังและระบุเงื่อนไขที่ค้น ห้ามรวมหน่วยนับที่ต่างกัน";
+    "เขียนคำตอบเป็นย่อหน้าภาษาไทยเท่านั้น ห้ามใช้ JSON ห้ามใช้โค้ด ห้ามขึ้นต้นด้วยวงเล็บปีกกา ห้ามใส่ป้าย Title Date Excerpt หรือข้อความจากคลังข่าว " +
+    "ย่อหน้าแรกตอบคำถามตรง ๆ จากจำนวนข่าวและตัวเลขที่มีในรายการ ถ้ายอดรวมอย่างเป็นทางการไม่มีในข่าวให้บอกตรง ๆ ว่านับได้เฉพาะข่าวในคลัง " +
+    "จากนั้นสรุปไม่เกินสี่ย่อหน้า โดยสอดชื่อข่าวและวันที่เข้าไปในประโยค ห้ามคัดลอกข้อความข่าวทั้งก้อน ห้ามแต่งชื่อหรือตัวเลขที่ไม่มีในรายการ ห้ามเล่าข่าวนอกรายการ";
 
   const EXAMPLES = [
     "ผมต้องการทราบว่ากรมศุลกากรมีการห้ามปรามการเข้ามาของยาเสพติดตอนนี้ได้จำนวนทั้งหมดเท่าไร่",
@@ -1711,7 +1711,7 @@
       keywords: result.keywords || [],
       selectedFacets: result.selectedFacets || {},
       filterMode: result.filterMode || "single",
-      policy: "อธิบายยาวจาก evidence เท่านั้น ทุกข่าวที่อ้างต้องบอก title วันที่ และว่าข้อความมาจาก excerpt ในคลัง",
+      policy: "เขียนเป็นย่อหน้าภาษาไทย ห้ามตอบเป็น JSON",
       warnings: result.warnings || [],
       window: result.windowNote || "",
       holder: result.holder || null,
@@ -1899,6 +1899,48 @@
     });
   }
 
+  function evidenceBrief(question, result) {
+    const facets = facetLabels(result.selectedFacets).join(" · ") || "ไม่ระบุ";
+    const news = (result.evidence || []).slice(0, 8).map((item, index) => {
+      const places = (item.places || []).slice(0, 2).join(", ");
+      const where = places ? ` ที่${places}` : "";
+      const bit = String(item.excerpt || "").replace(/\s+/g, " ").trim().slice(0, 140);
+      return `${index + 1}. ${item.date || "ไม่ระบุวัน"} ${item.title}${where} ${bit}`;
+    });
+    const numbers = (result.quantities || []).slice(0, 4).map((group) => {
+      const bits = (group.items || []).slice(0, 3).map((item) => item.display).join(", ");
+      return `${group.unit}: ${bits}`;
+    });
+    return [
+      `คำถาม: ${question}`,
+      `เงื่อนไขที่ค้นในคลัง: ${facets}`,
+      `จำนวนข่าวที่ตรงเงื่อนไข: ${result.caseCount ?? 0}`,
+      numbers.length ? `ตัวเลขที่ปรากฏในข่าว ห้ามเอามารวมกันถ้าหน่วยต่างกัน: ${numbers.join(" | ")}` : "",
+      "ข่าวในคลัง:",
+      news.join("\n") || "ไม่มีข่าวที่ตรงเงื่อนไข",
+      "ตอบเป็นย่อหน้าภาษาไทย ห้ามตอบเป็น JSON",
+    ]
+      .filter(Boolean)
+      .join("\n");
+  }
+
+  function proseFromModel(raw) {
+    let text = String(raw || "").trim();
+    const fenced = text.match(/^```(?:json)?\s*([\s\S]*?)```$/i);
+    if (fenced) text = fenced[1].trim();
+    if (text.startsWith("{") || text.startsWith("[")) {
+      try {
+        const data = JSON.parse(text);
+        if (typeof data === "string") text = data;
+        else if (typeof data?.answer === "string") text = data.answer;
+        else if (typeof data?.text === "string") text = data.text;
+      } catch {
+        /* keep the original text */
+      }
+    }
+    return text.replaceAll("\\n", "\n").trim();
+  }
+
   async function askModel(question, result) {
     const endpoints = await resolveEndpoints();
     if (!endpoints.ok) return { ok: false, reason: endpoints.reason };
@@ -1906,7 +1948,7 @@
     return completeChat(endpoints.llm, [
       { role: "system", content: NARRATION_RULE },
       ...history,
-      { role: "user", content: JSON.stringify({ question, ...narrationPayload(result) }) },
+      { role: "user", content: evidenceBrief(question, result) },
     ]);
   }
 
@@ -2016,7 +2058,7 @@
   }
 
   function replyHtml(reply) {
-    if (reply.ok) return `<div class="rag-narration-body">${renderModelText(reply.text)}</div>`;
+    if (reply.ok) return `<div class="rag-narration-body">${renderModelText(proseFromModel(reply.text))}</div>`;
     return `<p class="rag-warn">${escapeHtml(reply.reason || "เรียกโมเดลไม่สำเร็จ — หลักฐานด้านบนยังใช้ได้")}</p>`;
   }
 
@@ -2056,7 +2098,7 @@
     assistant.innerHTML = assistantHtml(evidence, "");
     assistant.querySelector(".rag-llm")?.scrollIntoView({ block: "nearest" });
     const reply = await askModel(question, result);
-    thread.push({ question, result, llmText: reply.ok ? reply.text : "" });
+    thread.push({ question, result, llmText: reply.ok ? proseFromModel(reply.text) : "" });
     assistant.innerHTML = assistantHtml(evidence, replyHtml(reply));
     assistant.querySelector(".rag-llm")?.scrollIntoView({ block: "nearest" });
   }
