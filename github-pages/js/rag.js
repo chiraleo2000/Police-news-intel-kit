@@ -1343,7 +1343,19 @@
     for (const id of hub.memberIds) push(id);
   }
 
-  function focusIdsFor(index, hubs, evidenceRows, oldRows, crimeTypes, keepOld) {
+  function focusPlaceIds(index, rows) {
+    const wanted = new Set();
+    for (const row of rows) {
+      for (const title of index.placeTitlesByCase.get(row.node.id) || []) wanted.add(title);
+    }
+    const ids = [];
+    for (const node of index.hubEntities || []) {
+      if (node.entity_group === "สถานที่" && wanted.has(node.title)) ids.push(node.id);
+    }
+    return ids;
+  }
+
+  function focusIdsFor(index, hubs, evidenceRows, crimeTypes) {
     const focusIds = [];
     const seen = new Set();
     const push = (id) => {
@@ -1353,12 +1365,9 @@
     };
     for (const hub of hubs) pushHubFocus(push, hub);
     for (const row of evidenceRows) push(row.node.id);
-    if (keepOld) {
-      for (const row of oldRows) push(row.node.id);
-    }
+    for (const id of focusPlaceIds(index, evidenceRows)) push(id);
     for (const title of crimeTypes) push(crimeNodeId(index, title));
-    if (!keepOld) return focusIds;
-    return expandFocusIds(focusIds, index);
+    return focusIds;
   }
 
   function linkedVia(item, oldRows, memberIds) {
@@ -1456,10 +1465,10 @@
     const intent = detectIntent(question);
     if (!question) return emptyResult("ยังไม่มีคำถาม จึงไม่รายงานจำนวน", { intent, dateFrom, dateTo });
     const extracted = extractKeywords(question, index);
-    const selectedFacets = extracted.selectedFacets;
-    const keywords = extracted.keywords || [];
+    const selectedFacets = opts.facets ? keepListedFacets(extracted.selectedFacets, opts.facets) : extracted.selectedFacets;
+    const keywords = (extracted.keywords || []).filter((item) => (selectedFacets[item.facet] || []).includes(item.title));
     const crimeTypes = selectedFacets.crimes.slice();
-    const positions = extracted.positionHits || mentionedPositions(extracted.aliased, index.positionTitles || []);
+    const positions = selectedFacets.positions.slice();
     const hubs = matchHubs(question, index, keywords);
     const attached = attachHolders(hubs, positions, index);
     const facets = facetCountOf(selectedFacets, crimeTypes);
@@ -1511,7 +1520,7 @@
       evidence,
       warnings: collectWarnings(hubs, attached.loose),
       keywords,
-      focusIds: focusIdsFor(index, hubs, evidenceRows, oldRows, crimeTypes, keepOld),
+      focusIds: focusIdsFor(index, hubs, evidenceRows, crimeTypes),
     };
   }
   async function fetchJson(url) {
@@ -1579,9 +1588,64 @@
     return indexCache;
   }
 
+  const FACET_KEYS = ["places", "orgs", "people", "crimes", "positions", "topics"];
+
+  function keepListedFacets(local, chosen) {
+    const next = {};
+    for (const key of FACET_KEYS) {
+      const allow = new Set(chosen?.[key] || []);
+      next[key] = (local[key] || []).filter((title) => allow.has(title));
+    }
+    if (!FACET_KEYS.some((key) => next[key].length)) return local;
+    return next;
+  }
+
+  function sameFacetSet(left, right) {
+    return FACET_KEYS.every((key) => (left[key] || []).join("|") === (right[key] || []).join("|"));
+  }
+
+  function parseFacetJson(text) {
+    const start = String(text || "").indexOf("{");
+    const end = String(text || "").lastIndexOf("}");
+    if (start < 0 || end <= start) return null;
+    try {
+      const data = JSON.parse(text.slice(start, end + 1));
+      return data && typeof data === "object" ? data : null;
+    } catch {
+      return null;
+    }
+  }
+
+  async function refineFacets(question, facets) {
+    const total = FACET_KEYS.reduce((sum, key) => sum + (facets[key] || []).length, 0);
+    if (!total) return facets;
+    const endpoints = await resolveEndpoints();
+    if (!endpoints.ok) return facets;
+    const once = await completeChatOnce(
+      endpoints.llm,
+      [
+        {
+          role: "system",
+          content:
+            "คืน JSON เท่านั้น ไม่มีคำอธิบาย เลือกรายการจาก candidates ที่คำถามหมายถึงจริง ถ้าคำไปติดในคำยาวที่ไม่ใช่ชื่อสถานที่ หน่วยงาน บุคคล หรือประเภทคดี ให้ตัดออก รูปแบบ {\"places\":[],\"orgs\":[],\"people\":[],\"crimes\":[],\"positions\":[],\"topics\":[]}",
+        },
+        { role: "user", content: JSON.stringify({ question, candidates: facets }) },
+      ],
+      300
+    );
+    if (!once.ok) return facets;
+    const parsed = parseFacetJson(once.text);
+    if (!parsed) return facets;
+    return keepListedFacets(facets, parsed);
+  }
+
   async function answerQuestion(text, opts) {
     const index = await ensureIndex();
-    return answerFromIndex(index, text, opts || {});
+    const first = answerFromIndex(index, text, opts || {});
+    if (opts?.facets || !first.ok) return first;
+    const refined = await refineFacets(text, first.selectedFacets || {});
+    if (sameFacetSet(first.selectedFacets || {}, refined)) return first;
+    return answerFromIndex(index, text, { ...(opts || {}), facets: refined });
   }
 
   function emptyAnswer(result) {
@@ -1748,9 +1812,12 @@
     return `เซิร์ฟเวอร์ตอบรหัส ${status}`;
   }
 
-  async function completeChatOnce(url, messages) {
+  async function completeChatOnce(url, messages, maxTokens = -1) {
     let res;
     try {
+      const signal = maxTokens > 0 && typeof AbortSignal !== "undefined" && AbortSignal.timeout
+        ? AbortSignal.timeout(12000)
+        : undefined;
       res = await fetch(url, {
         method: "POST",
         headers: {
@@ -1760,10 +1827,11 @@
         },
         body: JSON.stringify({
           model: LLM_MODEL,
-          temperature: 0.2,
-          max_tokens: -1,
+          temperature: maxTokens > 0 ? 0 : 0.2,
+          max_tokens: maxTokens,
           messages,
         }),
+        signal,
       });
     } catch {
       return { ok: false, reason: "เรียกโมเดลไม่สำเร็จ เพราะเครือข่ายหรือถูกบล็อก" };
