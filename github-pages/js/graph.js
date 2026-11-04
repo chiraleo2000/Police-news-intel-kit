@@ -251,9 +251,8 @@
     if (!graph) return [];
     let nodes;
     if (focusIds?.size) {
-      // Keep every id from the latest question filter, even if those cases are not linked to each other.
       nodes = graph.nodes.filter((n) => focusIds.has(n.id) || n.id === selectedId);
-      return nodes;
+      return dropUnlinked(nodes);
     }
     nodes = graph.nodes.filter(passesBaseFilters);
     if (filters.crimeType) {

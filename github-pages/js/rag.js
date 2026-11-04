@@ -1338,36 +1338,42 @@
     return crimeNode?.id || "";
   }
 
-  function pushHubFocus(push, hub) {
-    if (!hub.virtual) push(hub.id);
-    for (const id of hub.memberIds) push(id);
+  function neighborHubIds(index, seed) {
+    const wanted = new Set(seed);
+    const extra = [];
+    for (const edge of index.edges || []) {
+      const sourceIn = wanted.has(edge.source);
+      const targetIn = wanted.has(edge.target);
+      if (sourceIn === targetIn) continue;
+      extra.push(sourceIn ? edge.target : edge.source);
+    }
+    return extra;
   }
 
-  function focusPlaceIds(index, rows) {
-    const wanted = new Set();
-    for (const row of rows) {
-      for (const title of index.placeTitlesByCase.get(row.node.id) || []) wanted.add(title);
+  function keepConnected(index, ids) {
+    const set = new Set(ids.filter(Boolean));
+    const touched = new Set();
+    for (const edge of index.edges || []) {
+      if (!set.has(edge.source) || !set.has(edge.target)) continue;
+      touched.add(edge.source);
+      touched.add(edge.target);
     }
-    const ids = [];
-    for (const node of index.hubEntities || []) {
-      if (node.entity_group === "สถานที่" && wanted.has(node.title)) ids.push(node.id);
-    }
-    return ids;
+    return [...touched];
   }
 
   function focusIdsFor(index, hubs, evidenceRows, crimeTypes) {
-    const focusIds = [];
-    const seen = new Set();
-    const push = (id) => {
-      if (!id || seen.has(id) || !index.nodesById.has(id)) return;
-      seen.add(id);
-      focusIds.push(id);
-    };
-    for (const hub of hubs) pushHubFocus(push, hub);
-    for (const row of evidenceRows) push(row.node.id);
-    for (const id of focusPlaceIds(index, evidenceRows)) push(id);
-    for (const title of crimeTypes) push(crimeNodeId(index, title));
-    return focusIds;
+    const seed = evidenceRows.map((row) => row.node.id);
+    for (const hub of hubs) {
+      if (!hub.virtual) seed.push(hub.id);
+    }
+    for (const title of crimeTypes) seed.push(crimeNodeId(index, title));
+    const allowed = new Set(seed);
+    for (const id of neighborHubIds(index, seed)) {
+      const node = index.nodesById.get(id);
+      if (!node) continue;
+      if (node.kind === "crime_type" || (node.kind === "entity" && HUB_GROUPS.has(node.entity_group))) allowed.add(id);
+    }
+    return keepConnected(index, [...allowed]);
   }
 
   function linkedVia(item, oldRows, memberIds) {
@@ -1465,8 +1471,8 @@
     const intent = detectIntent(question);
     if (!question) return emptyResult("ยังไม่มีคำถาม จึงไม่รายงานจำนวน", { intent, dateFrom, dateTo });
     const extracted = extractKeywords(question, index);
-    const selectedFacets = opts.facets ? keepListedFacets(extracted.selectedFacets, opts.facets) : extracted.selectedFacets;
-    const keywords = (extracted.keywords || []).filter((item) => (selectedFacets[item.facet] || []).includes(item.title));
+    const selectedFacets = extracted.selectedFacets;
+    const keywords = extracted.keywords || [];
     const crimeTypes = selectedFacets.crimes.slice();
     const positions = selectedFacets.positions.slice();
     const hubs = matchHubs(question, index, keywords);
@@ -1588,64 +1594,9 @@
     return indexCache;
   }
 
-  const FACET_KEYS = ["places", "orgs", "people", "crimes", "positions", "topics"];
-
-  function keepListedFacets(local, chosen) {
-    const next = {};
-    for (const key of FACET_KEYS) {
-      const allow = new Set(chosen?.[key] || []);
-      next[key] = (local[key] || []).filter((title) => allow.has(title));
-    }
-    if (!FACET_KEYS.some((key) => next[key].length)) return local;
-    return next;
-  }
-
-  function sameFacetSet(left, right) {
-    return FACET_KEYS.every((key) => (left[key] || []).join("|") === (right[key] || []).join("|"));
-  }
-
-  function parseFacetJson(text) {
-    const start = String(text || "").indexOf("{");
-    const end = String(text || "").lastIndexOf("}");
-    if (start < 0 || end <= start) return null;
-    try {
-      const data = JSON.parse(text.slice(start, end + 1));
-      return data && typeof data === "object" ? data : null;
-    } catch {
-      return null;
-    }
-  }
-
-  async function refineFacets(question, facets) {
-    const total = FACET_KEYS.reduce((sum, key) => sum + (facets[key] || []).length, 0);
-    if (!total) return facets;
-    const endpoints = await resolveEndpoints();
-    if (!endpoints.ok) return facets;
-    const once = await completeChatOnce(
-      endpoints.llm,
-      [
-        {
-          role: "system",
-          content:
-            "คืน JSON เท่านั้น ไม่มีคำอธิบาย เลือกรายการจาก candidates ที่คำถามหมายถึงจริง ถ้าคำไปติดในคำยาวที่ไม่ใช่ชื่อสถานที่ หน่วยงาน บุคคล หรือประเภทคดี ให้ตัดออก รูปแบบ {\"places\":[],\"orgs\":[],\"people\":[],\"crimes\":[],\"positions\":[],\"topics\":[]}",
-        },
-        { role: "user", content: JSON.stringify({ question, candidates: facets }) },
-      ],
-      300
-    );
-    if (!once.ok) return facets;
-    const parsed = parseFacetJson(once.text);
-    if (!parsed) return facets;
-    return keepListedFacets(facets, parsed);
-  }
-
   async function answerQuestion(text, opts) {
     const index = await ensureIndex();
-    const first = answerFromIndex(index, text, opts || {});
-    if (opts?.facets || !first.ok) return first;
-    const refined = await refineFacets(text, first.selectedFacets || {});
-    if (sameFacetSet(first.selectedFacets || {}, refined)) return first;
-    return answerFromIndex(index, text, { ...(opts || {}), facets: refined });
+    return answerFromIndex(index, text, opts || {});
   }
 
   function emptyAnswer(result) {
