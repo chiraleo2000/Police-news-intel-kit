@@ -7,6 +7,19 @@
   const HUB_GROUPS = new Set(["หน่วย", "บุคคล", "สถานที่"]);
   const PERSON_LABELS = new Set(["สั่งการโดย", "เกี่ยวข้องกับบุคคล", "แจ้งโดย", "สืบสวนโดย"]);
   const MEASURE_ORDER = ["เม็ด", "กรัม", "กก.", "กิโลกรัม", "ลิตร", "ล้าน"];
+  const TOPIC_GROUPS = [
+    { title: "ฆาตกรรม", terms: ["ฆาตกรรม", "ฆ่า"] },
+    { title: "ทำร้ายร่างกาย", terms: ["ทำร้ายร่างกาย", "ทำร้าย"] },
+    { title: "ชิงทรัพย์", terms: ["ชิงทรัพย์", "ปล้น"] },
+    { title: "ข่มขืน", terms: ["ข่มขืน"] },
+    { title: "ยาบ้า", terms: ["ยาบ้า"] },
+    { title: "ไอซ์", terms: ["ยาไอซ์", "ไอซ์"] },
+    { title: "ฟอกเงิน", terms: ["ฟอกเงิน"] },
+    { title: "บัญชีม้า", terms: ["บัญชีม้า"] },
+    { title: "พนัน", terms: ["พนันออนไลน์", "บ่อนการพนัน", "บ่อน"] },
+    { title: "ค้ามนุษย์", terms: ["ค้ามนุษย์"] },
+    { title: "ไซเบอร์", terms: ["อาชญากรรมไซเบอร์", "ไซเบอร์", "คอลเซ็นเตอร์"] },
+  ];
   const LLM_MODEL = "google/gemma-4-e2b";
   const NARRATION_RULE =
     "คุณตอบคำถามผู้ใช้เป็นภาษาไทยให้จบทุกหัวข้อ ห้ามหยุดกลางประโยคหรือกลางรายการ โดยวิเคราะห์จาก JSON หลักฐานที่ให้มาเท่านั้น นับและยกข่าวเฉพาะใน evidence และ quantities ซึ่งผ่าน selectedFacets แล้ว เงื่อนไขคนละ facet เป็น AND ห้ามอ้างข่าวที่ไม่อยู่ใน evidence ถ้า relatedThroughNodes ว่างห้ามเล่าข่าวอื่นที่ร่วมโหนด ห้ามแสดงหัวข้อแบบคำตอบจากกราฟ ห้ามแต่งชื่อคนหรือตัวเลขที่ไม่มีใน JSON ห้ามรวมหน่วยนับที่ต่างกันเป็นยอดเดียว ถ้ามีตำแหน่งหรือผู้ดำรงตำแหน่งใน JSON ให้กล่าวถึง ถ้าข้อมูลไม่พอให้บอกว่าไม่มีในหลักฐาน";
@@ -372,6 +385,7 @@
       ...(facets.people || []),
       ...(facets.positions || []),
       ...(facets.crimes || []),
+      ...(facets.topics || []),
     ];
   }
 
@@ -412,7 +426,13 @@
     for (const parent of index.parents || []) addParentCandidate(org, parent, index);
     for (const title of index.positionTitles || []) pushCandidate(person, "position", "positions", title, 2, { rank: 0 });
     for (const title of index.crimeTypes || []) pushCandidate(crime, "crime", "crimes", title, 3);
-    return { place, org, person, crime };
+    const topics = [];
+    for (const group of TOPIC_GROUPS) {
+      for (const term of group.terms) {
+        pushCandidate(topics, "topic", "topics", group.title, 2, { key: term, display: group.title, rank: 0 });
+      }
+    }
+    return { place, org, person, crime, topics };
   }
 
   function titlesFor(items, facet) {
@@ -426,6 +446,7 @@
       people: titlesFor(claimed, "people"),
       crimes: titlesFor(claimed, "crimes"),
       positions: titlesFor(claimed, "positions"),
+      topics: titlesFor(claimed, "topics"),
     };
   }
 
@@ -447,6 +468,7 @@
       ...claimPool(qn, buckets.org),
       ...claimPool(qn, buckets.person),
       ...crimeHits,
+      ...claimPool(qn, buckets.topics),
     ]).map(({ kind, facet, title }) => ({ kind, facet, title }));
     const selectedFacets = facetsFrom(claimed);
     addCrimeFallback(claimed, selectedFacets, crimeHits, aliased, index);
@@ -901,7 +923,14 @@
       focusIds: [],
       holder: null,
       keywords: extra?.keywords || [],
-      selectedFacets: extra?.selectedFacets || { places: [], orgs: [], people: [], crimes: [], positions: [] },
+      selectedFacets: extra?.selectedFacets || {
+        places: [],
+        orgs: [],
+        people: [],
+        crimes: [],
+        positions: [],
+        topics: [],
+      },
       filterMode: "single",
     };
   }
@@ -1056,10 +1085,29 @@
     hubs.push(virtualPositionHub(title));
   }
 
+  function topicByTitle(title) {
+    return TOPIC_GROUPS.find((group) => group.title === title) || { title, terms: [title] };
+  }
+
+  function caseMentionsTopic(node, topic) {
+    const hay = norm(`${node.title || ""} ${node.excerpt || ""} ${node.crime_type || ""}`);
+    return topic.terms.some((term) => hay.includes(norm(term)));
+  }
+
+  function rowsForTopics(index, titles, opts) {
+    const groups = titles.map(topicByTitle);
+    return rowsCarrying(index, opts, (node) => groups.every((group) => caseMentionsTopic(node, group)));
+  }
+
   function facetCountOf(selectedFacets, crimeTypes) {
     const personFacet = Boolean(selectedFacets.people.length || selectedFacets.positions.length);
-    const count = [selectedFacets.places.length, selectedFacets.orgs.length, personFacet ? 1 : 0, crimeTypes.length]
-      .filter(Boolean).length;
+    const count = [
+      selectedFacets.places.length,
+      selectedFacets.orgs.length,
+      personFacet ? 1 : 0,
+      crimeTypes.length,
+      (selectedFacets.topics || []).length,
+    ].filter(Boolean).length;
     return { personFacet, count, filterMode: count > 1 ? "and" : "single" };
   }
 
@@ -1087,11 +1135,12 @@
     if (crimeTypes.length) {
       sets.push(rowsCarrying(index, { ...dated, crimeTypes, applyCrime: true }, () => true));
     }
+    if ((selectedFacets.topics || []).length) sets.push(rowsForTopics(index, selectedFacets.topics, dated));
     return sets;
   }
 
-  function olderRows(filterMode, crimeTypes, hubs, index, loose, evidenceRows) {
-    if (filterMode !== "single" || crimeTypes.length) return [];
+  function olderRows(filterMode, crimeTypes, topics, hubs, index, loose, evidenceRows) {
+    if (filterMode !== "single" || crimeTypes.length || topics.length) return [];
     const open = { applyCrime: false, applyWindow: false };
     const evidenceIds = new Set(evidenceRows.map((row) => row.node.id));
     return sortRows(
@@ -1277,11 +1326,12 @@
       intersectRows(evidenceSets(hubs, index, attached.loose, selectedFacets, crimeTypes, facets.personFacet, dated)),
       intent
     );
-    const oldRows = olderRows(facets.filterMode, crimeTypes, hubs, index, attached.loose, evidenceRows);
+    const topics = selectedFacets.topics || [];
+    const oldRows = olderRows(facets.filterMode, crimeTypes, topics, hubs, index, attached.loose, evidenceRows);
     const canonicalTitle = hubs.length === 1 ? hubs[0].title : "";
     const evidence = decorateRows(evidenceRows, index, canonicalTitle);
     const oldEvidence = oldRows.map((row) => toEvidence(row, index, canonicalTitle));
-    const keepOld = facets.filterMode === "single" && !crimeTypes.length;
+    const keepOld = facets.filterMode === "single" && !crimeTypes.length && !topics.length;
     const names = facetLabels(selectedFacets).join(" · ");
     const primaryHolder = attached.holderHits[0] || null;
     return {
