@@ -1,0 +1,34 @@
+{
+ "case_id": "20261103-child-line-01",
+ "title": "กก.ดส.บช.น. จับชายอายุ 28 ปี ที่ฉะเชิงเทรา ตามหมายจับ ปมใช้ TikTok และเกม ROBLOX ล่อลวงเด็กอายุ 10-13 ปี ขู่แบล็กเมลเรียกเงิน พบผู้เสียหาย 3 ราย ขยายผลหาเหยื่อเพิ่ม",
+ "generated_at": "2026-11-04T02:30:05.924Z",
+ "node_count": 5,
+ "edge_count": 4,
+ "relations": [
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บช.น.",
+   "target_title": "บช.น.",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/กก.ดส.บช.น.",
+   "target_title": "กก.ดส.บช.น.",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/สน.ลาดพร้าว",
+   "target_title": "สน.ลาดพร้าว",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/อำเภอสนามชัยเขต",
+   "target_title": "อำเภอสนามชัยเขต",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261103-child-line-01.svg"
+}

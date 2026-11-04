@@ -1,0 +1,34 @@
+{
+ "case_id": "20261104-police-01",
+ "title": "ตำรวจ บก.ปพ. แจ้งความ สภ.ปากเกร็ด ถูกดาบตำรวจและพวกรุมทำร้ายในร้านคาราโอเกะเมืองทองธานี ตำรวจเริ่มสอบสวน",
+ "generated_at": "2026-11-04T02:30:05.990Z",
+ "node_count": 5,
+ "edge_count": 4,
+ "relations": [
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/สภ.ปากเกร็ด",
+   "target_title": "สภ.ปากเกร็ด",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/บก.ปพ.",
+   "target_title": "บก.ปพ.",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ร้านคาราโอเกะ เมืองทองธานี อ.ปากเกร็ด",
+   "target_title": "ร้านคาราโอเกะ เมืองทองธานี อ.ปากเกร็ด",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/สถานที่/ปากเกร็ด",
+   "target_title": "ปากเกร็ด",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261104-police-01.svg"
+}

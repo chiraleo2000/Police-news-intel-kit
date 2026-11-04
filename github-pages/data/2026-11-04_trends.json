@@ -1,0 +1,208 @@
+{
+ "baseline": "limited",
+ "window_days": 7,
+ "days_available": 13,
+ "note": "baseline 13 วันย้อนหลัง (<7 วัน: แนวโน้มเป็นข้อมูลบ่งชี้เท่านั้น) surge = วันนี้ >=3 เรื่อง และสูงกว่าค่าเฉลี่ย >=50 เปอร์เซ็นต์",
+ "by_crime_type": [
+  {
+   "type": "คดีชีวิต ร่างกาย และเพศ",
+   "today": 3,
+   "avg_prev_7d": 3.31,
+   "delta_pct": -9.3,
+   "surge": false
+  },
+  {
+   "type": "คุ้มครองผู้บริโภคและสินค้าผิดกฎหมาย",
+   "today": 3,
+   "avg_prev_7d": 1.08,
+   "delta_pct": 178.6,
+   "surge": true
+  },
+  {
+   "type": "อาชญากรรมไซเบอร์และออนไลน์",
+   "today": 2,
+   "avg_prev_7d": 3.46,
+   "delta_pct": -42.2,
+   "surge": false
+  },
+  {
+   "type": "อาชญากรรมที่เกี่ยวข้องกับนักท่องเที่ยวและชาวต่างชาติ",
+   "today": 2,
+   "avg_prev_7d": 1.69,
+   "delta_pct": 18.2,
+   "surge": false
+  },
+  {
+   "type": "ค้ามนุษย์ แรงงานผิดกฎหมาย และคุ้มครองเด็ก",
+   "today": 1,
+   "avg_prev_7d": 1.85,
+   "delta_pct": -45.8,
+   "surge": false
+  },
+  {
+   "type": "คดีเศรษฐกิจ การเงิน และฟอกเงิน",
+   "today": 1,
+   "avg_prev_7d": 1.85,
+   "delta_pct": -45.8,
+   "surge": false
+  },
+  {
+   "type": "พนันและบ่อนผิดกฎหมาย",
+   "today": 1,
+   "avg_prev_7d": 1.62,
+   "delta_pct": -38.1,
+   "surge": false
+  },
+  {
+   "type": "ยาเสพติด",
+   "today": 1,
+   "avg_prev_7d": 4.0,
+   "delta_pct": -75.0,
+   "surge": false
+  },
+  {
+   "type": "อาชญากรรมข้ามชาติและความร่วมมือระหว่างประเทศ",
+   "today": 1,
+   "avg_prev_7d": 0.92,
+   "delta_pct": 8.3,
+   "surge": false
+  },
+  {
+   "type": "การปฏิบัติหน้าที่ ประชาสัมพันธ์ และนโยบายตำรวจ",
+   "today": 1,
+   "avg_prev_7d": 2.31,
+   "delta_pct": -56.7,
+   "surge": false
+  }
+ ],
+ "by_mo": [
+  {
+   "mo": "ฟอกเงิน",
+   "today": 2,
+   "avg_prev_7d": 0.15,
+   "surge": false
+  },
+  {
+   "mo": "สินค้า/ยาปลอม",
+   "today": 2,
+   "avg_prev_7d": 0.23,
+   "surge": false
+  },
+  {
+   "mo": "ข่มขู่ทางเพศ",
+   "today": 1,
+   "avg_prev_7d": 0.0,
+   "surge": false
+  },
+  {
+   "mo": "พนันออนไลน์",
+   "today": 1,
+   "avg_prev_7d": 0.15,
+   "surge": false
+  },
+  {
+   "mo": "แอบอ้างเจ้าหน้าที่รัฐ/ตำรวจ",
+   "today": 1,
+   "avg_prev_7d": 0.15,
+   "surge": false
+  },
+  {
+   "mo": "คอลเซ็นเตอร์",
+   "today": 1,
+   "avg_prev_7d": 0.08,
+   "surge": false
+  },
+  {
+   "mo": "ลำเลียงยาเสพติด",
+   "today": 1,
+   "avg_prev_7d": 0.31,
+   "surge": false
+  },
+  {
+   "mo": "หลอกรักออนไลน์",
+   "today": 1,
+   "avg_prev_7d": 0.0,
+   "surge": false
+  },
+  {
+   "mo": "ศูนย์/แก๊งสแกมชายแดน",
+   "today": 1,
+   "avg_prev_7d": 0.15,
+   "surge": false
+  },
+  {
+   "mo": "นอมินีธุรกิจต่างชาติ",
+   "today": 1,
+   "avg_prev_7d": 0.31,
+   "surge": false
+  },
+  {
+   "mo": "หลอกซื้อขายออนไลน์",
+   "today": 1,
+   "avg_prev_7d": 0.0,
+   "surge": false
+  }
+ ],
+ "by_province": [
+  {
+   "province": "กรุงเทพมหานคร",
+   "today": 7,
+   "avg_prev_7d": 8.77
+  },
+  {
+   "province": "นนทบุรี",
+   "today": 3,
+   "avg_prev_7d": 1.15
+  },
+  {
+   "province": "เชียงราย",
+   "today": 2,
+   "avg_prev_7d": 0.85
+  },
+  {
+   "province": "สมุทรปราการ",
+   "today": 2,
+   "avg_prev_7d": 1.38
+  },
+  {
+   "province": "ฉะเชิงเทรา",
+   "today": 1,
+   "avg_prev_7d": 0.31
+  },
+  {
+   "province": "ระยอง",
+   "today": 1,
+   "avg_prev_7d": 0.54
+  },
+  {
+   "province": "บุรีรัมย์",
+   "today": 1,
+   "avg_prev_7d": 0.54
+  },
+  {
+   "province": "นครราชสีมา",
+   "today": 1,
+   "avg_prev_7d": 0.38
+  },
+  {
+   "province": "สกลนคร",
+   "today": 1,
+   "avg_prev_7d": 0.23
+  },
+  {
+   "province": "นครพนม",
+   "today": 1,
+   "avg_prev_7d": 0.46
+  },
+  {
+   "province": "พระนครศรีอยุธยา",
+   "today": 1,
+   "avg_prev_7d": 0.31
+  },
+  {
+   "province": "สงขลา",
+   "today": 1,
+   "avg_prev_7d": 0.92
+  }
+ ]
+}

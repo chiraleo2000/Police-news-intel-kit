@@ -1,0 +1,46 @@
+{
+ "case_id": "20261104-tourist-01",
+ "title": "ตม.สมุทรปราการจับหญิงชาวจีนอายุ 31 ปี อยู่เกินกำหนด 394 วัน พบมีหมายจับจากจีน คดีแก๊งคอลเซ็นเตอร์ข้ามชาติหลอกลงทุนจากฐานที่เมืองลา เมียนมา",
+ "generated_at": "2026-11-04T02:30:05.992Z",
+ "node_count": 7,
+ "edge_count": 6,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/ตม.สมุทรปราการ",
+   "target_title": "ตม.สมุทรปราการ",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บก.ตม.3",
+   "target_title": "บก.ตม.3",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/ตม.",
+   "target_title": "ตม.",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/เมืองลา เมียนมา",
+   "target_title": "เมืองลา เมียนมา",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/สมุทรปราการ",
+   "target_title": "สมุทรปราการ",
+   "direction": "out"
+  },
+  {
+   "label": "เป้าหมายเครือข่าย",
+   "target_id": "30_Entities/Projects/แก๊งหลอกรักลงทุนข้ามชาติ",
+   "target_title": "แก๊งหลอกรักลงทุนข้ามชาติ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261104-tourist-01.svg"
+}

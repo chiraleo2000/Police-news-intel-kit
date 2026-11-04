@@ -1,0 +1,22 @@
+{
+ "case_id": "20261104-drug-01",
+ "title": "สภ.แม่จันจับคู่ชายหญิงขี่บิ๊กไบค์ซุกยาบ้า 7,974 เม็ด และไอซ์ 9.47 กรัม ที่ด่านตรวจสายป่าซาง–แม่สลอง เชียงราย",
+ "generated_at": "2026-11-04T02:30:05.982Z",
+ "node_count": 3,
+ "edge_count": 2,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/สภ.แม่จัน",
+   "target_title": "สภ.แม่จัน",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ต.ป่าซาง อ.แม่จัน",
+   "target_title": "ต.ป่าซาง อ.แม่จัน",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261104-drug-01.svg"
+}

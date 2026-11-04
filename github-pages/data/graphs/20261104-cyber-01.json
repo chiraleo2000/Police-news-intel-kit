@@ -1,0 +1,28 @@
+{
+ "case_id": "20261104-cyber-01",
+ "title": "สภ.บางศรีเมืองจับชายอายุ 24 ปี หมอดูออนไลน์ใช้ AI สร้างคำทำนาย หลอกให้กดเงินไม่ใช้บัตรและขอ OTP ผู้ต้องหาอ้างทำมา 4 ปี ได้เงินราว 10 ล้านบาท",
+ "generated_at": "2026-11-04T02:30:05.979Z",
+ "node_count": 4,
+ "edge_count": 3,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/สภ.บางศรีเมือง",
+   "target_title": "สภ.บางศรีเมือง",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลจังหวัดนนทบุรี",
+   "target_title": "ศาลจังหวัดนนทบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ต.บางไทร อ.บางไทร อยุธยา",
+   "target_title": "ต.บางไทร อ.บางไทร อยุธยา",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261104-cyber-01.svg"
+}

@@ -1,0 +1,28 @@
+{
+ "case_id": "20261104-violent-02",
+ "title": "สภ.สีคิ้วควบคุมผู้ปกครองอายุ 54 ปี เมาและยิงปืน .38 ขึ้นฟ้าในโรงเรียน นครราชสีมา ไม่มีผู้บาดเจ็บ โรงเรียนหยุดเรียนและเขตพื้นที่ลงตรวจสอบ",
+ "generated_at": "2026-11-04T02:30:05.999Z",
+ "node_count": 4,
+ "edge_count": 3,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/สภ.สีคิ้ว",
+   "target_title": "สภ.สีคิ้ว",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/โรงเรียนบ้านนาดีศรีสะอาด",
+   "target_title": "โรงเรียนบ้านนาดีศรีสะอาด",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/นครราชสีมา",
+   "target_title": "นครราชสีมา",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261104-violent-02.svg"
+}

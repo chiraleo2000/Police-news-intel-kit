@@ -1,0 +1,28 @@
+{
+ "case_id": "20261104-cyber-02",
+ "title": "ตำรวจเชียงรายแถลงจับผู้รับเงินคดีแก๊งแอบอ้างตำรวจหลอกนักศึกษาปี 1 ให้เอาเงินสดไปวางที่จุดนัด ได้เงินคืนเกือบ 4 แสนบาท",
+ "generated_at": "2026-11-04T02:30:05.981Z",
+ "node_count": 4,
+ "edge_count": 3,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/สภ.แม่จัน",
+   "target_title": "สภ.แม่จัน",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/ภ.จว.เชียงราย",
+   "target_title": "ภ.จว.เชียงราย",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/จุดนัดหมาย ต.แม่ไร่ อ.แม่จัน",
+   "target_title": "จุดนัดหมาย ต.แม่ไร่ อ.แม่จัน",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261104-cyber-02.svg"
+}

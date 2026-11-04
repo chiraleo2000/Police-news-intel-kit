@@ -1,0 +1,28 @@
+{
+ "case_id": "20261104-human-01",
+ "title": "กก.ดส.บช.น. จับชายอายุ 28 ปี ที่ฉะเชิงเทรา ถูกกล่าวหาหลอกเด็กหญิงผ่านเกมและโซเชียลให้วิดีโอคอลแล้วแบล็กเมลรีดเงิน ผู้ต้องหารับสารภาพ ผู้เสียหายอย่างน้อย 3 ราย",
+ "generated_at": "2026-11-04T02:30:05.988Z",
+ "node_count": 4,
+ "edge_count": 3,
+ "relations": [
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บช.น.",
+   "target_title": "บช.น.",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/กก.ดส.บช.น.",
+   "target_title": "กก.ดส.บช.น.",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ต.ทุ่งพระยา อ.สนามชัยเขต ฉะเชิงเทรา",
+   "target_title": "ต.ทุ่งพระยา อ.สนามชัยเขต ฉะเชิงเทรา",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261104-human-01.svg"
+}

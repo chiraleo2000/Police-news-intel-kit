@@ -9,7 +9,7 @@
   const MEASURE_ORDER = ["เม็ด", "กรัม", "กก.", "กิโลกรัม", "ลิตร", "ล้าน"];
   const LLM_MODEL = "google/gemma-4-e2b";
   const NARRATION_RULE =
-    "คุณตอบคำถามผู้ใช้เป็นภาษาไทยให้จบทุกหัวข้อ ห้ามหยุดกลางประโยคหรือกลางรายการ โดยวิเคราะห์จาก JSON หลักฐานที่ให้มาเท่านั้น อธิบายโหนดที่เกี่ยวข้อง ความเชื่อมโยง และข่าวอื่นที่ร่วมโหนดเมื่อมีใน relatedThroughNodes หรือ hubs ห้ามแสดงหัวข้อแบบคำตอบจากกราฟ ห้ามแต่งชื่อคนหรือตัวเลขที่ไม่มีใน JSON ห้ามรวมหน่วยนับที่ต่างกันเป็นยอดเดียว ถ้ามีตำแหน่งหรือผู้ดำรงตำแหน่งใน JSON ให้กล่าวถึง ถ้าข้อมูลไม่พอให้บอกว่าไม่มีในหลักฐาน";
+    "คุณตอบคำถามผู้ใช้เป็นภาษาไทยให้จบทุกหัวข้อ ห้ามหยุดกลางประโยคหรือกลางรายการ โดยวิเคราะห์จาก JSON หลักฐานที่ให้มาเท่านั้น นับและยกข่าวเฉพาะใน evidence และ quantities ซึ่งผ่าน selectedFacets แล้ว เงื่อนไขคนละ facet เป็น AND ห้ามอ้างข่าวที่ไม่อยู่ใน evidence ถ้า relatedThroughNodes ว่างห้ามเล่าข่าวอื่นที่ร่วมโหนด ห้ามแสดงหัวข้อแบบคำตอบจากกราฟ ห้ามแต่งชื่อคนหรือตัวเลขที่ไม่มีใน JSON ห้ามรวมหน่วยนับที่ต่างกันเป็นยอดเดียว ถ้ามีตำแหน่งหรือผู้ดำรงตำแหน่งใน JSON ให้กล่าวถึง ถ้าข้อมูลไม่พอให้บอกว่าไม่มีในหลักฐาน";
 
   const EXAMPLES = [
     "ผมต้องการทราบว่ากรมศุลกากรมีการห้ามปรามการเข้ามาของยาเสพติดตอนนี้ได้จำนวนทั้งหมดเท่าไร่",
@@ -215,7 +215,7 @@
     const q = norm(question);
     const hits = (titles || []).filter((t) => {
       const n = norm(t);
-      return n.length >= 4 && q.includes(n);
+      return n.length >= 3 && q.includes(n);
     });
     hits.sort((a, b) => norm(b).length - norm(a).length);
     const kept = [];
@@ -302,44 +302,9 @@
     };
   }
 
-  function extractKeywords(question, index) {
-    const aliased = applyTitleAliases(question, index.alias);
-    const qn = norm(aliased);
-    const candidates = [];
-    const addCandidate = (kind, title, minLen = 2) => {
-      const text = String(title || "").trim();
-      const key = norm(text);
-      if (!text || key.length < minLen) return;
-      candidates.push({ kind, title: text, key, len: key.length });
-    };
-
-    for (const title of index.positionTitles || []) addCandidate("position", title, 2);
-    for (const parent of index.parents || []) {
-      addCandidate("org", parent.title, 3);
-      const rule = (index.alias.parents || []).find((p) => (p.title || "") === parent.title) || {};
-      if (rule.contains) addCandidate("org", parent.title, 3);
-      // Prefer the canonical parent title when the contains-token matches.
-      if (rule.contains) {
-        candidates.push({
-          kind: "org",
-          title: parent.title,
-          key: norm(rule.contains),
-          len: norm(rule.contains).length,
-          display: parent.title,
-        });
-      }
-    }
-    for (const title of index.crimeTypes || []) addCandidate("crime", title, 3);
-    for (const ent of index.hubEntities || []) {
-      addCandidate("entity", ent.title, 3);
-      if (ent.current_holder) addCandidate("holder", ent.current_holder, 3);
-    }
-
-    const kindRank = { position: 0, org: 1, entity: 2, holder: 3, crime: 4 };
-    candidates.sort(
-      (a, b) => b.len - a.len || (kindRank[a.kind] ?? 9) - (kindRank[b.kind] ?? 9)
-    );
-    const keywords = [];
+  function claimPool(qn, candidates) {
+    candidates.sort((a, b) => b.len - a.len || (a.rank ?? 9) - (b.rank ?? 9));
+    const hits = [];
     const spans = [];
     const seen = new Set();
     for (const item of candidates) {
@@ -351,54 +316,139 @@
         const overlaps = spans.some(([start, stop]) => at < stop && end > start);
         if (!overlaps) {
           spans.push([at, end]);
-          const title = item.display || item.title;
-          const dedupe = `${item.kind}:${norm(title)}`;
+          const dedupe = `${item.kind}:${norm(item.title)}`;
           if (!seen.has(dedupe)) {
             seen.add(dedupe);
-            keywords.push({ kind: item.kind, title });
+            hits.push({ kind: item.kind, facet: item.facet, title: item.title, start: at, end });
           }
           break;
         }
         from = at + 1;
       }
     }
+    return hits;
+  }
+
+  function withoutNestedSpans(items) {
+    return items.filter(
+      (item) =>
+        !items.some(
+          (other) =>
+            other !== item &&
+            item.start >= other.start &&
+            item.end <= other.end &&
+            other.end - other.start > item.end - item.start
+        )
+    );
+  }
+
+  function facetLabels(facets) {
+    if (!facets) return [];
+    return [
+      ...(facets.places || []),
+      ...(facets.orgs || []),
+      ...(facets.people || []),
+      ...(facets.positions || []),
+      ...(facets.crimes || []),
+    ];
+  }
+
+  function extractKeywords(question, index) {
+    const aliased = applyTitleAliases(question, index.alias);
+    const qn = norm(aliased);
+    const place = [];
+    const org = [];
+    const person = [];
+    const crime = [];
+    const add = (bucket, kind, facet, title, minLen, extra = {}) => {
+      const text = String(extra.display || title || "").trim();
+      const key = norm(extra.key != null ? extra.key : text);
+      if (!text || key.length < minLen) return;
+      bucket.push({ kind, facet, title: text, key, len: key.length, rank: extra.rank ?? 5 });
+    };
+
+    for (const ent of index.hubEntities || []) {
+      if (ent.entity_group === "สถานที่") add(place, "place", "places", ent.title, 3);
+      else if (ent.entity_group === "หน่วย") add(org, "org", "orgs", ent.title, 3, { rank: 2 });
+      else if (ent.entity_group === "บุคคล") {
+        add(person, "person", "people", ent.title, 3, { rank: 1 });
+        if (ent.current_holder) add(person, "holder", "people", ent.current_holder, 3, { rank: 2 });
+      }
+    }
+    for (const parent of index.parents || []) {
+      add(org, "org", "orgs", parent.title, 2, { rank: 1 });
+      const rule = (index.alias.parents || []).find((p) => (p.title || "") === parent.title) || {};
+      if (rule.contains) {
+        add(org, "org", "orgs", parent.title, 3, { key: rule.contains, display: parent.title, rank: 1 });
+      }
+    }
+    for (const title of index.positionTitles || []) add(person, "position", "positions", title, 2, { rank: 0 });
+    for (const title of index.crimeTypes || []) add(crime, "crime", "crimes", title, 3);
+
+    const crimeHits = claimPool(qn, crime);
+    const claimed = withoutNestedSpans([
+      ...claimPool(qn, place),
+      ...claimPool(qn, org),
+      ...claimPool(qn, person),
+      ...crimeHits,
+    ]).map(({ kind, facet, title }) => ({ kind, facet, title }));
+
+    const selectedFacets = {
+      places: claimed.filter((item) => item.facet === "places").map((item) => item.title),
+      orgs: claimed.filter((item) => item.facet === "orgs").map((item) => item.title),
+      people: claimed.filter((item) => item.facet === "people").map((item) => item.title),
+      crimes: claimed.filter((item) => item.facet === "crimes").map((item) => item.title),
+      positions: claimed.filter((item) => item.facet === "positions").map((item) => item.title),
+    };
+    if (!crimeHits.length && !selectedFacets.crimes.length) {
+      for (const title of detectCrimeTypes(aliased, index.crimeTypes)) {
+        claimed.push({ kind: "crime", facet: "crimes", title });
+        selectedFacets.crimes.push(title);
+      }
+    }
 
     return {
       aliased,
       qn,
-      keywords,
-      positionHits: keywords.filter((item) => item.kind === "position").map((item) => item.title),
+      keywords: claimed,
+      selectedFacets,
+      positionHits: selectedFacets.positions,
     };
   }
 
-  function matchHubs(question, index) {
-    const { keywords } = extractKeywords(question, index);
+  function matchHubs(question, index, keywords) {
+    const keys = keywords || extractKeywords(question, index).keywords;
     const hubs = [];
     const seen = new Set();
-    const wantedOrg = new Set(keywords.filter((item) => item.kind === "org").map((item) => norm(item.title)));
-    const wantedEntity = new Set(keywords.filter((item) => item.kind === "entity").map((item) => norm(item.title)));
-    const wantedHolder = new Set(keywords.filter((item) => item.kind === "holder").map((item) => norm(item.title)));
-    const wantedPos = new Set(keywords.filter((item) => item.kind === "position").map((item) => norm(item.title)));
+    const wantedOrg = new Set(keys.filter((item) => item.kind === "org").map((item) => norm(item.title)));
+    const wantedPlace = new Set(keys.filter((item) => item.kind === "place").map((item) => norm(item.title)));
+    const wantedPerson = new Set(keys.filter((item) => item.kind === "person").map((item) => norm(item.title)));
+    const wantedHolder = new Set(keys.filter((item) => item.kind === "holder").map((item) => norm(item.title)));
+    const wantedPos = new Set(keys.filter((item) => item.kind === "position").map((item) => norm(item.title)));
 
     for (const parent of index.parents) {
       const hit = wantedOrg.has(norm(parent.title));
       if (!hit || seen.has(parent.key)) continue;
       seen.add(parent.key);
-      hubs.push(parent);
+      hubs.push({ ...parent, facet: "orgs" });
     }
 
     const absorbed = new Set();
     for (const hub of hubs) for (const id of hub.memberIds) absorbed.add(id);
     const entities = index.hubEntities.slice().sort((a, b) => norm(b.title).length - norm(a.title).length);
     for (const ent of entities) {
-      const hitTitle = wantedEntity.has(norm(ent.title));
+      const titleKey = norm(ent.title);
+      const hitPlace = ent.entity_group === "สถานที่" && wantedPlace.has(titleKey);
+      const hitOrg = ent.entity_group === "หน่วย" && wantedOrg.has(titleKey);
+      const hitPerson = ent.entity_group === "บุคคล" && wantedPerson.has(titleKey);
+      const hitTitle = hitPlace || hitOrg || hitPerson;
       const hitHolder = Boolean(ent.current_holder) && wantedHolder.has(norm(ent.current_holder));
       const hitPos = positionSegments(ent.position).some((seg) => wantedPos.has(norm(seg)));
       if (!hitTitle && !hitHolder && !hitPos) continue;
       if (absorbed.has(ent.id) || seen.has(ent.id)) continue;
-      const t = norm(ent.title);
-      if (hitTitle && hubs.some((h) => norm(h.title).includes(t) && norm(h.title) !== t)) continue;
+      if (hitTitle && hubs.some((h) => norm(h.title).includes(titleKey) && norm(h.title) !== titleKey)) continue;
       seen.add(ent.id);
+      const facet = hitPlace ? "places" : hitPerson || hitHolder ? "people" : hitPos && !hitOrg ? "positions" : "orgs";
       hubs.push({
         key: ent.id,
         id: ent.id,
@@ -409,11 +459,12 @@
         roleWarning: roleWarningFor(ent.title, index.alias),
         position: ent.position || "",
         current_holder: ent.current_holder || "",
-        matchedBy: hitHolder ? "holder" : hitPos ? "position" : "title",
+        matchedBy: hitHolder ? "holder" : hitPos && !hitTitle ? "position" : "title",
+        facet,
       });
       absorbed.add(ent.id);
     }
-    hubs._keywords = keywords;
+    hubs._keywords = keys;
     return hubs;
   }
 
@@ -500,6 +551,25 @@
       }
     }
     return [...map.values()];
+  }
+
+  function intersectRows(lists) {
+    const usable = (lists || []).filter(Boolean);
+    if (!usable.length) return [];
+    let current = usable[0];
+    for (let i = 1; i < usable.length; i += 1) {
+      const other = new Map(usable[i].map((row) => [row.node.id, row]));
+      const next = [];
+      for (const row of current) {
+        const hit = other.get(row.node.id);
+        if (!hit) continue;
+        for (const label of hit.labels) row.labels.add(label);
+        for (const via of hit.via) row.via.add(via);
+        next.push(row);
+      }
+      current = next;
+    }
+    return current;
   }
 
   function usesPersonEdges(hub) {
@@ -629,6 +699,9 @@
       warnings: [],
       focusIds: [],
       holder: null,
+      keywords: extra?.keywords || [],
+      selectedFacets: extra?.selectedFacets || { places: [], orgs: [], people: [], crimes: [], positions: [] },
+      filterMode: "single",
     };
   }
 
@@ -705,9 +778,10 @@
     };
   }
 
-  function pushNodeHub(hubs, node, index) {
+  function pushNodeHub(hubs, node, index, facet) {
     if (!node) return;
     if (hubs.some((hub) => hub.id === node.id || hub.memberIds?.includes(node.id))) return;
+    const groupFacet = node.entity_group === "สถานที่" ? "places" : node.entity_group === "บุคคล" ? "people" : "orgs";
     hubs.push({
       key: node.id,
       id: node.id,
@@ -718,7 +792,17 @@
       roleWarning: Boolean(roleWarningFor(node.title, index.alias) && !node.current_holder && node.entity_group !== "บุคคล"),
       position: node.position || "",
       current_holder: node.current_holder || "",
+      facet: facet || groupFacet,
     });
+  }
+
+  function rowsForHubList(hubList, index, opts) {
+    const lists = [];
+    for (const hub of hubList) {
+      lists.push(linkedCases(hub, index, { ...opts, personEdges: usesPersonEdges(hub) }));
+      lists.push(rowsForHubPosition(hub, index, opts));
+    }
+    return mergeRows(lists);
   }
 
   function sharedRoleWarning(title) {
@@ -730,22 +814,23 @@
     const dateFrom = opts.dateFrom || "";
     const dateTo = opts.dateTo || "";
     const intent = detectIntent(question);
-    const crimeTypes = detectCrimeTypes(question, index.crimeTypes);
     if (!question) {
       return emptyResult("ยังไม่มีคำถาม จึงไม่รายงานจำนวน", { intent, dateFrom, dateTo });
     }
     const extracted = extractKeywords(question, index);
     const aliased = extracted.aliased;
+    const selectedFacets = extracted.selectedFacets;
+    const keywords = extracted.keywords || [];
+    const crimeTypes = selectedFacets.crimes.slice();
     const positions = extracted.positionHits || mentionedPositions(aliased, index.positionTitles || []);
-    const hubs = matchHubs(question, index);
-    const keywords = extracted.keywords || hubs._keywords || [];
+    const hubs = matchHubs(question, index, keywords);
     const holderHits = [];
     for (const title of positions) {
       const info = holderForTitle(title, index);
       if (!info) continue;
       holderHits.push(info);
-      pushNodeHub(hubs, index.nodesById.get(info.orgId), index);
-      pushNodeHub(hubs, index.nodesById.get(info.personId), index);
+      pushNodeHub(hubs, index.nodesById.get(info.orgId), index, "people");
+      pushNodeHub(hubs, index.nodesById.get(info.personId), index, "people");
     }
     // Shared roles like ผบ.ตร. after folding: attach a virtual hub so retrieval still has a name.
     for (const title of positions) {
@@ -761,37 +846,65 @@
         roleWarning: true,
         position: title,
         current_holder: "",
+        facet: "positions",
       });
     }
     const loose = positions.filter((title) => !holderHits.some((hit) => norm(hit.title) === norm(title)));
-    if (!hubs.length && !loose.length && !keywords.length) {
-      return emptyResult("ไม่พบหน่วยงาน บุคคล หรือสถานที่ในคลังที่ตรงกับคำถามนี้ จึงไม่รายงานจำนวน", {
+    const personFacet = Boolean(selectedFacets.people.length || selectedFacets.positions.length);
+    const facetCount = [
+      selectedFacets.places.length,
+      selectedFacets.orgs.length,
+      personFacet ? 1 : 0,
+      crimeTypes.length,
+    ].filter(Boolean).length;
+    const filterMode = facetCount > 1 ? "and" : "single";
+    if (!facetCount) {
+      return emptyResult("ไม่พบหน่วยงาน บุคคล สถานที่ หรือประเภทคดีในคลังที่ตรงกับคำถามนี้ จึงไม่รายงานจำนวน", {
         intent,
         crimeTypes,
         dateFrom,
         dateTo,
+        keywords,
+        selectedFacets,
       });
     }
-    const windowed = { crimeTypes, dateFrom, dateTo, applyCrime: true, applyWindow: true };
-    const open = { crimeTypes, applyCrime: false, applyWindow: false };
-    const evidenceLists = [];
-    const oldLists = [];
-    for (const hub of hubs) {
-      evidenceLists.push(linkedCases(hub, index, { ...windowed, personEdges: usesPersonEdges(hub) }));
-      evidenceLists.push(rowsForHubPosition(hub, index, windowed));
-      oldLists.push(linkedCases(hub, index, { ...open, personEdges: false }));
-      oldLists.push(rowsForHubPosition(hub, index, open));
+    const dated = { dateFrom, dateTo, applyCrime: false, applyWindow: true };
+    const open = { applyCrime: false, applyWindow: false };
+    const sets = [];
+    if (selectedFacets.places.length) {
+      sets.push(rowsForHubList(hubs.filter((hub) => hub.facet === "places"), index, dated));
     }
-    for (const title of loose) {
-      evidenceLists.push(rowsForExactPosition(title, index, windowed));
-      oldLists.push(rowsForExactPosition(title, index, open));
+    if (selectedFacets.orgs.length) {
+      sets.push(rowsForHubList(hubs.filter((hub) => hub.facet === "orgs"), index, dated));
     }
-    const evidenceRows = sortRows(mergeRows(evidenceLists), intent);
+    if (personFacet) {
+      const personLists = [
+        rowsForHubList(
+          hubs.filter((hub) => hub.facet === "people" || hub.facet === "positions"),
+          index,
+          dated
+        ),
+      ];
+      for (const title of loose) personLists.push(rowsForExactPosition(title, index, dated));
+      sets.push(mergeRows(personLists));
+    }
+    if (crimeTypes.length) {
+      sets.push(
+        rowsCarrying(index, { dateFrom, dateTo, crimeTypes, applyCrime: true, applyWindow: true }, () => true)
+      );
+    }
+    const evidenceRows = sortRows(intersectRows(sets), intent);
     const evidenceIds = new Set(evidenceRows.map((row) => row.node.id));
-    const oldRows = sortRows(
-      mergeRows(oldLists).filter((row) => !evidenceIds.has(row.node.id)),
-      "list"
-    );
+    const keepOld = filterMode === "single" && !crimeTypes.length;
+    const oldRows = keepOld
+      ? sortRows(
+          mergeRows([
+            rowsForHubList(hubs, index, open),
+            ...loose.map((title) => rowsForExactPosition(title, index, open)),
+          ]).filter((row) => !evidenceIds.has(row.node.id)),
+          "list"
+        )
+      : [];
     const canonicalTitle = hubs.length === 1 ? hubs[0].title : "";
     const evidence = evidenceRows.map((row) => {
       const item = toEvidence(row, index, canonicalTitle);

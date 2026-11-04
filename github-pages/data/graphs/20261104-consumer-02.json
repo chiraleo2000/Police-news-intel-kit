@@ -1,0 +1,34 @@
+{
+ "case_id": "20261104-consumer-02",
+ "title": "CIB-บก.ปคบ.-อย. ทลายแหล่งผลิตน้ำปลาและน้ำส้มสายชูปลอม กรอกมือใส่ขวดเก่า สะพานสูง ยึดของกลาง 2,392 ชิ้น มูลค่ากว่า 2.5 แสนบาท",
+ "generated_at": "2026-11-04T02:30:05.976Z",
+ "node_count": 5,
+ "edge_count": 4,
+ "relations": [
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บช.ก.",
+   "target_title": "บช.ก.",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/บก.ปคบ.",
+   "target_title": "บก.ปคบ.",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/อย.",
+   "target_title": "อย.",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/เขตสะพานสูง กรุงเทพมหานคร",
+   "target_title": "เขตสะพานสูง กรุงเทพมหานคร",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261104-consumer-02.svg"
+}

@@ -1,0 +1,40 @@
+{
+ "case_id": "20261103-econ-line-01",
+ "title": "ตม.2 จับหญิงอายุ 28 ปี ที่ด่านตรวจคนเข้าเมืองสุวรรณภูมิ ตามหมายจับศาลอาญา ข้อหาฉ้อโกงประชาชน ปมชวนลงทุนขายสินค้าแบรนด์เนมผลตอบแทน 10% ต่อเดือน ผู้เสียหายสูญ 4 ล้านบาท",
+ "generated_at": "2026-11-04T02:30:05.946Z",
+ "node_count": 6,
+ "edge_count": 5,
+ "relations": [
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บช.สตม.",
+   "target_title": "บช.สตม.",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/บก.ตม.2",
+   "target_title": "บก.ตม.2",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/สน.ดินแดง",
+   "target_title": "สน.ดินแดง",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลอาญา",
+   "target_title": "ศาลอาญา",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ท่าอากาศยานสุวรรณภูมิ",
+   "target_title": "ท่าอากาศยานสุวรรณภูมิ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261103-econ-line-01.svg"
+}

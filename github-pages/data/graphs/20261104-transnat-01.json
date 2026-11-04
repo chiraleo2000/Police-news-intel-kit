@@ -1,0 +1,34 @@
+{
+ "case_id": "20261104-transnat-01",
+ "title": "ตร.ไทยร่วม INTERPOL และ 3 ชาติอาเซียน เปิดปฏิบัติการ CHASE สกัดลักลอบขนสารเคมีข้ามพรมแดน ที่ด่านสะเดา สงขลา 27-29 ตุลาคม",
+ "generated_at": "2026-11-04T02:30:05.996Z",
+ "node_count": 5,
+ "edge_count": 4,
+ "relations": [
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/ตร.",
+   "target_title": "ตร.",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ด่านพรมแดนสะเดา",
+   "target_title": "ด่านพรมแดนสะเดา",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/สงขลา",
+   "target_title": "สงขลา",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/สะเดา",
+   "target_title": "สะเดา",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261104-transnat-01.svg"
+}

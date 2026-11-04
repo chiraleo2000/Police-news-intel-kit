@@ -1,0 +1,52 @@
+{
+ "case_id": "20261103-cyber-line-02",
+ "title": "ตม.หนองคายจับชายอายุ 61 ปี ที่ด่านสะพานมิตรภาพไทย-ลาว แห่งที่ 1 ตามหมายจับศาลจังหวัดวิเชียรบุรี ข้อหาสนับสนุนฉ้อโกงและความผิดเกี่ยวกับบัญชีเงินฝาก",
+ "generated_at": "2026-11-04T02:30:05.934Z",
+ "node_count": 8,
+ "edge_count": 7,
+ "relations": [
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บช.สตม.",
+   "target_title": "บช.สตม.",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/บก.ตม.4",
+   "target_title": "บก.ตม.4",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/ตชด.245",
+   "target_title": "ตชด.245",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/สภ.หนองไผ่",
+   "target_title": "สภ.หนองไผ่",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลจังหวัดวิเชียรบุรี",
+   "target_title": "ศาลจังหวัดวิเชียรบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ด่านสะพานมิตรภาพไทย-ลาว แห่งที่ 1",
+   "target_title": "ด่านสะพานมิตรภาพไทย-ลาว แห่งที่ 1",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/หนองคาย",
+   "target_title": "หนองคาย",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261103-cyber-line-02.svg"
+}
