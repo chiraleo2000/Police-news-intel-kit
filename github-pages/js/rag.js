@@ -1924,21 +1924,56 @@
       .join("\n");
   }
 
-  function proseFromModel(raw) {
+  function proseField(data) {
+    if (typeof data === "string") return data;
+    if (!data || typeof data !== "object") return "";
+    for (const key of ["response", "answer", "text", "message", "summary", "content"]) {
+      if (typeof data[key] === "string" && data[key].trim()) return data[key];
+    }
+    return "";
+  }
+
+  function stripModelDump(text) {
+    return String(text || "")
+      .replace(/```(?:json)?/gi, "")
+      .replace(/แหล่งอ้างอิง\s*:\s*[\s\S]*?(?=\n\s*\n|\n\s*\d+\.|\nโดยสรุป|$)/g, "")
+      .replace(/\{[^{}]*"title"[^{}]*\}/g, "")
+      .replace(/\n{3,}/g, "\n\n")
+      .trim();
+  }
+
+  function stillDump(text) {
+    const braces = (text.match(/[{}]/g) || []).length;
+    return !text || text.startsWith("{") || text.startsWith("[") || braces > 2 || /evidence_details|"excerpt"\s*:/.test(text);
+  }
+
+  function writtenAnswer(result) {
+    const who = facetLabels(result?.selectedFacets).join(" ") || "คำถามนี้";
+    const count = result?.caseCount ?? 0;
+    if (!count) return `จากคลังข่าวที่ค้นเรื่อง ${who} ยังไม่พบข่าวที่ตรงเงื่อนไข จึงยังสรุปเป็นจำนวนหรือผลงานไม่ได้`;
+    const lines = (result.evidence || []).slice(0, 5).map((item) => {
+      const day = item.date ? `ข่าววันที่ ${item.date} ` : "ข่าว";
+      const place = (item.places || [])[0] ? ` ที่${item.places[0]}` : "";
+      const fact = String(item.excerpt || "").replace(/\s+/g, " ").trim().slice(0, 150);
+      return `${day}เรื่อง ${item.title}${place} ระบุว่า ${fact}`;
+    });
+    return `จากคลังข่าวที่ตรงกับ ${who} พบ ${count} ข่าว ตัวเลขด้านล่างเป็นข้อความในข่าวแต่ละเรื่อง ไม่ใช่ยอดรวมอย่างเป็นทางการ\n\n${lines.join("\n\n")}`;
+  }
+
+  function proseFromModel(raw, result) {
     let text = String(raw || "").trim();
-    const fenced = text.match(/^```(?:json)?\s*([\s\S]*?)```$/i);
+    const fenced = text.match(/```(?:json)?\s*([\s\S]*?)```/i);
     if (fenced) text = fenced[1].trim();
     if (text.startsWith("{") || text.startsWith("[")) {
       try {
-        const data = JSON.parse(text);
-        if (typeof data === "string") text = data;
-        else if (typeof data?.answer === "string") text = data.answer;
-        else if (typeof data?.text === "string") text = data.text;
+        text = proseField(JSON.parse(text)) || text;
       } catch {
-        /* keep the original text */
+        /* keep the raw text and clean it below */
       }
     }
-    return text.replaceAll("\\n", "\n").trim();
+    text = stripModelDump(text);
+    if (stillDump(text)) return writtenAnswer(result);
+    return text;
   }
 
   async function askModel(question, result) {
@@ -2057,8 +2092,8 @@
     meta.textContent = result.filterMode === "and" ? `กรองตามคำถาม · ${note} · ทุกเงื่อนไข` : `กรองตามคำถาม · ${note}`;
   }
 
-  function replyHtml(reply) {
-    if (reply.ok) return `<div class="rag-narration-body">${renderModelText(proseFromModel(reply.text))}</div>`;
+  function replyHtml(reply, result) {
+    if (reply.ok) return `<div class="rag-narration-body">${renderModelText(proseFromModel(reply.text, result))}</div>`;
     return `<p class="rag-warn">${escapeHtml(reply.reason || "เรียกโมเดลไม่สำเร็จ — หลักฐานด้านบนยังใช้ได้")}</p>`;
   }
 
@@ -2098,8 +2133,9 @@
     assistant.innerHTML = assistantHtml(evidence, "");
     assistant.querySelector(".rag-llm")?.scrollIntoView({ block: "nearest" });
     const reply = await askModel(question, result);
-    thread.push({ question, result, llmText: reply.ok ? proseFromModel(reply.text) : "" });
-    assistant.innerHTML = assistantHtml(evidence, replyHtml(reply));
+    const shown = reply.ok ? proseFromModel(reply.text, result) : "";
+    thread.push({ question, result, llmText: shown });
+    assistant.innerHTML = assistantHtml(evidence, replyHtml(reply, result));
     assistant.querySelector(".rag-llm")?.scrollIntoView({ block: "nearest" });
   }
 
