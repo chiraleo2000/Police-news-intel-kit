@@ -394,7 +394,7 @@
     return map;
   }
 
-  function buildIndex(graph, posts, alias) {
+  function buildIndex(graph, posts, alias, words) {
     const nodes = graph?.nodes || [];
     const edges = graph?.edges || [];
     const nodesById = new Map(nodes.map((n) => [n.id, n]));
@@ -410,11 +410,46 @@
       hubEntities: nodes.filter((n) => n.kind === "entity" && HUB_GROUPS.has(n.entity_group)),
       positionTitles: indexPositions(nodes),
       placeTitlesByCase: placesByCase(nodesById, edges),
+      wordHeads: indexWords([...(words || []), ...SPAN_GUARDS]),
       alias: alias || {},
     };
   }
 
-  function claimPool(qn, candidates) {
+  function indexWords(words) {
+    const byHead = new Map();
+    for (const raw of words || []) {
+      const key = norm(raw);
+      if (key.length < 2) continue;
+      const head = key.slice(0, 2);
+      const list = byHead.get(head) || [];
+      list.push(key);
+      byHead.set(head, list);
+    }
+    for (const [head, list] of byHead) {
+      const unique = [...new Set(list)];
+      unique.sort((a, b) => b.length - a.length);
+      byHead.set(head, unique);
+    }
+    return byHead;
+  }
+
+  function coversMatch(qn, at, len, wordHeads) {
+    if (!wordHeads) return false;
+    const end = at + len;
+    const from = Math.max(0, at - 24);
+    for (let i = from; i <= at; i += 1) {
+      if (i + 2 > qn.length) continue;
+      const list = wordHeads.get(qn.slice(i, i + 2));
+      if (!list) continue;
+      for (const word of list) {
+        if (i + word.length <= end) continue;
+        if (qn.startsWith(word, i)) return true;
+      }
+    }
+    return false;
+  }
+
+  function claimPool(qn, candidates, wordHeads) {
     candidates.sort((a, b) => b.len - a.len || (a.rank ?? 9) - (b.rank ?? 9));
     const hits = [];
     const spans = [];
@@ -424,6 +459,10 @@
       while (from <= qn.length - item.len) {
         const at = qn.indexOf(item.key, from);
         if (at < 0) break;
+        if (coversMatch(qn, at, item.len, wordHeads)) {
+          from = at + 1;
+          continue;
+        }
         const end = at + item.len;
         const overlaps = spans.some(([start, stop]) => at < stop && end > start);
         if (!overlaps) {
@@ -545,28 +584,19 @@
     }
   }
 
-  function guardCandidates() {
-    return SPAN_GUARDS.map((phrase) => {
-      const key = norm(phrase);
-      return { kind: "guard", facet: "guards", title: phrase, key, len: key.length, rank: 0 };
-    });
-  }
-
   function extractKeywords(question, index) {
     const aliased = applyTitleAliases(question, index.alias);
     const qn = norm(aliased);
     const buckets = keywordBuckets(index);
-    const crimeHits = claimPool(qn, buckets.crime);
+    const heads = index.wordHeads;
+    const crimeHits = claimPool(qn, buckets.crime, heads);
     const claimed = withoutNestedSpans([
-      ...claimPool(qn, guardCandidates()),
-      ...claimPool(qn, buckets.place),
-      ...claimPool(qn, buckets.org),
-      ...claimPool(qn, buckets.person),
+      ...claimPool(qn, buckets.place, heads),
+      ...claimPool(qn, buckets.org, heads),
+      ...claimPool(qn, buckets.person, heads),
       ...crimeHits,
-      ...claimPool(qn, buckets.topics),
-    ])
-      .filter((item) => item.kind !== "guard")
-      .map(({ kind, facet, title }) => ({ kind, facet, title }));
+      ...claimPool(qn, buckets.topics, heads),
+    ]).map(({ kind, facet, title }) => ({ kind, facet, title }));
     const selectedFacets = facetsFrom(claimed);
     addCrimeFallback(claimed, selectedFacets, crimeHits, aliased, index);
     return {
@@ -1508,12 +1538,22 @@
     }
   }
 
+  async function loadWordlist() {
+    try {
+      const words = await fetchJson("data/thai-wordlist.json");
+      return Array.isArray(words) ? words : [];
+    } catch {
+      return [];
+    }
+  }
+
   async function ensureIndex() {
     if (indexCache) return indexCache;
     const graph = await loadGraph();
     const posts = await loadPosts();
     const alias = await loadAlias();
-    indexCache = buildIndex(graph, posts, alias);
+    const words = await loadWordlist();
+    indexCache = buildIndex(graph, posts, alias, words);
     return indexCache;
   }
 
