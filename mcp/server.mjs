@@ -8,9 +8,16 @@ const DEFAULT_PAGES_BASE = "https://chiraleo2000.github.io/Police-news-intel-kit
 const DATA_ROOT = path.resolve(path.dirname(filePathFromImportUrl(import.meta.url)), "../github-pages/data");
 const DOWNLOADS_DIR = path.join(DATA_ROOT, "downloads");
 
+function withoutTrailingSlashes(value) {
+  let text = String(value || "");
+  while (text.endsWith("/")) text = text.slice(0, -1);
+  return text;
+}
+
 function resolvePagesBase() {
-  const raw = process.env.PAGES_BASE;
-  const value = raw && raw.trim() ? raw.trim().replace(/\/+$/, "") : DEFAULT_PAGES_BASE;
+  const trimmed = process.env.PAGES_BASE?.trim();
+  if (!trimmed) return DEFAULT_PAGES_BASE;
+  const value = withoutTrailingSlashes(trimmed);
   if (/ngrok/i.test(value)) {
     console.error("PAGES_BASE must not be an ngrok host; using the GitHub Pages default");
     return DEFAULT_PAGES_BASE;
@@ -24,7 +31,6 @@ const DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
 const CRIME_FILE_RE = /^\d{4}-\d{2}-\d{2}_crime\.json$/;
 const ID_RE = /^[A-Za-z0-9][A-Za-z0-9_-]{0,160}$/;
 const IMAGE_EXT = new Set([".png", ".webp", ".jpg", ".jpeg"]);
-const NOTIFICATION = Symbol("notification");
 
 const CORS_HEADERS = {
   "Access-Control-Allow-Origin": "*",
@@ -45,14 +51,14 @@ const TOOLS = [
   {
     name: "list_posts",
     description:
-      "List news posts. Each item has id, date, title, topic, agency, and a short excerpt (exec_blurb, or content sliced when there is no blurb). Optional date (YYYY-MM-DD), q (substring), and limit (default 20, maximum 50). Does not return full article bodies or the whole archive.",
+      "List news posts stored in this archive. Return only stored id, date, title, topic, agency, and a short excerpt. Optional date (YYYY-MM-DD), q, and limit (default 20, maximum 50). q must be the specific person, office, place, or topic asked. Do not broaden a named office into every unit of the parent organization. Do not invent records.",
     inputSchema: {
       type: "object",
       properties: {
         date: { type: "string", description: "Archive date YYYY-MM-DD" },
         q: {
           type: "string",
-          description: "Case-insensitive substring matched against id, title, topic, agency, summary, and content",
+          description: "Substring of the specific person, office, place, or topic. Match only stored text. Do not replace a named office with its parent organization.",
         },
         limit: {
           type: "integer",
@@ -67,7 +73,7 @@ const TOOLS = [
   {
     name: "get_post",
     description:
-      "Return one news post by id for a reader: id, date, title, topic, agency, content, exec_blurb, analysis_notes, source_links, and stats. Attaches that day's infographic as image and any of the day's infographic or PDF files that exist under downloads/.",
+      "Return one stored news post by id: id, date, title, topic, agency, content, exec_blurb, analysis_notes, source_links, and stats, plus that day's files when they exist. Do not add facts that are not in the stored post.",
     inputSchema: {
       type: "object",
       properties: {
@@ -172,7 +178,7 @@ function pickPost(raw, fallbackDate) {
 }
 
 function stripBom(text) {
-  return text.charCodeAt(0) === 0xfeff ? text.slice(1) : text;
+  return text.codePointAt(0) === 0xfeff ? text.slice(1) : text;
 }
 
 function readNewsJson(filePath) {
@@ -192,36 +198,45 @@ function readNewsJson(filePath) {
   return JSON.parse(stripBom(fs.readFileSync(resolved, "utf8")));
 }
 
+function postsFromFeed(feedPath) {
+  const feed = readNewsJson(feedPath);
+  const list = Array.isArray(feed.posts) ? feed.posts : [];
+  return list.filter((item) => item && typeof item === "object").map((item) => pickPost(item, ""));
+}
+
+function dayDateFor(doc, day) {
+  const docDate = asText(doc.date);
+  if (DATE_RE.test(docDate)) return docDate;
+  const dayDate = asText(day.date);
+  if (DATE_RE.test(dayDate)) return dayDate;
+  return "";
+}
+
+function postsFromDay(day) {
+  if (!day || typeof day !== "object" || typeof day.crime_file !== "string") return [];
+  const name = day.crime_file;
+  if (name !== path.basename(name) || !CRIME_FILE_RE.test(name)) return [];
+  const filePath = path.join(DATA_ROOT, name);
+  if (!fs.existsSync(filePath)) return [];
+  const doc = readNewsJson(filePath);
+  const date = dayDateFor(doc, day);
+  const list = Array.isArray(doc.posts) ? doc.posts : [];
+  const posts = [];
+  for (const item of list) {
+    if (!item || typeof item !== "object") continue;
+    posts.push(pickPost(item, date));
+  }
+  return posts;
+}
+
 function loadPosts() {
   const feedPath = path.join(DATA_ROOT, "feed.json");
-  if (fs.existsSync(feedPath) && fs.statSync(feedPath).isFile()) {
-    const feed = readNewsJson(feedPath);
-    const list = Array.isArray(feed.posts) ? feed.posts : [];
-    return list.filter((item) => item && typeof item === "object").map((item) => pickPost(item, ""));
-  }
-
+  if (fs.existsSync(feedPath) && fs.statSync(feedPath).isFile()) return postsFromFeed(feedPath);
   const manifestPath = path.join(DATA_ROOT, "manifest.json");
   if (!fs.existsSync(manifestPath)) return [];
   const manifest = readNewsJson(manifestPath);
   const days = Array.isArray(manifest.days) ? manifest.days : [];
-  const posts = [];
-  for (const day of days) {
-    if (!day || typeof day !== "object" || typeof day.crime_file !== "string") continue;
-    const name = day.crime_file;
-    if (name !== path.basename(name) || !CRIME_FILE_RE.test(name)) continue;
-    const filePath = path.join(DATA_ROOT, name);
-    if (!fs.existsSync(filePath)) continue;
-    const doc = readNewsJson(filePath);
-    const docDate = asText(doc.date);
-    const dayDate = asText(day.date);
-    const date = DATE_RE.test(docDate) ? docDate : DATE_RE.test(dayDate) ? dayDate : "";
-    const list = Array.isArray(doc.posts) ? doc.posts : [];
-    for (const item of list) {
-      if (!item || typeof item !== "object") continue;
-      posts.push(pickPost(item, date));
-    }
-  }
-  return posts;
+  return days.flatMap((day) => postsFromDay(day));
 }
 
 function stampOf(filePath) {
@@ -254,7 +269,7 @@ function archiveStamp() {
 
 function getArchive() {
   const stamp = archiveStamp();
-  if (archiveCache && archiveCache.stamp === stamp) return archiveCache;
+  if (archiveCache?.stamp === stamp) return archiveCache;
   const posts = loadPosts().filter((post) => post.id);
   const byId = new Map();
   for (const post of posts) {
@@ -281,7 +296,7 @@ function excerptOf(post) {
 }
 
 function optionalDate(args) {
-  if (!Object.prototype.hasOwnProperty.call(args, "date") || args.date == null || args.date === "") {
+  if (!Object.hasOwn(args, "date") || args.date == null || args.date === "") {
     return "";
   }
   if (typeof args.date !== "string" || !DATE_RE.test(args.date)) {
@@ -291,21 +306,20 @@ function optionalDate(args) {
 }
 
 function optionalQuery(args) {
-  if (!Object.prototype.hasOwnProperty.call(args, "q") || args.q == null || args.q === "") return "";
+  if (!Object.hasOwn(args, "q") || args.q == null || args.q === "") return "";
   if (typeof args.q !== "string") throw rpcError(-32602, "q must be a string");
   return args.q.trim().slice(0, 200).toLowerCase();
 }
 
+function limitNumber(raw) {
+  if (typeof raw === "number") return raw;
+  if (typeof raw === "string" && raw.trim() !== "") return Number(raw);
+  return Number.NaN;
+}
+
 function optionalLimit(args) {
-  if (!Object.prototype.hasOwnProperty.call(args, "limit") || args.limit == null || args.limit === "") {
-    return 20;
-  }
-  const value =
-    typeof args.limit === "number"
-      ? args.limit
-      : typeof args.limit === "string" && args.limit.trim() !== ""
-        ? Number(args.limit)
-        : Number.NaN;
+  if (!Object.hasOwn(args, "limit") || args.limit == null || args.limit === "") return 20;
+  const value = limitNumber(args.limit);
   if (!Number.isFinite(value) || value < 1) throw rpcError(-32602, "limit must be a number >= 1");
   return Math.min(50, Math.floor(value));
 }
@@ -383,7 +397,7 @@ function filesForDate(date) {
 }
 
 function getPost(args) {
-  if (!Object.prototype.hasOwnProperty.call(args, "id") || args.id == null || args.id === "") {
+  if (!Object.hasOwn(args, "id") || args.id == null || args.id === "") {
     throw rpcError(-32602, "id is required");
   }
   if (typeof args.id !== "string" || !ID_RE.test(args.id)) {
@@ -488,8 +502,13 @@ function initializeResult() {
     protocolVersion: "2025-03-26",
     capabilities: { tools: { listChanged: false } },
     serverInfo: { name: "police-news", version: "1.0.0", homepage: PAGES_BASE },
-    instructions: "Use list_posts, get_post, and list_downloads for news text and download files.",
+    instructions:
+      "These tools read only the published news archive. Return stored records and say when a record is absent. Do not invent names, counts, or events. A job title is not the whole parent organization.",
   };
+}
+
+function dispatchOutcome(result) {
+  return { notification: false, result };
 }
 
 function dispatch(msg) {
@@ -498,13 +517,13 @@ function dispatch(msg) {
     throw rpcError(-32600, "Invalid Request", 400);
   }
   if (method.toLowerCase().includes("graph")) throw rpcError(-32601, "Method not found");
-  if (method.startsWith("notifications/") || !Object.prototype.hasOwnProperty.call(msg, "id")) {
-    return NOTIFICATION;
+  if (method.startsWith("notifications/") || !Object.hasOwn(msg, "id")) {
+    return { notification: true, result: null };
   }
-  if (method === "initialize") return initializeResult();
-  if (method === "ping") return {};
-  if (method === "tools/list") return { tools: publicTools() };
-  if (method === "tools/call") return toolsCall(msg.params);
+  if (method === "initialize") return dispatchOutcome(initializeResult());
+  if (method === "ping") return dispatchOutcome({});
+  if (method === "tools/list") return dispatchOutcome({ tools: publicTools() });
+  if (method === "tools/call") return dispatchOutcome(toolsCall(msg.params));
   throw rpcError(-32601, "Method not found");
 }
 
@@ -550,70 +569,87 @@ function readBody(req) {
   });
 }
 
-async function handle(req, res) {
+function mcpPathname(req) {
   const url = new URL(req.url || "/", `http://${HOST}`);
-  const pathname = url.pathname.length > 1 ? url.pathname.replace(/\/+$/, "") : url.pathname;
+  if (url.pathname.length <= 1) return url.pathname;
+  return withoutTrailingSlashes(url.pathname);
+}
 
+function requestId(msg) {
+  return Object.hasOwn(msg, "id") ? msg.id : null;
+}
+
+function invalidMessage(msg) {
+  if (!msg || typeof msg !== "object" || Array.isArray(msg)) {
+    return { status: 400, id: null };
+  }
+  if (msg.jsonrpc !== undefined && msg.jsonrpc !== "2.0") {
+    return { status: 400, id: requestId(msg) };
+  }
+  return null;
+}
+
+async function parseMessage(req) {
+  const raw = stripBom(await readBody(req)).trim();
+  if (!raw) throw rpcError(-32700, "Parse error", 400);
+  return JSON.parse(raw);
+}
+
+function sendOutcome(res, msg, outcome) {
+  if (outcome.notification) {
+    res.writeHead(202, CORS_HEADERS);
+    res.end();
+    return;
+  }
+  reply(res, 200, msg.id, outcome.result);
+}
+
+function sendDispatchError(res, msg, err) {
+  if (err?.rpc) {
+    reply(res, err.httpStatus || 200, msg.id, null, err);
+    return;
+  }
+  console.error(err);
+  reply(res, 500, msg.id, null, { code: -32603, message: "Internal error" });
+}
+
+async function handle(req, res) {
+  const pathname = mcpPathname(req);
   if (req.method === "OPTIONS") {
     res.writeHead(pathname === "/mcp" ? 204 : 404, CORS_HEADERS);
     res.end();
     return;
   }
-
   if (pathname !== "/mcp") {
     reply(res, 404, null, null, { code: -32601, message: "Not found" });
     return;
   }
-
   if (req.method !== "POST") {
     res.writeHead(405, { ...CORS_HEADERS, Allow: "POST, OPTIONS" });
-    const payload = JSON.stringify({
+    res.end(JSON.stringify({
       jsonrpc: "2.0",
       id: null,
       error: { code: -32600, message: "Method not allowed" },
-    });
-    res.end(payload);
+    }));
     return;
   }
-
   let msg;
   try {
-    const raw = stripBom(await readBody(req)).trim();
-    if (!raw) throw rpcError(-32700, "Parse error", 400);
-    msg = JSON.parse(raw);
+    msg = await parseMessage(req);
   } catch (err) {
-    const parseErr = err && err.rpc ? err : rpcError(-32700, "Parse error", 400);
+    const parseErr = err?.rpc ? err : rpcError(-32700, "Parse error", 400);
     reply(res, parseErr.httpStatus || 400, null, null, parseErr);
     return;
   }
-
-  if (!msg || typeof msg !== "object" || Array.isArray(msg)) {
-    reply(res, 400, null, null, { code: -32600, message: "Invalid Request" });
+  const invalid = invalidMessage(msg);
+  if (invalid) {
+    reply(res, invalid.status, invalid.id, null, { code: -32600, message: "Invalid Request" });
     return;
   }
-  if (msg.jsonrpc !== undefined && msg.jsonrpc !== "2.0") {
-    reply(res, 400, Object.prototype.hasOwnProperty.call(msg, "id") ? msg.id : null, null, {
-      code: -32600,
-      message: "Invalid Request",
-    });
-    return;
-  }
-
   try {
-    const result = dispatch(msg);
-    if (result === NOTIFICATION) {
-      res.writeHead(202, CORS_HEADERS);
-      res.end();
-      return;
-    }
-    reply(res, 200, msg.id, result);
+    sendOutcome(res, msg, dispatch(msg));
   } catch (err) {
-    if (err && err.rpc) {
-      reply(res, err.httpStatus || 200, msg.id, null, err);
-      return;
-    }
-    console.error(err);
-    reply(res, 500, msg.id, null, { code: -32603, message: "Internal error" });
+    sendDispatchError(res, msg, err);
   }
 }
 

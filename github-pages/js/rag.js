@@ -20,9 +20,14 @@
     { title: "ค้ามนุษย์", terms: ["ค้ามนุษย์"] },
     { title: "ไซเบอร์", terms: ["อาชญากรรมไซเบอร์", "ไซเบอร์", "คอลเซ็นเตอร์"] },
   ];
+  const POSITION_ALIASES = [
+    { title: "ผู้ช่วย ผบ.ตร.", phrases: ["ผู้ช่วยผู้บัญชาการตำรวจแห่งชาติ", "ผู้ช่วย ผบ.ตร.", "ผช.ผบ.ตร."] },
+    { title: "รอง ผบ.ตร.", phrases: ["รองผู้บัญชาการตำรวจแห่งชาติ", "รอง ผบ.ตร."] },
+    { title: "ผบ.ตร.", phrases: ["ผู้บัญชาการตำรวจแห่งชาติ", "ผบ.ตร."] },
+  ];
   const LLM_MODEL = "google/gemma-4-e2b";
   const NARRATION_RULE =
-    "คุณตอบคำถามผู้ใช้เป็นภาษาไทยให้จบทุกหัวข้อ ห้ามหยุดกลางประโยคหรือกลางรายการ โดยวิเคราะห์จาก JSON หลักฐานที่ให้มาเท่านั้น นับและยกข่าวเฉพาะใน evidence และ quantities ซึ่งผ่าน selectedFacets แล้ว เงื่อนไขคนละ facet เป็น AND ห้ามอ้างข่าวที่ไม่อยู่ใน evidence ถ้า relatedThroughNodes ว่างห้ามเล่าข่าวอื่นที่ร่วมโหนด ห้ามแสดงหัวข้อแบบคำตอบจากกราฟ ห้ามแต่งชื่อคนหรือตัวเลขที่ไม่มีใน JSON ห้ามรวมหน่วยนับที่ต่างกันเป็นยอดเดียว ถ้ามีตำแหน่งหรือผู้ดำรงตำแหน่งใน JSON ให้กล่าวถึง ถ้าข้อมูลไม่พอให้บอกว่าไม่มีในหลักฐาน";
+    "คุณตอบภาษาไทยจาก JSON ที่ส่งมาเท่านั้น ห้ามใช้ความรู้ภายนอก ห้ามเรียกเครื่องมือ และห้ามแต่งชื่อ คน ตำแหน่ง หรือตัวเลขที่ไม่มีใน JSON เล่าและนับเฉพาะ evidence ถ้า relatedThroughNodes ว่างห้ามเล่าข่าวอื่น ถ้าคำถามระบุตำแหน่ง ให้ยึด selectedFacets.positions กับ hubs ของตำแหน่งนั้น ห้ามขยายเป็นข่าวทั้งหน่วยงานแม่ ถ้ามี holder ให้บอกชื่อและตำแหน่งจาก holder เท่านั้น ถ้าไม่มีหลักฐานของคนหรือตำแหน่งที่ถามให้บอกว่าไม่มีในคลัง ห้ามรวมหน่วยนับที่ต่างกัน";
 
   const EXAMPLES = [
     "ผมต้องการทราบว่ากรมศุลกากรมีการห้ามปรามการเข้ามาของยาเสพติดตอนนี้ได้จำนวนทั้งหมดเท่าไร่",
@@ -417,6 +422,14 @@
     pushCandidate(org, "org", "orgs", parent.title, 3, { key: rule.contains, display: parent.title, rank: 1 });
   }
 
+  function addPositionAliases(person) {
+    for (const alias of POSITION_ALIASES) {
+      for (const phrase of alias.phrases) {
+        pushCandidate(person, "position", "positions", alias.title, 2, { key: phrase, display: alias.title, rank: 0 });
+      }
+    }
+  }
+
   function keywordBuckets(index) {
     const place = [];
     const org = [];
@@ -425,6 +438,7 @@
     for (const ent of index.hubEntities || []) addEntityCandidate(place, org, person, ent);
     for (const parent of index.parents || []) addParentCandidate(org, parent, index);
     for (const title of index.positionTitles || []) pushCandidate(person, "position", "positions", title, 2, { rank: 0 });
+    addPositionAliases(person);
     for (const title of index.crimeTypes || []) pushCandidate(crime, "crime", "crimes", title, 3);
     const topics = [];
     for (const group of TOPIC_GROUPS) {
@@ -506,19 +520,21 @@
       hitTitle: Boolean(hitPlace || hitOrg || hitPerson),
       hitHolder: Boolean(ent.current_holder) && wanted.holder.has(norm(ent.current_holder)),
       hitPos: positionSegments(ent.position).some((seg) => wanted.pos.has(norm(seg))),
+      hitOffice: wanted.pos.has(titleKey),
     };
   }
 
   function entityFacet(hit) {
     if (hit.hitPlace) return "places";
     if (hit.hitPerson || hit.hitHolder) return "people";
+    if (hit.hitOffice) return "positions";
     if (hit.hitPos && !hit.hitOrg) return "positions";
     return "orgs";
   }
 
   function matchedBy(hit) {
     if (hit.hitHolder) return "holder";
-    if (hit.hitPos && !hit.hitTitle) return "position";
+    if (hit.hitOffice || (hit.hitPos && !hit.hitTitle)) return "position";
     return "title";
   }
 
@@ -548,7 +564,7 @@
 
   function addEntityHub(hubs, ent, wanted, absorbed, seen, index) {
     const hit = entityHits(ent, wanted);
-    if (!hit.hitTitle && !hit.hitHolder && !hit.hitPos) return;
+    if (!hit.hitTitle && !hit.hitHolder && !hit.hitPos && !hit.hitOffice) return;
     if (absorbed.has(ent.id) || seen.has(ent.id)) return;
     if (coveredByLongerHub(hubs, hit.titleKey, hit.hitTitle)) return;
     seen.add(ent.id);
@@ -1533,6 +1549,7 @@
       keywords: result.keywords || [],
       selectedFacets: result.selectedFacets || {},
       filterMode: result.filterMode || "single",
+      policy: "ตอบจาก evidence holder และ selectedFacets ใน JSON นี้เท่านั้น ห้ามใช้ความรู้นอกคลัง",
       warnings: result.warnings || [],
       window: result.windowNote || "",
       holder: result.holder || null,
@@ -1564,7 +1581,7 @@
           href: item.href,
         })),
       })),
-      evidence: (result.evidence || []).slice(0, 12).map((item) => ({
+      evidence: (result.evidence || []).slice(0, 20).map((item) => ({
         title: item.title,
         excerpt: String(item.excerpt || "").slice(0, 180),
         date: item.date,
