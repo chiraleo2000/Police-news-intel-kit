@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-05T03:40:09.879Z",
+ "generated_at": "2026-11-05T07:00:06.449Z",
  "schema_version": 2,
  "source": "vault/",
  "note": "Derived from Obsidian wikilinks. Local vault/ is the knowledge store; this file powers Pages ข้อมูลกราฟ.",
@@ -7812,6 +7812,23 @@
    "degree": 1
   },
   {
+   "id": "30_Entities/People/Meta",
+   "title": "Meta",
+   "kind": "entity",
+   "folder": "30_Entities/People",
+   "entity_group": "หน่วย",
+   "date": null,
+   "case_id": null,
+   "crime_type": null,
+   "bureau": null,
+   "area": null,
+   "status": null,
+   "tags": [],
+   "excerpt": "โน้ตสำหรับค้นหาใน Obsidian ไม่ใส่รายชื่อคดีทั้งก้อน — ใช้ Bases หรือ backlink",
+   "path": "30_Entities/People/Meta.md",
+   "degree": 2
+  },
+  {
    "id": "30_Entities/People/MR. WEN",
    "title": "MR. WEN",
    "kind": "entity",
@@ -7861,23 +7878,6 @@
    "excerpt": "20261101 drug 02 สตม.ร่วม ป.ป.ส. จับชาวจีน 3 ราย ผู้ต้องหาตามหมายจับจีนคดีส่งออกไอซ์ซุกในขนมไทยไป",
    "path": "30_Entities/People/MS. FANG.md",
    "degree": 1
-  },
-  {
-   "id": "30_Entities/People/Meta",
-   "title": "Meta",
-   "kind": "entity",
-   "folder": "30_Entities/People",
-   "entity_group": "หน่วย",
-   "date": null,
-   "case_id": null,
-   "crime_type": null,
-   "bureau": null,
-   "area": null,
-   "status": null,
-   "tags": [],
-   "excerpt": "โน้ตสำหรับค้นหาใน Obsidian ไม่ใส่รายชื่อคดีทั้งก้อน — ใช้ Bases หรือ backlink",
-   "path": "30_Entities/People/Meta.md",
-   "degree": 2
   },
   {
    "id": "30_Entities/People/S.W.A.T. บก.น.4",
@@ -15326,23 +15326,6 @@
    "degree": 1
   },
   {
-   "id": "30_Entities/Units/DOPA SWAT",
-   "title": "DOPA SWAT",
-   "kind": "entity",
-   "folder": "30_Entities/Units",
-   "entity_group": "หน่วย",
-   "date": null,
-   "case_id": null,
-   "crime_type": null,
-   "bureau": null,
-   "area": null,
-   "status": null,
-   "tags": [],
-   "excerpt": "โน้ตสำหรับค้นหาใน Obsidian ไม่ใส่รายชื่อคดีทั้งก้อน — ใช้ Bases หรือ backlink",
-   "path": "30_Entities/Units/DOPA SWAT.md",
-   "degree": 1
-  },
-  {
    "id": "30_Entities/Units/Destiny Rescue",
    "title": "Destiny Rescue",
    "kind": "entity",
@@ -15360,8 +15343,8 @@
    "degree": 1
   },
   {
-   "id": "30_Entities/Units/TICAC",
-   "title": "TICAC",
+   "id": "30_Entities/Units/DOPA SWAT",
+   "title": "DOPA SWAT",
    "kind": "entity",
    "folder": "30_Entities/Units",
    "entity_group": "หน่วย",
@@ -15372,8 +15355,8 @@
    "area": null,
    "status": null,
    "tags": [],
-   "excerpt": "20261025 cyber 02 บช.สอท. จับบัญชีม้าเครือข่ายกลุ่มลับแพร่คลิปลามก ชักชวนพนันออนไลน์ ตามหมายจับ ยังตามล่าแอดมิน",
-   "path": "30_Entities/Units/TICAC.md",
+   "excerpt": "โน้ตสำหรับค้นหาใน Obsidian ไม่ใส่รายชื่อคดีทั้งก้อน — ใช้ Bases หรือ backlink",
+   "path": "30_Entities/Units/DOPA SWAT.md",
    "degree": 1
   },
   {
@@ -15392,6 +15375,23 @@
    "excerpt": "20261024 cyber 01 แจ้งเตือน ช่องโหว่ระดับ Critical ใน GitLab เสี่ยงถูกสั่งรันคำสั่งโดยไม่ต้องยืนยันตัวตน 20261024 cyber 02 แจ้งเตือน พบการโจมตีช่องโหว่ Plex2Shell ใน Plex Media Server เสี่ยงถูกควบคุมระบบและติดตั้ง Crypto Miner 20261029 cyber 03 ThaiCERT เตือนช่องโหว่ CVE 2026 80097 ใน Microsoft Authenticator บน Android เสี่ยงแอปอันตรายแอบอ้างขอ Token บัญชีอ…",
    "path": "30_Entities/Units/ThaiCERT.md",
    "degree": 9
+  },
+  {
+   "id": "30_Entities/Units/TICAC",
+   "title": "TICAC",
+   "kind": "entity",
+   "folder": "30_Entities/Units",
+   "entity_group": "หน่วย",
+   "date": null,
+   "case_id": null,
+   "crime_type": null,
+   "bureau": null,
+   "area": null,
+   "status": null,
+   "tags": [],
+   "excerpt": "20261025 cyber 02 บช.สอท. จับบัญชีม้าเครือข่ายกลุ่มลับแพร่คลิปลามก ชักชวนพนันออนไลน์ ตามหมายจับ ยังตามล่าแอดมิน",
+   "path": "30_Entities/Units/TICAC.md",
+   "degree": 1
   },
   {
    "id": "30_Entities/Units/U.S. Fish & Wildlife Service",
@@ -23877,23 +23877,6 @@
    "degree": 5
   },
   {
-   "id": "_system/README",
-   "title": "news-intel vault — คู่มือสั้น",
-   "kind": "other",
-   "folder": "_system",
-   "entity_group": null,
-   "date": null,
-   "case_id": null,
-   "crime_type": null,
-   "bureau": null,
-   "area": null,
-   "status": null,
-   "tags": [],
-   "excerpt": "vault นี้มี สองส่วน แยกกันชัดเจน เพื่อไม่ให้ server กับมนุษย์เขียนทับกัน | ส่วน | โฟลเดอร์ | ใครเขียน | หมายเหตุ | | | | | | | สร้างอัตโนมัติ | 10 Daily , 20 Cases , 30 Entities , 40 CrimeTypes , 50 Trends | server ( vault build ) เท่านั้น | มี generated: true ; แก้ด้วยมือแล้วจะถูกเขียนทับ | | มนุษย์เขียน | 00 Inbox , 60 Notes , 70 Canvas | คุณ | ลิงก์ไปยัง…",
-   "path": "_system/README.md",
-   "degree": 0
-  },
-  {
    "id": "_system/canonical-entities",
    "title": "ชื่อมาตรฐาน (canonical entities)",
    "kind": "other",
@@ -23908,6 +23891,23 @@
    "tags": [],
    "excerpt": "server อ่านไฟล์นี้ตอน vault build และตอน brain search / brain upsert เพื่อรวมชื่อให้ตรงกัน รูปแบบแต่ละบรรทัด: ชื่อไฟล์ที่ใช้ | ชนิด | aliases (คั่นด้วย ;) ชื่อไฟล์ต้องไม่มีอักขระ / \\ : ? \" < | อาชญากรรมไซเบอร์และออนไลน์ | crime type | CYBER คดีเศรษฐกิจ การเงิน และฟอกเงิน | crime type | ECON ยาเสพติด | crime type | DRUG ค้ามนุษย์ แรงงานผิดกฎหมาย และคุ้มครองเ…",
    "path": "_system/canonical-entities.md",
+   "degree": 0
+  },
+  {
+   "id": "_system/README",
+   "title": "news-intel vault — คู่มือสั้น",
+   "kind": "other",
+   "folder": "_system",
+   "entity_group": null,
+   "date": null,
+   "case_id": null,
+   "crime_type": null,
+   "bureau": null,
+   "area": null,
+   "status": null,
+   "tags": [],
+   "excerpt": "vault นี้มี สองส่วน แยกกันชัดเจน เพื่อไม่ให้ server กับมนุษย์เขียนทับกัน | ส่วน | โฟลเดอร์ | ใครเขียน | หมายเหตุ | | | | | | | สร้างอัตโนมัติ | 10 Daily , 20 Cases , 30 Entities , 40 CrimeTypes , 50 Trends | server ( vault build ) เท่านั้น | มี generated: true ; แก้ด้วยมือแล้วจะถูกเขียนทับ | | มนุษย์เขียน | 00 Inbox , 60 Notes , 70 Canvas | คุณ | ลิงก์ไปยัง…",
+   "path": "_system/README.md",
    "degree": 0
   },
   {
