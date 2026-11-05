@@ -257,33 +257,6 @@
       .filter(Boolean);
   }
 
-  function mentionedPositions(text, titles) {
-    const q = norm(text);
-    const ordered = (titles || []).slice().sort((a, b) => norm(b).length - norm(a).length);
-    const hits = [];
-    const spans = [];
-    for (const title of ordered) {
-      const needle = norm(title);
-      if (needle.length < 2) continue;
-      let from = 0;
-      let found = false;
-      while (from <= q.length - needle.length) {
-        const at = q.indexOf(needle, from);
-        if (at < 0) break;
-        const end = at + needle.length;
-        const covered = spans.some(([start, stop]) => at >= start && end <= stop);
-        if (!covered) {
-          spans.push([at, end]);
-          found = true;
-          break;
-        }
-        from = at + 1;
-      }
-      if (found) hits.push(title);
-    }
-    return hits;
-  }
-
   function detectCrimeTypes(question, titles) {
     const q = norm(question);
     const hits = (titles || []).filter((t) => {
@@ -471,6 +444,25 @@
     return false;
   }
 
+  function rememberClaim(item, at, spans, seen, hits) {
+    const end = at + item.len;
+    spans.push([at, end]);
+    const dedupe = `${item.kind}:${norm(item.title)}`;
+    if (seen.has(dedupe)) return;
+    seen.add(dedupe);
+    hits.push({ kind: item.kind, facet: item.facet, title: item.title, start: at, end });
+  }
+
+  function nextClaimFrom(qn, item, from, spans, seen, hits, wordHeads) {
+    const at = qn.indexOf(item.key, from);
+    if (at < 0) return -1;
+    if (coversMatch(qn, at, item.len, wordHeads)) return at + 1;
+    const end = at + item.len;
+    if (spans.some(([start, stop]) => at < stop && end > start)) return at + 1;
+    rememberClaim(item, at, spans, seen, hits);
+    return null;
+  }
+
   function claimPool(qn, candidates, wordHeads) {
     candidates.sort((a, b) => b.len - a.len || (a.rank ?? 9) - (b.rank ?? 9));
     const hits = [];
@@ -479,24 +471,9 @@
     for (const item of candidates) {
       let from = 0;
       while (from <= qn.length - item.len) {
-        const at = qn.indexOf(item.key, from);
-        if (at < 0) break;
-        if (coversMatch(qn, at, item.len, wordHeads)) {
-          from = at + 1;
-          continue;
-        }
-        const end = at + item.len;
-        const overlaps = spans.some(([start, stop]) => at < stop && end > start);
-        if (!overlaps) {
-          spans.push([at, end]);
-          const dedupe = `${item.kind}:${norm(item.title)}`;
-          if (!seen.has(dedupe)) {
-            seen.add(dedupe);
-            hits.push({ kind: item.kind, facet: item.facet, title: item.title, start: at, end });
-          }
-          break;
-        }
-        from = at + 1;
+        const next = nextClaimFrom(qn, item, from, spans, seen, hits, wordHeads);
+        if (next == null || next < 0) break;
+        from = next;
       }
     }
     return hits;
@@ -730,43 +707,6 @@
     return hubs;
   }
 
-  function otherEnd(edge, id) {
-    if (edge.source === id) return edge.target;
-    if (edge.target === id) return edge.source;
-    return "";
-  }
-
-  function focusable(node) {
-    if (!node) return false;
-    if (node.kind === "crime_type") return true;
-    return node.kind === "entity" && HUB_GROUPS.has(node.entity_group);
-  }
-
-  function expandFrom(id, index, out, added, maxExtra) {
-    if (added >= maxExtra) return added;
-    for (const edge of index.edges || []) {
-      if (added >= maxExtra) break;
-      const other = otherEnd(edge, id);
-      if (!other || out.has(other)) continue;
-      if (!focusable(index.nodesById.get(other))) continue;
-      out.add(other);
-      added += 1;
-    }
-    return added;
-  }
-
-  function expandFocusIds(ids, index, opts = {}) {
-    const seed = new Set((ids || []).filter(Boolean));
-    const out = new Set(seed);
-    const maxExtra = Number.isFinite(opts.maxExtra) ? opts.maxExtra : 40;
-    let added = 0;
-    for (const id of seed) {
-      added = expandFrom(id, index, out, added, maxExtra);
-      if (added >= maxExtra) break;
-    }
-    return [...out];
-  }
-
   function edgeCaseLink(edge, members) {
     if (members.has(edge.source)) return { entId: edge.source, caseId: edge.target };
     if (members.has(edge.target)) return { entId: edge.target, caseId: edge.source };
@@ -934,7 +874,7 @@
   }
 
   function squeeze(text) {
-    return String(text || "").split(/\s+/).join(" ").trim();
+    return String(text || "").replaceAll(/\s+/g, " ").trim();
   }
 
   function pushQuantity(hits, spans, hit) {
@@ -1703,58 +1643,6 @@
       ${focusButton(opts, result)}
     </div>`;
   }
-  function narrationPayload(result) {
-    return {
-      intent: result.intent,
-      caseCount: result.caseCount,
-      crimeTypes: result.crimeTypes || [],
-      keywords: result.keywords || [],
-      selectedFacets: result.selectedFacets || {},
-      filterMode: result.filterMode || "single",
-      policy: "เขียนเป็นย่อหน้าภาษาไทย ห้ามตอบเป็น JSON",
-      warnings: result.warnings || [],
-      window: result.windowNote || "",
-      holder: result.holder || null,
-      hubs: (result.hubs || []).map((hub) => ({
-        title: hub.title,
-        entity_group: hub.entity_group,
-        roleWarning: Boolean(hub.roleWarning),
-        position: hub.position || "",
-        current_holder: hub.current_holder || "",
-      })),
-      relatedThroughNodes: (result.oldLinks || []).map((group) => ({
-        relation: group.relation,
-        hubTitle: group.hubTitle,
-        cases: (group.cases || []).slice(0, 8).map((item) => ({
-          title: item.title,
-          date: item.date,
-          crime_type: item.crime_type,
-          href: item.href,
-        })),
-      })),
-      quantities: (result.quantities || []).map((group) => ({
-        unit: group.unit,
-        note: group.note,
-        items: (group.items || []).map((item) => ({
-          display: item.display,
-          org: item.org,
-          title: item.title,
-          date: item.date,
-          href: item.href,
-        })),
-      })),
-      evidence: (result.evidence || []).slice(0, 20).map((item) => ({
-        title: item.title,
-        excerpt: String(item.excerpt || "").slice(0, 420),
-        date: item.date,
-        href: item.href,
-        position: item.position || "",
-        crime_type: item.crime_type || "",
-        places: item.places || [],
-      })),
-    };
-  }
-
   function llmFailureReason(status, data) {
     const blob = JSON.stringify(data || {}).toLowerCase();
     if (status === 404 || /model|not loaded|does not exist|unknown model|failed to load|no models loaded/.test(blob)) {
@@ -1933,13 +1821,52 @@
     return "";
   }
 
+  function dropFences(text) {
+    let out = String(text || "");
+    let at = out.toLowerCase().indexOf("```");
+    while (at >= 0) {
+      out = `${out.slice(0, at)}${out.slice(at + 3)}`;
+      at = out.toLowerCase().indexOf("```");
+    }
+    return out;
+  }
+
+  function cutCitation(text) {
+    const at = text.indexOf("แหล่งอ้างอิง");
+    if (at < 0) return text;
+    const rest = text.slice(at);
+    const breakAt = rest.indexOf("\n\n");
+    const summaryAt = rest.indexOf("\nโดยสรุป");
+    let cut = rest.length;
+    if (breakAt >= 0) cut = Math.min(cut, breakAt);
+    if (summaryAt >= 0) cut = Math.min(cut, summaryAt);
+    return `${text.slice(0, at)}${text.slice(at + cut)}`;
+  }
+
+  function stripTitleBlobs(text) {
+    let out = "";
+    let cursor = 0;
+    while (cursor < text.length) {
+      const open = text.indexOf("{", cursor);
+      if (open < 0) {
+        out += text.slice(cursor);
+        break;
+      }
+      const close = text.indexOf("}", open + 1);
+      const blob = close < 0 ? "" : text.slice(open, close + 1);
+      if (close < 0 || !blob.includes('"title"') || blob.includes("{", 1)) {
+        out += text.slice(cursor, open + 1);
+        cursor = open + 1;
+        continue;
+      }
+      out += text.slice(cursor, open);
+      cursor = close + 1;
+    }
+    return out;
+  }
+
   function stripModelDump(text) {
-    return String(text || "")
-      .replace(/```(?:json)?/gi, "")
-      .replace(/แหล่งอ้างอิง\s*:\s*[\s\S]*?(?=\n\s*\n|\n\s*\d+\.|\nโดยสรุป|$)/g, "")
-      .replace(/\{[^{}]*"title"[^{}]*\}/g, "")
-      .replace(/\n{3,}/g, "\n\n")
-      .trim();
+    return stripTitleBlobs(cutCitation(dropFences(text))).replaceAll(/\n{3,}/g, "\n\n").trim();
   }
 
   function stillDump(text) {
@@ -1960,10 +1887,17 @@
     return `จากคลังข่าวที่ตรงกับ ${who} พบ ${count} ข่าว ตัวเลขด้านล่างเป็นข้อความในข่าวแต่ละเรื่อง ไม่ใช่ยอดรวมอย่างเป็นทางการ\n\n${lines.join("\n\n")}`;
   }
 
+  function fencedBody(text) {
+    const open = text.indexOf("```");
+    if (open < 0) return text;
+    let body = text.slice(open + 3).trimStart();
+    if (body.slice(0, 4).toLowerCase() === "json") body = body.slice(4).trimStart();
+    const close = body.lastIndexOf("```");
+    return (close < 0 ? body : body.slice(0, close)).trim();
+  }
+
   function proseFromModel(raw, result) {
-    let text = String(raw || "").trim();
-    const fenced = text.match(/```(?:json)?\s*([\s\S]*?)```/i);
-    if (fenced) text = fenced[1].trim();
+    let text = fencedBody(String(raw || "").trim());
     if (text.startsWith("{") || text.startsWith("[")) {
       try {
         text = proseField(JSON.parse(text)) || text;

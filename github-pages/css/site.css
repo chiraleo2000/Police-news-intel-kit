@@ -1207,6 +1207,244 @@ body.is-brain .site-footer {
   font-size: 0.84rem;
 }
 
+.brain-workspace {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(300px, 420px);
+  gap: 0.75rem;
+  align-items: stretch;
+  height: calc(100vh - 15rem);
+  min-height: 640px;
+}
+
+.brain-workspace .brain-stage {
+  min-height: 0;
+  height: 100%;
+}
+
+.brain-workspace #brain-canvas {
+  height: 100%;
+  min-height: 0;
+}
+
+.brain-chat {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  height: 100%;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: rgba(248, 251, 255, 0.96);
+  overflow: hidden;
+}
+
+.brain-chat-log {
+  flex: 1 1 auto;
+  min-height: 0;
+  max-height: none;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  padding: 0.85rem 0.9rem 1rem;
+}
+
+.brain-chat-empty {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.brain-chat-empty[hidden] {
+  display: none;
+}
+
+.brain-ask-examples {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.brain-example {
+  white-space: normal;
+  text-align: left;
+  line-height: 1.45;
+  height: auto;
+}
+
+.chat-turn {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.chat-bubble {
+  border-radius: var(--radius);
+  padding: 0.7rem 0.8rem;
+}
+
+.chat-user {
+  align-self: flex-end;
+  max-width: 95%;
+  background: var(--teal-soft);
+  color: var(--ink);
+}
+
+.chat-assistant {
+  align-self: stretch;
+  background: #fff;
+  border: 1px solid var(--line);
+}
+
+.brain-chat-form {
+  display: flex;
+  gap: 0.45rem;
+  align-items: center;
+  padding: 0.7rem;
+  border-top: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.92);
+}
+
+.brain-chat-form input {
+  flex: 1 1 auto;
+  min-width: 0;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 0.45rem 0.6rem;
+  background: #fff;
+  min-height: 2.4rem;
+}
+
+.rag-holder {
+  margin: 0.35rem 0;
+  font-size: 1.02rem;
+}
+
+.rag-holder strong {
+  font-family: var(--font-display);
+}
+
+.rag-answer h3,
+.rag-answer h4,
+.rag-narration h3,
+.rag-qty-group h4 {
+  font-family: var(--font-display);
+  line-height: 1.35;
+}
+
+.rag-answer h3 {
+  margin: 0.15rem 0 0.4rem;
+  font-size: 1.12rem;
+}
+
+.rag-answer h4,
+.rag-qty-group h4,
+.rag-narration h3 {
+  margin: 0.85rem 0 0.3rem;
+  font-size: 0.98rem;
+}
+
+.rag-count {
+  margin: 0.35rem 0 0.15rem;
+  font-size: 1.05rem;
+}
+
+.rag-count strong {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  color: var(--teal);
+  margin-right: 0.25rem;
+}
+
+.rag-warn {
+  margin: 0.35rem 0;
+  padding: 0.45rem 0.6rem;
+  border-radius: var(--radius);
+  background: var(--amber-soft);
+  color: var(--ink);
+  font-size: 0.92rem;
+}
+
+.rag-cases,
+.rag-qty-group ul,
+.rag-answer section ul {
+  margin: 0.25rem 0 0.4rem;
+  padding-left: 1.15rem;
+}
+
+.rag-cases li,
+.rag-answer li {
+  margin: 0.45rem 0;
+}
+
+.rag-cases a,
+.rag-answer a {
+  color: var(--teal);
+}
+
+.rag-qty {
+  font-weight: 700;
+}
+
+.rag-files {
+  margin: 0.15rem 0 0;
+  font-size: 0.88rem;
+}
+
+.rag-narration {
+  margin-top: 0.8rem;
+  padding-top: 0.6rem;
+  border-top: 1px solid var(--line);
+}
+
+.rag-narration-body {
+  white-space: normal;
+  overflow: visible;
+  max-height: none;
+}
+
+.rag-narration-body p,
+.rag-narration-body h4 {
+  margin: 0.45rem 0;
+}
+
+.rag-narration-body h4 {
+  font-family: var(--font-display);
+  font-size: 1rem;
+}
+
+.rag-narration-body ul,
+.rag-narration-body ol {
+  margin: 0.3rem 0 0.65rem;
+  padding-left: 1.2rem;
+}
+
+.rag-narration-body li {
+  margin: 0.28rem 0;
+}
+
+.rag-llm {
+  margin-top: 0.75rem;
+  padding: 0.75rem 0.8rem;
+  border: 1px solid var(--teal);
+  border-radius: var(--radius);
+  background: #fff;
+  overflow: visible;
+  max-height: none;
+}
+
+.rag-evidence {
+  margin-top: 0.7rem;
+}
+
+.rag-evidence summary {
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--teal);
+}
+
 .brain-stage {
   position: relative;
   display: block;
@@ -1365,13 +1603,29 @@ body.is-brain .site-footer {
     width: 100%;
   }
 
+  .brain-workspace {
+    grid-template-columns: 1fr;
+    height: auto;
+    min-height: 0;
+  }
+
   .brain-stage {
     min-height: 72vh;
   }
 
+  .brain-workspace #brain-canvas,
   #brain-canvas {
     height: 72vh;
     min-height: 480px;
+  }
+
+  .brain-chat {
+    height: auto;
+    min-height: 70vh;
+  }
+
+  .brain-chat-log {
+    min-height: 52vh;
   }
 
   .brain-detail {
