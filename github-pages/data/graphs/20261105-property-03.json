@@ -1,0 +1,34 @@
+{
+ "case_id": "20261105-property-03",
+ "title": "ตำรวจพัทยาจับชายอายุ 34 ปี ผู้ต้องสงสัยขี่จักรยานยนต์กระชากทรัพย์ต่อเนื่องหลายครั้ง พบทรัพย์ของผู้เสียหายหลายรายในห้องพักที่ศรีราชา อ้างปลอมตัวเป็นไรเดอร์และแต่งกายเป็นหญิงเพื่อเลี่ยงการสังเกต",
+ "generated_at": "2026-11-05T03:40:22.604Z",
+ "node_count": 5,
+ "edge_count": 4,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/สภ.เมืองพัทยา",
+   "target_title": "สภ.เมืองพัทยา",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ถนนพัทยาสาย 3",
+   "target_title": "ถนนพัทยาสาย 3",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/พัทยา",
+   "target_title": "พัทยา",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/คดีทรัพย์สิน",
+   "target_title": "คดีทรัพย์สิน",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261105-property-03.svg"
+}

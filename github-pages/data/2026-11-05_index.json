@@ -1,52 +1,56 @@
 {
  "date": "2026-11-05",
- "generated_at": "2026-11-05T08:13:32+07:00",
+ "generated_at": "2026-11-05T10:36:56+07:00",
  "run": "partial",
  "stats": {
-  "total": 15,
-  "direct": 1,
-  "indirect": 14,
-  "priority_A": 1,
-  "priority_B": 14,
-  "priority_C": 0,
-  "alerts": 2,
-  "official_confirmed": 1,
+  "total": 37,
+  "direct": 6,
+  "indirect": 31,
+  "priority_A": 6,
+  "priority_B": 25,
+  "priority_C": 6,
+  "alerts": 4,
+  "official_confirmed": 7,
   "by_crime_type": {
-   "ยาเสพติด": 3,
-   "คดีชีวิต ร่างกาย และเพศ": 3,
-   "คดีทรัพย์สิน": 2,
+   "ยาเสพติด": 9,
+   "คดีชีวิต ร่างกาย และเพศ": 7,
+   "อาชญากรรมที่เกี่ยวข้องกับนักท่องเที่ยวและชาวต่างชาติ": 4,
+   "คดีทรัพย์สิน": 3,
+   "อาชญากรรมข้ามชาติและความร่วมมือระหว่างประเทศ": 2,
    "คดีเศรษฐกิจ การเงิน และฟอกเงิน": 2,
    "การปฏิบัติหน้าที่ ประชาสัมพันธ์ และนโยบายตำรวจ": 2,
-   "อาชญากรรมข้ามชาติและความร่วมมือระหว่างประเทศ": 1,
+   "คุ้มครองผู้บริโภคและสินค้าผิดกฎหมาย": 2,
    "พนันและบ่อนผิดกฎหมาย": 1,
-   "อาชญากรรมไซเบอร์และออนไลน์": 1
+   "ทุจริตและประพฤติมิชอบของเจ้าหน้าที่รัฐ": 1,
+   "ค้ามนุษย์ แรงงานผิดกฎหมาย และคุ้มครองเด็ก": 1,
+   "อาชญากรรมไซเบอร์และออนไลน์": 1,
+   "สิ่งแวดล้อม ทรัพยากร และสัตว์ป่า": 1,
+   "ความสงบเรียบร้อยและความมั่นคงภายใน": 1
   },
-  "total_loss_thb": 418546688,
-  "total_seized_value_thb": 90000000,
-  "total_arrested": 41
+  "total_loss_thb": 419476688,
+  "total_seized_value_thb": 91525001,
+  "total_arrested": 109
  },
- "articles_scraped_pass": 254,
+ "articles_scraped_pass": 276,
  "articles_in_window": 99,
  "official_pr_articles": 1,
- "official_articles_all_batches": 1,
- "posts_published_after_merge": 15,
+ "official_articles_all_batches": 7,
+ "posts_published_after_merge": 37,
  "fetch_count_approx": 319,
- "skipped_out_of_scope": 84,
+ "skipped_out_of_scope": 62,
  "sources_status_counts": {
-  "ok_no_news": 23,
-  "parser_failed": 3,
-  "unattempted": 14,
-  "stale": 5,
-  "ok_with_news": 16,
-  "blocked": 4
+  "stale": 9,
+  "blocked": 4,
+  "ok_no_news": 33,
+  "ok_with_news": 18,
+  "parser_failed": 1
  },
- "chrome_unavailable": true,
+ "chrome_unavailable": false,
  "partial_reasons": [
-  "PARTIAL: Claude in Chrome ไม่มีเบราว์เซอร์เชื่อมต่อ (list_connected_browsers=[]) ใช้ requests/bs4 บนเครื่องผู้ใช้ fetch_mode=http; thaipoliceonline (SPA) ไม่ได้เปิด",
-  "official_pr_articles=1 (<8): พบหน้าประชาสัมพันธ์ตำรวจที่ใช้ได้เพียง saranitet.police.go.th 1 รายการในหน้าต่าง; DSI/ONCB/PACC listing ไม่มีวันที่",
-  "แถวขยาย search_only (ecd, cppd, pct, tcsd, phak1-9, border_patrol) = unattempted (ไม่มีคิวรีเฉพาะ)",
-  "บทความ mgronline ดึงเนื้อผ่าน listing ไม่ได้ ใช้แหล่งอื่นเป็นหลัก",
-  "Facebook/social ไม่ถูกดึง; brain_search MCP ไม่พร้อมใช้ ค้นในไฟล์ *_crime.json ในเครื่องแทน"
+  "official_pr_articles (ตำรวจ Batch A) = 1 (<8): เปิดเว็บ ตร./หน่วยในสังกัดด้วย Chrome แล้ว ส่วนใหญ่ไม่มีข่าวในช่วง 4-5 พ.ย. (ล่าสุด 2-3 พ.ย. หรือเก่ากว่า) ข่าวประชาสัมพันธ์จริงอยู่บน Facebook ซึ่งห้ามเปิด",
+  "official จาก Batch B เพิ่มเป็น 7 เรื่อง (ป.ป.ส. 4, อัยการสูงสุด 1 + เดิม)",
+  "csd.go.th เปิดไม่ได้ทั้ง http และ Chrome",
+  "phak1-9 ใช้คำค้นรวมแบบจำกัดโดเมน police.go.th (ไม่มีเว็บกลางของภาค)"
  ],
  "files": [
   "2026-11-05_crime.html",
@@ -58,32 +62,36 @@
  "no_news_today": false,
  "source_health": {
   "A:royalthaipolice": {
-   "status": "ok_no_news",
-   "url": "https://www.royalthaipolice.go.th/",
-   "tool": "http",
-   "result": "listing http 200; 1 listing page(s); in-window permalinks 0; undated candidates 0",
-   "in_window_link_count": 0
+   "status": "stale",
+   "url": "https://www.royalthaipolice.go.th/th/executive-mission",
+   "tool": "chrome",
+   "result": "Nuxt SPA rendered in Chrome; /th/main splash; newest item on /th/executive-mission dated 02 พ.ย. 69",
+   "in_window_link_count": 0,
+   "run": "topup"
   },
   "A:ccid1": {
-   "status": "ok_no_news",
+   "status": "stale",
    "url": "https://ccid1.ccib.go.th/",
-   "tool": "http",
-   "result": "listing http 200; 1 listing page(s); in-window permalinks 0; undated candidates 0",
-   "in_window_link_count": 0
+   "tool": "chrome",
+   "result": "rendered; only unit links; newest dates 21 ม.ค. 69",
+   "in_window_link_count": 0,
+   "run": "topup"
   },
   "A:cib": {
-   "status": "ok_no_news",
-   "url": "https://www.cib.go.th/news?category=general",
-   "tool": "http",
-   "result": "listing http 200; 2 listing page(s); in-window permalinks 0; undated candidates 0",
-   "in_window_link_count": 0
+   "status": "stale",
+   "url": "https://www.cib.go.th/news",
+   "tool": "chrome",
+   "result": "rendered; newest /news/8395 dated 26 ต.ค. 2569",
+   "in_window_link_count": 0,
+   "run": "topup"
   },
   "A:csd": {
-   "status": "parser_failed",
+   "status": "blocked",
    "url": "https://csd.go.th/",
-   "tool": "http",
-   "result": "listing http ERR; 1 listing page(s); in-window permalinks 0; undated candidates 0",
-   "in_window_link_count": 0
+   "tool": "chrome",
+   "result": "chrome-error: site unreachable (DNS/connection) — not circumvented",
+   "in_window_link_count": 0,
+   "run": "topup"
   },
   "A:idmb": {
    "status": "ok_no_news",
@@ -100,144 +108,164 @@
    "in_window_link_count": 0
   },
   "A:ecd": {
-   "status": "unattempted",
-   "url": "",
-   "tool": "",
-   "result": "search_only row without listing; no dedicated query this run (one combined domain-limited search returned only undated station pages)",
-   "in_window_link_count": 0
+   "status": "ok_no_news",
+   "url": "WebSearch allowed_domains=police.go.th",
+   "tool": "search",
+   "result": "query \"ปอศ. แถลง 4 พฤศจิกายน 2569\": only undated/older station pages and saranitet releases (latest 14 ต.ค.); no in-window permalink",
+   "in_window_link_count": 0,
+   "run": "topup"
   },
   "A:cppd": {
-   "status": "unattempted",
-   "url": "",
-   "tool": "",
-   "result": "search_only row without listing; no dedicated query this run (one combined domain-limited search returned only undated station pages)",
-   "in_window_link_count": 0
+   "status": "ok_no_news",
+   "url": "WebSearch allowed_domains=police.go.th",
+   "tool": "search",
+   "result": "query \"ปคบ. ตำรวจคุ้มครองผู้บริโภค แถลง จับกุม พฤศจิกายน 2569\": only undated/older station pages and saranitet releases (latest 14 ต.ค.); no in-window permalink",
+   "in_window_link_count": 0,
+   "run": "topup"
   },
   "A:atpd": {
-   "status": "ok_no_news",
+   "status": "stale",
    "url": "https://humantrafficking.police.go.th/",
-   "tool": "http",
-   "result": "listing http 200; 1 listing page(s); in-window permalinks 0; undated candidates 0",
-   "in_window_link_count": 0
+   "tool": "chrome",
+   "result": "WP REST from page: newest post 2025-04-04",
+   "in_window_link_count": 0,
+   "run": "topup"
   },
   "A:tourist_police": {
    "status": "stale",
    "url": "https://www.touristpolice.go.th/tpb-news",
-   "tool": "http",
-   "result": "listing http 200; 2 listing page(s); in-window permalinks 0; undated candidates 7",
-   "in_window_link_count": 0
+   "tool": "chrome",
+   "result": "rendered; newest permalinks tpbnews2026110304 / commandernews20261103xx (3 พ.ย.) — before window",
+   "in_window_link_count": 0,
+   "run": "topup"
   },
   "A:pct": {
-   "status": "unattempted",
-   "url": "",
-   "tool": "",
-   "result": "search_only row without listing; no dedicated query this run (one combined domain-limited search returned only undated station pages)",
-   "in_window_link_count": 0
+   "status": "ok_no_news",
+   "url": "https://pct.police.go.th/",
+   "tool": "chrome",
+   "result": "discovered from ccid1 unit links; page rendered empty (no news list)",
+   "in_window_link_count": 0,
+   "run": "topup"
   },
   "A:tcsd": {
-   "status": "unattempted",
-   "url": "",
-   "tool": "",
-   "result": "search_only row without listing; no dedicated query this run (one combined domain-limited search returned only undated station pages)",
-   "in_window_link_count": 0
+   "status": "stale",
+   "url": "https://tcsd.go.th/",
+   "tool": "chrome",
+   "result": "redirects to tcsd.cib.go.th/home; newest dates 21 ก.ย. 2569",
+   "in_window_link_count": 0,
+   "run": "topup"
   },
   "A:immigration": {
-   "status": "ok_no_news",
+   "status": "stale",
    "url": "https://www.immigration.go.th/",
-   "tool": "http",
-   "result": "listing http 200; 1 listing page(s); in-window permalinks 0; undated candidates 0",
-   "in_window_link_count": 0
+   "tool": "chrome",
+   "result": "rendered; ?p=33796 dated 6 ก.พ. 2025; other items Sep 2026",
+   "in_window_link_count": 0,
+   "run": "topup"
   },
   "A:metro": {
    "status": "ok_no_news",
-   "url": "https://www.metro.police.go.th/",
-   "tool": "http",
-   "result": "listing http 200; 1 listing page(s); in-window permalinks 0; undated candidates 0",
-   "in_window_link_count": 0
+   "url": "https://metro.police.go.th/",
+   "tool": "chrome",
+   "result": "rendered (requests got 403); WP REST after=2026-11-03T17:00Z returned 0 posts",
+   "in_window_link_count": 0,
+   "run": "topup"
   },
   "A:phak1": {
-   "status": "unattempted",
-   "url": "",
-   "tool": "",
-   "result": "search_only row without listing; no dedicated query this run (one combined domain-limited search returned only undated station pages)",
-   "in_window_link_count": 0
+   "status": "ok_no_news",
+   "url": "WebSearch allowed_domains=police.go.th",
+   "tool": "search",
+   "result": "query \"ตำรวจภูธรภาค แถลงจับกุม พฤศจิกายน 2569\": only undated/older station pages and saranitet releases (latest 14 ต.ค.); no in-window permalink",
+   "in_window_link_count": 0,
+   "run": "topup"
   },
   "A:phak2": {
-   "status": "unattempted",
-   "url": "",
-   "tool": "",
-   "result": "search_only row without listing; no dedicated query this run (one combined domain-limited search returned only undated station pages)",
-   "in_window_link_count": 0
+   "status": "ok_no_news",
+   "url": "WebSearch allowed_domains=police.go.th",
+   "tool": "search",
+   "result": "query \"ตำรวจภูธรภาค แถลงจับกุม พฤศจิกายน 2569\": only undated/older station pages and saranitet releases (latest 14 ต.ค.); no in-window permalink",
+   "in_window_link_count": 0,
+   "run": "topup"
   },
   "A:phak3": {
-   "status": "unattempted",
-   "url": "",
-   "tool": "",
-   "result": "search_only row without listing; no dedicated query this run (one combined domain-limited search returned only undated station pages)",
-   "in_window_link_count": 0
+   "status": "ok_no_news",
+   "url": "WebSearch allowed_domains=police.go.th",
+   "tool": "search",
+   "result": "query \"ตำรวจภูธรภาค แถลงจับกุม พฤศจิกายน 2569\": only undated/older station pages and saranitet releases (latest 14 ต.ค.); no in-window permalink",
+   "in_window_link_count": 0,
+   "run": "topup"
   },
   "A:phak4": {
-   "status": "unattempted",
-   "url": "",
-   "tool": "",
-   "result": "search_only row without listing; no dedicated query this run (one combined domain-limited search returned only undated station pages)",
-   "in_window_link_count": 0
+   "status": "ok_no_news",
+   "url": "WebSearch allowed_domains=police.go.th",
+   "tool": "search",
+   "result": "query \"ตำรวจภูธรภาค แถลงจับกุม พฤศจิกายน 2569\": only undated/older station pages and saranitet releases (latest 14 ต.ค.); no in-window permalink",
+   "in_window_link_count": 0,
+   "run": "topup"
   },
   "A:phak5": {
-   "status": "unattempted",
-   "url": "",
-   "tool": "",
-   "result": "search_only row without listing; no dedicated query this run (one combined domain-limited search returned only undated station pages)",
-   "in_window_link_count": 0
+   "status": "ok_no_news",
+   "url": "WebSearch allowed_domains=police.go.th",
+   "tool": "search",
+   "result": "query \"ตำรวจภูธรภาค แถลงจับกุม พฤศจิกายน 2569\": only undated/older station pages and saranitet releases (latest 14 ต.ค.); no in-window permalink",
+   "in_window_link_count": 0,
+   "run": "topup"
   },
   "A:phak6": {
-   "status": "unattempted",
-   "url": "",
-   "tool": "",
-   "result": "search_only row without listing; no dedicated query this run (one combined domain-limited search returned only undated station pages)",
-   "in_window_link_count": 0
+   "status": "ok_no_news",
+   "url": "WebSearch allowed_domains=police.go.th",
+   "tool": "search",
+   "result": "query \"ตำรวจภูธรภาค แถลงจับกุม พฤศจิกายน 2569\": only undated/older station pages and saranitet releases (latest 14 ต.ค.); no in-window permalink",
+   "in_window_link_count": 0,
+   "run": "topup"
   },
   "A:phak7": {
-   "status": "unattempted",
-   "url": "",
-   "tool": "",
-   "result": "search_only row without listing; no dedicated query this run (one combined domain-limited search returned only undated station pages)",
-   "in_window_link_count": 0
+   "status": "ok_no_news",
+   "url": "WebSearch allowed_domains=police.go.th",
+   "tool": "search",
+   "result": "query \"ตำรวจภูธรภาค แถลงจับกุม พฤศจิกายน 2569\": only undated/older station pages and saranitet releases (latest 14 ต.ค.); no in-window permalink",
+   "in_window_link_count": 0,
+   "run": "topup"
   },
   "A:phak8": {
-   "status": "unattempted",
-   "url": "",
-   "tool": "",
-   "result": "search_only row without listing; no dedicated query this run (one combined domain-limited search returned only undated station pages)",
-   "in_window_link_count": 0
+   "status": "ok_no_news",
+   "url": "WebSearch allowed_domains=police.go.th",
+   "tool": "search",
+   "result": "query \"ตำรวจภูธรภาค แถลงจับกุม พฤศจิกายน 2569\": only undated/older station pages and saranitet releases (latest 14 ต.ค.); no in-window permalink",
+   "in_window_link_count": 0,
+   "run": "topup"
   },
   "A:phak9": {
-   "status": "unattempted",
-   "url": "",
-   "tool": "",
-   "result": "search_only row without listing; no dedicated query this run (one combined domain-limited search returned only undated station pages)",
-   "in_window_link_count": 0
+   "status": "ok_no_news",
+   "url": "WebSearch allowed_domains=police.go.th",
+   "tool": "search",
+   "result": "query \"ตำรวจภูธรภาค แถลงจับกุม พฤศจิกายน 2569\": only undated/older station pages and saranitet releases (latest 14 ต.ค.); no in-window permalink",
+   "in_window_link_count": 0,
+   "run": "topup"
   },
   "A:border_patrol": {
-   "status": "unattempted",
-   "url": "",
-   "tool": "",
-   "result": "search_only row without listing; no dedicated query this run (one combined domain-limited search returned only undated station pages)",
-   "in_window_link_count": 0
+   "status": "ok_no_news",
+   "url": "WebSearch allowed_domains=police.go.th",
+   "tool": "search",
+   "result": "query \"ตชด. ตำรวจตระเวนชายแดน จับกุม ยาเสพติด พฤศจิกายน 2569\": only undated/older station pages and saranitet releases (latest 14 ต.ค.); no in-window permalink",
+   "in_window_link_count": 0,
+   "run": "topup"
   },
   "B:DSI": {
    "status": "stale",
    "url": "https://www.dsi.go.th/th/Type/Mission-News",
-   "tool": "http",
-   "result": "listing http 200; 1 listing page(s); in-window permalinks 0; undated candidates 20",
-   "in_window_link_count": 0
+   "tool": "chrome",
+   "result": "rendered; newest item 3 พฤศจิกายน 2569 8:54 (before window)",
+   "in_window_link_count": 0,
+   "run": "topup"
   },
   "B:ONCB": {
-   "status": "stale",
-   "url": "https://www.oncb.go.th/",
-   "tool": "http",
-   "result": "listing http 200; 2 listing page(s); in-window permalinks 0; undated candidates 7",
-   "in_window_link_count": 0
+   "status": "ok_with_news",
+   "url": "https://www.oncb.go.th/information-news",
+   "tool": "chrome",
+   "result": "rendered listing with dates; 7+ in-window items (4-5 พ.ย.); permalinks /news/26674-26686 read; 4 new posts + 2 corroborations",
+   "in_window_link_count": 13,
+   "run": "topup"
   },
   "B:AMLO": {
    "status": "ok_no_news",
@@ -248,10 +276,11 @@
   },
   "B:OAG": {
    "status": "ok_with_news",
-   "url": "https://www.ago.go.th/",
-   "tool": "http",
-   "result": "listing http 200; 1 listing page(s); in-window permalinks 2; undated candidates 12",
-   "in_window_link_count": 2
+   "url": "https://www.ago.go.th/category/oagnews/",
+   "tool": "chrome",
+   "result": "WP REST after=2026-11-03T17:00Z: 5 posts; 041169-036 (CCTC) published as transnat-02; others admin/press digest",
+   "in_window_link_count": 5,
+   "run": "topup"
   },
   "B:Corrections": {
    "status": "blocked",
@@ -261,18 +290,20 @@
    "in_window_link_count": 0
   },
   "B:MDES": {
-   "status": "blocked",
+   "status": "ok_no_news",
    "url": "https://www.mdes.go.th/news",
-   "tool": "http",
-   "result": "listing http 403; 2 listing page(s); in-window permalinks 0; undated candidates 0",
-   "in_window_link_count": 0
+   "tool": "chrome",
+   "result": "rendered (requests got 403); 21 links, no in-window dated crime/alert item found",
+   "in_window_link_count": 0,
+   "run": "topup"
   },
   "B:ThaiPoliceOnline": {
-   "status": "parser_failed",
-   "url": "https://www.thaipoliceonline.go.th/",
-   "tool": "http",
-   "result": "listing http 200; 1 listing page(s); in-window permalinks 0; undated candidates 0; SPA needs JS, Chrome unavailable, no form filled",
-   "in_window_link_count": 0
+   "status": "ok_no_news",
+   "url": "https://www.thaipoliceonline.go.th/news",
+   "tool": "chrome",
+   "result": "SPA rendered; homepage stats to 4 พ.ย. 2569 (654,983 online cases since 1 ม.ค. 2568); /news list rendered empty; no form touched",
+   "in_window_link_count": 0,
+   "run": "topup"
   },
   "B:ThaiCERT": {
    "status": "ok_no_news",
@@ -296,11 +327,12 @@
    "in_window_link_count": 0
   },
   "B:PACC": {
-   "status": "stale",
+   "status": "ok_no_news",
    "url": "https://www.pacc.go.th/home1",
-   "tool": "http",
-   "result": "listing http 200; 2 listing page(s); in-window permalinks 0; undated candidates 5",
-   "in_window_link_count": 0
+   "tool": "chrome",
+   "result": "3 items dated 4 พฤศจิกายน 2569, all administrative meetings (not crime news)",
+   "in_window_link_count": 3,
+   "run": "topup"
   },
   "B:OCPB": {
    "status": "ok_no_news",
@@ -317,11 +349,12 @@
    "in_window_link_count": 12
   },
   "C:28_dailynews": {
-   "status": "ok_no_news",
+   "status": "ok_with_news",
    "url": "https://www.dailynews.co.th/crime/",
-   "tool": "http",
-   "result": "listing http 200; 2 listing page(s); in-window permalinks 0; undated candidates 0",
-   "in_window_link_count": 0
+   "tool": "chrome",
+   "result": "requests blocked by Cloudflare; Chrome listing p1+p2: ~10 in-window crime permalinks; 3 new posts + 6 corroborations",
+   "in_window_link_count": 10,
+   "run": "topup"
   },
   "C:29_mgr": {
    "status": "ok_with_news",
@@ -382,9 +415,10 @@
   "C:37_komchad": {
    "status": "ok_no_news",
    "url": "https://www.komchadluek.net/crime",
-   "tool": "http",
-   "result": "listing http 200; 1 listing page(s); in-window permalinks 0; undated candidates 0",
-   "in_window_link_count": 0
+   "tool": "chrome",
+   "result": "rendered; crime listing showed only off-topic/entertainment links in window",
+   "in_window_link_count": 0,
+   "run": "topup"
   },
   "C:38_isra": {
    "status": "ok_no_news",
@@ -515,9 +549,10 @@
   "A:royalthaipolice_discovered": {
    "status": "ok_with_news",
    "url": "https://saranitet.police.go.th/",
-   "tool": "http",
-   "result": "discovered RTP press-release site (กองสารนิเทศ ตร.); 1 in-window crime-related release used (20261105-police-02)",
-   "in_window_link_count": 1
+   "tool": "chrome",
+   "result": "WP REST after=2026-11-04: 2 posts (70810 used as police-02 source; 70813 admin restructure meeting, body <300 chars, not published)",
+   "in_window_link_count": 2,
+   "run": "topup"
   }
  },
  "registry_issues": [
@@ -710,7 +745,22 @@
   "chonburi.police.go.th/2026/11/",
   "karaket.nakhonsithammarat.police.go.th",
   "buriram.police.go.th (latest crime item 21 Oct = out of window)",
-  "https://saranitet.police.go.th/"
+  "https://saranitet.police.go.th/",
+  "https://www.royalthaipolice.go.th/th/executive-mission",
+  "https://www.oncb.go.th/information-news",
+  "https://www.ago.go.th/category/oagnews/",
+  "https://pct.police.go.th/",
+  "https://tcsd.cib.go.th/home",
+  "https://www.thaipoliceonline.go.th/news"
  ],
- "note": "ดึงด้วย requests/bs4 บนอุปกรณ์ (Chrome ไม่เชื่อมต่อ); ไม่มี git; Facebook ไม่ถูกดึง; แหล่งที่บล็อกไม่ถูกหลีกเลี่ยง"
+ "note": "ดึงด้วย requests/bs4 บนอุปกรณ์ (Chrome ไม่เชื่อมต่อ); ไม่มี git; Facebook ไม่ถูกดึง; แหล่งที่บล็อกไม่ถูกหลีกเลี่ยง",
+ "topup": {
+  "at": "2026-11-05T10:30:00+07:00",
+  "tool": "Claude in Chrome + requests + WebSearch(allowed_domains)",
+  "chrome_listing_sources": 21,
+  "chrome_article_opens": 6,
+  "new_posts": 22,
+  "corroborations_added": 21,
+  "note": "manual rerun requested by user to find more; add-only; Task 2 DUP merges re-applied"
+ }
 }

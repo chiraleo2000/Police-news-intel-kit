@@ -1,0 +1,58 @@
+{
+ "case_id": "20261105-drug-05",
+ "title": "ปปส.ภ.9 ปปส.ภ.8 และ กก.6 บก.ป. ตรวจค้นเครือข่ายยาเสพติด 3 เป้าหมายในพื้นที่ สภ.อ่าวนาง กระบี่ จับบุคคลตามหมายจับ 1 ราย ยึดทองและเงินสดรวมราว 4 แสนบาท",
+ "generated_at": "2026-11-05T03:40:22.281Z",
+ "node_count": 9,
+ "edge_count": 8,
+ "relations": [
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/ปปส.ภ.9",
+   "target_title": "ปปส.ภ.9",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/ปปส.ภ.8",
+   "target_title": "ปปส.ภ.8",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/กก.6 บก.ป.",
+   "target_title": "กก.6 บก.ป.",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/สภ.อ่าวนาง",
+   "target_title": "สภ.อ่าวนาง",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลจังหวัด",
+   "target_title": "ศาลจังหวัด",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/อ่าวนาง",
+   "target_title": "อ่าวนาง",
+   "direction": "out"
+  },
+  {
+   "label": "ผู้ต้องหา",
+   "target_id": "30_Entities/ผู้ต้องหา/กระบี่ จับบุคคลตามหมายจับ",
+   "target_title": "กระบี่ จับบุคคลตามหมายจับ",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/ยาเสพติด",
+   "target_title": "ยาเสพติด",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261105-drug-05.svg"
+}

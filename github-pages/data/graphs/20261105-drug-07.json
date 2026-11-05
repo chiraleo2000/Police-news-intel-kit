@@ -1,0 +1,46 @@
+{
+ "case_id": "20261105-drug-07",
+ "title": "ป.ป.ส. ภาค 3 ภาค 4 แม่ทัพภาคที่ 2 และผู้ว่าฯ 7 จังหวัดชายแดนอีสาน ประชุมแถลงคำสั่ง นบ.ยส.24 สกัดกั้นยาเสพติด สารตั้งต้น และเคมีภัณฑ์ตามแนวชายแดน ปีงบ 2570",
+ "generated_at": "2026-11-05T03:40:22.330Z",
+ "node_count": 7,
+ "edge_count": 6,
+ "relations": [
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/ปปส.ภ.4",
+   "target_title": "ปปส.ภ.4",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/ปปส.ภ.3",
+   "target_title": "ปปส.ภ.3",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/ตชด.ภาค 2",
+   "target_title": "ตชด.ภาค 2",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/จังหวัดนครพนม และ 7 จังหวัดชายแดนภาคตะวันออกเฉียงเหนือ",
+   "target_title": "จังหวัดนครพนม และ 7 จังหวัดชายแดนภาคตะวันออกเฉียงเหนือ",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/แม่ทัพภาคที่ 2",
+   "target_title": "แม่ทัพภาคที่ 2",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/ยาเสพติด",
+   "target_title": "ยาเสพติด",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261105-drug-07.svg"
+}

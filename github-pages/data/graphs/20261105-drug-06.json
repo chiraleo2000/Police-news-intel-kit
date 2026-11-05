@@ -1,0 +1,34 @@
+{
+ "case_id": "20261105-drug-06",
+ "title": "ปปส.ภาค 7 ร่วม สภ.สามพราน และฝ่ายปกครองปิดล้อมตรวจค้น 4 เป้าหมายใน ต.คลองจินดา นครปฐม พบยาบ้า 4 เม็ดและไอซ์ 1.26 กรัมในเป้าหมายเดียว พร้อมตั้งจุดตรวจในชุมชน",
+ "generated_at": "2026-11-05T03:40:22.308Z",
+ "node_count": 5,
+ "edge_count": 4,
+ "relations": [
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/ปปส.ภ.7",
+   "target_title": "ปปส.ภ.7",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/สภ.สามพราน",
+   "target_title": "สภ.สามพราน",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ตำบลคลองจินดา อำเภอสามพราน",
+   "target_title": "ตำบลคลองจินดา อำเภอสามพราน",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/ยาเสพติด",
+   "target_title": "ยาเสพติด",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261105-drug-06.svg"
+}

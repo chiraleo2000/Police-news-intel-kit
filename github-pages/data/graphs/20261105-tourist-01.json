@@ -1,0 +1,52 @@
+{
+ "case_id": "20261105-tourist-01",
+ "title": "ตม.4 ตม.นครพนม และ ตม.สกลนคร สกัดจับชายต่างด้าวที่ถูกกล่าวหาว่าสวมบัตรประชาชนคนไทยอายุ 64 ปี ใช้ทำธุรกรรมและเปิดบริษัทค้าน้ำมันปาล์ม บนทางหลวง 22 นครพนม",
+ "generated_at": "2026-11-05T03:40:22.647Z",
+ "node_count": 8,
+ "edge_count": 7,
+ "relations": [
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/บก.ตม.4",
+   "target_title": "บก.ตม.4",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/ตม.จังหวัดนครพนม",
+   "target_title": "ตม.จังหวัดนครพนม",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/ตม.จังหวัดสกลนคร",
+   "target_title": "ตม.จังหวัดสกลนคร",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/ตำรวจทางหลวงนครพนม",
+   "target_title": "ตำรวจทางหลวงนครพนม",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ตำบลบ้านผึ้ง อำเภอเมืองนครพนม",
+   "target_title": "ตำบลบ้านผึ้ง อำเภอเมืองนครพนม",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/ผบก.ตม.4",
+   "target_title": "ผบก.ตม.4",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมที่เกี่ยวข้องกับนักท่องเที่ยวและชาวต่างชาติ",
+   "target_title": "อาชญากรรมที่เกี่ยวข้องกับนักท่องเที่ยวและชาวต่างชาติ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261105-tourist-01.svg"
+}

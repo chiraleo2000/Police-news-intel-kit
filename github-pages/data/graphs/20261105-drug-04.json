@@ -1,0 +1,34 @@
+{
+ "case_id": "20261105-drug-04",
+ "title": "ปปส.ภ.4 ร่วมตำรวจภูธรจังหวัดอุดรธานี ทหาร และฝ่ายปกครอง 150 นาย ปิดล้อมตรวจค้นเครือข่ายยาเสพติดในเมืองอุดรธานี จับกุม 62 คดี ผู้ต้องหา 55 คน ยึดยาบ้า 6,411 เม็ด อาวุธปืน 6 กระบอก",
+ "generated_at": "2026-11-05T03:40:22.257Z",
+ "node_count": 5,
+ "edge_count": 4,
+ "relations": [
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/บก.ปปส.ภ.4",
+   "target_title": "บก.ปปส.ภ.4",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/ตำรวจภูธรจังหวัดอุดรธานี",
+   "target_title": "ตำรวจภูธรจังหวัดอุดรธานี",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/อำเภอเมืองอุดรธานี",
+   "target_title": "อำเภอเมืองอุดรธานี",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/ยาเสพติด",
+   "target_title": "ยาเสพติด",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261105-drug-04.svg"
+}

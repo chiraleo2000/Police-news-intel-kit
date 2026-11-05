@@ -1,0 +1,28 @@
+{
+ "case_id": "20261105-drug-08",
+ "title": "ตำรวจ สภ.เมืองภูเก็ต ตรวจค้นเรือประมงที่ท่าเรือรัษฎา พบไอซ์ 34.13 กรัม ยาบ้า 1,735 เม็ด และบัญชีซื้อขาย จับลูกเรืออายุ 30 ปีที่ถูกกล่าวหาว่าขายยาให้ชาวประมง",
+ "generated_at": "2026-11-05T03:40:22.352Z",
+ "node_count": 4,
+ "edge_count": 3,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/สภ.เมืองภูเก็ต",
+   "target_title": "สภ.เมืองภูเก็ต",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ท่าเทียบเรือประมงภูเก็ต",
+   "target_title": "ท่าเทียบเรือประมงภูเก็ต",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/ยาเสพติด",
+   "target_title": "ยาเสพติด",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261105-drug-08.svg"
+}

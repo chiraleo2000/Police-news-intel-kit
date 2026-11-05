@@ -1,0 +1,34 @@
+{
+ "case_id": "20261105-env-01",
+ "title": "รัฐบาลเร่งตรวจโรงงานคัดแยกและจัดการกากอุตสาหกรรมลำดับ 105-106 ทั่ว 76 จังหวัด ตรวจแล้ว 171 โรงงานใน 2 วันแรก และเตรียมผลักดันคดีลักลอบทิ้งกากเข้าสู่กระบวนการฟอกเงินเพื่อยึดทรัพย์",
+ "generated_at": "2026-11-05T03:40:22.446Z",
+ "node_count": 5,
+ "edge_count": 4,
+ "relations": [
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/กระทรวงอุตสาหกรรม",
+   "target_title": "กระทรวงอุตสาหกรรม",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/ปปง.",
+   "target_title": "ปปง.",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/76 จังหวัด",
+   "target_title": "76 จังหวัด",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/สิ่งแวดล้อม ทรัพยากร และสัตว์ป่า",
+   "target_title": "สิ่งแวดล้อม ทรัพยากร และสัตว์ป่า",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261105-env-01.svg"
+}

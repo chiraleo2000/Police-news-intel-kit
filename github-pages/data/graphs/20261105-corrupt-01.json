@@ -1,0 +1,46 @@
+{
+ "case_id": "20261105-corrupt-01",
+ "title": "ป.ป.ท. ร่วม กก.สส.3 บก.สส.ภ.7 จับอดีตเจ้าพนักงานสาธารณสุข เทศบาลตำบลวังหว้า สุพรรณบุรี ตามหมายจับศาลอาญาคดีทุจริตฯ ภาค 7 ข้อกล่าวหาปลอมใบถอนเงินและเช็คยักยอกเงินกองทุนหลักประกันสุขภาพ 930,000 บาท",
+ "generated_at": "2026-11-05T03:40:22.135Z",
+ "node_count": 7,
+ "edge_count": 6,
+ "relations": [
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/ป.ป.ท.",
+   "target_title": "ป.ป.ท.",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/กก.สส.3 บก.สส.ภ.7",
+   "target_title": "กก.สส.3 บก.สส.ภ.7",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลอาญาคดีทุจริตและประพฤติมิชอบภาค 7",
+   "target_title": "ศาลอาญาคดีทุจริตและประพฤติมิชอบภาค 7",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/เทศบาลตำบลวังหว้า",
+   "target_title": "เทศบาลตำบลวังหว้า",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/เลขาธิการคณะกรรมการ ป.ป.ท.",
+   "target_title": "เลขาธิการคณะกรรมการ ป.ป.ท.",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/ทุจริตและประพฤติมิชอบของเจ้าหน้าที่รัฐ",
+   "target_title": "ทุจริตและประพฤติมิชอบของเจ้าหน้าที่รัฐ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261105-corrupt-01.svg"
+}
