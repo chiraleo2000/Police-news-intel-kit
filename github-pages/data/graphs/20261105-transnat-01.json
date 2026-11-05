@@ -1,0 +1,58 @@
+{
+ "case_id": "20261105-transnat-01",
+ "title": "สตม. และกรมการปกครองแถลงปฏิบัติการ “ปิดน่านฟ้า ล่าขบวนการพ่อไทยทิพย์” จับ 2 เครือข่ายใช้ชายไทยสวมเป็นบิดาเด็กต่างชาติ ผู้ว่าจ้างชาวจีนมีหมายจับในจีนคดีฉ้อโกงและฟอกเงินราว 2,500 ล้านบาท",
+ "generated_at": "2026-11-05T02:30:08.003Z",
+ "node_count": 9,
+ "edge_count": 8,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/ตม.",
+   "target_title": "ตม.",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/กรมการปกครอง",
+   "target_title": "กรมการปกครอง",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลจังหวัดพัทยา",
+   "target_title": "ศาลจังหวัดพัทยา",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลอาญากรุงเทพใต้",
+   "target_title": "ศาลอาญากรุงเทพใต้",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ท่าอากาศยานสุวรรณภูมิ สมุทรปราการ",
+   "target_title": "ท่าอากาศยานสุวรรณภูมิ สมุทรปราการ",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/นายนฤชา โฆษาศิวิไลซ์ (อธิบดีกรมการปกครอง)",
+   "target_title": "นายนฤชา โฆษาศิวิไลซ์ (อธิบดีกรมการปกครอง)",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/พล.ต.ท.นพศิลป์ พูลสวัสดิ์ (ผบช.สตม.)",
+   "target_title": "พล.ต.ท.นพศิลป์ พูลสวัสดิ์ (ผบช.สตม.)",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมข้ามชาติและความร่วมมือระหว่างประเทศ",
+   "target_title": "อาชญากรรมข้ามชาติและความร่วมมือระหว่างประเทศ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261105-transnat-01.svg"
+}

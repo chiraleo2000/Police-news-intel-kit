@@ -1,9 +1,9 @@
 {
  "case_id": "20261022-tourist-maesariang-falsebirth",
  "title": "อำเภอแม่สะเรียงจับชายวัย 30 ปี แจ้งเป็นบิดาเท็จให้เด็กต่างด้าว ค่าจ้างครั้งละ 2,000 บาท",
- "generated_at": "2026-11-04T07:00:06.266Z",
- "node_count": 5,
- "edge_count": 4,
+ "generated_at": "2026-11-05T02:30:07.435Z",
+ "node_count": 6,
+ "edge_count": 5,
  "relations": [
   {
    "label": "จับโดย",
@@ -27,6 +27,12 @@
    "label": "เกิดที่",
    "target_id": "30_Entities/สถานที่/แม่สะเรียง",
    "target_title": "แม่สะเรียง",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมที่เกี่ยวข้องกับนักท่องเที่ยวและชาวต่างชาติ",
+   "target_title": "อาชญากรรมที่เกี่ยวข้องกับนักท่องเที่ยวและชาวต่างชาติ",
    "direction": "out"
   }
  ],

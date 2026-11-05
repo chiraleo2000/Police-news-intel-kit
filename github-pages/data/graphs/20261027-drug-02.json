@@ -1,9 +1,9 @@
 {
  "case_id": "20261027-drug-02",
  "title": "ปปส.ภาค 7 ประชุมคณะอนุกรรมการกลั่นกรองคำขอแจ้งข้อหาสมคบยาเสพติด ครั้งที่ 5/2569 พิจารณา 19 คำขอ ผู้ต้องหา 26 คน อนุมัติ 24 คน ไม่อนุมัติ 2 คน",
- "generated_at": "2026-11-04T07:00:06.468Z",
- "node_count": 6,
- "edge_count": 5,
+ "generated_at": "2026-11-05T02:30:07.658Z",
+ "node_count": 7,
+ "edge_count": 6,
  "relations": [
   {
    "label": "แจ้งโดย",
@@ -33,6 +33,12 @@
    "label": "เกี่ยวข้องกับบุคคล",
    "target_id": "30_Entities/People/อธิบดีอัยการภาค 7",
    "target_title": "อธิบดีอัยการภาค 7",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/ยาเสพติด",
+   "target_title": "ยาเสพติด",
    "direction": "out"
   }
  ],

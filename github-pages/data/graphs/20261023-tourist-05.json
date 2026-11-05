@@ -1,9 +1,9 @@
 {
  "case_id": "20261023-tourist-05",
  "title": "บก.ตม.4 จับแรงงานต่างด้าว 3 ราย แฝงตัวทำงานไซต์ก่อสร้างโคราช",
- "generated_at": "2026-11-04T07:00:06.344Z",
- "node_count": 4,
- "edge_count": 3,
+ "generated_at": "2026-11-05T02:30:07.523Z",
+ "node_count": 5,
+ "edge_count": 4,
  "relations": [
   {
    "label": "แจ้งโดย",
@@ -21,6 +21,12 @@
    "label": "สั่งการโดย",
    "target_id": "30_Entities/Units/บช.สตม.",
    "target_title": "บช.สตม.",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมที่เกี่ยวข้องกับนักท่องเที่ยวและชาวต่างชาติ",
+   "target_title": "อาชญากรรมที่เกี่ยวข้องกับนักท่องเที่ยวและชาวต่างชาติ",
    "direction": "out"
   }
  ],

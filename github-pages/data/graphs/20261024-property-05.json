@@ -1,9 +1,9 @@
 {
  "case_id": "20261024-property-05",
  "title": "เจ้าของบ้านขอนแก่นถูกโจรเข้าซ้ำ 3 ครั้ง ประกาศขายหนีโจร",
- "generated_at": "2026-11-04T07:00:06.382Z",
- "node_count": 3,
- "edge_count": 2,
+ "generated_at": "2026-11-05T02:30:07.564Z",
+ "node_count": 4,
+ "edge_count": 3,
  "relations": [
   {
    "label": "สืบสวนโดย",
@@ -15,6 +15,12 @@
    "label": "สืบสวนโดย",
    "target_id": "30_Entities/Units/สภ.ย่อยศิลา",
    "target_title": "สภ.ย่อยศิลา",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/คดีทรัพย์สิน",
+   "target_title": "คดีทรัพย์สิน",
    "direction": "out"
   }
  ],

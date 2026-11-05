@@ -1,9 +1,9 @@
 {
  "case_id": "20261026-drug-line-01",
  "title": "ป.ป.ส. จับตำรวจสังกัด ภ.6 พร้อมพวก 1 ราย พิษณุโลก ยึดยาบ้า 87 เม็ด ไอซ์ 0.92 กรัม ตามข้อกล่าวหา",
- "generated_at": "2026-11-04T07:00:06.440Z",
- "node_count": 4,
- "edge_count": 3,
+ "generated_at": "2026-11-05T02:30:07.628Z",
+ "node_count": 5,
+ "edge_count": 4,
  "relations": [
   {
    "label": "จับโดย",
@@ -21,6 +21,12 @@
    "label": "เกิดที่",
    "target_id": "30_Entities/Places/พิษณุโลก",
    "target_title": "พิษณุโลก",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/ยาเสพติด",
+   "target_title": "ยาเสพติด",
    "direction": "out"
   }
  ],

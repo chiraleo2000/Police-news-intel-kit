@@ -1,9 +1,9 @@
 {
  "case_id": "20261025-drug-07",
  "title": "ศุลกากรสุวรรณภูมิสกัดลักลอบส่งออกช่อดอกกัญชา 1-24 ต.ค. จับ 40 ราย ยึด 577 กก. มูลค่า 5.8 ล้านบาท ส่วนใหญ่เป็นชาวต่างชาติ",
- "generated_at": "2026-11-04T07:00:06.409Z",
- "node_count": 4,
- "edge_count": 3,
+ "generated_at": "2026-11-05T02:30:07.596Z",
+ "node_count": 5,
+ "edge_count": 4,
  "relations": [
   {
    "label": "สั่งการโดย",
@@ -21,6 +21,12 @@
    "label": "สืบสวนโดย",
    "target_id": "30_Entities/Units/บมจ.ท่าอากาศยานไทย",
    "target_title": "บมจ.ท่าอากาศยานไทย",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/ยาเสพติด",
+   "target_title": "ยาเสพติด",
    "direction": "out"
   }
  ],

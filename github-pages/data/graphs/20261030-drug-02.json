@@ -1,9 +1,9 @@
 {
  "case_id": "20261030-drug-02",
  "title": "ตำรวจสืบสวน บก.น.7 ขยายผลคดียาบ้า 8.99 ล้านเม็ด ยึดไอซ์ 400 กก.ซุกบ้านเช่าบางละมุงและรถยนต์ จับ 5 ผู้ต้องหา รอง ผบ.ตร.แถลง ผู้ต้องหาสารภาพรับค่าจ้างขนราว 4 แสนบาท",
- "generated_at": "2026-11-04T07:00:06.600Z",
- "node_count": 15,
- "edge_count": 14,
+ "generated_at": "2026-11-05T02:30:07.797Z",
+ "node_count": 16,
+ "edge_count": 15,
  "relations": [
   {
    "label": "จับโดย",
@@ -87,6 +87,12 @@
    "label": "เกิดที่",
    "target_id": "30_Entities/Places/บางละมุง",
    "target_title": "บางละมุง",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/ยาเสพติด",
+   "target_title": "ยาเสพติด",
    "direction": "out"
   }
  ],

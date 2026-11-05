@@ -1,0 +1,40 @@
+{
+ "case_id": "20261105-property-01",
+ "title": "กองปราบจับชายอายุ 32 ปี ตามหมายจับคดีปล้นเงินสด 1.45 ล้านบาท ที่ถูกกล่าวหาแต่งตัวเป็นตำรวจอุ้มพนักงานบริษัทกับแฟนสาวจากโรงแรมในคลองหลวง ปทุมธานี ผู้ถูกกล่าวหาปฏิเสธ",
+ "generated_at": "2026-11-05T02:30:08.000Z",
+ "node_count": 6,
+ "edge_count": 5,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/บก.ป.",
+   "target_title": "บก.ป.",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/สภ.คลองหลวง",
+   "target_title": "สภ.คลองหลวง",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลจังหวัดธัญบุรี",
+   "target_title": "ศาลจังหวัดธัญบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ต.คลองหนึ่ง อ.คลองหลวง ปทุมธานี (เกิดเหตุ) · เขตบางเขน กรุงเทพมหานคร (จับกุม)",
+   "target_title": "ต.คลองหนึ่ง อ.คลองหลวง ปทุมธานี (เกิดเหตุ) · เขตบางเขน กรุงเทพมหานคร (จับกุม)",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/คดีทรัพย์สิน",
+   "target_title": "คดีทรัพย์สิน",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261105-property-01.svg"
+}

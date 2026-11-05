@@ -1,9 +1,9 @@
 {
  "case_id": "20261102-drug-01",
  "title": "สน.พลับพลาไชย 1 จับสามีภรรยา 2 คนข้างสถานี ขยายผลยึดรถ 6 ล้อ ที่ปั๊มน้ำมันเพชรบุรี พบยาบ้า 900,000 เม็ด ปืน 2 กระบอก ซ่อนในรถส่งของบริจาคน้ำท่วม",
- "generated_at": "2026-11-04T07:00:06.695Z",
- "node_count": 9,
- "edge_count": 8,
+ "generated_at": "2026-11-05T02:30:07.894Z",
+ "node_count": 10,
+ "edge_count": 9,
  "relations": [
   {
    "label": "จับโดย",
@@ -51,6 +51,12 @@
    "label": "ผู้ต้องหา",
    "target_id": "30_Entities/People/ผู้ต้องหาหญิง อายุ 29 ปี",
    "target_title": "ผู้ต้องหาหญิง อายุ 29 ปี",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/ยาเสพติด",
+   "target_title": "ยาเสพติด",
    "direction": "out"
   }
  ],

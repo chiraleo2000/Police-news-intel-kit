@@ -1,9 +1,9 @@
 {
  "case_id": "20261029-drug-08",
  "title": "ปปส.ภาค 9 ร่วมประชุม ศอ.ปส.จ.สงขลา ถ่ายทอดแผนสงครามยาเสพติด 6 เดือน พื้นที่พิเศษ 7 จังหวัด 27 อำเภอภาคใต้ และเตรียมศูนย์พักคอยที่ รพ.ธัญญารักษ์สงขลา",
- "generated_at": "2026-11-04T07:00:06.553Z",
- "node_count": 5,
- "edge_count": 4,
+ "generated_at": "2026-11-05T02:30:07.749Z",
+ "node_count": 6,
+ "edge_count": 5,
  "relations": [
   {
    "label": "สั่งการโดย",
@@ -27,6 +27,12 @@
    "label": "เกี่ยวข้องกับบุคคล",
    "target_id": "30_Entities/People/ผวจ.สงขลา",
    "target_title": "ผวจ.สงขลา",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/ยาเสพติด",
+   "target_title": "ยาเสพติด",
    "direction": "out"
   }
  ],

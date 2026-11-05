@@ -1,0 +1,46 @@
+{
+ "case_id": "20261105-gamble-01",
+ "title": "รมว.ยุติธรรมแจงคดีเว็บพนัน Shuffle ตำรวจไซเบอร์พบนักเล่นคนไทย 3 รายที่โอนเงินเข้าเว็บ เร่งสอบปากคำก่อนขยายผลไปถึงการถือหุ้นและพิจารณายึดอายัดทรัพย์ชั่วคราว หาก DSI พบหลักฐาน",
+ "generated_at": "2026-11-05T02:30:07.996Z",
+ "node_count": 7,
+ "edge_count": 6,
+ "relations": [
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/ดีเอสไอ",
+   "target_title": "ดีเอสไอ",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/กระทรวงยุติธรรม",
+   "target_title": "กระทรวงยุติธรรม",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/บช.สอท.",
+   "target_title": "บช.สอท.",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/กระทรวงยุติธรรม ถนนแจ้งวัฒนะ กรุงเทพมหานคร",
+   "target_title": "กระทรวงยุติธรรม ถนนแจ้งวัฒนะ กรุงเทพมหานคร",
+   "direction": "out"
+  },
+  {
+   "label": "ติดตามจาก",
+   "target_id": "20_Cases/20261104-gamble-01",
+   "target_title": "Bitkub เข้าให้ข้อมูล DSI กรณีลูกค้าโอนคริปโตเข้าเว็บพนัน Shuffle ชี้เทคโนโลยีตรวจกรองธุรกรรมได้ไม่ครบทั้งหมด ขอไม่เปิดรายละเอียดเชิงลึก",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/พนันและบ่อนผิดกฎหมาย",
+   "target_title": "พนันและบ่อนผิดกฎหมาย",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261105-gamble-01.svg"
+}

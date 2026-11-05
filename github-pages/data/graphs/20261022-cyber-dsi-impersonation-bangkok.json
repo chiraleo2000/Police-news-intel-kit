@@ -1,9 +1,9 @@
 {
  "case_id": "20261022-cyber-dsi-impersonation-bangkok",
  "title": "บก.น.8 รวบ 2 ผู้ต้องหาแก๊งคอลเซ็นเตอร์ไทย-มาเลย์ แอบอ้างเป็น DSI หลอกหญิงโอนเงิน-ส่งมอบทองรวมราว 3.1 ล้านบาท",
- "generated_at": "2026-11-04T07:00:06.216Z",
- "node_count": 4,
- "edge_count": 3,
+ "generated_at": "2026-11-05T02:30:07.376Z",
+ "node_count": 5,
+ "edge_count": 4,
  "relations": [
   {
    "label": "สั่งการโดย",
@@ -21,6 +21,12 @@
    "label": "จับโดย",
    "target_id": "30_Entities/Units/สน.บุคคโล",
    "target_title": "สน.บุคคโล",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
    "direction": "out"
   }
  ],

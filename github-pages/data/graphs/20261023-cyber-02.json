@@ -1,9 +1,9 @@
 {
  "case_id": "20261023-cyber-02",
  "title": "สตม.บุกบ้านหรูย่านสายไหม ทลายเครือข่ายสแกมเมอร์-เว็บพนันจีน จับ 14 ราย",
- "generated_at": "2026-11-04T07:00:06.283Z",
- "node_count": 8,
- "edge_count": 7,
+ "generated_at": "2026-11-05T02:30:07.453Z",
+ "node_count": 9,
+ "edge_count": 8,
  "relations": [
   {
    "label": "แจ้งโดย",
@@ -45,6 +45,12 @@
    "label": "เกิดที่",
    "target_id": "30_Entities/สถานที่/สายไหม",
    "target_title": "สายไหม",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
    "direction": "out"
   }
  ],

@@ -1,9 +1,9 @@
 {
  "case_id": "20261023-drug-02",
  "title": "ตำรวจปราบปรามยาเสพติดทลายเครือข่ายใหญ่ 7 คดี ยึดยาบ้ากว่า 7 ล้านเม็ด และยืนยันการยิงตอบโต้ที่เขาย้อยเป็นไปตามกฎหมาย",
- "generated_at": "2026-11-04T07:00:06.291Z",
- "node_count": 8,
- "edge_count": 7,
+ "generated_at": "2026-11-05T02:30:07.462Z",
+ "node_count": 9,
+ "edge_count": 8,
  "relations": [
   {
    "label": "แจ้งโดย",
@@ -45,6 +45,12 @@
    "label": "เกิดที่",
    "target_id": "30_Entities/สถานที่/เขาย้อย",
    "target_title": "เขาย้อย",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/ยาเสพติด",
+   "target_title": "ยาเสพติด",
    "direction": "out"
   }
  ],

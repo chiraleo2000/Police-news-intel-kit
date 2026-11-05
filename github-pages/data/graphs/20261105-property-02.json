@@ -1,0 +1,34 @@
+{
+ "case_id": "20261105-property-02",
+ "title": "ตำรวจภูเก็ตแถลงจับ 8 ราย พนักงานขนส่งสินค้าและผู้รับซื้อ ถูกกล่าวหาลักมือถือและแกดเจ็ตจากคลังสินค้าส่งออกที่ท่าอากาศยานภูเก็ต ความเสียหายกว่า 3 ล้านบาท ก่อเหตุซ้ำราว 8 ครั้ง",
+ "generated_at": "2026-11-05T02:30:08.002Z",
+ "node_count": 5,
+ "edge_count": 4,
+ "relations": [
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บก.ภ.จว.ภูเก็ต",
+   "target_title": "บก.ภ.จว.ภูเก็ต",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/สภ.สาคู",
+   "target_title": "สภ.สาคู",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ท่าอากาศยานภูเก็ต อ.ถลาง ภูเก็ต",
+   "target_title": "ท่าอากาศยานภูเก็ต อ.ถลาง ภูเก็ต",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/คดีทรัพย์สิน",
+   "target_title": "คดีทรัพย์สิน",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261105-property-02.svg"
+}

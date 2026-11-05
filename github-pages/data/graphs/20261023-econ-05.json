@@ -1,9 +1,16 @@
 {
  "case_id": "20261023-econ-05",
  "title": "ผู้ซื้อบ้านรายใหม่ถูกเจ้าของเก่าสวมสิทธิ์ขอรับเงินเยียวยาน้ำท่วม เขตแจ้งดำเนินการไม่ได้",
- "generated_at": "2026-11-04T07:00:06.303Z",
- "node_count": 1,
- "edge_count": 0,
- "relations": [],
+ "generated_at": "2026-11-05T02:30:07.476Z",
+ "node_count": 2,
+ "edge_count": 1,
+ "relations": [
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/คดีเศรษฐกิจ การเงิน และฟอกเงิน",
+   "target_title": "คดีเศรษฐกิจ การเงิน และฟอกเงิน",
+   "direction": "out"
+  }
+ ],
  "svg": "graphs/20261023-econ-05.svg"
 }

@@ -1,9 +1,9 @@
 {
  "case_id": "20261025-drug-01",
  "title": "บช.น.-สตม. จับชายต่างชาติวัย 54 ปี ในคอนโดห้วยขวาง ตรวจยึดไอซ์ 15 กรัม ตามข้อกล่าวหามอมยาแอบถ่ายคลิป พำนักเกินกำหนด 2,095 วัน",
- "generated_at": "2026-11-04T07:00:06.401Z",
- "node_count": 11,
- "edge_count": 10,
+ "generated_at": "2026-11-05T02:30:07.587Z",
+ "node_count": 12,
+ "edge_count": 11,
  "relations": [
   {
    "label": "จับโดย",
@@ -63,6 +63,12 @@
    "label": "เกิดที่",
    "target_id": "30_Entities/สถานที่/ห้วยขวาง",
    "target_title": "ห้วยขวาง",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/ยาเสพติด",
+   "target_title": "ยาเสพติด",
    "direction": "out"
   }
  ],

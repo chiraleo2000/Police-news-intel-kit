@@ -1,9 +1,9 @@
 {
  "case_id": "20261024-property-01",
  "title": "Summons Issued for Benz, Son of Mae Pattra, After Opening Safe Reveals Only Three Items Remaining",
- "generated_at": "2026-11-04T07:00:06.376Z",
- "node_count": 3,
- "edge_count": 2,
+ "generated_at": "2026-11-05T02:30:07.558Z",
+ "node_count": 4,
+ "edge_count": 3,
  "relations": [
   {
    "label": "สืบสวนโดย",
@@ -15,6 +15,12 @@
    "label": "สืบสวนโดย",
    "target_id": "30_Entities/Units/สภ.วังทองหลาง",
    "target_title": "สภ.วังทองหลาง",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/คดีทรัพย์สิน",
+   "target_title": "คดีทรัพย์สิน",
    "direction": "out"
   }
  ],

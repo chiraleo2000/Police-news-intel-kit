@@ -1,14 +1,20 @@
 {
  "case_id": "20261023-econ-03",
  "title": "กรมศุลกากรยึดน้ำมันดีเซลลักลอบนำเข้าจากต่างประเทศ กว่า 7,000 ลิตร ในกรุงเทพฯ",
- "generated_at": "2026-11-04T07:00:06.300Z",
- "node_count": 2,
- "edge_count": 1,
+ "generated_at": "2026-11-05T02:30:07.473Z",
+ "node_count": 3,
+ "edge_count": 2,
  "relations": [
   {
    "label": "สืบสวนโดย",
    "target_id": "30_Entities/Units/กองสืบสวนและปราบปราม กรมศุลกากร",
    "target_title": "กองสืบสวนและปราบปราม กรมศุลกากร",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/คดีเศรษฐกิจ การเงิน และฟอกเงิน",
+   "target_title": "คดีเศรษฐกิจ การเงิน และฟอกเงิน",
    "direction": "out"
   }
  ],

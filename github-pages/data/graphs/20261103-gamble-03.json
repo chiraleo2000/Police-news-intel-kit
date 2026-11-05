@@ -1,9 +1,9 @@
 {
  "case_id": "20261103-gamble-03",
  "title": "สน.เพชรเกษมบุกทลายบ่อนไก่ชนในเพิงพักริมคลองบางแค จับ 11 ราย ยึดไก่ชน 2 ตัว สังเวียน เงินสด 500 บาท",
- "generated_at": "2026-11-04T07:00:06.739Z",
- "node_count": 4,
- "edge_count": 3,
+ "generated_at": "2026-11-05T02:30:07.939Z",
+ "node_count": 5,
+ "edge_count": 4,
  "relations": [
   {
    "label": "จับโดย",
@@ -21,6 +21,12 @@
    "label": "สั่งการโดย",
    "target_id": "30_Entities/บุคคล/ปราโมทย์ จันทร์บุญแก้ว",
    "target_title": "ปราโมทย์ จันทร์บุญแก้ว",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/พนันและบ่อนผิดกฎหมาย",
+   "target_title": "พนันและบ่อนผิดกฎหมาย",
    "direction": "out"
   }
  ],

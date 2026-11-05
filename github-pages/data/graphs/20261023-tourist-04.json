@@ -1,9 +1,9 @@
 {
  "case_id": "20261023-tourist-04",
  "title": "ตำรวจท่องเที่ยวเพิ่มบริการนักท่องเที่ยวจีนและต่างชาติ ย้ำสายด่วน 1155 ตลอด 24 ชั่วโมง",
- "generated_at": "2026-11-04T07:00:06.343Z",
- "node_count": 3,
- "edge_count": 2,
+ "generated_at": "2026-11-05T02:30:07.521Z",
+ "node_count": 4,
+ "edge_count": 3,
  "relations": [
   {
    "label": "สืบสวนโดย",
@@ -15,6 +15,12 @@
    "label": "สืบสวนโดย",
    "target_id": "30_Entities/Units/ตม.",
    "target_title": "ตม.",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมที่เกี่ยวข้องกับนักท่องเที่ยวและชาวต่างชาติ",
+   "target_title": "อาชญากรรมที่เกี่ยวข้องกับนักท่องเที่ยวและชาวต่างชาติ",
    "direction": "out"
   }
  ],

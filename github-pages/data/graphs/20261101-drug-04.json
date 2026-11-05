@@ -1,9 +1,9 @@
 {
  "case_id": "20261101-drug-04",
  "title": "กรมศุลกากรตรวจยึด MDMA 485 กรัม มูลค่า 2.91 ล้านบาท ซุกในห่อผลิตภัณฑ์เสริมอาหารจากสหราชอาณาจักร ส่งพนักงานสอบสวนดำเนินคดี",
- "generated_at": "2026-11-04T07:00:06.675Z",
- "node_count": 4,
- "edge_count": 3,
+ "generated_at": "2026-11-05T02:30:07.872Z",
+ "node_count": 5,
+ "edge_count": 4,
  "relations": [
   {
    "label": "จับโดย",
@@ -21,6 +21,12 @@
    "label": "เกี่ยวข้องกับบุคคล",
    "target_id": "30_Entities/People/อธิบดีกรมศุลกากร",
    "target_title": "อธิบดีกรมศุลกากร",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/ยาเสพติด",
+   "target_title": "ยาเสพติด",
    "direction": "out"
   }
  ],

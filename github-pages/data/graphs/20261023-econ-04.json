@@ -1,14 +1,20 @@
 {
  "case_id": "20261023-econ-04",
  "title": "ลูกสาว 15 ปี อุ้มรูปพ่อร้องเรียน อ้างที่ปรึกษา รมต.เบี้ยวเงินขายที่ดิน",
- "generated_at": "2026-11-04T07:00:06.302Z",
- "node_count": 2,
- "edge_count": 1,
+ "generated_at": "2026-11-05T02:30:07.474Z",
+ "node_count": 3,
+ "edge_count": 2,
  "relations": [
   {
    "label": "สืบสวนโดย",
    "target_id": "30_Entities/Units/สภ.กำแพงแสน",
    "target_title": "สภ.กำแพงแสน",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/คดีเศรษฐกิจ การเงิน และฟอกเงิน",
+   "target_title": "คดีเศรษฐกิจ การเงิน และฟอกเงิน",
    "direction": "out"
   }
  ],

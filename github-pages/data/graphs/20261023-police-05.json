@@ -1,9 +1,9 @@
 {
  "case_id": "20261023-police-05",
  "title": "การประชุมมอบนโยบายบริหาร ศปก.ตร. โดย รอง ผบ.ตร.",
- "generated_at": "2026-11-04T07:00:06.327Z",
- "node_count": 6,
- "edge_count": 5,
+ "generated_at": "2026-11-05T02:30:07.503Z",
+ "node_count": 7,
+ "edge_count": 6,
  "relations": [
   {
    "label": "แจ้งโดย",
@@ -33,6 +33,12 @@
    "label": "สั่งการโดย",
    "target_id": "30_Entities/บุคคล/ธนพล ศรีโสภา",
    "target_title": "ธนพล ศรีโสภา",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/การปฏิบัติหน้าที่ ประชาสัมพันธ์ และนโยบายตำรวจ",
+   "target_title": "การปฏิบัติหน้าที่ ประชาสัมพันธ์ และนโยบายตำรวจ",
    "direction": "out"
   }
  ],

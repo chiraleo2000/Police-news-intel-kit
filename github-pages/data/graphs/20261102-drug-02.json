@@ -1,9 +1,9 @@
 {
  "case_id": "20261102-drug-02",
  "title": "ป.ป.ส. ภาค 7 ร่วมหลายหน่วยล้อมตรวจปาร์ตี้บนแพที่แควน้อย กาญจนบุรี ตรวจปัสสาวะผู้ร่วมงาน 14 ราย พบสารเสพติด 8 ราย จับ 2 ผู้ต้องหาครอบครองยาเสพติด",
- "generated_at": "2026-11-04T07:00:06.697Z",
- "node_count": 7,
- "edge_count": 6,
+ "generated_at": "2026-11-05T02:30:07.895Z",
+ "node_count": 8,
+ "edge_count": 7,
  "relations": [
   {
    "label": "จับโดย",
@@ -39,6 +39,12 @@
    "label": "ผู้ต้องหา",
    "target_id": "30_Entities/People/ผู้ต้องหา 2 ราย อายุ 34 ปี",
    "target_title": "ผู้ต้องหา 2 ราย อายุ 34 ปี",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/ยาเสพติด",
+   "target_title": "ยาเสพติด",
    "direction": "out"
   }
  ],

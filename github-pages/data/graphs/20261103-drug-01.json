@@ -1,9 +1,9 @@
 {
  "case_id": "20261103-drug-01",
  "title": "บช.ปส. แถลง 2 คดี จับผู้ขนไอซ์ 50 กก. ที่ กำแพงแสน นครปฐม และจับคนขับรถขนยาบ้าราว 5 ล้านเม็ดที่ สกลนคร ขยายผลหาผู้สั่งการ",
- "generated_at": "2026-11-04T07:00:06.725Z",
- "node_count": 9,
- "edge_count": 8,
+ "generated_at": "2026-11-05T02:30:07.924Z",
+ "node_count": 10,
+ "edge_count": 9,
  "relations": [
   {
    "label": "สั่งการโดย",
@@ -51,6 +51,12 @@
    "label": "เกิดที่",
    "target_id": "30_Entities/สถานที่/กำแพงแสน",
    "target_title": "กำแพงแสน",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/ยาเสพติด",
+   "target_title": "ยาเสพติด",
    "direction": "out"
   }
  ],

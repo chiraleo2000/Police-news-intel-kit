@@ -1,9 +1,9 @@
 {
  "case_id": "20261022-consumer-sakaeo-chicken-gizzards",
  "title": "กองกำลังบูรพาสกัดลอบขนกึ๋นไก่ 9 กระสอบ คนร้ายทิ้งของกลางหนีข้ามแดนกัมพูชา สระแก้ว",
- "generated_at": "2026-11-04T07:00:06.212Z",
- "node_count": 3,
- "edge_count": 2,
+ "generated_at": "2026-11-05T02:30:07.373Z",
+ "node_count": 4,
+ "edge_count": 3,
  "relations": [
   {
    "label": "สืบสวนโดย",
@@ -15,6 +15,12 @@
    "label": "สืบสวนโดย",
    "target_id": "30_Entities/Units/ทหารพรานที่ 12",
    "target_title": "ทหารพรานที่ 12",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/คุ้มครองผู้บริโภคและสินค้าผิดกฎหมาย",
+   "target_title": "คุ้มครองผู้บริโภคและสินค้าผิดกฎหมาย",
    "direction": "out"
   }
  ],

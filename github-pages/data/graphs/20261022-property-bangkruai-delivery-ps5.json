@@ -1,9 +1,9 @@
 {
  "case_id": "20261022-property-bangkruai-delivery-ps5",
  "title": "ตำรวจบางกรวยจับไรเดอร์ตามหมายจับ คดีลัก PS5 Slim มูลค่า 21,500 บาท",
- "generated_at": "2026-11-04T07:00:06.261Z",
- "node_count": 4,
- "edge_count": 3,
+ "generated_at": "2026-11-05T02:30:07.428Z",
+ "node_count": 5,
+ "edge_count": 4,
  "relations": [
   {
    "label": "จับโดย",
@@ -21,6 +21,12 @@
    "label": "เกิดที่",
    "target_id": "30_Entities/สถานที่/บางกรวย",
    "target_title": "บางกรวย",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/คดีทรัพย์สิน",
+   "target_title": "คดีทรัพย์สิน",
    "direction": "out"
   }
  ],

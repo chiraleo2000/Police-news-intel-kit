@@ -1,14 +1,20 @@
 {
  "case_id": "20261023-other-03",
  "title": "\"สมชัย\" อัปเดตคดี \"ณัฐวุฒิ\" เบี้ยวหมายเรียก 2 รอบ ลั่นรอบ3 ไม่มาเจอแน่",
- "generated_at": "2026-11-04T07:00:06.320Z",
- "node_count": 2,
- "edge_count": 1,
+ "generated_at": "2026-11-05T02:30:07.495Z",
+ "node_count": 3,
+ "edge_count": 2,
  "relations": [
   {
    "label": "จับโดย",
    "target_id": "30_Entities/Units/สน.ทองหล่อ",
    "target_title": "สน.ทองหล่อ",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อื่น ๆ",
+   "target_title": "อื่น ๆ",
    "direction": "out"
   }
  ],

@@ -1,0 +1,70 @@
+{
+ "case_id": "20261104-transnat-line-01",
+ "title": "ตม.หนองคายและ ฉก.ทพ.2107 รวบชายจีนอายุ 29 ปี ลอบข้ามแม่น้ำโขง พบเอโทมิเดต 5 กิโลกรัม สารตั้งต้นยาซอมบี้ ตรวจพบเป็นบุคคลตามหมายจับฆาตกรรม 3 ศพที่ดูไบ",
+ "generated_at": "2026-11-05T02:30:07.979Z",
+ "node_count": 11,
+ "edge_count": 10,
+ "relations": [
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บช.สตม.",
+   "target_title": "บช.สตม.",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บก.ตม.4",
+   "target_title": "บก.ตม.4",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/ตม.หนองคาย",
+   "target_title": "ตม.หนองคาย",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/ฉก.ทพ.2107",
+   "target_title": "ฉก.ทพ.2107",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/อำเภอโพนพิสัย",
+   "target_title": "อำเภอโพนพิสัย",
+   "direction": "out"
+  },
+  {
+   "label": "ผู้ต้องหา",
+   "target_id": "30_Entities/People/วาน ฉวนซิง",
+   "target_title": "วาน ฉวนซิง",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/บุคคล/นพศิลป์ พูลสวัสดิ์",
+   "target_title": "นพศิลป์ พูลสวัสดิ์",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/บุคคล/ไพรัช พุกเจริญ",
+   "target_title": "ไพรัช พุกเจริญ",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/บุคคล/ธียาฌพัตท์ รังสิพราหมณกุล",
+   "target_title": "ธียาฌพัตท์ รังสิพราหมณกุล",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมข้ามชาติและความร่วมมือระหว่างประเทศ",
+   "target_title": "อาชญากรรมข้ามชาติและความร่วมมือระหว่างประเทศ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261104-transnat-line-01.svg"
+}

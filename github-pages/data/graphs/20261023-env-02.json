@@ -1,9 +1,9 @@
 {
  "case_id": "20261023-env-02",
  "title": "บก.ปทส. ล่อจับพ่อค้าสัตว์ป่าชาวเวียดนาม ที่นครพนม ยึดเกล็ดลิ่น 58 กก.",
- "generated_at": "2026-11-04T07:00:06.306Z",
- "node_count": 3,
- "edge_count": 2,
+ "generated_at": "2026-11-05T02:30:07.479Z",
+ "node_count": 4,
+ "edge_count": 3,
  "relations": [
   {
    "label": "จับโดย",
@@ -15,6 +15,12 @@
    "label": "จับโดย",
    "target_id": "30_Entities/Units/บก.ปทส.",
    "target_title": "บก.ปทส.",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/สิ่งแวดล้อม ทรัพยากร และสัตว์ป่า",
+   "target_title": "สิ่งแวดล้อม ทรัพยากร และสัตว์ป่า",
    "direction": "out"
   }
  ],

@@ -1,9 +1,9 @@
 {
  "case_id": "20261031-property-02",
  "title": "โจรคลุมผ้าขาวธีมฮาโลวีนขี่จักรยานยนต์ลักตะกร้าอะไหล่หน้าร้านที่ด่านช้าง สุพรรณบุรี กล้องวงจรปิดจับภาพใบหน้าได้ เจ้าของร้านลงบันทึกประจำวัน",
- "generated_at": "2026-11-04T07:00:06.655Z",
- "node_count": 3,
- "edge_count": 2,
+ "generated_at": "2026-11-05T02:30:07.853Z",
+ "node_count": 4,
+ "edge_count": 3,
  "relations": [
   {
    "label": "แจ้งโดย",
@@ -15,6 +15,12 @@
    "label": "เกิดที่",
    "target_id": "30_Entities/Places/ด่านช้าง สุพรรณบุรี",
    "target_title": "ด่านช้าง สุพรรณบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/คดีทรัพย์สิน",
+   "target_title": "คดีทรัพย์สิน",
    "direction": "out"
   }
  ],

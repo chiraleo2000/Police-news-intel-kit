@@ -1,9 +1,9 @@
 {
  "case_id": "20261024-cyber-03",
  "title": "Cyber Police Arrest Scam Gang Targeting Retired Nurse, Posing as Comptroller Generals Department Officials, Defrauding Over 1.8 Million Baht",
- "generated_at": "2026-11-04T07:00:06.360Z",
- "node_count": 4,
- "edge_count": 3,
+ "generated_at": "2026-11-05T02:30:07.541Z",
+ "node_count": 5,
+ "edge_count": 4,
  "relations": [
   {
    "label": "จับโดย",
@@ -21,6 +21,12 @@
    "label": "จับโดย",
    "target_id": "30_Entities/Units/บก.สอท.4",
    "target_title": "บก.สอท.4",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
    "direction": "out"
   }
  ],

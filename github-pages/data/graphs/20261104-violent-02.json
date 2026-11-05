@@ -1,9 +1,9 @@
 {
  "case_id": "20261104-violent-02",
  "title": "สภ.สีคิ้วควบคุมผู้ปกครองอายุ 54 ปี เมาและยิงปืน .38 ขึ้นฟ้าในโรงเรียน นครราชสีมา ไม่มีผู้บาดเจ็บ โรงเรียนหยุดเรียนและเขตพื้นที่ลงตรวจสอบ",
- "generated_at": "2026-11-04T07:00:06.776Z",
- "node_count": 4,
- "edge_count": 3,
+ "generated_at": "2026-11-05T02:30:07.982Z",
+ "node_count": 5,
+ "edge_count": 4,
  "relations": [
   {
    "label": "จับโดย",
@@ -21,6 +21,12 @@
    "label": "เกิดที่",
    "target_id": "30_Entities/Places/นครราชสีมา",
    "target_title": "นครราชสีมา",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/คดีชีวิต ร่างกาย และเพศ",
+   "target_title": "คดีชีวิต ร่างกาย และเพศ",
    "direction": "out"
   }
  ],

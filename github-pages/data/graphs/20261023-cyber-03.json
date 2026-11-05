@@ -1,9 +1,9 @@
 {
  "case_id": "20261023-cyber-03",
  "title": "สอท.3 บุกโกสุมพิสัย แฉกลโกง \"สแกนหน้าแลกเงินร้อย\" เสี่ยงคุก",
- "generated_at": "2026-11-04T07:00:06.285Z",
- "node_count": 3,
- "edge_count": 2,
+ "generated_at": "2026-11-05T02:30:07.455Z",
+ "node_count": 4,
+ "edge_count": 3,
  "relations": [
   {
    "label": "สั่งการโดย",
@@ -15,6 +15,12 @@
    "label": "สืบสวนโดย",
    "target_id": "30_Entities/Units/บก.สอท.3",
    "target_title": "บก.สอท.3",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
    "direction": "out"
   }
  ],

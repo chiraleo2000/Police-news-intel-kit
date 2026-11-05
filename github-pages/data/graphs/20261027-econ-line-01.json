@@ -1,9 +1,9 @@
 {
  "case_id": "20261027-econ-line-01",
  "title": "บช.ก. ร่วม ACSC แถลง Operation Dark Empire ทลายฟาร์มบัญชีม้านิติบุคคลข้ามชาติ จ้างคนไทยตั้งบริษัทกว่า 1,500 แห่ง จับ 11 ราย โยงผู้เสียหาย 311 คดี เสียหาย 379 ล้านบาท",
- "generated_at": "2026-11-04T07:00:06.472Z",
- "node_count": 10,
- "edge_count": 9,
+ "generated_at": "2026-11-05T02:30:07.662Z",
+ "node_count": 11,
+ "edge_count": 10,
  "relations": [
   {
    "label": "แจ้งโดย",
@@ -57,6 +57,12 @@
    "label": "แจ้งโดย",
    "target_id": "30_Entities/บุคคล/ณัฐศักดิ์ เชาวนาศัย",
    "target_title": "ณัฐศักดิ์ เชาวนาศัย",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/คดีเศรษฐกิจ การเงิน และฟอกเงิน",
+   "target_title": "คดีเศรษฐกิจ การเงิน และฟอกเงิน",
    "direction": "out"
   }
  ],

@@ -1,9 +1,9 @@
 {
  "case_id": "20261029-drug-line-01",
  "title": "ตำรวจ ภ.6 แถลงขยายผลคดียาบ้า 3 ล้านเม็ดที่พิจิตร จับเพิ่ม 3 ราย รวม 5 ผู้ต้องหา ยึดรถ 12 คัน ทองคำและเงินสด มูลค่ากว่า 15 ล้านบาท",
- "generated_at": "2026-11-04T07:00:06.557Z",
- "node_count": 16,
- "edge_count": 15,
+ "generated_at": "2026-11-05T02:30:07.752Z",
+ "node_count": 17,
+ "edge_count": 16,
  "relations": [
   {
    "label": "สั่งการโดย",
@@ -93,6 +93,12 @@
    "label": "แจ้งโดย",
    "target_id": "30_Entities/บุคคล/ณัฐวุฒิ ภาคภูมิ",
    "target_title": "ณัฐวุฒิ ภาคภูมิ",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/ยาเสพติด",
+   "target_title": "ยาเสพติด",
    "direction": "out"
   }
  ],

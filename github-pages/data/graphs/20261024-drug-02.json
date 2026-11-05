@@ -1,9 +1,9 @@
 {
  "case_id": "20261024-drug-02",
  "title": "ตำรวจกาญจนบุรีจับเยาวชนถูกกล่าวหาขนยาบ้ากว่า 4 พันเม็ด อ้างถูกจ้างส่งพัสดุ",
- "generated_at": "2026-11-04T07:00:06.365Z",
- "node_count": 5,
- "edge_count": 4,
+ "generated_at": "2026-11-05T02:30:07.547Z",
+ "node_count": 6,
+ "edge_count": 5,
  "relations": [
   {
    "label": "จับโดย",
@@ -28,6 +28,12 @@
    "target_id": "20_Cases/20261023-drug-05",
    "target_title": "จับเด็กเรียนดี หิ้วยาบ้ากว่า 4 พันเม็ด รับถูกจ้างส่งพัสดุ โดยไม่รู้ว่าคืออะไร",
    "direction": "in"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/ยาเสพติด",
+   "target_title": "ยาเสพติด",
+   "direction": "out"
   }
  ],
  "svg": "graphs/20261024-drug-02.svg"

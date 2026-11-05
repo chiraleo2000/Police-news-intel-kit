@@ -1,9 +1,9 @@
 {
  "case_id": "20261023-police-09",
  "title": "ตำรวจชายแดนใต้ถูกปรับลดเบี้ยเลี้ยงปีงบ 2570 งบดำเนินงานลดกว่า 429 ล้านบาท",
- "generated_at": "2026-11-04T07:00:06.332Z",
- "node_count": 3,
- "edge_count": 2,
+ "generated_at": "2026-11-05T02:30:07.510Z",
+ "node_count": 4,
+ "edge_count": 3,
  "relations": [
   {
    "label": "แจ้งโดย",
@@ -15,6 +15,12 @@
    "label": "แจ้งโดย",
    "target_id": "30_Entities/People/ศปก.ตร.สน.",
    "target_title": "ศปก.ตร.สน.",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/การปฏิบัติหน้าที่ ประชาสัมพันธ์ และนโยบายตำรวจ",
+   "target_title": "การปฏิบัติหน้าที่ ประชาสัมพันธ์ และนโยบายตำรวจ",
    "direction": "out"
   }
  ],

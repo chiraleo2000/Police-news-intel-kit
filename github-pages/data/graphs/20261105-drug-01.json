@@ -1,0 +1,40 @@
+{
+ "case_id": "20261105-drug-01",
+ "title": "บช.ก. และ บก.ทล. แถลงทลาย 4 ขบวนยาเสพติด จับ 14 ราย ยึดไอซ์ราว 300 กก. และยาบ้ารวมกว่า 6.7 ล้านเม็ด ที่นครสวรรค์ ชุมพร และตาก ผู้ต้องหาบางรายรับว่ามีผู้สั่งการอยู่เบื้องหลัง",
+ "generated_at": "2026-11-05T02:30:07.987Z",
+ "node_count": 6,
+ "edge_count": 5,
+ "relations": [
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/บช.ก.",
+   "target_title": "บช.ก.",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/บก.ทล.",
+   "target_title": "บก.ทล.",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/ศอ.ปส.ตร.",
+   "target_title": "ศอ.ปส.ตร.",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ทางหลวงหมายเลข 11 นครสวรรค์ · ทางหลวงหมายเลข 41 ชุมพร · ทางหลวงหมายเลข 1 ตาก",
+   "target_title": "ทางหลวงหมายเลข 11 นครสวรรค์ · ทางหลวงหมายเลข 41 ชุมพร · ทางหลวงหมายเลข 1 ตาก",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/ยาเสพติด",
+   "target_title": "ยาเสพติด",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261105-drug-01.svg"
+}

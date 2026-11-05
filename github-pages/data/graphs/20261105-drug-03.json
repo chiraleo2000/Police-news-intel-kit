@@ -1,0 +1,46 @@
+{
+ "case_id": "20261105-drug-03",
+ "title": "ป.ป.ส. เดินหน้า “ยุทธการตัดเนื้อร้าย” ครั้งที่ 29-30 จับบุคลากรโรงพยาบาลรัฐ 3 รายที่สุโขทัย ยึดยาบ้า 1,359 เม็ด และพนักงานมหาวิทยาลัยที่ กทม. ยึดไอซ์ 2.81 กรัม หลังรับเบาะแสสายด่วน 1386",
+ "generated_at": "2026-11-05T02:30:07.990Z",
+ "node_count": 7,
+ "edge_count": 6,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/ป.ป.ส.",
+   "target_title": "ป.ป.ส.",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/สำนักงาน ปปส.กทม.",
+   "target_title": "สำนักงาน ปปส.กทม.",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/สน.หัวหมาก",
+   "target_title": "สน.หัวหมาก",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/ตำรวจ ภ.จว.สุโขทัย",
+   "target_title": "ตำรวจ ภ.จว.สุโขทัย",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/อ.เมือง สุโขทัย · แขวงหัวหมาก เขตบางกะปิ กรุงเทพมหานคร",
+   "target_title": "อ.เมือง สุโขทัย · แขวงหัวหมาก เขตบางกะปิ กรุงเทพมหานคร",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/ยาเสพติด",
+   "target_title": "ยาเสพติด",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261105-drug-03.svg"
+}

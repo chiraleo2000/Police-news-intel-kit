@@ -1,9 +1,9 @@
 {
  "case_id": "20261103-property-line-01",
  "title": "สภ.เมืองสมุทรปราการแถลงขยายผลจับเพิ่ม 5 ผู้ต้องหาเครือข่ายแก๊งลักรถจักรยานยนต์ ยึดรถ 7 คัน และรถกระบะตู้ทึบ ผู้ต้องหารับสารภาพรับค่าจ้างคันละ 15,000-18,000 บาท",
- "generated_at": "2026-11-04T07:00:06.747Z",
- "node_count": 6,
- "edge_count": 5,
+ "generated_at": "2026-11-05T02:30:07.947Z",
+ "node_count": 7,
+ "edge_count": 6,
  "relations": [
   {
    "label": "สั่งการโดย",
@@ -33,6 +33,12 @@
    "label": "เกิดที่",
    "target_id": "30_Entities/Places/สมุทรปราการ",
    "target_title": "สมุทรปราการ",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/คดีทรัพย์สิน",
+   "target_title": "คดีทรัพย์สิน",
    "direction": "out"
   }
  ],

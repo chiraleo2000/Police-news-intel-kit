@@ -1,0 +1,28 @@
+{
+ "case_id": "20261104-consumer-line-01",
+ "title": "ทนายความพาผู้เสียหายแจ้ง บก.ปคบ. เร่งคดีครีมบำรุงผิวแบรนด์ดัง ตรวจพบสารปรอท สเตียรอยด์ ไฮโดรควิโนน ล่าช้ากว่า 2 เดือน พบคลิปเสียงอ้างอดีตนายตำรวจช่วยเคลียร์คดี",
+ "generated_at": "2026-11-05T02:30:07.962Z",
+ "node_count": 4,
+ "edge_count": 3,
+ "relations": [
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/บก.ปคบ.",
+   "target_title": "บก.ปคบ.",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/วิฑูรย์ เก่งงาน",
+   "target_title": "วิฑูรย์ เก่งงาน",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/คุ้มครองผู้บริโภคและสินค้าผิดกฎหมาย",
+   "target_title": "คุ้มครองผู้บริโภคและสินค้าผิดกฎหมาย",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261104-consumer-line-01.svg"
+}

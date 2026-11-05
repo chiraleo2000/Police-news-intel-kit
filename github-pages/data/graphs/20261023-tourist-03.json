@@ -1,9 +1,9 @@
 {
  "case_id": "20261023-tourist-03",
  "title": "CIB สกัดรถขนต่างด้าวชาวกัมพูชา 7 ราย รับจ้างคนละพันบาท ที่ชลบุรี",
- "generated_at": "2026-11-04T07:00:06.342Z",
- "node_count": 3,
- "edge_count": 2,
+ "generated_at": "2026-11-05T02:30:07.520Z",
+ "node_count": 4,
+ "edge_count": 3,
  "relations": [
   {
    "label": "จับโดย",
@@ -15,6 +15,12 @@
    "label": "สั่งการโดย",
    "target_id": "30_Entities/Units/บช.ก.",
    "target_title": "บช.ก.",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมที่เกี่ยวข้องกับนักท่องเที่ยวและชาวต่างชาติ",
+   "target_title": "อาชญากรรมที่เกี่ยวข้องกับนักท่องเที่ยวและชาวต่างชาติ",
    "direction": "out"
   }
  ],

@@ -1,0 +1,40 @@
+{
+ "case_id": "20261105-econ-02",
+ "title": "DSI ส่งสำนวนคดีพิเศษให้อัยการ สั่งฟ้อง 25 ผู้ต้องหาเครือข่ายลักไฟขุดเงินดิจิทัลที่สมุทรสาครและอุทัยธานี ความเสียหายของ กฟภ. กว่า 403.9 ล้านบาท พบเครื่องขุด 1,848 + 587 เครื่อง",
+ "generated_at": "2026-11-05T02:30:07.994Z",
+ "node_count": 6,
+ "edge_count": 5,
+ "relations": [
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/ดีเอสไอ",
+   "target_title": "ดีเอสไอ",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/การไฟฟ้าส่วนภูมิภาค",
+   "target_title": "การไฟฟ้าส่วนภูมิภาค",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/อัยการคดีพิเศษ",
+   "target_title": "อัยการคดีพิเศษ",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/อ.เมืองสมุทรสาคร · อ.หนองฉาง อุทัยธานี",
+   "target_title": "อ.เมืองสมุทรสาคร · อ.หนองฉาง อุทัยธานี",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/คดีเศรษฐกิจ การเงิน และฟอกเงิน",
+   "target_title": "คดีเศรษฐกิจ การเงิน และฟอกเงิน",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261105-econ-02.svg"
+}

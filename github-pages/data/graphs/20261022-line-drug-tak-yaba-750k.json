@@ -1,9 +1,9 @@
 {
  "case_id": "20261022-line-drug-tak-yaba-750k",
  "title": "ตำรวจภาค 6 แถลงจับ 3 ผู้ต้องหา ขนยาบ้า 750,000 เม็ดที่ตาก รายหนึ่งเป็นอดีตนายก อบต.",
- "generated_at": "2026-11-04T07:00:06.247Z",
- "node_count": 6,
- "edge_count": 5,
+ "generated_at": "2026-11-05T02:30:07.414Z",
+ "node_count": 7,
+ "edge_count": 6,
  "relations": [
   {
    "label": "สั่งการโดย",
@@ -33,6 +33,12 @@
    "label": "จับโดย",
    "target_id": "30_Entities/Units/ภ.จว.ตาก",
    "target_title": "ภ.จว.ตาก",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/ยาเสพติด",
+   "target_title": "ยาเสพติด",
    "direction": "out"
   }
  ],

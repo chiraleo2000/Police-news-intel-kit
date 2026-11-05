@@ -1,0 +1,40 @@
+{
+ "case_id": "20261104-corrupt-line-01",
+ "title": "ป.ป.ท. ร่วม ภ.7 จับอดีตเจ้าพนักงานสาธารณสุขเทศบาลตำบลวังหว้า สุพรรณบุรี ตามหมายจับศาลอาญาคดีทุจริตภาค 7 ปมปลอมใบถอนเงินและเช็ค ยักยอกเงินกองทุนหลักประกันสุขภาพ 930,000 บาท",
+ "generated_at": "2026-11-05T02:30:07.963Z",
+ "node_count": 6,
+ "edge_count": 5,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/ป.ป.ท.",
+   "target_title": "ป.ป.ท.",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/กก.สส.3 บก.สส.ภ.7",
+   "target_title": "กก.สส.3 บก.สส.ภ.7",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลอาญาคดีทุจริตและประพฤติมิชอบภาค 7",
+   "target_title": "ศาลอาญาคดีทุจริตและประพฤติมิชอบภาค 7",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/อำเภอศรีประจันต์",
+   "target_title": "อำเภอศรีประจันต์",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/ทุจริตและประพฤติมิชอบของเจ้าหน้าที่รัฐ",
+   "target_title": "ทุจริตและประพฤติมิชอบของเจ้าหน้าที่รัฐ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261104-corrupt-line-01.svg"
+}

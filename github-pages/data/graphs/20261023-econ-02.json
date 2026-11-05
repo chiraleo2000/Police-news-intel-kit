@@ -1,9 +1,9 @@
 {
  "case_id": "20261023-econ-02",
  "title": "ตำรวจภูธรภาค 6 ตรวจค้น 3 จังหวัด ทลายแก๊งหลอกลงทุนผ่านแอปดัง โยง 270 กว่าคดี",
- "generated_at": "2026-11-04T07:00:06.299Z",
- "node_count": 4,
- "edge_count": 3,
+ "generated_at": "2026-11-05T02:30:07.471Z",
+ "node_count": 5,
+ "edge_count": 4,
  "relations": [
   {
    "label": "แจ้งโดย",
@@ -21,6 +21,12 @@
    "label": "เป้าหมายเครือข่าย",
    "target_id": "30_Entities/Projects/แก๊งหลอกลงทุนผ่านแอปดัง",
    "target_title": "แก๊งหลอกลงทุนผ่านแอปดัง",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/คดีเศรษฐกิจ การเงิน และฟอกเงิน",
+   "target_title": "คดีเศรษฐกิจ การเงิน และฟอกเงิน",
    "direction": "out"
   }
  ],

@@ -1,9 +1,9 @@
 {
  "case_id": "20261029-drug-07",
  "title": "ปปส.ภาค 5 ลงพื้นที่ชายแดนเชียงราย ติดตามไฟส่องสว่างริมโขง อ.เชียงของ และแผนสกัดกั้นยาเสพติดสารตั้งต้นที่ด่านเชียงแสน",
- "generated_at": "2026-11-04T07:00:06.552Z",
- "node_count": 5,
- "edge_count": 4,
+ "generated_at": "2026-11-05T02:30:07.747Z",
+ "node_count": 6,
+ "edge_count": 5,
  "relations": [
   {
    "label": "สั่งการโดย",
@@ -27,6 +27,12 @@
    "label": "เกิดที่",
    "target_id": "30_Entities/Places/อ.เชียงแสน เชียงราย",
    "target_title": "อ.เชียงแสน เชียงราย",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/ยาเสพติด",
+   "target_title": "ยาเสพติด",
    "direction": "out"
   }
  ],

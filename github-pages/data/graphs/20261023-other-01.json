@@ -1,14 +1,20 @@
 {
  "case_id": "20261023-other-01",
  "title": "ตำรวจท่องเที่ยวจัดพิธีบำเพ็ญกุศลและวางพวงมาลา น้อมรำลึกพระมหากรุณาธิคุณสมเด็จพระนางเจ้าสิริกิติ์",
- "generated_at": "2026-11-04T07:00:06.317Z",
- "node_count": 2,
- "edge_count": 1,
+ "generated_at": "2026-11-05T02:30:07.492Z",
+ "node_count": 3,
+ "edge_count": 2,
  "relations": [
   {
    "label": "สืบสวนโดย",
    "target_id": "30_Entities/Units/บช.ทท.",
    "target_title": "บช.ทท.",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อื่น ๆ",
+   "target_title": "อื่น ๆ",
    "direction": "out"
   }
  ],

@@ -1,9 +1,9 @@
 {
  "case_id": "20261026-drug-02",
  "title": "ปปส.ภาค 9 ตรวจสอบเรื่องร้องเรียนสายด่วน 1386 ในตรัง-สงขลา ตรวจค้นบ้านด้วยหมายค้นไม่พบยาเสพติด ขยายผลนักค้ารายสำคัญหลบหนีหมายจับ",
- "generated_at": "2026-11-04T07:00:06.439Z",
- "node_count": 5,
- "edge_count": 4,
+ "generated_at": "2026-11-05T02:30:07.627Z",
+ "node_count": 6,
+ "edge_count": 5,
  "relations": [
   {
    "label": "แจ้งโดย",
@@ -27,6 +27,12 @@
    "label": "แจ้งโดย",
    "target_id": "30_Entities/People/สภ.วังวิเศษ",
    "target_title": "สภ.วังวิเศษ",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/ยาเสพติด",
+   "target_title": "ยาเสพติด",
    "direction": "out"
   }
  ],

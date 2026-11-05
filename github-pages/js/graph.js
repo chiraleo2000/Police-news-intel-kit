@@ -1599,6 +1599,50 @@
     return [text.slice(0, mid).trim(), text.slice(mid).trim()];
   }
 
+  function slideLabelAside(job, at, p, box) {
+    const side = at.x > job.w * 0.55 ? 1 : -1;
+    let x = at.x + side * (p.r * job.camera.scale + 14);
+    if (side < 0) x -= box.w;
+    box.x = x;
+    box.y = at.y - box.h / 2;
+  }
+
+  function storyLabelBox(job, p, hubAt) {
+    const lines = storyLabelLines(storyLabel(p.node));
+    if (p.node.position) lines.push(truncateStory(String(p.node.position), 18));
+    job.ctx.font = "600 11px Sarabun, Anuphan, sans-serif";
+    const longest = lines.reduce((max, line) => Math.max(max, job.ctx.measureText(line).width), 20);
+    const w = Math.max(56, Math.ceil(longest) + 12);
+    const h = 6 + lines.length * 14;
+    const at = screenOfStory(job, p.x, p.y);
+    let dx = at.x - hubAt.x;
+    let dy = at.y - hubAt.y;
+    let len = Math.hypot(dx, dy);
+    if (len < 1) {
+      dx = 0;
+      dy = -1;
+      len = 1;
+    }
+    const reach = p.r * job.camera.scale + 12;
+    const cx = at.x + (dx / len) * (reach + w / 2);
+    const cy = at.y + (dy / len) * (reach + h / 2);
+    const box = {
+      id: p.node.id,
+      text: lines.join(" "),
+      lines,
+      w,
+      h,
+      x: cx - w / 2,
+      y: cy - h / 2,
+      fontPx: 11,
+      lineH: 14,
+      anchorX: at.x,
+      anchorY: at.y,
+    };
+    if (box.y < 8 || box.y + box.h > job.h - 8) slideLabelAside(job, at, p, box);
+    return box;
+  }
+
   function pinHubLabel(job, boxes) {
     const hubBox = boxes.find((box) => box.id === job.hubId);
     if (!hubBox) return;
@@ -1617,49 +1661,7 @@
   function storyScreenLabels(job) {
     const hub = job.placed[0];
     const hubAt = screenOfStory(job, hub.x, hub.y);
-    const boxes = job.placed.map((p) => {
-      const lines = storyLabelLines(storyLabel(p.node));
-      if (p.node.position) lines.push(truncateStory(String(p.node.position), 18));
-      job.ctx.font = "600 11px Sarabun, Anuphan, sans-serif";
-      const longest = lines.reduce((max, line) => Math.max(max, job.ctx.measureText(line).width), 20);
-      const w = Math.max(56, Math.ceil(longest) + 12);
-      const h = 6 + lines.length * 14;
-      const at = screenOfStory(job, p.x, p.y);
-      let dx = at.x - hubAt.x;
-      let dy = at.y - hubAt.y;
-      let len = Math.hypot(dx, dy);
-      if (len < 1) {
-        dx = 0;
-        dy = -1;
-        len = 1;
-      }
-      const reach = p.r * job.camera.scale + 12;
-      const cx = at.x + (dx / len) * (reach + w / 2);
-      const cy = at.y + (dy / len) * (reach + h / 2);
-      let x = cx - w / 2;
-      let y = cy - h / 2;
-      const offTop = y < 8;
-      const offBottom = y + h > job.h - 8;
-      if (offTop || offBottom) {
-        const side = at.x > job.w * 0.55 ? 1 : -1;
-        x = at.x + side * (p.r * job.camera.scale + 14);
-        if (side < 0) x -= w;
-        y = at.y - h / 2;
-      }
-      return {
-        id: p.node.id,
-        text: lines.join(" "),
-        lines,
-        w,
-        h,
-        x,
-        y,
-        fontPx: 11,
-        lineH: 14,
-        anchorX: at.x,
-        anchorY: at.y,
-      };
-    });
+    const boxes = job.placed.map((p) => storyLabelBox(job, p, hubAt));
     separateStoryBoxes(boxes);
     for (let pass = 0; pass < 4; pass += 1) {
       for (const box of boxes) liftLabelOffNode(box);

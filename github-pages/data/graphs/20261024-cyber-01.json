@@ -1,14 +1,20 @@
 {
  "case_id": "20261024-cyber-01",
  "title": "แจ้งเตือน ช่องโหว่ระดับ Critical ใน GitLab เสี่ยงถูกสั่งรันคำสั่งโดยไม่ต้องยืนยันตัวตน",
- "generated_at": "2026-11-04T07:00:06.357Z",
- "node_count": 2,
- "edge_count": 1,
+ "generated_at": "2026-11-05T02:30:07.538Z",
+ "node_count": 3,
+ "edge_count": 2,
  "relations": [
   {
    "label": "แจ้งโดย",
    "target_id": "30_Entities/Units/ThaiCERT",
    "target_title": "ThaiCERT",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
    "direction": "out"
   }
  ],

@@ -1,9 +1,9 @@
 {
  "case_id": "20261023-env-01",
  "title": "รัฐมนตรีปฏิเสธเกี่ยวข้อง รถบรรทุกติดสติ๊กเกอร์แอบอ้างชื่อเลี่ยงตรวจค้น สั่งดำเนินคดี",
- "generated_at": "2026-11-04T07:00:06.304Z",
- "node_count": 3,
- "edge_count": 2,
+ "generated_at": "2026-11-05T02:30:07.477Z",
+ "node_count": 4,
+ "edge_count": 3,
  "relations": [
   {
    "label": "แจ้งโดย",
@@ -15,6 +15,12 @@
    "label": "สั่งการโดย",
    "target_id": "30_Entities/Units/บช.ก.",
    "target_title": "บช.ก.",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/สิ่งแวดล้อม ทรัพยากร และสัตว์ป่า",
+   "target_title": "สิ่งแวดล้อม ทรัพยากร และสัตว์ป่า",
    "direction": "out"
   }
  ],

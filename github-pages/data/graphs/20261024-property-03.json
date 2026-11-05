@@ -1,9 +1,9 @@
 {
  "case_id": "20261024-property-03",
  "title": "Burglar robs Wichit home, abandons stolen pickup in Trang",
- "generated_at": "2026-11-04T07:00:06.379Z",
- "node_count": 4,
- "edge_count": 3,
+ "generated_at": "2026-11-05T02:30:07.561Z",
+ "node_count": 5,
+ "edge_count": 4,
  "relations": [
   {
    "label": "จับโดย",
@@ -21,6 +21,12 @@
    "label": "จับโดย",
    "target_id": "30_Entities/Units/สภ.ห้วยยอด",
    "target_title": "สภ.ห้วยยอด",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/คดีทรัพย์สิน",
+   "target_title": "คดีทรัพย์สิน",
    "direction": "out"
   }
  ],

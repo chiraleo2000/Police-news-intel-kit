@@ -1,9 +1,9 @@
 {
  "case_id": "20261022-econ-loanshark-phitsanulok",
  "title": "บช.สอท. บุกทลายเครือข่ายปล่อยกู้นอกระบบแอปกู้เงินที่พิษณุโลก จับ 6 ราย",
- "generated_at": "2026-11-04T07:00:06.232Z",
- "node_count": 4,
- "edge_count": 3,
+ "generated_at": "2026-11-05T02:30:07.395Z",
+ "node_count": 5,
+ "edge_count": 4,
  "relations": [
   {
    "label": "จับโดย",
@@ -21,6 +21,12 @@
    "label": "เป้าหมายเครือข่าย",
    "target_id": "30_Entities/Projects/เครือข่ายปล่อยกู้นอกระบบแอปกู้เงินที่พิ",
    "target_title": "เครือข่ายปล่อยกู้นอกระบบแอปกู้เงินที่พิ",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/คดีเศรษฐกิจ การเงิน และฟอกเงิน",
+   "target_title": "คดีเศรษฐกิจ การเงิน และฟอกเงิน",
    "direction": "out"
   }
  ],

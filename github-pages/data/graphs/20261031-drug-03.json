@@ -1,9 +1,9 @@
 {
  "case_id": "20261031-drug-03",
  "title": "ป.ป.ส.ภาค 6 ตรวจค้นที่สุโขทัย ยุทธการตัดเนื้อร้ายครั้งที่ 28 พบข้าราชการครูเสพยาด้วยวิธีฉีด ขยายผลจับผู้ช่วยพยาบาลผู้ถูกกล่าวหาว่าจำหน่ายไอซ์",
- "generated_at": "2026-11-04T07:00:06.639Z",
- "node_count": 6,
- "edge_count": 5,
+ "generated_at": "2026-11-05T02:30:07.838Z",
+ "node_count": 7,
+ "edge_count": 6,
  "relations": [
   {
    "label": "จับโดย",
@@ -33,6 +33,12 @@
    "label": "เกี่ยวข้องกับบุคคล",
    "target_id": "30_Entities/People/เลขาธิการ ป.ป.ส.",
    "target_title": "เลขาธิการ ป.ป.ส.",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/ยาเสพติด",
+   "target_title": "ยาเสพติด",
    "direction": "out"
   }
  ],

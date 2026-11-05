@@ -1,0 +1,189 @@
+{
+ "baseline": "limited",
+ "window_days": 7,
+ "days_available": 15,
+ "note": "baseline 15 วันย้อนหลัง (<7 วัน: แนวโน้มเป็นข้อมูลบ่งชี้เท่านั้น) surge = วันนี้ >=3 เรื่อง และสูงกว่าค่าเฉลี่ย >=50 เปอร์เซ็นต์",
+ "by_crime_type": [
+  {
+   "type": "ยาเสพติด",
+   "today": 3,
+   "avg_prev_7d": 3.73,
+   "delta_pct": -19.6,
+   "surge": false
+  },
+  {
+   "type": "คดีชีวิต ร่างกาย และเพศ",
+   "today": 3,
+   "avg_prev_7d": 3.27,
+   "delta_pct": -8.2,
+   "surge": false
+  },
+  {
+   "type": "คดีทรัพย์สิน",
+   "today": 2,
+   "avg_prev_7d": 1.73,
+   "delta_pct": 15.4,
+   "surge": false
+  },
+  {
+   "type": "คดีเศรษฐกิจ การเงิน และฟอกเงิน",
+   "today": 2,
+   "avg_prev_7d": 1.8,
+   "delta_pct": 11.1,
+   "surge": false
+  },
+  {
+   "type": "การปฏิบัติหน้าที่ ประชาสัมพันธ์ และนโยบายตำรวจ",
+   "today": 2,
+   "avg_prev_7d": 2.2,
+   "delta_pct": -9.1,
+   "surge": false
+  },
+  {
+   "type": "อาชญากรรมข้ามชาติและความร่วมมือระหว่างประเทศ",
+   "today": 1,
+   "avg_prev_7d": 0.93,
+   "delta_pct": 7.1,
+   "surge": false
+  },
+  {
+   "type": "พนันและบ่อนผิดกฎหมาย",
+   "today": 1,
+   "avg_prev_7d": 1.53,
+   "delta_pct": -34.8,
+   "surge": false
+  },
+  {
+   "type": "อาชญากรรมไซเบอร์และออนไลน์",
+   "today": 1,
+   "avg_prev_7d": 3.2,
+   "delta_pct": -68.8,
+   "surge": false
+  }
+ ],
+ "by_mo": [
+  {
+   "mo": "ฟอกเงิน",
+   "today": 5,
+   "avg_prev_7d": 0.13,
+   "surge": true
+  },
+  {
+   "mo": "ลำเลียงยาเสพติด",
+   "today": 3,
+   "avg_prev_7d": 0.27,
+   "surge": true
+  },
+  {
+   "mo": "นอมินีธุรกิจต่างชาติ",
+   "today": 1,
+   "avg_prev_7d": 0.27,
+   "surge": false
+  },
+  {
+   "mo": "พนันออนไลน์",
+   "today": 1,
+   "avg_prev_7d": 0.13,
+   "surge": false
+  },
+  {
+   "mo": "บัญชีม้า/ซิมม้า",
+   "today": 1,
+   "avg_prev_7d": 0.13,
+   "surge": false
+  },
+  {
+   "mo": "หลอกรักออนไลน์",
+   "today": 1,
+   "avg_prev_7d": 0.0,
+   "surge": false
+  }
+ ],
+ "by_province": [
+  {
+   "province": "กรุงเทพมหานคร",
+   "today": 6,
+   "avg_prev_7d": 8.47
+  },
+  {
+   "province": "ชัยภูมิ",
+   "today": 2,
+   "avg_prev_7d": 0.27
+  },
+  {
+   "province": "นครสวรรค์",
+   "today": 2,
+   "avg_prev_7d": 0.27
+  },
+  {
+   "province": "สระบุรี",
+   "today": 1,
+   "avg_prev_7d": 0.07
+  },
+  {
+   "province": "สมุทรปราการ",
+   "today": 1,
+   "avg_prev_7d": 1.4
+  },
+  {
+   "province": "ชลบุรี",
+   "today": 1,
+   "avg_prev_7d": 2.13
+  },
+  {
+   "province": "ปทุมธานี",
+   "today": 1,
+   "avg_prev_7d": 0.8
+  },
+  {
+   "province": "เชียงใหม่",
+   "today": 1,
+   "avg_prev_7d": 0.93
+  },
+  {
+   "province": "พิจิตร",
+   "today": 1,
+   "avg_prev_7d": 0.07
+  },
+  {
+   "province": "ชุมพร",
+   "today": 1,
+   "avg_prev_7d": 0.2
+  },
+  {
+   "province": "ตาก",
+   "today": 1,
+   "avg_prev_7d": 0.33
+  },
+  {
+   "province": "นราธิวาส",
+   "today": 1,
+   "avg_prev_7d": 0.47
+  },
+  {
+   "province": "สมุทรสาคร",
+   "today": 1,
+   "avg_prev_7d": 0.33
+  },
+  {
+   "province": "อุทัยธานี",
+   "today": 1,
+   "avg_prev_7d": 0.13
+  },
+  {
+   "province": "นนทบุรี",
+   "today": 1,
+   "avg_prev_7d": 1.27
+  },
+  {
+   "province": "สุโขทัย",
+   "today": 1,
+   "avg_prev_7d": 0.27
+  },
+  {
+   "province": "ภูเก็ต",
+   "today": 1,
+   "avg_prev_7d": 1.0
+  }
+ ]
+}

@@ -1,14 +1,20 @@
 {
  "case_id": "20261022-police-region9-allowance-cut",
  "title": "ผบช.ภ.9 ส่งสารถึงกำลังพล หลังปรับลดเบี้ยเลี้ยง-ค่าตอบแทนพื้นที่ชายแดนใต้ตามกรอบงบ 2570",
- "generated_at": "2026-11-04T07:00:06.257Z",
- "node_count": 2,
- "edge_count": 1,
+ "generated_at": "2026-11-05T02:30:07.425Z",
+ "node_count": 3,
+ "edge_count": 2,
  "relations": [
   {
    "label": "แจ้งโดย",
    "target_id": "30_Entities/People/ภ.9",
    "target_title": "ภ.9",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/การปฏิบัติหน้าที่ ประชาสัมพันธ์ และนโยบายตำรวจ",
+   "target_title": "การปฏิบัติหน้าที่ ประชาสัมพันธ์ และนโยบายตำรวจ",
    "direction": "out"
   }
  ],

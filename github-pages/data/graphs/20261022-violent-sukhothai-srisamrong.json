@@ -1,9 +1,9 @@
 {
  "case_id": "20261022-violent-sukhothai-srisamrong",
  "title": "สภ.ศรีสำโรงแจงคดีหญิงทำร้ายหญิงต่อหน้าลูก ยอมรับใช้คำ \"ทะเลาะวิวาท\" คลาดเคลื่อน รอใบรับรองแพทย์",
- "generated_at": "2026-11-04T07:00:06.279Z",
- "node_count": 4,
- "edge_count": 3,
+ "generated_at": "2026-11-05T02:30:07.449Z",
+ "node_count": 5,
+ "edge_count": 4,
  "relations": [
   {
    "label": "สืบสวนโดย",
@@ -21,6 +21,12 @@
    "label": "เกิดที่",
    "target_id": "30_Entities/สถานที่/ศรีสำโรง",
    "target_title": "ศรีสำโรง",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/คดีชีวิต ร่างกาย และเพศ",
+   "target_title": "คดีชีวิต ร่างกาย และเพศ",
    "direction": "out"
   }
  ],

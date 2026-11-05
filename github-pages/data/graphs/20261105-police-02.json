@@ -1,0 +1,64 @@
+{
+ "case_id": "20261105-police-02",
+ "title": "ตำรวจนนทบุรีสั่งย้ายขาดจากตำแหน่งเดิมทันที ตำรวจ สภ.ปากเกร็ด ที่ถูกกล่าวหารุมทำร้ายตำรวจคอมมานโดจนหมดสติในร้านคาราโอเกะ ตั้งกรรมการสอบวินัย ควบคู่คดีอาญา",
+ "generated_at": "2026-11-05T02:30:07.999Z",
+ "node_count": 10,
+ "edge_count": 9,
+ "relations": [
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/ตำรวจภูธรจังหวัดนนทบุรี",
+   "target_title": "ตำรวจภูธรจังหวัดนนทบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/สภ.ปากเกร็ด",
+   "target_title": "สภ.ปากเกร็ด",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/ตร.",
+   "target_title": "ตร.",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/อ.ปากเกร็ด นนทบุรี",
+   "target_title": "อ.ปากเกร็ด นนทบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/พล.ต.ต.ศิริวัฒน์ ดีพอ (โฆษก ตร.)",
+   "target_title": "พล.ต.ต.ศิริวัฒน์ ดีพอ (โฆษก ตร.)",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/บุคคล/ศิริวัฒน์ ดีพอ",
+   "target_title": "ศิริวัฒน์ ดีพอ",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/สถานที่/ปากเกร็ด",
+   "target_title": "ปากเกร็ด",
+   "direction": "out"
+  },
+  {
+   "label": "ติดตามจาก",
+   "target_id": "20_Cases/20261104-police-01",
+   "target_title": "ตำรวจ บก.ปพ. แจ้งความ สภ.ปากเกร็ด ถูกดาบตำรวจและพวกรุมทำร้ายในร้านคาราโอเกะเมืองทองธานี ตำรวจเริ่มสอบสวน",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/การปฏิบัติหน้าที่ ประชาสัมพันธ์ และนโยบายตำรวจ",
+   "target_title": "การปฏิบัติหน้าที่ ประชาสัมพันธ์ และนโยบายตำรวจ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261105-police-02.svg"
+}

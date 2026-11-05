@@ -1,9 +1,9 @@
 {
  "case_id": "20261022-econ-buriram-gold-investment",
  "title": "ตำรวจทางหลวงจับชายวัย 28 ปีที่สถานีรถไฟบุรีรัมย์ ตามหมายจับแก๊งหลอกลงทุนทอง ความเสียหายกว่า 5 แสนบาท",
- "generated_at": "2026-11-04T07:00:06.230Z",
- "node_count": 5,
- "edge_count": 4,
+ "generated_at": "2026-11-05T02:30:07.394Z",
+ "node_count": 6,
+ "edge_count": 5,
  "relations": [
   {
    "label": "จับโดย",
@@ -27,6 +27,12 @@
    "label": "เป้าหมายเครือข่าย",
    "target_id": "30_Entities/Projects/แก๊งหลอกลงทุนทอง",
    "target_title": "แก๊งหลอกลงทุนทอง",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/คดีเศรษฐกิจ การเงิน และฟอกเงิน",
+   "target_title": "คดีเศรษฐกิจ การเงิน และฟอกเงิน",
    "direction": "out"
   }
  ],
