@@ -1,0 +1,46 @@
+{
+ "case_id": "20261106-police-03",
+ "title": "ผู้ช่วย ผบ.ตร. ประชุมกำชับตำรวจภูธรจังหวัดสกลนครป้องกันการประทุษร้ายต่อทรัพย์ ธนาคาร ร้านทอง ร้านสะดวกซื้อ และปั๊มน้ำมัน มอบรางวัล Top Cop ให้ 6 นายที่จับผู้ต้องหาพร้อมยาบ้ากว่า 2 แสนเม็ด",
+ "generated_at": "2026-11-06T02:30:08.831Z",
+ "node_count": 7,
+ "edge_count": 6,
+ "relations": [
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/ภ.จว.สกลนคร",
+   "target_title": "ภ.จว.สกลนคร",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/ตร.",
+   "target_title": "ตร.",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/สภ.สว่าง สกลนคร",
+   "target_title": "สภ.สว่าง สกลนคร",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/พล.ต.ท.ไตรรงค์ ผิวพรรณ (ผู้ช่วย ผบ.ตร.)",
+   "target_title": "พล.ต.ท.ไตรรงค์ ผิวพรรณ (ผู้ช่วย ผบ.ตร.)",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/บุคคล/ไตรรงค์ ผิวพรรณ",
+   "target_title": "ไตรรงค์ ผิวพรรณ",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/การปฏิบัติหน้าที่ ประชาสัมพันธ์ และนโยบายตำรวจ",
+   "target_title": "การปฏิบัติหน้าที่ ประชาสัมพันธ์ และนโยบายตำรวจ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261106-police-03.svg"
+}

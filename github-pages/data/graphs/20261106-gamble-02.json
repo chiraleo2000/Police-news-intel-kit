@@ -1,0 +1,94 @@
+{
+ "case_id": "20261106-gamble-02",
+ "title": "ตำรวจไซเบอร์ทลาย 3 เครือข่ายเว็บพนันออนไลน์ เงินหมุนเวียนรวมกว่า 3,380 ล้านบาท จับแล้ว 25 ราย รวมเครือข่าย TAIPEI999A ที่ใช้บัญชีม้านิติบุคคลพักเงิน",
+ "generated_at": "2026-11-06T02:30:08.821Z",
+ "node_count": 15,
+ "edge_count": 14,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/บช.สอท.",
+   "target_title": "บช.สอท.",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/บก.สอท.1",
+   "target_title": "บก.สอท.1",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/บก.สอท.5",
+   "target_title": "บก.สอท.5",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลอาญา",
+   "target_title": "ศาลอาญา",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/เมืองทองธานี อำเภอปากเกร็ด นนทบุรี",
+   "target_title": "เมืองทองธานี อำเภอปากเกร็ด นนทบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/พล.ต.ท.ทินกร รังมาตย์ (ผบช.สอท.)",
+   "target_title": "พล.ต.ท.ทินกร รังมาตย์ (ผบช.สอท.)",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/บุคคล/ทินกร รังมาตย์",
+   "target_title": "ทินกร รังมาตย์",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/บุคคล/อรุษ แสงจันทร์",
+   "target_title": "อรุษ แสงจันทร์",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/บุคคล/ประสงค์ เฉลิมพันธ์",
+   "target_title": "ประสงค์ เฉลิมพันธ์",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/บุคคล/คมกฤช สุขไทย",
+   "target_title": "คมกฤช สุขไทย",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/บุคคล/โรจน์ศักดิ์ นัยผ่องศรี",
+   "target_title": "โรจน์ศักดิ์ นัยผ่องศรี",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/บุคคล/บัญชา ศรีสุข",
+   "target_title": "บัญชา ศรีสุข",
+   "direction": "out"
+  },
+  {
+   "label": "บัญชี",
+   "target_id": "30_Entities/บัญชี/TAIPEI999A",
+   "target_title": "TAIPEI999A",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/พนันและบ่อนผิดกฎหมาย",
+   "target_title": "พนันและบ่อนผิดกฎหมาย",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261106-gamble-02.svg"
+}

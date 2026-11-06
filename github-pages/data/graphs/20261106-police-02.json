@@ -1,0 +1,58 @@
+{
+ "case_id": "20261106-police-02",
+ "title": "ศอ.ปส.ตร. นำคณะศึกษาดูงานการบำบัดผู้ติดยาเสพติดที่โรงพยาบาลศรีธัญญา แลกเปลี่ยนองค์ความรู้กับกระทรวงสาธารณสุข ตามนโยบายแก้ปัญหายาเสพติดเป็นวาระแห่งชาติ",
+ "generated_at": "2026-11-06T02:30:08.829Z",
+ "node_count": 9,
+ "edge_count": 8,
+ "relations": [
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/ศอ.ปส.ตร.",
+   "target_title": "ศอ.ปส.ตร.",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/ตร.",
+   "target_title": "ตร.",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/โรงพยาบาลศรีธัญญา นนทบุรี",
+   "target_title": "โรงพยาบาลศรีธัญญา นนทบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/พล.ต.ท.กฤษฎา กาญจนอลงกรณ์ (ผู้ช่วย ผบ.ตร.)",
+   "target_title": "พล.ต.ท.กฤษฎา กาญจนอลงกรณ์ (ผู้ช่วย ผบ.ตร.)",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/บุคคล/สำราญ นวลมา",
+   "target_title": "สำราญ นวลมา",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/บุคคล/อิทธิพล อัจฉริยะประดิษฐ์",
+   "target_title": "อิทธิพล อัจฉริยะประดิษฐ์",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/บุคคล/กฤษฎา กาญจนอลงกรณ์",
+   "target_title": "กฤษฎา กาญจนอลงกรณ์",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/การปฏิบัติหน้าที่ ประชาสัมพันธ์ และนโยบายตำรวจ",
+   "target_title": "การปฏิบัติหน้าที่ ประชาสัมพันธ์ และนโยบายตำรวจ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261106-police-02.svg"
+}

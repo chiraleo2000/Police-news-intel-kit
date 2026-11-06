@@ -1,0 +1,82 @@
+{
+ "case_id": "20261106-cyber-03",
+ "title": "ACSC-CIB แถลงปฏิบัติการ “สุครีพหักคอลฯ” จับตามหมายจับ 17 จาก 32 ราย แก๊งคอลเซ็นเตอร์ข้ามชาติที่ถูกกล่าวหาว่าสวมชุดตำรวจปลอมและอ้างเป็นพนักงานค่ายมือถือวิดีโอคอลหลอกเหยื่อ",
+ "generated_at": "2026-11-06T02:30:08.811Z",
+ "node_count": 13,
+ "edge_count": 12,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/บก.ปคม.",
+   "target_title": "บก.ปคม.",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/ศตออ.ตร.",
+   "target_title": "ศตออ.ตร.",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/บช.ก.",
+   "target_title": "บช.ก.",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/กองบัญชาการตำรวจสอบสวนกลาง กรุงเทพมหานคร",
+   "target_title": "กองบัญชาการตำรวจสอบสวนกลาง กรุงเทพมหานคร",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/พ.ต.อ.ชวินโรจน์ ภีมรัชต์ธำรงค์ (ผกก.4 บก.ปคม.)",
+   "target_title": "พ.ต.อ.ชวินโรจน์ ภีมรัชต์ธำรงค์ (ผกก.4 บก.ปคม.)",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/บุคคล/อิทธิพล อัจฉริยะประดิษฐ์",
+   "target_title": "อิทธิพล อัจฉริยะประดิษฐ์",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/บุคคล/จิรภพ ภูริเดช",
+   "target_title": "จิรภพ ภูริเดช",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/บุคคล/วิทยา ศรีประเสริฐภาพ",
+   "target_title": "วิทยา ศรีประเสริฐภาพ",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/บุคคล/ชวินโรจน์ ภีมรัชต์ธำรงค์",
+   "target_title": "ชวินโรจน์ ภีมรัชต์ธำรงค์",
+   "direction": "out"
+  },
+  {
+   "label": "เป้าหมายเครือข่าย",
+   "target_id": "30_Entities/ข่ายเครือข่าย/สุครีพหักคอลฯ",
+   "target_title": "สุครีพหักคอลฯ",
+   "direction": "out"
+  },
+  {
+   "label": "เป้าหมายเครือข่าย",
+   "target_id": "30_Entities/ข่ายเครือข่าย/สุครีพหักคอลฯ (ชื่อปฏิบัติการ)",
+   "target_title": "สุครีพหักคอลฯ (ชื่อปฏิบัติการ)",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261106-cyber-03.svg"
+}

@@ -1,0 +1,34 @@
+{
+ "case_id": "20261106-public-01",
+ "title": "สภ.บางละมุงร่วม พม. ตรวจห้องพักนักเรียนชายชั้น ม.1 ที่รับว่าแต่งข้อความขู่กราดยิงในกลุ่มไลน์ของโรงเรียนแห่งหนึ่ง พบประทัดลูกบอล 162 ลูกและหน้าไม้ยิงปลา 1 กระบอก",
+ "generated_at": "2026-11-06T02:30:08.836Z",
+ "node_count": 5,
+ "edge_count": 4,
+ "relations": [
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/สภ.บางละมุง",
+   "target_title": "สภ.บางละมุง",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/อำเภอบางละมุง ชลบุรี",
+   "target_title": "อำเภอบางละมุง ชลบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/บางละมุง",
+   "target_title": "บางละมุง",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/ความสงบเรียบร้อยและความมั่นคงภายใน",
+   "target_title": "ความสงบเรียบร้อยและความมั่นคงภายใน",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261106-public-01.svg"
+}

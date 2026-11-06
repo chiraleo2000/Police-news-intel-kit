@@ -1,0 +1,46 @@
+{
+ "case_id": "20261106-econ-02",
+ "title": "นักกิจกรรมยื่น บช.ก. ขอตรวจสอบเส้นทางเงินมูลนิธิกันจอมพลังช่วยสู้ และการจัดซื้อตู้คอนเทนเนอร์ชายแดนไทย-กัมพูชา ขณะ DSI เตรียมเชิญนายทหารเรือให้ข้อมูล 6 พ.ย.",
+ "generated_at": "2026-11-06T02:30:08.815Z",
+ "node_count": 7,
+ "edge_count": 6,
+ "relations": [
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/บช.ก.",
+   "target_title": "บช.ก.",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/ดีเอสไอ",
+   "target_title": "ดีเอสไอ",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/กองบัญชาการตำรวจสอบสวนกลาง กรุงเทพมหานคร",
+   "target_title": "กองบัญชาการตำรวจสอบสวนกลาง กรุงเทพมหานคร",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/นายสนธิญา สวัสดี (ผู้ร้องเรียน)",
+   "target_title": "นายสนธิญา สวัสดี (ผู้ร้องเรียน)",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/บุคคล/ณัฐศักดิ์ เชาวนาศัย",
+   "target_title": "ณัฐศักดิ์ เชาวนาศัย",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/คดีเศรษฐกิจ การเงิน และฟอกเงิน",
+   "target_title": "คดีเศรษฐกิจ การเงิน และฟอกเงิน",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261106-econ-02.svg"
+}

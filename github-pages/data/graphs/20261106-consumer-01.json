@@ -1,0 +1,46 @@
+{
+ "case_id": "20261106-consumer-01",
+ "title": "กรมทรัพย์สินทางปัญญาร่วม บก.ปอศ. บุกโกดังใน กทม. และอุดรธานี ยึดผงชูรสและครีมที่มีเครื่องหมายการค้าปลอมราว 3.5 แสนชิ้น หลังพบขายบนแพลตฟอร์มออนไลน์",
+ "generated_at": "2026-11-06T02:30:08.805Z",
+ "node_count": 7,
+ "edge_count": 6,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/บก.ปอศ.",
+   "target_title": "บก.ปอศ.",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/กรมทรัพย์สินทางปัญญา",
+   "target_title": "กรมทรัพย์สินทางปัญญา",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/อุดรธานี",
+   "target_title": "อุดรธานี",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/กรุงเทพมหานคร",
+   "target_title": "กรุงเทพมหานคร",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/นางสาวจิตติมา ศรีถาพร (อธิบดีกรมทรัพย์สินทางปัญญา)",
+   "target_title": "นางสาวจิตติมา ศรีถาพร (อธิบดีกรมทรัพย์สินทางปัญญา)",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/คุ้มครองผู้บริโภคและสินค้าผิดกฎหมาย",
+   "target_title": "คุ้มครองผู้บริโภคและสินค้าผิดกฎหมาย",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261106-consumer-01.svg"
+}

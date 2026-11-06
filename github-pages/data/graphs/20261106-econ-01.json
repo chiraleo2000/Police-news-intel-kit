@@ -1,0 +1,94 @@
+{
+ "case_id": "20261106-econ-01",
+ "title": "บก.ปอศ. จับประธานมูลนิธิองค์กรทำดีตามหมายจับศาลอาญา 3 ข้อหา ที่บ้านพักย่านนวมินทร์ พร้อมค้นรวม 4 จุดใน กทม.-ปทุมธานี ส่วนสามีซึ่งถูกออกหมายจับข้อหาร่วมฟอกเงินยังไม่พบตัว",
+ "generated_at": "2026-11-06T02:30:08.812Z",
+ "node_count": 15,
+ "edge_count": 14,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/บก.ปอศ.",
+   "target_title": "บก.ปอศ.",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บช.ก.",
+   "target_title": "บช.ก.",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลอาญา",
+   "target_title": "ศาลอาญา",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/เขตบึงกุ่ม กรุงเทพมหานคร",
+   "target_title": "เขตบึงกุ่ม กรุงเทพมหานคร",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/อำเภอหนองเสือ ปทุมธานี",
+   "target_title": "อำเภอหนองเสือ ปทุมธานี",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/พล.ต.ท.ณัฐศักดิ์ เชาวนาศัย (ผบช.ก.)",
+   "target_title": "พล.ต.ท.ณัฐศักดิ์ เชาวนาศัย (ผบช.ก.)",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/พล.ต.ต.ทัศน์ภูมิ จารุปรัชญ์ (ผบก.ปอศ.)",
+   "target_title": "พล.ต.ต.ทัศน์ภูมิ จารุปรัชญ์ (ผบก.ปอศ.)",
+   "direction": "out"
+  },
+  {
+   "label": "ผู้ต้องหา",
+   "target_id": "30_Entities/People/ปนัดดา วงศ์ผู้ดี",
+   "target_title": "ปนัดดา วงศ์ผู้ดี",
+   "direction": "out"
+  },
+  {
+   "label": "ผู้ต้องหา",
+   "target_id": "30_Entities/People/อธิป อนันทวรรณ",
+   "target_title": "อธิป อนันทวรรณ",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/บุคคล/ณัฐศักดิ์ เชาวนาศัย",
+   "target_title": "ณัฐศักดิ์ เชาวนาศัย",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/บุคคล/ทัศน์ภูมิ จารุปรัชญ์",
+   "target_title": "ทัศน์ภูมิ จารุปรัชญ์",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/บุคคล/จำนาญ จันทร์เทศ",
+   "target_title": "จำนาญ จันทร์เทศ",
+   "direction": "out"
+  },
+  {
+   "label": "ติดตามจาก",
+   "target_id": "20_Cases/20261105-econ-01",
+   "target_title": "บก.ปอศ. อายัด 15-17 บัญชีของผู้ถูกกล่าวหารายหลักคดีมูลนิธิองค์กรทำดีและสามี รวมราว 60 ล้านบาท ตรวจบ้านและรถ 22 คัน เตรียมเสนอ ปปง. ยึดทรัพย์ ขณะดารานักแสดงเข้าให้ปากคำเป็นพยาน",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/คดีเศรษฐกิจ การเงิน และฟอกเงิน",
+   "target_title": "คดีเศรษฐกิจ การเงิน และฟอกเงิน",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261106-econ-01.svg"
+}

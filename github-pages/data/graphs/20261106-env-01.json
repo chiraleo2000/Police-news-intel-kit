@@ -1,0 +1,70 @@
+{
+ "case_id": "20261106-env-01",
+ "title": "ตม.จว.ระนอง จับชายอินเดียอายุ 40 ปี ตามหมายจับศาลภาษีอากรกลาง คดีเกี่ยวกับขบวนการลักลอบครอบครองและส่งออกสัตว์ป่าสงวนข้ามชาติ ขณะถูกกล่าวหาว่าเตรียมหนีลงเรือออกนอกประเทศ",
+ "generated_at": "2026-11-06T02:30:08.818Z",
+ "node_count": 11,
+ "edge_count": 10,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/ตม.จว.ระนอง",
+   "target_title": "ตม.จว.ระนอง",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/บก.ตม.6",
+   "target_title": "บก.ตม.6",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/บก.ปทส.",
+   "target_title": "บก.ปทส.",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลภาษีอากรกลาง",
+   "target_title": "ศาลภาษีอากรกลาง",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ท่าเทียบเรือเทศบาลตำบลปากน้ำ ระนอง",
+   "target_title": "ท่าเทียบเรือเทศบาลตำบลปากน้ำ ระนอง",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/พ.ต.อ.เจริญพงษ์ ขันติโล (โฆษก บก.ตม.6)",
+   "target_title": "พ.ต.อ.เจริญพงษ์ ขันติโล (โฆษก บก.ตม.6)",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/บุคคล/เจริญพงษ์ ขันติโล",
+   "target_title": "เจริญพงษ์ ขันติโล",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/บุคคล/นพศิลป์ พูลสวัสดิ์",
+   "target_title": "นพศิลป์ พูลสวัสดิ์",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/บุคคล/เด่นชาย เจริญยุทธ",
+   "target_title": "เด่นชาย เจริญยุทธ",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/สิ่งแวดล้อม ทรัพยากร และสัตว์ป่า",
+   "target_title": "สิ่งแวดล้อม ทรัพยากร และสัตว์ป่า",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261106-env-01.svg"
+}

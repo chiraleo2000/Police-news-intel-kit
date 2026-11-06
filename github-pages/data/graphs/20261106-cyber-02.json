@@ -1,0 +1,76 @@
+{
+ "case_id": "20261106-cyber-02",
+ "title": "ACSC และ บก.ทล. แถลงปฏิบัติการ Highway Scam Hunter EP.5 ขยายผลเครือข่ายบัญชีม้านิติบุคคล หมายจับรวม 56 ราย จับผู้ถูกกล่าวหาว่าเป็นผู้จัดหาและควบคุมบัญชีเพิ่ม 3 ราย ความเสียหายกว่า 250 ล้านบาท",
+ "generated_at": "2026-11-06T02:30:08.809Z",
+ "node_count": 12,
+ "edge_count": 11,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/บก.ทล.",
+   "target_title": "บก.ทล.",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/ศตออ.ตร.",
+   "target_title": "ศตออ.ตร.",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/บช.ก.",
+   "target_title": "บช.ก.",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/กองบัญชาการตำรวจสอบสวนกลาง กรุงเทพมหานคร",
+   "target_title": "กองบัญชาการตำรวจสอบสวนกลาง กรุงเทพมหานคร",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/พ.ต.อ.ภคพล สุชล (ผกก.2 บก.ทล.)",
+   "target_title": "พ.ต.อ.ภคพล สุชล (ผกก.2 บก.ทล.)",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/พล.ต.อ.อิทธิพล อัจฉริยะประดิษฐ์ (รอง ผบ.ตร.)",
+   "target_title": "พล.ต.อ.อิทธิพล อัจฉริยะประดิษฐ์ (รอง ผบ.ตร.)",
+   "direction": "out"
+  },
+  {
+   "label": "เป้าหมายเครือข่าย",
+   "target_id": "30_Entities/Projects/เครือข่ายบัญชีม้านิติบุคคล (Highway Scam Hunter EP.5)",
+   "target_title": "เครือข่ายบัญชีม้านิติบุคคล (Highway Scam Hunter EP.5)",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/บุคคล/อิทธิพล อัจฉริยะประดิษฐ์",
+   "target_title": "อิทธิพล อัจฉริยะประดิษฐ์",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/บุคคล/บุญลือ ผดุงถิ่น",
+   "target_title": "บุญลือ ผดุงถิ่น",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/บุคคล/ภคพล สุชล",
+   "target_title": "ภคพล สุชล",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261106-cyber-02.svg"
+}
