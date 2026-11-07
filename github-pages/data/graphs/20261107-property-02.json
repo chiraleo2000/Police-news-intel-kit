@@ -1,0 +1,34 @@
+{
+ "case_id": "20261107-property-02",
+ "title": "สน.ทุ่งสองห้อง จับชายอายุ 47 ปีที่ถูกกล่าวหาว่ารับจ้างถ่ายภาพงานรับปริญญาบังหน้า แล้วล้วงทรัพย์จากกระเป๋าที่วางทิ้งไว้ ตำรวจพบประวัติคดีลักทรัพย์หลายท้องที่และเพิ่งพ้นโทษ",
+ "generated_at": "2026-11-07T02:30:07.988Z",
+ "node_count": 5,
+ "edge_count": 4,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/สน.ทุ่งสองห้อง",
+   "target_title": "สน.ทุ่งสองห้อง",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บก.น.2",
+   "target_title": "บก.น.2",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/วิทยาลัยแพทยศาสตร์ศรีสวางควัฒน",
+   "target_title": "วิทยาลัยแพทยศาสตร์ศรีสวางควัฒน",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/คดีทรัพย์สิน",
+   "target_title": "คดีทรัพย์สิน",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261107-property-02.svg"
+}

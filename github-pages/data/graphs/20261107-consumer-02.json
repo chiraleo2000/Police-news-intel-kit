@@ -1,0 +1,40 @@
+{
+ "case_id": "20261107-consumer-02",
+ "title": "ด่านศุลกากรประจวบคีรีขันธ์ ร่วม DSI ศูนย์ปฏิบัติการคดีพิเศษเขตพื้นที่ 7 และ กก.ตชด.14 ตั้งจุดสกัดด่านห้วยยาง ยึดบุหรี่ส่งออก 351,000 มวนและบุหรี่ไฟฟ้า 276 ชิ้น มูลค่ารวมภาษีราว 4.08 ล้านบาท",
+ "generated_at": "2026-11-07T02:30:07.968Z",
+ "node_count": 6,
+ "edge_count": 5,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/ด่านศุลกากรประจวบคีรีขันธ์",
+   "target_title": "ด่านศุลกากรประจวบคีรีขันธ์",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/ดีเอสไอ",
+   "target_title": "ดีเอสไอ",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/กก.ตชด.14",
+   "target_title": "กก.ตชด.14",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ด่านตรวจห้วยยาง อำเภอทับสะแก",
+   "target_title": "ด่านตรวจห้วยยาง อำเภอทับสะแก",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/คุ้มครองผู้บริโภคและสินค้าผิดกฎหมาย",
+   "target_title": "คุ้มครองผู้บริโภคและสินค้าผิดกฎหมาย",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261107-consumer-02.svg"
+}

@@ -1,0 +1,58 @@
+{
+ "case_id": "20261107-tourist-02",
+ "title": "ตม.จว.ปทุมธานี ร่วม บช.ทท. และ บก.สส.ภ.1 ค้นหอพักใกล้ตลาดสี่มุมเมือง จับชายชาวจีนอยู่เกินกำหนด 107 วัน และชายหญิงไทย 2 ราย ข้อหาร่วมกันมียาบ้า ยึดยาบ้า 4 เม็ดและพอตเค",
+ "generated_at": "2026-11-07T02:30:07.993Z",
+ "node_count": 9,
+ "edge_count": 8,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/ตม.จว.ปทุมธานี",
+   "target_title": "ตม.จว.ปทุมธานี",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บก.ตม.3",
+   "target_title": "บก.ตม.3",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/สภ.คูคต",
+   "target_title": "สภ.คูคต",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ตลาดสี่มุมเมือง จังหวัดปทุมธานี",
+   "target_title": "ตลาดสี่มุมเมือง จังหวัดปทุมธานี",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/พล.ต.ต.ทรงโปรด สิริสุขะ ผบก.ตม.3",
+   "target_title": "พล.ต.ต.ทรงโปรด สิริสุขะ ผบก.ตม.3",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/บุคคล/ทรงโปรด สิริสุขะ",
+   "target_title": "ทรงโปรด สิริสุขะ",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/บุคคล/ณัฐกิตติ์ มีสุข",
+   "target_title": "ณัฐกิตติ์ มีสุข",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมที่เกี่ยวข้องกับนักท่องเที่ยวและชาวต่างชาติ",
+   "target_title": "อาชญากรรมที่เกี่ยวข้องกับนักท่องเที่ยวและชาวต่างชาติ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261107-tourist-02.svg"
+}

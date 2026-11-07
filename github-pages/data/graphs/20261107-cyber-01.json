@@ -1,0 +1,70 @@
+{
+ "case_id": "20261107-cyber-01",
+ "title": "สืบสวนภาค 2 ร่วม สภ.เมืองพัทยา และ ตม.จว.ชลบุรี ค้นคอนโดฯ ย่านพัทยากลาง จับชาวจีน 3 คนไทย 5 ยึดสมุดบัญชี 22 เล่ม บัตร ATM 35 ใบ ตำรวจระบุเครือข่ายซื้อขายบัญชีม้าเชื่อมคดีฉ้อโกงออนไลน์เสียหายไม่ต่ำกว่า 100 ล้านบาท",
+ "generated_at": "2026-11-07T02:30:07.969Z",
+ "node_count": 11,
+ "edge_count": 10,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/บก.สส.ภ.2",
+   "target_title": "บก.สส.ภ.2",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บช.ภ.2",
+   "target_title": "บช.ภ.2",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/สภ.เมืองพัทยา",
+   "target_title": "สภ.เมืองพัทยา",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/ตม.จว.ชลบุรี",
+   "target_title": "ตม.จว.ชลบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลจังหวัดพัทยา",
+   "target_title": "ศาลจังหวัดพัทยา",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ย่านพัทยากลาง จังหวัดชลบุรี",
+   "target_title": "ย่านพัทยากลาง จังหวัดชลบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/พล.ต.ท.วสันต์ เตชะอัครเกษม ผบช.ภ.2",
+   "target_title": "พล.ต.ท.วสันต์ เตชะอัครเกษม ผบช.ภ.2",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/บุคคล/วสันต์ เตชะอัครเกษม",
+   "target_title": "วสันต์ เตชะอัครเกษม",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/พัทยา",
+   "target_title": "พัทยา",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261107-cyber-01.svg"
+}

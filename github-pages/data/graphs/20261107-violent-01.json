@@ -1,0 +1,64 @@
+{
+ "case_id": "20261107-violent-01",
+ "title": "สน.ทองหล่อ ขอศาลแขวงพระนครใต้ออกหมายจับนายณัฐวุฒิ วงศ์เนียม หลังไม่มาตามหมายเรียก 3 ครั้ง คดีถูกกล่าวหาทำร้ายร่างกายและหมิ่นประมาทอดีต กกต. หน้า สน.ทองหล่อ และประสาน ตม. สกัดตัว",
+ "generated_at": "2026-11-07T02:30:07.996Z",
+ "node_count": 10,
+ "edge_count": 9,
+ "relations": [
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/สน.ทองหล่อ",
+   "target_title": "สน.ทองหล่อ",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลแขวงพระนครใต้",
+   "target_title": "ศาลแขวงพระนครใต้",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/ตม.",
+   "target_title": "ตม.",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/สน.ทองหล่อ",
+   "target_title": "สน.ทองหล่อ",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/พ.ต.อ.รัฐธนนท์ เอกฐิติกุลพัทธ์ ผกก.สน.ทองหล่อ",
+   "target_title": "พ.ต.อ.รัฐธนนท์ เอกฐิติกุลพัทธ์ ผกก.สน.ทองหล่อ",
+   "direction": "out"
+  },
+  {
+   "label": "ผู้ต้องหา",
+   "target_id": "30_Entities/People/นายณัฐวุฒิ วงศ์เนียม",
+   "target_title": "นายณัฐวุฒิ วงศ์เนียม",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/บุคคล/รัฐธนนท์ เอกฐิติกุลพัทธ์",
+   "target_title": "รัฐธนนท์ เอกฐิติกุลพัทธ์",
+   "direction": "out"
+  },
+  {
+   "label": "ติดตามจาก",
+   "target_id": "20_Cases/20261023-other-03",
+   "target_title": "\"สมชัย\" อัปเดตคดี \"ณัฐวุฒิ\" เบี้ยวหมายเรียก 2 รอบ ลั่นรอบ3 ไม่มาเจอแน่",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/คดีชีวิต ร่างกาย และเพศ",
+   "target_title": "คดีชีวิต ร่างกาย และเพศ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261107-violent-01.svg"
+}

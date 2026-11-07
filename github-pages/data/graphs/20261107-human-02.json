@@ -1,0 +1,52 @@
+{
+ "case_id": "20261107-human-02",
+ "title": "บก.สส.ภ.8 ตรวจไซต์ก่อสร้างวิลล่าในซอยเชิงทะเล 1 อ.ถลาง ภูเก็ต หลังมีเรื่องร้องเรียน พบแรงงานเมียนมา 9 รายผิดกฎหมายเข้าเมืองและการทำงาน จากแรงงานราว 50 คนในโครงการ",
+ "generated_at": "2026-11-07T02:30:07.980Z",
+ "node_count": 8,
+ "edge_count": 7,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/บก.สส.ภ.8",
+   "target_title": "บก.สส.ภ.8",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/สภ.เชิงทะเล",
+   "target_title": "สภ.เชิงทะเล",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ตำบลเชิงทะเล อำเภอถลาง จังหวัดภูเก็ต",
+   "target_title": "ตำบลเชิงทะเล อำเภอถลาง จังหวัดภูเก็ต",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/พล.ต.ต.เลิศชาย จำปาทอง ผบก.สส.ภ.8",
+   "target_title": "พล.ต.ต.เลิศชาย จำปาทอง ผบก.สส.ภ.8",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/บุคคล/เลิศชาย จำปาทอง",
+   "target_title": "เลิศชาย จำปาทอง",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/สถานที่/ถลาง",
+   "target_title": "ถลาง",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/ค้ามนุษย์ แรงงานผิดกฎหมาย และคุ้มครองเด็ก",
+   "target_title": "ค้ามนุษย์ แรงงานผิดกฎหมาย และคุ้มครองเด็ก",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261107-human-02.svg"
+}

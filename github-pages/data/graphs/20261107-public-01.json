@@ -1,0 +1,46 @@
+{
+ "case_id": "20261107-public-01",
+ "title": "บช.น. ออกคำสั่งที่ 862/2569 ห้ามชุมนุมสาธารณะในรัศมี 50 เมตรรอบทำเนียบรัฐบาล ตั้งแต่ 5 ถึง 20 พ.ย. 2569 หลังกลุ่ม นปผ. ชุมนุมที่นครศรีธรรมราชและมีแนวโน้มเคลื่อนขบวนเข้า กทม.",
+ "generated_at": "2026-11-07T02:30:07.990Z",
+ "node_count": 7,
+ "edge_count": 6,
+ "relations": [
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บช.น.",
+   "target_title": "บช.น.",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/บก.น.1",
+   "target_title": "บก.น.1",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ทำเนียบรัฐบาล",
+   "target_title": "ทำเนียบรัฐบาล",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/พล.ต.ท.สยาม บุญสม ผบช.น.",
+   "target_title": "พล.ต.ท.สยาม บุญสม ผบช.น.",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/บุคคล/สยาม บุญสม",
+   "target_title": "สยาม บุญสม",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/ความสงบเรียบร้อยและความมั่นคงภายใน",
+   "target_title": "ความสงบเรียบร้อยและความมั่นคงภายใน",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261107-public-01.svg"
+}
