@@ -1,0 +1,227 @@
+{
+ "baseline": "ok",
+ "window_days": 7,
+ "days_available": 7,
+ "note": "baseline 7 วันย้อนหลัง (<7 วัน: แนวโน้มเป็นข้อมูลบ่งชี้เท่านั้น) surge = วันนี้ >=3 เรื่อง และสูงกว่าค่าเฉลี่ย >=50 เปอร์เซ็นต์",
+ "by_crime_type": [
+  {
+   "type": "ยาเสพติด",
+   "today": 5,
+   "avg_prev_7d": 2.86,
+   "delta_pct": 75.0,
+   "surge": true
+  },
+  {
+   "type": "อาชญากรรมที่เกี่ยวข้องกับนักท่องเที่ยวและชาวต่างชาติ",
+   "today": 4,
+   "avg_prev_7d": 2.0,
+   "delta_pct": 100.0,
+   "surge": true
+  },
+  {
+   "type": "อาชญากรรมไซเบอร์และออนไลน์",
+   "today": 3,
+   "avg_prev_7d": 2.0,
+   "delta_pct": 50.0,
+   "surge": true
+  },
+  {
+   "type": "พนันและบ่อนผิดกฎหมาย",
+   "today": 2,
+   "avg_prev_7d": 1.29,
+   "delta_pct": 55.6,
+   "surge": false
+  },
+  {
+   "type": "การปฏิบัติหน้าที่ ประชาสัมพันธ์ และนโยบายตำรวจ",
+   "today": 2,
+   "avg_prev_7d": 1.86,
+   "delta_pct": 7.7,
+   "surge": false
+  },
+  {
+   "type": "คดีเศรษฐกิจ การเงิน และฟอกเงิน",
+   "today": 1,
+   "avg_prev_7d": 2.29,
+   "delta_pct": -56.2,
+   "surge": false
+  },
+  {
+   "type": "คดีชีวิต ร่างกาย และเพศ",
+   "today": 1,
+   "avg_prev_7d": 2.86,
+   "delta_pct": -65.0,
+   "surge": false
+  },
+  {
+   "type": "คดีอุกฉกรรจ์ ผู้มีอิทธิพล และอาวุธ",
+   "today": 1,
+   "avg_prev_7d": 0.29,
+   "delta_pct": 250.0,
+   "surge": false
+  },
+  {
+   "type": "คุ้มครองผู้บริโภคและสินค้าผิดกฎหมาย",
+   "today": 1,
+   "avg_prev_7d": 1.43,
+   "delta_pct": -30.0,
+   "surge": false
+  },
+  {
+   "type": "สิ่งแวดล้อม ทรัพยากร และสัตว์ป่า",
+   "today": 1,
+   "avg_prev_7d": 0.86,
+   "delta_pct": 16.7,
+   "surge": false
+  }
+ ],
+ "by_mo": [
+  {
+   "mo": "ลำเลียงยาเสพติด",
+   "today": 4,
+   "avg_prev_7d": 0.0,
+   "surge": true
+  },
+  {
+   "mo": "ฟอกเงิน",
+   "today": 1,
+   "avg_prev_7d": 0.0,
+   "surge": false
+  },
+  {
+   "mo": "พนันออนไลน์",
+   "today": 1,
+   "avg_prev_7d": 0.0,
+   "surge": false
+  },
+  {
+   "mo": "บัญชีม้า/ซิมม้า",
+   "today": 1,
+   "avg_prev_7d": 0.0,
+   "surge": false
+  },
+  {
+   "mo": "สินค้า/ยาปลอม",
+   "today": 1,
+   "avg_prev_7d": 0.0,
+   "surge": false
+  },
+  {
+   "mo": "นอมินีธุรกิจต่างชาติ",
+   "today": 1,
+   "avg_prev_7d": 0.0,
+   "surge": false
+  },
+  {
+   "mo": "คอลเซ็นเตอร์",
+   "today": 1,
+   "avg_prev_7d": 0.0,
+   "surge": false
+  },
+  {
+   "mo": "แอบอ้างเจ้าหน้าที่รัฐ/ตำรวจ",
+   "today": 1,
+   "avg_prev_7d": 0.0,
+   "surge": false
+  },
+  {
+   "mo": "ไกด์/ทัวร์เถื่อน",
+   "today": 1,
+   "avg_prev_7d": 0.0,
+   "surge": false
+  },
+  {
+   "mo": "บ่อน/คาสิโนผิดกฎหมาย",
+   "today": 1,
+   "avg_prev_7d": 0.0,
+   "surge": false
+  }
+ ],
+ "by_province": [
+  {
+   "province": "กรุงเทพมหานคร",
+   "today": 5,
+   "avg_prev_7d": 9.0
+  },
+  {
+   "province": "ภูเก็ต",
+   "today": 3,
+   "avg_prev_7d": 2.14
+  },
+  {
+   "province": "ปทุมธานี",
+   "today": 1,
+   "avg_prev_7d": 0.86
+  },
+  {
+   "province": "พิษณุโลก",
+   "today": 1,
+   "avg_prev_7d": 0.0
+  },
+  {
+   "province": "อุบลราชธานี",
+   "today": 1,
+   "avg_prev_7d": 0.0
+  },
+  {
+   "province": "ศรีสะเกษ",
+   "today": 1,
+   "avg_prev_7d": 0.0
+  },
+  {
+   "province": "นครพนม",
+   "today": 1,
+   "avg_prev_7d": 0.57
+  },
+  {
+   "province": "ขอนแก่น",
+   "today": 1,
+   "avg_prev_7d": 0.14
+  },
+  {
+   "province": "ตาก",
+   "today": 1,
+   "avg_prev_7d": 0.14
+  },
+  {
+   "province": "สมุทรสาคร",
+   "today": 1,
+   "avg_prev_7d": 0.14
+  },
+  {
+   "province": "นครนายก",
+   "today": 1,
+   "avg_prev_7d": 0.29
+  },
+  {
+   "province": "นนทบุรี",
+   "today": 1,
+   "avg_prev_7d": 2.29
+  },
+  {
+   "province": "นครราชสีมา",
+   "today": 1,
+   "avg_prev_7d": 0.43
+  },
+  {
+   "province": "พัทลุง",
+   "today": 1,
+   "avg_prev_7d": 0.0
+  },
+  {
+   "province": "ตรัง",
+   "today": 1,
+   "avg_prev_7d": 0.0
+  },
+  {
+   "province": "กระบี่",
+   "today": 1,
+   "avg_prev_7d": 0.43
+  },
+  {
+   "province": "สงขลา",
+   "today": 1,
+   "avg_prev_7d": 0.43
+  }
+ ]
+}

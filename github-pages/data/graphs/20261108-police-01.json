@@ -1,0 +1,58 @@
+{
+ "case_id": "20261108-police-01",
+ "title": "ภ.จว.นนทบุรี นำกำลังตรวจสถานบริการและร้านอาหาร 3 แห่งใน อ.ปากเกร็ด คืน 6 พ.ย. กำชับเวลาเปิดปิด จุดตรวจอาวุธ ยาเสพติด และห้ามรับผู้อายุต่ำกว่า 20 ปีเข้าใช้บริการ",
+ "generated_at": "2026-11-08T02:30:08.553Z",
+ "node_count": 9,
+ "edge_count": 8,
+ "relations": [
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/ภ.จว.นนทบุรี",
+   "target_title": "ภ.จว.นนทบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/สภ.ปากเกร็ด",
+   "target_title": "สภ.ปากเกร็ด",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ต.คลองเกลือ อ.ปากเกร็ด",
+   "target_title": "ต.คลองเกลือ อ.ปากเกร็ด",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ต.บางตลาด อ.ปากเกร็ด",
+   "target_title": "ต.บางตลาด อ.ปากเกร็ด",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/พล.ต.ต.ธรรมนูญ เชาวะวนิชย์ ผบก.ภ.จว.นนทบุรี",
+   "target_title": "พล.ต.ต.ธรรมนูญ เชาวะวนิชย์ ผบก.ภ.จว.นนทบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/บุคคล/ธรรมนูญ เชาวะวนิชย์",
+   "target_title": "ธรรมนูญ เชาวะวนิชย์",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/สถานที่/ปากเกร็ด",
+   "target_title": "ปากเกร็ด",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/การปฏิบัติหน้าที่ ประชาสัมพันธ์ และนโยบายตำรวจ",
+   "target_title": "การปฏิบัติหน้าที่ ประชาสัมพันธ์ และนโยบายตำรวจ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261108-police-01.svg"
+}

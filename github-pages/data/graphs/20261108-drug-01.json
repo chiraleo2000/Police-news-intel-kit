@@ -1,0 +1,64 @@
+{
+ "case_id": "20261108-drug-01",
+ "title": "ตำรวจภูธรภาค 3 แถลงผลสกัดยาบ้า 4 คดีในอุบลราชธานีและศรีสะเกษ ยึดยาบ้ารวม 18,202,200 เม็ด จับผู้ต้องหาชาวไทยและชาวลาว ผบช.ภ.3 สั่งขยายผลถึงนายทุนและยึดทรัพย์",
+ "generated_at": "2026-11-08T02:30:08.540Z",
+ "node_count": 10,
+ "edge_count": 9,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/ตำรวจภูธรภาค 3",
+   "target_title": "ตำรวจภูธรภาค 3",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/ภ.จว.อุบลราชธานี",
+   "target_title": "ภ.จว.อุบลราชธานี",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/อ.สิรินธร จ.อุบลราชธานี",
+   "target_title": "อ.สิรินธร จ.อุบลราชธานี",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/อ.น้ำขุ่น จ.อุบลราชธานี",
+   "target_title": "อ.น้ำขุ่น จ.อุบลราชธานี",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/อ่างเก็บน้ำห้วยโดน อ.บุณฑริก",
+   "target_title": "อ่างเก็บน้ำห้วยโดน อ.บุณฑริก",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/อ.กันทรลักษ์ จ.ศรีสะเกษ",
+   "target_title": "อ.กันทรลักษ์ จ.ศรีสะเกษ",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/พล.ต.ท.อาทิชา เปาอินทร์ ผบช.ภ.3",
+   "target_title": "พล.ต.ท.อาทิชา เปาอินทร์ ผบช.ภ.3",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/บุคคล/อาทิชา เปาอินทร์",
+   "target_title": "อาทิชา เปาอินทร์",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/ยาเสพติด",
+   "target_title": "ยาเสพติด",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261108-drug-01.svg"
+}

@@ -1,0 +1,341 @@
+{
+ "run_date": "2026-11-08",
+ "target_date": "2026-11-08",
+ "task": "1-online",
+ "pipeline": "task-1-police-crime-news-pipeline-1.1",
+ "base_skill": "police-crime-news-pipeline-combined-1.1",
+ "batches": {
+  "A": {
+   "attempted": 25,
+   "registry_rows": 25,
+   "created": 3,
+   "no_news_today": [
+    "A:royalthaipolice",
+    "A:ccid1",
+    "A:idmb",
+    "A:highway",
+    "A:ecd",
+    "A:cppd",
+    "A:pct",
+    "A:tcsd",
+    "A:immigration",
+    "A:metro",
+    "A:phak1",
+    "A:phak2",
+    "A:phak3",
+    "A:phak4",
+    "A:phak5",
+    "A:phak6",
+    "A:phak7",
+    "A:phak8",
+    "A:phak9",
+    "A:border_patrol"
+   ],
+   "unattempted": []
+  },
+  "B": {
+   "attempted": 12,
+   "registry_rows": 12,
+   "created": 1,
+   "no_news_today": [
+    "B:AMLO",
+    "B:MDES",
+    "B:ThaiPoliceOnline",
+    "B:SEC",
+    "B:NACC",
+    "B:OCPB"
+   ],
+   "unattempted": []
+  },
+  "C": {
+   "attempted": 16,
+   "registry_rows": 16,
+   "created": 11,
+   "no_news_today": [
+    "C:34_nationtv",
+    "C:36_pptv",
+    "C:37_komchad",
+    "C:38_isra",
+    "C:41_bangkokbiz"
+   ],
+   "unattempted": []
+  },
+  "D": {
+   "attempted": 13,
+   "registry_rows": 13,
+   "created": 6,
+   "no_news_today": [
+    "D:52_interpol",
+    "D:53_unodc"
+   ],
+   "unattempted": []
+  }
+ },
+ "registry_file": "server/config/registry/crime.json",
+ "registry_attempt_targets": 66,
+ "articles_scraped_pass": 427,
+ "chrome_unavailable": false,
+ "chrome_tool": "built-in browser (Claude desktop)",
+ "chrome_listing_sources": 4,
+ "chrome_article_opens": 1,
+ "articles_total": 149,
+ "posts_published_after_merge": 21,
+ "official_pr_articles": 6,
+ "sources_attempted": 66,
+ "sources_with_news": 20,
+ "sources_ok_no_news": 33,
+ "sources_stale": 8,
+ "sources_blocked": 3,
+ "sources_parser_failed": 2,
+ "sources_unattempted": 0,
+ "source_health": "see _index.json",
+ "bd_leads_count": 12,
+ "brain_entities_touched": null,
+ "graph_check": {
+  "working_set_count": 21,
+  "headlines_analyzed": 21,
+  "entities_listed_per_headline": true,
+  "thai_labels_only": true,
+  "related_cases_empty_when_unsure": true,
+  "rebuild_pages_feed": true,
+  "ego_graphs_for_working_set": true,
+  "unrelated_days_untouched": false,
+  "note": "embed-graphs-in-html.js re-embedded HTML of earlier days (script processes all days); vault 20261107-cyber-01 got one added source (same event)"
+ },
+ "obsidian_cases": 21,
+ "tag_policy": "1-2 headline-specific tags; no generic, place, or unit tags",
+ "outputs": {
+  "json_web": true,
+  "obsidian_md": true,
+  "pdf": true,
+  "infographic": true
+ },
+ "trend_baseline": "ok",
+ "registry_issues": [
+  {
+   "key": "saranitet_police",
+   "url": "https://saranitet.police.go.th/",
+   "problem": "Listing snapshot stops at 22 Oct 2026; no 23/24 Oct items",
+   "suggested_action": "Re-check later in day; may be fetch cache lag"
+  },
+  {
+   "key": "ccid1-4",
+   "url": "https://ccid1.ccib.go.th/",
+   "problem": "Sites mainly link to Facebook, undated, empty read-more links",
+   "suggested_action": "Use media corroboration; mark no_listing"
+  },
+  {
+   "key": "cib",
+   "url": "https://cib.go.th/",
+   "problem": "client_error",
+   "suggested_action": "search_only"
+  },
+  {
+   "key": "metro_police",
+   "url": "https://www.metro.police.go.th/",
+   "problem": "client_error",
+   "suggested_action": "search_only"
+  },
+  {
+   "key": "immigration",
+   "url": "https://www.immigration.go.th/",
+   "problem": "client_error",
+   "suggested_action": "use sub-sites; tak is stale since Jul 2026"
+  },
+  {
+   "key": "p7_p8_p9",
+   "url": "https://p8.police.go.th/index.php",
+   "problem": "client_error",
+   "suggested_action": "search_only"
+  },
+  {
+   "key": "p1",
+   "url": "https://p1.police.go.th/",
+   "problem": "content appears to be 2014-era",
+   "suggested_action": "mark stale"
+  },
+  {
+   "key": "OCPB",
+   "url": "https://www.ocpb.go.th/",
+   "problem": "No news list rendered; /news.php server error",
+   "suggested_action": "try more_news.php?cid=N or news_view.php?nid=N probing"
+  },
+  {
+   "key": "OAG",
+   "url": "https://www.ago.go.th/pr/",
+   "problem": "client_error",
+   "suggested_action": "use permalink search"
+  },
+  {
+   "key": "ONCB",
+   "url": "https://www.oncb.go.th/information-news",
+   "problem": "registry hint /news=404 outdated",
+   "suggested_action": "use /information-news (works, dated, with permalinks /news/{id})"
+  },
+  {
+   "key": "27_thairath",
+   "url": "https://www.thairath.co.th/news/crime/{id}",
+   "problem": "permalinks return client_error for most ids; only some fetch",
+   "suggested_action": "use listing titles+timestamps or allowed_domains search; consider alternative AMP/other path"
+  },
+  {
+   "key": "31_khaosod",
+   "url": "https://www.khaosod.co.th/crime",
+   "problem": "page 1 client_error",
+   "suggested_action": "use /crime/page/2 and homepage featured list; /around-thailand/ permalinks work"
+  },
+  {
+   "key": "37_komchadluek",
+   "url": "https://www.komchadluek.net/news/crime",
+   "problem": "no dated listing; search returns old items",
+   "suggested_action": "find dated listing path"
+  },
+  {
+   "key": "38_isranews",
+   "url": "https://www.isranews.org",
+   "problem": "no usable listing; search undated",
+   "suggested_action": "find RSS/listing"
+  },
+  {
+   "key": "36_pptv",
+   "url": "https://www.pptvhd36.com/news/อาชญากรรม",
+   "problem": "listing stale (newest 19 Oct)",
+   "suggested_action": "check alternate listing/latest path"
+  },
+  {
+   "key": "40_thaipost",
+   "url": "https://www.thaipost.net/criminality/",
+   "problem": "stale listing (newest 22 Oct)",
+   "suggested_action": "verify update frequency"
+  },
+  {
+   "key": "35_ch7hd",
+   "url": "news.ch7.com",
+   "problem": "robots disallow",
+   "suggested_action": "keep blocked"
+  },
+  {
+   "key": "43",
+   "url": "https://www.bangkokpost.com/thailand/crime",
+   "problem": "client_error on listing and permalinks; search results undated",
+   "suggested_action": "use Thai-language Bangkok Post/RSS or accept search_only"
+  },
+  {
+   "key": "51",
+   "url": "https://aseannow.com/forum/72-thailand-news/",
+   "problem": "client_error",
+   "suggested_action": "drop or mark lead-only"
+  },
+  {
+   "key": "53",
+   "url": "https://www.unodc.org/roseap/en/",
+   "problem": "client_error",
+   "suggested_action": "try /roseap/en/2026/10/ paths or press-release page"
+  },
+  {
+   "key": "55",
+   "url": "reuters.com search",
+   "problem": "WebSearch proxy HTTP 400 for allowed_domains reuters.com",
+   "suggested_action": "treat as error; do not bypass paywall"
+  },
+  {
+   "key": "50",
+   "url": "https://www.thaipbsworld.com/crime/",
+   "problem": "listing 404; article permalinks /crime/{id} work",
+   "suggested_action": "use homepage listing"
+  },
+  {
+   "key": "48",
+   "url": "https://www.pattayamail.com/category/news/crime",
+   "problem": "client_error",
+   "suggested_action": "use homepage"
+  },
+  {
+   "key": "D:51_aseannow",
+   "url": "https://aseannow.com/forum/163-thailand-crime-news/",
+   "problem": "HTTP 404",
+   "suggested_action": "หา path ฟอรัมใหม่"
+  },
+  {
+   "key": "B:MDES",
+   "url": "https://www.mdes.go.th/news",
+   "problem": "HTTP 403",
+   "suggested_action": "ใช้ Chrome เมื่อพร้อม"
+  },
+  {
+   "key": "D:55_reuters",
+   "url": "https://www.reuters.com/legal/",
+   "problem": "HTTP 401 paywall",
+   "suggested_action": "ไม่หลบ paywall"
+  },
+  {
+   "key": "A:csd",
+   "url": "https://csd.go.th/",
+   "problem": "connection error",
+   "suggested_action": "ลองใหม่/Chrome"
+  }
+ ],
+ "discovered_paths": [
+  "A:tourist_police_category",
+  "A:saranitet_investigation",
+  "A:highway_station_sites",
+  "A:bpp",
+  "A:ccid4_activities",
+  "A:humantrafficking_partners",
+  "B:ONCB",
+  "B:PACC",
+  "B:MDES",
+  "B:SEC",
+  "B:DSI",
+  "C:mgr_detail",
+  "C:dailynews_news",
+  "C:amarintv",
+  "C:naewna",
+  "C:thaipost",
+  "C:bangkokbiznews",
+  "C:khaosod_featured",
+  "C:thaiger",
+  "D:47",
+  "D:44",
+  "D:49",
+  "chonburi.police.go.th/2026/11/",
+  "karaket.nakhonsithammarat.police.go.th",
+  "buriram.police.go.th (latest crime item 21 Oct = out of window)",
+  "https://saranitet.police.go.th/",
+  "https://www.royalthaipolice.go.th/th/executive-mission",
+  "https://www.oncb.go.th/information-news",
+  "https://www.ago.go.th/category/oagnews/",
+  "https://pct.police.go.th/",
+  "https://tcsd.cib.go.th/home",
+  "https://www.thaipoliceonline.go.th/news",
+  "https://saranitet.police.go.th/commander-mission/",
+  "https://mdes.go.th/news (chrome only)",
+  "https://www.cops-magazine.com/topic/{id}/ (เรียงตาม id ใหม่สุด)",
+  "https://www.thaicert.or.th/cyber-threat-news-th/"
+ ],
+ "github_pages": {
+  "base_url": "https://chiraleo2000.github.io/Police-news-intel-kit",
+  "day_url": "https://chiraleo2000.github.io/Police-news-intel-kit/#/r/all",
+  "files": [
+   "2026-11-08_crime.json",
+   "2026-11-08_hotspots.json",
+   "2026-11-08_alerts.json",
+   "2026-11-08_trends.json",
+   "2026-11-08_bd_leads.json"
+  ]
+ },
+ "github_pages_copied": true,
+ "pages_repo_synced": true,
+ "kit_root": "Documents/police-news-intel-private",
+ "pages_repo": "Documents/police-news-intel-kit",
+ "git_push": "NOT PERFORMED — no git task run",
+ "status": "partial",
+ "partial_reasons": [
+  "PARTIAL: official_pr_articles=6 (<8): COP'S Magazine 5 (อินฟลูฯ แปะลิงก์เว็บพนัน ขอนแก่น, วังน้ำเขียว 48 นักพนัน, วชส.รุ่น 3 CSR, 2 บทความคดีมูลนิธิองค์กรทำดีเป็นแหล่งรอง) + ThaiCERT 1 (Zyxel GS1900); เว็บ ตร. (royalthaipolice/saranitet/cib/ccid1/tourist police) ไม่มีข่าวคดีในหน้าต่าง 7–8 พ.ย.; DSI/ONCB ล่าสุด 6 พ.ย. (ก่อนหน้าต่าง)",
+  "Chrome: ใช้ built-in browser ของ Claude desktop เปิด 4 แหล่ง (mdes, thaipoliceonline, cib, csd) — mdes ล่าสุด AOC 6 พ.ย.; cib ล่าสุด 26 ต.ค.; csd เปิดไม่ได้; ไม่กรอกฟอร์ม ไม่เปิด Facebook",
+  "search_only rows (idmb, highway, ecd, cppd, pct, tcsd, ภ.1–9, ตชด.) ค้น WebSearch จำกัดโดเมน 2 ครั้ง (query รวม) — หลักฐานรายแถวอ่อน ไม่พบข่าวในหน้าต่าง",
+  "content ต่อโพสต์ราว 1,200–2,500 ตัวอักษร (ต่ำกว่าเป้า 350 คำบางโพสต์) เพราะใช้เฉพาะข้อเท็จจริงจากบทความต้นทาง",
+  "ข่าวซ้ำกับชุดก่อนหน้าไม่สร้างโพสต์ใหม่: Pattaya scam raid (Bangkok Post) = 20261107-cyber-01 (เพิ่มแหล่งในโน้ตคดีเดิม), ตม.1 ต่อวีซ่า (COP'S 159109) = 20261107-tourist-01, ไฟไหม้ สภ.บางละมุง = 20261107-police-03; ข่าวสาวออฟฟิศยิงขู่โจร ห้วยใหญ่ ข้ามเพราะแหล่งไม่ระบุจังหวัด; ข่าวนอกขอบเขต (อุบัติเหตุ อากาศ กีฬา บันเทิง ต่างประเทศ) ข้าม",
+  "brain_search MCP ไม่พร้อมใช้ ค้นไฟล์ *_crime.json ย้อนหลังในเครื่องแทน; related_cases: econ-01 ติดตามจาก 20261107-econ-01 และ 20261106-econ-01"
+ ]
+}

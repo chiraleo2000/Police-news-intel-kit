@@ -1,0 +1,40 @@
+{
+ "case_id": "20261108-drug-04",
+ "title": "สภ.วิชิตตรวจแรงงานต่างด้าวจับชาวเมียนมา 3 รายคดีเสพและครอบครองยาบ้า ส่วน สภ.เชิงทะเลจับชายชาวไนจีเรียอายุ 36 ปีพร้อมโคเคน 7.3 กรัม ถุงพลาสติก 257 ใบ และตาชั่งดิจิทัล 2 เครื่อง",
+ "generated_at": "2026-11-08T02:30:08.544Z",
+ "node_count": 6,
+ "edge_count": 5,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/สภ.วิชิต",
+   "target_title": "สภ.วิชิต",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/สภ.เชิงทะเล",
+   "target_title": "สภ.เชิงทะเล",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ต.วิชิต จ.ภูเก็ต",
+   "target_title": "ต.วิชิต จ.ภูเก็ต",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ต.เชิงทะเล จ.ภูเก็ต",
+   "target_title": "ต.เชิงทะเล จ.ภูเก็ต",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/ยาเสพติด",
+   "target_title": "ยาเสพติด",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261108-drug-04.svg"
+}

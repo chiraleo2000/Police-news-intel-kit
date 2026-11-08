@@ -1,0 +1,58 @@
+{
+ "case_id": "20261108-police-02",
+ "title": "สมาคมตำรวจนำผู้เข้าอบรมหลักสูตรวัคซีนชีวิตเพื่อสังคม (วชส.) รุ่นที่ 3 จำนวน 100 คน ลงพื้นที่ตรังและกระบี่ 6–9 พ.ย. 2569 ตรวจเยี่ยมศูนย์สั่งการ ภ.จว.ตรัง และกองร้อย ตชด.435 พร้อมมอบทุนการศึกษา",
+ "generated_at": "2026-11-08T02:30:08.555Z",
+ "node_count": 9,
+ "edge_count": 8,
+ "relations": [
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/สมาคมตำรวจ",
+   "target_title": "สมาคมตำรวจ",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/ภ.จว.ตรัง",
+   "target_title": "ภ.จว.ตรัง",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/ตชด.435",
+   "target_title": "ตชด.435",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/อุทยานแห่งชาติหาดเจ้าไหม อ.กันตัง",
+   "target_title": "อุทยานแห่งชาติหาดเจ้าไหม อ.กันตัง",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/อุทยานแห่งชาติหมู่เกาะลันตา",
+   "target_title": "อุทยานแห่งชาติหมู่เกาะลันตา",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/พล.ต.อ.สมพงษ์ ชิงดวง ประธานหลักสูตร วชส.",
+   "target_title": "พล.ต.อ.สมพงษ์ ชิงดวง ประธานหลักสูตร วชส.",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/บุคคล/สมพงษ์ ชิงดวง",
+   "target_title": "สมพงษ์ ชิงดวง",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/การปฏิบัติหน้าที่ ประชาสัมพันธ์ และนโยบายตำรวจ",
+   "target_title": "การปฏิบัติหน้าที่ ประชาสัมพันธ์ และนโยบายตำรวจ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261108-police-02.svg"
+}

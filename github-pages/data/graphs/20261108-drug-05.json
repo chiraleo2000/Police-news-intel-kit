@@ -1,0 +1,40 @@
+{
+ "case_id": "20261108-drug-05",
+ "title": "สำนักงาน ป.ป.ส. สุ่มตรวจผู้โดยสารและสัมภาระเที่ยวบินระหว่างประเทศที่ท่าอากาศยานดอนเมืองด้วยสุนัขดมกลิ่น ภายใต้คณะทำงาน AITF ไม่พบสิ่งผิดกฎหมาย และจะสุ่มตรวจต่อเนื่อง",
+ "generated_at": "2026-11-08T02:30:08.545Z",
+ "node_count": 6,
+ "edge_count": 5,
+ "relations": [
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/ป.ป.ส.",
+   "target_title": "ป.ป.ส.",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/กรมศุลกากร",
+   "target_title": "กรมศุลกากร",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/บช.ปส.",
+   "target_title": "บช.ปส.",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ท่าอากาศยานดอนเมือง",
+   "target_title": "ท่าอากาศยานดอนเมือง",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/ยาเสพติด",
+   "target_title": "ยาเสพติด",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261108-drug-05.svg"
+}

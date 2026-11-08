@@ -1,0 +1,94 @@
+{
+ "case_id": "20261108-econ-01",
+ "title": "ศาลอาญาไม่ให้ประกันสามีประธานมูลนิธิองค์กรทำดี ส่วนประธานมูลนิธิไม่ยื่นประกัน ทั้งสองถูกส่งเข้าเรือนจำ หลัง บก.ปอศ. แถลงเส้นเงินบริจาค 3 บัญชีรวมกว่า 815 ล้านบาท",
+ "generated_at": "2026-11-08T02:30:08.546Z",
+ "node_count": 15,
+ "edge_count": 14,
+ "relations": [
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/บก.ปอศ.",
+   "target_title": "บก.ปอศ.",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บช.ก.",
+   "target_title": "บช.ก.",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลอาญา",
+   "target_title": "ศาลอาญา",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/กรมราชทัณฑ์",
+   "target_title": "กรมราชทัณฑ์",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ศาลอาญา ถนนรัชดาภิเษก",
+   "target_title": "ศาลอาญา ถนนรัชดาภิเษก",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ทัณฑสถานหญิงกลาง",
+   "target_title": "ทัณฑสถานหญิงกลาง",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/เรือนจำพิเศษกรุงเทพมหานคร",
+   "target_title": "เรือนจำพิเศษกรุงเทพมหานคร",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/พล.ต.ต.ทัศน์ภูมิ จารุปรัชญ์ ผบก.ปอศ.",
+   "target_title": "พล.ต.ต.ทัศน์ภูมิ จารุปรัชญ์ ผบก.ปอศ.",
+   "direction": "out"
+  },
+  {
+   "label": "ผู้ต้องหา",
+   "target_id": "30_Entities/People/น.ส.ปนัดดา วงศ์ผู้ดี",
+   "target_title": "น.ส.ปนัดดา วงศ์ผู้ดี",
+   "direction": "out"
+  },
+  {
+   "label": "ผู้ต้องหา",
+   "target_id": "30_Entities/People/นายอธิป อนันทวรรณ",
+   "target_title": "นายอธิป อนันทวรรณ",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/บุคคล/ทัศน์ภูมิ จารุปรัชญ์",
+   "target_title": "ทัศน์ภูมิ จารุปรัชญ์",
+   "direction": "out"
+  },
+  {
+   "label": "ติดตามจาก",
+   "target_id": "20_Cases/20261107-econ-01",
+   "target_title": "บก.ปอศ. จับสามีประธานมูลนิธิองค์กรทำดีตามหมายจับข้อหาร่วมกันฟอกเงิน ผู้ต้องหาทั้งสองปฏิเสธทุกข้อกล่าวหา ตำรวจอายัด 18 บัญชีที่มีเส้นเงินราว 102 ล้านบาท และเตรียมยื่นฝากขังผัดแรกพร้อมค้านประกัน 7 พ.ย.",
+   "direction": "out"
+  },
+  {
+   "label": "ติดตามจาก",
+   "target_id": "20_Cases/20261106-econ-01",
+   "target_title": "บก.ปอศ. จับประธานมูลนิธิองค์กรทำดีตามหมายจับศาลอาญา 3 ข้อหา ที่บ้านพักย่านนวมินทร์ พร้อมค้นรวม 4 จุดใน กทม.-ปทุมธานี ส่วนสามีซึ่งถูกออกหมายจับข้อหาร่วมฟอกเงินยังไม่พบตัว",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/คดีเศรษฐกิจ การเงิน และฟอกเงิน",
+   "target_title": "คดีเศรษฐกิจ การเงิน และฟอกเงิน",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261108-econ-01.svg"
+}

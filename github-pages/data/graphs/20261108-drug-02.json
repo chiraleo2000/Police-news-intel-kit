@@ -1,0 +1,46 @@
+{
+ "case_id": "20261108-drug-02",
+ "title": "ชุดปฏิบัติการป้องกันปราบปรามยาเสพติด ภ.จว.พัทลุง ขยายผลจากผู้เสพวัย 20 ปี ค้นบ้านเช่าใน ต.โคกม่วง อ.เขาชัยสน จับชายอายุ 34 ปีพร้อมยาบ้า 173 เม็ด ผู้ต้องหาพยายามทิ้งยาลงโถส้วม",
+ "generated_at": "2026-11-08T02:30:08.541Z",
+ "node_count": 7,
+ "edge_count": 6,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/ภ.จว.พัทลุง",
+   "target_title": "ภ.จว.พัทลุง",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/สภ.เขาชัยสน",
+   "target_title": "สภ.เขาชัยสน",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/บ้านเช่า หมู่ 9 ต.โคกม่วง",
+   "target_title": "บ้านเช่า หมู่ 9 ต.โคกม่วง",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/พ.ต.ท.วิรัตน์ จีนเมือง รอง ผกก.สืบสวน ภ.จว.พัทลุง",
+   "target_title": "พ.ต.ท.วิรัตน์ จีนเมือง รอง ผกก.สืบสวน ภ.จว.พัทลุง",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/บุคคล/วิรัตน์ จีนเมือง",
+   "target_title": "วิรัตน์ จีนเมือง",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/ยาเสพติด",
+   "target_title": "ยาเสพติด",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261108-drug-02.svg"
+}

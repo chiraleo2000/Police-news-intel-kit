@@ -1,0 +1,73 @@
+{
+ "สื่อไทย > เดลินิวส์": {
+  "count": 4,
+  "post_ids": [
+   "20261108-violent-01",
+   "20261108-drug-01",
+   "20261108-cyber-01",
+   "20261108-cyber-02"
+  ]
+ },
+ "สื่อต่างประเทศ > Bangkok Post": {
+  "count": 3,
+  "post_ids": [
+   "20261108-drug-03",
+   "20261108-tourist-04",
+   "20261108-tourist-02"
+  ]
+ },
+ "สำนักงานตำรวจแห่งชาติ > COP'S Magazine (PR ตร.)": {
+  "count": 3,
+  "post_ids": [
+   "20261108-gamble-01",
+   "20261108-gamble-02",
+   "20261108-police-02"
+  ]
+ },
+ "สื่อไทย > MGR Online": {
+  "count": 3,
+  "post_ids": [
+   "20261108-env-01",
+   "20261108-police-01",
+   "20261108-tourist-01"
+  ]
+ },
+ "สื่อไทย > ไทยรัฐ": {
+  "count": 2,
+  "post_ids": [
+   "20261108-organized-01",
+   "20261108-consumer-01"
+  ]
+ },
+ "สื่อต่างประเทศ > The Phuket News": {
+  "count": 2,
+  "post_ids": [
+   "20261108-tourist-03",
+   "20261108-drug-04"
+  ]
+ },
+ "สื่อไทย > Thai PBS": {
+  "count": 1,
+  "post_ids": [
+   "20261108-econ-01"
+  ]
+ },
+ "หน่วยงานเตือนภัย > ThaiCERT": {
+  "count": 1,
+  "post_ids": [
+   "20261108-cyber-03"
+  ]
+ },
+ "สื่อต่างประเทศ > The Thaiger": {
+  "count": 1,
+  "post_ids": [
+   "20261108-drug-05"
+  ]
+ },
+ "สื่อไทย > แนวหน้า": {
+  "count": 1,
+  "post_ids": [
+   "20261108-drug-02"
+  ]
+ }
+}

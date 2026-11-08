@@ -1,0 +1,46 @@
+{
+ "case_id": "20261108-env-01",
+ "title": "ศาลจังหวัดนครนายกออกหมายจับสามีประธานมูลนิธิองค์กรทำดีเพิ่มอีกคดี ข้อหาเข้ายึดถือครอบครองที่ราชพัสดุโดยไม่มีสิทธิ ตามคำร้องของพนักงานสอบสวน สภ.บ้านนา หลัง มทบ.12 แจ้งความเรื่องบุกรุกพื้นที่ป่า",
+ "generated_at": "2026-11-08T02:30:08.548Z",
+ "node_count": 7,
+ "edge_count": 6,
+ "relations": [
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/สภ.บ้านนา",
+   "target_title": "สภ.บ้านนา",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลจังหวัดนครนายก",
+   "target_title": "ศาลจังหวัดนครนายก",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/มณฑลทหารบกที่ 12",
+   "target_title": "มณฑลทหารบกที่ 12",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ที่ราชพัสดุ อ.บ้านนา",
+   "target_title": "ที่ราชพัสดุ อ.บ้านนา",
+   "direction": "out"
+  },
+  {
+   "label": "ผู้ต้องหา",
+   "target_id": "30_Entities/People/นายอธิป อนันทวรรณ",
+   "target_title": "นายอธิป อนันทวรรณ",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/สิ่งแวดล้อม ทรัพยากร และสัตว์ป่า",
+   "target_title": "สิ่งแวดล้อม ทรัพยากร และสัตว์ป่า",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261108-env-01.svg"
+}

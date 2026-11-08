@@ -1,0 +1,82 @@
+{
+ "case_id": "20261108-organized-01",
+ "title": "บก.ป. เปิดปฏิบัติการ Free Freedom Beach จับผู้ต้องหา 4 รายที่ภูเก็ต ซึ่งตำรวจระบุว่าบุกรุกป่าสงวนเทือกเขานาคเกิดบริเวณหาดฟรีดอมแล้วนำไปหลอกขาย และข่มขู่ผู้เสียหายด้วยการโพสต์ภาพอาวุธปืน",
+ "generated_at": "2026-11-08T02:30:08.552Z",
+ "node_count": 13,
+ "edge_count": 12,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/บก.ป.",
+   "target_title": "บก.ป.",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บช.ก.",
+   "target_title": "บช.ก.",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/ตำรวจภูธรภาค 8",
+   "target_title": "ตำรวจภูธรภาค 8",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลอาญา",
+   "target_title": "ศาลอาญา",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ป่าสงวนเทือกเขานาคเกิด หาดฟรีดอม",
+   "target_title": "ป่าสงวนเทือกเขานาคเกิด หาดฟรีดอม",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ซอยอิรวดี 7-2 อ.กะทู้",
+   "target_title": "ซอยอิรวดี 7/2 อ.กะทู้",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/พล.ต.ท.ณัฐศักดิ์ เชาวนาศัย ผบช.ก.",
+   "target_title": "พล.ต.ท.ณัฐศักดิ์ เชาวนาศัย ผบช.ก.",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/พล.ต.ต.พัฒนศักดิ์ บุบผาสุวรรณ ผบก.ป.",
+   "target_title": "พล.ต.ต.พัฒนศักดิ์ บุบผาสุวรรณ ผบก.ป.",
+   "direction": "out"
+  },
+  {
+   "label": "เป้าหมายเครือข่าย",
+   "target_id": "30_Entities/Projects/เครือข่ายเสี่ยเล็กภูเก็ต",
+   "target_title": "เครือข่ายเสี่ยเล็กภูเก็ต",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/บุคคล/ณัฐศักดิ์ เชาวนาศัย",
+   "target_title": "ณัฐศักดิ์ เชาวนาศัย",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/บุคคล/พัฒนศักดิ์ บุบผาสุวรรณ",
+   "target_title": "พัฒนศักดิ์ บุบผาสุวรรณ",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/คดีอุกฉกรรจ์ ผู้มีอิทธิพล และอาวุธ",
+   "target_title": "คดีอุกฉกรรจ์ ผู้มีอิทธิพล และอาวุธ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261108-organized-01.svg"
+}

@@ -1,0 +1,58 @@
+{
+ "case_id": "20261108-cyber-02",
+ "title": "บก.สส.บช.น. ร่วม กก.สส.บก.น.8 จับชาวจีน 2 รายในอพาร์ตเมนต์ย่านห้วยขวาง ตามหมายจับคดีแก๊งคอลเซ็นเตอร์แอบอ้างตำรวจหลอกหญิงสูงอายุส่งทองคำหนัก 5 บาท",
+ "generated_at": "2026-11-08T02:30:08.537Z",
+ "node_count": 9,
+ "edge_count": 8,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/บก.สส.บช.น.",
+   "target_title": "บก.สส.บช.น.",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/กก.สส.บก.น.8",
+   "target_title": "กก.สส.บก.น.8",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลอาญา",
+   "target_title": "ศาลอาญา",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/สน.เตาปูน",
+   "target_title": "สน.เตาปูน",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/อพาร์ตเมนต์ ซอยประชาราษฎร์บำเพ็ญ 13 เขตห้วยขวาง",
+   "target_title": "อพาร์ตเมนต์ ซอยประชาราษฎร์บำเพ็ญ 13 เขตห้วยขวาง",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ห้างสรรพสินค้าย่านเตาปูน",
+   "target_title": "ห้างสรรพสินค้าย่านเตาปูน",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/สถานที่/ห้วยขวาง",
+   "target_title": "ห้วยขวาง",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261108-cyber-02.svg"
+}
