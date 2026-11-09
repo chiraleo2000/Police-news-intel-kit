@@ -1,0 +1,58 @@
+{
+ "case_id": "20261109-tourist-01",
+ "title": "บช.ทท. ร่วมกรมการท่องเที่ยวและ สสจ.เชียงใหม่ ค้น 2 จุดใน อ.สันกำแพง จับชายเกาหลีใต้อายุ 61 ปีที่บรรยายขายอาหารเสริมให้ทัวร์เกาหลีโดยไม่มีใบอนุญาตทำงาน และยึดผลิตภัณฑ์ไม่มี อย. หลังนักท่องเที่ยวร้องถูกพาซื้อกล่องละ 40,000 บาท",
+ "generated_at": "2026-11-09T02:30:08.825Z",
+ "node_count": 9,
+ "edge_count": 8,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/บช.ทท.",
+   "target_title": "บช.ทท.",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/สสจ.เชียงใหม่",
+   "target_title": "สสจ.เชียงใหม่",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/กรมการท่องเที่ยว",
+   "target_title": "กรมการท่องเที่ยว",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลจังหวัดเชียงใหม่",
+   "target_title": "ศาลจังหวัดเชียงใหม่",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/อ.สันกำแพง จ.เชียงใหม่",
+   "target_title": "อ.สันกำแพง จ.เชียงใหม่",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/พล.ต.ท.พงษ์สยาม มีขันทอง ผบช.ทท.",
+   "target_title": "พล.ต.ท.พงษ์สยาม มีขันทอง ผบช.ทท.",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/บุคคล/พงษ์สยาม มีขันทอง",
+   "target_title": "พงษ์สยาม มีขันทอง",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมที่เกี่ยวข้องกับนักท่องเที่ยวและชาวต่างชาติ",
+   "target_title": "อาชญากรรมที่เกี่ยวข้องกับนักท่องเที่ยวและชาวต่างชาติ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261109-tourist-01.svg"
+}

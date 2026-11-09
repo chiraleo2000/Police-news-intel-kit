@@ -1,0 +1,34 @@
+{
+ "case_id": "20261109-tourist-02",
+ "title": "ตม.จว.กระบี่ร่วมตำรวจท่องเที่ยวจับชายชาวสวีเดนที่ท่าเรือไปเกาะพีพี ตรวจระบบชีวมาตรพบอยู่เกินกำหนด 643 วัน ส่ง สภ.เมืองกระบี่ดำเนินคดีก่อนผลักดันออก",
+ "generated_at": "2026-11-09T02:30:08.826Z",
+ "node_count": 5,
+ "edge_count": 4,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/ตม.จว.กระบี่",
+   "target_title": "ตม.จว.กระบี่",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/บช.ทท.",
+   "target_title": "บช.ทท.",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/จ.กระบี่",
+   "target_title": "จ.กระบี่",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมที่เกี่ยวข้องกับนักท่องเที่ยวและชาวต่างชาติ",
+   "target_title": "อาชญากรรมที่เกี่ยวข้องกับนักท่องเที่ยวและชาวต่างชาติ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261109-tourist-02.svg"
+}

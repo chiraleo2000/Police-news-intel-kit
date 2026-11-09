@@ -1,0 +1,46 @@
+{
+ "case_id": "20261109-consumer-03",
+ "title": "กองกำลังสุรศักดิ์มนตรีร่วมปศุสัตว์ ศุลกากร ตม. ตชด. และ สภ.หว้านใหญ่ ยึดลิ้นโคแช่แข็งไม่มีเอกสาร 1,040 กก. ริมโขงมุกดาหาร จับคนขับรถ 1 ราย กลุ่มขนย้ายหลบหนี",
+ "generated_at": "2026-11-09T02:30:08.805Z",
+ "node_count": 7,
+ "edge_count": 6,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/กองกำลังสุรศักดิ์มนตรี",
+   "target_title": "กองกำลังสุรศักดิ์มนตรี",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/สภ.หว้านใหญ่",
+   "target_title": "สภ.หว้านใหญ่",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/กรมปศุสัตว์",
+   "target_title": "กรมปศุสัตว์",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/ด่านศุลกากรมุกดาหาร",
+   "target_title": "ด่านศุลกากรมุกดาหาร",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/อ.หว้านใหญ่ จ.มุกดาหาร",
+   "target_title": "อ.หว้านใหญ่ จ.มุกดาหาร",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/คุ้มครองผู้บริโภคและสินค้าผิดกฎหมาย",
+   "target_title": "คุ้มครองผู้บริโภคและสินค้าผิดกฎหมาย",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261109-consumer-03.svg"
+}

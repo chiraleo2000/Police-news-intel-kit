@@ -1,0 +1,46 @@
+{
+ "case_id": "20261109-cyber-01",
+ "title": "กก.4 บก.ปพ. จับชายอายุ 27 ปีตามหมายจับศาลอาญาที่นครปฐม ตำรวจระบุบัญชีของเขาถูกใช้รับเงินจากแก๊งคอลเซ็นเตอร์ที่หลอกเด็กหญิงอายุ 17 ปีให้โอนเงินผู้ปกครองกว่า 310,000 บาทและข่มขู่ญาติเรียกค่าไถ่",
+ "generated_at": "2026-11-09T02:30:08.807Z",
+ "node_count": 7,
+ "edge_count": 6,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/บก.ปพ.",
+   "target_title": "บก.ปพ.",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บช.ก.",
+   "target_title": "บช.ก.",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/สน.บึงกุ่ม",
+   "target_title": "สน.บึงกุ่ม",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลอาญา",
+   "target_title": "ศาลอาญา",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/นครปฐม",
+   "target_title": "นครปฐม",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261109-cyber-01.svg"
+}

@@ -1,0 +1,34 @@
+{
+ "case_id": "20261109-drug-01",
+ "title": "สน.บางเขน จับชายอายุ 41 ปีพร้อมไอซ์ 3.57 กรัมใต้สถานีรถไฟฟ้าพหลโยธิน 59 ตำรวจระบุผู้ต้องหารับว่าซื้อจากย่านพระราม 3 เพื่อไปเสพที่โรงแรม",
+ "generated_at": "2026-11-09T02:30:08.811Z",
+ "node_count": 5,
+ "edge_count": 4,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/สน.บางเขน",
+   "target_title": "สน.บางเขน",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/เขตบางเขน กรุงเทพมหานคร",
+   "target_title": "เขตบางเขน กรุงเทพมหานคร",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/บุคคล/อนันต์ วรสาตร์",
+   "target_title": "อนันต์ วรสาตร์",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/ยาเสพติด",
+   "target_title": "ยาเสพติด",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261109-drug-01.svg"
+}

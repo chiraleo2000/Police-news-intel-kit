@@ -1,0 +1,40 @@
+{
+ "case_id": "20261109-property-02",
+ "title": "สภ.เมืองพัทยา จับชายอายุ 37 ปีตามหมายจับศาลจังหวัดพัทยา ข้อหาลักทรัพย์ในสถานที่บูชาเวลากลางคืน หลังยอดพระพุทธสิหิงค์ในวัดบนเกาะล้านหายไป",
+ "generated_at": "2026-11-09T02:30:08.820Z",
+ "node_count": 6,
+ "edge_count": 5,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/สภ.เมืองพัทยา",
+   "target_title": "สภ.เมืองพัทยา",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลจังหวัดพัทยา",
+   "target_title": "ศาลจังหวัดพัทยา",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/เกาะล้าน เมืองพัทยา จ.ชลบุรี",
+   "target_title": "เกาะล้าน เมืองพัทยา จ.ชลบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/พัทยา",
+   "target_title": "พัทยา",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/คดีทรัพย์สิน",
+   "target_title": "คดีทรัพย์สิน",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261109-property-02.svg"
+}

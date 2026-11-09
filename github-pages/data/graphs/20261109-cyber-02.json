@@ -1,0 +1,22 @@
+{
+ "case_id": "20261109-cyber-02",
+ "title": "ThaiCERT เตือนพบโครงการปลอมบน GitHub แอบอ้างแอป ChatGPT และ Claude สำหรับ Windows แพร่มัลแวร์ Yoba ติดตั้งโปรแกรมขุดคริปโต ผ่านการดันผลค้นหาและ DLL Sideloading",
+ "generated_at": "2026-11-09T02:30:08.808Z",
+ "node_count": 3,
+ "edge_count": 2,
+ "relations": [
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/ThaiCERT",
+   "target_title": "ThaiCERT",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261109-cyber-02.svg"
+}

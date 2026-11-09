@@ -1,0 +1,34 @@
+{
+ "case_id": "20261109-property-01",
+ "title": "สภ.เมืองพัทยา จับผู้ต้องหา 2 รายข้อหารับของโจร และได้คืนนาฬิกา Patek Philippe ประดับเพชรมูลค่าราว 20 ล้านบาทของนักท่องเที่ยวจีนที่หายจากห้องพักโรงแรมย่านจอมเทียน",
+ "generated_at": "2026-11-09T02:30:08.819Z",
+ "node_count": 5,
+ "edge_count": 4,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/สภ.เมืองพัทยา",
+   "target_title": "สภ.เมืองพัทยา",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/จอมเทียน เมืองพัทยา จ.ชลบุรี",
+   "target_title": "จอมเทียน เมืองพัทยา จ.ชลบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/พัทยา",
+   "target_title": "พัทยา",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/คดีทรัพย์สิน",
+   "target_title": "คดีทรัพย์สิน",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261109-property-01.svg"
+}
