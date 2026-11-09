@@ -1,22 +1,22 @@
 {
- "generated_at": "2026-11-09T02:30:07.683Z",
+ "generated_at": "2026-11-09T04:38:50.442Z",
  "schema_version": 2,
  "source": "vault/",
  "note": "Derived from Obsidian wikilinks. Local vault/ is the knowledge store; this file powers Pages ข้อมูลกราฟ.",
  "stats": {
-  "nodes": 1919,
+  "nodes": 1916,
   "edges": 2946,
   "unresolved": 53,
   "by_kind": {
    "daily": 17,
    "case": 525,
-   "entity": 1303,
+   "entity": 1300,
    "crime_type": 17,
    "other": 4,
    "unresolved": 53
   },
   "by_entity_group": {
-   "หน่วย": 707,
+   "หน่วย": 704,
    "บุคคล": 193,
    "สถานที่": 356,
    "ข่ายเครือข่าย": 30,
@@ -8789,7 +8789,7 @@
    "date": "2026-11-07",
    "case_id": "20261108-drug-05",
    "crime_type": "ยาเสพติด",
-   "bureau": "สำนักงาน ป.ป.ส.",
+   "bureau": "ป.ป.ส.",
    "area": "ท่าอากาศยานดอนเมือง กรุงเทพมหานคร",
    "status": "สุ่มตรวจ ไม่พบสิ่งผิดกฎหมาย",
    "tags": [],
@@ -13201,23 +13201,6 @@
    "degree": 5
   },
   {
-   "id": "30_Entities/Places/กองบัญชาการตำรวจสอบสวนกลาง",
-   "title": "กองบัญชาการตำรวจสอบสวนกลาง",
-   "kind": "entity",
-   "folder": "30_Entities/Places",
-   "entity_group": "หน่วย",
-   "date": null,
-   "case_id": null,
-   "crime_type": null,
-   "bureau": null,
-   "area": null,
-   "status": null,
-   "tags": [],
-   "excerpt": "20261107 econ 01 บก.ปอศ. จับสามีประธานมูลนิธิองค์กรทำดีตามหมายจับข้อหาร่วมกันฟอกเงิน ผู้ต้องหาทั้",
-   "path": "30_Entities/Places/กองบัญชาการตำรวจสอบสวนกลาง.md",
-   "degree": 2
-  },
-  {
    "id": "30_Entities/Places/กองปราบปราม กรุงเทพมหานคร",
    "title": "กองปราบปราม กรุงเทพมหานคร",
    "kind": "entity",
@@ -16786,40 +16769,6 @@
    "excerpt": "20261027 econ line 01 บช.ก. ร่วม ACSC แถลง Operation Dark Empire ทลายฟาร์มบัญชีม้านิติบุคคลข้ามชาติ จ้",
    "path": "30_Entities/Places/สะเดา.md",
    "degree": 4
-  },
-  {
-   "id": "30_Entities/Places/สำนักงาน ป.ป.ช.",
-   "title": "สำนักงาน ป.ป.ช.",
-   "kind": "entity",
-   "folder": "30_Entities/Places",
-   "entity_group": "หน่วย",
-   "date": null,
-   "case_id": null,
-   "crime_type": null,
-   "bureau": null,
-   "area": null,
-   "status": null,
-   "tags": [],
-   "excerpt": "20261106 corrupt 01 ข้าราชการกรมการข้าว 3 รายเข้าให้ข้อมูลเพิ่มต่อ ป.ป.ช. กล่าวหาอดีตอธิบดีรายหนึ่งก",
-   "path": "30_Entities/Places/สำนักงาน ป.ป.ช..md",
-   "degree": 1
-  },
-  {
-   "id": "30_Entities/Places/สำนักงาน ปปง.",
-   "title": "สำนักงาน ปปง.",
-   "kind": "entity",
-   "folder": "30_Entities/Places",
-   "entity_group": "หน่วย",
-   "date": null,
-   "case_id": null,
-   "crime_type": null,
-   "bureau": null,
-   "area": null,
-   "status": null,
-   "tags": [],
-   "excerpt": "20261107 econ 02 คณะกรรมการธุรกรรม ปปง. มีมติยึดอายัดทรัพย์ 4 รายคดีราว 613 ล้านบาท รวมเครือข่ายเ",
-   "path": "30_Entities/Places/สำนักงาน ปปง..md",
-   "degree": 1
   },
   {
    "id": "30_Entities/Places/สำนักงานอัยการสูงสุด ถนนรัชดาภิเษก กรุงเทพมหานคร",
@@ -22990,7 +22939,7 @@
    "tags": [],
    "excerpt": "20261025 gamble 01 กองปราบฯ ทลายเครือข่ายเว็บพนันออนไลน์ในชลบุรี จับ 8 ราย ขยายผลจากโรงงานผลิตบัญชีม้าพัทลุง ตามข้อกล่าวหา 20261026 cyber 01 บก.ป. (CIB) จับหญิงวัย 26 ปี ตามหมายจับ แก๊งหลอกเปิดร้านออนไลน์ ทำภารกิจเพิ่มยอดขาย ผู้เสียหายโอน 25 ครั้ง สูญ 14.7 ล้านบาท ตามข้อกล่าวหา 20261027 human 01 ตำรวจทางหลวงแพร่ สกัดรถตู้รับจ้างขนแรงงานต่างด้าวชาวเมียนมา 20…",
    "path": "30_Entities/Units/บช.ก..md",
-   "degree": 49
+   "degree": 51
   },
   {
    "id": "30_Entities/Units/บช.ทท.",
@@ -23177,7 +23126,7 @@
    "tags": [],
    "excerpt": "20261029 corrupt 01 โฆษก อสส. ชี้แจงคลิปเสียงอ้างเป็นอัยการช่วยพลิกคดีได้ ผู้พูดไม่ใช่พนักงานอัยการแต่เป็นอดีตอัยการที่ ก.อ. มีมติให้ออกจากราชการ ผู้เสียหายยื่น ป.ป.ช. แล้ว 20261031 corrupt 01 ป.ป.ช.แถลงผลชี้มูลอดีต ผอ.สำนักกฎหมายฯ กอ.รมน.ภาค 4 ส่วนหน้า พร้อมพวก 6 ราย กรณีบรรจุกำลังพลและเบิกเบี้ยเลี้ยง ค่าเสี่ยงภัยเท็จ 20261031 police 02 ผู้ร้องเรียนยื่น ป.…",
    "path": "30_Entities/Units/ป.ป.ช..md",
-   "degree": 4
+   "degree": 5
   },
   {
    "id": "30_Entities/Units/ป.ป.ท.",
@@ -23245,7 +23194,7 @@
    "tags": [],
    "excerpt": "โน้ตสำหรับค้นหาใน Obsidian ไม่ใส่รายชื่อคดีทั้งก้อน — ใช้ Bases หรือ backlink 20261027 gamble 01 DSI ประชุมร่วม CIB บช.สอท. ปปง. ครั้งที่ 2/2569 สืบสวนกรณีสามีของ สส. รายหนึ่งที่อาจเกี่ยวข้องเครือข่ายสแกมเมอร์และพนันออนไลน์ เตรียมเชิญ ก.ล.ต.และผู้จัดการสินทรัพย์ดิจิทัลให้ถ้อยคำ 20261027 econ line 02 บช.ก. ACSC ปปง. ก.ล.ต. แถลงออกหมายจับ 7 ผู้ต้องหา คดีฟอกเง…",
    "path": "30_Entities/Units/ปปง..md",
-   "degree": 14
+   "degree": 15
   },
   {
    "id": "30_Entities/Units/ปปส.ภ.3",
@@ -39018,7 +38967,7 @@
   },
   {
    "source": "20_Cases/20261101-econ-01",
-   "target": "30_Entities/Places/กองบัญชาการตำรวจสอบสวนกลาง",
+   "target": "30_Entities/Units/บช.ก.",
    "label": "เกิดที่"
   },
   {
@@ -41243,7 +41192,7 @@
   },
   {
    "source": "20_Cases/20261106-corrupt-01",
-   "target": "30_Entities/Places/สำนักงาน ป.ป.ช.",
+   "target": "30_Entities/Units/ป.ป.ช.",
    "label": "เกิดที่"
   },
   {
@@ -41828,7 +41777,7 @@
   },
   {
    "source": "20_Cases/20261107-econ-01",
-   "target": "30_Entities/Places/กองบัญชาการตำรวจสอบสวนกลาง",
+   "target": "30_Entities/Units/บช.ก.",
    "label": "เกิดที่"
   },
   {
@@ -41858,7 +41807,7 @@
   },
   {
    "source": "20_Cases/20261107-econ-02",
-   "target": "30_Entities/Places/สำนักงาน ปปง.",
+   "target": "30_Entities/Units/ปปง.",
    "label": "เกิดที่"
   },
   {

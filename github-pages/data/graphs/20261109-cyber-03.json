@@ -1,7 +1,7 @@
 {
  "case_id": "20261109-cyber-03",
  "title": "ThaiCERT เตือนช่องโหว่ Cisco UCS Central, WatchGuard AuthPoint Gateway และ SonicWall GMS ซึ่งเสี่ยงถูกสั่งรันคำสั่งหรือปลอมผลยืนยันตัวตน แนะนำอัปเดตและย้ายจาก GMS ที่หมดระยะสนับสนุน",
- "generated_at": "2026-11-09T02:30:08.809Z",
+ "generated_at": "2026-11-09T04:33:41.065Z",
  "node_count": 3,
  "edge_count": 2,
  "relations": [
