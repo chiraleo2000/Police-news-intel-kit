@@ -1,0 +1,58 @@
+{
+ "case_id": "20261110-drug-03",
+ "title": "ตำรวจทางหลวง กก.2 บก.ทล. ร่วม กก.2 บก.ปส.4 สกัดรถเก๋งบน ทล.41 อ.ละแม จ.ชุมพร จับชายอายุ 27 ปีพร้อมไอซ์ 40 กิโลกรัมที่ตำรวจระบุว่ารับจ้างขนจากเชียงรายไปส่ง อ.ย่านตาขาว จ.ตรัง",
+ "generated_at": "2026-11-10T04:11:41.802Z",
+ "node_count": 9,
+ "edge_count": 8,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/บก.ทล.",
+   "target_title": "บก.ทล.",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/บก.ปส.4",
+   "target_title": "บก.ปส.4",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/สภ.ละแม",
+   "target_title": "สภ.ละแม",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ทล.41 อ.ละแม จ.ชุมพร",
+   "target_title": "ทล.41 อ.ละแม จ.ชุมพร",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/พล.ต.ต.บุญลือ ผดุงถิ่น ผบก.ทล.",
+   "target_title": "พล.ต.ต.บุญลือ ผดุงถิ่น ผบก.ทล.",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/บุคคล/บุญลือ ผดุงถิ่น",
+   "target_title": "บุญลือ ผดุงถิ่น",
+   "direction": "out"
+  },
+  {
+   "label": "ผู้ต้องหา",
+   "target_id": "30_Entities/ผู้ต้องหา/อาฮัง",
+   "target_title": "อาฮัง",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/ยาเสพติด",
+   "target_title": "ยาเสพติด",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261110-drug-03.svg"
+}

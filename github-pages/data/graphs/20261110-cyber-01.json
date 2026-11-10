@@ -1,0 +1,88 @@
+{
+ "case_id": "20261110-cyber-01",
+ "title": "สตม. ร่วมตำรวจภูธรภาค 2 ค้นบ้านหรู ต.หนองปรือ อ.บางละมุง จับชาวจีน 8 รายและเมียนมา 2 ราย ฐาน \"ไฮบริดสแกม\" หลอกรักชวนลงทุนหุ้นเหยื่อชาวจีน พบเส้นเงินโอนเข้ากว่า 700 ครั้ง ราว 350 ล้านบาท",
+ "generated_at": "2026-11-10T04:11:41.802Z",
+ "node_count": 14,
+ "edge_count": 13,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/ตม.",
+   "target_title": "ตม.",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/ตำรวจภูธรภาค 2",
+   "target_title": "ตำรวจภูธรภาค 2",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/สภ.หนองปรือ",
+   "target_title": "สภ.หนองปรือ",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลจังหวัดพัทยา",
+   "target_title": "ศาลจังหวัดพัทยา",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ต.หนองปรือ อ.บางละมุง จ.ชลบุรี",
+   "target_title": "ต.หนองปรือ อ.บางละมุง จ.ชลบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/พล.ต.ท.นพศิลป์ พูลสวัสดิ์ ผบช.สตม.",
+   "target_title": "พล.ต.ท.นพศิลป์ พูลสวัสดิ์ ผบช.สตม.",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/พล.ต.ท.วสันต์ เตชะอัครเกษม ผบช.ภ.2",
+   "target_title": "พล.ต.ท.วสันต์ เตชะอัครเกษม ผบช.ภ.2",
+   "direction": "out"
+  },
+  {
+   "label": "ผู้ต้องหา",
+   "target_id": "30_Entities/People/นายก่วน ชุนหวี่",
+   "target_title": "นายก่วน ชุนหวี่",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/บุคคล/สำราญ นวลมา",
+   "target_title": "สำราญ นวลมา",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/บุคคล/นพศิลป์ พูลสวัสดิ์",
+   "target_title": "นพศิลป์ พูลสวัสดิ์",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/บุคคล/วสันต์ เตชะอัครเกษม",
+   "target_title": "วสันต์ เตชะอัครเกษม",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/บางละมุง",
+   "target_title": "บางละมุง",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261110-cyber-01.svg"
+}

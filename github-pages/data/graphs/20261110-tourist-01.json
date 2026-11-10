@@ -1,0 +1,34 @@
+{
+ "case_id": "20261110-tourist-01",
+ "title": "กรมการปกครองเปิดปฏิบัติการ Andaman Lockdown ค้นสถานบันเทิง 2 แห่งใน อ.ถลาง ภูเก็ต ที่ไม่มีใบอนุญาต พบหลักฐานว่าแห่งหนึ่งใช้คนไทยถือหุ้นแทนชาวต่างชาติ เตรียมขอปิด 5 ปี",
+ "generated_at": "2026-11-10T04:11:41.802Z",
+ "node_count": 5,
+ "edge_count": 4,
+ "relations": [
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/กรมการปกครอง",
+   "target_title": "กรมการปกครอง",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/อ.ถลาง จ.ภูเก็ต",
+   "target_title": "อ.ถลาง จ.ภูเก็ต",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/สถานที่/ถลาง",
+   "target_title": "ถลาง",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมที่เกี่ยวข้องกับนักท่องเที่ยวและชาวต่างชาติ",
+   "target_title": "อาชญากรรมที่เกี่ยวข้องกับนักท่องเที่ยวและชาวต่างชาติ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261110-tourist-01.svg"
+}

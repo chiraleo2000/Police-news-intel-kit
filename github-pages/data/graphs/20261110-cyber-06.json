@@ -1,0 +1,22 @@
+{
+ "case_id": "20261110-cyber-06",
+ "title": "ThaiCERT เตือนช่องโหว่ CVE-2026-19868 ใน SSL VPN ของ SonicOS ที่ถูกใช้โจมตีจริง เปิดทางข้ามการยืนยันตัวตนผ่าน SAML และ MFA แนะอัปเดต Gen 7 เป็น 7.3.4-7013 และ Gen 8 เป็น 8.2.3-8015",
+ "generated_at": "2026-11-10T04:11:41.802Z",
+ "node_count": 3,
+ "edge_count": 2,
+ "relations": [
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/ThaiCERT",
+   "target_title": "ThaiCERT",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261110-cyber-06.svg"
+}

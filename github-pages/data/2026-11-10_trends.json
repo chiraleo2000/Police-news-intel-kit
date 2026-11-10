@@ -1,0 +1,273 @@
+{
+ "baseline": "ok",
+ "window_days": 7,
+ "days_available": 7,
+ "note": "baseline 7 วันย้อนหลัง (<7 วัน: แนวโน้มเป็นข้อมูลบ่งชี้เท่านั้น) surge = วันนี้ >=3 เรื่อง และสูงกว่าค่าเฉลี่ย >=50 เปอร์เซ็นต์",
+ "by_crime_type": [
+  {
+   "type": "อาชญากรรมไซเบอร์และออนไลน์",
+   "today": 9,
+   "avg_prev_7d": 2.29,
+   "delta_pct": 293.8,
+   "surge": true
+  },
+  {
+   "type": "ยาเสพติด",
+   "today": 5,
+   "avg_prev_7d": 2.86,
+   "delta_pct": 75.0,
+   "surge": true
+  },
+  {
+   "type": "คดีเศรษฐกิจ การเงิน และฟอกเงิน",
+   "today": 3,
+   "avg_prev_7d": 2.29,
+   "delta_pct": 31.3,
+   "surge": false
+  },
+  {
+   "type": "การปฏิบัติหน้าที่ ประชาสัมพันธ์ และนโยบายตำรวจ",
+   "today": 2,
+   "avg_prev_7d": 2.0,
+   "delta_pct": 0.0,
+   "surge": false
+  },
+  {
+   "type": "ความสงบเรียบร้อยและความมั่นคงภายใน",
+   "today": 1,
+   "avg_prev_7d": 0.71,
+   "delta_pct": 40.0,
+   "surge": false
+  },
+  {
+   "type": "คดีชีวิต ร่างกาย และเพศ",
+   "today": 1,
+   "avg_prev_7d": 2.86,
+   "delta_pct": -65.0,
+   "surge": false
+  },
+  {
+   "type": "อาชญากรรมที่เกี่ยวข้องกับนักท่องเที่ยวและชาวต่างชาติ",
+   "today": 1,
+   "avg_prev_7d": 2.57,
+   "delta_pct": -61.1,
+   "surge": false
+  },
+  {
+   "type": "คดีอุกฉกรรจ์ ผู้มีอิทธิพล และอาวุธ",
+   "today": 1,
+   "avg_prev_7d": 0.43,
+   "delta_pct": 133.3,
+   "surge": false
+  },
+  {
+   "type": "สิ่งแวดล้อม ทรัพยากร และสัตว์ป่า",
+   "today": 1,
+   "avg_prev_7d": 0.86,
+   "delta_pct": 16.7,
+   "surge": false
+  },
+  {
+   "type": "พนันและบ่อนผิดกฎหมาย",
+   "today": 1,
+   "avg_prev_7d": 1.29,
+   "delta_pct": -22.2,
+   "surge": false
+  },
+  {
+   "type": "คุ้มครองผู้บริโภคและสินค้าผิดกฎหมาย",
+   "today": 1,
+   "avg_prev_7d": 1.71,
+   "delta_pct": -41.7,
+   "surge": false
+  },
+  {
+   "type": "ความปลอดภัยทางหลวงและการสกัดจับ",
+   "today": 1,
+   "avg_prev_7d": 0.0,
+   "delta_pct": null,
+   "surge": false
+  }
+ ],
+ "by_mo": [
+  {
+   "mo": "ฟอกเงิน",
+   "today": 3,
+   "avg_prev_7d": 0.0,
+   "surge": true
+  },
+  {
+   "mo": "ลำเลียงยาเสพติด",
+   "today": 3,
+   "avg_prev_7d": 0.0,
+   "surge": true
+  },
+  {
+   "mo": "บัญชีม้า/ซิมม้า",
+   "today": 2,
+   "avg_prev_7d": 0.0,
+   "surge": false
+  },
+  {
+   "mo": "พนันออนไลน์",
+   "today": 2,
+   "avg_prev_7d": 0.0,
+   "surge": false
+  },
+  {
+   "mo": "หลอกหางาน",
+   "today": 1,
+   "avg_prev_7d": 0.0,
+   "surge": false
+  },
+  {
+   "mo": "หลอกรักออนไลน์",
+   "today": 1,
+   "avg_prev_7d": 0.0,
+   "surge": false
+  },
+  {
+   "mo": "หลอกลงทุนหุ้น/ฟอเร็กซ์",
+   "today": 1,
+   "avg_prev_7d": 0.0,
+   "surge": false
+  },
+  {
+   "mo": "แอบอ้างเจ้าหน้าที่รัฐ/ตำรวจ",
+   "today": 1,
+   "avg_prev_7d": 0.0,
+   "surge": false
+  },
+  {
+   "mo": "คอลเซ็นเตอร์",
+   "today": 1,
+   "avg_prev_7d": 0.0,
+   "surge": false
+  },
+  {
+   "mo": "นอมินีธุรกิจต่างชาติ",
+   "today": 1,
+   "avg_prev_7d": 0.0,
+   "surge": false
+  },
+  {
+   "mo": "มัลแวร์/แอปดูดเงิน",
+   "today": 1,
+   "avg_prev_7d": 0.0,
+   "surge": false
+  },
+  {
+   "mo": "สินค้า/ยาปลอม",
+   "today": 1,
+   "avg_prev_7d": 0.0,
+   "surge": false
+  }
+ ],
+ "by_province": [
+  {
+   "province": "กรุงเทพมหานคร",
+   "today": 14,
+   "avg_prev_7d": 8.43
+  },
+  {
+   "province": "นนทบุรี",
+   "today": 3,
+   "avg_prev_7d": 2.14
+  },
+  {
+   "province": "ภูเก็ต",
+   "today": 2,
+   "avg_prev_7d": 2.57
+  },
+  {
+   "province": "ปทุมธานี",
+   "today": 2,
+   "avg_prev_7d": 0.86
+  },
+  {
+   "province": "เชียงใหม่",
+   "today": 2,
+   "avg_prev_7d": 0.57
+  },
+  {
+   "province": "ยะลา",
+   "today": 2,
+   "avg_prev_7d": 0.0
+  },
+  {
+   "province": "สมุทรปราการ",
+   "today": 2,
+   "avg_prev_7d": 1.0
+  },
+  {
+   "province": "ชลบุรี",
+   "today": 2,
+   "avg_prev_7d": 1.86
+  },
+  {
+   "province": "ชุมพร",
+   "today": 2,
+   "avg_prev_7d": 0.14
+  },
+  {
+   "province": "เชียงราย",
+   "today": 2,
+   "avg_prev_7d": 0.71
+  },
+  {
+   "province": "ปัตตานี",
+   "today": 2,
+   "avg_prev_7d": 0.0
+  },
+  {
+   "province": "ตรัง",
+   "today": 1,
+   "avg_prev_7d": 0.14
+  },
+  {
+   "province": "ประจวบคีรีขันธ์",
+   "today": 1,
+   "avg_prev_7d": 0.14
+  },
+  {
+   "province": "เพชรบุรี",
+   "today": 1,
+   "avg_prev_7d": 0.14
+  },
+  {
+   "province": "อุบลราชธานี",
+   "today": 1,
+   "avg_prev_7d": 0.14
+  },
+  {
+   "province": "ศรีสะเกษ",
+   "today": 1,
+   "avg_prev_7d": 0.14
+  },
+  {
+   "province": "สมุทรสาคร",
+   "today": 1,
+   "avg_prev_7d": 0.29
+  },
+  {
+   "province": "นครนายก",
+   "today": 1,
+   "avg_prev_7d": 0.29
+  },
+  {
+   "province": "บุรีรัมย์",
+   "today": 1,
+   "avg_prev_7d": 0.29
+  },
+  {
+   "province": "นครราชสีมา",
+   "today": 1,
+   "avg_prev_7d": 0.43
+  },
+  {
+   "province": "นราธิวาส",
+   "today": 1,
+   "avg_prev_7d": 0.14
+  }
+ ]
+}

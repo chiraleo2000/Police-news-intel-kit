@@ -1,0 +1,22 @@
+{
+ "case_id": "20261110-cyber-07",
+ "title": "ThaiCERT เตือนช่องโหว่ CVE-2026-123158 ใน OpenSSH บน Alpine Linux และระบบที่ใช้ musl libc โดยไม่ใช้ PAM เสี่ยงถูกเข้าสู่ระบบโดยไม่ต้องรู้รหัสผ่าน แนะอัปเดตแพ็กเกจแล้วเริ่ม sshd ใหม่",
+ "generated_at": "2026-11-10T04:11:41.802Z",
+ "node_count": 3,
+ "edge_count": 2,
+ "relations": [
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/ThaiCERT",
+   "target_title": "ThaiCERT",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261110-cyber-07.svg"
+}

@@ -1,0 +1,40 @@
+{
+ "case_id": "20261110-cyber-09",
+ "title": "ตำรวจจับชายชาวจีนอายุ 47 ปีที่ห้วยขวาง ข้อหาร่วมกันฉ้อโกงโดยแสดงตนเป็นคนอื่น คดีแก๊งคอลเซ็นเตอร์แอบอ้างเป็นตำรวจหลอกมารดาของผู้ว่าราชการจังหวัดรายหนึ่งให้ส่งทองหนัก 5 บาทที่ห้างย่านเตาปูน",
+ "generated_at": "2026-11-10T04:11:41.802Z",
+ "node_count": 6,
+ "edge_count": 5,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/บช.น.",
+   "target_title": "บช.น.",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/ตม.",
+   "target_title": "ตม.",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ซอยประชาราษฎร์บำเพ็ญ 13 ห้วยขวาง",
+   "target_title": "ซอยประชาราษฎร์บำเพ็ญ 13 ห้วยขวาง",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/สถานที่/ห้วยขวาง",
+   "target_title": "ห้วยขวาง",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261110-cyber-09.svg"
+}

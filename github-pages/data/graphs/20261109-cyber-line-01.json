@@ -1,0 +1,112 @@
+{
+ "case_id": "20261109-cyber-line-01",
+ "title": "บช.สอท. แถลงทลายแก๊งหลอกลงทุนออนไลน์ 4.9 ล้านบาท ออกหมายจับ 12 ราย จับได้ 7 ราย ตามยึดเงินคืนผู้เสียหาย 1.8 ล้านบาท",
+ "generated_at": "2026-11-10T04:01:59.557Z",
+ "node_count": 18,
+ "edge_count": 17,
+ "relations": [
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/บช.สอท.",
+   "target_title": "บช.สอท.",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/บก.สอท.3",
+   "target_title": "บก.สอท.3",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/บก.สอท.2",
+   "target_title": "บก.สอท.2",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลจังหวัดอุบลราชธานี",
+   "target_title": "ศาลจังหวัดอุบลราชธานี",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/จังหวัดอุบลราชธานี",
+   "target_title": "จังหวัดอุบลราชธานี",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/จังหวัดศรีสะเกษ",
+   "target_title": "จังหวัดศรีสะเกษ",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/จังหวัดสมุทรปราการ",
+   "target_title": "จังหวัดสมุทรปราการ",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/จังหวัดปทุมธานี",
+   "target_title": "จังหวัดปทุมธานี",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/กรุงเทพมหานคร",
+   "target_title": "กรุงเทพมหานคร",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/บุคคล/ทินกร รังมาตย์",
+   "target_title": "ทินกร รังมาตย์",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/บุคคล/อรุษ แสงจันทร์",
+   "target_title": "อรุษ แสงจันทร์",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/บุคคล/คัมภีร์ พรหมสนธิ",
+   "target_title": "คัมภีร์ พรหมสนธิ",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/บุคคล/ต่อศักดิ์ ปานกลิ่นพุฒ",
+   "target_title": "ต่อศักดิ์ ปานกลิ่นพุฒ",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/บุคคล/ประเสริฐ หวังบุญสร้าง",
+   "target_title": "ประเสริฐ หวังบุญสร้าง",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/บุคคล/อโนทัย ดียิ่ง",
+   "target_title": "อโนทัย ดียิ่ง",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/บุคคล/วินัย ชมพุฒ",
+   "target_title": "วินัย ชมพุฒ",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261109-cyber-line-01.svg"
+}

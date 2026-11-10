@@ -1,0 +1,40 @@
+{
+ "case_id": "20261109-drug-line-02",
+ "title": "ภ.จว.พิษณุโลกปล่อยแถวกวาดล้างอาชญากรรม จับ 23 ราย คดียาเสพติด 21 ราย อาวุธปืน 2 ราย ยึดปืนไม่มีทะเบียน 6 กระบอก และกระสุน 27 นัด",
+ "generated_at": "2026-11-10T04:01:59.557Z",
+ "node_count": 6,
+ "edge_count": 5,
+ "relations": [
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/ภ.จว.พิษณุโลก",
+   "target_title": "ภ.จว.พิษณุโลก",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/สภ.เมืองพิษณุโลก",
+   "target_title": "สภ.เมืองพิษณุโลก",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/อำเภอเมืองพิษณุโลก จังหวัดพิษณุโลก",
+   "target_title": "อำเภอเมืองพิษณุโลก จังหวัดพิษณุโลก",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/บุคคล/มนต์ศักดิ์ แก้วอ่อน",
+   "target_title": "มนต์ศักดิ์ แก้วอ่อน",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/ยาเสพติด",
+   "target_title": "ยาเสพติด",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261109-drug-line-02.svg"
+}

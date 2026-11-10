@@ -1,0 +1,52 @@
+{
+ "case_id": "20261110-econ-03",
+ "title": "DSI จับผู้ต้องหาตามหมายจับคดีพิเศษที่ 26/2568 ข้อหาฟอกเงินร่วมกับเครือข่ายเว็บพนันออนไลน์ WL9bet.com ซึ่งใช้บัญชีธนาคารโอนและรับโอนเงินเพื่ออำพรางเส้นทางการเงิน",
+ "generated_at": "2026-11-10T04:11:41.802Z",
+ "node_count": 8,
+ "edge_count": 7,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/ดีเอสไอ",
+   "target_title": "ดีเอสไอ",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/ร.ต.อ.ปิยะ รักสกุล อธิบดีกรมสอบสวนคดีพิเศษ",
+   "target_title": "ร.ต.อ.ปิยะ รักสกุล อธิบดีกรมสอบสวนคดีพิเศษ",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/บุคคล/ปิยะ รักสกุล",
+   "target_title": "ปิยะ รักสกุล",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/บุคคล/จตุพล บงกชมาศ",
+   "target_title": "จตุพล บงกชมาศ",
+   "direction": "out"
+  },
+  {
+   "label": "บัญชี",
+   "target_id": "30_Entities/บัญชี/wl9bet.com",
+   "target_title": "wl9bet.com",
+   "direction": "out"
+  },
+  {
+   "label": "บัญชี",
+   "target_id": "30_Entities/บัญชี/WL9bet",
+   "target_title": "WL9bet",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/คดีเศรษฐกิจ การเงิน และฟอกเงิน",
+   "target_title": "คดีเศรษฐกิจ การเงิน และฟอกเงิน",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261110-econ-03.svg"
+}

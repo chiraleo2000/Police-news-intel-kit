@@ -1,0 +1,52 @@
+{
+ "case_id": "20261110-cyber-02",
+ "title": "บช.สอท. แถลงทลายเครือข่ายบัญชีม้า 13 คนที่รับเงินจากการหลอกอดีตครูหญิงอายุ 65 ปีชาวอุบลราชธานีให้ลงทุนออนไลน์ 4.98 ล้านบาท ศาลจังหวัดอุบลราชธานีออกหมายจับ 12 ราย ค้น 5 จุดใน 5 จังหวัด ติดตามเงินคืนได้กว่า 1.8 ล้านบาท",
+ "generated_at": "2026-11-10T04:11:41.802Z",
+ "node_count": 8,
+ "edge_count": 7,
+ "relations": [
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/บช.สอท.",
+   "target_title": "บช.สอท.",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/บก.สอท.3",
+   "target_title": "บก.สอท.3",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลจังหวัดอุบลราชธานี",
+   "target_title": "ศาลจังหวัดอุบลราชธานี",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/อุบลราชธานี",
+   "target_title": "อุบลราชธานี",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/พล.ต.ต.อรุษ แสงจันทร์ รอง ผบช.สอท.",
+   "target_title": "พล.ต.ต.อรุษ แสงจันทร์ รอง ผบช.สอท.",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/บุคคล/อรุษ แสงจันทร์",
+   "target_title": "อรุษ แสงจันทร์",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261110-cyber-02.svg"
+}

@@ -1,0 +1,40 @@
+{
+ "case_id": "20261110-drug-06",
+ "title": "ปปส.ภ.3 ร่วม กก.2 บก.ปส.2 และ สภ.หมูสี ตรวจข้อร้องเรียนจากสายด่วน 1386 ที่ ต.โป่งตาลอง อ.ปากช่อง จับผู้เสพ 1 ราย และผู้ครอบครองยาบ้า 6 เม็ด 1 ราย ส่งอีก 1 รายเข้าบำบัด",
+ "generated_at": "2026-11-10T04:11:41.802Z",
+ "node_count": 6,
+ "edge_count": 5,
+ "relations": [
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/ปปส.ภ.3",
+   "target_title": "ปปส.ภ.3",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/บก.ปส.2",
+   "target_title": "บก.ปส.2",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/สภ.หมูสี",
+   "target_title": "สภ.หมูสี",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ต.โป่งตาลอง อ.ปากช่อง จ.นครราชสีมา",
+   "target_title": "ต.โป่งตาลอง อ.ปากช่อง จ.นครราชสีมา",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/ยาเสพติด",
+   "target_title": "ยาเสพติด",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261110-drug-06.svg"
+}

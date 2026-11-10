@@ -1,0 +1,70 @@
+{
+ "case_id": "20261109-foreign-line-03",
+ "title": "สภ.แม่สายเปิดยุทธการ พิทักษ์ชายแดน แม่สายปลอดภัย ปิดล้อมตรวจค้นบ้านสันเกล็ดทอง จับ 8 ราย ข้อหาตาม พ.ร.บ.คนเข้าเมือง ยึดรถจักรยานยนต์ 8 คัน",
+ "generated_at": "2026-11-10T04:03:49.855Z",
+ "node_count": 11,
+ "edge_count": 10,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/สภ.แม่สาย",
+   "target_title": "สภ.แม่สาย",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/ตม.จว.เชียงราย",
+   "target_title": "ตม.จว.เชียงราย",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/ตชด.กก.32",
+   "target_title": "ตชด.กก.32",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/บ้านสันเกล็ดทอง ตำบลโป่งงาม อำเภอแม่สาย",
+   "target_title": "บ้านสันเกล็ดทอง ตำบลโป่งงาม อำเภอแม่สาย",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/บุคคล/จิรภาส ศักดิ์สูง",
+   "target_title": "จิรภาส ศักดิ์สูง",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/บุคคล/ณรงค์ศักดิ์ ยศแก้วอุด",
+   "target_title": "ณรงค์ศักดิ์ ยศแก้วอุด",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/บุคคล/จิรพัชร ผู้มีทรัพย์",
+   "target_title": "จิรพัชร ผู้มีทรัพย์",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/บุคคล/ปวริศร์ อิทธิศิราวงศ์",
+   "target_title": "ปวริศร์ อิทธิศิราวงศ์",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/บุคคล/รณกฤต รหัทสุวรรณ",
+   "target_title": "รณกฤต รหัทสุวรรณ",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมที่เกี่ยวข้องกับนักท่องเที่ยวและชาวต่างชาติ",
+   "target_title": "อาชญากรรมที่เกี่ยวข้องกับนักท่องเที่ยวและชาวต่างชาติ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261109-foreign-line-03.svg"
+}

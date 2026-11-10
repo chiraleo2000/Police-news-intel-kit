@@ -1,0 +1,34 @@
+{
+ "case_id": "20261110-police-02",
+ "title": "ผอ.โครงการ iLaw เข้าพบพนักงานสอบสวนกองปราบปรามตามหมายเรียกพยาน กรณี DSI ร้องทุกข์ให้ดำเนินคดีผู้เผยแพร่เอกสารสำนวนคดีฮั้วเลือก สว. ยืนยันใช้สิทธิไม่ตอบว่าใครส่งเอกสารให้",
+ "generated_at": "2026-11-10T04:11:41.802Z",
+ "node_count": 5,
+ "edge_count": 4,
+ "relations": [
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/บก.ป.",
+   "target_title": "บก.ป.",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/ดีเอสไอ",
+   "target_title": "ดีเอสไอ",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/บช.ก. กรุงเทพมหานคร",
+   "target_title": "บช.ก. กรุงเทพมหานคร",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/การปฏิบัติหน้าที่ ประชาสัมพันธ์ และนโยบายตำรวจ",
+   "target_title": "การปฏิบัติหน้าที่ ประชาสัมพันธ์ และนโยบายตำรวจ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261110-police-02.svg"
+}

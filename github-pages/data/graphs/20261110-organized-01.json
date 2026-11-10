@@ -1,0 +1,52 @@
+{
+ "case_id": "20261110-organized-01",
+ "title": "สภ.บ้านลาด ส่งตัวอดีตนายก อบต.หนองจอก อ.ท่ายาง ฝากขังต่อศาลจังหวัดเพชรบุรี ข้อหาเป็นผู้ใช้ให้ผู้อื่นร่วมกันพยายามฆ่าอดีตกำนันตำบลหนองจอก ที่ถูกยิงใส่รถเมื่อ 6 ต.ค. 2569",
+ "generated_at": "2026-11-10T04:11:41.802Z",
+ "node_count": 8,
+ "edge_count": 7,
+ "relations": [
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/สภ.บ้านลาด",
+   "target_title": "สภ.บ้านลาด",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/ตำรวจภูธรภาค 7",
+   "target_title": "ตำรวจภูธรภาค 7",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลจังหวัดเพชรบุรี",
+   "target_title": "ศาลจังหวัดเพชรบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/อ.บ้านลาด จ.เพชรบุรี",
+   "target_title": "อ.บ้านลาด จ.เพชรบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/พล.ต.ต.กานต์ ธรรมเกษม ผบก.สส.ภ.7",
+   "target_title": "พล.ต.ต.กานต์ ธรรมเกษม ผบก.สส.ภ.7",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/บุคคล/กานต์ ธรรมเกษม",
+   "target_title": "กานต์ ธรรมเกษม",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/คดีอุกฉกรรจ์ ผู้มีอิทธิพล และอาวุธ",
+   "target_title": "คดีอุกฉกรรจ์ ผู้มีอิทธิพล และอาวุธ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261110-organized-01.svg"
+}

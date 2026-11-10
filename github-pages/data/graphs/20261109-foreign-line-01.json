@@ -1,0 +1,82 @@
+{
+ "case_id": "20261109-foreign-line-01",
+ "title": "ตม.สมุทรสาครบุกบริษัทโลจิสติกส์ จับแรงงานเมียนมา 10 ราย และหญิงไทยผู้ดูแล 1 ราย ข้อหาลักลอบเข้าเมือง ทำงานไม่มีใบอนุญาต และจ้างแรงงานผิดกฎหมาย",
+ "generated_at": "2026-11-10T04:01:59.557Z",
+ "node_count": 13,
+ "edge_count": 12,
+ "relations": [
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บช.สตม.",
+   "target_title": "บช.สตม.",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บก.ตม.3",
+   "target_title": "บก.ตม.3",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/ตม.จว.สมุทรสาคร",
+   "target_title": "ตม.จว.สมุทรสาคร",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/สภ.โคกขาม",
+   "target_title": "สภ.โคกขาม",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ตำบลพันท้ายนรสิงห์ อำเภอเมืองสมุทรสาคร",
+   "target_title": "ตำบลพันท้ายนรสิงห์ อำเภอเมืองสมุทรสาคร",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/บุคคล/ทรงโปรด สิริสุขะ",
+   "target_title": "ทรงโปรด สิริสุขะ",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/บุคคล/นพศิลป์ พูลสวัสดิ์",
+   "target_title": "นพศิลป์ พูลสวัสดิ์",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/บุคคล/สุเมธ เจนวงศ์พิทักษ์",
+   "target_title": "สุเมธ เจนวงศ์พิทักษ์",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/บุคคล/เศรษฐพงศ์ ชูเมือง",
+   "target_title": "เศรษฐพงศ์ ชูเมือง",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/บุคคล/จิรายุ เชิดฉาย",
+   "target_title": "จิรายุ เชิดฉาย",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/บุคคล/สำราญ นวลมา",
+   "target_title": "สำราญ นวลมา",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมที่เกี่ยวข้องกับนักท่องเที่ยวและชาวต่างชาติ",
+   "target_title": "อาชญากรรมที่เกี่ยวข้องกับนักท่องเที่ยวและชาวต่างชาติ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261109-foreign-line-01.svg"
+}

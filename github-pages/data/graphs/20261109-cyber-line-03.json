@@ -1,0 +1,28 @@
+{
+ "case_id": "20261109-cyber-line-03",
+ "title": "รอง ผบช.สอท. เตือนภัยไซเบอร์ยกเคส Binance ถูกแฮก ยืนยันยังไม่พบระบบดูดเงินเองแม้วางมือถือไว้เฉย ๆ พร้อมเตือน 3 กลโกงมิจฉาชีพ",
+ "generated_at": "2026-11-10T04:01:59.557Z",
+ "node_count": 4,
+ "edge_count": 3,
+ "relations": [
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/บช.สอท.",
+   "target_title": "บช.สอท.",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/บุคคล/นิเวศน์ อาภาวศิน",
+   "target_title": "นิเวศน์ อาภาวศิน",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261109-cyber-line-03.svg"
+}

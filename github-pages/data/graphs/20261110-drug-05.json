@@ -1,0 +1,46 @@
+{
+ "case_id": "20261110-drug-05",
+ "title": "ปปส.ภ.2 ร่วม สภ.เสม็ด ภ.จว.ชลบุรี และฝ่ายปกครอง ปิดล้อมตรวจค้นชุมชนหมู่ 3 ต.เสม็ด อ.เมืองชลบุรี สุ่มตรวจปัสสาวะ 13 ราย พบสารเสพติด 10 ราย ดำเนินคดีข้อหาเสพ",
+ "generated_at": "2026-11-10T04:11:41.802Z",
+ "node_count": 7,
+ "edge_count": 6,
+ "relations": [
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/ปปส.ภ.2",
+   "target_title": "ปปส.ภ.2",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/สภ.เสม็ด",
+   "target_title": "สภ.เสม็ด",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ต.เสม็ด อ.เมืองชลบุรี จ.ชลบุรี",
+   "target_title": "ต.เสม็ด อ.เมืองชลบุรี จ.ชลบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/พล.ต.ต.นันทวุฒิ สุวรรณละออง รอง ผบช.ภ.2",
+   "target_title": "พล.ต.ต.นันทวุฒิ สุวรรณละออง รอง ผบช.ภ.2",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/บุคคล/นันทวุฒิ สุวรรณละออง",
+   "target_title": "นันทวุฒิ สุวรรณละออง",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/ยาเสพติด",
+   "target_title": "ยาเสพติด",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261110-drug-05.svg"
+}

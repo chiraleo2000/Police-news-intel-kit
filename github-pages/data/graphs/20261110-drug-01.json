@@ -1,0 +1,64 @@
+{
+ "case_id": "20261110-drug-01",
+ "title": "ศอ.ปส.บช.น. และ สน.พระโขนง ทลายเครือข่ายซุกโคเคนในขนมปังส่งผ่านไรเดอร์ จับผู้ต้องหาหญิง 3 รายในคอนโดย่านอ่อนนุช รามคำแหง และซอยสุขุมวิท ยึดโคเคน 400 ถุงราว 650 กรัม มูลค่าราว 2 ล้านบาท",
+ "generated_at": "2026-11-10T04:11:41.802Z",
+ "node_count": 10,
+ "edge_count": 9,
+ "relations": [
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บช.น.",
+   "target_title": "บช.น.",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/ศอ.ปส.บช.น.",
+   "target_title": "ศอ.ปส.บช.น.",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/สน.พระโขนง",
+   "target_title": "สน.พระโขนง",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/สวนหลวง กรุงเทพมหานคร",
+   "target_title": "สวนหลวง กรุงเทพมหานคร",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/พล.ต.ต.ธีรเดช ธรรมสุธีร์ รอง ผบช.น.",
+   "target_title": "พล.ต.ต.ธีรเดช ธรรมสุธีร์ รอง ผบช.น.",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/บุคคล/สยาม บุญสม",
+   "target_title": "สยาม บุญสม",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/บุคคล/ธีรเดช ธรรมสุธีร์",
+   "target_title": "ธีรเดช ธรรมสุธีร์",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/สถานที่/พระโขนง",
+   "target_title": "พระโขนง",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/ยาเสพติด",
+   "target_title": "ยาเสพติด",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261110-drug-01.svg"
+}

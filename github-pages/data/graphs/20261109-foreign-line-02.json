@@ -1,0 +1,76 @@
+{
+ "case_id": "20261109-foreign-line-02",
+ "title": "ตม.นราธิวาสจับชายเมียนมา 2 ราย บนถนนสุไหงโก-ลก–ตากใบ ผู้ขับขี่ถูกกล่าวหานำพาเพื่อนร่วมชาติ ส่วนผู้ซ้อนท้ายไม่มีเอกสารเข้าเมือง",
+ "generated_at": "2026-11-10T04:01:59.557Z",
+ "node_count": 12,
+ "edge_count": 11,
+ "relations": [
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บช.สตม.",
+   "target_title": "บช.สตม.",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บก.ตม.6",
+   "target_title": "บก.ตม.6",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/ตม.จว.นราธิวาส",
+   "target_title": "ตม.จว.นราธิวาส",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/สภ.มูโนะ",
+   "target_title": "สภ.มูโนะ",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ตำบลมูโนะ จังหวัดนราธิวาส",
+   "target_title": "ตำบลมูโนะ จังหวัดนราธิวาส",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/บุคคล/นพศิลป์ พูลสวัสดิ์",
+   "target_title": "นพศิลป์ พูลสวัสดิ์",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/บุคคล/ชูธเรศ ยิ่งยงดำรงสกุล",
+   "target_title": "ชูธเรศ ยิ่งยงดำรงสกุล",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/บุคคล/พูลศักดิ์ แก้วสีขาว",
+   "target_title": "พูลศักดิ์ แก้วสีขาว",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/บุคคล/ชยุตม์พงศ์ โชติธีระวัฒนา",
+   "target_title": "ชยุตม์พงศ์ โชติธีระวัฒนา",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/บุคคล/ชูธเรศกล่าวว่า ได้กำชับให้",
+   "target_title": "ชูธเรศกล่าวว่า ได้กำชับให้",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมที่เกี่ยวข้องกับนักท่องเที่ยวและชาวต่างชาติ",
+   "target_title": "อาชญากรรมที่เกี่ยวข้องกับนักท่องเที่ยวและชาวต่างชาติ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261109-foreign-line-02.svg"
+}

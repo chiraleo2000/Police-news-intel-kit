@@ -1,0 +1,46 @@
+{
+ "case_id": "20261109-police-line-01",
+ "title": "ผบช.ปส. ต้อนรับผู้แทนสถานทูตอิสราเอลและผู้บริหาร DEA สหรัฐฯ หารือยกระดับการประสานงานสกัดเครือข่ายยาเสพติดข้ามชาติ",
+ "generated_at": "2026-11-10T04:01:59.557Z",
+ "node_count": 7,
+ "edge_count": 6,
+ "relations": [
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/บช.ปส.",
+   "target_title": "บช.ปส.",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/บุคคล/ภูมินทร์ พุ่มพันธุ์ม่วง",
+   "target_title": "ภูมินทร์ พุ่มพันธุ์ม่วง",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/บุคคล/สำราญ นวลมา",
+   "target_title": "สำราญ นวลมา",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/บุคคล/อิทธิพล อัจฉริยะประดิษฐ์",
+   "target_title": "อิทธิพล อัจฉริยะประดิษฐ์",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/บุคคล/กฤษฎา กาญจนอลงกรณ์",
+   "target_title": "กฤษฎา กาญจนอลงกรณ์",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/การปฏิบัติหน้าที่ ประชาสัมพันธ์ และนโยบายตำรวจ",
+   "target_title": "การปฏิบัติหน้าที่ ประชาสัมพันธ์ และนโยบายตำรวจ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261109-police-line-01.svg"
+}

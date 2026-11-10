@@ -1,0 +1,88 @@
+{
+ "case_id": "20261109-cyber-line-02",
+ "title": "CIB จับชายอายุ 49 ปี โพสต์ขายเครื่องยนต์และอุปกรณ์ทางเรือออนไลน์ รับเงินแล้วไม่ส่งของ ตามหมายจับศาล 4 จังหวัดที่เวียงสระ สุราษฎร์ธานี",
+ "generated_at": "2026-11-10T04:01:59.557Z",
+ "node_count": 14,
+ "edge_count": 13,
+ "relations": [
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บช.ก.",
+   "target_title": "บช.ก.",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/บก.ป.",
+   "target_title": "บก.ป.",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/กก.5 บก.ป.",
+   "target_title": "กก.5 บก.ป.",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/สภ.กระบุรี",
+   "target_title": "สภ.กระบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลจังหวัดระนอง",
+   "target_title": "ศาลจังหวัดระนอง",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลจังหวัดปทุมธานี",
+   "target_title": "ศาลจังหวัดปทุมธานี",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลจังหวัดชุมพร",
+   "target_title": "ศาลจังหวัดชุมพร",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลจังหวัดยะลา",
+   "target_title": "ศาลจังหวัดยะลา",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/อำเภอเวียงสระ จังหวัดสุราษฎร์ธานี",
+   "target_title": "อำเภอเวียงสระ จังหวัดสุราษฎร์ธานี",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/บุคคล/ณัฐศักดิ์ เชาวนาศัย",
+   "target_title": "ณัฐศักดิ์ เชาวนาศัย",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/บุคคล/ธีระพงษ์ คงเขียว",
+   "target_title": "ธีระพงษ์ คงเขียว",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/บุคคล/วินัย ชูฟอง",
+   "target_title": "วินัย ชูฟอง",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261109-cyber-line-02.svg"
+}
