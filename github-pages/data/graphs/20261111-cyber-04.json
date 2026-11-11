@@ -1,0 +1,40 @@
+{
+ "case_id": "20261111-cyber-04",
+ "title": "รัฐบาลยกระดับมาตรการป้องกันภัยไซเบอร์หลังเหตุโจมตีหลายประเทศ คมนาคมสั่งหน่วยการบินเข้มงวดหลังการบินไทยแจ้งข้อมูลสำรองที่นั่งราว 60,529 รายการถูกเข้าถึงผ่านระบบผู้ให้บริการ ธปท. เรียกประชุม CIO สถาบันการเงิน",
+ "generated_at": "2026-11-11T01:19:27.679Z",
+ "node_count": 6,
+ "edge_count": 5,
+ "relations": [
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/กระทรวงดีอี",
+   "target_title": "กระทรวงดีอี",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/สกมช.",
+   "target_title": "สกมช.",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/ธปท.",
+   "target_title": "ธปท.",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/กระทรวงคมนาคม",
+   "target_title": "กระทรวงคมนาคม",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261111-cyber-04.svg"
+}

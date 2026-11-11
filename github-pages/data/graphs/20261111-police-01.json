@@ -1,0 +1,40 @@
+{
+ "case_id": "20261111-police-01",
+ "title": "รองโฆษก ตร. เตือน \"โพสต์ได้ แชร์ได้…แต่ต้องปลอดภัย\" ให้ 4 ข้อควรระวังการใช้สื่อสังคมออนไลน์ ป้องกันมิจฉาชีพนำข้อมูลส่วนตัวไปใช้ล่อลวง",
+ "generated_at": "2026-11-11T01:19:27.679Z",
+ "node_count": 6,
+ "edge_count": 5,
+ "relations": [
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/ตร.",
+   "target_title": "ตร.",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/กองสารนิเทศ ตร.",
+   "target_title": "กองสารนิเทศ ตร.",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/พ.ต.ท.หญิง พรรัมภา พัฒนาวาท รองโฆษก ตร.",
+   "target_title": "พ.ต.ท.หญิง พรรัมภา พัฒนาวาท รองโฆษก ตร.",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/บุคคล/หญิง พรรัมภา",
+   "target_title": "หญิง พรรัมภา",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/การปฏิบัติหน้าที่ ประชาสัมพันธ์ และนโยบายตำรวจ",
+   "target_title": "การปฏิบัติหน้าที่ ประชาสัมพันธ์ และนโยบายตำรวจ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261111-police-01.svg"
+}

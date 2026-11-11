@@ -1,0 +1,40 @@
+{
+ "case_id": "20261111-corrupt-01",
+ "title": "ป.ป.ท. เขต 4 ร่วม สภ.คำตากล้า จับอดีตผู้ช่วยพนักงานพิทักษ์ป่าตามหมายจับศาลทุจริตภาค 4 คดีสลับไม้พะยูงของกลาง 57 ท่อนให้ขบวนการค้าไม้ข้ามชาติ หลังหลบหนีนาน",
+ "generated_at": "2026-11-11T01:19:27.679Z",
+ "node_count": 6,
+ "edge_count": 5,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/สำนักงาน ป.ป.ท. เขต 4",
+   "target_title": "สำนักงาน ป.ป.ท. เขต 4",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/สภ.คำตากล้า",
+   "target_title": "สภ.คำตากล้า",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลอาญาคดีทุจริตและประพฤติมิชอบภาค 4",
+   "target_title": "ศาลอาญาคดีทุจริตและประพฤติมิชอบภาค 4",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/อ.คำตากล้า จ.สกลนคร",
+   "target_title": "อ.คำตากล้า จ.สกลนคร",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/ทุจริตและประพฤติมิชอบของเจ้าหน้าที่รัฐ",
+   "target_title": "ทุจริตและประพฤติมิชอบของเจ้าหน้าที่รัฐ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261111-corrupt-01.svg"
+}

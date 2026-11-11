@@ -1,0 +1,22 @@
+{
+ "case_id": "20261111-cyber-02",
+ "title": "ThaiCERT สรุปรายงาน Acronis พบผู้โจมตีใช้ระบบ BOSSAI ที่มี AI Agents 12 ตัว สำรวจและโจมตีเป้าหมายใน 11 ประเทศ พบดึงข้อมูลจากมหาวิทยาลัยในไทย 3 แห่ง",
+ "generated_at": "2026-11-11T01:19:27.679Z",
+ "node_count": 3,
+ "edge_count": 2,
+ "relations": [
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/ThaiCERT",
+   "target_title": "ThaiCERT",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261111-cyber-02.svg"
+}

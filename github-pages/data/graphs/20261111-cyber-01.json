@@ -1,0 +1,22 @@
+{
+ "case_id": "20261111-cyber-01",
+ "title": "ThaiCERT เตือนช่องโหว่ระดับวิกฤต GHSA-xqc2-xf4c-x3h3 ใน React Server Components รุ่น 19.0–19.3.0 เปิดทางสั่งรันคำสั่งบนเซิร์ฟเวอร์โดยไม่ต้องยืนยันตัวตน แนะอัปเดตทันที",
+ "generated_at": "2026-11-11T01:19:27.679Z",
+ "node_count": 3,
+ "edge_count": 2,
+ "relations": [
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/ThaiCERT",
+   "target_title": "ThaiCERT",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261111-cyber-01.svg"
+}

@@ -1,0 +1,52 @@
+{
+ "case_id": "20261111-gamble-01",
+ "title": "บก.สอท.1 ดำเนินคดีหญิง 3 รายที่โพสต์เฟซบุ๊กเปิดรับแทง \"เบอร์เงินสด\" เลขท้าย 2 ตัว ศาลแขวงดอนเมืองพิพากษาจำคุก 4–10 เดือน เปลี่ยนเป็นกักขัง ไม่รอลงอาญา",
+ "generated_at": "2026-11-11T01:19:27.679Z",
+ "node_count": 8,
+ "edge_count": 7,
+ "relations": [
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/บก.สอท.1",
+   "target_title": "บก.สอท.1",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บช.สอท.",
+   "target_title": "บช.สอท.",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลแขวงดอนเมือง",
+   "target_title": "ศาลแขวงดอนเมือง",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/พล.ต.ท.ทินกร รังมาตย์ ผบช.สอท.",
+   "target_title": "พล.ต.ท.ทินกร รังมาตย์ ผบช.สอท.",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/บุคคล/ทินกร รังมาตย์",
+   "target_title": "ทินกร รังมาตย์",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/บุคคล/ประสงค์ เฉลิมพันธ์",
+   "target_title": "ประสงค์ เฉลิมพันธ์",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/พนันและบ่อนผิดกฎหมาย",
+   "target_title": "พนันและบ่อนผิดกฎหมาย",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261111-gamble-01.svg"
+}

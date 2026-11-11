@@ -1,0 +1,58 @@
+{
+ "case_id": "20261111-public-01",
+ "title": "รอง ผบ.ตร. ประชุมติดตามการชุมนุมของกลุ่ม นปผ. หรือม็อบ \"กำนันมะโน\" รอบทำเนียบรัฐบาล กำชับห้ามใช้ความรุนแรง ระบุการข่าวยังไม่พบมือที่สาม",
+ "generated_at": "2026-11-11T01:19:27.679Z",
+ "node_count": 9,
+ "edge_count": 8,
+ "relations": [
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/ตร.",
+   "target_title": "ตร.",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/ศปก.ตร.",
+   "target_title": "ศปก.ตร.",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ทำเนียบรัฐบาล",
+   "target_title": "ทำเนียบรัฐบาล",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/พล.ต.อ.อิทธิพล อัจฉริยะประดิษฐ์ รอง ผบ.ตร.",
+   "target_title": "พล.ต.อ.อิทธิพล อัจฉริยะประดิษฐ์ รอง ผบ.ตร.",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/บุคคล/อิทธิพล อัจฉริยะประดิษฐ์",
+   "target_title": "อิทธิพล อัจฉริยะประดิษฐ์",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/บุคคล/สุรพงษ์ ถนอมจิตร",
+   "target_title": "สุรพงษ์ ถนอมจิตร",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/บุคคล/นิธิธร จินตกานนท์",
+   "target_title": "นิธิธร จินตกานนท์",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/ความสงบเรียบร้อยและความมั่นคงภายใน",
+   "target_title": "ความสงบเรียบร้อยและความมั่นคงภายใน",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261111-public-01.svg"
+}

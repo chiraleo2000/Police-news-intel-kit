@@ -1,0 +1,58 @@
+{
+ "case_id": "20261111-tourist-01",
+ "title": "ผบช.ทท. ปล่อยแถวกำลังรวม 100 นายจากตำรวจท่องเที่ยว ตำรวจภูธร ตม. ฝ่ายปกครอง เทศบาล และไลฟ์การ์ด ดูแลนักท่องเที่ยวช่วง High Season ที่หาดป่าตอง ภูเก็ต",
+ "generated_at": "2026-11-11T01:19:27.679Z",
+ "node_count": 9,
+ "edge_count": 8,
+ "relations": [
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/ตำรวจท่องเที่ยว (บช.ทท.)",
+   "target_title": "ตำรวจท่องเที่ยว (บช.ทท.)",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/บก.ทท.3",
+   "target_title": "บก.ทท.3",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/สภ.ป่าตอง",
+   "target_title": "สภ.ป่าตอง",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/หน้าซอยบางลา ต.ป่าตอง อ.กะทู้ จ.ภูเก็ต",
+   "target_title": "หน้าซอยบางลา ต.ป่าตอง อ.กะทู้ จ.ภูเก็ต",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/พล.ต.ท.พงษ์สยาม มีขันทอง ผบช.ทท.",
+   "target_title": "พล.ต.ท.พงษ์สยาม มีขันทอง ผบช.ทท.",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/บุคคล/พงษ์สยาม มีขันทอง",
+   "target_title": "พงษ์สยาม มีขันทอง",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ป่าตอง",
+   "target_title": "ป่าตอง",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมที่เกี่ยวข้องกับนักท่องเที่ยวและชาวต่างชาติ",
+   "target_title": "อาชญากรรมที่เกี่ยวข้องกับนักท่องเที่ยวและชาวต่างชาติ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261111-tourist-01.svg"
+}

@@ -1,0 +1,52 @@
+{
+ "case_id": "20261111-cyber-03",
+ "title": "กก.4 บก.สอท.5 ค้นบ้านใน ต.บ้านโพธิ์ อ.เมืองตรัง ที่ใช้เป็นจุดรับซื้อบัญชีธนาคาร พบคนยืนรอขายบัญชีหน้าบ้าน จับผู้ต้องหา 4 ราย ยึดมือถือ 18 เครื่อง",
+ "generated_at": "2026-11-11T01:19:27.679Z",
+ "node_count": 8,
+ "edge_count": 7,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/กก.4 บก.สอท.5",
+   "target_title": "กก.4 บก.สอท.5",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บช.สอท.",
+   "target_title": "บช.สอท.",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลจังหวัดตรัง",
+   "target_title": "ศาลจังหวัดตรัง",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ต.บ้านโพธิ์ อ.เมืองตรัง จ.ตรัง",
+   "target_title": "ต.บ้านโพธิ์ อ.เมืองตรัง จ.ตรัง",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/พล.ต.ท.ทินกร รังมาตย์ ผบช.สอท.",
+   "target_title": "พล.ต.ท.ทินกร รังมาตย์ ผบช.สอท.",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/บุคคล/ทินกร รังมาตย์",
+   "target_title": "ทินกร รังมาตย์",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261111-cyber-03.svg"
+}

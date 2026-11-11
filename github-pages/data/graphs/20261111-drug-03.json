@@ -1,0 +1,46 @@
+{
+ "case_id": "20261111-drug-03",
+ "title": "กก.สส.บก.น.1 ตามเครือข่ายลำเลียงยาเสพติดข้ามชาติ จับชายอายุ 25 ปีขณะนับของกลางในตู้คอนเทนเนอร์ริมถนนหมายเลข 3333 ต.โคกตูม อ.เมืองลพบุรี พบไอซ์ 460 กิโลกรัม",
+ "generated_at": "2026-11-11T01:19:27.679Z",
+ "node_count": 7,
+ "edge_count": 6,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/กก.สส.บก.น.1",
+   "target_title": "กก.สส.บก.น.1",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/ศอ.ปส.บช.น.",
+   "target_title": "ศอ.ปส.บช.น.",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ตู้คอนเทนเนอร์ริมถนนหมายเลข 3333 ต.โคกตูม อ.เมืองลพบุรี",
+   "target_title": "ตู้คอนเทนเนอร์ริมถนนหมายเลข 3333 ต.โคกตูม อ.เมืองลพบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/พล.ต.ต.ธีรเดช ธรรมสุธีร์ รอง ผบช.น.",
+   "target_title": "พล.ต.ต.ธีรเดช ธรรมสุธีร์ รอง ผบช.น.",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/บุคคล/ธีรเดช ธรรมสุธีร์",
+   "target_title": "ธีรเดช ธรรมสุธีร์",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/ยาเสพติด",
+   "target_title": "ยาเสพติด",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261111-drug-03.svg"
+}

@@ -1,0 +1,46 @@
+{
+ "case_id": "20261111-consumer-01",
+ "title": "กก.3 บก.สอท.5 ร่วมสาธารณสุขสุราษฎร์ธานีค้นบ้านใน ต.ลำพูน อ.บ้านนาสาร จับหญิงอายุ 29 ปีที่ถูกกล่าวหาเปิดรับจัดฟันแฟชั่นผ่านเพจโดยไม่มีใบอนุญาต ยึดอุปกรณ์ 19 รายการ",
+ "generated_at": "2026-11-11T01:19:27.679Z",
+ "node_count": 7,
+ "edge_count": 6,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/กก.3 บก.สอท.5",
+   "target_title": "กก.3 บก.สอท.5",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บช.สอท.",
+   "target_title": "บช.สอท.",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/สำนักงานสาธารณสุขจังหวัดสุราษฎร์ธานี",
+   "target_title": "สำนักงานสาธารณสุขจังหวัดสุราษฎร์ธานี",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ม.4 ต.ลำพูน อ.บ้านนาสาร จ.สุราษฎร์ธานี",
+   "target_title": "ม.4 ต.ลำพูน อ.บ้านนาสาร จ.สุราษฎร์ธานี",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/พล.ต.ท.ทินกร รังมาตย์ ผบช.สอท.",
+   "target_title": "พล.ต.ท.ทินกร รังมาตย์ ผบช.สอท.",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/คุ้มครองผู้บริโภคและสินค้าผิดกฎหมาย",
+   "target_title": "คุ้มครองผู้บริโภคและสินค้าผิดกฎหมาย",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261111-consumer-01.svg"
+}

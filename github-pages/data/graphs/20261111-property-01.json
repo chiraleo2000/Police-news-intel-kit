@@ -1,0 +1,64 @@
+{
+ "case_id": "20261111-property-01",
+ "title": "ภ.2 แถลงจับ 4 ผู้ต้องหาแก๊งแอบอ้างเจ้าหน้าที่รัฐสภาและ \"ชุดเฉพาะกิจกรมทรัพยากรและสิ่งแวดล้อม\" ข่มขู่เรียกเงิน 3.5 ล้านบาทจากโรงงานใน อ.บ้านบึง ชลบุรี ศาลออกหมายจับแล้ว 6 ราย",
+ "generated_at": "2026-11-11T01:19:27.679Z",
+ "node_count": 10,
+ "edge_count": 9,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/ตำรวจภูธรภาค 2",
+   "target_title": "ตำรวจภูธรภาค 2",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/ชุดสืบสวน ภ.2",
+   "target_title": "ชุดสืบสวน ภ.2",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/สภ.คลองกิ่ว",
+   "target_title": "สภ.คลองกิ่ว",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลจังหวัดชลบุรี",
+   "target_title": "ศาลจังหวัดชลบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ต.คลองกิ่ว อ.บ้านบึง จ.ชลบุรี",
+   "target_title": "ต.คลองกิ่ว อ.บ้านบึง จ.ชลบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/พล.ต.ท.วสันต์ เตชะอัครเกษม ผบช.ภ.2",
+   "target_title": "พล.ต.ท.วสันต์ เตชะอัครเกษม ผบช.ภ.2",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/บุคคล/วสันต์ เตชะอัครเกษม",
+   "target_title": "วสันต์ เตชะอัครเกษม",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/สถานที่/บ้านบึง",
+   "target_title": "บ้านบึง",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/คดีทรัพย์สิน",
+   "target_title": "คดีทรัพย์สิน",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261111-property-01.svg"
+}

@@ -1,0 +1,70 @@
+{
+ "case_id": "20261111-drug-02",
+ "title": "ปปส.ภ.3 ร่วมแถลงผลกวาดล้างยาเสพติดชายแดนกับ ภ.3 ยึดยาบ้ารวมกว่า 18.2 ล้านเม็ดจาก 4 คดีในอุบลราชธานีและศรีสะเกษ จับผู้ต้องหา 8 ราย",
+ "generated_at": "2026-11-11T01:19:27.679Z",
+ "node_count": 11,
+ "edge_count": 10,
+ "relations": [
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/ปปส.ภ.3",
+   "target_title": "ปปส.ภ.3",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/ตำรวจภูธรภาค 3",
+   "target_title": "ตำรวจภูธรภาค 3",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/กองทัพภาคที่ 2",
+   "target_title": "กองทัพภาคที่ 2",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/อ.สิรินธร จ.อุบลราชธานี",
+   "target_title": "อ.สิรินธร จ.อุบลราชธานี",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/อ.บุณฑริก จ.อุบลราชธานี",
+   "target_title": "อ.บุณฑริก จ.อุบลราชธานี",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/อ.น้ำขุ่น จ.อุบลราชธานี",
+   "target_title": "อ.น้ำขุ่น จ.อุบลราชธานี",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/อ.กันทรลักษ์ จ.ศรีสะเกษ",
+   "target_title": "อ.กันทรลักษ์ จ.ศรีสะเกษ",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/พล.ต.ท.อาทิชา เปาอินทร์ ผู้บัญชาการตำรวจภูธรภาค 3",
+   "target_title": "พล.ต.ท.อาทิชา เปาอินทร์ ผู้บัญชาการตำรวจภูธรภาค 3",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/บุคคล/อาทิชา เปาอินทร์",
+   "target_title": "อาทิชา เปาอินทร์",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/ยาเสพติด",
+   "target_title": "ยาเสพติด",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261111-drug-02.svg"
+}

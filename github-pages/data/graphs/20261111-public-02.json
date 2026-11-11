@@ -1,0 +1,52 @@
+{
+ "case_id": "20261111-public-02",
+ "title": "กอ.รมน.ภาค 4 สน. แถลงเหตุก่อกวน 8 จุดใน 5 อำเภอของยะลาคืน 10 พ.ย. ทั้งลอบวางระเบิดและวางเพลิงที่ทำการ อบต.ยะลา เผาเสาสัญญาณโทรศัพท์และกล้องวงจรปิด",
+ "generated_at": "2026-11-11T01:19:27.679Z",
+ "node_count": 8,
+ "edge_count": 7,
+ "relations": [
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/กอ.รมน.ภาค 4 ส่วนหน้า",
+   "target_title": "กอ.รมน.ภาค 4 ส่วนหน้า",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/องค์การบริหารส่วนตำบลยะลา อ.เมืองยะลา",
+   "target_title": "องค์การบริหารส่วนตำบลยะลา อ.เมืองยะลา",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/อ.บันนังสตา จ.ยะลา",
+   "target_title": "อ.บันนังสตา จ.ยะลา",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/อ.กรงปินัง จ.ยะลา",
+   "target_title": "อ.กรงปินัง จ.ยะลา",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/อ.ยะหา จ.ยะลา",
+   "target_title": "อ.ยะหา จ.ยะลา",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/อ.กาบัง จ.ยะลา",
+   "target_title": "อ.กาบัง จ.ยะลา",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/ความสงบเรียบร้อยและความมั่นคงภายใน",
+   "target_title": "ความสงบเรียบร้อยและความมั่นคงภายใน",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261111-public-02.svg"
+}
