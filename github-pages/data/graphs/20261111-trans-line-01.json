@@ -1,0 +1,40 @@
+{
+ "case_id": "20261111-trans-line-01",
+ "title": "ตม.สตูลสนธิกำลังรับตัว 4 คนไทยพ้นโทษคดีโรฮีนจาจากมาเลเซีย ตรวจประวัติพบ 2 รายมีหมายจับคดีค้ามนุษย์และองค์กรอาชญากรรมข้ามชาติ",
+ "generated_at": "2026-11-12T01:49:16.350Z",
+ "node_count": 6,
+ "edge_count": 5,
+ "relations": [
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บก.ตม.6",
+   "target_title": "บก.ตม.6",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/ตม.จว.สตูล",
+   "target_title": "ตม.จว.สตูล",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลอาญา",
+   "target_title": "ศาลอาญา",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ด่านตรวจคนเข้าเมืองควนโดน จังหวัดสตูล",
+   "target_title": "ด่านตรวจคนเข้าเมืองควนโดน จังหวัดสตูล",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมข้ามชาติและความร่วมมือระหว่างประเทศ",
+   "target_title": "อาชญากรรมข้ามชาติและความร่วมมือระหว่างประเทศ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261111-trans-line-01.svg"
+}

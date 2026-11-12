@@ -1,0 +1,46 @@
+{
+ "case_id": "20261112-econ-05",
+ "title": "เจ้าของเพจ \"ออยศรีและผองเผือก\" ยื่นต่อ บก.ป. ขอให้รับโอนคดีร้องเรียนประธานมูลนิธิเป็นหนึ่งจาก 3 สถานีตำรวจในนนทบุรี ระบุคดีไม่คืบหน้ามา 2 ปี 4 เดือน",
+ "generated_at": "2026-11-12T01:19:37.951Z",
+ "node_count": 7,
+ "edge_count": 6,
+ "relations": [
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/กองบังคับการปราบปราม",
+   "target_title": "กองบังคับการปราบปราม",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/สภ.บางบัวทอง",
+   "target_title": "สภ.บางบัวทอง",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ศูนย์รับแจ้งความ บช.ก. กรุงเทพฯ",
+   "target_title": "ศูนย์รับแจ้งความ บช.ก. กรุงเทพฯ",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/จ.นนทบุรี",
+   "target_title": "จ.นนทบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "บัญชี",
+   "target_id": "30_Entities/บัญชี/ออยศรีและผองเผือก",
+   "target_title": "ออยศรีและผองเผือก",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/คดีเศรษฐกิจ การเงิน และฟอกเงิน",
+   "target_title": "คดีเศรษฐกิจ การเงิน และฟอกเงิน",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261112-econ-05.svg"
+}

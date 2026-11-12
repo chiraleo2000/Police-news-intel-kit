@@ -1,0 +1,46 @@
+{
+ "case_id": "20261112-human-01",
+ "title": "DSI เปิดปฏิบัติการ \"Bitter Choc\" ร่วมหน่วยไทยและต่างประเทศ จับชายสัญชาติสวิส อายุ 72 ปี ที่ อ.บางละมุง ชลบุรี ตามหมายจับศาลอาญาข้อหาครอบครองสื่อลามกอนาจารเด็ก และค้นบ้านยึดอุปกรณ์อิเล็กทรอนิกส์",
+ "generated_at": "2026-11-12T01:19:37.951Z",
+ "node_count": 7,
+ "edge_count": 6,
+ "relations": [
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/ดีเอสไอ",
+   "target_title": "ดีเอสไอ",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลอาญา",
+   "target_title": "ศาลอาญา",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/สถาบันนิติวิทยาศาสตร์",
+   "target_title": "สถาบันนิติวิทยาศาสตร์",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/อ.บางละมุง จ.ชลบุรี",
+   "target_title": "อ.บางละมุง จ.ชลบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/บางละมุง",
+   "target_title": "บางละมุง",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/ค้ามนุษย์ แรงงานผิดกฎหมาย และคุ้มครองเด็ก",
+   "target_title": "ค้ามนุษย์ แรงงานผิดกฎหมาย และคุ้มครองเด็ก",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261112-human-01.svg"
+}

@@ -1,0 +1,40 @@
+{
+ "case_id": "20261111-foreign-line-03",
+ "title": "สตม.รวบชายจีนอายุ 37 ปีในหมู่บ้านพัทยา ตามหมายจับจีนและ Blue Notice อินเตอร์โพล คดีเปิดบ่อนการพนัน",
+ "generated_at": "2026-11-12T01:49:16.350Z",
+ "node_count": 6,
+ "edge_count": 5,
+ "relations": [
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/ตม.",
+   "target_title": "ตม.",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/บก.สส.สตม.",
+   "target_title": "บก.สส.สตม.",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ซอยพรประภานิมิต 26 อำเภอบางละมุง",
+   "target_title": "ซอยพรประภานิมิต 26 อำเภอบางละมุง",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/พัทยา",
+   "target_title": "พัทยา",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมที่เกี่ยวข้องกับนักท่องเที่ยวและชาวต่างชาติ",
+   "target_title": "อาชญากรรมที่เกี่ยวข้องกับนักท่องเที่ยวและชาวต่างชาติ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261111-foreign-line-03.svg"
+}

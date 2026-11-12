@@ -1,0 +1,34 @@
+{
+ "case_id": "20261111-foreign-line-02",
+ "title": "สตม.6 ร่วมตม.ปัตตานี ล็อกชายจีน 2 รายที่ทางการจีนออกหมายจับคดีแก๊งสแกมเมอร์เสียหายกว่า 60 ล้านบาท ขณะเตรียมข้ามไปมาเลเซียทางช่องทางธรรมชาติ",
+ "generated_at": "2026-11-12T01:49:16.350Z",
+ "node_count": 5,
+ "edge_count": 4,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/สตม.6",
+   "target_title": "สตม.6",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/ตม.จว.ปัตตานี",
+   "target_title": "ตม.จว.ปัตตานี",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/จังหวัดปัตตานี",
+   "target_title": "จังหวัดปัตตานี",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมข้ามชาติและความร่วมมือระหว่างประเทศ",
+   "target_title": "อาชญากรรมข้ามชาติและความร่วมมือระหว่างประเทศ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261111-foreign-line-02.svg"
+}

@@ -1,0 +1,240 @@
+{
+ "baseline": "ok",
+ "window_days": 7,
+ "days_available": 7,
+ "note": "baseline 7 วันย้อนหลัง (<7 วัน: แนวโน้มเป็นข้อมูลบ่งชี้เท่านั้น) surge = วันนี้ >=3 เรื่อง และสูงกว่าค่าเฉลี่ย >=50 เปอร์เซ็นต์",
+ "by_crime_type": [
+  {
+   "type": "คดีเศรษฐกิจ การเงิน และฟอกเงิน",
+   "today": 5,
+   "avg_prev_7d": 2.43,
+   "delta_pct": 105.9,
+   "surge": true
+  },
+  {
+   "type": "อาชญากรรมไซเบอร์และออนไลน์",
+   "today": 4,
+   "avg_prev_7d": 3.43,
+   "delta_pct": 16.7,
+   "surge": false
+  },
+  {
+   "type": "คดีชีวิต ร่างกาย และเพศ",
+   "today": 3,
+   "avg_prev_7d": 2.57,
+   "delta_pct": 16.7,
+   "surge": false
+  },
+  {
+   "type": "ยาเสพติด",
+   "today": 2,
+   "avg_prev_7d": 3.57,
+   "delta_pct": -44.0,
+   "surge": false
+  },
+  {
+   "type": "ความสงบเรียบร้อยและความมั่นคงภายใน",
+   "today": 2,
+   "avg_prev_7d": 1.0,
+   "delta_pct": 100.0,
+   "surge": false
+  },
+  {
+   "type": "คุ้มครองผู้บริโภคและสินค้าผิดกฎหมาย",
+   "today": 2,
+   "avg_prev_7d": 1.71,
+   "delta_pct": 16.7,
+   "surge": false
+  },
+  {
+   "type": "ค้ามนุษย์ แรงงานผิดกฎหมาย และคุ้มครองเด็ก",
+   "today": 2,
+   "avg_prev_7d": 0.86,
+   "delta_pct": 133.3,
+   "surge": false
+  },
+  {
+   "type": "การปฏิบัติหน้าที่ ประชาสัมพันธ์ และนโยบายตำรวจ",
+   "today": 2,
+   "avg_prev_7d": 2.29,
+   "delta_pct": -12.5,
+   "surge": false
+  },
+  {
+   "type": "คดีทรัพย์สิน",
+   "today": 1,
+   "avg_prev_7d": 1.43,
+   "delta_pct": -30.0,
+   "surge": false
+  },
+  {
+   "type": "อาชญากรรมข้ามชาติและความร่วมมือระหว่างประเทศ",
+   "today": 1,
+   "avg_prev_7d": 0.57,
+   "delta_pct": 75.0,
+   "surge": false
+  },
+  {
+   "type": "อาชญากรรมที่เกี่ยวข้องกับนักท่องเที่ยวและชาวต่างชาติ",
+   "today": 1,
+   "avg_prev_7d": 2.29,
+   "delta_pct": -56.2,
+   "surge": false
+  }
+ ],
+ "by_mo": [
+  {
+   "mo": "ลำเลียงยาเสพติด",
+   "today": 2,
+   "avg_prev_7d": 0.0,
+   "surge": false
+  },
+  {
+   "mo": "บัญชีม้า/ซิมม้า",
+   "today": 2,
+   "avg_prev_7d": 0.0,
+   "surge": false
+  },
+  {
+   "mo": "ฟอกเงิน",
+   "today": 2,
+   "avg_prev_7d": 0.0,
+   "surge": false
+  },
+  {
+   "mo": "สินค้า/ยาปลอม",
+   "today": 2,
+   "avg_prev_7d": 0.0,
+   "surge": false
+  },
+  {
+   "mo": "หลอกหางาน",
+   "today": 1,
+   "avg_prev_7d": 0.0,
+   "surge": false
+  },
+  {
+   "mo": "แชร์ลูกโซ่",
+   "today": 1,
+   "avg_prev_7d": 0.0,
+   "surge": false
+  },
+  {
+   "mo": "หลอกรักออนไลน์",
+   "today": 1,
+   "avg_prev_7d": 0.0,
+   "surge": false
+  },
+  {
+   "mo": "หลอกลงทุนหุ้น/ฟอเร็กซ์",
+   "today": 1,
+   "avg_prev_7d": 0.0,
+   "surge": false
+  },
+  {
+   "mo": "มัลแวร์/แอปดูดเงิน",
+   "today": 1,
+   "avg_prev_7d": 0.0,
+   "surge": false
+  },
+  {
+   "mo": "หลอกซื้อขายออนไลน์",
+   "today": 1,
+   "avg_prev_7d": 0.0,
+   "surge": false
+  },
+  {
+   "mo": "แรงงานต่างด้าวผิดกฎหมาย",
+   "today": 1,
+   "avg_prev_7d": 0.0,
+   "surge": false
+  }
+ ],
+ "by_province": [
+  {
+   "province": "กรุงเทพมหานคร",
+   "today": 11,
+   "avg_prev_7d": 9.43
+  },
+  {
+   "province": "นนทบุรี",
+   "today": 5,
+   "avg_prev_7d": 1.86
+  },
+  {
+   "province": "ชลบุรี",
+   "today": 3,
+   "avg_prev_7d": 2.0
+  },
+  {
+   "province": "อ่างทอง",
+   "today": 2,
+   "avg_prev_7d": 0.0
+  },
+  {
+   "province": "ปทุมธานี",
+   "today": 2,
+   "avg_prev_7d": 1.14
+  },
+  {
+   "province": "พะเยา",
+   "today": 1,
+   "avg_prev_7d": 0.0
+  },
+  {
+   "province": "สตูล",
+   "today": 1,
+   "avg_prev_7d": 0.0
+  },
+  {
+   "province": "สุโขทัย",
+   "today": 1,
+   "avg_prev_7d": 0.29
+  },
+  {
+   "province": "เพชรบูรณ์",
+   "today": 1,
+   "avg_prev_7d": 0.0
+  },
+  {
+   "province": "สมุทรสาคร",
+   "today": 1,
+   "avg_prev_7d": 0.43
+  },
+  {
+   "province": "ประจวบคีรีขันธ์",
+   "today": 1,
+   "avg_prev_7d": 0.29
+  },
+  {
+   "province": "สุรินทร์",
+   "today": 1,
+   "avg_prev_7d": 0.0
+  },
+  {
+   "province": "นครราชสีมา",
+   "today": 1,
+   "avg_prev_7d": 0.43
+  },
+  {
+   "province": "จันทบุรี",
+   "today": 1,
+   "avg_prev_7d": 0.14
+  },
+  {
+   "province": "สงขลา",
+   "today": 1,
+   "avg_prev_7d": 0.43
+  },
+  {
+   "province": "สมุทรปราการ",
+   "today": 1,
+   "avg_prev_7d": 0.86
+  },
+  {
+   "province": "ภูเก็ต",
+   "today": 1,
+   "avg_prev_7d": 2.71
+  }
+ ]
+}

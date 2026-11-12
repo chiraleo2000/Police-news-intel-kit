@@ -1,0 +1,40 @@
+{
+ "case_id": "20261111-foreign-line-01",
+ "title": "สตม. จับชายจีนอายุ 58 ปี ที่คอนโดพัทยา หลังรัฐบาลจีนออกหมายจับ เพิกถอนการอนุญาตให้อยู่ในราชอาณาจักร ตามมาตรา 12(7)",
+ "generated_at": "2026-11-12T01:49:16.350Z",
+ "node_count": 6,
+ "edge_count": 5,
+ "relations": [
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/ตม.",
+   "target_title": "ตม.",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/กก.ปอพ.บก.สส.สตม.",
+   "target_title": "กก.ปอพ.บก.สส.สตม.",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/เมืองพัทยา อำเภอบางละมุง",
+   "target_title": "เมืองพัทยา อำเภอบางละมุง",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/พัทยา",
+   "target_title": "พัทยา",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมที่เกี่ยวข้องกับนักท่องเที่ยวและชาวต่างชาติ",
+   "target_title": "อาชญากรรมที่เกี่ยวข้องกับนักท่องเที่ยวและชาวต่างชาติ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261111-foreign-line-01.svg"
+}

@@ -1,0 +1,64 @@
+{
+ "case_id": "20261111-cyber-line-02",
+ "title": "บก.สอท.4 จับ 2 หญิงอายุ 46 และ 34 ปี คดีบัญชีม้าหลอกหารายได้ออนไลน์ รับโอนเงิน 2.7 ล้านบาทซื้อทองที่บางใหญ่ ผู้ต้องหาอ้างถูกหลอกอีกทอด",
+ "generated_at": "2026-11-12T01:49:16.350Z",
+ "node_count": 10,
+ "edge_count": 9,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/บก.สอท.4",
+   "target_title": "บก.สอท.4",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/กก.2 บก.สอท.4",
+   "target_title": "กก.2 บก.สอท.4",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลจังหวัดสุโขทัย",
+   "target_title": "ศาลจังหวัดสุโขทัย",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/อำเภอบางใหญ่ จังหวัดนนทบุรี",
+   "target_title": "อำเภอบางใหญ่ จังหวัดนนทบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/จังหวัดสุโขทัย",
+   "target_title": "จังหวัดสุโขทัย",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/บุคคล/อนุชา ศรีสมรอง",
+   "target_title": "อนุชา ศรีสมรอง",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/บุคคล/ทินกร รังมาตย์",
+   "target_title": "ทินกร รังมาตย์",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/สถานที่/บางใหญ่",
+   "target_title": "บางใหญ่",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261111-cyber-line-02.svg"
+}

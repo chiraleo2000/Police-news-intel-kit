@@ -1,0 +1,46 @@
+{
+ "case_id": "20261112-drug-02",
+ "title": "ภ.จว.พะเยา ร่วม ปปส.ภ.5 ค้นบ้านเช่าในหมู่บ้านจัดสรร ต.แม่ต๋ำ อ.เมืองพะเยา พบยาบ้า 2,918,000 เม็ดในกล่องพัสดุ 49 กล่องที่เตรียมส่งผ่านบริษัทขนส่งเอกชน ผู้เกี่ยวข้องหลบหนี",
+ "generated_at": "2026-11-12T01:19:37.951Z",
+ "node_count": 7,
+ "edge_count": 6,
+ "relations": [
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/ตำรวจภูธรจังหวัดพะเยา",
+   "target_title": "ตำรวจภูธรจังหวัดพะเยา",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/สำนักงาน ป.ป.ส. ภาค 5",
+   "target_title": "สำนักงาน ป.ป.ส. ภาค 5",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/สภ.เมืองพะเยา",
+   "target_title": "สภ.เมืองพะเยา",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/หมู่บ้านจัดสรร ต.แม่ต๋ำ อ.เมืองพะเยา จ.พะเยา",
+   "target_title": "หมู่บ้านจัดสรร ต.แม่ต๋ำ อ.เมืองพะเยา จ.พะเยา",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/พล.ต.ต.พงษ์สวัสดิ์ ไชยบาล ผบก.ภ.จว.พะเยา",
+   "target_title": "พล.ต.ต.พงษ์สวัสดิ์ ไชยบาล ผบก.ภ.จว.พะเยา",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/ยาเสพติด",
+   "target_title": "ยาเสพติด",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261112-drug-02.svg"
+}

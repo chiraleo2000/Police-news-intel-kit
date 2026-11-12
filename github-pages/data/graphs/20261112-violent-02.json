@@ -1,0 +1,46 @@
+{
+ "case_id": "20261112-violent-02",
+ "title": "สภ.หัวหินจับครูวงโยธวาทิตโรงเรียนเอกชน ถูกกล่าวหาอนาจารนักเรียนหญิงอายุ 14 ปีในห้องซ้อมดนตรี แจ้งข้อหาพรากเด็กเพื่อการอนาจารและอนาจารเด็ก ยื่นฝากขังศาลจังหวัดหัวหิน",
+ "generated_at": "2026-11-12T01:19:37.951Z",
+ "node_count": 7,
+ "edge_count": 6,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/สภ.หัวหิน",
+   "target_title": "สภ.หัวหิน",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/ตำรวจภูธรจังหวัดประจวบคีรีขันธ์",
+   "target_title": "ตำรวจภูธรจังหวัดประจวบคีรีขันธ์",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลจังหวัดหัวหิน",
+   "target_title": "ศาลจังหวัดหัวหิน",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/อ.หัวหิน จ.ประจวบคีรีขันธ์",
+   "target_title": "อ.หัวหิน จ.ประจวบคีรีขันธ์",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/พล.ต.ต.อาทร ชิ้นทอง ผบก.ภ.จว.ประจวบคีรีขันธ์",
+   "target_title": "พล.ต.ต.อาทร ชิ้นทอง ผบก.ภ.จว.ประจวบคีรีขันธ์",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/คดีชีวิต ร่างกาย และเพศ",
+   "target_title": "คดีชีวิต ร่างกาย และเพศ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261112-violent-02.svg"
+}

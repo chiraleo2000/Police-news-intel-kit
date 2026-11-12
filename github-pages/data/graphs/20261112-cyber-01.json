@@ -1,0 +1,28 @@
+{
+ "case_id": "20261112-cyber-01",
+ "title": "ThaiCERT แจ้งเตือน Google Chrome ออกอัปเดตแก้ 9 ช่องโหว่ รวม CVE-2026-125350 ช่องโหว่ Use-After-Free ในส่วนประมวลผล XML ที่ Google ยืนยันว่าพบการโจมตีจริง แนะนำอัปเดตทันที",
+ "generated_at": "2026-11-12T01:19:37.951Z",
+ "node_count": 4,
+ "edge_count": 3,
+ "relations": [
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/ศูนย์ประสานการรักษาความมั่นคงปลอดภัยระบบคอมพิวเตอร์แห่งชาติ",
+   "target_title": "ศูนย์ประสานการรักษาความมั่นคงปลอดภัยระบบคอมพิวเตอร์แห่งชาติ",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/-",
+   "target_title": "-",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261112-cyber-01.svg"
+}

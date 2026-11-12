@@ -1,0 +1,46 @@
+{
+ "case_id": "20261112-econ-03",
+ "title": "ปปง. ส่งสำนวนให้สำนักงานคดีพิเศษ อสส. ยื่นศาลแพ่งขอยึดทรัพย์ 105 รายการ มูลค่าราว 320.7 ล้านบาท ของผู้ถูกกล่าวหาคดีทุจริตสอบบรรจุข้าราชการท้องถิ่นและพวก 15 คน",
+ "generated_at": "2026-11-12T01:19:37.951Z",
+ "node_count": 7,
+ "edge_count": 6,
+ "relations": [
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/สำนักงานป้องกันและปราบปรามการฟอกเงิน",
+   "target_title": "สำนักงานป้องกันและปราบปรามการฟอกเงิน",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/สำนักงานอัยการสูงสุด",
+   "target_title": "สำนักงานอัยการสูงสุด",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/จ.เพชรบูรณ์",
+   "target_title": "จ.เพชรบูรณ์",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/จ.นนทบุรี",
+   "target_title": "จ.นนทบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/กรุงเทพมหานคร",
+   "target_title": "กรุงเทพมหานคร",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/คดีเศรษฐกิจ การเงิน และฟอกเงิน",
+   "target_title": "คดีเศรษฐกิจ การเงิน และฟอกเงิน",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261112-econ-03.svg"
+}

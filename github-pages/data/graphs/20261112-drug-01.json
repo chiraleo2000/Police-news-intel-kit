@@ -1,0 +1,64 @@
+{
+ "case_id": "20261112-drug-01",
+ "title": "บก.น.7 แถลงจับชายอายุ 26 ปีตามหมายจับเครือข่ายยาเสพติด พร้อมไอซ์ 330 กิโลกรัมซุกในกระสอบข้าวเหนียวบนกระบะตู้ทึบที่ ต.บางคูรัด อ.บางใหญ่ นนทบุรี ขยายผลจากคดีไอซ์ 240 กก. บางบัวทอง",
+ "generated_at": "2026-11-12T01:19:37.951Z",
+ "node_count": 10,
+ "edge_count": 9,
+ "relations": [
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บช.น.",
+   "target_title": "บช.น.",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/กองบังคับการตำรวจนครบาล 7",
+   "target_title": "กองบังคับการตำรวจนครบาล 7",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/บช.ปส.",
+   "target_title": "บช.ปส.",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ลานจอดรถหน้าอพาร์ตเมนต์ ต.บางคูรัด อ.บางใหญ่ จ.นนทบุรี",
+   "target_title": "ลานจอดรถหน้าอพาร์ตเมนต์ ต.บางคูรัด อ.บางใหญ่ จ.นนทบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/พล.ต.ท.สยาม บุญสม ผบช.น.",
+   "target_title": "พล.ต.ท.สยาม บุญสม ผบช.น.",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/บุคคล/สยาม บุญสม",
+   "target_title": "สยาม บุญสม",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/สถานที่/บางใหญ่",
+   "target_title": "บางใหญ่",
+   "direction": "out"
+  },
+  {
+   "label": "ติดตามจาก",
+   "target_id": "20_Cases/20261101-drug-01",
+   "target_title": "ผบ.ตร.สั่งสืบ บก.น.7 ขยายผล จับ 4 ราย ยึดไอซ์ 240 กก. ในบ้านเช่าบางบัวทอง นนทบุรี โยงเครือข่ายลำเลียงผ่านบริษัทขนส่งเอกชน เคยยึดเคตามีน 220 กก. ที่ฉะเชิงเทรา",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/ยาเสพติด",
+   "target_title": "ยาเสพติด",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261112-drug-01.svg"
+}
