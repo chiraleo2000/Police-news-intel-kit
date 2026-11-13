@@ -2,7 +2,8 @@
 # for THIS public kit's optional RAG only (gateway :8790 by default).
 #
 # Isolation (hard rule) — never collide with police-news-intel-private LINE / tor:
-#   - Never Stop-Process ngrok (not by name, not "all", not other agents).
+#   - Never stop "all ngrok". Recycle only agents that clearly own THIS kit's RAG
+#     tunnel (ngrok-rag.log / ngrok-rag.yml / gatewayPort with inspect 4045).
 #   - Never bind, probe-kill, recycle, or route to port 18080 (LINE hub).
 #   - Never touch ngrok-line.log, police-news-intel-private paths, or the tor
 #     reserved host fresh-currently-elk.ngrok-free.app.
@@ -11,11 +12,13 @@
 #   - Never listens on or routes to 7988.
 #
 # Scheduler:
-#   PoliceNewsWakeTunnel  — logon / startup / resume / daily (full wake)
-#   PoliceNewsLmsWatch    — every 5 min (-LmsOnly) so Gemma survives hibernate misses
+#   PoliceNewsWakeTunnel  — logon / startup / resume / daily (full wake, force model reload)
+#   PoliceNewsLmsWatch    — every 5 min (-Watch): LMS + gateway/MCP + RAG ngrok + tunnel.json
+#                           so hibernate misses still restore Pages chat, not only Gemma
 param(
     [switch]$Wake,
-    [switch]$LmsOnly
+    [switch]$LmsOnly,
+    [switch]$Watch
 )
 
 $ErrorActionPreference = "Stop"
@@ -412,6 +415,112 @@ function Get-NgrokHttpsUrl {
     return $null
 }
 
+function Wait-ForNetwork {
+    # After hibernate, Wi-Fi/Ethernet often lags behind the resume event.
+    $delays = @(0, 5, 10, 15, 20, 30, 45)
+    foreach ($delay in $delays) {
+        if ($delay -gt 0) {
+            Write-Log "waiting ${delay}s for network after resume/hibernate"
+            Start-Sleep -Seconds ([int]$delay)
+        }
+        try {
+            $dns = Resolve-DnsName "ngrok.com" -ErrorAction Stop -DnsOnly
+            if ($dns) {
+                Write-Log "network DNS ready"
+                return $true
+            }
+        } catch { }
+        try {
+            $req = Invoke-WebRequest -Uri "https://www.msftconnecttest.com/connecttest.txt" -UseBasicParsing -TimeoutSec 5
+            if ($req.StatusCode -ge 200) {
+                Write-Log "network HTTP ready"
+                return $true
+            }
+        } catch { }
+    }
+    Write-Log "network still not ready; continuing anyway"
+    return $false
+}
+
+function Get-NgrokInspectPort {
+    if ($script:NgrokWebAddr -match ':(\d+)\s*$') { return [int]$Matches[1] }
+    return 4045
+}
+
+function Get-RagNgrokPids {
+    param([Parameter(Mandatory = $true)][int]$GatewayPort)
+    $inspect = Get-NgrokInspectPort
+    $inspectToken = ":$inspect"
+    $inspectHost = "127.0.0.1:$inspect"
+    $portToken = [string]$GatewayPort
+    $pids = New-Object System.Collections.ArrayList
+    foreach ($proc in @(Get-CimInstance Win32_Process -Filter "Name = 'ngrok.exe'" -ErrorAction SilentlyContinue)) {
+        $cmd = [string]$proc.CommandLine
+        if ([string]::IsNullOrWhiteSpace($cmd)) { continue }
+        if ($cmd -match '(?i)ngrok-line\.log|police-news-intel-private|fresh-currently-elk|ngrok-3000\.log|ngrok-8080\.log|ngrok-7988\.log') { continue }
+        if ($cmd -match '(?i)18080|:18080\b') { continue }
+        $isRag = $false
+        if ($cmd -match '(?i)ngrok-rag\.log|ngrok-rag\.yml') { $isRag = $true }
+        if ($cmd.Contains($inspectToken) -or $cmd.Contains($inspectHost)) { $isRag = $true }
+        if ($cmd.Contains($portToken) -and ($cmd -notmatch '(?i)18080|8080|7988|\b3000\b')) { $isRag = $true }
+        if (-not $isRag) { continue }
+        $pidVal = 0
+        try { $pidVal = [int]$proc.ProcessId } catch { $pidVal = 0 }
+        if ($pidVal -le 0) { continue }
+        [void]$pids.Add($pidVal)
+    }
+    return @($pids.ToArray())
+}
+
+function Stop-RagNgrokOnly {
+    param([Parameter(Mandatory = $true)][int]$GatewayPort)
+    $pids = @(Get-RagNgrokPids -GatewayPort $GatewayPort)
+    if ($pids.Count -eq 0) {
+        Write-Log "no RAG-only ngrok process to recycle"
+        return
+    }
+    foreach ($pidVal in $pids) {
+        Write-Log "recycling RAG ngrok pid=$pidVal (LINE/tor agents left alone)"
+        try {
+            Stop-Process -Id $pidVal -Force -ErrorAction Stop
+        } catch {
+            Write-Log "could not stop RAG ngrok pid=${pidVal}: $($_.Exception.Message)"
+        }
+    }
+    Start-Sleep -Seconds 2
+}
+
+function Test-PublicLlmEndpoint {
+    param(
+        [Parameter(Mandatory = $true)][string]$Base,
+        [Parameter(Mandatory = $true)][int]$LlmPort
+    )
+    $url = "$Base/$LlmPort/v1/models"
+    try {
+        $res = Invoke-WebRequest -Uri $url -UseBasicParsing -TimeoutSec 15 -Headers @{
+            'ngrok-skip-browser-warning' = 'true'
+            'Accept' = 'application/json'
+        }
+        return ($res.StatusCode -ge 200 -and $res.StatusCode -lt 300)
+    } catch {
+        Write-Log "public LLM probe failed for $url : $($_.Exception.Message)"
+        return $false
+    }
+}
+
+function Get-PublishedTunnelBase {
+    $tunnelPath = Join-Path $RepoRoot "github-pages\data\tunnel.json"
+    if (-not (Test-Path -LiteralPath $tunnelPath)) { return "" }
+    try {
+        $raw = [System.IO.File]::ReadAllText($tunnelPath)
+        if ($raw.Length -gt 0 -and [int][char]$raw[0] -eq 0xFEFF) { $raw = $raw.Substring(1) }
+        $obj = $raw | ConvertFrom-Json
+        return [string]$obj.base
+    } catch {
+        return ""
+    }
+}
+
 function Get-NgrokDefaultConfigPath {
     $packaged = Join-Path $env:LOCALAPPDATA "Packages\ngrok.ngrok_1g87z0zv29zzc\LocalCache\Local\ngrok\ngrok.yml"
     if (Test-Path -LiteralPath $packaged) { return $packaged }
@@ -435,24 +544,11 @@ agent:
     return $path
 }
 
-function Ensure-Ngrok {
+function Start-RagNgrokProcess {
     param(
-        [Parameter(Mandatory = $true)][string]$CommandName,
+        [Parameter(Mandatory = $true)][string]$NgrokPath,
         [Parameter(Mandatory = $true)][int]$GatewayPort
     )
-    # Intentionally never Stop-Process ngrok — leave LINE :18080 / tor tunnels alone.
-    Assert-AllowedPort $GatewayPort "ngrok"
-    $existing = Get-NgrokHttpsUrl -GatewayPort $GatewayPort
-    if ($existing) {
-        Write-Log "RAG ngrok https tunnel already present; not starting another"
-        return $existing
-    }
-    $ngrokPath = Resolve-ToolPath $CommandName
-    if (-not $ngrokPath) {
-        Write-Log "ngrok command not found: $CommandName"
-        return $null
-    }
-
     $logRel = $script:NgrokLogRel -replace "/", "\"
     if ([System.IO.Path]::IsPathRooted($logRel)) {
         $ngrokLogPath = $logRel
@@ -467,41 +563,111 @@ function Ensure-Ngrok {
     # Do not pass --web-addr (removed in ngrok 3.39); merge default authtoken + ops/ngrok-rag.yml.
     $ragCfg = Ensure-NgrokRagConfig
     $defaultCfg = Get-NgrokDefaultConfigPath
-    $argParts = New-Object System.Collections.Generic.List[string]
-    [void]$argParts.Add("http")
+    $argParts = @("http")
     if ($defaultCfg) {
-        [void]$argParts.Add("--config")
-        [void]$argParts.Add("`"$( $defaultCfg )`"")
+        $argParts += @("--config", "`"$defaultCfg`"")
     } else {
         Write-Log "WARNING: default ngrok.yml not found; RAG tunnel may fail auth (ERR_NGROK_4018)"
     }
-    [void]$argParts.Add("--config")
-    [void]$argParts.Add("`"$( $ragCfg )`"")
-    [void]$argParts.Add("--log")
-    [void]$argParts.Add("`"$( $ngrokLogPath )`"")
-    [void]$argParts.Add("--log-format")
-    [void]$argParts.Add("logfmt")
-    [void]$argParts.Add("$GatewayPort")
+    $argParts += @(
+        "--config", "`"$ragCfg`"",
+        "--log", "`"$ngrokLogPath`"",
+        "--log-format", "logfmt",
+        "$GatewayPort"
+    )
     $arguments = [string]::Join(" ", $argParts)
     Write-Log "starting RAG ngrok: $arguments"
     try {
-        $proc = Start-Background -FileName $ngrokPath -Arguments $arguments
-        Write-Log "started RAG ngrok pid $($proc.Id) (no Stop-Process of other ngrok)"
+        $proc = Start-Background -FileName $NgrokPath -Arguments $arguments
+        Write-Log "started RAG ngrok pid $($proc.Id) (LINE/tor agents left alone)"
+        return $true
     } catch {
         Write-Log "failed to start ngrok: $($_.Exception.Message)"
+        return $false
     }
+}
+
+function Wait-ForRagNgrokUrl {
+    param([Parameter(Mandatory = $true)][int]$GatewayPort)
     $waits = @($script:Retries)
     if ($waits.Count -lt 4) { $waits = @(5, 10, 20, 30, 45) }
+    $inspect = Get-NgrokInspectPort
     foreach ($delay in $waits) {
         Write-Log "waiting ${delay}s for RAG ngrok https tunnel"
         Start-Sleep -Seconds ([int]$delay)
-        if (-not (Test-TcpOpen 4045)) {
-            Write-Log "ngrok inspect 4045 not open yet (other ngrok on 4040 is left alone)"
+        if (-not (Test-TcpOpen $inspect)) {
+            Write-Log "ngrok inspect $inspect not open yet (other ngrok on 4040/4041 left alone)"
         }
         $found = Get-NgrokHttpsUrl -GatewayPort $GatewayPort
         if ($found) { return $found }
     }
-    Write-Log "RAG ngrok https tunnel still not available"
+    return $null
+}
+
+function Ensure-Ngrok {
+    param(
+        [Parameter(Mandatory = $true)][string]$CommandName,
+        [Parameter(Mandatory = $true)][int]$GatewayPort,
+        [Parameter(Mandatory = $true)][int]$LlmPort,
+        [switch]$ForceRestart
+    )
+    # Recycle only THIS kit's RAG ngrok — leave LINE :18080 / tor tunnels alone.
+    Assert-AllowedPort $GatewayPort "ngrok"
+    [void](Wait-ForNetwork)
+
+    if (-not $ForceRestart) {
+        $existing = Get-NgrokHttpsUrl -GatewayPort $GatewayPort
+        if ($existing) {
+            $origin = Get-HttpsOrigin $existing
+            if ($origin -and (Test-PublicLlmEndpoint -Base $origin -LlmPort $LlmPort)) {
+                Write-Log "RAG ngrok https tunnel healthy: $origin"
+                return $existing
+            }
+            Write-Log "RAG tunnel present but public LLM probe failed; recycling RAG agent only"
+            Stop-RagNgrokOnly -GatewayPort $GatewayPort
+        } else {
+            Write-Log "no live RAG tunnel URL; checking for zombie RAG ngrok processes"
+            $zombies = @(Get-RagNgrokPids -GatewayPort $GatewayPort)
+            Write-Log ("zombie RAG ngrok count={0}" -f $zombies.Count)
+            if ($zombies.Count -gt 0) {
+                Write-Log "RAG ngrok process(es) exist without a live API tunnel; recycling"
+                Stop-RagNgrokOnly -GatewayPort $GatewayPort
+            }
+        }
+    } else {
+        Write-Log "ForceRestart: recycling RAG ngrok before start"
+        Stop-RagNgrokOnly -GatewayPort $GatewayPort
+    }
+
+    Write-Log "resolving ngrok executable for RAG tunnel"
+    $ngrokPath = Resolve-ToolPath $CommandName
+    if (-not $ngrokPath) {
+        Write-Log "ngrok command not found: $CommandName"
+        return $null
+    }
+    Write-Log "ngrok executable=$ngrokPath"
+
+    for ($attempt = 1; $attempt -le 3; $attempt++) {
+        Write-Log "RAG ngrok start attempt $attempt/3"
+        if ($attempt -gt 1) {
+            Stop-RagNgrokOnly -GatewayPort $GatewayPort
+            Start-Sleep -Seconds (5 * $attempt)
+            [void](Wait-ForNetwork)
+        }
+        [void](Start-RagNgrokProcess -NgrokPath $ngrokPath -GatewayPort $GatewayPort)
+        $found = Wait-ForRagNgrokUrl -GatewayPort $GatewayPort
+        if (-not $found) {
+            Write-Log "RAG ngrok https tunnel not available on attempt $attempt"
+            continue
+        }
+        $origin = Get-HttpsOrigin $found
+        if ($origin -and (Test-PublicLlmEndpoint -Base $origin -LlmPort $LlmPort)) {
+            Write-Log "RAG ngrok public LLM probe ok: $origin"
+            return $found
+        }
+        Write-Log "RAG tunnel URL up but public LLM still failing on attempt $attempt"
+    }
+    Write-Log "RAG ngrok https tunnel still not available after retries"
     return $null
 }
 
@@ -639,7 +805,11 @@ try {
     if ($config.push -eq $true) { $push = $true }
 
     if ($Wake) { $script:ForceModelReload = $true }
-    $mode = if ($LmsOnly) { "lms-only" } elseif ($Wake) { "wake" } else { "full" }
+    if ($Watch -and $LmsOnly) {
+        Write-Log "both -Watch and -LmsOnly set; preferring -Watch"
+        $LmsOnly = $false
+    }
+    $mode = if ($LmsOnly) { "lms-only" } elseif ($Watch) { "watch" } elseif ($Wake) { "wake" } else { "full" }
     Write-Log "wake started mode=$mode repo=$RepoRoot gateway=$gatewayPort mcp=$mcpPort llm=$llmPort model=$model (RAG only; never touch :18080 / tor)"
 
     $lmsOk = Start-Lms -LmsPath $lmsPath -Port $llmPort -Model $model
@@ -655,18 +825,30 @@ try {
         if ($lmsOk) { exit 0 } else { exit 1 }
     }
 
+    # Watch + Wake + full: restore the whole Pages chat stack, not only Gemma.
     Start-RepoNode -ScriptName "mcp/server.mjs" -Port $mcpPort -ExtraEnv @{ PAGES_BASE = $pagesBase }
     Start-RepoNode -ScriptName "gateway/server.mjs" -Port $gatewayPort
     [void](Wait-Port -Port $mcpPort -Label "mcp $mcpPort")
     [void](Wait-Port -Port $gatewayPort -Label "gateway $gatewayPort")
 
-    $publicUrl = Ensure-Ngrok -CommandName $ngrokCommand -GatewayPort $gatewayPort
+    if (-not (Test-TcpOpen $gatewayPort) -or -not (Test-TcpOpen $mcpPort)) {
+        Write-Log "gateway/mcp not ready; cannot expose RAG tunnel"
+        if ($lmsOk -and ($Watch -or $Wake)) {
+            Write-Log "finished with LMS only (gateway/mcp pending)"
+            exit 0
+        }
+        exit 1
+    }
+
+    # Recycle only when the live probe fails (inside Ensure-Ngrok). Do not tear down a
+    # healthy RAG tunnel on every wake — that churns the public URL and breaks Pages.
+    $publicUrl = Ensure-Ngrok -CommandName $ngrokCommand -GatewayPort $gatewayPort -LlmPort $llmPort
     if (-not $publicUrl) {
         # LMS/Gemma is the wake priority after hibernate. Do not fail the whole
-        # scheduled task solely because RAG ngrok lagged — watchdog can retry.
+        # scheduled task solely because RAG ngrok lagged — -Watch retries every 5 min.
         Write-Log "no https tunnel URL; tunnel.json was not updated (lmsOk=$lmsOk)"
         if ($lmsOk) {
-            Write-Log "wake finished with LMS only (ngrok pending)"
+            Write-Log "finished with LMS only (ngrok pending; watch will retry)"
             exit 0
         }
         exit 1
@@ -677,12 +859,25 @@ try {
         if ($lmsOk) { exit 0 }
         exit 1
     }
+
+    $published = Get-PublishedTunnelBase
+    if ($mode -eq "watch" -and $published -eq $origin -and (Test-PublicLlmEndpoint -Base $origin -LlmPort $llmPort)) {
+        Write-Log "watch ok: tunnel.json already points at healthy $origin"
+        exit 0
+    }
+
     $pagesFile = if ($pagesBase) { "$pagesBase/data/tunnel.json" } else { "github-pages/data/tunnel.json" }
     Write-Log "GitHub Pages chat reads $pagesFile"
     Save-TunnelFile -Base $origin -Config $config -McpPort $mcpPort -LlmPort $llmPort -Push $push
-    Write-Log "wake finished"
+    Write-Log "wake finished mode=$mode base=$origin"
     exit 0
 } catch {
     Write-Log "wake failed: $($_.Exception.Message)"
+    if ($_.InvocationInfo -and $_.InvocationInfo.PositionMessage) {
+        Write-Log ("wake failed at: {0}" -f (($_.InvocationInfo.PositionMessage -replace '\s+', ' ').Trim()))
+    }
+    if ($_.ScriptStackTrace) {
+        Write-Log ("wake stack: {0}" -f ($_.ScriptStackTrace -replace '\s+', ' '))
+    }
     exit 1
 }

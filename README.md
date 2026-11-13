@@ -74,6 +74,8 @@
 
 จากนั้นสคริปต์เขียน `github-pages/data/tunnel.json` ให้หน้า Pages เรียก chat ได้
 
-**แยกจาก LINE / tor:** wake-tunnel จัดการเฉพาะ tunnel ของ RAG (`:8790`) — ไม่หยุด ngrok ทั้งเครื่อง, ไม่แตะพอร์ต `:18080`, ไม่แตะ `ngrok-line.log`, ไม่ใช้โดเมน `fresh-currently-elk.ngrok-free.app`, และไม่แก้ไฟล์ใน `police-news-intel-private`
+**หลัง hibernate / wake:** task `PoliceNewsWakeTunnel` รันตอน resume (หน่วง ~90 วินาทีให้เน็ตพร้อม) และ `PoliceNewsLmsWatch` ตรวจทุก 5 นาทีแบบ `-Watch` — ไม่ใช่แค่โหลด Gemma แต่ซ่อม gateway / MCP / อุโมงค์ RAG และอัปเดต `tunnel.json` ถ้า URL เปลี่ยน
+
+**แยกจาก LINE / tor:** wake-tunnel จัดการเฉพาะ tunnel ของ RAG (`:8790`) — recycle เฉพาะ agent ของ RAG เท่านั้น, ไม่แตะพอร์ต `:18080`, ไม่แตะ `ngrok-line.log`, ไม่ใช้โดเมน `fresh-currently-elk.ngrok-free.app`, และไม่แก้ไฟล์ใน `police-news-intel-private`
 
 ดูรายละเอียดหน้าเว็บใน [`github-pages/README.md`](github-pages/README.md)
