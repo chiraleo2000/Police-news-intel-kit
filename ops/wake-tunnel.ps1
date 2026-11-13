@@ -493,18 +493,41 @@ function Stop-RagNgrokOnly {
 function Test-PublicLlmEndpoint {
     param(
         [Parameter(Mandatory = $true)][string]$Base,
-        [Parameter(Mandatory = $true)][int]$LlmPort
+        [Parameter(Mandatory = $true)][int]$LlmPort,
+        [int]$Attempts = 1
     )
     $url = "$Base/$LlmPort/v1/models"
-    try {
-        $res = Invoke-WebRequest -Uri $url -UseBasicParsing -TimeoutSec 15 -Headers @{
-            'ngrok-skip-browser-warning' = 'true'
-            'Accept' = 'application/json'
+    if ($Attempts -lt 1) { $Attempts = 1 }
+    for ($i = 1; $i -le $Attempts; $i++) {
+        if ($i -gt 1) {
+            Write-Log "retrying public LLM probe ($i/$Attempts) after brief settle"
+            Start-Sleep -Seconds (3 * ($i - 1))
         }
-        return ($res.StatusCode -ge 200 -and $res.StatusCode -lt 300)
+        try {
+            $res = Invoke-WebRequest -Uri $url -UseBasicParsing -TimeoutSec 15 -Headers @{
+                'ngrok-skip-browser-warning' = 'true'
+                'Accept' = 'application/json'
+            }
+            if ($res.StatusCode -ge 200 -and $res.StatusCode -lt 300) { return $true }
+            Write-Log "public LLM probe status=$($res.StatusCode) for $url"
+        } catch {
+            Write-Log "public LLM probe failed for $url : $($_.Exception.Message)"
+        }
+    }
+    return $false
+}
+
+function Test-TunnelNeedsGitPublish {
+    param([Parameter(Mandatory = $true)][string]$TunnelPath)
+    Push-Location $RepoRoot
+    try {
+        $porcelain = & git status --porcelain -- "github-pages/data/tunnel.json" 2>$null
+        if ($LASTEXITCODE -ne 0) { return $true }
+        return -not [string]::IsNullOrWhiteSpace([string]$porcelain)
     } catch {
-        Write-Log "public LLM probe failed for $url : $($_.Exception.Message)"
-        return $false
+        return $true
+    } finally {
+        Pop-Location
     }
 }
 
@@ -619,7 +642,8 @@ function Ensure-Ngrok {
         $existing = Get-NgrokHttpsUrl -GatewayPort $GatewayPort
         if ($existing) {
             $origin = Get-HttpsOrigin $existing
-            if ($origin -and (Test-PublicLlmEndpoint -Base $origin -LlmPort $LlmPort)) {
+            # Retry probes: ngrok edge often returns 502 for a few seconds after resume.
+            if ($origin -and (Test-PublicLlmEndpoint -Base $origin -LlmPort $LlmPort -Attempts 4)) {
                 Write-Log "RAG ngrok https tunnel healthy: $origin"
                 return $existing
             }
@@ -661,7 +685,7 @@ function Ensure-Ngrok {
             continue
         }
         $origin = Get-HttpsOrigin $found
-        if ($origin -and (Test-PublicLlmEndpoint -Base $origin -LlmPort $LlmPort)) {
+        if ($origin -and (Test-PublicLlmEndpoint -Base $origin -LlmPort $LlmPort -Attempts 5)) {
             Write-Log "RAG ngrok public LLM probe ok: $origin"
             return $found
         }
@@ -729,9 +753,15 @@ function Save-TunnelFile {
         Write-Log "push is false; not committing"
         return
     }
-    if ($Base -eq $oldBase) {
-        Write-Log "tunnel base unchanged; not committing"
+    # Base may already match local file after a previous write that never reached
+    # origin (Pages still serves the stale URL). Always publish when git is dirty.
+    $dirty = Test-TunnelNeedsGitPublish -TunnelPath $tunnelPath
+    if (($Base -eq $oldBase) -and (-not $dirty)) {
+        Write-Log "tunnel base unchanged and git clean; not committing"
         return
+    }
+    if (($Base -eq $oldBase) -and $dirty) {
+        Write-Log "tunnel base unchanged locally but tunnel.json is dirty — publishing so Pages catches up"
     }
 
     $env:GIT_TERMINAL_PROMPT = "0"
@@ -739,8 +769,13 @@ function Save-TunnelFile {
     try {
         & git add -- "github-pages/data/tunnel.json"
         if ($LASTEXITCODE -ne 0) { throw "git add exited $LASTEXITCODE" }
-        & git commit -m "Update the public tunnel URL." -- "github-pages/data/tunnel.json"
-        if ($LASTEXITCODE -ne 0) { throw "git commit exited $LASTEXITCODE" }
+        $still = & git status --porcelain -- "github-pages/data/tunnel.json" 2>$null
+        if ([string]::IsNullOrWhiteSpace([string]$still)) {
+            Write-Log "tunnel.json already staged/committed; ensuring push"
+        } else {
+            & git commit -m "Update the public tunnel URL." -- "github-pages/data/tunnel.json"
+            if ($LASTEXITCODE -ne 0) { throw "git commit exited $LASTEXITCODE" }
+        }
         & git push
         if ($LASTEXITCODE -ne 0) { throw "git push exited $LASTEXITCODE" }
         Write-Log "pushed github-pages/data/tunnel.json"
@@ -861,9 +896,14 @@ try {
     }
 
     $published = Get-PublishedTunnelBase
-    if ($mode -eq "watch" -and $published -eq $origin -and (Test-PublicLlmEndpoint -Base $origin -LlmPort $llmPort)) {
-        Write-Log "watch ok: tunnel.json already points at healthy $origin"
+    $tunnelPath = Join-Path $RepoRoot "github-pages\data\tunnel.json"
+    $needsPublish = Test-TunnelNeedsGitPublish -TunnelPath $tunnelPath
+    if ($mode -eq "watch" -and $published -eq $origin -and (-not $needsPublish) -and (Test-PublicLlmEndpoint -Base $origin -LlmPort $llmPort)) {
+        Write-Log "watch ok: tunnel.json already points at healthy $origin and git is clean"
         exit 0
+    }
+    if ($needsPublish) {
+        Write-Log "tunnel.json is dirty vs git — will publish so GitHub Pages stops using a stale URL"
     }
 
     $pagesFile = if ($pagesBase) { "$pagesBase/data/tunnel.json" } else { "github-pages/data/tunnel.json" }
