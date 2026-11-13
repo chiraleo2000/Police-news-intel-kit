@@ -1651,12 +1651,33 @@
     return `เซิร์ฟเวอร์ตอบรหัส ${status}`;
   }
 
+  function messageTextFromChoice(choice) {
+    const msg = choice?.message || {};
+    const content = String(msg.content || "").trim();
+    if (content) return content;
+    const reasoning = String(msg.reasoning_content || "").trim();
+    if (!reasoning) return "";
+    const lines = reasoning
+      .split(/\n+/)
+      .map((line) => line.trim())
+      .filter(Boolean);
+    const last = lines[lines.length - 1] || "";
+    if (/^(thinking|thought|process|step)\b/i.test(last)) return "";
+    return last.length >= 8 ? last : "";
+  }
+
   async function completeChatOnce(url, messages, maxTokens = -1) {
     let res;
     try {
       const signal = maxTokens > 0 && typeof AbortSignal !== "undefined" && AbortSignal.timeout
         ? AbortSignal.timeout(12000)
         : undefined;
+      const body = {
+        model: LLM_MODEL,
+        temperature: maxTokens > 0 ? 0 : 0.2,
+        messages,
+      };
+      if (maxTokens > 0) body.max_tokens = maxTokens;
       res = await fetch(url, {
         method: "POST",
         headers: {
@@ -1664,16 +1685,14 @@
           Accept: "application/json",
           "ngrok-skip-browser-warning": "true",
         },
-        body: JSON.stringify({
-          model: LLM_MODEL,
-          temperature: maxTokens > 0 ? 0 : 0.2,
-          max_tokens: maxTokens,
-          messages,
-        }),
+        body: JSON.stringify(body),
         signal,
       });
     } catch {
-      return { ok: false, reason: "เรียกโมเดลไม่สำเร็จ เพราะเครือข่ายหรือถูกบล็อก" };
+      return {
+        ok: false,
+        reason: "เรียกโมเดลไม่สำเร็จ — อุโมงค์ HTTPS หมดอายุหรือถูกบล็อกจากเบราว์เซอร์ (ดูแท็บเชื่อมต่อ)",
+      };
     }
     const raw = await res.text();
     let data = null;
@@ -1686,12 +1705,13 @@
       return { ok: false, reason: "เซิร์ฟเวอร์ตอบกลับไม่ใช่ JSON" };
     }
     if (!res.ok) return { ok: false, reason: llmFailureReason(res.status, data) };
-    const text = String(data?.choices?.[0]?.message?.content || "");
+    const choice = data?.choices?.[0];
+    const text = messageTextFromChoice(choice);
     if (!text.trim()) return { ok: false, reason: "โมเดลไม่ส่งข้อความกลับ" };
     return {
       ok: true,
       text,
-      truncated: data?.choices?.[0]?.finish_reason === "length",
+      truncated: choice?.finish_reason === "length",
     };
   }
 
@@ -2028,13 +2048,20 @@
 
   function replyHtml(reply, result) {
     if (reply.ok) return `<div class="rag-narration-body">${renderModelText(proseFromModel(reply.text, result))}</div>`;
-    return `<p class="rag-warn">${escapeHtml(reply.reason || "เรียกโมเดลไม่สำเร็จ — หลักฐานด้านบนยังใช้ได้")}</p>`;
+    return "";
   }
 
-  function assistantHtml(evidence, analysis) {
-    const open = analysis ? "" : " open";
-    const body = analysis || `<p class="muted">กำลังให้โมเดลเขียนจากหลักฐานด้านบน…</p>`;
-    return `<details class="rag-evidence"${open}><summary>หลักฐานจากกราฟ · โหนด ความเชื่อมโยง และข่าวที่เกี่ยวข้อง</summary>${evidence}</details><section class="rag-llm"><p class="brain-kind">ผลจากโมเดล</p>${body}</section>`;
+  function assistantHtml(evidence, analysis, opts = {}) {
+    if (opts.loading) {
+      return `<div class="rag-chat-main">${evidence}</div><p class="muted rag-chat-status">กำลังให้โมเดลเขียนจากหลักฐาน…</p>`;
+    }
+    if (opts.failed) {
+      return `<div class="rag-chat-main">${evidence}</div>
+        <p class="rag-warn">${escapeHtml(opts.reason || "เรียกโมเดลไม่สำเร็จ")}</p>
+        <p class="muted">คำตอบด้านบนมาจากกราฟในเบราว์เซอร์แล้ว — ถ้าต้องการคำบรรยายจากโมเดล ให้เปิดแท็บเชื่อมต่อแล้วทดสอบ LLM</p>`;
+    }
+    return `<section class="rag-llm"><p class="brain-kind">คำตอบ</p>${analysis}</section>
+      <details class="rag-evidence"><summary>หลักฐานจากกราฟ · โหนด ความเชื่อมโยง และข่าวที่เกี่ยวข้อง</summary>${evidence}</details>`;
   }
 
   async function askNow(question) {
@@ -2047,7 +2074,7 @@
     log.querySelectorAll("[data-rag-focus]").forEach((btn) => btn.closest("p")?.remove());
     const turn = document.createElement("article");
     turn.className = "chat-turn";
-    turn.innerHTML = `<div class="chat-bubble chat-user">${escapeHtml(question)}</div><div class="chat-bubble chat-assistant"><p class="muted">กำลังค้นหลักฐานแล้วให้โมเดลวิเคราะห์…</p></div>`;
+    turn.innerHTML = `<div class="chat-bubble chat-user">${escapeHtml(question)}</div><div class="chat-bubble chat-assistant"><p class="muted">กำลังค้นจากกราฟ…</p></div>`;
     log.appendChild(turn);
     log.scrollTop = log.scrollHeight;
     if (input) input.value = "";
@@ -2064,13 +2091,18 @@
     }
     applyBrainFocus(result);
     const evidence = renderResult(result, { focus: true });
-    assistant.innerHTML = assistantHtml(evidence, "");
-    assistant.querySelector(".rag-llm")?.scrollIntoView({ block: "nearest" });
+    assistant.innerHTML = assistantHtml(evidence, "", { loading: true });
+    assistant.querySelector(".rag-chat-main")?.scrollIntoView({ block: "nearest" });
     const reply = await askModel(question, result);
     const shown = reply.ok ? proseFromModel(reply.text, result) : "";
     thread.push({ question, result, llmText: shown });
-    assistant.innerHTML = assistantHtml(evidence, replyHtml(reply, result));
-    assistant.querySelector(".rag-llm")?.scrollIntoView({ block: "nearest" });
+    if (reply.ok) {
+      assistant.innerHTML = assistantHtml(evidence, replyHtml(reply, result));
+      assistant.querySelector(".rag-llm")?.scrollIntoView({ block: "nearest" });
+    } else {
+      assistant.innerHTML = assistantHtml(evidence, "", { failed: true, reason: reply.reason });
+      assistant.querySelector(".rag-chat-main")?.scrollIntoView({ block: "nearest" });
+    }
   }
 
   function clearChat() {

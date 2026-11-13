@@ -412,6 +412,29 @@ function Get-NgrokHttpsUrl {
     return $null
 }
 
+function Get-NgrokDefaultConfigPath {
+    $packaged = Join-Path $env:LOCALAPPDATA "Packages\ngrok.ngrok_1g87z0zv29zzc\LocalCache\Local\ngrok\ngrok.yml"
+    if (Test-Path -LiteralPath $packaged) { return $packaged }
+    $legacy = Join-Path $env:LOCALAPPDATA "ngrok\ngrok.yml"
+    if (Test-Path -LiteralPath $legacy) { return $legacy }
+    return $null
+}
+
+function Ensure-NgrokRagConfig {
+    # ngrok 3.39+ dropped --web-addr; set inspect via a side config that merges with the default authtoken file.
+    $path = Join-Path $OpsDir "ngrok-rag.yml"
+    $web = [string]$script:NgrokWebAddr
+    if ([string]::IsNullOrWhiteSpace($web)) { $web = "127.0.0.1:4045" }
+    $yaml = @"
+version: "3"
+agent:
+  web_addr: $web
+"@
+    $utf8 = New-Object System.Text.UTF8Encoding $false
+    [System.IO.File]::WriteAllText($path, ($yaml.Replace("`r`n", "`n").Trim() + "`n"), $utf8)
+    return $path
+}
+
 function Ensure-Ngrok {
     param(
         [Parameter(Mandatory = $true)][string]$CommandName,
@@ -441,7 +464,25 @@ function Ensure-Ngrok {
         New-Item -ItemType Directory -Path $logDir -Force | Out-Null
     }
     # Own inspect + log only — never ngrok-line.log / private kit paths.
-    $arguments = "http --log `"$ngrokLogPath`" --web-addr $($script:NgrokWebAddr) $GatewayPort"
+    # Do not pass --web-addr (removed in ngrok 3.39); merge default authtoken + ops/ngrok-rag.yml.
+    $ragCfg = Ensure-NgrokRagConfig
+    $defaultCfg = Get-NgrokDefaultConfigPath
+    $argParts = New-Object System.Collections.Generic.List[string]
+    [void]$argParts.Add("http")
+    if ($defaultCfg) {
+        [void]$argParts.Add("--config")
+        [void]$argParts.Add("`"$( $defaultCfg )`"")
+    } else {
+        Write-Log "WARNING: default ngrok.yml not found; RAG tunnel may fail auth (ERR_NGROK_4018)"
+    }
+    [void]$argParts.Add("--config")
+    [void]$argParts.Add("`"$( $ragCfg )`"")
+    [void]$argParts.Add("--log")
+    [void]$argParts.Add("`"$( $ngrokLogPath )`"")
+    [void]$argParts.Add("--log-format")
+    [void]$argParts.Add("logfmt")
+    [void]$argParts.Add("$GatewayPort")
+    $arguments = [string]::Join(" ", $argParts)
     Write-Log "starting RAG ngrok: $arguments"
     try {
         $proc = Start-Background -FileName $ngrokPath -Arguments $arguments

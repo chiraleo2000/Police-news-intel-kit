@@ -1435,6 +1435,14 @@ body.is-brain .site-footer {
   max-height: none;
 }
 
+.rag-chat-main {
+  margin: 0;
+}
+
+.rag-chat-status {
+  margin: 0.55rem 0 0;
+}
+
 .rag-evidence {
   margin-top: 0.7rem;
 }
