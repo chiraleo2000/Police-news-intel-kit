@@ -1,0 +1,225 @@
+{
+ "baseline": "ok",
+ "window_days": 7,
+ "days_available": 7,
+ "note": "baseline 7 วันย้อนหลัง (<7 วัน: แนวโน้มเป็นข้อมูลบ่งชี้เท่านั้น) surge = วันนี้ >=3 เรื่อง และสูงกว่าค่าเฉลี่ย >=50 เปอร์เซ็นต์",
+ "by_crime_type": [
+  {
+   "type": "อาชญากรรมไซเบอร์และออนไลน์",
+   "today": 4,
+   "avg_prev_7d": 3.86,
+   "delta_pct": 3.7,
+   "surge": false
+  },
+  {
+   "type": "คดีเศรษฐกิจ การเงิน และฟอกเงิน",
+   "today": 4,
+   "avg_prev_7d": 2.86,
+   "delta_pct": 40.0,
+   "surge": false
+  },
+  {
+   "type": "ยาเสพติด",
+   "today": 3,
+   "avg_prev_7d": 2.57,
+   "delta_pct": 16.7,
+   "surge": false
+  },
+  {
+   "type": "พนันและบ่อนผิดกฎหมาย",
+   "today": 2,
+   "avg_prev_7d": 0.86,
+   "delta_pct": 133.3,
+   "surge": false
+  },
+  {
+   "type": "ทุจริตและประพฤติมิชอบของเจ้าหน้าที่รัฐ",
+   "today": 2,
+   "avg_prev_7d": 0.29,
+   "delta_pct": 600.0,
+   "surge": false
+  },
+  {
+   "type": "คดีชีวิต ร่างกาย และเพศ",
+   "today": 2,
+   "avg_prev_7d": 2.0,
+   "delta_pct": 0.0,
+   "surge": false
+  },
+  {
+   "type": "สิ่งแวดล้อม ทรัพยากร และสัตว์ป่า",
+   "today": 2,
+   "avg_prev_7d": 0.71,
+   "delta_pct": 180.0,
+   "surge": false
+  },
+  {
+   "type": "ค้ามนุษย์ แรงงานผิดกฎหมาย และคุ้มครองเด็ก",
+   "today": 1,
+   "avg_prev_7d": 1.0,
+   "delta_pct": 0.0,
+   "surge": false
+  },
+  {
+   "type": "อาชญากรรมข้ามชาติและความร่วมมือระหว่างประเทศ",
+   "today": 1,
+   "avg_prev_7d": 0.43,
+   "delta_pct": 133.3,
+   "surge": false
+  },
+  {
+   "type": "อาชญากรรมที่เกี่ยวข้องกับนักท่องเที่ยวและชาวต่างชาติ",
+   "today": 1,
+   "avg_prev_7d": 1.86,
+   "delta_pct": -46.2,
+   "surge": false
+  },
+  {
+   "type": "การปฏิบัติหน้าที่ ประชาสัมพันธ์ และนโยบายตำรวจ",
+   "today": 1,
+   "avg_prev_7d": 2.29,
+   "delta_pct": -56.2,
+   "surge": false
+  }
+ ],
+ "by_mo": [
+  {
+   "mo": "พนันออนไลน์",
+   "today": 3,
+   "avg_prev_7d": 0.0,
+   "surge": true
+  },
+  {
+   "mo": "ลำเลียงยาเสพติด",
+   "today": 2,
+   "avg_prev_7d": 0.0,
+   "surge": false
+  },
+  {
+   "mo": "ฟอกเงิน",
+   "today": 2,
+   "avg_prev_7d": 0.0,
+   "surge": false
+  },
+  {
+   "mo": "แอบอ้างเจ้าหน้าที่รัฐ/ตำรวจ",
+   "today": 2,
+   "avg_prev_7d": 0.0,
+   "surge": false
+  },
+  {
+   "mo": "บัญชีม้า/ซิมม้า",
+   "today": 1,
+   "avg_prev_7d": 0.0,
+   "surge": false
+  },
+  {
+   "mo": "นอมินีธุรกิจต่างชาติ",
+   "today": 1,
+   "avg_prev_7d": 0.0,
+   "surge": false
+  },
+  {
+   "mo": "หลอกลงทุนคริปโต/สินทรัพย์ดิจิทัล",
+   "today": 1,
+   "avg_prev_7d": 0.0,
+   "surge": false
+  },
+  {
+   "mo": "แชร์ลูกโซ่",
+   "today": 1,
+   "avg_prev_7d": 0.0,
+   "surge": false
+  },
+  {
+   "mo": "มัลแวร์/แอปดูดเงิน",
+   "today": 1,
+   "avg_prev_7d": 0.0,
+   "surge": false
+  },
+  {
+   "mo": "แรงงานต่างด้าวผิดกฎหมาย",
+   "today": 1,
+   "avg_prev_7d": 0.0,
+   "surge": false
+  },
+  {
+   "mo": "หลอกซื้อขายออนไลน์",
+   "today": 1,
+   "avg_prev_7d": 0.0,
+   "surge": false
+  }
+ ],
+ "by_province": [
+  {
+   "province": "กรุงเทพมหานคร",
+   "today": 9,
+   "avg_prev_7d": 9.43
+  },
+  {
+   "province": "เชียงใหม่",
+   "today": 4,
+   "avg_prev_7d": 0.43
+  },
+  {
+   "province": "นนทบุรี",
+   "today": 3,
+   "avg_prev_7d": 2.43
+  },
+  {
+   "province": "พระนครศรีอยุธยา",
+   "today": 2,
+   "avg_prev_7d": 0.29
+  },
+  {
+   "province": "ชลบุรี",
+   "today": 2,
+   "avg_prev_7d": 2.0
+  },
+  {
+   "province": "เชียงราย",
+   "today": 1,
+   "avg_prev_7d": 0.57
+  },
+  {
+   "province": "ขอนแก่น",
+   "today": 1,
+   "avg_prev_7d": 0.14
+  },
+  {
+   "province": "ปัตตานี",
+   "today": 1,
+   "avg_prev_7d": 0.29
+  },
+  {
+   "province": "กาญจนบุรี",
+   "today": 1,
+   "avg_prev_7d": 0.0
+  },
+  {
+   "province": "นครราชสีมา",
+   "today": 1,
+   "avg_prev_7d": 0.57
+  },
+  {
+   "province": "นครปฐม",
+   "today": 1,
+   "avg_prev_7d": 0.29
+  },
+  {
+   "province": "ตาก",
+   "today": 1,
+   "avg_prev_7d": 0.14
+  },
+  {
+   "province": "ภูเก็ต",
+   "today": 1,
+   "avg_prev_7d": 2.0
+  },
+  {
+   "province": "ระยอง",
+   "today": 1,
+   "avg_prev_7d": 0.14
+  }
+ ]
+}

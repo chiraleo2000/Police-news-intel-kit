@@ -1,0 +1,46 @@
+{
+ "case_id": "20261113-police-01",
+ "title": "ผบช.ทท. ร่วม ทกจ.ภูเก็ต เจ้าท่า ภ.จว.ภูเก็ต และตำรวจน้ำ ตั้งจุดตรวจและสุ่มตรวจสารเสพติดพนักงานประจำเรือนำเที่ยวที่ท่าเรือ AA Marina ต.รัษฎา รับฤดูท่องเที่ยวภูเก็ต",
+ "generated_at": "2026-11-13T01:18:17.828Z",
+ "node_count": 7,
+ "edge_count": 6,
+ "relations": [
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บช.ทท.",
+   "target_title": "บช.ทท.",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/กองบังคับการตำรวจท่องเที่ยว 3",
+   "target_title": "กองบังคับการตำรวจท่องเที่ยว 3",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/ตำรวจภูธรจังหวัดภูเก็ต",
+   "target_title": "ตำรวจภูธรจังหวัดภูเก็ต",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ท่าเรือ AA Marina ต.รัษฎา อ.เมือง จ.ภูเก็ต",
+   "target_title": "ท่าเรือ AA Marina ต.รัษฎา อ.เมือง จ.ภูเก็ต",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/พล.ต.ท.พงษ์สยาม มีขันทอง ผบช.ทท.",
+   "target_title": "พล.ต.ท.พงษ์สยาม มีขันทอง ผบช.ทท.",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/การปฏิบัติหน้าที่ ประชาสัมพันธ์ และนโยบายตำรวจ",
+   "target_title": "การปฏิบัติหน้าที่ ประชาสัมพันธ์ และนโยบายตำรวจ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261113-police-01.svg"
+}

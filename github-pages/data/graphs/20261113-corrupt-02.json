@@ -1,0 +1,52 @@
+{
+ "case_id": "20261113-corrupt-02",
+ "title": "กรมการปกครองร่วมตำรวจ ป.ป.ท. ปปง. และ DSI ตรวจค้นเครือข่ายออกเอกสารทะเบียนราษฎรและบัตรประจำตัวเลขศูนย์ให้ชาวต่างชาติโดยมิชอบใน อ.ฝาง เชียงใหม่ มีหมายจับ 79 ราย รวมนายกเทศมนตรีรายหนึ่ง",
+ "generated_at": "2026-11-13T01:19:30.692Z",
+ "node_count": 8,
+ "edge_count": 7,
+ "relations": [
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/กรมการปกครอง",
+   "target_title": "กรมการปกครอง",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/ป.ป.ท.",
+   "target_title": "ป.ป.ท.",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/ปปง.",
+   "target_title": "ปปง.",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/ดีเอสไอ",
+   "target_title": "ดีเอสไอ",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/อ.ฝาง จ.เชียงใหม่",
+   "target_title": "อ.ฝาง จ.เชียงใหม่",
+   "direction": "out"
+  },
+  {
+   "label": "เป้าหมายเครือข่าย",
+   "target_id": "30_Entities/Projects/เครือข่าย Ming Chen C4",
+   "target_title": "เครือข่าย Ming Chen C4",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/ทุจริตและประพฤติมิชอบของเจ้าหน้าที่รัฐ",
+   "target_title": "ทุจริตและประพฤติมิชอบของเจ้าหน้าที่รัฐ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261113-corrupt-02.svg"
+}

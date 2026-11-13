@@ -1,0 +1,58 @@
+{
+ "case_id": "20261113-drug-03",
+ "title": "ตำรวจตั้งจุดสกัดเส้นทางอรุโณทัย–ไชยปราการ อ.เชียงดาว เชียงใหม่ ปะทะผู้ต้องสงสัยลำเลียงยาเสพติดที่ยิงใส่เจ้าหน้าที่ ผู้ต้องสงสัยเสียชีวิต ยึดยาบ้าราว 400 เม็ดและปืนลูกซองไทยประดิษฐ์ ผบ.ตร. ลงพื้นที่",
+ "generated_at": "2026-11-13T01:18:17.828Z",
+ "node_count": 9,
+ "edge_count": 8,
+ "relations": [
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/ตร.",
+   "target_title": "ตร.",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/ตำรวจภูธรภาค 5",
+   "target_title": "ตำรวจภูธรภาค 5",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/ตม.",
+   "target_title": "ตม.",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/สวนมะม่วงริมเส้นทางอรุโณทัย–ไชยปราการ อ.เชียงดาว",
+   "target_title": "สวนมะม่วงริมเส้นทางอรุโณทัย–ไชยปราการ อ.เชียงดาว",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/พล.ต.อ.สำราญ นวลมา ผบ.ตร.",
+   "target_title": "พล.ต.อ.สำราญ นวลมา ผบ.ตร.",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/พล.ต.ท.ปรัชญา ประสานสุข ผบช.ภ.5",
+   "target_title": "พล.ต.ท.ปรัชญา ประสานสุข ผบช.ภ.5",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/สถานที่/เชียงดาว",
+   "target_title": "เชียงดาว",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/ยาเสพติด",
+   "target_title": "ยาเสพติด",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261113-drug-03.svg"
+}

@@ -1,0 +1,46 @@
+{
+ "case_id": "20261113-corrupt-01",
+ "title": "ป.ป.ท. ร่วม สภ.เมืองพัทยา จับหญิงอดีตอาสาสมัครตำรวจชุมชน สภ.วังน้อย ตามหมายจับศาลอาญาคดีทุจริตภาค 1 ถูกกล่าวหาร่วมยัดยาบ้าผู้เสียหายเมื่อปี 2559 แล้วเรียกเงิน 100,000 บาทแลกไม่ดำเนินคดี",
+ "generated_at": "2026-11-13T01:18:17.828Z",
+ "node_count": 7,
+ "edge_count": 6,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/ป.ป.ท.",
+   "target_title": "ป.ป.ท.",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/สถานีตำรวจภูธรเมืองพัทยา",
+   "target_title": "สถานีตำรวจภูธรเมืองพัทยา",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลอาญาคดีทุจริตและประพฤติมิชอบภาค 1",
+   "target_title": "ศาลอาญาคดีทุจริตและประพฤติมิชอบภาค 1",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/เมืองพัทยา จ.ชลบุรี",
+   "target_title": "เมืองพัทยา จ.ชลบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/พัทยา",
+   "target_title": "พัทยา",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/ทุจริตและประพฤติมิชอบของเจ้าหน้าที่รัฐ",
+   "target_title": "ทุจริตและประพฤติมิชอบของเจ้าหน้าที่รัฐ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261113-corrupt-01.svg"
+}

@@ -1,0 +1,40 @@
+{
+ "case_id": "20261113-cyber-02",
+ "title": "สภ.บางใหญ่คืนเงิน 519,400 บาทให้เจ้าของบริษัทอายุ 65 ปีที่ถูกมิจฉาชีพอ้างเป็นนายทหารอากาศหญิงหลอกสั่งซื้อแบริเออร์น้ำ หลังอายัดบัญชีปลายทางทัน และจับผู้ก่อเหตุได้แล้ว",
+ "generated_at": "2026-11-13T01:18:17.828Z",
+ "node_count": 6,
+ "edge_count": 5,
+ "relations": [
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/ตำรวจภูธรจังหวัดนนทบุรี",
+   "target_title": "ตำรวจภูธรจังหวัดนนทบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/สถานีตำรวจภูธรบางใหญ่",
+   "target_title": "สถานีตำรวจภูธรบางใหญ่",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/สภ.บางใหญ่ จ.นนทบุรี",
+   "target_title": "สภ.บางใหญ่ จ.นนทบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/สถานที่/บางใหญ่",
+   "target_title": "บางใหญ่",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261113-cyber-02.svg"
+}

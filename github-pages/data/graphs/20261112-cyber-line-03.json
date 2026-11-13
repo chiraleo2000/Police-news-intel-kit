@@ -1,0 +1,58 @@
+{
+ "case_id": "20261112-cyber-line-03",
+ "title": "ตำรวจไซเบอร์ กก.2 บก.สอท.4 ร่วม สอท.5 และ สภ.แม่สอด จับชายอายุ 57 ปีตามหมายจับศาลอาญา ข้อหาจัดให้มีการพนันออนไลน์และสมคบฟอกเงิน ถูกกล่าวหาเป็นตัวแทนเปิดบัญชีม้านิติบุคคล",
+ "generated_at": "2026-11-13T01:47:59.459Z",
+ "node_count": 9,
+ "edge_count": 8,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/กก.2 บก.สอท.4",
+   "target_title": "กก.2 บก.สอท.4",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/กก.2 บก.สอท.5",
+   "target_title": "กก.2 บก.สอท.5",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/สภ.แม่สอด",
+   "target_title": "สภ.แม่สอด",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บช.สอท.",
+   "target_title": "บช.สอท.",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลอาญา",
+   "target_title": "ศาลอาญา",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/อ.แม่สอด จ.ตาก",
+   "target_title": "อ.แม่สอด จ.ตาก",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/บุคคล/จักรสิริพร ดวงถาวร",
+   "target_title": "จักรสิริพร ดวงถาวร",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261112-cyber-line-03.svg"
+}

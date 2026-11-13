@@ -1,0 +1,40 @@
+{
+ "case_id": "20261112-foreign-line-01",
+ "title": "ตม.จว.เชียงใหม่ร่วม กก.สส.บก.ตม.5 จับชายจีนที่ลักลอบเข้าเมืองผ่านช่องทางธรรมชาติ ตรวจสถานที่เสี่ยงใน ต.หายยา อ.เมืองเชียงใหม่ ข้อหาเป็นคนต่างด้าวเข้ามาและอยู่โดยไม่ได้รับอนุญาต",
+ "generated_at": "2026-11-13T01:47:59.459Z",
+ "node_count": 6,
+ "edge_count": 5,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/ตม.จว.เชียงใหม่",
+   "target_title": "ตม.จว.เชียงใหม่",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/กก.สส.บก.ตม.5",
+   "target_title": "กก.สส.บก.ตม.5",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/สภ.เมืองเชียงใหม่",
+   "target_title": "สภ.เมืองเชียงใหม่",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ต.หายยา อ.เมือง จ.เชียงใหม่",
+   "target_title": "ต.หายยา อ.เมือง จ.เชียงใหม่",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมที่เกี่ยวข้องกับนักท่องเที่ยวและชาวต่างชาติ",
+   "target_title": "อาชญากรรมที่เกี่ยวข้องกับนักท่องเที่ยวและชาวต่างชาติ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261112-foreign-line-01.svg"
+}

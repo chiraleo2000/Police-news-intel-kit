@@ -1,0 +1,28 @@
+{
+ "case_id": "20261113-cyber-04",
+ "title": "ThaiCERT แจ้งเตือนการโจมตีชุดช่องโหว่ Plex2Shell 4 รายการใน Plex Media Server บน QNAP NAS ที่เปิดให้เข้าถึงจากอินเทอร์เน็ต ผู้โจมตีรันคำสั่งได้โดยไม่ยืนยันตัวตน บางระบบถูกติดตั้งโปรแกรมขุดคริปโต",
+ "generated_at": "2026-11-13T01:18:17.828Z",
+ "node_count": 4,
+ "edge_count": 3,
+ "relations": [
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/ThaiCERT",
+   "target_title": "ThaiCERT",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/กรุงเทพมหานคร",
+   "target_title": "กรุงเทพมหานคร",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261113-cyber-04.svg"
+}
