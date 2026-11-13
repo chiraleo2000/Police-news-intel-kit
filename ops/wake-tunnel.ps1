@@ -34,6 +34,7 @@ $script:NgrokWebAddr = "127.0.0.1:4045"
 $script:NgrokLogRel = "logs/ngrok-rag.log"
 $script:LmStudioExe = "C:\Program Files\LM Studio\LM Studio.exe"
 $script:ForceModelReload = [bool]$Wake
+$script:ForceTunnelPublish = $false
 
 function Write-Log {
     param([Parameter(Mandatory = $true)][string]$Message)
@@ -531,6 +532,23 @@ function Test-TunnelNeedsGitPublish {
     }
 }
 
+function Test-RecentResume {
+    param([int]$WithinMinutes = 5)
+    # Same signal LINE wake uses (Power-Troubleshooter EventID 1).
+    try {
+        $since = (Get-Date).AddMinutes(-1 * $WithinMinutes)
+        $events = Get-WinEvent -FilterHashtable @{
+            LogName      = 'System'
+            StartTime    = $since
+            Id           = 1
+            ProviderName = 'Microsoft-Windows-Power-Troubleshooter'
+        } -ErrorAction SilentlyContinue
+        return [bool]$events
+    } catch {
+        return $false
+    }
+}
+
 function Get-PublishedTunnelBase {
     $tunnelPath = Join-Path $RepoRoot "github-pages\data\tunnel.json"
     if (-not (Test-Path -LiteralPath $tunnelPath)) { return "" }
@@ -540,6 +558,20 @@ function Get-PublishedTunnelBase {
         $obj = $raw | ConvertFrom-Json
         return [string]$obj.base
     } catch {
+        return ""
+    }
+}
+
+function Get-RemotePagesTunnelBase {
+    param([Parameter(Mandatory = $true)][string]$PagesBase)
+    $root = ([string]$PagesBase).Trim().TrimEnd('/')
+    if (-not $root) { return "" }
+    $url = "{0}/data/tunnel.json?t={1}" -f $root, [DateTimeOffset]::UtcNow.ToUnixTimeSeconds()
+    try {
+        $obj = Invoke-RestMethod -Uri $url -TimeoutSec 20
+        return [string]$obj.base
+    } catch {
+        Write-Log "could not read Pages tunnel.json at $url : $($_.Exception.Message)"
         return ""
     }
 }
@@ -754,14 +786,16 @@ function Save-TunnelFile {
         return
     }
     # Base may already match local file after a previous write that never reached
-    # origin (Pages still serves the stale URL). Always publish when git is dirty.
+    # origin (Pages still serves the stale URL). Always publish when git is dirty
+    # or when the caller set ForceTunnelPublish (remote Pages drift).
     $dirty = Test-TunnelNeedsGitPublish -TunnelPath $tunnelPath
-    if (($Base -eq $oldBase) -and (-not $dirty)) {
+    $forcePublish = [bool]$script:ForceTunnelPublish
+    if (($Base -eq $oldBase) -and (-not $dirty) -and (-not $forcePublish)) {
         Write-Log "tunnel base unchanged and git clean; not committing"
         return
     }
-    if (($Base -eq $oldBase) -and $dirty) {
-        Write-Log "tunnel base unchanged locally but tunnel.json is dirty — publishing so Pages catches up"
+    if (($Base -eq $oldBase) -and ($dirty -or $forcePublish)) {
+        Write-Log "tunnel base unchanged locally but publish required (dirty=$dirty force=$forcePublish) — pushing so Pages catches up"
     }
 
     $env:GIT_TERMINAL_PROMPT = "0"
@@ -844,8 +878,19 @@ try {
         Write-Log "both -Watch and -LmsOnly set; preferring -Watch"
         $LmsOnly = $false
     }
+    # Periodic watch after hibernate often races the dedicated -Wake task. Promote to
+    # a fuller repair path so Pages chat is restored even if the event trigger missed.
+    if ($Watch -and -not $Wake -and (Test-RecentResume -WithinMinutes 8)) {
+        Write-Log "detected recent resume from sleep/hibernate during -Watch -> force model reload + network settle"
+        $script:ForceModelReload = $true
+        [void](Wait-ForNetwork)
+    }
     $mode = if ($LmsOnly) { "lms-only" } elseif ($Watch) { "watch" } elseif ($Wake) { "wake" } else { "full" }
     Write-Log "wake started mode=$mode repo=$RepoRoot gateway=$gatewayPort mcp=$mcpPort llm=$llmPort model=$model (RAG only; never touch :18080 / tor)"
+
+    if ($Wake) {
+        [void](Wait-ForNetwork)
+    }
 
     $lmsOk = Start-Lms -LmsPath $lmsPath -Port $llmPort -Model $model
     if (-not $lmsOk) {
@@ -898,16 +943,33 @@ try {
     $published = Get-PublishedTunnelBase
     $tunnelPath = Join-Path $RepoRoot "github-pages\data\tunnel.json"
     $needsPublish = Test-TunnelNeedsGitPublish -TunnelPath $tunnelPath
+    $remotePages = ""
+    if ($pagesBase) {
+        $remotePages = Get-RemotePagesTunnelBase -PagesBase $pagesBase
+        if ($remotePages -and ($remotePages.TrimEnd('/') -ne $origin.TrimEnd('/'))) {
+            Write-Log "GitHub Pages still serves stale tunnel base=$remotePages (live=$origin) — force publish"
+            $needsPublish = $true
+        } elseif (-not $remotePages) {
+            Write-Log "could not verify remote Pages tunnel.json; will publish if local/git needs it"
+        } else {
+            Write-Log "GitHub Pages tunnel.json already matches live base=$origin"
+        }
+    }
     if ($mode -eq "watch" -and $published -eq $origin -and (-not $needsPublish) -and (Test-PublicLlmEndpoint -Base $origin -LlmPort $llmPort)) {
-        Write-Log "watch ok: tunnel.json already points at healthy $origin and git is clean"
+        Write-Log "watch ok: local+Pages tunnel.json match healthy $origin and git is clean"
         exit 0
     }
     if ($needsPublish) {
-        Write-Log "tunnel.json is dirty vs git — will publish so GitHub Pages stops using a stale URL"
+        Write-Log "tunnel.json needs publish so GitHub Pages stops using a stale URL"
     }
 
     $pagesFile = if ($pagesBase) { "$pagesBase/data/tunnel.json" } else { "github-pages/data/tunnel.json" }
     Write-Log "GitHub Pages chat reads $pagesFile"
+    # Force commit/push when Pages drifted even if local base string was already updated.
+    if ($needsPublish -and ($published -eq $origin)) {
+        # Bump updated_at by rewriting; Save-TunnelFile also checks git dirty / remote need.
+        $script:ForceTunnelPublish = $true
+    }
     Save-TunnelFile -Base $origin -Config $config -McpPort $mcpPort -LlmPort $llmPort -Push $push
     Write-Log "wake finished mode=$mode base=$origin"
     exit 0

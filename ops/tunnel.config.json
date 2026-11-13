@@ -12,6 +12,6 @@
   "reservedHosts": ["fresh-currently-elk.ngrok-free.app"],
   "dailyTime": "07:30",
   "push": true,
-  "retries": [5, 15, 30],
+  "retries": [5, 10, 20, 30, 45],
   "log": "logs/wake-tunnel.log"
 }
