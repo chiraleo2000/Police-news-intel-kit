@@ -9,6 +9,15 @@
 #   - Only manage the RAG tunnel for gatewayPort from tunnel.config.json;
 #     write github-pages/data/tunnel.json (and optionally git-push that file).
 #   - Never listens on or routes to 7988.
+#
+# Scheduler:
+#   PoliceNewsWakeTunnel  — logon / startup / resume / daily (full wake)
+#   PoliceNewsLmsWatch    — every 5 min (-LmsOnly) so Gemma survives hibernate misses
+param(
+    [switch]$Wake,
+    [switch]$LmsOnly
+)
+
 $ErrorActionPreference = "Stop"
 
 $OpsDir = if ($PSScriptRoot) { $PSScriptRoot } else { Split-Path -Parent $MyInvocation.MyCommand.Path }
@@ -20,6 +29,8 @@ $script:ForbiddenPorts = @(18080, 8080, 7988)
 $script:ReservedHosts = @("fresh-currently-elk.ngrok-free.app")
 $script:NgrokWebAddr = "127.0.0.1:4045"
 $script:NgrokLogRel = "logs/ngrok-rag.log"
+$script:LmStudioExe = "C:\Program Files\LM Studio\LM Studio.exe"
+$script:ForceModelReload = [bool]$Wake
 
 function Write-Log {
     param([Parameter(Mandatory = $true)][string]$Message)
@@ -167,6 +178,50 @@ function Test-LmsModelReady {
     return $false
 }
 
+function Test-LmsModelAlive {
+    param(
+        [Parameter(Mandatory = $true)][int]$Port,
+        [Parameter(Mandatory = $true)][string]$Model
+    )
+    # After hibernate /v1/models can still list the id while JIT is dead.
+    if (-not (Test-LmsModelReady -Port $Port -Model $Model)) { return $false }
+    $body = @{
+        model = $Model
+        messages = @(@{ role = "user"; content = "ping" })
+        max_tokens = 1
+        temperature = 0
+    } | ConvertTo-Json -Depth 5
+    try {
+        $null = Invoke-RestMethod -Uri "http://127.0.0.1:${Port}/v1/chat/completions" `
+            -Method Post -Body $body -ContentType "application/json; charset=utf-8" -TimeoutSec 45
+        return $true
+    } catch {
+        Write-Log "lms chat ping failed for ${Model}: $($_.Exception.Message)"
+        return $false
+    }
+}
+
+function Ensure-LmStudioApp {
+    $procs = @(Get-Process -Name "LM Studio" -ErrorAction SilentlyContinue)
+    if ($procs.Count -gt 0) {
+        Write-Log "LM Studio app already running ($($procs.Count) process(es))"
+        return $true
+    }
+    if (-not (Test-Path -LiteralPath $script:LmStudioExe)) {
+        Write-Log "LM Studio.exe not found at $($script:LmStudioExe)"
+        return $false
+    }
+    Write-Log "starting LM Studio app (needed after reboot/hibernate)"
+    try {
+        Start-Process -FilePath $script:LmStudioExe | Out-Null
+        Start-Sleep -Seconds 8
+        return $true
+    } catch {
+        Write-Log "failed to start LM Studio app: $($_.Exception.Message)"
+        return $false
+    }
+}
+
 function Invoke-LmsLoad {
     param(
         [Parameter(Mandatory = $true)][string]$LmsPath,
@@ -215,34 +270,48 @@ function Start-Lms {
     Assert-AllowedPort $Port "lms"
     if (-not (Test-Path -LiteralPath $LmsPath)) {
         Write-Log "lms not found at $LmsPath; skipping LM Studio"
-        return
+        return $false
     }
 
-    if (Test-TcpOpen $Port) {
-        Write-Log "LM Studio already listening on 127.0.0.1:${Port}"
-    } else {
+    [void](Ensure-LmStudioApp)
+
+    $needServer = -not (Test-TcpOpen $Port)
+    if (-not $needServer) {
+        $status = ""
+        try { $status = (& $LmsPath server status 2>&1 | Out-String) } catch { $status = "" }
+        if ($status -and ($status -notmatch '(?i)running')) { $needServer = $true }
+    }
+
+    if ($needServer) {
         $arguments = "server start -p $Port --cors"
         Write-Log "starting lms: $arguments"
         try {
-            $proc = Start-Background -FileName $LmsPath -Arguments $arguments
-            Write-Log "started lms pid $($proc.Id)"
+            # Prefer Start-Process so Task Scheduler resumes do not orphan a hidden child oddly.
+            Start-Process -FilePath $LmsPath -ArgumentList @("server", "start", "-p", "$Port", "--cors") -WindowStyle Hidden | Out-Null
+            Write-Log "issued lms server start"
         } catch {
             Write-Log "failed to start lms: $($_.Exception.Message)"
         }
+    } else {
+        Write-Log "LM Studio already listening on 127.0.0.1:${Port}"
     }
 
     if (-not (Wait-Port -Port $Port -Label "lms $Port")) {
         Write-Log "lms server port $Port never became ready; cannot load $Model"
-        return
+        return $false
     }
 
-    if (Test-LmsModelReady -Port $Port -Model $Model) {
-        Write-Log "model $Model already listed on 127.0.0.1:${Port}/v1/models"
-        return
+    if (-not $script:ForceModelReload) {
+        if (Test-LmsModelAlive -Port $Port -Model $Model) {
+            Write-Log "model $Model is alive on 127.0.0.1:${Port}"
+            return $true
+        }
+    } else {
+        Write-Log "Wake/Force reload requested for $Model"
     }
 
     # After hibernate the OpenAI port can accept TCP before the JIT/runtime is ready.
-    $delays = @(0, 20, 40, 60)
+    $delays = @(0, 15, 30, 45, 60)
     foreach ($delay in $delays) {
         if ($delay -gt 0) {
             Write-Log "waiting ${delay}s before retrying lms load $Model"
@@ -250,8 +319,7 @@ function Start-Lms {
             if (-not (Test-TcpOpen $Port)) {
                 Write-Log "lms port $Port closed during retries; restarting server"
                 try {
-                    $proc = Start-Background -FileName $LmsPath -Arguments "server start -p $Port --cors"
-                    Write-Log "restarted lms pid $($proc.Id)"
+                    Start-Process -FilePath $LmsPath -ArgumentList @("server", "start", "-p", "$Port", "--cors") -WindowStyle Hidden | Out-Null
                 } catch {
                     Write-Log "failed to restart lms: $($_.Exception.Message)"
                 }
@@ -259,14 +327,15 @@ function Start-Lms {
             }
         }
         [void](Invoke-LmsLoad -LmsPath $LmsPath -Model $Model)
-        Start-Sleep -Seconds 3
-        if (Test-LmsModelReady -Port $Port -Model $Model) {
-            Write-Log "verified model $Model on 127.0.0.1:${Port}/v1/models"
-            return
+        Start-Sleep -Seconds 5
+        if (Test-LmsModelAlive -Port $Port -Model $Model) {
+            Write-Log "verified model $Model responds on 127.0.0.1:${Port}"
+            return $true
         }
-        Write-Log "model $Model not ready yet on /v1/models"
+        Write-Log "model $Model not ready yet (list or chat ping)"
     }
     Write-Log "gave up loading $Model after retries"
+    return $false
 }
 
 function Test-ReservedPublicUrl {
@@ -380,9 +449,14 @@ function Ensure-Ngrok {
     } catch {
         Write-Log "failed to start ngrok: $($_.Exception.Message)"
     }
-    foreach ($delay in @($script:Retries)) {
+    $waits = @($script:Retries)
+    if ($waits.Count -lt 4) { $waits = @(5, 10, 20, 30, 45) }
+    foreach ($delay in $waits) {
         Write-Log "waiting ${delay}s for RAG ngrok https tunnel"
         Start-Sleep -Seconds ([int]$delay)
+        if (-not (Test-TcpOpen 4045)) {
+            Write-Log "ngrok inspect 4045 not open yet (other ngrok on 4040 is left alone)"
+        }
         $found = Get-NgrokHttpsUrl -GatewayPort $GatewayPort
         if ($found) { return $found }
     }
@@ -523,21 +597,43 @@ try {
     $push = $false
     if ($config.push -eq $true) { $push = $true }
 
-    Write-Log "wake started repo=$RepoRoot gateway=$gatewayPort mcp=$mcpPort llm=$llmPort (RAG only; never touch :18080 / tor)"
+    if ($Wake) { $script:ForceModelReload = $true }
+    $mode = if ($LmsOnly) { "lms-only" } elseif ($Wake) { "wake" } else { "full" }
+    Write-Log "wake started mode=$mode repo=$RepoRoot gateway=$gatewayPort mcp=$mcpPort llm=$llmPort model=$model (RAG only; never touch :18080 / tor)"
+
+    $lmsOk = Start-Lms -LmsPath $lmsPath -Port $llmPort -Model $model
+    if (-not $lmsOk) {
+        Write-Log "CRITICAL: google/gemma model not ready ($model)"
+        if ($LmsOnly) { exit 1 }
+    } else {
+        Write-Log "LM Studio model ready: $model"
+    }
+
+    if ($LmsOnly) {
+        Write-Log "lms-only watch finished ok=$lmsOk"
+        if ($lmsOk) { exit 0 } else { exit 1 }
+    }
+
     Start-RepoNode -ScriptName "mcp/server.mjs" -Port $mcpPort -ExtraEnv @{ PAGES_BASE = $pagesBase }
     Start-RepoNode -ScriptName "gateway/server.mjs" -Port $gatewayPort
     [void](Wait-Port -Port $mcpPort -Label "mcp $mcpPort")
     [void](Wait-Port -Port $gatewayPort -Label "gateway $gatewayPort")
-    Start-Lms -LmsPath $lmsPath -Port $llmPort -Model $model
 
     $publicUrl = Ensure-Ngrok -CommandName $ngrokCommand -GatewayPort $gatewayPort
     if (-not $publicUrl) {
-        Write-Log "no https tunnel URL; tunnel.json was not updated"
+        # LMS/Gemma is the wake priority after hibernate. Do not fail the whole
+        # scheduled task solely because RAG ngrok lagged — watchdog can retry.
+        Write-Log "no https tunnel URL; tunnel.json was not updated (lmsOk=$lmsOk)"
+        if ($lmsOk) {
+            Write-Log "wake finished with LMS only (ngrok pending)"
+            exit 0
+        }
         exit 1
     }
     $origin = Get-HttpsOrigin $publicUrl
     if (-not $origin) {
         Write-Log "public URL is not an https origin: $publicUrl"
+        if ($lmsOk) { exit 0 }
         exit 1
     }
     $pagesFile = if ($pagesBase) { "$pagesBase/data/tunnel.json" } else { "github-pages/data/tunnel.json" }
