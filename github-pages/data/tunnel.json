@@ -1,7 +1,7 @@
 {
-  "base": "https://3d4a-180-183-245-205.ngrok-free.app",
-  "mcp": "https://3d4a-180-183-245-205.ngrok-free.app/8787/mcp",
-  "llm": "https://3d4a-180-183-245-205.ngrok-free.app/1234/v1/chat/completions",
+  "base": "https://3128-180-183-245-205.ngrok-free.app",
+  "mcp": "https://3128-180-183-245-205.ngrok-free.app/8787/mcp",
+  "llm": "https://3128-180-183-245-205.ngrok-free.app/1234/v1/chat/completions",
   "model": "google/gemma-4-e2b",
-  "updated_at": "2026-11-13T09:28:00.000Z"
+  "updated_at": "2026-11-13T09:50:42.041Z"
 }
