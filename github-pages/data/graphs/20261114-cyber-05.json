@@ -1,0 +1,28 @@
+{
+ "case_id": "20261114-cyber-05",
+ "title": "ศาลชั้นต้นพิพากษาว่าอินฟลูเอนเซอร์ทราย สก๊อต มีความผิดตามฟ้องของบริษัท ไทยมารีน (ภูเก็ต) ฐานหมิ่นประมาทโดยการโฆษณาและ พ.ร.บ.คอมพิวเตอร์ มาตรา 16 ลงโทษบทหนัก แต่รอการกำหนดโทษ 1 ปี",
+ "generated_at": "2026-11-14T01:22:00.556Z",
+ "node_count": 4,
+ "edge_count": 3,
+ "relations": [
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลชั้นต้น",
+   "target_title": "ศาลชั้นต้น",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ภูเก็ต",
+   "target_title": "ภูเก็ต",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261114-cyber-05.svg"
+}

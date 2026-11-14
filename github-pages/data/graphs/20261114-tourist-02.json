@@ -1,0 +1,46 @@
+{
+ "case_id": "20261114-tourist-02",
+ "title": "ตำรวจสอบสวนกลางตามคำขอ NCA สหราชอาณาจักร จับชายอังกฤษอายุ 30 ปีและแฟนสาวไทยอายุ 25 ปีที่คอนโดฯ ในพัทยา หลังชายโยนกระเป๋าลงจากระเบียง พบโคเคนรวม 675.2 กรัม",
+ "generated_at": "2026-11-14T01:22:00.556Z",
+ "node_count": 7,
+ "edge_count": 6,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/บช.ก.",
+   "target_title": "บช.ก.",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/สถานีตำรวจภูธรเมืองชลบุรี",
+   "target_title": "สถานีตำรวจภูธรเมืองชลบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/National Crime Agency สหราชอาณาจักร",
+   "target_title": "National Crime Agency สหราชอาณาจักร",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/เมืองพัทยา จ.ชลบุรี",
+   "target_title": "เมืองพัทยา จ.ชลบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/พัทยา",
+   "target_title": "พัทยา",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมที่เกี่ยวข้องกับนักท่องเที่ยวและชาวต่างชาติ",
+   "target_title": "อาชญากรรมที่เกี่ยวข้องกับนักท่องเที่ยวและชาวต่างชาติ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261114-tourist-02.svg"
+}

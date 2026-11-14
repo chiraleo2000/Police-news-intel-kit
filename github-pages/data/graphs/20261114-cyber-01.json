@@ -1,0 +1,40 @@
+{
+ "case_id": "20261114-cyber-01",
+ "title": "DSI มีหนังสือแจ้ง Google ประเทศไทยและ Apple ให้ตรวจสอบแอปเงินกู้บนสโตร์ ถ้าไม่ใช่ผู้ได้รับอนุญาตสินเชื่อส่วนบุคคลดิจิทัล 8 ราย ให้ถอดออกจากระบบ หลังพบแอปเถื่อนนำข้อมูลผู้กู้ไปประจานและทวงหนี้คุกคาม",
+ "generated_at": "2026-11-14T01:22:00.556Z",
+ "node_count": 6,
+ "edge_count": 5,
+ "relations": [
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/ดีเอสไอ",
+   "target_title": "ดีเอสไอ",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/กองคดีคุ้มครองผู้บริโภค กรมสอบสวนคดีพิเศษ",
+   "target_title": "กองคดีคุ้มครองผู้บริโภค กรมสอบสวนคดีพิเศษ",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/ธปท.",
+   "target_title": "ธปท.",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/กรุงเทพมหานคร",
+   "target_title": "กรุงเทพมหานคร",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261114-cyber-01.svg"
+}

@@ -1,0 +1,52 @@
+{
+ "case_id": "20261114-police-02",
+ "title": "ผู้ช่วย ผบ.ตร. พล.ต.ท.ไตรรงค์ ผิวพรรณ ลงพื้นที่ชุมชนพระเจน เขตปทุมวัน กับ บก.น.5 และ สน.ลุมพินี รับฟังปัญหาและมอบถุงยังชีพ ชูแนวทางตำรวจชุมชนควบคู่ Smart Policing ที่ใช้ Big Data และ AI",
+ "generated_at": "2026-11-14T01:22:00.556Z",
+ "node_count": 8,
+ "edge_count": 7,
+ "relations": [
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/ตร.",
+   "target_title": "ตร.",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/กองบังคับการตำรวจนครบาล 5",
+   "target_title": "กองบังคับการตำรวจนครบาล 5",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/สถานีตำรวจนครบาลลุมพินี",
+   "target_title": "สถานีตำรวจนครบาลลุมพินี",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ชุมชนพระเจน เขตปทุมวัน",
+   "target_title": "ชุมชนพระเจน เขตปทุมวัน",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/พล.ต.ท.ไตรรงค์ ผิวพรรณ ผู้ช่วย ผบ.ตร.",
+   "target_title": "พล.ต.ท.ไตรรงค์ ผิวพรรณ ผู้ช่วย ผบ.ตร.",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/บุคคล/ไตรรงค์ ผิวพรรณ",
+   "target_title": "ไตรรงค์ ผิวพรรณ",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/การปฏิบัติหน้าที่ ประชาสัมพันธ์ และนโยบายตำรวจ",
+   "target_title": "การปฏิบัติหน้าที่ ประชาสัมพันธ์ และนโยบายตำรวจ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261114-police-02.svg"
+}

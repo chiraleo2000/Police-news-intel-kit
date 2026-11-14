@@ -1,7 +1,7 @@
 {
-  "base": "https://8336-180-183-245-205.ngrok-free.app",
-  "mcp": "https://8336-180-183-245-205.ngrok-free.app/8787/mcp",
-  "llm": "https://8336-180-183-245-205.ngrok-free.app/1234/v1/chat/completions",
+  "base": "https://0944-180-183-245-205.ngrok-free.app",
+  "mcp": "https://0944-180-183-245-205.ngrok-free.app/8787/mcp",
+  "llm": "https://0944-180-183-245-205.ngrok-free.app/1234/v1/chat/completions",
   "model": "google/gemma-4-e2b",
-  "updated_at": "2026-11-13T10:00:02.567Z"
+  "updated_at": "2026-11-14T02:28:45.546Z"
 }

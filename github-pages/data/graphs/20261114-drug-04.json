@@ -1,0 +1,46 @@
+{
+ "case_id": "20261114-drug-04",
+ "title": "ศป.ปส.ร้อย ตชด.417 ร่วม ปปส.ภ.8 และ สภ.ท่าชนะ จับชายอายุ 32 ปีขณะรับกล่องพัสดุที่คลังขนส่งใน อ.ท่าชนะ สุราษฎร์ธานี พบยาบ้า 10,000 เม็ด ขยายผลจากพัสดุยาบ้าที่ระนอง",
+ "generated_at": "2026-11-14T01:22:00.556Z",
+ "node_count": 7,
+ "edge_count": 6,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/กองร้อยตำรวจตระเวนชายแดนที่ 417",
+   "target_title": "กองร้อยตำรวจตระเวนชายแดนที่ 417",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/สำนักงาน ป.ป.ส. ภาค 8",
+   "target_title": "สำนักงาน ป.ป.ส. ภาค 8",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/สถานีตำรวจภูธรท่าชนะ",
+   "target_title": "สถานีตำรวจภูธรท่าชนะ",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/ตำรวจภูธรจังหวัดระนอง",
+   "target_title": "ตำรวจภูธรจังหวัดระนอง",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/อ.ท่าชนะ จ.สุราษฎร์ธานี",
+   "target_title": "อ.ท่าชนะ จ.สุราษฎร์ธานี",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/ยาเสพติด",
+   "target_title": "ยาเสพติด",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261114-drug-04.svg"
+}

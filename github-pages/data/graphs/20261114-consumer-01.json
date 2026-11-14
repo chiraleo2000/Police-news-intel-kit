@@ -1,0 +1,40 @@
+{
+ "case_id": "20261114-consumer-01",
+ "title": "ฉก.ราชมนูร่วมศูนย์ ศพร. และด่านตรวจพืชแม่สอด สกัดกระบะบรรทุกอะโวคาโด 130 กล่องราว 3,500 กก. บนถนนท่าอาจ–วังตะเคียน อ.แม่สอด ตาก ไม่มีเอกสารนำเข้าจากเมียนมา จับผู้ขับส่ง สภ.แม่สอด",
+ "generated_at": "2026-11-14T01:22:00.556Z",
+ "node_count": 6,
+ "edge_count": 5,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/หน่วยเฉพาะกิจราชมนู",
+   "target_title": "หน่วยเฉพาะกิจราชมนู",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/ด่านตรวจพืชแม่สอด",
+   "target_title": "ด่านตรวจพืชแม่สอด",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/สถานีตำรวจภูธรแม่สอด",
+   "target_title": "สถานีตำรวจภูธรแม่สอด",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ถนนท่าอาจ–วังตะเคียน อ.แม่สอด",
+   "target_title": "ถนนท่าอาจ–วังตะเคียน อ.แม่สอด",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/คุ้มครองผู้บริโภคและสินค้าผิดกฎหมาย",
+   "target_title": "คุ้มครองผู้บริโภคและสินค้าผิดกฎหมาย",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261114-consumer-01.svg"
+}

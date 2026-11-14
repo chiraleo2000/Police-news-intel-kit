@@ -1,0 +1,40 @@
+{
+ "case_id": "20261114-drug-05",
+ "title": "ตำรวจภูเก็ตจับ 4 คนใน 2 ปฏิบัติการที่ป่าตองและวิชิต ยึดไอซ์รวมกว่า 7 กก. หลังขยายผลจากพัสดุไอซ์ราว 5 กก. ที่ สภ.ป่าตองตรวจพบ แล้วพบอีก 1.655 กก. ในรถยนต์หลังสนามกีฬาสุระกุล",
+ "generated_at": "2026-11-14T01:22:00.556Z",
+ "node_count": 6,
+ "edge_count": 5,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/สถานีตำรวจภูธรป่าตอง",
+   "target_title": "สถานีตำรวจภูธรป่าตอง",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/ตำรวจภูธรจังหวัดภูเก็ต",
+   "target_title": "ตำรวจภูธรจังหวัดภูเก็ต",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ต.วิชิต อ.เมืองภูเก็ต",
+   "target_title": "ต.วิชิต อ.เมืองภูเก็ต",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ป่าตอง",
+   "target_title": "ป่าตอง",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/ยาเสพติด",
+   "target_title": "ยาเสพติด",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261114-drug-05.svg"
+}

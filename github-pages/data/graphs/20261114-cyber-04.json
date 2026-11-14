@@ -1,0 +1,28 @@
+{
+ "case_id": "20261114-cyber-04",
+ "title": "ThaiCERT แจ้งเตือนช่องโหว่ 7 รายการใน N-able N-central ระดับ Critical 2 รายการ คะแนน CVSS 9.3 พบการสแกนหาระบบที่มีช่องโหว่หลังมี PoC เผยแพร่ แนะให้อัปเดต 2026.4 Hotfix 2",
+ "generated_at": "2026-11-14T01:22:00.556Z",
+ "node_count": 4,
+ "edge_count": 3,
+ "relations": [
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/ศูนย์ประสานการรักษาความมั่นคงปลอดภัยระบบคอมพิวเตอร์แห่งชาติ",
+   "target_title": "ศูนย์ประสานการรักษาความมั่นคงปลอดภัยระบบคอมพิวเตอร์แห่งชาติ",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/กรุงเทพมหานคร",
+   "target_title": "กรุงเทพมหานคร",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261114-cyber-04.svg"
+}
