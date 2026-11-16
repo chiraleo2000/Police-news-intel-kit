@@ -1,0 +1,259 @@
+{
+ "baseline": "ok",
+ "window_days": 7,
+ "days_available": 7,
+ "note": "baseline 7 วันย้อนหลัง (<7 วัน: แนวโน้มเป็นข้อมูลบ่งชี้เท่านั้น) surge = วันนี้ >=3 เรื่อง และสูงกว่าค่าเฉลี่ย >=50 เปอร์เซ็นต์",
+ "by_crime_type": [
+  {
+   "type": "อาชญากรรมไซเบอร์และออนไลน์",
+   "today": 4,
+   "avg_prev_7d": 4.71,
+   "delta_pct": -15.2,
+   "surge": false
+  },
+  {
+   "type": "อาชญากรรมข้ามชาติและความร่วมมือระหว่างประเทศ",
+   "today": 2,
+   "avg_prev_7d": 0.57,
+   "delta_pct": 250.0,
+   "surge": false
+  },
+  {
+   "type": "ค้ามนุษย์ แรงงานผิดกฎหมาย และคุ้มครองเด็ก",
+   "today": 2,
+   "avg_prev_7d": 0.43,
+   "delta_pct": 366.7,
+   "surge": false
+  },
+  {
+   "type": "พนันและบ่อนผิดกฎหมาย",
+   "today": 2,
+   "avg_prev_7d": 0.86,
+   "delta_pct": 133.3,
+   "surge": false
+  },
+  {
+   "type": "คดีทรัพย์สิน",
+   "today": 2,
+   "avg_prev_7d": 0.86,
+   "delta_pct": 133.3,
+   "surge": false
+  },
+  {
+   "type": "อาชญากรรมที่เกี่ยวข้องกับนักท่องเที่ยวและชาวต่างชาติ",
+   "today": 2,
+   "avg_prev_7d": 1.71,
+   "delta_pct": 16.7,
+   "surge": false
+  },
+  {
+   "type": "การปฏิบัติหน้าที่ ประชาสัมพันธ์ และนโยบายตำรวจ",
+   "today": 2,
+   "avg_prev_7d": 2.0,
+   "delta_pct": 0.0,
+   "surge": false
+  },
+  {
+   "type": "ยาเสพติด",
+   "today": 1,
+   "avg_prev_7d": 3.43,
+   "delta_pct": -70.8,
+   "surge": false
+  },
+  {
+   "type": "ความสงบเรียบร้อยและความมั่นคงภายใน",
+   "today": 1,
+   "avg_prev_7d": 1.0,
+   "delta_pct": 0.0,
+   "surge": false
+  },
+  {
+   "type": "ความปลอดภัยทางหลวงและการสกัดจับ",
+   "today": 1,
+   "avg_prev_7d": 0.14,
+   "delta_pct": 600.0,
+   "surge": false
+  },
+  {
+   "type": "สิ่งแวดล้อม ทรัพยากร และสัตว์ป่า",
+   "today": 1,
+   "avg_prev_7d": 0.57,
+   "delta_pct": 75.0,
+   "surge": false
+  },
+  {
+   "type": "คดีอุกฉกรรจ์ ผู้มีอิทธิพล และอาวุธ",
+   "today": 1,
+   "avg_prev_7d": 0.43,
+   "delta_pct": 133.3,
+   "surge": false
+  }
+ ],
+ "by_mo": [
+  {
+   "mo": "คอลเซ็นเตอร์",
+   "today": 2,
+   "avg_prev_7d": 0.0,
+   "surge": false
+  },
+  {
+   "mo": "พนันออนไลน์",
+   "today": 2,
+   "avg_prev_7d": 0.0,
+   "surge": false
+  },
+  {
+   "mo": "ค้ามนุษย์บังคับกระทำผิด",
+   "today": 1,
+   "avg_prev_7d": 0.0,
+   "surge": false
+  },
+  {
+   "mo": "บัญชีม้า/ซิมม้า",
+   "today": 1,
+   "avg_prev_7d": 0.0,
+   "surge": false
+  },
+  {
+   "mo": "แอบอ้างเจ้าหน้าที่รัฐ/ตำรวจ",
+   "today": 1,
+   "avg_prev_7d": 0.0,
+   "surge": false
+  },
+  {
+   "mo": "ลำเลียงยาเสพติด",
+   "today": 1,
+   "avg_prev_7d": 0.0,
+   "surge": false
+  },
+  {
+   "mo": "ปล่อยกู้นอกระบบ",
+   "today": 1,
+   "avg_prev_7d": 0.0,
+   "surge": false
+  },
+  {
+   "mo": "แรงงานต่างด้าวผิดกฎหมาย",
+   "today": 1,
+   "avg_prev_7d": 0.0,
+   "surge": false
+  }
+ ],
+ "by_province": [
+  {
+   "province": "กรุงเทพมหานคร",
+   "today": 6,
+   "avg_prev_7d": 9.57
+  },
+  {
+   "province": "ชลบุรี",
+   "today": 3,
+   "avg_prev_7d": 1.86
+  },
+  {
+   "province": "สุพรรณบุรี",
+   "today": 2,
+   "avg_prev_7d": 0.0
+  },
+  {
+   "province": "สมุทรปราการ",
+   "today": 2,
+   "avg_prev_7d": 0.86
+  },
+  {
+   "province": "เพชรบูรณ์",
+   "today": 2,
+   "avg_prev_7d": 0.14
+  },
+  {
+   "province": "กาฬสินธุ์",
+   "today": 1,
+   "avg_prev_7d": 0.0
+  },
+  {
+   "province": "ขอนแก่น",
+   "today": 1,
+   "avg_prev_7d": 0.43
+  },
+  {
+   "province": "ราชบุรี",
+   "today": 1,
+   "avg_prev_7d": 0.0
+  },
+  {
+   "province": "เพชรบุรี",
+   "today": 1,
+   "avg_prev_7d": 0.14
+  },
+  {
+   "province": "สุราษฎร์ธานี",
+   "today": 1,
+   "avg_prev_7d": 0.43
+  },
+  {
+   "province": "นครสวรรค์",
+   "today": 1,
+   "avg_prev_7d": 0.0
+  },
+  {
+   "province": "ตาก",
+   "today": 1,
+   "avg_prev_7d": 0.43
+  },
+  {
+   "province": "เชียงใหม่",
+   "today": 1,
+   "avg_prev_7d": 1.0
+  },
+  {
+   "province": "ภูเก็ต",
+   "today": 1,
+   "avg_prev_7d": 2.14
+  },
+  {
+   "province": "พระนครศรีอยุธยา",
+   "today": 1,
+   "avg_prev_7d": 0.29
+  },
+  {
+   "province": "สระบุรี",
+   "today": 1,
+   "avg_prev_7d": 0.0
+  },
+  {
+   "province": "นครนายก",
+   "today": 1,
+   "avg_prev_7d": 0.29
+  },
+  {
+   "province": "ปราจีนบุรี",
+   "today": 1,
+   "avg_prev_7d": 0.14
+  },
+  {
+   "province": "นราธิวาส",
+   "today": 1,
+   "avg_prev_7d": 0.14
+  },
+  {
+   "province": "พังงา",
+   "today": 1,
+   "avg_prev_7d": 0.0
+  },
+  {
+   "province": "ประจวบคีรีขันธ์",
+   "today": 1,
+   "avg_prev_7d": 0.43
+  },
+  {
+   "province": "อุดรธานี",
+   "today": 1,
+   "avg_prev_7d": 0.14
+  },
+  {
+   "province": "ร้อยเอ็ด",
+   "today": 1,
+   "avg_prev_7d": 0.0
+  }
+ ]
+}

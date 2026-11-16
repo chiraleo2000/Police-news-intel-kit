@@ -1,0 +1,34 @@
+{
+ "case_id": "20261116-gamble-02",
+ "title": "ภ.จว.สระบุรี บุกบ้านบนเนินเขา อ.แก่งคอย ควบคุมตัว 29 คนเล่นพนันไพ่และเสือมังกร",
+ "generated_at": "2026-11-16T11:38:24.354Z",
+ "node_count": 5,
+ "edge_count": 4,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/ภ.จว.สระบุรี",
+   "target_title": "ภ.จว.สระบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/สภ.แก่งคอย",
+   "target_title": "สภ.แก่งคอย",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ต.ชะอม อ.แก่งคอย จ.สระบุรี",
+   "target_title": "ต.ชะอม อ.แก่งคอย จ.สระบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/พนันและบ่อนผิดกฎหมาย",
+   "target_title": "พนันและบ่อนผิดกฎหมาย",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261116-gamble-02.svg"
+}

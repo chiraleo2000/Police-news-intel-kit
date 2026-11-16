@@ -1,0 +1,58 @@
+{
+ "case_id": "20261115-drug-01",
+ "title": "กก.3 บก.สกส. บช.ปส. จับชาย 3 คนที่ด่านพยุหะคีรี นครสวรรค์ และด่านในตาก ยึดยาบ้าราว 589,800 เม็ดที่ซุกในช่องลับใต้ที่เก็บสัมภาระของรถเก๋ง พร้อมรถ 3 คัน",
+ "generated_at": "2026-11-16T11:37:50.501Z",
+ "node_count": 9,
+ "edge_count": 8,
+ "relations": [
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บช.ปส.",
+   "target_title": "บช.ปส.",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/กองกำกับการ 3 กองบังคับการสนับสนุนการปราบปรามยาเสพติด",
+   "target_title": "กองกำกับการ 3 กองบังคับการสนับสนุนการปราบปรามยาเสพติด",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ด่านพยุหะคีรี อ.พยุหะคีรี จ.นครสวรรค์",
+   "target_title": "ด่านพยุหะคีรี อ.พยุหะคีรี จ.นครสวรรค์",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ด่านแม่ท้อ อ.เมืองตาก",
+   "target_title": "ด่านแม่ท้อ อ.เมืองตาก",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/พล.ต.ท.ภูมินทร์ พุ่มพันธุ์ม่วง ผบช.ปส.",
+   "target_title": "พล.ต.ท.ภูมินทร์ พุ่มพันธุ์ม่วง ผบช.ปส.",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับ",
+   "target_id": "unresolved:20_Cases/20261116-drug-01",
+   "target_title": "20_Cases/20261116-drug-01",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/บุคคล/ภูมินทร์ พุ่มพันธุ์ม่วง",
+   "target_title": "ภูมินทร์ พุ่มพันธุ์ม่วง",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/ยาเสพติด",
+   "target_title": "ยาเสพติด",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261115-drug-01.svg"
+}

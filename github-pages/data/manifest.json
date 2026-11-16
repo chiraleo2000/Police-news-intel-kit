@@ -1,8 +1,44 @@
 {
- "generated_at": "2026-11-14T08:23:21+07:00",
+ "generated_at": "2026-11-16T11:38:46.577Z",
  "schema_version": 1,
  "default_range": "all",
  "days": [
+  {
+   "date": "2026-11-16",
+   "status": "published",
+   "total": 15,
+   "crime_file": "2026-11-16_crime.json",
+   "downloads": [
+    {
+     "label": "PDF สรุปข่าว 2026-11-16",
+     "path": "downloads/2026-11-16_crime.pdf",
+     "kind": "pdf"
+    },
+    {
+     "label": "Infographic 2026-11-16",
+     "path": "downloads/2026-11-16_infographic.png",
+     "kind": "image"
+    }
+   ]
+  },
+  {
+   "date": "2026-11-15",
+   "status": "published",
+   "total": 21,
+   "crime_file": "2026-11-15_crime.json",
+   "downloads": [
+    {
+     "label": "PDF สรุปข่าว 2026-11-15",
+     "path": "downloads/2026-11-15_crime.pdf",
+     "kind": "pdf"
+    },
+    {
+     "label": "Infographic 2026-11-15",
+     "path": "downloads/2026-11-15_infographic.png",
+     "kind": "image"
+    }
+   ]
+  },
   {
    "date": "2026-11-14",
    "status": "published",

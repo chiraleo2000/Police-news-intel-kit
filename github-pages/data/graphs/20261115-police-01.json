@@ -1,0 +1,58 @@
+{
+ "case_id": "20261115-police-01",
+ "title": "ผบช.ทท. ปล่อยแถวตำรวจท่องเที่ยว 115 นายที่หอนาฬิกาหัวหิน ถ่ายทอดสดไป 33 สถานีทั่วประเทศ เริ่มระดมกวาดล้างอาชญากรรมช่วงลอยกระทงและไฮซีซั่น 14–20 พ.ย. 2569",
+ "generated_at": "2026-11-16T11:37:50.501Z",
+ "node_count": 9,
+ "edge_count": 8,
+ "relations": [
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บช.ทท.",
+   "target_title": "บช.ทท.",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/กองบังคับการตำรวจท่องเที่ยว 3",
+   "target_title": "กองบังคับการตำรวจท่องเที่ยว 3",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/สถานีตำรวจภูธรหัวหิน",
+   "target_title": "สถานีตำรวจภูธรหัวหิน",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/หอนาฬิกาหัวหิน",
+   "target_title": "หอนาฬิกาหัวหิน",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/พล.ต.ท.พงษ์สยาม มีขันทอง ผบช.ทท.",
+   "target_title": "พล.ต.ท.พงษ์สยาม มีขันทอง ผบช.ทท.",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับ",
+   "target_id": "unresolved:20_Cases/20261116-police-01",
+   "target_title": "20_Cases/20261116-police-01",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/บุคคล/พงษ์สยาม มีขันทอง",
+   "target_title": "พงษ์สยาม มีขันทอง",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/การปฏิบัติหน้าที่ ประชาสัมพันธ์ และนโยบายตำรวจ",
+   "target_title": "การปฏิบัติหน้าที่ ประชาสัมพันธ์ และนโยบายตำรวจ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261115-police-01.svg"
+}

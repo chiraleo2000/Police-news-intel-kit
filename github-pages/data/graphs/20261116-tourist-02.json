@@ -1,0 +1,58 @@
+{
+ "case_id": "20261116-tourist-02",
+ "title": "ตำรวจน้ำจับชายอินเดียที่ท่าเรือเฟอร์รี่เกาะสมุย ตามหมายจับศาลปัตตานี กรณีถือบัตรประชาชนไทยที่ออกโดยมิชอบ",
+ "generated_at": "2026-11-16T11:38:24.354Z",
+ "node_count": 9,
+ "edge_count": 8,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/บก.รน.",
+   "target_title": "บก.รน.",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บช.ก.",
+   "target_title": "บช.ก.",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลจังหวัดปัตตานี",
+   "target_title": "ศาลจังหวัดปัตตานี",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/สภ.แม่ลาน",
+   "target_title": "สภ.แม่ลาน",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ท่าเรือซีทรานเฟอร์รี่ อ.เกาะสมุย",
+   "target_title": "ท่าเรือซีทรานเฟอร์รี่ อ.เกาะสมุย",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/อ.แม่ลาน จ.ปัตตานี",
+   "target_title": "อ.แม่ลาน จ.ปัตตานี",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/สถานที่/เกาะสมุย",
+   "target_title": "เกาะสมุย",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมที่เกี่ยวข้องกับนักท่องเที่ยวและชาวต่างชาติ",
+   "target_title": "อาชญากรรมที่เกี่ยวข้องกับนักท่องเที่ยวและชาวต่างชาติ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261116-tourist-02.svg"
+}

@@ -1,0 +1,28 @@
+{
+ "case_id": "20261116-cyber-04",
+ "title": "ThaiCERT เตือนกลุ่ม SilentAir แทรกซึมเครือข่ายโทรคมนาคมในเอเชีย ดักรับ SMS รหัสยืนยันตัวตน",
+ "generated_at": "2026-11-16T11:38:24.354Z",
+ "node_count": 4,
+ "edge_count": 3,
+ "relations": [
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/ThaiCERT",
+   "target_title": "ThaiCERT",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ภูมิภาคเอเชีย",
+   "target_title": "ภูมิภาคเอเชีย",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261116-cyber-04.svg"
+}

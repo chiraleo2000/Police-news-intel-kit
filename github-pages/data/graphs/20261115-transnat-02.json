@@ -1,0 +1,46 @@
+{
+ "case_id": "20261115-transnat-02",
+ "title": "กก.2 บก.ป. จับชายจีนอายุ 26 ปีหน้าห้องพักในซอยรัชดาภิเษก 3 เขตดินแดง ข้อหาอยู่เกินกำหนด แล้วส่ง บก.ตม.1 ตามหมายจับทางการจีนคดียักยอกทรัพย์ในหน้าที่ ความเสียหาย 11.3 ล้านหยวน (ราว 57.2 ล้านบาท)",
+ "generated_at": "2026-11-16T11:37:50.501Z",
+ "node_count": 7,
+ "edge_count": 6,
+ "relations": [
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บช.ก.",
+   "target_title": "บช.ก.",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/กองกำกับการ 2 กองบังคับการปราบปราม",
+   "target_title": "กองกำกับการ 2 กองบังคับการปราบปราม",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/กองบังคับการตรวจคนเข้าเมือง 1",
+   "target_title": "กองบังคับการตรวจคนเข้าเมือง 1",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/เขตดินแดง กรุงเทพมหานคร",
+   "target_title": "เขตดินแดง กรุงเทพมหานคร",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับ",
+   "target_id": "unresolved:20_Cases/20261116-transnat-03",
+   "target_title": "20_Cases/20261116-transnat-03",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมข้ามชาติและความร่วมมือระหว่างประเทศ",
+   "target_title": "อาชญากรรมข้ามชาติและความร่วมมือระหว่างประเทศ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261115-transnat-02.svg"
+}

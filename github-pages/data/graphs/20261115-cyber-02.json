@@ -1,0 +1,52 @@
+{
+ "case_id": "20261115-cyber-02",
+ "title": "ฝ่ายสืบสวน สน.หลักสอง ซ้อนแผนจับชายจีนอายุ 29 ปีขณะมารับเงิน 1 ล้านบาทหน้าห้างย่านบางแค หลังแก๊งคอลเซ็นเตอร์อ้างเป็นเจ้าหน้าที่ธนาคารและตำรวจขอนแก่น หลอกหญิงอายุ 70 ปีส่งเงินสดและทองคำรวมกว่า 8 ล้านบาท",
+ "generated_at": "2026-11-16T11:37:50.501Z",
+ "node_count": 8,
+ "edge_count": 7,
+ "relations": [
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บช.น.",
+   "target_title": "บช.น.",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/กองบังคับการตำรวจนครบาล 9",
+   "target_title": "กองบังคับการตำรวจนครบาล 9",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/สถานีตำรวจนครบาลหลักสอง",
+   "target_title": "สถานีตำรวจนครบาลหลักสอง",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/เขตบางแค กรุงเทพมหานคร",
+   "target_title": "เขตบางแค กรุงเทพมหานคร",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/พล.ต.ท.สยาม บุญสม ผบช.น.",
+   "target_title": "พล.ต.ท.สยาม บุญสม ผบช.น.",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับ",
+   "target_id": "unresolved:20_Cases/20261116-cyber-01",
+   "target_title": "20_Cases/20261116-cyber-01",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261115-cyber-02.svg"
+}

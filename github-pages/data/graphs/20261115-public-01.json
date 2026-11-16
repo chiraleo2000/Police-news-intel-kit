@@ -1,0 +1,34 @@
+{
+ "case_id": "20261115-public-01",
+ "title": "คนร้ายลอบเผายางรถยนต์บนถนนและเผากล้องวงจรปิดรวม 5 จุดใน ต.บองอ อ.ระแงะ นราธิวาส ช่วง 00.30–01.30 น. วันที่ 15 พ.ย. 2569 เจ้าหน้าที่ยังไม่เข้าที่เกิดเหตุเพราะเกรงถูกลวงดักโจมตี",
+ "generated_at": "2026-11-16T11:37:50.501Z",
+ "node_count": 5,
+ "edge_count": 4,
+ "relations": [
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/สถานีตำรวจภูธรระแงะ",
+   "target_title": "สถานีตำรวจภูธรระแงะ",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ต.บองอ อ.ระแงะ จ.นราธิวาส",
+   "target_title": "ต.บองอ อ.ระแงะ จ.นราธิวาส",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับ",
+   "target_id": "unresolved:20_Cases/20261116-public-01",
+   "target_title": "20_Cases/20261116-public-01",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/ความสงบเรียบร้อยและความมั่นคงภายใน",
+   "target_title": "ความสงบเรียบร้อยและความมั่นคงภายใน",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261115-public-01.svg"
+}

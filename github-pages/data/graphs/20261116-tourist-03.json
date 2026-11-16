@@ -1,0 +1,40 @@
+{
+ "case_id": "20261116-tourist-03",
+ "title": "ตม.จว.นราธิวาสร่วมสืบสวน ภ.จว.นราธิวาส จับชายปากีสถานที่สถานีขนส่ง ลักลอบเข้าเมืองผ่านช่องทางธรรมชาติ",
+ "generated_at": "2026-11-16T11:38:24.354Z",
+ "node_count": 6,
+ "edge_count": 5,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/ตม.จว.นราธิวาส",
+   "target_title": "ตม.จว.นราธิวาส",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/ภ.จว.นราธิวาส",
+   "target_title": "ภ.จว.นราธิวาส",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บก.ตม.6",
+   "target_title": "บก.ตม.6",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/สถานีขนส่งผู้โดยสารนราธิวาส",
+   "target_title": "สถานีขนส่งผู้โดยสารนราธิวาส",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมที่เกี่ยวข้องกับนักท่องเที่ยวและชาวต่างชาติ",
+   "target_title": "อาชญากรรมที่เกี่ยวข้องกับนักท่องเที่ยวและชาวต่างชาติ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261116-tourist-03.svg"
+}

@@ -1,0 +1,40 @@
+{
+ "case_id": "20261115-organized-01",
+ "title": "ตำรวจงานศูนย์ควบคุมจราจรวิภาวดีรังสิตตั้งจุดตรวจแอลกอฮอล์หน้ากองบัญชาการศึกษา ถนนวิภาวดี จับชายอายุ 24 ปีพกปืนลูกโม่ .38 ไม่มีใบอนุญาต และขับรถหลุดจำนำที่ซื้อทางอินเทอร์เน็ต",
+ "generated_at": "2026-11-16T11:37:50.501Z",
+ "node_count": 6,
+ "edge_count": 5,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/งานศูนย์ควบคุมจราจรวิภาวดีรังสิต",
+   "target_title": "งานศูนย์ควบคุมจราจรวิภาวดีรังสิต",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/สถานีตำรวจนครบาลพหลโยธิน",
+   "target_title": "สถานีตำรวจนครบาลพหลโยธิน",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ถนนวิภาวดี เขตจตุจักร",
+   "target_title": "ถนนวิภาวดี เขตจตุจักร",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับ",
+   "target_id": "unresolved:20_Cases/20261116-organized-01",
+   "target_title": "20_Cases/20261116-organized-01",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/คดีอุกฉกรรจ์ ผู้มีอิทธิพล และอาวุธ",
+   "target_title": "คดีอุกฉกรรจ์ ผู้มีอิทธิพล และอาวุธ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261115-organized-01.svg"
+}

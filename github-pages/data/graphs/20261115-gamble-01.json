@@ -1,0 +1,76 @@
+{
+ "case_id": "20261115-gamble-01",
+ "title": "กก.2 บก.สอท.5 ทลายเว็บพนัน ROLL88 สมาชิกกว่า 20,000 ราย เงินหมุนเวียนราว 400 ล้านบาทต่อปี ออกหมายจับ 13 ราย จับได้ 7 รายใน 6 จังหวัด ทั้งผู้เปิดบัญชีนิติบุคคล บัญชีม้า และผู้ถอนเงิน",
+ "generated_at": "2026-11-16T11:37:50.501Z",
+ "node_count": 12,
+ "edge_count": 11,
+ "relations": [
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บช.สอท.",
+   "target_title": "บช.สอท.",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/กองกำกับการ 2 กองบังคับการตำรวจสืบสวนสอบสวนอาชญากรรมทางเทคโนโลยี 5",
+   "target_title": "กองกำกับการ 2 กองบังคับการตำรวจสืบสวนสอบสวนอาชญากรรมทางเทคโนโลยี 5",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลอาญา",
+   "target_title": "ศาลอาญา",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ชลบุรี",
+   "target_title": "ชลบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/พล.ต.ท.ทินกร รังมาตย์ ผบช.สอท.",
+   "target_title": "พล.ต.ท.ทินกร รังมาตย์ ผบช.สอท.",
+   "direction": "out"
+  },
+  {
+   "label": "เป้าหมายเครือข่าย",
+   "target_id": "30_Entities/Projects/เครือข่ายเว็บพนัน ROLL88",
+   "target_title": "เครือข่ายเว็บพนัน ROLL88",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับ",
+   "target_id": "unresolved:20_Cases/20261116-gamble-01",
+   "target_title": "20_Cases/20261116-gamble-01",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/บุคคล/ทินกร รังมาตย์",
+   "target_title": "ทินกร รังมาตย์",
+   "direction": "out"
+  },
+  {
+   "label": "บัญชี",
+   "target_id": "30_Entities/บัญชี/ROLL88",
+   "target_title": "ROLL88",
+   "direction": "out"
+  },
+  {
+   "label": "บัญชี",
+   "target_id": "30_Entities/บัญชี/Roll88",
+   "target_title": "Roll88",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/พนันและบ่อนผิดกฎหมาย",
+   "target_title": "พนันและบ่อนผิดกฎหมาย",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261115-gamble-01.svg"
+}

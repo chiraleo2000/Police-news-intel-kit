@@ -1,0 +1,40 @@
+{
+ "case_id": "20261115-human-02",
+ "title": "บก.ปคม. ร่วมองค์กรเอกชนจับสามีภรรยาในกาฬสินธุ์ ถูกกล่าวหาเปิดกลุ่มลับทาง X และ Telegram ขายคลิปลามก ช่วยเหลือเด็กชายอายุ 17 ปีที่ตำรวจระบุเป็นผู้เสียหายจากการค้ามนุษย์",
+ "generated_at": "2026-11-16T11:37:50.501Z",
+ "node_count": 6,
+ "edge_count": 5,
+ "relations": [
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บช.ก.",
+   "target_title": "บช.ก.",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/กองบังคับการปราบปรามการค้ามนุษย์",
+   "target_title": "กองบังคับการปราบปรามการค้ามนุษย์",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/จังหวัดกาฬสินธุ์",
+   "target_title": "จังหวัดกาฬสินธุ์",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับ",
+   "target_id": "unresolved:20_Cases/20261116-human-03",
+   "target_title": "20_Cases/20261116-human-03",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/ค้ามนุษย์ แรงงานผิดกฎหมาย และคุ้มครองเด็ก",
+   "target_title": "ค้ามนุษย์ แรงงานผิดกฎหมาย และคุ้มครองเด็ก",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261115-human-02.svg"
+}

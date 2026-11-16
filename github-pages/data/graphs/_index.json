@@ -1,6 +1,6 @@
 {
- "generated_at": "2026-11-14T01:22:00.556Z",
- "count": 674,
+ "generated_at": "2026-11-16T11:38:24.354Z",
+ "count": 710,
  "cases": [
   {
    "case_id": "20261022-consumer-chiangmai-matcha-customs",
@@ -2750,7 +2750,7 @@
   {
    "case_id": "20261110-econ-01",
    "svg": "graphs/20261110-econ-01.svg",
-   "relations": 7
+   "relations": 8
   },
   {
    "case_id": "20261110-econ-02",
@@ -3195,7 +3195,7 @@
   {
    "case_id": "20261113-gamble-02",
    "svg": "graphs/20261113-gamble-02.svg",
-   "relations": 4
+   "relations": 5
   },
   {
    "case_id": "20261113-human-01",
@@ -3235,12 +3235,12 @@
   {
    "case_id": "20261114-cyber-01",
    "svg": "graphs/20261114-cyber-01.svg",
-   "relations": 5
+   "relations": 6
   },
   {
    "case_id": "20261114-cyber-02",
    "svg": "graphs/20261114-cyber-02.svg",
-   "relations": 7
+   "relations": 8
   },
   {
    "case_id": "20261114-cyber-03",
@@ -3300,7 +3300,7 @@
   {
    "case_id": "20261114-econ-03",
    "svg": "graphs/20261114-econ-03.svg",
-   "relations": 7
+   "relations": 8
   },
   {
    "case_id": "20261114-econ-04",
@@ -3370,6 +3370,186 @@
   {
    "case_id": "20261114-violent-02",
    "svg": "graphs/20261114-violent-02.svg",
+   "relations": 3
+  },
+  {
+   "case_id": "20261115-cyber-01",
+   "svg": "graphs/20261115-cyber-01.svg",
+   "relations": 3
+  },
+  {
+   "case_id": "20261115-cyber-02",
+   "svg": "graphs/20261115-cyber-02.svg",
+   "relations": 7
+  },
+  {
+   "case_id": "20261115-cyber-03",
+   "svg": "graphs/20261115-cyber-03.svg",
+   "relations": 7
+  },
+  {
+   "case_id": "20261115-cyber-04",
+   "svg": "graphs/20261115-cyber-04.svg",
+   "relations": 4
+  },
+  {
+   "case_id": "20261115-drug-01",
+   "svg": "graphs/20261115-drug-01.svg",
+   "relations": 8
+  },
+  {
+   "case_id": "20261115-env-01",
+   "svg": "graphs/20261115-env-01.svg",
+   "relations": 7
+  },
+  {
+   "case_id": "20261115-gamble-01",
+   "svg": "graphs/20261115-gamble-01.svg",
+   "relations": 11
+  },
+  {
+   "case_id": "20261115-gamble-02",
+   "svg": "graphs/20261115-gamble-02.svg",
+   "relations": 5
+  },
+  {
+   "case_id": "20261115-human-01",
+   "svg": "graphs/20261115-human-01.svg",
+   "relations": 8
+  },
+  {
+   "case_id": "20261115-human-02",
+   "svg": "graphs/20261115-human-02.svg",
+   "relations": 5
+  },
+  {
+   "case_id": "20261115-organized-01",
+   "svg": "graphs/20261115-organized-01.svg",
+   "relations": 5
+  },
+  {
+   "case_id": "20261115-police-01",
+   "svg": "graphs/20261115-police-01.svg",
+   "relations": 8
+  },
+  {
+   "case_id": "20261115-police-02",
+   "svg": "graphs/20261115-police-02.svg",
+   "relations": 6
+  },
+  {
+   "case_id": "20261115-property-01",
+   "svg": "graphs/20261115-property-01.svg",
+   "relations": 3
+  },
+  {
+   "case_id": "20261115-property-02",
+   "svg": "graphs/20261115-property-02.svg",
+   "relations": 6
+  },
+  {
+   "case_id": "20261115-public-01",
+   "svg": "graphs/20261115-public-01.svg",
+   "relations": 4
+  },
+  {
+   "case_id": "20261115-road-01",
+   "svg": "graphs/20261115-road-01.svg",
+   "relations": 11
+  },
+  {
+   "case_id": "20261115-tourist-01",
+   "svg": "graphs/20261115-tourist-01.svg",
+   "relations": 4
+  },
+  {
+   "case_id": "20261115-tourist-02",
+   "svg": "graphs/20261115-tourist-02.svg",
+   "relations": 4
+  },
+  {
+   "case_id": "20261115-transnat-01",
+   "svg": "graphs/20261115-transnat-01.svg",
+   "relations": 9
+  },
+  {
+   "case_id": "20261115-transnat-02",
+   "svg": "graphs/20261115-transnat-02.svg",
+   "relations": 6
+  },
+  {
+   "case_id": "20261116-cyber-02",
+   "svg": "graphs/20261116-cyber-02.svg",
+   "relations": 8
+  },
+  {
+   "case_id": "20261116-cyber-03",
+   "svg": "graphs/20261116-cyber-03.svg",
+   "relations": 5
+  },
+  {
+   "case_id": "20261116-cyber-04",
+   "svg": "graphs/20261116-cyber-04.svg",
+   "relations": 3
+  },
+  {
+   "case_id": "20261116-cyber-05",
+   "svg": "graphs/20261116-cyber-05.svg",
+   "relations": 3
+  },
+  {
+   "case_id": "20261116-drug-02",
+   "svg": "graphs/20261116-drug-02.svg",
+   "relations": 4
+  },
+  {
+   "case_id": "20261116-econ-01",
+   "svg": "graphs/20261116-econ-01.svg",
+   "relations": 8
+  },
+  {
+   "case_id": "20261116-econ-02",
+   "svg": "graphs/20261116-econ-02.svg",
+   "relations": 4
+  },
+  {
+   "case_id": "20261116-gamble-02",
+   "svg": "graphs/20261116-gamble-02.svg",
+   "relations": 4
+  },
+  {
+   "case_id": "20261116-gamble-03",
+   "svg": "graphs/20261116-gamble-03.svg",
+   "relations": 5
+  },
+  {
+   "case_id": "20261116-human-01",
+   "svg": "graphs/20261116-human-01.svg",
+   "relations": 5
+  },
+  {
+   "case_id": "20261116-human-02",
+   "svg": "graphs/20261116-human-02.svg",
+   "relations": 4
+  },
+  {
+   "case_id": "20261116-human-04",
+   "svg": "graphs/20261116-human-04.svg",
+   "relations": 3
+  },
+  {
+   "case_id": "20261116-tourist-02",
+   "svg": "graphs/20261116-tourist-02.svg",
+   "relations": 8
+  },
+  {
+   "case_id": "20261116-tourist-03",
+   "svg": "graphs/20261116-tourist-03.svg",
+   "relations": 5
+  },
+  {
+   "case_id": "20261116-transnat-01",
+   "svg": "graphs/20261116-transnat-01.svg",
    "relations": 3
   }
  ]

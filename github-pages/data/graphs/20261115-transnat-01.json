@@ -1,0 +1,64 @@
+{
+ "case_id": "20261115-transnat-01",
+ "title": "ตม.เคลื่อนที่เร็วช่วยนักศึกษาจีนอายุ 19 ปีจากโรงแรมในพัทยาภายใน 30 นาทีหลังตำรวจจีนประสาน ครอบครัวถูกข่มขู่เรียกค่าไถ่ 2 ล้านหยวน (ราว 10 ล้านบาท) และขู่ตัดแขน",
+ "generated_at": "2026-11-16T11:37:50.501Z",
+ "node_count": 10,
+ "edge_count": 9,
+ "relations": [
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/ตม.",
+   "target_title": "ตม.",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/กองบังคับการสืบสวนสอบสวน สำนักงานตรวจคนเข้าเมือง",
+   "target_title": "กองบังคับการสืบสวนสอบสวน สำนักงานตรวจคนเข้าเมือง",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/กองบังคับการตรวจคนเข้าเมือง 3",
+   "target_title": "กองบังคับการตรวจคนเข้าเมือง 3",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/เมืองพัทยา จ.ชลบุรี",
+   "target_title": "เมืองพัทยา จ.ชลบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/พล.ต.ท.นพศิลป์ พูลสวัสดิ์ ผบช.สตม.",
+   "target_title": "พล.ต.ท.นพศิลป์ พูลสวัสดิ์ ผบช.สตม.",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับ",
+   "target_id": "unresolved:20_Cases/20261116-transnat-02",
+   "target_title": "20_Cases/20261116-transnat-02",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/บุคคล/นพศิลป์ พูลสวัสดิ์",
+   "target_title": "นพศิลป์ พูลสวัสดิ์",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/พัทยา",
+   "target_title": "พัทยา",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมข้ามชาติและความร่วมมือระหว่างประเทศ",
+   "target_title": "อาชญากรรมข้ามชาติและความร่วมมือระหว่างประเทศ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261115-transnat-01.svg"
+}

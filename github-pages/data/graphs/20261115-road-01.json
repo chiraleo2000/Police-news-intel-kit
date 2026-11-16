@@ -1,0 +1,76 @@
+{
+ "case_id": "20261115-road-01",
+ "title": "ศจร.ตร. รายงานผลบังคับใช้กฎหมายกับกลุ่มรถจักรยานยนต์ทริปน้ำไม่อาบ 13–15 พ.ย. 2569 รวม 2,614 ราย ตักเตือน 510 ราย ดำเนินคดี 2,104 ราย ยึดรถ 43 คัน และจับคดียาเสพติด 5 ราย",
+ "generated_at": "2026-11-16T11:37:50.501Z",
+ "node_count": 12,
+ "edge_count": 11,
+ "relations": [
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/ศูนย์บริหารงานจราจร สำนักงานตำรวจแห่งชาติ",
+   "target_title": "ศูนย์บริหารงานจราจร สำนักงานตำรวจแห่งชาติ",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/ตำรวจภูธรภาค 1",
+   "target_title": "ตำรวจภูธรภาค 1",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/ตำรวจภูธรภาค 6",
+   "target_title": "ตำรวจภูธรภาค 6",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/บก.ทล.",
+   "target_title": "บก.ทล.",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/สถานีตำรวจภูธรวิเชียรบุรี",
+   "target_title": "สถานีตำรวจภูธรวิเชียรบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ภูทับเบิก อ.หล่มเก่า จ.เพชรบูรณ์",
+   "target_title": "ภูทับเบิก อ.หล่มเก่า จ.เพชรบูรณ์",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ด่านสามแยกวิเชียรบุรี จ.เพชรบูรณ์",
+   "target_title": "ด่านสามแยกวิเชียรบุรี จ.เพชรบูรณ์",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/พล.ต.ท.นิธิธร จินตกานนท์ ผู้ช่วย ผบ.ตร.",
+   "target_title": "พล.ต.ท.นิธิธร จินตกานนท์ ผู้ช่วย ผบ.ตร.",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับ",
+   "target_id": "unresolved:20_Cases/20261116-road-01",
+   "target_title": "20_Cases/20261116-road-01",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/บุคคล/นิธิธร จินตกานนท์",
+   "target_title": "นิธิธร จินตกานนท์",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/ความปลอดภัยทางหลวงและการสกัดจับ",
+   "target_title": "ความปลอดภัยทางหลวงและการสกัดจับ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261115-road-01.svg"
+}

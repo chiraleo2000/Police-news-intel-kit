@@ -1,0 +1,46 @@
+{
+ "case_id": "20261115-property-02",
+ "title": "ภ.จว.พระนครศรีอยุธยาจับผู้ต้องหาแก๊งหน้าพระลาน 5 คนตามหมายจับที่ อ.หนองแค สระบุรี ถูกกล่าวหาตระเวนลักหม้อแปลงไฟฟ้าของราชการใน 6 จังหวัดกว่า 10 ครั้งเพื่อลอกทองแดงขาย",
+ "generated_at": "2026-11-16T11:37:50.501Z",
+ "node_count": 7,
+ "edge_count": 6,
+ "relations": [
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/ตำรวจภูธรจังหวัดพระนครศรีอยุธยา",
+   "target_title": "ตำรวจภูธรจังหวัดพระนครศรีอยุธยา",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/สถานีตำรวจภูธรพระนครศรีอยุธยา",
+   "target_title": "สถานีตำรวจภูธรพระนครศรีอยุธยา",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/อ.หนองแค จ.สระบุรี",
+   "target_title": "อ.หนองแค จ.สระบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "เป้าหมายเครือข่าย",
+   "target_id": "30_Entities/Projects/แก๊งหน้าพระลาน",
+   "target_title": "แก๊งหน้าพระลาน",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับ",
+   "target_id": "unresolved:20_Cases/20261116-property-01",
+   "target_title": "20_Cases/20261116-property-01",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/คดีทรัพย์สิน",
+   "target_title": "คดีทรัพย์สิน",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261115-property-02.svg"
+}

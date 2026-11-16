@@ -1,0 +1,34 @@
+{
+ "case_id": "20261116-drug-02",
+ "title": "สืบนครบาลร่วม สภ.บางบัวทอง ค้นบ้านเช่าที่นนทบุรี ยึดไอซ์ 220 กก. ยาบ้า 1,070,000 เม็ด จับ 2 ผู้ต้องหา",
+ "generated_at": "2026-11-16T11:38:24.354Z",
+ "node_count": 5,
+ "edge_count": 4,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/บก.สส.บช.น.",
+   "target_title": "บก.สส.บช.น.",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/สภ.บางบัวทอง",
+   "target_title": "สภ.บางบัวทอง",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/อ.บางบัวทอง จ.นนทบุรี",
+   "target_title": "อ.บางบัวทอง จ.นนทบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/ยาเสพติด",
+   "target_title": "ยาเสพติด",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261116-drug-02.svg"
+}

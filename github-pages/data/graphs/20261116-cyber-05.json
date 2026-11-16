@@ -1,0 +1,28 @@
+{
+ "case_id": "20261116-cyber-05",
+ "title": "ThaiCERT เตือนกรณี Expedia ถูกโจมตีผ่านผู้ให้บริการแพลตฟอร์มข้อมูลภายนอก กลุ่ม n0n อ้างขโมยข้อมูลเกือบ 1 พันล้านรายการ",
+ "generated_at": "2026-11-16T11:38:24.354Z",
+ "node_count": 4,
+ "edge_count": 3,
+ "relations": [
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/ThaiCERT",
+   "target_title": "ThaiCERT",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ต่างประเทศ",
+   "target_title": "ต่างประเทศ",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261116-cyber-05.svg"
+}

@@ -12,9 +12,10 @@
 #   - Never listens on or routes to 7988.
 #
 # Scheduler:
-#   PoliceNewsWakeTunnel  — logon / startup / resume / daily (full wake, force model reload)
-#   PoliceNewsLmsWatch    — every 5 min (-Watch): LMS + gateway/MCP + RAG ngrok + tunnel.json
+#   PoliceNewsWakeTunnel  — logon / startup / resume / daily (full wake; reload Gemma only if dead)
+#   PoliceNewsLmsWatch    — every 2 min (-Watch): LMS + gateway/MCP + RAG ngrok + tunnel.json
 #                           so hibernate misses still restore Pages chat, not only Gemma
+# Model loads share Local\PoliceNewsLmsLoad mutex with morning workflow callers.
 param(
     [switch]$Wake,
     [switch]$LmsOnly,
@@ -33,8 +34,15 @@ $script:ReservedHosts = @("fresh-currently-elk.ngrok-free.app")
 $script:NgrokWebAddr = "127.0.0.1:4045"
 $script:NgrokLogRel = "logs/ngrok-rag.log"
 $script:LmStudioExe = "C:\Program Files\LM Studio\LM Studio.exe"
-$script:ForceModelReload = [bool]$Wake
+# -Wake used to force-reload even when Gemma was already alive, racing
+# Start-MorningWorkflow and blowing VRAM ("failed to allocate compute pp buffers").
+# Force only when the chat ping fails (zombie after hibernate).
+$script:ForceModelReload = $false
 $script:ForceTunnelPublish = $false
+$script:LmsLoadMutexName = "Global\PoliceNewsLmsLoad"
+$script:WakeProcessMutexName = "Global\PoliceNewsWakeTunnel"
+$script:WakeProcessMutex = $null
+$script:WakeProcessMutexHeld = $false
 
 function Write-Log {
     param([Parameter(Mandatory = $true)][string]$Message)
@@ -218,12 +226,46 @@ function Ensure-LmStudioApp {
     Write-Log "starting LM Studio app (needed after reboot/hibernate)"
     try {
         Start-Process -FilePath $script:LmStudioExe | Out-Null
-        Start-Sleep -Seconds 8
-        return $true
     } catch {
         Write-Log "failed to start LM Studio app: $($_.Exception.Message)"
         return $false
     }
+    $deadline = (Get-Date).AddSeconds(60)
+    while ((Get-Date) -lt $deadline) {
+        $procs = @(Get-Process -Name "LM Studio" -ErrorAction SilentlyContinue)
+        if ($procs.Count -gt 0) {
+            Write-Log "LM Studio process appeared ($($procs.Count)); settling 10s"
+            Start-Sleep -Seconds 10
+            return $true
+        }
+        Start-Sleep -Seconds 2
+    }
+    Write-Log "LM Studio process never appeared after start"
+    return $false
+}
+
+function Enter-LmsLoadMutex {
+    param([int]$TimeoutMs = 180000)
+    $mutex = New-Object System.Threading.Mutex($false, $script:LmsLoadMutexName)
+    $got = $false
+    try {
+        $got = $mutex.WaitOne($TimeoutMs)
+    } catch [System.Threading.AbandonedMutexException] {
+        $got = $true
+    }
+    if (-not $got) {
+        Write-Log "timed out waiting for LM Studio load mutex ($script:LmsLoadMutexName)"
+        $mutex.Dispose()
+        return $null
+    }
+    return $mutex
+}
+
+function Exit-LmsLoadMutex {
+    param($Mutex)
+    if (-not $Mutex) { return }
+    try { [void]$Mutex.ReleaseMutex() } catch {}
+    try { $Mutex.Dispose() } catch {}
 }
 
 function Invoke-LmsLoad {
@@ -305,41 +347,60 @@ function Start-Lms {
         return $false
     }
 
-    if (-not $script:ForceModelReload) {
-        if (Test-LmsModelAlive -Port $Port -Model $Model) {
-            Write-Log "model $Model is alive on 127.0.0.1:${Port}"
-            return $true
-        }
-    } else {
-        Write-Log "Wake/Force reload requested for $Model"
+    # Always check live state first — even on -Wake / after resume.
+    if (Test-LmsModelAlive -Port $Port -Model $Model) {
+        Write-Log "model $Model is alive on 127.0.0.1:${Port} (skip reload)"
+        return $true
     }
 
-    # After hibernate the OpenAI port can accept TCP before the JIT/runtime is ready.
-    $delays = @(0, 15, 30, 45, 60)
-    foreach ($delay in $delays) {
-        if ($delay -gt 0) {
-            Write-Log "waiting ${delay}s before retrying lms load $Model"
-            Start-Sleep -Seconds $delay
-            if (-not (Test-TcpOpen $Port)) {
-                Write-Log "lms port $Port closed during retries; restarting server"
-                try {
-                    Start-Process -FilePath $LmsPath -ArgumentList @("server", "start", "-p", "$Port", "--cors") -WindowStyle Hidden | Out-Null
-                } catch {
-                    Write-Log "failed to restart lms: $($_.Exception.Message)"
-                }
-                [void](Wait-Port -Port $Port -Label "lms $Port")
-            }
-        }
-        [void](Invoke-LmsLoad -LmsPath $LmsPath -Model $Model)
-        Start-Sleep -Seconds 5
+    if ($script:ForceModelReload) {
+        Write-Log "model $Model listed/dead after wake/resume — will reload"
+    } else {
+        Write-Log "model $Model not alive yet — will load"
+    }
+
+    $mutex = Enter-LmsLoadMutex
+    if (-not $mutex) { return $false }
+    try {
+        # Another scheduler may have finished loading while we waited.
         if (Test-LmsModelAlive -Port $Port -Model $Model) {
-            Write-Log "verified model $Model responds on 127.0.0.1:${Port}"
+            Write-Log "model $Model became alive while waiting for load mutex"
             return $true
         }
-        Write-Log "model $Model not ready yet (list or chat ping)"
+
+        # After hibernate the OpenAI port can accept TCP before the JIT/runtime is ready.
+        $delays = @(0, 15, 30, 45, 60)
+        foreach ($delay in $delays) {
+            if ($delay -gt 0) {
+                Write-Log "waiting ${delay}s before retrying lms load $Model"
+                Start-Sleep -Seconds $delay
+                if (Test-LmsModelAlive -Port $Port -Model $Model) {
+                    Write-Log "model $Model became alive during backoff"
+                    return $true
+                }
+                if (-not (Test-TcpOpen $Port)) {
+                    Write-Log "lms port $Port closed during retries; restarting server"
+                    try {
+                        Start-Process -FilePath $LmsPath -ArgumentList @("server", "start", "-p", "$Port", "--cors") -WindowStyle Hidden | Out-Null
+                    } catch {
+                        Write-Log "failed to restart lms: $($_.Exception.Message)"
+                    }
+                    [void](Wait-Port -Port $Port -Label "lms $Port")
+                }
+            }
+            [void](Invoke-LmsLoad -LmsPath $LmsPath -Model $Model)
+            Start-Sleep -Seconds 5
+            if (Test-LmsModelAlive -Port $Port -Model $Model) {
+                Write-Log "verified model $Model responds on 127.0.0.1:${Port}"
+                return $true
+            }
+            Write-Log "model $Model not ready yet (list or chat ping)"
+        }
+        Write-Log "gave up loading $Model after retries"
+        return $false
+    } finally {
+        Exit-LmsLoadMutex -Mutex $mutex
     }
-    Write-Log "gave up loading $Model after retries"
-    return $false
 }
 
 function Test-ReservedPublicUrl {
@@ -821,6 +882,19 @@ function Save-TunnelFile {
 }
 
 try {
+    # Single-flight for Wake/Watch/LmsOnly so 2-min watch cannot stack on itself
+    # or race a wake after hibernate.
+    $script:WakeProcessMutex = New-Object System.Threading.Mutex($false, $script:WakeProcessMutexName)
+    try {
+        $script:WakeProcessMutexHeld = $script:WakeProcessMutex.WaitOne(2000)
+    } catch [System.Threading.AbandonedMutexException] {
+        $script:WakeProcessMutexHeld = $true
+    }
+    if (-not $script:WakeProcessMutexHeld) {
+        Write-Log "another wake-tunnel instance holds $script:WakeProcessMutexName - skip duplicate"
+        exit 0
+    }
+
     if (-not (Test-Path -LiteralPath $ConfigPath)) {
         Write-Log "missing config $ConfigPath"
         exit 1
@@ -873,7 +947,12 @@ try {
     $push = $false
     if ($config.push -eq $true) { $push = $true }
 
-    if ($Wake) { $script:ForceModelReload = $true }
+    # Mark wake/resume context for logging only. Actual reload happens only when
+    # Test-LmsModelAlive fails inside Start-Lms (no blind duplicate load).
+    if ($Wake) {
+        $script:ForceModelReload = $true
+        Write-Log "Wake mode: will reload Gemma only if chat ping fails"
+    }
     if ($Watch -and $LmsOnly) {
         Write-Log "both -Watch and -LmsOnly set; preferring -Watch"
         $LmsOnly = $false
@@ -881,7 +960,7 @@ try {
     # Periodic watch after hibernate often races the dedicated -Wake task. Promote to
     # a fuller repair path so Pages chat is restored even if the event trigger missed.
     if ($Watch -and -not $Wake -and (Test-RecentResume -WithinMinutes 8)) {
-        Write-Log "detected recent resume from sleep/hibernate during -Watch -> force model reload + network settle"
+        Write-Log "detected recent resume from sleep/hibernate during -Watch -> state-aware reload + network settle"
         $script:ForceModelReload = $true
         [void](Wait-ForNetwork)
     }
@@ -982,4 +1061,9 @@ try {
         Write-Log ("wake stack: {0}" -f ($_.ScriptStackTrace -replace '\s+', ' '))
     }
     exit 1
+} finally {
+    if ($script:WakeProcessMutexHeld -and $script:WakeProcessMutex) {
+        try { [void]$script:WakeProcessMutex.ReleaseMutex() } catch {}
+        try { $script:WakeProcessMutex.Dispose() } catch {}
+    }
 }

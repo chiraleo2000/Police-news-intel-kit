@@ -1,0 +1,40 @@
+{
+ "case_id": "20261116-gamble-03",
+ "title": "DSI รอเอกสารต่างประเทศชี้ตัวเจ้าของ Shuffle.com และเชิญผู้ให้บริการสินทรัพย์ดิจิทัล 11 รายให้ข้อมูลธุรกรรม",
+ "generated_at": "2026-11-16T11:38:24.354Z",
+ "node_count": 6,
+ "edge_count": 5,
+ "relations": [
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/กรมสอบสวนคดีพิเศษ",
+   "target_title": "กรมสอบสวนคดีพิเศษ",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/กรุงเทพมหานคร",
+   "target_title": "กรุงเทพมหานคร",
+   "direction": "out"
+  },
+  {
+   "label": "บัญชี",
+   "target_id": "30_Entities/บัญชี/shuffle.com",
+   "target_title": "shuffle.com",
+   "direction": "out"
+  },
+  {
+   "label": "ติดตามจาก",
+   "target_id": "20_Cases/20261113-gamble-02",
+   "target_title": "DSI ชี้แจงกรณีเว็บไซต์ Shuffle ยังไม่ยุติ อยู่ระหว่างสืบสวนตามเลขสืบสวน 148/2569 รวบรวมพยานหลักฐานและขอข้อมูลจากหน่วยงานในและต่างประเทศเพื่อพิจารณาว่าเข้าข่ายคดีพิเศษหรือไม่",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/พนันและบ่อนผิดกฎหมาย",
+   "target_title": "พนันและบ่อนผิดกฎหมาย",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261116-gamble-03.svg"
+}
