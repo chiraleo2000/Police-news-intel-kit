@@ -1,0 +1,52 @@
+{
+ "case_id": "20261117-drug-02",
+ "title": "นายอำเภอบางใหญ่สนธิกำลัง สภ.บางใหญ่ ตรวจวัดบางโคตามคำร้องเรียนเจ้าอาวาส ตรวจปัสสาวะพระ 14 รูป พบสารเสพติด 3 รูป พบเกล็ดขาวต้องสงสัยส่งตรวจ",
+ "generated_at": "2026-11-17T01:15:53.211Z",
+ "node_count": 8,
+ "edge_count": 7,
+ "relations": [
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/สภ.บางใหญ่",
+   "target_title": "สภ.บางใหญ่",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/อำเภอบางใหญ่",
+   "target_title": "อำเภอบางใหญ่",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/วัดบางโค ต.บางแม่นาง อ.บางใหญ่ จ.นนทบุรี",
+   "target_title": "วัดบางโค ต.บางแม่นาง อ.บางใหญ่ จ.นนทบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/ผู้กำกับการ สภ.บางใหญ่",
+   "target_title": "ผู้กำกับการ สภ.บางใหญ่",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/นายอำเภอบางใหญ่",
+   "target_title": "นายอำเภอบางใหญ่",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/สถานที่/บางใหญ่",
+   "target_title": "บางใหญ่",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/ยาเสพติด",
+   "target_title": "ยาเสพติด",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261117-drug-02.svg"
+}

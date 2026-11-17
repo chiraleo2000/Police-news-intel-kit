@@ -1,0 +1,40 @@
+{
+ "case_id": "20261117-property-01",
+ "title": "สภ.คลองหลวง จับชาวเมียนมา 3 คน ถูกกล่าวหาขี่จักรยานยนต์ใช้ปืนและมีดจี้ชิงไอโฟนนักศึกษาหน้าหอพักย่านรังสิต ผู้เสียหายชี้ตัวแล้ว 3 ราย",
+ "generated_at": "2026-11-17T01:15:53.211Z",
+ "node_count": 6,
+ "edge_count": 5,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/สภ.คลองหลวง",
+   "target_title": "สภ.คลองหลวง",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/ภ.จว.ปทุมธานี",
+   "target_title": "ภ.จว.ปทุมธานี",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ซอยแก้วนิมิตร 11 ต.คลองหนึ่ง อ.คลองหลวง จ.ปทุมธานี",
+   "target_title": "ซอยแก้วนิมิตร 11 ต.คลองหนึ่ง อ.คลองหลวง จ.ปทุมธานี",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/รองผู้กำกับการสืบสวน สภ.คลองหลวง",
+   "target_title": "รองผู้กำกับการสืบสวน สภ.คลองหลวง",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/คดีทรัพย์สิน",
+   "target_title": "คดีทรัพย์สิน",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261117-property-01.svg"
+}

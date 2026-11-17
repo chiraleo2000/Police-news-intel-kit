@@ -1,0 +1,166 @@
+{
+ "baseline": "ok",
+ "window_days": 7,
+ "days_available": 7,
+ "note": "baseline 7 วันย้อนหลัง (<7 วัน: แนวโน้มเป็นข้อมูลบ่งชี้เท่านั้น) surge = วันนี้ >=3 เรื่อง และสูงกว่าค่าเฉลี่ย >=50 เปอร์เซ็นต์",
+ "by_crime_type": [
+  {
+   "type": "การปฏิบัติหน้าที่ ประชาสัมพันธ์ และนโยบายตำรวจ",
+   "today": 6,
+   "avg_prev_7d": 1.86,
+   "delta_pct": 223.1,
+   "surge": true
+  },
+  {
+   "type": "ยาเสพติด",
+   "today": 3,
+   "avg_prev_7d": 2.86,
+   "delta_pct": 5.0,
+   "surge": false
+  },
+  {
+   "type": "ความปลอดภัยทางหลวงและการสกัดจับ",
+   "today": 2,
+   "avg_prev_7d": 0.29,
+   "delta_pct": 600.0,
+   "surge": false
+  },
+  {
+   "type": "อาชญากรรมไซเบอร์และออนไลน์",
+   "today": 2,
+   "avg_prev_7d": 5.0,
+   "delta_pct": -60.0,
+   "surge": false
+  },
+  {
+   "type": "อาชญากรรมข้ามชาติและความร่วมมือระหว่างประเทศ",
+   "today": 1,
+   "avg_prev_7d": 1.0,
+   "delta_pct": 0.0,
+   "surge": false
+  },
+  {
+   "type": "ค้ามนุษย์ แรงงานผิดกฎหมาย และคุ้มครองเด็ก",
+   "today": 1,
+   "avg_prev_7d": 1.14,
+   "delta_pct": -12.5,
+   "surge": false
+  },
+  {
+   "type": "คดีเศรษฐกิจ การเงิน และฟอกเงิน",
+   "today": 1,
+   "avg_prev_7d": 3.14,
+   "delta_pct": -68.2,
+   "surge": false
+  },
+  {
+   "type": "ความสงบเรียบร้อยและความมั่นคงภายใน",
+   "today": 1,
+   "avg_prev_7d": 1.0,
+   "delta_pct": 0.0,
+   "surge": false
+  },
+  {
+   "type": "คดีทรัพย์สิน",
+   "today": 1,
+   "avg_prev_7d": 0.71,
+   "delta_pct": 40.0,
+   "surge": false
+  }
+ ],
+ "by_mo": [
+  {
+   "mo": "มัลแวร์/แอปดูดเงิน",
+   "today": 2,
+   "avg_prev_7d": 0.0,
+   "surge": false
+  },
+  {
+   "mo": "แอบอ้างเจ้าหน้าที่รัฐ/ตำรวจ",
+   "today": 1,
+   "avg_prev_7d": 0.0,
+   "surge": false
+  },
+  {
+   "mo": "คอลเซ็นเตอร์",
+   "today": 1,
+   "avg_prev_7d": 0.0,
+   "surge": false
+  },
+  {
+   "mo": "ข่มขู่ทางเพศ",
+   "today": 1,
+   "avg_prev_7d": 0.0,
+   "surge": false
+  },
+  {
+   "mo": "ฟอกเงิน",
+   "today": 1,
+   "avg_prev_7d": 0.0,
+   "surge": false
+  },
+  {
+   "mo": "ลำเลียงยาเสพติด",
+   "today": 1,
+   "avg_prev_7d": 0.0,
+   "surge": false
+  }
+ ],
+ "by_province": [
+  {
+   "province": "กรุงเทพมหานคร",
+   "today": 7,
+   "avg_prev_7d": 9.43
+  },
+  {
+   "province": "สมุทรปราการ",
+   "today": 2,
+   "avg_prev_7d": 1.0
+  },
+  {
+   "province": "ปทุมธานี",
+   "today": 2,
+   "avg_prev_7d": 0.86
+  },
+  {
+   "province": "ต่างประเทศ",
+   "today": 2,
+   "avg_prev_7d": 0.43
+  },
+  {
+   "province": "ชลบุรี",
+   "today": 1,
+   "avg_prev_7d": 2.0
+  },
+  {
+   "province": "ชุมพร",
+   "today": 1,
+   "avg_prev_7d": 0.29
+  },
+  {
+   "province": "เพชรบูรณ์",
+   "today": 1,
+   "avg_prev_7d": 0.43
+  },
+  {
+   "province": "นนทบุรี",
+   "today": 1,
+   "avg_prev_7d": 2.14
+  },
+  {
+   "province": "ลพบุรี",
+   "today": 1,
+   "avg_prev_7d": 0.14
+  },
+  {
+   "province": "สุโขทัย",
+   "today": 1,
+   "avg_prev_7d": 0.14
+  },
+  {
+   "province": "สุราษฎร์ธานี",
+   "today": 1,
+   "avg_prev_7d": 0.57
+  }
+ ]
+}

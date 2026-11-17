@@ -1,0 +1,28 @@
+{
+ "case_id": "20261117-cyber-01",
+ "title": "ThaiCERT เตือน PostgreSQL ออกอัปเดตแก้ 52 ช่องโหว่ ช่องโหว่ระดับสูงอาจทำให้ผู้โจมตีสั่งรันคำสั่งบนเซิร์ฟเวอร์ฐานข้อมูล",
+ "generated_at": "2026-11-17T01:15:53.211Z",
+ "node_count": 4,
+ "edge_count": 3,
+ "relations": [
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/ThaiCERT",
+   "target_title": "ThaiCERT",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/-",
+   "target_title": "-",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261117-cyber-01.svg"
+}

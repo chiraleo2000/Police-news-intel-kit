@@ -1,0 +1,40 @@
+{
+ "case_id": "20261117-public-01",
+ "title": "สภ.บางบ่อ ให้โรงเรียนเข้าแผนปิดล็อกประตูหลังมีผู้แจ้งว่าชายในรถต้องสงสัยพกปืน ตำรวจสกัดได้ที่บางนา-ตราด กม.34 พบมีดต่อด้ามและสนับมือ ไม่พบปืน",
+ "generated_at": "2026-11-17T01:15:53.211Z",
+ "node_count": 6,
+ "edge_count": 5,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/สภ.บางบ่อ",
+   "target_title": "สภ.บางบ่อ",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ถนนบางนา-ตราด กม.34 ต.บ้านระกาศ อ.บางบ่อ",
+   "target_title": "ถนนบางนา-ตราด กม.34 ต.บ้านระกาศ อ.บางบ่อ",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/รองผู้กำกับการป้องกันปราบปราม สภ.บางบ่อ",
+   "target_title": "รองผู้กำกับการป้องกันปราบปราม สภ.บางบ่อ",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/บางนา",
+   "target_title": "บางนา",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/ความสงบเรียบร้อยและความมั่นคงภายใน",
+   "target_title": "ความสงบเรียบร้อยและความมั่นคงภายใน",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261117-public-01.svg"
+}

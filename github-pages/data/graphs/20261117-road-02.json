@@ -1,0 +1,40 @@
+{
+ "case_id": "20261117-road-02",
+ "title": "ตำรวจ สภ.คูคต จับชายที่ถูกกล่าวหาขับเก๋งไล่ชนรถ 7 คันบนถนนวิภาวดีรังสิตช่วงแยกเกษตรถึงดอนเมือง ตรวจไม่พบแอลกอฮอล์ ส่งตรวจสารเสพติด",
+ "generated_at": "2026-11-17T01:15:53.211Z",
+ "node_count": 6,
+ "edge_count": 5,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/สภ.คูคต",
+   "target_title": "สภ.คูคต",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/สน.วิภาวดี",
+   "target_title": "สน.วิภาวดี",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ถนนวิภาวดีรังสิต กรุงเทพมหานคร",
+   "target_title": "ถนนวิภาวดีรังสิต กรุงเทพมหานคร",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/อ.ลำลูกกา จ.ปทุมธานี",
+   "target_title": "อ.ลำลูกกา จ.ปทุมธานี",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/ความปลอดภัยทางหลวงและการสกัดจับ",
+   "target_title": "ความปลอดภัยทางหลวงและการสกัดจับ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261117-road-02.svg"
+}

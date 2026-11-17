@@ -1,0 +1,58 @@
+{
+ "case_id": "20261117-econ-01",
+ "title": "เหรัญญิกมูลนิธิองค์กรทำดีให้ปากคำ บก.ปอศ. กว่า 8 ชั่วโมงและยื่นเอกสารเพิ่ม หลังพนักงานสอบสวนมีมติจะแจ้งข้อหาร่วมกันฉ้อโกงประชาชน นำข้อมูลเท็จเข้าระบบ และฟอกเงิน",
+ "generated_at": "2026-11-17T01:15:53.211Z",
+ "node_count": 9,
+ "edge_count": 8,
+ "relations": [
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/บก.ปอศ.",
+   "target_title": "บก.ปอศ.",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บช.ก.",
+   "target_title": "บช.ก.",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/กองบัญชาการตำรวจสอบสวนกลาง กรุงเทพมหานคร",
+   "target_title": "กองบัญชาการตำรวจสอบสวนกลาง กรุงเทพมหานคร",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/รองผู้บังคับการ บก.ปอศ.",
+   "target_title": "รองผู้บังคับการ บก.ปอศ.",
+   "direction": "out"
+  },
+  {
+   "label": "ผู้ต้องหา",
+   "target_id": "30_Entities/People/นายอภิวุฒิ ภุมภา",
+   "target_title": "นายอภิวุฒิ ภุมภา",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/บุคคล/นิตติโชติ เพ็ญจำรัส",
+   "target_title": "นิตติโชติ เพ็ญจำรัส",
+   "direction": "out"
+  },
+  {
+   "label": "ติดตามจาก",
+   "target_id": "20_Cases/20261116-econ-01",
+   "target_title": "บก.ปอศ. มีมติดำเนินคดีแถว 2 อีก 6 ราย คดีมูลนิธิองค์กรทำดี กรรมการ 4 รายโดน 3 ข้อหา ช่าง 2 รายข้อหาร่วมกันฟอกเงิน",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/คดีเศรษฐกิจ การเงิน และฟอกเงิน",
+   "target_title": "คดีเศรษฐกิจ การเงิน และฟอกเงิน",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261117-econ-01.svg"
+}

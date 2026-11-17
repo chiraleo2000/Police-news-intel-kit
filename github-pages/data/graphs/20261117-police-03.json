@@ -1,0 +1,46 @@
+{
+ "case_id": "20261117-police-03",
+ "title": "ตำรวจท่องเที่ยว บก.ทท.2 ใช้รถโมบาย CCOC และรถโดรนตรวจการณ์ดูแลงานลอยกระทง เผาเทียน เล่นไฟ ที่อุทยานประวัติศาสตร์สุโขทัย",
+ "generated_at": "2026-11-17T01:15:53.211Z",
+ "node_count": 7,
+ "edge_count": 6,
+ "relations": [
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บก.ทท.2",
+   "target_title": "บก.ทท.2",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/ภ.จว.สุโขทัย",
+   "target_title": "ภ.จว.สุโขทัย",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/อุทยานประวัติศาสตร์สุโขทัย",
+   "target_title": "อุทยานประวัติศาสตร์สุโขทัย",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/ผู้กำกับการ 3 กองบังคับการตำรวจท่องเที่ยว 2",
+   "target_title": "ผู้กำกับการ 3 กองบังคับการตำรวจท่องเที่ยว 2",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/บุคคล/ยุทธสิทธิ์ บุญกล่ำ",
+   "target_title": "ยุทธสิทธิ์ บุญกล่ำ",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/การปฏิบัติหน้าที่ ประชาสัมพันธ์ และนโยบายตำรวจ",
+   "target_title": "การปฏิบัติหน้าที่ ประชาสัมพันธ์ และนโยบายตำรวจ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261117-police-03.svg"
+}

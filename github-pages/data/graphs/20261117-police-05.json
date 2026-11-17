@@ -1,0 +1,46 @@
+{
+ "case_id": "20261117-police-05",
+ "title": "ผบช.น. เปิดอาคารที่ทำการใหม่ของกองกำกับการสืบสวนสอบสวน บก.น.4 ซอยประดิษฐ์มนูธรรม",
+ "generated_at": "2026-11-17T01:15:53.211Z",
+ "node_count": 7,
+ "edge_count": 6,
+ "relations": [
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บช.น.",
+   "target_title": "บช.น.",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/กก.สส.บก.น.4",
+   "target_title": "กก.สส.บก.น.4",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ซอยประดิษฐ์มนูธรรม กรุงเทพมหานคร",
+   "target_title": "ซอยประดิษฐ์มนูธรรม กรุงเทพมหานคร",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/ผู้บัญชาการตำรวจนครบาล",
+   "target_title": "ผู้บัญชาการตำรวจนครบาล",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/บุคคล/สยาม บุญสม",
+   "target_title": "สยาม บุญสม",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/การปฏิบัติหน้าที่ ประชาสัมพันธ์ และนโยบายตำรวจ",
+   "target_title": "การปฏิบัติหน้าที่ ประชาสัมพันธ์ และนโยบายตำรวจ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261117-police-05.svg"
+}

@@ -1,0 +1,46 @@
+{
+ "case_id": "20261117-drug-01",
+ "title": "จุดตรวจปฐมพร ชุมพร ไล่ตามเก๋งที่ฝ่าด่านราว 50 กม. จับคนขับอายุ 57 ปีในสวนทุเรียน พบยาบ้า 200,000 เม็ดในท้ายรถ",
+ "generated_at": "2026-11-17T01:15:53.211Z",
+ "node_count": 7,
+ "edge_count": 6,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/สภ.เมืองชุมพร",
+   "target_title": "สภ.เมืองชุมพร",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/กอ.รมน.",
+   "target_title": "กอ.รมน.",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/จุดตรวจปฐมพร ต.วังไผ่ อ.เมืองชุมพร",
+   "target_title": "จุดตรวจปฐมพร ต.วังไผ่ อ.เมืองชุมพร",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/สวนทุเรียน ต.วิสัยเหนือ จ.ชุมพร",
+   "target_title": "สวนทุเรียน ต.วิสัยเหนือ จ.ชุมพร",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/สารวัตรป้องกันปราบปราม สภ.เมืองชุมพร",
+   "target_title": "สารวัตรป้องกันปราบปราม สภ.เมืองชุมพร",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/ยาเสพติด",
+   "target_title": "ยาเสพติด",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261117-drug-01.svg"
+}
