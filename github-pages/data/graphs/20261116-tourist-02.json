@@ -1,7 +1,7 @@
 {
  "case_id": "20261116-tourist-02",
  "title": "ตำรวจน้ำจับชายอินเดียที่ท่าเรือเฟอร์รี่เกาะสมุย ตามหมายจับศาลปัตตานี กรณีถือบัตรประชาชนไทยที่ออกโดยมิชอบ",
- "generated_at": "2026-11-16T11:38:24.354Z",
+ "generated_at": "2026-11-17T01:15:53.211Z",
  "node_count": 9,
  "edge_count": 8,
  "relations": [
@@ -43,7 +43,7 @@
   },
   {
    "label": "เกิดที่",
-   "target_id": "30_Entities/สถานที่/เกาะสมุย",
+   "target_id": "30_Entities/Places/เกาะสมุย",
    "target_title": "เกาะสมุย",
    "direction": "out"
   },

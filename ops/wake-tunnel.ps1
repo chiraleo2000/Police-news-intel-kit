@@ -860,24 +860,44 @@ function Save-TunnelFile {
     }
 
     $env:GIT_TERMINAL_PROMPT = "0"
-    Push-Location $RepoRoot
+    # Share mutex with git-publish-pages / prune so tunnel pushes do not race the Pages index.
+    $pagesMutex = $null
+    $pagesHeld = $false
     try {
-        & git add -- "github-pages/data/tunnel.json"
-        if ($LASTEXITCODE -ne 0) { throw "git add exited $LASTEXITCODE" }
-        $still = & git status --porcelain -- "github-pages/data/tunnel.json" 2>$null
-        if ([string]::IsNullOrWhiteSpace([string]$still)) {
-            Write-Log "tunnel.json already staged/committed; ensuring push"
-        } else {
-            & git commit -m "Update the public tunnel URL." -- "github-pages/data/tunnel.json"
-            if ($LASTEXITCODE -ne 0) { throw "git commit exited $LASTEXITCODE" }
+        $pagesMutex = New-Object System.Threading.Mutex($false, 'Global\PoliceNewsGitPublish')
+        try {
+            $pagesHeld = $pagesMutex.WaitOne(180000)
+        } catch [System.Threading.AbandonedMutexException] {
+            $pagesHeld = $true
         }
-        & git push
-        if ($LASTEXITCODE -ne 0) { throw "git push exited $LASTEXITCODE" }
-        Write-Log "pushed github-pages/data/tunnel.json"
-    } catch {
-        Write-Log "git publish failed: $($_.Exception.Message)"
+        if (-not $pagesHeld) {
+            Write-Log 'timed out waiting for Global\PoliceNewsGitPublish — skip tunnel git push'
+            return
+        }
+        Push-Location $RepoRoot
+        try {
+            & git add -- "github-pages/data/tunnel.json"
+            if ($LASTEXITCODE -ne 0) { throw "git add exited $LASTEXITCODE" }
+            $still = & git status --porcelain -- "github-pages/data/tunnel.json" 2>$null
+            if ([string]::IsNullOrWhiteSpace([string]$still)) {
+                Write-Log "tunnel.json already staged/committed; ensuring push"
+            } else {
+                & git commit -m "Update the public tunnel URL." -- "github-pages/data/tunnel.json"
+                if ($LASTEXITCODE -ne 0) { throw "git commit exited $LASTEXITCODE" }
+            }
+            & git push
+            if ($LASTEXITCODE -ne 0) { throw "git push exited $LASTEXITCODE" }
+            Write-Log "pushed github-pages/data/tunnel.json"
+        } catch {
+            Write-Log "git publish failed: $($_.Exception.Message)"
+        } finally {
+            Pop-Location
+        }
     } finally {
-        Pop-Location
+        if ($pagesHeld -and $pagesMutex) {
+            try { [void]$pagesMutex.ReleaseMutex() } catch {}
+            try { $pagesMutex.Dispose() } catch {}
+        }
     }
 }
 
