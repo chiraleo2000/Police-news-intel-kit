@@ -1,11 +1,12 @@
 /**
  * Police News Briefing — static reader
- * Primary: data/feed.json (all posts, including cyber as topic)
+ * Primary: data/feed.json (all posts; cyber included in รายการข่าว)
  * Fallback: data/manifest.json + {DATE}_crime.json / {DATE}_cyber.json
  * Routes:
- *   #/r/{range} · #/{DATE}/{postId}
- *   #/brain · #/downloads/r/{range}
- * Legacy redirects: #/cyber… → news (+ topic filter) · #/cyber-brain… → brain
+ *   #/r/{range} · #/{DATE}/{postId}          → รายการข่าว (ทุกประเภท รวมไซเบอร์)
+ *   #/cyber/r/{range} · #/cyber/{DATE}/{id} → ข่าวอาชญากรรมไซเบอร์ (เฉพาะ CYBER)
+ *   #/brain · #/downloads/r/{range}         → กราฟรวมทั้งหมด / ดาวน์โหลด
+ * Legacy: #/cyber-brain… → #/brain (ไม่มีแท็บกราฟไซเบอร์แยก)
  */
 (() => {
   const F = window.NewsFormat;
@@ -26,6 +27,7 @@
 
   const els = {
     tabNews: document.getElementById("tab-news"),
+    tabCyber: document.getElementById("tab-cyber"),
     tabBrain: document.getElementById("tab-brain"),
     tabDownloads: document.getElementById("tab-downloads"),
     viewNews: document.getElementById("view-news"),
@@ -66,8 +68,8 @@
   let filters = { topic: "", tag: "", q: "" };
   let currentRange = DEFAULT_RANGE;
   let currentPosts = [];
+  let currentChannel = "news";
   let bootstrapped = false;
-  let pendingTopic = null;
 
   function isCyberPost(p) {
     if (!p) return false;
@@ -77,6 +79,11 @@
     if (code === "CYBER") return true;
     const id = String(p.id || p.slug || "");
     return /(^|-)cyber(-|$)/i.test(id);
+  }
+
+  function postsForChannel(posts, channel) {
+    if (channel === "cyber") return (posts || []).filter(isCyberPost);
+    return posts || [];
   }
 
   function bangkokToday() {
@@ -153,7 +160,7 @@
         parts[1] === "r" && RANGE_VALUES.has(parts[2]) ? parts[2] : currentRange;
       return { tab: "downloads", range, date: null, postId: null, nodeId: null };
     }
-    // Legacy: #/cyber-brain → ข้อมูลกราฟ (กรองประเภทได้ในหน้า)
+    // Legacy: ไม่มีแท็บกราฟไซเบอร์แยก — ไปข้อมูลกราฟรวม
     if (parts[0] === "cyber-brain") {
       return {
         tab: "brain",
@@ -162,7 +169,6 @@
         postId: null,
         nodeId: parts[1] ? decodeURIComponent(parts[1]) : null,
         legacy: "cyber-brain",
-        preferCrimeType: CYBER_TOPIC,
       };
     }
     if (parts[0] === "brain") {
@@ -174,38 +180,25 @@
         nodeId: parts[1] ? decodeURIComponent(parts[1]) : null,
       };
     }
-    // Legacy: #/cyber… → รายการข่าว + กรองประเภทไซเบอร์
     if (parts[0] === "cyber") {
       if (parts[1] === "r" && RANGE_VALUES.has(parts[2])) {
-        return {
-          tab: "news",
-          range: parts[2],
-          date: null,
-          postId: null,
-          nodeId: null,
-          legacy: "cyber",
-          preferTopic: CYBER_TOPIC,
-        };
+        return { tab: "cyber", range: parts[2], date: null, postId: null, nodeId: null };
       }
       if (parts[1] && /^\d{4}-\d{2}-\d{2}$/.test(parts[1])) {
         return {
-          tab: "news",
+          tab: "cyber",
           range: currentRange,
           date: parts[1],
           postId: parts[2] ? decodeURIComponent(parts[2]) : null,
           nodeId: null,
-          legacy: "cyber",
-          preferTopic: CYBER_TOPIC,
         };
       }
       return {
-        tab: "news",
+        tab: "cyber",
         range: currentRange || DEFAULT_RANGE,
         date: null,
         postId: null,
         nodeId: null,
-        legacy: "cyber",
-        preferTopic: CYBER_TOPIC,
       };
     }
     if (parts[0] === "r" && RANGE_VALUES.has(parts[1])) {
@@ -242,6 +235,14 @@
     }
     if (tab === "brain") {
       location.hash = nodeId ? `#/brain/${encodeURIComponent(nodeId)}` : "#/brain";
+      return;
+    }
+    if (tab === "cyber") {
+      if (date && postId) {
+        location.hash = `#/cyber/${date}/${encodeURIComponent(postId)}`;
+        return;
+      }
+      location.hash = `#/cyber/r/${range || DEFAULT_RANGE}`;
       return;
     }
     if (date && postId) {
@@ -557,9 +558,14 @@
               `<a class="source-chip" href="${escapeHtml(s.url)}" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">${escapeHtml(s.name)}</a>`
           )
           .join("");
-        const href = date
-          ? `#/${date}/${encodeURIComponent(p.id || p.slug || "")}`
-          : `#/r/${currentRange}`;
+        const href =
+          currentChannel === "cyber"
+            ? date
+              ? `#/cyber/${date}/${encodeURIComponent(p.id || p.slug || "")}`
+              : `#/cyber/r/${currentRange}`
+            : date
+              ? `#/${date}/${encodeURIComponent(p.id || p.slug || "")}`
+              : `#/r/${currentRange}`;
         return `<li>
           <a class="post-link" href="${href}">
             <h3 class="post-title">${escapeHtml(p.title || "(ไม่มีหัวข้อ)")}</h3>
@@ -639,22 +645,26 @@
       .join("");
   }
 
-  async function renderFeed(range) {
+  async function renderFeed(range, channel = "news") {
     const dayList = daysInRange(range);
-    currentPosts = postsInRange(range);
+    currentChannel = channel === "cyber" ? "cyber" : "news";
+    currentPosts = postsForChannel(postsInRange(range), currentChannel);
     const posts = currentPosts;
     const types = byCrimeType(posts);
     const alertCount = posts.filter((p) => p.alert).length;
-    if (pendingTopic) {
-      filters.topic = pendingTopic;
-      pendingTopic = null;
-    }
+    const isCyber = currentChannel === "cyber";
 
     els.heroKicker.textContent = rangeCaption(range, dayList);
-    els.heroTitle.textContent = "ข่าวอาชญากรรมและการปฏิบัติหน้าที่ตำรวจ";
+    els.heroTitle.textContent = isCyber
+      ? "ข่าวอาชญากรรมไซเบอร์และออนไลน์"
+      : "ข่าวอาชญากรรมและการปฏิบัติหน้าที่ตำรวจ";
     els.heroLead.textContent = posts.length
-      ? `รวม ${F.number(posts.length)} เหตุการณ์ · กรองประเภท (รวมอาชญากรรมไซเบอร์และออนไลน์) / แท็กได้`
-      : "ยังไม่มีข่าวในช่วงนี้ — เลือก «ทั้งหมด» หรือรอไปป์ไลน์อัปเดต JSON";
+      ? isCyber
+        ? `เฉพาะประเภทไซเบอร์ ${F.number(posts.length)} เรื่อง · คอลเซ็นเตอร์ บัญชีม้า ฟิชชิง หลอกลงทุน`
+        : `รวม ${F.number(posts.length)} เหตุการณ์ (รวมข่าวอาชญากรรมไซเบอร์) · กรองประเภท/แท็กได้`
+      : isCyber
+        ? "ยังไม่มีข่าวอาชญากรรมไซเบอร์ในช่วงนี้ — เลือก «ทั้งหมด» หรือรอ Task 4 / Task 2"
+        : "ยังไม่มีข่าวในช่วงนี้ — เลือก «ทั้งหมด» หรือรอไปป์ไลน์อัปเดต JSON";
     els.heroMeta.hidden = false;
     els.heroMeta.textContent = manifest.generated_at
       ? `อัปเดตล่าสุด ${manifest.generated_at}`
@@ -664,6 +674,11 @@
     els.statTypes.textContent = `${F.number(types.length)} ประเภท`;
     els.statAlerts.textContent = `${F.number(alertCount)} เตือนภัย`;
 
+    // แท็บไซเบอร์ = ชุดที่กรองแล้ว · รีเซ็ตตัวกรองประเภทรอง
+    if (isCyber) {
+      filters.topic = "";
+      if (els.topicFilter) els.topicFilter.value = "";
+    }
     fillTopicFilter(posts);
     renderTopicChips(posts);
     fillTagFilter(posts);
@@ -701,7 +716,9 @@
       els.insights.hidden = true;
     }
 
-    els.status.textContent = `${posts.length} เหตุการณ์ · ${RANGE_LABELS[range]} · พร้อมใช้งาน`;
+    els.status.textContent = isCyber
+      ? `${posts.length} ข่าวอาชญากรรมไซเบอร์ · ${RANGE_LABELS[range]}`
+      : `${posts.length} เหตุการณ์ · ${RANGE_LABELS[range]} · พร้อมใช้งาน`;
   }
 
   const REL_TH = {
@@ -721,14 +738,19 @@
     uses_account: "ใช้บัญชี",
   };
 
-  function listHash() {
-    return `#/r/${currentRange}`;
+  function listHash(channel = currentChannel) {
+    return channel === "cyber"
+      ? `#/cyber/r/${currentRange}`
+      : `#/r/${currentRange}`;
   }
 
   function hrefForPostId(id) {
     const found = allPosts.find((p) => p.id === id || p.slug === id);
     if (!found?._date) return listHash();
-    return `#/${found._date}/${encodeURIComponent(found.id || id)}`;
+    // จากแท็บไซเบอร์คง path cyber · จากรายการข่าวใช้ path หลัก (รวมไซเบอร์ได้)
+    const useCyber = currentChannel === "cyber";
+    const prefix = useCyber ? "#/cyber/" : "#/";
+    return `${prefix}${found._date}/${encodeURIComponent(found.id || id)}`;
   }
 
   function relationLabel(raw) {
@@ -975,16 +997,19 @@
 
   function setActiveTab(tab) {
     const isNews = tab === "news";
+    const isCyber = tab === "cyber";
     const isBrain = tab === "brain";
     const isDownloads = tab === "downloads";
+    const showNews = isNews || isCyber;
     els.tabNews.classList.toggle("is-active", isNews);
+    els.tabCyber?.classList.toggle("is-active", isCyber);
     els.tabBrain?.classList.toggle("is-active", isBrain);
     els.tabDownloads.classList.toggle("is-active", isDownloads);
-    els.viewNews.hidden = !isNews;
+    els.viewNews.hidden = !showNews;
     if (els.viewBrain) els.viewBrain.hidden = !isBrain;
     els.viewDownloads.hidden = !isDownloads;
     document.body.classList.toggle("is-brain", isBrain);
-    document.body.classList.remove("is-cyber");
+    document.body.classList.toggle("is-cyber", isCyber);
     const main = document.getElementById("main");
     if (main) main.classList.toggle("main-brain", isBrain);
   }
@@ -997,23 +1022,16 @@
 
   function redirectToCanonicalHash(parsed, range) {
     const raw = (location.hash || "").replace(/^#\/?/, "");
-    // Rewrite legacy #/cyber… and #/cyber-brain… to unified routes
-    if (parsed.legacy === "cyber") {
-      if (parsed.preferTopic) pendingTopic = parsed.preferTopic;
-      setHash({
-        tab: "news",
-        range,
-        date: parsed.date,
-        postId: parsed.postId,
-      });
-      return true;
-    }
     if (parsed.legacy === "cyber-brain") {
       setHash({ tab: "brain", nodeId: parsed.nodeId });
       return true;
     }
     if (parsed.tab === "news" && !parsed.date && !parsed.postId && (!raw || raw === "/")) {
       setHash({ tab: "news", range });
+      return true;
+    }
+    if (parsed.tab === "cyber" && !parsed.date && !parsed.postId && (raw === "cyber" || raw === "cyber/")) {
+      setHash({ tab: "cyber", range });
       return true;
     }
     if (parsed.tab === "downloads" && !raw.includes("/r/")) {
@@ -1028,12 +1046,9 @@
   }
 
   async function handleBrainRoute(parsed) {
-    const preferCrime = parsed.preferCrimeType || "";
+    // GraphRAG = กราฟรวมทั้งหมด · ไม่แยกแท็บไซเบอร์
     if (window.BrainGraph) {
-      await window.BrainGraph.show({
-        crimeType: preferCrime,
-        mode: "all",
-      });
+      await window.BrainGraph.show({ crimeType: "", mode: "all" });
       if (parsed.nodeId) window.BrainGraph.select(parsed.nodeId);
     }
     if (window.GraphRag) {
@@ -1043,10 +1058,8 @@
     const titleEl = document.querySelector("#view-brain h1");
     const kickerEl = document.querySelector("#view-brain .brain-kicker");
     if (titleEl) titleEl.textContent = "ข้อมูลกราฟ";
-    if (kickerEl) kickerEl.textContent = "Obsidian → knowledge graph";
-    els.status.textContent = preferCrime
-      ? `ข้อมูลกราฟ · โฟกัส ${preferCrime}`
-      : "ข้อมูลกราฟ · จาก vault Obsidian";
+    if (kickerEl) kickerEl.textContent = "Obsidian → knowledge graph · รวมทุกประเภท";
+    els.status.textContent = "ข้อมูลกราฟ · จาก vault Obsidian (รวมคดีไซเบอร์)";
   }
 
   function handleEmpty() {
@@ -1085,20 +1098,23 @@
     }
 
     if (parsed.date && parsed.postId) {
+      currentChannel = parsed.tab === "cyber" ? "cyber" : "news";
       await renderPostDetail(parsed.date, parsed.postId);
       return;
     }
 
-    await renderFeed(range);
+    await renderFeed(range, parsed.tab === "cyber" ? "cyber" : "news");
   }
 
   els.rangeSelect.addEventListener("change", () => {
-    setHash({ tab: "news", range: els.rangeSelect.value });
+    const tab = currentChannel === "cyber" ? "cyber" : "news";
+    setHash({ tab, range: els.rangeSelect.value });
   });
   els.downloadRangeSelect.addEventListener("change", () => {
     setHash({ tab: "downloads", range: els.downloadRangeSelect.value });
   });
   els.tabNews.addEventListener("click", () => setHash({ tab: "news", range: currentRange }));
+  els.tabCyber?.addEventListener("click", () => setHash({ tab: "cyber", range: currentRange }));
   els.tabBrain?.addEventListener("click", () => setHash({ tab: "brain" }));
   els.tabDownloads.addEventListener("click", () =>
     setHash({ tab: "downloads", range: currentRange })
