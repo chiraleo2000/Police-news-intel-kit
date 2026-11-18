@@ -83,11 +83,19 @@
     "ย่อหน้าแรกตอบคำถามตรง ๆ จากจำนวนข่าวและตัวเลขที่มีในรายการ ถ้ายอดรวมอย่างเป็นทางการไม่มีในข่าวให้บอกตรง ๆ ว่านับได้เฉพาะข่าวในคลัง " +
     "จากนั้นสรุปไม่เกินสี่ย่อหน้า โดยสอดชื่อข่าวและวันที่เข้าไปในประโยค ห้ามคัดลอกข้อความข่าวทั้งก้อน ห้ามแต่งชื่อหรือตัวเลขที่ไม่มีในรายการ ห้ามเล่าข่าวนอกรายการ";
 
-  const EXAMPLES = [
+  const EXAMPLES_ALL = [
     "ผมต้องการทราบว่ากรมศุลกากรมีการห้ามปรามการเข้ามาของยาเสพติดตอนนี้ได้จำนวนทั้งหมดเท่าไร่",
     "ตอนนี้ผลงานของ ผู้บัญชาการตำรวจแห่งชาติปัจจุบันมีอะไรบ้าง",
     "ใครเป็นเลขาธิการ ก.ล.ต. ตอนนี้",
   ];
+  const EXAMPLES_CYBER = [
+    "ตอนนี้คดียาบัญชีม้าและคอลเซ็นเตอร์มีกี่คดี",
+    "บช.สอท. มีผลงานจับกุมอะไรบ้างในช่วงที่ผ่านมา",
+    "มีข่าวเตือนภัยฟิชชิงหรือหลอกลงทุนอะไรบ้าง",
+  ];
+  const CYBER_TOPIC = "อาชญากรรมไซเบอร์และออนไลน์";
+  let EXAMPLES = EXAMPLES_ALL;
+  let ragMode = "all";
 
   let postsOverride = null;
   let indexCache = null;
@@ -95,6 +103,37 @@
   let askBound = false;
   let chatQueue = Promise.resolve();
   const thread = [];
+
+  function isCyberCaseNode(node) {
+    if (!node || node.kind !== "case") return false;
+    const topic = String(node.crime_type || "").trim();
+    if (topic === CYBER_TOPIC) return true;
+    const id = String(node.case_id || node.id || "");
+    return /(^|\/|-)cyber(-|$)/i.test(id);
+  }
+
+  function setMode(mode) {
+    const next = mode === "cyber" ? "cyber" : "all";
+    if (next !== ragMode) indexCache = null;
+    ragMode = next;
+    EXAMPLES = ragMode === "cyber" ? EXAMPLES_CYBER : EXAMPLES_ALL;
+    document.querySelectorAll("#brain-ask-examples [data-mode]").forEach((btn) => {
+      const show = (btn.dataset.mode || "all") === ragMode;
+      btn.hidden = !show;
+    });
+    const empty = document.getElementById("brain-chat-empty");
+    const kind = empty?.querySelector(".brain-kind");
+    if (kind) {
+      kind.textContent = ragMode === "cyber" ? "ถามจากกราฟไซเบอร์" : "ถามจากกราฟ";
+    }
+  }
+
+  function applyCyberFacets(selectedFacets) {
+    if (ragMode !== "cyber" || !selectedFacets) return selectedFacets;
+    const crimes = Array.isArray(selectedFacets.crimes) ? selectedFacets.crimes.slice() : [];
+    if (!crimes.includes(CYBER_TOPIC)) crimes.push(CYBER_TOPIC);
+    return { ...selectedFacets, crimes };
+  }
 
   function norm(s) {
     return String(s ?? "")
@@ -388,10 +427,37 @@
     }
   }
 
+  function scopeGraphForMode(graph) {
+    if (ragMode !== "cyber" || !graph?.nodes) return graph;
+    const byId = new Map(graph.nodes.map((n) => [n.id, n]));
+    const seed = new Set();
+    for (const node of graph.nodes) {
+      if (isCyberCaseNode(node)) seed.add(node.id);
+      if (node.kind === "crime_type" && String(node.title || "").trim() === CYBER_TOPIC) {
+        seed.add(node.id);
+      }
+    }
+    // One-hop neighbors of cyber seeds only (do not walk through shared entities into other cases)
+    const keep = new Set(seed);
+    for (const edge of graph.edges || []) {
+      if (seed.has(edge.source)) keep.add(edge.target);
+      if (seed.has(edge.target)) keep.add(edge.source);
+    }
+    for (const id of [...keep]) {
+      const node = byId.get(id);
+      if (node?.kind === "case" && !seed.has(id)) keep.delete(id);
+    }
+    const nodes = graph.nodes.filter((n) => keep.has(n.id));
+    const idSet = new Set(nodes.map((n) => n.id));
+    const edges = (graph.edges || []).filter((e) => idSet.has(e.source) && idSet.has(e.target));
+    return { ...graph, nodes, edges, cyber_scoped: true };
+  }
+
   function buildIndex(graph, posts, alias, words) {
-    ensureCrimeLinks(graph);
-    const nodes = graph?.nodes || [];
-    const edges = graph?.edges || [];
+    const scoped = scopeGraphForMode(graph);
+    ensureCrimeLinks(scoped);
+    const nodes = scoped?.nodes || [];
+    const edges = scoped?.edges || [];
     const nodesById = new Map(nodes.map((n) => [n.id, n]));
     const { parents, entityParent } = indexParents(nodes, alias);
     return {
@@ -407,6 +473,7 @@
       placeTitlesByCase: placesByCase(nodesById, edges),
       wordHeads: indexWords([...(words || []), ...SPAN_GUARDS]),
       alias: alias || {},
+      ragMode,
     };
   }
 
@@ -1411,7 +1478,7 @@
     const intent = detectIntent(question);
     if (!question) return emptyResult("ยังไม่มีคำถาม จึงไม่รายงานจำนวน", { intent, dateFrom, dateTo });
     const extracted = extractKeywords(question, index);
-    const selectedFacets = extracted.selectedFacets;
+    const selectedFacets = applyCyberFacets(extracted.selectedFacets);
     const keywords = extracted.keywords || [];
     const crimeTypes = selectedFacets.crimes.slice();
     const positions = selectedFacets.positions.slice();
@@ -2132,9 +2199,11 @@
     });
     document.getElementById("brain-chat-clear")?.addEventListener("click", () => clearChat());
     document.querySelectorAll("[data-example]").forEach((btn) => {
-      const idx = Number(btn.dataset.example);
-      const q = EXAMPLES[idx] || btn.textContent || "";
       btn.addEventListener("click", () => {
+        const idx = Number(btn.dataset.example);
+        const mode = btn.dataset.mode || "all";
+        const pool = mode === "cyber" ? EXAMPLES_CYBER : EXAMPLES_ALL;
+        const q = pool[idx] || btn.textContent?.trim() || "";
         if (input) input.value = q;
         void ask(q);
       });
@@ -2150,6 +2219,10 @@
     setPosts(list) {
       postsOverride = Array.isArray(list) ? list : [];
       indexCache = null;
+    },
+    setMode,
+    getMode() {
+      return ragMode;
     },
     answerQuestion,
     bindAsk,

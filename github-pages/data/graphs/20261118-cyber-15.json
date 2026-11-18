@@ -1,0 +1,46 @@
+{
+ "case_id": "20261118-cyber-15",
+ "title": "สหรัฐฯ รับตัวผู้ต้องหาชาวคาซัคสถานจากอิตาลี คดีแรนซัมแวร์ INC และ Lynx โจมตีโรงพยาบาลและโรงเรียน เรียกค่าไถ่รวมกว่า 500 ล้านดอลลาร์",
+ "generated_at": "2026-11-18T08:48:59.933Z",
+ "node_count": 7,
+ "edge_count": 6,
+ "relations": [
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/FBI",
+   "target_title": "FBI",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/กระทรวงยุติธรรมสหรัฐฯ",
+   "target_title": "กระทรวงยุติธรรมสหรัฐฯ",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/สหรัฐอเมริกา",
+   "target_title": "สหรัฐอเมริกา",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/อิตาลี",
+   "target_title": "อิตาลี",
+   "direction": "out"
+  },
+  {
+   "label": "ผู้ต้องหา",
+   "target_id": "30_Entities/People/Roman Khlynovskiy",
+   "target_title": "Roman Khlynovskiy",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261118-cyber-15.svg"
+}

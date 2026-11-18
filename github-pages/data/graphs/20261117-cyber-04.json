@@ -1,0 +1,28 @@
+{
+ "case_id": "20261117-cyber-04",
+ "title": "Quantum Systems ผู้ผลิตโดรนทหารเยอรมนียืนยันถูกโจมตีไซเบอร์ สื่อรายงานกองทัพระงับใช้โดรนชั่วคราว",
+ "generated_at": "2026-11-18T09:26:27.772Z",
+ "node_count": 4,
+ "edge_count": 3,
+ "relations": [
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/ThaiCERT",
+   "target_title": "ThaiCERT",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/เยอรมนี",
+   "target_title": "เยอรมนี",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261117-cyber-04.svg"
+}

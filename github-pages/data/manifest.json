@@ -1,12 +1,12 @@
 {
- "generated_at": "2026-11-18T08:17:56+07:00",
+ "generated_at": "2026-11-18T09:25:50.149Z",
  "schema_version": 1,
  "default_range": "all",
  "days": [
   {
    "date": "2026-11-18",
    "status": "published",
-   "total": 23,
+   "total": 33,
    "crime_file": "2026-11-18_crime.json",
    "downloads": [
     {
@@ -18,13 +18,24 @@
      "label": "Infographic 2026-11-18",
      "path": "downloads/2026-11-18_infographic.png",
      "kind": "image"
+    },
+    {
+     "label": "PDF ข่าวไซเบอร์ 2026-11-18",
+     "path": "downloads/2026-11-18_cyber.pdf",
+     "kind": "pdf"
+    },
+    {
+     "label": "Infographic ไซเบอร์ 2026-11-18",
+     "path": "downloads/2026-11-18_infographic_cyber.png",
+     "kind": "image"
     }
-   ]
+   ],
+   "cyber_file": "2026-11-18_cyber.json"
   },
   {
    "date": "2026-11-17",
    "status": "published",
-   "total": 18,
+   "total": 21,
    "crime_file": "2026-11-17_crime.json",
    "downloads": [
     {
@@ -36,13 +47,24 @@
      "label": "Infographic 2026-11-17",
      "path": "downloads/2026-11-17_infographic.png",
      "kind": "image"
+    },
+    {
+     "label": "PDF ข่าวไซเบอร์ 2026-11-17",
+     "path": "downloads/2026-11-17_cyber.pdf",
+     "kind": "pdf"
+    },
+    {
+     "label": "Infographic ไซเบอร์ 2026-11-17",
+     "path": "downloads/2026-11-17_infographic_cyber.png",
+     "kind": "image"
     }
-   ]
+   ],
+   "cyber_file": "2026-11-17_cyber.json"
   },
   {
    "date": "2026-11-16",
    "status": "published",
-   "total": 15,
+   "total": 18,
    "crime_file": "2026-11-16_crime.json",
    "downloads": [
     {
@@ -54,13 +76,24 @@
      "label": "Infographic 2026-11-16",
      "path": "downloads/2026-11-16_infographic.png",
      "kind": "image"
+    },
+    {
+     "label": "PDF ข่าวไซเบอร์ 2026-11-16",
+     "path": "downloads/2026-11-16_cyber.pdf",
+     "kind": "pdf"
+    },
+    {
+     "label": "Infographic ไซเบอร์ 2026-11-16",
+     "path": "downloads/2026-11-16_infographic_cyber.png",
+     "kind": "image"
     }
-   ]
+   ],
+   "cyber_file": "2026-11-16_cyber.json"
   },
   {
    "date": "2026-11-15",
    "status": "published",
-   "total": 21,
+   "total": 26,
    "crime_file": "2026-11-15_crime.json",
    "downloads": [
     {
@@ -72,8 +105,19 @@
      "label": "Infographic 2026-11-15",
      "path": "downloads/2026-11-15_infographic.png",
      "kind": "image"
+    },
+    {
+     "label": "PDF ข่าวไซเบอร์ 2026-11-15",
+     "path": "downloads/2026-11-15_cyber.pdf",
+     "kind": "pdf"
+    },
+    {
+     "label": "Infographic ไซเบอร์ 2026-11-15",
+     "path": "downloads/2026-11-15_infographic_cyber.png",
+     "kind": "image"
     }
-   ]
+   ],
+   "cyber_file": "2026-11-15_cyber.json"
   },
   {
    "date": "2026-11-14",

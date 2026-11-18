@@ -1,0 +1,58 @@
+{
+ "case_id": "20261115-cyber-07",
+ "title": "รมว.ดีอี ถกกองทัพ ตำรวจ และหน่วยความมั่นคง เตรียมชุด Cyber Protection Team รับมือภัยไซเบอร์รุนแรง",
+ "generated_at": "2026-11-18T09:26:27.772Z",
+ "node_count": 9,
+ "edge_count": 8,
+ "relations": [
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/สกมช.",
+   "target_title": "สกมช.",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/ThaiCERT",
+   "target_title": "ThaiCERT",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/สำนักงานสภาความมั่นคงแห่งชาติ",
+   "target_title": "สำนักงานสภาความมั่นคงแห่งชาติ",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/ตร.",
+   "target_title": "ตร.",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/กองบัญชาการกองทัพไทย",
+   "target_title": "กองบัญชาการกองทัพไทย",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/กรุงเทพมหานคร",
+   "target_title": "กรุงเทพมหานคร",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/ไชยชนก ชิดชอบ",
+   "target_title": "ไชยชนก ชิดชอบ",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261115-cyber-07.svg"
+}

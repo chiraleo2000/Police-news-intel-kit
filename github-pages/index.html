@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Anuphan:wght@400;500;600;700&family=Sarabun:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/site.css?v=20261113a" />
+  <link rel="stylesheet" href="css/site.css?v=20261118a" />
 </head>
 <body>
   <a class="skip-link" href="#main">ข้ามไปเนื้อหา</a>
@@ -32,7 +32,9 @@
 
   <nav class="top-tabs wrap" aria-label="ส่วนหลัก">
     <button type="button" class="top-tab is-active" data-tab="news" id="tab-news">รายการข่าว</button>
+    <button type="button" class="top-tab" data-tab="cyber" id="tab-cyber">ข่าวไซเบอร์</button>
     <button type="button" class="top-tab" data-tab="brain" id="tab-brain">ข้อมูลกราฟ</button>
+    <button type="button" class="top-tab" data-tab="cyber-brain" id="tab-cyber-brain">กราฟไซเบอร์</button>
     <button type="button" class="top-tab" data-tab="downloads" id="tab-downloads">ดาวน์โหลด PDF</button>
     <button type="button" class="top-tab" data-tab="connect" id="tab-connect">เชื่อมต่อ</button>
   </nav>
@@ -232,10 +234,13 @@
               <div class="brain-chat-empty" id="brain-chat-empty">
                 <p class="brain-kind">ถามจากกราฟ</p>
                 <p>เลือกตัวอย่าง หรือพิมพ์คำถามด้านล่าง</p>
-                <div class="brain-ask-examples">
-                  <button type="button" class="btn-ghost brain-example" data-example="0">ผมต้องการทราบว่ากรมศุลกากรมีการห้ามปรามการเข้ามาของยาเสพติดตอนนี้ได้จำนวนทั้งหมดเท่าไร่</button>
-                  <button type="button" class="btn-ghost brain-example" data-example="1">ตอนนี้ผลงานของ ผู้บัญชาการตำรวจแห่งชาติปัจจุบันมีอะไรบ้าง</button>
-                  <button type="button" class="btn-ghost brain-example" data-example="2">ใครเป็นเลขาธิการ ก.ล.ต. ตอนนี้</button>
+                <div class="brain-ask-examples" id="brain-ask-examples">
+                  <button type="button" class="btn-ghost brain-example" data-example="0" data-mode="all">ผมต้องการทราบว่ากรมศุลกากรมีการห้ามปรามการเข้ามาของยาเสพติดตอนนี้ได้จำนวนทั้งหมดเท่าไร่</button>
+                  <button type="button" class="btn-ghost brain-example" data-example="1" data-mode="all">ตอนนี้ผลงานของ ผู้บัญชาการตำรวจแห่งชาติปัจจุบันมีอะไรบ้าง</button>
+                  <button type="button" class="btn-ghost brain-example" data-example="2" data-mode="all">ใครเป็นเลขาธิการ ก.ล.ต. ตอนนี้</button>
+                  <button type="button" class="btn-ghost brain-example" data-example="0" data-mode="cyber" hidden>ตอนนี้คดียาบัญชีม้าและคอลเซ็นเตอร์มีกี่คดี</button>
+                  <button type="button" class="btn-ghost brain-example" data-example="1" data-mode="cyber" hidden>บช.สอท. มีผลงานจับกุมอะไรบ้างในช่วงที่ผ่านมา</button>
+                  <button type="button" class="btn-ghost brain-example" data-example="2" data-mode="cyber" hidden>มีข่าวเตือนภัยฟิชชิงหรือหลอกลงทุนอะไรบ้าง</button>
                 </div>
               </div>
             </div>
@@ -322,8 +327,8 @@
 
   <script src="js/format.js?v=20261026b" defer></script>
   <script src="js/positions.js?v=20261102c" defer></script>
-  <script src="js/graph.js?v=20261105a" defer></script>
-  <script src="js/rag.js?v=20261113a" defer></script>
-  <script src="js/app.js?v=20261102e" defer></script>
+  <script src="js/graph.js?v=20261118c" defer></script>
+  <script src="js/rag.js?v=20261118c" defer></script>
+  <script src="js/app.js?v=20261118c" defer></script>
 </body>
 </html>

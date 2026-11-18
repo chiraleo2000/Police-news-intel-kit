@@ -1,0 +1,34 @@
+{
+ "case_id": "20261117-cyber-05",
+ "title": "แคมเปญ Trigram แอบอ้างแบรนด์ AI และบล็อกเชนราว 50 ราย หลอกนักพัฒนาให้รันมัลแวร์ขโมยข้อมูล",
+ "generated_at": "2026-11-18T09:26:27.772Z",
+ "node_count": 5,
+ "edge_count": 4,
+ "relations": [
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/Stormshield",
+   "target_title": "Stormshield",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ยุโรป",
+   "target_title": "ยุโรป",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/สหรัฐอเมริกา",
+   "target_title": "สหรัฐอเมริกา",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261117-cyber-05.svg"
+}

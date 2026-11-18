@@ -1,0 +1,52 @@
+{
+ "case_id": "20261115-cyber-05",
+ "title": "ดีอีและ สกมช. ชี้แจงหลังหารือ Apple การได้รับแจ้งเตือนภัยคุกคามไม่ได้แปลว่า iPhone ถูกแฮกแล้ว",
+ "generated_at": "2026-11-18T09:26:27.772Z",
+ "node_count": 8,
+ "edge_count": 7,
+ "relations": [
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/สกมช.",
+   "target_title": "สกมช.",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/ThaiCERT",
+   "target_title": "ThaiCERT",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/กระทรวงดีอี",
+   "target_title": "กระทรวงดีอี",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ประเทศไทย",
+   "target_title": "ประเทศไทย",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/ไชยชนก ชิดชอบ",
+   "target_title": "ไชยชนก ชิดชอบ",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/ธีรวุฒิ วิทยากรณ์",
+   "target_title": "ธีรวุฒิ วิทยากรณ์",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261115-cyber-05.svg"
+}

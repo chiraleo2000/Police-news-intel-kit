@@ -1,0 +1,40 @@
+{
+ "case_id": "20261118-cyber-14",
+ "title": "หอการค้าไทยห่วงภัยไซเบอร์กระทบธุรกิจ เสนอรัฐร่วมเอกชนเฝ้าระวัง แจ้งเตือนเร็ว และช่วย SMEs เข้าถึงเครื่องมือป้องกัน",
+ "generated_at": "2026-11-18T08:48:59.933Z",
+ "node_count": 6,
+ "edge_count": 5,
+ "relations": [
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/หอการค้าไทย",
+   "target_title": "หอการค้าไทย",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ประเทศไทย",
+   "target_title": "ประเทศไทย",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/พจน์ อร่ามวัฒนานนท์",
+   "target_title": "พจน์ อร่ามวัฒนานนท์",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/ชิต เหล่าวัฒนา",
+   "target_title": "ชิต เหล่าวัฒนา",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261118-cyber-14.svg"
+}

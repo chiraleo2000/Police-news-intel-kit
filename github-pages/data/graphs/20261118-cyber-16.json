@@ -1,0 +1,40 @@
+{
+ "case_id": "20261118-cyber-16",
+ "title": "ศาลสหรัฐฯ จำคุก 6 ปี แกนนำ Scattered Spider ชาวอังกฤษ คดีส่ง SMS ฟิชชิงและสลับซิมขโมยคริปโตกว่า 11.6 ล้านดอลลาร์",
+ "generated_at": "2026-11-18T08:48:59.933Z",
+ "node_count": 6,
+ "edge_count": 5,
+ "relations": [
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/กระทรวงยุติธรรมสหรัฐฯ",
+   "target_title": "กระทรวงยุติธรรมสหรัฐฯ",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/สหรัฐอเมริกา",
+   "target_title": "สหรัฐอเมริกา",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/สเปน",
+   "target_title": "สเปน",
+   "direction": "out"
+  },
+  {
+   "label": "ผู้ต้องหา",
+   "target_id": "30_Entities/People/Tyler Robert Buchanan",
+   "target_title": "Tyler Robert Buchanan",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261118-cyber-16.svg"
+}

@@ -1,0 +1,40 @@
+{
+ "case_id": "20261118-cyber-10",
+ "title": "ThaiCERT สรุปคำเตือน FBI เรื่องเฟรมเวิร์ก AI \"ARTEX\" ช่วยผู้โจมตีเจาะระบบถึงสิทธิ์ขั้นสูงภายในไม่ถึง 3 ชั่วโมง",
+ "generated_at": "2026-11-18T08:48:59.933Z",
+ "node_count": 6,
+ "edge_count": 5,
+ "relations": [
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/ThaiCERT",
+   "target_title": "ThaiCERT",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/FBI",
+   "target_title": "FBI",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/Microsoft",
+   "target_title": "Microsoft",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/เกาหลีใต้",
+   "target_title": "เกาหลีใต้",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261118-cyber-10.svg"
+}

@@ -1,0 +1,46 @@
+{
+ "case_id": "20261118-cyber-11",
+ "title": "โรงพยาบาล Greiz-Ronneburg ในเยอรมนีถูกโจมตีเรียกค่าไถ่ ระบบไอทีขัดข้องจนต้องระงับห้องฉุกเฉินชั่วคราว",
+ "generated_at": "2026-11-18T08:48:59.933Z",
+ "node_count": 7,
+ "edge_count": 6,
+ "relations": [
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/ThaiCERT",
+   "target_title": "ThaiCERT",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/ตำรวจสืบสวนอาชญากรรมรัฐเยอรมนี",
+   "target_title": "ตำรวจสืบสวนอาชญากรรมรัฐเยอรมนี",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/เยอรมนี",
+   "target_title": "เยอรมนี",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/Uwe Müller",
+   "target_title": "Uwe Müller",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/Tommy Jehmlich",
+   "target_title": "Tommy Jehmlich",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261118-cyber-11.svg"
+}

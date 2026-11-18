@@ -1481,7 +1481,11 @@
 
   function blogHashForNode(node) {
     if (node?.kind !== "case" || !node?.date || !node?.case_id) return "";
-    return `#/${node.date}/${encodeURIComponent(node.case_id)}`;
+    const topic = String(node.crime_type || "").trim();
+    const cyber =
+      topic === "อาชญากรรมไซเบอร์และออนไลน์" || /(^|-)cyber(-|$)/i.test(node.case_id);
+    const prefix = cyber ? "#/cyber/" : "#/";
+    return `${prefix}${node.date}/${encodeURIComponent(node.case_id)}`;
   }
 
   function nodeByAnyId(id) {
@@ -1974,11 +1978,23 @@
     });
   }
 
+  function brainTabBase(post, hub) {
+    const topic = String(post?.topic || post?.category_label || hub?.crime_type || "").trim();
+    const code = String(post?.tags_struct?.crime_type_code || post?.crime_type_code || "").toUpperCase();
+    const id = String(post?.id || post?.slug || hub?.case_id || "");
+    const isCyber =
+      topic === "อาชญากรรมไซเบอร์และออนไลน์" ||
+      code === "CYBER" ||
+      /(^|-)cyber(-|$)/i.test(id);
+    return isCyber ? "#/cyber-brain" : "#/brain";
+  }
+
   async function storyGraphHtml(post) {
     await ensureGraph();
     const hub = findCaseNode(post);
     const caseKey = hub?.case_id || post?.id || post?.slug || "";
     const staticSvg = caseKey ? `data/graphs/${encodeURIComponent(caseKey)}.svg` : "";
+    const brainBase = brainTabBase(post, hub);
 
     if (!hub) {
       const postRels = relationsFromPost(post, []);
@@ -1999,10 +2015,10 @@
               ? `<img class="story-ego-img" src="${staticSvg}" alt="ข้อมูลกราฟ ${escapeHtml(caseKey)}" loading="lazy" onerror="this.hidden=true" />`
               : ""
           }
-          <p class="story-graph-actions"><a class="btn-ghost story-open-graph" href="#/brain">เปิดในกราฟ</a></p>
+          <p class="story-graph-actions"><a class="btn-ghost story-open-graph" href="${brainBase}">เปิดในกราฟ</a></p>
           <h3 class="story-rel-heading">ความสัมพันธ์</h3>
           ${relList}
-          <p class="muted story-graph-link"><a href="#/brain">เปิดแท็บข้อมูลกราฟทั้งหมด</a></p>
+          <p class="muted story-graph-link"><a href="${brainBase}">เปิดแท็บข้อมูลกราฟทั้งหมด</a></p>
         </section>`;
     }
 
@@ -2029,7 +2045,7 @@
             const arrow = r.direction === "in" ? "←" : "→";
             const caseNode = r.target_kind === "case" ? nodeByAnyId(r.target_id) : null;
             const blog = blogHashForNode(caseNode);
-            const href = blog || `#/brain/${encodeURIComponent(r.target_id || hub.id)}`;
+            const href = blog || `${brainBase}/${encodeURIComponent(r.target_id || hub.id)}`;
             return `<li><span class="story-rel-label">${escapeHtml(relationLabel(r.label) || "กล่าวถึง")}</span> ${arrow} <a href="${href}">${escapeHtml(r.target_title)}</a></li>`;
           })
           .join("")}</ul>`
@@ -2039,7 +2055,7 @@
       <section class="analysis-block story-graph-block">
         <h2>ข้อมูลกราฟของข่าวนี้</h2>
         <p class="muted">ลากวงกลมหรือป้ายชื่อเพื่อขยับโหนด แล้วปล่อยให้ค้างที่นั่น · ลากพื้นที่ว่างเพื่อเลื่อนมุมมอง · สกอร์ลเพื่อซูม · คลิกโหนดข่าวโดยไม่ลากเพื่อเปิดบล็อกนั้น</p>
-        <p class="story-graph-actions"><a class="btn-ghost story-open-graph" href="#/brain/${encodeURIComponent(hub.id)}">เปิดในกราฟ</a></p>
+        <p class="story-graph-actions"><a class="btn-ghost story-open-graph" href="${brainBase}/${encodeURIComponent(hub.id)}">เปิดในกราฟ</a></p>
         <div class="story-ego-wrap"><canvas class="story-ego-canvas" data-hub="${escapeHtml(hub.id)}" aria-label="ข้อมูลกราฟของข่าวนี้"></canvas></div>
         ${
           staticSvg
@@ -2048,7 +2064,7 @@
         }
         <h3 class="story-rel-heading">ความสัมพันธ์ที่เชื่อมกับข่าวนี้</h3>
         ${relList}
-        <p class="muted story-graph-link"><a href="#/brain/${encodeURIComponent(hub.id)}">โฟกัสโหนดนี้ในแท็บข้อมูลกราฟ</a></p>
+        <p class="muted story-graph-link"><a href="${brainBase}/${encodeURIComponent(hub.id)}">โฟกัสโหนดนี้ในแท็บข้อมูลกราฟ</a></p>
       </section>`;
   }
 
@@ -2079,8 +2095,23 @@
     if (graph) restartSim(true, true);
   }
 
+  function applyCrimeTypePreset(crimeType) {
+    const title = String(crimeType || "").trim();
+    filters.crimeType = title;
+    const sel = $("brain-crime-type");
+    if (sel) {
+      if (title && ![...sel.options].some((o) => o.value === title)) {
+        const opt = document.createElement("option");
+        opt.value = title;
+        opt.textContent = title;
+        sel.appendChild(opt);
+      }
+      sel.value = title;
+    }
+  }
+
   window.BrainGraph = {
-    async show() {
+    async show(opts = {}) {
       wireOnce();
       Object.assign(els, {
         canvas: $("brain-canvas"),
@@ -2100,11 +2131,17 @@
         fillCrimeTypes();
         fillRelations();
         renderLegend();
-        restartSim(true, true);
       }
+      if (opts && Object.prototype.hasOwnProperty.call(opts, "crimeType")) {
+        applyCrimeTypePreset(opts.crimeType);
+      }
+      restartSim(true, true);
       const statusEl = $("brain-status");
-      if (statusEl && !statusEl.textContent) {
-        statusEl.textContent = "ข้อมูลกราฟ · โหนดใหญ่ = หน่วยงาน บุคคล สถานที่ · ซูมเพื่ออ่านป้าย";
+      if (statusEl) {
+        statusEl.textContent = opts?.crimeType
+          ? `กราฟไซเบอร์ · โฟกัส ${opts.crimeType}`
+          : statusEl.textContent ||
+            "ข้อมูลกราฟ · โหนดใหญ่ = หน่วยงาน บุคคล สถานที่ · ซูมเพื่ออ่านป้าย";
       }
     },
     select(id) {
@@ -2114,6 +2151,10 @@
       graph = null;
       bound = false;
       return mount();
+    },
+    setCrimeType(crimeType) {
+      applyCrimeTypePreset(crimeType);
+      restartSim(true, true);
     },
     storyGraphHtml,
     mountStoryGraphs,

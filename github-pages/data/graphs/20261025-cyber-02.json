@@ -1,9 +1,9 @@
 {
  "case_id": "20261025-cyber-02",
  "title": "บช.สอท. จับบัญชีม้าเครือข่ายกลุ่มลับแพร่คลิปลามก-ชักชวนพนันออนไลน์ ตามหมายจับ ยังตามล่าแอดมิน",
- "generated_at": "2026-11-09T04:33:32.523Z",
- "node_count": 10,
- "edge_count": 9,
+ "generated_at": "2026-11-18T09:26:27.772Z",
+ "node_count": 9,
+ "edge_count": 8,
  "relations": [
   {
    "label": "จับโดย",
@@ -37,20 +37,14 @@
   },
   {
    "label": "สั่งการโดย",
-   "target_id": "unresolved:30_Entities/บุคคล/ทินกร รังมาตย์",
-   "target_title": "30_Entities/บุคคล/ทินกร รังมาตย์",
+   "target_id": "30_Entities/People/ทินกร รังมาตย์",
+   "target_title": "ทินกร รังมาตย์",
    "direction": "out"
   },
   {
    "label": "เป้าหมายเครือข่าย",
    "target_id": "30_Entities/Projects/เครือข่ายกลุ่มลับแพร่คลิปลามก-ชักชวนพนั",
    "target_title": "เครือข่ายกลุ่มลับแพร่คลิปลามก-ชักชวนพนั",
-   "direction": "out"
-  },
-  {
-   "label": "สั่งการโดย",
-   "target_id": "30_Entities/บุคคล/ทินกร รังมาตย์",
-   "target_title": "ทินกร รังมาตย์",
    "direction": "out"
   },
   {

@@ -1,8 +1,11 @@
 /**
  * Police News Briefing — static reader
  * Primary: data/feed.json (all posts)
- * Fallback: data/manifest.json + {DATE}_crime.json
- * Routes: #/r/{1|3|7|14|30|90|all} · #/{DATE}/{postId} · #/brain · #/downloads/r/{range}
+ * Fallback: data/manifest.json + {DATE}_crime.json / {DATE}_cyber.json
+ * Routes:
+ *   #/r/{range} · #/{DATE}/{postId}
+ *   #/cyber/r/{range} · #/cyber/{DATE}/{postId}
+ *   #/brain · #/cyber-brain · #/downloads/r/{range}
  */
 (() => {
   const F = window.NewsFormat;
@@ -19,10 +22,13 @@
   };
   const DEFAULT_RANGE = "all";
   const REFRESH_MS = 5 * 60 * 1000;
+  const CYBER_TOPIC = "อาชญากรรมไซเบอร์และออนไลน์";
 
   const els = {
     tabNews: document.getElementById("tab-news"),
+    tabCyber: document.getElementById("tab-cyber"),
     tabBrain: document.getElementById("tab-brain"),
+    tabCyberBrain: document.getElementById("tab-cyber-brain"),
     tabDownloads: document.getElementById("tab-downloads"),
     viewNews: document.getElementById("view-news"),
     viewBrain: document.getElementById("view-brain"),
@@ -62,7 +68,23 @@
   let filters = { topic: "", tag: "", q: "" };
   let currentRange = DEFAULT_RANGE;
   let currentPosts = [];
+  let currentChannel = "news";
   let bootstrapped = false;
+
+  function isCyberPost(p) {
+    if (!p) return false;
+    const topic = String(p.topic || p.category_label || "").trim();
+    if (topic === CYBER_TOPIC) return true;
+    const code = String(p.tags_struct?.crime_type_code || p.crime_type_code || "").toUpperCase();
+    if (code === "CYBER") return true;
+    const id = String(p.id || p.slug || "");
+    return /(^|-)cyber(-|$)/i.test(id);
+  }
+
+  function postsForChannel(posts, channel) {
+    if (channel === "cyber") return (posts || []).filter(isCyberPost);
+    return posts || [];
+  }
 
   function bangkokToday() {
     return new Intl.DateTimeFormat("en-CA", {
@@ -138,6 +160,15 @@
         parts[1] === "r" && RANGE_VALUES.has(parts[2]) ? parts[2] : currentRange;
       return { tab: "downloads", range, date: null, postId: null, nodeId: null };
     }
+    if (parts[0] === "cyber-brain") {
+      return {
+        tab: "cyber-brain",
+        range: currentRange,
+        date: null,
+        postId: null,
+        nodeId: parts[1] ? decodeURIComponent(parts[1]) : null,
+      };
+    }
     if (parts[0] === "brain") {
       return {
         tab: "brain",
@@ -145,6 +176,27 @@
         date: null,
         postId: null,
         nodeId: parts[1] ? decodeURIComponent(parts[1]) : null,
+      };
+    }
+    if (parts[0] === "cyber") {
+      if (parts[1] === "r" && RANGE_VALUES.has(parts[2])) {
+        return { tab: "cyber", range: parts[2], date: null, postId: null, nodeId: null };
+      }
+      if (parts[1] && /^\d{4}-\d{2}-\d{2}$/.test(parts[1])) {
+        return {
+          tab: "cyber",
+          range: currentRange,
+          date: parts[1],
+          postId: parts[2] ? decodeURIComponent(parts[2]) : null,
+          nodeId: null,
+        };
+      }
+      return {
+        tab: "cyber",
+        range: currentRange || DEFAULT_RANGE,
+        date: null,
+        postId: null,
+        nodeId: null,
       };
     }
     if (parts[0] === "r" && RANGE_VALUES.has(parts[1])) {
@@ -181,6 +233,20 @@
     }
     if (tab === "brain") {
       location.hash = nodeId ? `#/brain/${encodeURIComponent(nodeId)}` : "#/brain";
+      return;
+    }
+    if (tab === "cyber-brain") {
+      location.hash = nodeId
+        ? `#/cyber-brain/${encodeURIComponent(nodeId)}`
+        : "#/cyber-brain";
+      return;
+    }
+    if (tab === "cyber") {
+      if (date && postId) {
+        location.hash = `#/cyber/${date}/${encodeURIComponent(postId)}`;
+        return;
+      }
+      location.hash = `#/cyber/r/${range || DEFAULT_RANGE}`;
       return;
     }
     if (date && postId) {
@@ -264,22 +330,27 @@
       (await fetchJson(`${DATA}/${date}_crime.json`)) ||
       (await fetchJson(`${DATA}/${date}_crime_line.json`));
     const line = await fetchJson(`${DATA}/${date}_crime_line.json`);
+    const cyber = await fetchJson(`${DATA}/${date}_cyber.json`);
     let posts = [];
-    if (crime?.posts && line?.posts) posts = mergePosts([...crime.posts, ...line.posts]);
-    else if (crime?.posts) posts = crime.posts.slice();
-    else if (line?.posts) posts = line.posts.slice();
+    const chunks = [];
+    if (crime?.posts) chunks.push(...crime.posts);
+    if (line?.posts) chunks.push(...line.posts);
+    if (cyber?.posts) chunks.push(...cyber.posts);
+    posts = chunks.length ? mergePosts(chunks) : [];
 
     const hotspots =
       (await fetchJson(`${DATA}/${date}_hotspots.json`)) ||
-      (await fetchJson(`${DATA}/${date}_hotspots_line.json`));
+      (await fetchJson(`${DATA}/${date}_hotspots_line.json`)) ||
+      (await fetchJson(`${DATA}/${date}_hotspots_cyber.json`));
     const alerts =
       (await fetchJson(`${DATA}/${date}_alerts.json`)) ||
-      (await fetchJson(`${DATA}/${date}_alerts_line.json`));
+      (await fetchJson(`${DATA}/${date}_alerts_line.json`)) ||
+      (await fetchJson(`${DATA}/${date}_alerts_cyber.json`));
 
     const bundle = {
       date,
       posts: posts.map((p) => ({ ...p, _date: date })),
-      stats: crime?.stats || line?.stats || {},
+      stats: crime?.stats || line?.stats || cyber?.stats || {},
       hotspots,
       alerts,
     };
@@ -491,9 +562,14 @@
               `<a class="source-chip" href="${escapeHtml(s.url)}" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">${escapeHtml(s.name)}</a>`
           )
           .join("");
-        const href = date
-          ? `#/${date}/${encodeURIComponent(p.id || p.slug || "")}`
-          : `#/r/${currentRange}`;
+        const href =
+          currentChannel === "cyber"
+            ? date
+              ? `#/cyber/${date}/${encodeURIComponent(p.id || p.slug || "")}`
+              : `#/cyber/r/${currentRange}`
+            : date
+              ? `#/${date}/${encodeURIComponent(p.id || p.slug || "")}`
+              : `#/r/${currentRange}`;
         return `<li>
           <a class="post-link" href="${href}">
             <h3 class="post-title">${escapeHtml(p.title || "(ไม่มีหัวข้อ)")}</h3>
@@ -573,18 +649,26 @@
       .join("");
   }
 
-  async function renderFeed(range) {
+  async function renderFeed(range, channel = "news") {
     const dayList = daysInRange(range);
-    currentPosts = postsInRange(range);
+    currentChannel = channel === "cyber" ? "cyber" : "news";
+    currentPosts = postsForChannel(postsInRange(range), currentChannel);
     const posts = currentPosts;
     const types = byCrimeType(posts);
     const alertCount = posts.filter((p) => p.alert).length;
+    const isCyber = currentChannel === "cyber";
 
     els.heroKicker.textContent = rangeCaption(range, dayList);
-    els.heroTitle.textContent = "ข่าวอาชญากรรมและการปฏิบัติหน้าที่ตำรวจ";
+    els.heroTitle.textContent = isCyber
+      ? "ข่าวอาชญากรรมไซเบอร์และออนไลน์"
+      : "ข่าวอาชญากรรมและการปฏิบัติหน้าที่ตำรวจ";
     els.heroLead.textContent = posts.length
-      ? `รวม ${F.number(posts.length)} เหตุการณ์ · กรองประเภท/แท็กได้ · มีลิงก์แหล่งที่มา`
-      : "ยังไม่มีข่าวในช่วงนี้ — เลือก «ทั้งหมด» หรือรอไปป์ไลน์อัปเดต JSON";
+      ? isCyber
+        ? `บล็อกข่าวไซเบอร์ ${F.number(posts.length)} เรื่อง · คอลเซ็นเตอร์ บัญชีม้า ฟิชชิง หลอกลงทุน`
+        : `รวม ${F.number(posts.length)} เหตุการณ์ · กรองประเภท/แท็กได้ · มีลิงก์แหล่งที่มา`
+      : isCyber
+        ? "ยังไม่มีข่าวไซเบอร์ในช่วงนี้ — เลือก «ทั้งหมด» หรือรอ Task 4 / Task 2"
+        : "ยังไม่มีข่าวในช่วงนี้ — เลือก «ทั้งหมด» หรือรอไปป์ไลน์อัปเดต JSON";
     els.heroMeta.hidden = false;
     els.heroMeta.textContent = manifest.generated_at
       ? `อัปเดตล่าสุด ${manifest.generated_at}`
@@ -594,6 +678,10 @@
     els.statTypes.textContent = `${F.number(types.length)} ประเภท`;
     els.statAlerts.textContent = `${F.number(alertCount)} เตือนภัย`;
 
+    if (isCyber) {
+      filters.topic = "";
+      if (els.topicFilter) els.topicFilter.value = "";
+    }
     fillTopicFilter(posts);
     renderTopicChips(posts);
     fillTagFilter(posts);
@@ -631,7 +719,9 @@
       els.insights.hidden = true;
     }
 
-    els.status.textContent = `${posts.length} เหตุการณ์ · ${RANGE_LABELS[range]} · พร้อมใช้งาน`;
+    els.status.textContent = isCyber
+      ? `${posts.length} ข่าวไซเบอร์ · ${RANGE_LABELS[range]} · บล็อกข่าว`
+      : `${posts.length} เหตุการณ์ · ${RANGE_LABELS[range]} · พร้อมใช้งาน`;
   }
 
   const REL_TH = {
@@ -651,10 +741,17 @@
     uses_account: "ใช้บัญชี",
   };
 
+  function listHash(channel = currentChannel) {
+    return channel === "cyber"
+      ? `#/cyber/r/${currentRange}`
+      : `#/r/${currentRange}`;
+  }
+
   function hrefForPostId(id) {
     const found = allPosts.find((p) => p.id === id || p.slug === id);
-    if (!found?._date) return `#/r/${currentRange}`;
-    return `#/${found._date}/${encodeURIComponent(found.id || id)}`;
+    if (!found?._date) return listHash();
+    const prefix = currentChannel === "cyber" || isCyberPost(found) ? "#/cyber/" : "#/";
+    return `${prefix}${found._date}/${encodeURIComponent(found.id || id)}`;
   }
 
   function relationLabel(raw) {
@@ -686,10 +783,11 @@
           )
           .join("")}</ul>`
       : `<p class="muted">ยังไม่มีเส้นความสัมพันธ์</p>`;
+    const brainHref = isCyberPost(post) ? "#/cyber-brain" : "#/brain";
     return `
       <section class="analysis-block story-graph-block">
         <h2>ข้อมูลกราฟของข่าวนี้</h2>
-        <p class="story-graph-actions"><a class="btn-ghost story-open-graph" href="#/brain">เปิดในกราฟ</a></p>
+        <p class="story-graph-actions"><a class="btn-ghost story-open-graph" href="${brainHref}">เปิดในกราฟ</a></p>
         ${
           svgPath
             ? `<img class="story-ego-img" src="${svgPath}" alt="ข้อมูลกราฟ" loading="lazy" onerror="this.hidden=true" />`
@@ -697,7 +795,7 @@
         }
         <h3 class="story-rel-heading">ความสัมพันธ์</h3>
         ${relHtml}
-        <p class="muted story-graph-link"><a href="#/brain">เปิดแท็บข้อมูลกราฟ</a></p>
+        <p class="muted story-graph-link"><a href="${brainHref}">เปิดแท็บข้อมูลกราฟ</a></p>
       </section>`;
   }
 
@@ -714,17 +812,18 @@
 
     if (!post) {
       els.postDetail.innerHTML = `
-        <a class="back" href="#/r/${currentRange}">← กลับรายการ</a>
+        <a class="back" href="${listHash()}">← กลับรายการ</a>
         <p>ไม่พบข่าวรหัส ${escapeHtml(postId)}</p>`;
       return;
     }
 
+    if (isCyberPost(post)) currentChannel = "cyber";
     const actions = (post.actions_public || []).filter((a) => a && a !== "N/A");
     const tags = (post.tags || []).map((t) => `<span class="chip">${escapeHtml(t)}</span>`).join("");
     const sources = sourceList(post);
     const graphHtml = await storyGraphSection(post);
     els.postDetail.innerHTML = `
-      <a class="back" href="#/r/${currentRange}">← กลับรายการ (${escapeHtml(RANGE_LABELS[currentRange])})</a>
+      <a class="back" href="${listHash()}">← กลับรายการ (${escapeHtml(RANGE_LABELS[currentRange])})</a>
       <div class="post-meta">
         ${date ? `<span class="chip">${escapeHtml(F.dateTh(date))}</span>` : ""}
         ${post.topic || post.category_label ? `<span class="chip">${escapeHtml(post.topic || post.category_label)}</span>` : ""}
@@ -900,17 +999,24 @@
 
   function setActiveTab(tab) {
     const isNews = tab === "news";
+    const isCyber = tab === "cyber";
     const isBrain = tab === "brain";
+    const isCyberBrain = tab === "cyber-brain";
     const isDownloads = tab === "downloads";
+    const showNews = isNews || isCyber;
+    const showBrain = isBrain || isCyberBrain;
     els.tabNews.classList.toggle("is-active", isNews);
+    els.tabCyber?.classList.toggle("is-active", isCyber);
     els.tabBrain?.classList.toggle("is-active", isBrain);
+    els.tabCyberBrain?.classList.toggle("is-active", isCyberBrain);
     els.tabDownloads.classList.toggle("is-active", isDownloads);
-    els.viewNews.hidden = !isNews;
-    if (els.viewBrain) els.viewBrain.hidden = !isBrain;
+    els.viewNews.hidden = !showNews;
+    if (els.viewBrain) els.viewBrain.hidden = !showBrain;
     els.viewDownloads.hidden = !isDownloads;
-    document.body.classList.toggle("is-brain", isBrain);
+    document.body.classList.toggle("is-brain", showBrain);
+    document.body.classList.toggle("is-cyber", isCyber || isCyberBrain);
     const main = document.getElementById("main");
-    if (main) main.classList.toggle("main-brain", isBrain);
+    if (main) main.classList.toggle("main-brain", showBrain);
   }
 
   function syncRange(range) {
@@ -925,6 +1031,10 @@
       setHash({ tab: "news", range });
       return true;
     }
+    if (parsed.tab === "cyber" && !parsed.date && !parsed.postId && (raw === "cyber" || raw === "cyber/")) {
+      setHash({ tab: "cyber", range });
+      return true;
+    }
     if (parsed.tab === "downloads" && !raw.includes("/r/")) {
       setHash({ tab: "downloads", range });
       return true;
@@ -933,15 +1043,42 @@
       setHash({ tab: "brain", nodeId: parsed.nodeId });
       return true;
     }
+    if (
+      parsed.tab === "cyber-brain" &&
+      raw !== "cyber-brain" &&
+      !raw.startsWith("cyber-brain/")
+    ) {
+      setHash({ tab: "cyber-brain", nodeId: parsed.nodeId });
+      return true;
+    }
     return false;
   }
 
   async function handleBrainRoute(parsed) {
+    const cyberMode = parsed.tab === "cyber-brain";
     if (window.BrainGraph) {
-      await window.BrainGraph.show();
+      await window.BrainGraph.show({
+        crimeType: cyberMode ? CYBER_TOPIC : "",
+        mode: cyberMode ? "cyber" : "all",
+      });
       if (parsed.nodeId) window.BrainGraph.select(parsed.nodeId);
     }
-    els.status.textContent = "ข้อมูลกราฟ · จาก vault Obsidian";
+    if (window.GraphRag) {
+      const scoped = cyberMode ? allPosts.filter(isCyberPost) : allPosts;
+      window.GraphRag.setPosts?.(scoped);
+      window.GraphRag.setMode?.(cyberMode ? "cyber" : "all");
+    }
+    const titleEl = document.querySelector("#view-brain h1");
+    const kickerEl = document.querySelector("#view-brain .brain-kicker");
+    if (titleEl) titleEl.textContent = cyberMode ? "กราฟไซเบอร์" : "ข้อมูลกราฟ";
+    if (kickerEl) {
+      kickerEl.textContent = cyberMode
+        ? "GraphRAG · อาชญากรรมไซเบอร์และออนไลน์"
+        : "Obsidian → knowledge graph";
+    }
+    els.status.textContent = cyberMode
+      ? "กราฟไซเบอร์ · GraphRAG โฟกัสคดีไซเบอร์"
+      : "ข้อมูลกราฟ · จาก vault Obsidian";
   }
 
   function handleEmpty() {
@@ -964,7 +1101,7 @@
 
     if (redirectToCanonicalHash(parsed, range)) return;
 
-    if (parsed.tab === "brain") {
+    if (parsed.tab === "brain" || parsed.tab === "cyber-brain") {
       await handleBrainRoute(parsed);
       return;
     }
@@ -980,21 +1117,25 @@
     }
 
     if (parsed.date && parsed.postId) {
+      currentChannel = parsed.tab === "cyber" ? "cyber" : "news";
       await renderPostDetail(parsed.date, parsed.postId);
       return;
     }
 
-    await renderFeed(range);
+    await renderFeed(range, parsed.tab === "cyber" ? "cyber" : "news");
   }
 
   els.rangeSelect.addEventListener("change", () => {
-    setHash({ tab: "news", range: els.rangeSelect.value });
+    const tab = currentChannel === "cyber" ? "cyber" : "news";
+    setHash({ tab, range: els.rangeSelect.value });
   });
   els.downloadRangeSelect.addEventListener("change", () => {
     setHash({ tab: "downloads", range: els.downloadRangeSelect.value });
   });
   els.tabNews.addEventListener("click", () => setHash({ tab: "news", range: currentRange }));
+  els.tabCyber?.addEventListener("click", () => setHash({ tab: "cyber", range: currentRange }));
   els.tabBrain?.addEventListener("click", () => setHash({ tab: "brain" }));
+  els.tabCyberBrain?.addEventListener("click", () => setHash({ tab: "cyber-brain" }));
   els.tabDownloads.addEventListener("click", () =>
     setHash({ tab: "downloads", range: currentRange })
   );
@@ -1036,6 +1177,13 @@
     els.status.textContent = `โหลดแล้ว ${info.posts} ข่าว / ${info.days} วัน`;
     await route();
   }
+
+  window.NewsApp = {
+    getPosts: () => allPosts.slice(),
+    getCyberPosts: () => allPosts.filter(isCyberPost),
+    isCyberPost,
+    CYBER_TOPIC,
+  };
 
   boot().catch((e) => {
     els.status.textContent = `โหลดไม่สำเร็จ: ${e.message || e}`;

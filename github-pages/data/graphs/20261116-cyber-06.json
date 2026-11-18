@@ -1,0 +1,28 @@
+{
+ "case_id": "20261116-cyber-06",
+ "title": "Unit 42 เปิดปฏิบัติการจารกรรมไซเบอร์ TGR-STA-0049 มุ่งเป้าหน่วยงานรัฐในเอเชียตะวันออกเฉียงใต้ด้วยมัลแวร์ชุดใหม่",
+ "generated_at": "2026-11-18T09:26:27.772Z",
+ "node_count": 4,
+ "edge_count": 3,
+ "relations": [
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/Unit 42",
+   "target_title": "Unit 42",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/เอเชียตะวันออกเฉียงใต้",
+   "target_title": "เอเชียตะวันออกเฉียงใต้",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261116-cyber-06.svg"
+}

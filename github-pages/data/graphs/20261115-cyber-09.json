@@ -1,0 +1,28 @@
+{
+ "case_id": "20261115-cyber-09",
+ "title": "TSMC ยืนยันข้อมูลพนักงานรั่วจากผู้ให้บริการคลาวด์ หลังผู้ขายในฟอรัมแฮกเกอร์อ้างมีข้อมูล 46,000 รายการ",
+ "generated_at": "2026-11-18T09:26:27.772Z",
+ "node_count": 4,
+ "edge_count": 3,
+ "relations": [
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/TSMC",
+   "target_title": "TSMC",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ไต้หวัน",
+   "target_title": "ไต้หวัน",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261115-cyber-09.svg"
+}
