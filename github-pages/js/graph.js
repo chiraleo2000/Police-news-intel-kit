@@ -1481,11 +1481,7 @@
 
   function blogHashForNode(node) {
     if (node?.kind !== "case" || !node?.date || !node?.case_id) return "";
-    const topic = String(node.crime_type || "").trim();
-    const cyber =
-      topic === "อาชญากรรมไซเบอร์และออนไลน์" || /(^|-)cyber(-|$)/i.test(node.case_id);
-    const prefix = cyber ? "#/cyber/" : "#/";
-    return `${prefix}${node.date}/${encodeURIComponent(node.case_id)}`;
+    return `#/${node.date}/${encodeURIComponent(node.case_id)}`;
   }
 
   function nodeByAnyId(id) {
@@ -1978,15 +1974,8 @@
     });
   }
 
-  function brainTabBase(post, hub) {
-    const topic = String(post?.topic || post?.category_label || hub?.crime_type || "").trim();
-    const code = String(post?.tags_struct?.crime_type_code || post?.crime_type_code || "").toUpperCase();
-    const id = String(post?.id || post?.slug || hub?.case_id || "");
-    const isCyber =
-      topic === "อาชญากรรมไซเบอร์และออนไลน์" ||
-      code === "CYBER" ||
-      /(^|-)cyber(-|$)/i.test(id);
-    return isCyber ? "#/cyber-brain" : "#/brain";
+  function brainTabBase() {
+    return "#/brain";
   }
 
   async function storyGraphHtml(post) {
@@ -2139,7 +2128,7 @@
       const statusEl = $("brain-status");
       if (statusEl) {
         statusEl.textContent = opts?.crimeType
-          ? `กราฟไซเบอร์ · โฟกัส ${opts.crimeType}`
+          ? `ข้อมูลกราฟ · โฟกัส ${opts.crimeType}`
           : statusEl.textContent ||
             "ข้อมูลกราฟ · โหนดใหญ่ = หน่วยงาน บุคคล สถานที่ · ซูมเพื่ออ่านป้าย";
       }
