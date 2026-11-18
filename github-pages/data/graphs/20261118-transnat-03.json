@@ -1,0 +1,58 @@
+{
+ "case_id": "20261118-transnat-03",
+ "title": "ป.ป.ส. ชี้แจงหลังอัยการออสเตรเลียถอนข้อกล่าวหาอดีตลูกเรือสายการบินไทยในคดีเฮโรอีนราว 900 กรัม เตรียมขอข้อมูลขยายผลเครือข่ายเมื่อเดินทางกลับไทย",
+ "generated_at": "2026-11-18T01:19:05.972Z",
+ "node_count": 9,
+ "edge_count": 8,
+ "relations": [
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/ป.ป.ส.",
+   "target_title": "ป.ป.ส.",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/บก.ปส.1",
+   "target_title": "บก.ปส.1",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/สำนักงานอัยการสูงสุด",
+   "target_title": "สำนักงานอัยการสูงสุด",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ท่าอากาศยานเมลเบิร์น ออสเตรเลีย",
+   "target_title": "ท่าอากาศยานเมลเบิร์น ออสเตรเลีย",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ท่าอากาศยานสุวรรณภูมิ",
+   "target_title": "ท่าอากาศยานสุวรรณภูมิ",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/โฆษกสำนักงาน ป.ป.ส.",
+   "target_title": "โฆษกสำนักงาน ป.ป.ส.",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/ผู้บังคับการ บก.ปส.1",
+   "target_title": "ผู้บังคับการ บก.ปส.1",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมข้ามชาติและความร่วมมือระหว่างประเทศ",
+   "target_title": "อาชญากรรมข้ามชาติและความร่วมมือระหว่างประเทศ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261118-transnat-03.svg"
+}

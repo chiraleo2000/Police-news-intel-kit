@@ -1,0 +1,40 @@
+{
+ "case_id": "20261118-transnat-04",
+ "title": "สตม. จับชายรัสเซียอายุ 31 ปีที่คอนโดฯ ในพัทยาตามหมายแดงตำรวจสากล ถูกกล่าวหาเป็นหัวหน้าเครือข่ายค้าโคเคนผ่าน Telegram ในแคว้นตเวียร์",
+ "generated_at": "2026-11-18T01:19:05.972Z",
+ "node_count": 6,
+ "edge_count": 5,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/ตม.",
+   "target_title": "ตม.",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลเขต Zavolzhskiy เมืองตเวียร์",
+   "target_title": "ศาลเขต Zavolzhskiy เมืองตเวียร์",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/เมืองพัทยา จ.ชลบุรี",
+   "target_title": "เมืองพัทยา จ.ชลบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/พัทยา",
+   "target_title": "พัทยา",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมข้ามชาติและความร่วมมือระหว่างประเทศ",
+   "target_title": "อาชญากรรมข้ามชาติและความร่วมมือระหว่างประเทศ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261118-transnat-04.svg"
+}

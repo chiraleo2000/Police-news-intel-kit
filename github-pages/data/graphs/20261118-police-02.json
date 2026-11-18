@@ -1,0 +1,40 @@
+{
+ "case_id": "20261118-police-02",
+ "title": "ผบช.สอท. หารือเลขาธิการ กพฐ. เตรียมบรรจุความรู้วัคซีนไซเบอร์ในชั่วโมงเรียน และร่วมผลิตละครแนวตั้งเตือนกลโกงออนไลน์ให้นักเรียนและผู้ปกครอง",
+ "generated_at": "2026-11-18T01:19:05.972Z",
+ "node_count": 6,
+ "edge_count": 5,
+ "relations": [
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บช.สอท.",
+   "target_title": "บช.สอท.",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/-",
+   "target_title": "-",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/ผู้บัญชาการ บช.สอท.",
+   "target_title": "ผู้บัญชาการ บช.สอท.",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/เลขาธิการ กพฐ.",
+   "target_title": "เลขาธิการ กพฐ.",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/การปฏิบัติหน้าที่ ประชาสัมพันธ์ และนโยบายตำรวจ",
+   "target_title": "การปฏิบัติหน้าที่ ประชาสัมพันธ์ และนโยบายตำรวจ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261118-police-02.svg"
+}

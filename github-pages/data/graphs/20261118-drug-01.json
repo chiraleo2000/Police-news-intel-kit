@@ -1,0 +1,40 @@
+{
+ "case_id": "20261118-drug-01",
+ "title": "กก.ดส.บช.น. จับ 2 ผู้ต้องหาในหมู่บ้านย่านคูคต ลำลูกกา ยึดไอซ์ 60 กก. และเคตามีน 144 กก. ผู้ต้องหารับว่าไปรับยาจากผู้ค้าที่สระบุรี",
+ "generated_at": "2026-11-18T01:19:05.972Z",
+ "node_count": 6,
+ "edge_count": 5,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/กก.ดส.บช.น.",
+   "target_title": "กก.ดส.บช.น.",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บช.น.",
+   "target_title": "บช.น.",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ต.คูคต อ.ลำลูกกา จ.ปทุมธานี",
+   "target_title": "ต.คูคต อ.ลำลูกกา จ.ปทุมธานี",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/ผู้กำกับการ กก.ดส.บช.น.",
+   "target_title": "ผู้กำกับการ กก.ดส.บช.น.",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/ยาเสพติด",
+   "target_title": "ยาเสพติด",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261118-drug-01.svg"
+}

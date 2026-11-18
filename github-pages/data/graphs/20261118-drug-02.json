@@ -1,0 +1,40 @@
+{
+ "case_id": "20261118-drug-02",
+ "title": "บก.ปทส. ร่วม บก.ปส.1 สะกดรอยจับชายอายุ 23 ปีที่สถานีขนส่งหมอชิต พร้อมเคตามีน 20 กก. ในกระเป๋า 2 ใบ ผู้ต้องหารับว่ารับจ้างขนจากสกลนคร",
+ "generated_at": "2026-11-18T01:19:05.972Z",
+ "node_count": 6,
+ "edge_count": 5,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/บก.ปทส.",
+   "target_title": "บก.ปทส.",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/บก.ปส.1",
+   "target_title": "บก.ปส.1",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/สถานีขนส่งผู้โดยสารกรุงเทพฯ (หมอชิต) เขตจตุจักร",
+   "target_title": "สถานีขนส่งผู้โดยสารกรุงเทพฯ (หมอชิต) เขตจตุจักร",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/ผู้บังคับการ บก.ปทส.",
+   "target_title": "ผู้บังคับการ บก.ปทส.",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/ยาเสพติด",
+   "target_title": "ยาเสพติด",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261118-drug-02.svg"
+}

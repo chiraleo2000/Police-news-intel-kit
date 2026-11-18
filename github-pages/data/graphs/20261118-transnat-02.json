@@ -1,0 +1,40 @@
+{
+ "case_id": "20261118-transnat-02",
+ "title": "อัยการสูงสุดต้อนรับอัยการสหรัฐฯ ประจำเขตโคลัมเบียและหน่วย Scam Center Strike Force หารือความร่วมมือปราบหลอกลวงออนไลน์และฟอกเงิน",
+ "generated_at": "2026-11-18T01:19:05.972Z",
+ "node_count": 5,
+ "edge_count": 5,
+ "relations": [
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/สำนักงานอัยการสูงสุด",
+   "target_title": "สำนักงานอัยการสูงสุด",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/สำนักงานอัยการสูงสุด ถนนแจ้งวัฒนะ กรุงเทพมหานคร",
+   "target_title": "สำนักงานอัยการสูงสุด ถนนแจ้งวัฒนะ กรุงเทพมหานคร",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/Units/สำนักงานอัยการสูงสุด",
+   "target_title": "สำนักงานอัยการสูงสุด",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/อัยการสหรัฐอเมริกาประจำเขตโคลัมเบีย",
+   "target_title": "อัยการสหรัฐอเมริกาประจำเขตโคลัมเบีย",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมข้ามชาติและความร่วมมือระหว่างประเทศ",
+   "target_title": "อาชญากรรมข้ามชาติและความร่วมมือระหว่างประเทศ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261118-transnat-02.svg"
+}

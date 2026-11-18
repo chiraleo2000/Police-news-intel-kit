@@ -1,0 +1,64 @@
+{
+ "case_id": "20261118-cyber-01",
+ "title": "กองปราบร่วม กสทช. ค้น 5 จุดใน 4 จังหวัด ทลายแหล่งผลิตและขายเครื่อง Box Phone ที่ควบคุมมือถือได้สูงสุด 1,000 เครื่อง จับผู้ต้องหา 1 คนที่ปทุมธานี",
+ "generated_at": "2026-11-18T01:19:05.972Z",
+ "node_count": 10,
+ "edge_count": 9,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/บก.ป.",
+   "target_title": "บก.ป.",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บช.ก.",
+   "target_title": "บช.ก.",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/สำนักงาน กสทช.",
+   "target_title": "สำนักงาน กสทช.",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลจังหวัดปทุมธานี",
+   "target_title": "ศาลจังหวัดปทุมธานี",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/อ.เมืองปทุมธานี จ.ปทุมธานี",
+   "target_title": "อ.เมืองปทุมธานี จ.ปทุมธานี",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/อ.คลองหลวง จ.ปทุมธานี",
+   "target_title": "อ.คลองหลวง จ.ปทุมธานี",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/ผู้บังคับการปราบปราม",
+   "target_title": "ผู้บังคับการปราบปราม",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/รองผู้บัญชาการตำรวจสอบสวนกลาง",
+   "target_title": "รองผู้บัญชาการตำรวจสอบสวนกลาง",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261118-cyber-01.svg"
+}

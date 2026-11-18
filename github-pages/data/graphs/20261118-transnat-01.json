@@ -1,0 +1,64 @@
+{
+ "case_id": "20261118-transnat-01",
+ "title": "ตำรวจนครบาลร่วม สตม. และ ป.ป.ส. จับชายสิงคโปร์ตามหมายจับศาลสิงคโปร์คดีเครือข่ายยาเสพติด ในคอนโดฯ ย่านหนองปรือ พัทยา พร้อมเพื่อนร่วมชาติ แจ้งข้อหาอยู่เกินกำหนด",
+ "generated_at": "2026-11-18T01:19:05.972Z",
+ "node_count": 10,
+ "edge_count": 9,
+ "relations": [
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บช.น.",
+   "target_title": "บช.น.",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/ศอ.ปส.บช.น.",
+   "target_title": "ศอ.ปส.บช.น.",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/บก.สส.สตม.",
+   "target_title": "บก.สส.สตม.",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/ป.ป.ส.กทม.",
+   "target_title": "ป.ป.ส.กทม.",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลสิงคโปร์",
+   "target_title": "ศาลสิงคโปร์",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ต.หนองปรือ อ.บางละมุง จ.ชลบุรี",
+   "target_title": "ต.หนองปรือ อ.บางละมุง จ.ชลบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/ผู้บัญชาการตำรวจนครบาล",
+   "target_title": "ผู้บัญชาการตำรวจนครบาล",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/พัทยา",
+   "target_title": "พัทยา",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมข้ามชาติและความร่วมมือระหว่างประเทศ",
+   "target_title": "อาชญากรรมข้ามชาติและความร่วมมือระหว่างประเทศ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261118-transnat-01.svg"
+}

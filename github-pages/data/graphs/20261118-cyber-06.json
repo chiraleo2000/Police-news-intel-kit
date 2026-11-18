@@ -1,0 +1,46 @@
+{
+ "case_id": "20261118-cyber-06",
+ "title": "ตำรวจทางหลวงเปิดปฏิบัติการ Highway Mule Runner จับ 8 ผู้ต้องหา เครือข่ายถอนและฝากเงินสดตัดตอนเส้นเงินให้แก๊งหลอกขายของออนไลน์ โยง 44 คดี ความเสียหายรวมกว่า 150 ล้านบาท",
+ "generated_at": "2026-11-18T01:19:05.972Z",
+ "node_count": 7,
+ "edge_count": 6,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/บก.ทล.",
+   "target_title": "บก.ทล.",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บช.ก.",
+   "target_title": "บช.ก.",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/จ.นนทบุรี",
+   "target_title": "จ.นนทบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/มหาชัย จ.สมุทรสาคร",
+   "target_title": "มหาชัย จ.สมุทรสาคร",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/ผู้บังคับการตำรวจทางหลวง",
+   "target_title": "ผู้บังคับการตำรวจทางหลวง",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261118-cyber-06.svg"
+}

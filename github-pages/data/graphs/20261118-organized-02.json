@@ -1,0 +1,40 @@
+{
+ "case_id": "20261118-organized-02",
+ "title": "ตม.สะเดา ตรวจพบหญิงไทยตามหมายจับศาลจังหวัดนนทบุรีคดีฉ้อโกงประชาชนซ่อนตัวในรถฟอร์จูนเนอร์ที่ขับกลับจากมาเลเซียโดยไม่มีเอกสารเดินทาง",
+ "generated_at": "2026-11-18T01:19:05.972Z",
+ "node_count": 6,
+ "edge_count": 5,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/ตม.สะเดา",
+   "target_title": "ตม.สะเดา",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลจังหวัดนนทบุรี",
+   "target_title": "ศาลจังหวัดนนทบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ด่านตรวจคนเข้าเมืองสะเดาแห่งใหม่ อ.สะเดา จ.สงขลา",
+   "target_title": "ด่านตรวจคนเข้าเมืองสะเดาแห่งใหม่ อ.สะเดา จ.สงขลา",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/สะเดา",
+   "target_title": "สะเดา",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/คดีอุกฉกรรจ์ ผู้มีอิทธิพล และอาวุธ",
+   "target_title": "คดีอุกฉกรรจ์ ผู้มีอิทธิพล และอาวุธ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261118-organized-02.svg"
+}

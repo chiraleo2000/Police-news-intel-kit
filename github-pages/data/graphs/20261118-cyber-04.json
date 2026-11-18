@@ -1,0 +1,28 @@
+{
+ "case_id": "20261118-cyber-04",
+ "title": "ThaiCERT เตือนช่องโหว่ Barracuda Email Security Gateway และอุปกรณ์อื่นที่ถูกใช้โจมตีจริง อาจถูกเข้าควบคุมด้วยสิทธิ์ root เมื่อเข้าถึงหน้าผู้ดูแลระบบได้",
+ "generated_at": "2026-11-18T01:19:05.972Z",
+ "node_count": 4,
+ "edge_count": 3,
+ "relations": [
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/ThaiCERT",
+   "target_title": "ThaiCERT",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/-",
+   "target_title": "-",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261118-cyber-04.svg"
+}
