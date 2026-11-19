@@ -1,6 +1,6 @@
 {
- "generated_at": "2026-11-18T09:26:27.772Z",
- "count": 772,
+ "generated_at": "2026-11-19T06:15:55.597Z",
+ "count": 810,
  "cases": [
   {
    "case_id": "20261022-consumer-chiangmai-matcha-customs",
@@ -3120,7 +3120,7 @@
   {
    "case_id": "20261113-corrupt-02",
    "svg": "graphs/20261113-corrupt-02.svg",
-   "relations": 7
+   "relations": 8
   },
   {
    "case_id": "20261113-cyber-01",
@@ -3305,7 +3305,7 @@
   {
    "case_id": "20261114-econ-04",
    "svg": "graphs/20261114-econ-04.svg",
-   "relations": 4
+   "relations": 5
   },
   {
    "case_id": "20261114-econ-05",
@@ -3788,6 +3788,11 @@
    "relations": 3
   },
   {
+   "case_id": "20261118-cyber-line-01",
+   "svg": "graphs/20261118-cyber-line-01.svg",
+   "relations": 9
+  },
+  {
    "case_id": "20261118-drug-01",
    "svg": "graphs/20261118-drug-01.svg",
    "relations": 5
@@ -3805,7 +3810,12 @@
   {
    "case_id": "20261118-econ-01",
    "svg": "graphs/20261118-econ-01.svg",
-   "relations": 5
+   "relations": 6
+  },
+  {
+   "case_id": "20261118-foreign-line-01",
+   "svg": "graphs/20261118-foreign-line-01.svg",
+   "relations": 8
   },
   {
    "case_id": "20261118-gamble-01",
@@ -3816,6 +3826,11 @@
    "case_id": "20261118-human-01",
    "svg": "graphs/20261118-human-01.svg",
    "relations": 3
+  },
+  {
+   "case_id": "20261118-human-line-01",
+   "svg": "graphs/20261118-human-line-01.svg",
+   "relations": 9
   },
   {
    "case_id": "20261118-organized-01",
@@ -3855,12 +3870,187 @@
   {
    "case_id": "20261118-transnat-03",
    "svg": "graphs/20261118-transnat-03.svg",
-   "relations": 8
+   "relations": 9
   },
   {
    "case_id": "20261118-transnat-04",
    "svg": "graphs/20261118-transnat-04.svg",
    "relations": 5
+  },
+  {
+   "case_id": "20261119-consumer-01",
+   "svg": "graphs/20261119-consumer-01.svg",
+   "relations": 7
+  },
+  {
+   "case_id": "20261119-corrupt-01",
+   "svg": "graphs/20261119-corrupt-01.svg",
+   "relations": 4
+  },
+  {
+   "case_id": "20261119-corrupt-02",
+   "svg": "graphs/20261119-corrupt-02.svg",
+   "relations": 2
+  },
+  {
+   "case_id": "20261119-corrupt-03",
+   "svg": "graphs/20261119-corrupt-03.svg",
+   "relations": 10
+  },
+  {
+   "case_id": "20261119-cyber-01",
+   "svg": "graphs/20261119-cyber-01.svg",
+   "relations": 6
+  },
+  {
+   "case_id": "20261119-cyber-02",
+   "svg": "graphs/20261119-cyber-02.svg",
+   "relations": 8
+  },
+  {
+   "case_id": "20261119-cyber-03",
+   "svg": "graphs/20261119-cyber-03.svg",
+   "relations": 2
+  },
+  {
+   "case_id": "20261119-cyber-04",
+   "svg": "graphs/20261119-cyber-04.svg",
+   "relations": 2
+  },
+  {
+   "case_id": "20261119-cyber-05",
+   "svg": "graphs/20261119-cyber-05.svg",
+   "relations": 4
+  },
+  {
+   "case_id": "20261119-cyber-06",
+   "svg": "graphs/20261119-cyber-06.svg",
+   "relations": 4
+  },
+  {
+   "case_id": "20261119-cyber-07",
+   "svg": "graphs/20261119-cyber-07.svg",
+   "relations": 7
+  },
+  {
+   "case_id": "20261119-cyber-08",
+   "svg": "graphs/20261119-cyber-08.svg",
+   "relations": 6
+  },
+  {
+   "case_id": "20261119-cyber-09",
+   "svg": "graphs/20261119-cyber-09.svg",
+   "relations": 5
+  },
+  {
+   "case_id": "20261119-cyber-10",
+   "svg": "graphs/20261119-cyber-10.svg",
+   "relations": 5
+  },
+  {
+   "case_id": "20261119-cyber-11",
+   "svg": "graphs/20261119-cyber-11.svg",
+   "relations": 3
+  },
+  {
+   "case_id": "20261119-cyber-12",
+   "svg": "graphs/20261119-cyber-12.svg",
+   "relations": 5
+  },
+  {
+   "case_id": "20261119-cyber-13",
+   "svg": "graphs/20261119-cyber-13.svg",
+   "relations": 3
+  },
+  {
+   "case_id": "20261119-cyber-14",
+   "svg": "graphs/20261119-cyber-14.svg",
+   "relations": 4
+  },
+  {
+   "case_id": "20261119-cyber-15",
+   "svg": "graphs/20261119-cyber-15.svg",
+   "relations": 5
+  },
+  {
+   "case_id": "20261119-drug-01",
+   "svg": "graphs/20261119-drug-01.svg",
+   "relations": 6
+  },
+  {
+   "case_id": "20261119-econ-01",
+   "svg": "graphs/20261119-econ-01.svg",
+   "relations": 5
+  },
+  {
+   "case_id": "20261119-econ-02",
+   "svg": "graphs/20261119-econ-02.svg",
+   "relations": 8
+  },
+  {
+   "case_id": "20261119-econ-03",
+   "svg": "graphs/20261119-econ-03.svg",
+   "relations": 3
+  },
+  {
+   "case_id": "20261119-econ-04",
+   "svg": "graphs/20261119-econ-04.svg",
+   "relations": 4
+  },
+  {
+   "case_id": "20261119-env-01",
+   "svg": "graphs/20261119-env-01.svg",
+   "relations": 8
+  },
+  {
+   "case_id": "20261119-gamble-01",
+   "svg": "graphs/20261119-gamble-01.svg",
+   "relations": 9
+  },
+  {
+   "case_id": "20261119-gamble-02",
+   "svg": "graphs/20261119-gamble-02.svg",
+   "relations": 8
+  },
+  {
+   "case_id": "20261119-human-01",
+   "svg": "graphs/20261119-human-01.svg",
+   "relations": 4
+  },
+  {
+   "case_id": "20261119-police-01",
+   "svg": "graphs/20261119-police-01.svg",
+   "relations": 2
+  },
+  {
+   "case_id": "20261119-police-02",
+   "svg": "graphs/20261119-police-02.svg",
+   "relations": 6
+  },
+  {
+   "case_id": "20261119-property-01",
+   "svg": "graphs/20261119-property-01.svg",
+   "relations": 5
+  },
+  {
+   "case_id": "20261119-tourist-01",
+   "svg": "graphs/20261119-tourist-01.svg",
+   "relations": 6
+  },
+  {
+   "case_id": "20261119-tourist-02",
+   "svg": "graphs/20261119-tourist-02.svg",
+   "relations": 3
+  },
+  {
+   "case_id": "20261119-transnat-01",
+   "svg": "graphs/20261119-transnat-01.svg",
+   "relations": 10
+  },
+  {
+   "case_id": "20261119-transnat-02",
+   "svg": "graphs/20261119-transnat-02.svg",
+   "relations": 7
   }
  ]
 }
