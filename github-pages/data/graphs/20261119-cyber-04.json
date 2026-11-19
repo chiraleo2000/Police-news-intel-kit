@@ -1,0 +1,22 @@
+{
+ "case_id": "20261119-cyber-04",
+ "title": "ThaiCERT เตือนช่องโหว่ Java4Shell (CVE-2026-114938) ใน OpenJDK และ Java Runtime เสี่ยงถูกควบคุมแอปพลิเคชันจากระยะไกล",
+ "generated_at": "2026-11-19T01:22:54.640Z",
+ "node_count": 3,
+ "edge_count": 2,
+ "relations": [
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/ThaiCERT",
+   "target_title": "ThaiCERT",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261119-cyber-04.svg"
+}

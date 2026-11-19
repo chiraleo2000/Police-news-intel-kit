@@ -1,0 +1,70 @@
+{
+ "case_id": "20261119-transnat-01",
+ "title": "อดีตลูกเรือ “มีนา” กลับถึงไทยในสถานะพยาน ผบช.ปส. เผยยังไม่ยืนยันเข้าพบ 20 พ.ย. ขณะโฆษกอัยการชี้การถอนฟ้องในออสเตรเลียไม่ตัดอำนาจศาลไทย",
+ "generated_at": "2026-11-19T01:22:54.640Z",
+ "node_count": 11,
+ "edge_count": 10,
+ "relations": [
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/บช.ปส.",
+   "target_title": "บช.ปส.",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/สำนักงานอัยการสูงสุด",
+   "target_title": "สำนักงานอัยการสูงสุด",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/ป.ป.ส.",
+   "target_title": "ป.ป.ส.",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ท่าอากาศยานนานาชาติเชียงใหม่",
+   "target_title": "ท่าอากาศยานนานาชาติเชียงใหม่",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/พล.ต.ท.ภูมินทร์ พุ่มพันธุ์ม่วง",
+   "target_title": "พล.ต.ท.ภูมินทร์ พุ่มพันธุ์ม่วง",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/นายวัชรินทร์ ภาณุรัตน์",
+   "target_title": "นายวัชรินทร์ ภาณุรัตน์",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/นายประยุทธ เพชรคุณ",
+   "target_title": "นายประยุทธ เพชรคุณ",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/บุคคล/ภูมินทร์ พุ่มพันธุ์ม่วง",
+   "target_title": "ภูมินทร์ พุ่มพันธุ์ม่วง",
+   "direction": "out"
+  },
+  {
+   "label": "ติดตามจาก",
+   "target_id": "20_Cases/20261118-transnat-03",
+   "target_title": "ป.ป.ส. ชี้แจงหลังอัยการออสเตรเลียถอนข้อกล่าวหาอดีตลูกเรือสายการบินไทยในคดีเฮโรอีนราว 900 กรัม เตรียมขอข้อมูลขยายผลเครือข่ายเมื่อเดินทางกลับไทย",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมข้ามชาติและความร่วมมือระหว่างประเทศ",
+   "target_title": "อาชญากรรมข้ามชาติและความร่วมมือระหว่างประเทศ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261119-transnat-01.svg"
+}

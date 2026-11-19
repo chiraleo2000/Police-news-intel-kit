@@ -1,0 +1,64 @@
+{
+ "case_id": "20261119-gamble-01",
+ "title": "ผู้ช่วย ผบ.ตร. เปิดปฏิบัติการพะวอที่แม่สอด ค้น 3 จุด จับแอดมินและผู้เกี่ยวข้องเว็บพนัน 5 คน พร้อมจับความผิดอื่นอีก 26 คน",
+ "generated_at": "2026-11-19T01:22:54.640Z",
+ "node_count": 10,
+ "edge_count": 9,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/ตำรวจภูธรจังหวัดตาก",
+   "target_title": "ตำรวจภูธรจังหวัดตาก",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/สภ.แม่สอด",
+   "target_title": "สภ.แม่สอด",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/บก.สอท.4",
+   "target_title": "บก.สอท.4",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/ตม.จว.ตาก",
+   "target_title": "ตม.จว.ตาก",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/อ.แม่สอด จ.ตาก",
+   "target_title": "อ.แม่สอด จ.ตาก",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/พล.ต.ท.ไตรรงค์ ผิวพรรณ",
+   "target_title": "พล.ต.ท.ไตรรงค์ ผิวพรรณ",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/บุคคล/ไตรรงค์ ผิวพรรณ",
+   "target_title": "ไตรรงค์ ผิวพรรณ",
+   "direction": "out"
+  },
+  {
+   "label": "บัญชี",
+   "target_id": "30_Entities/บัญชี/happy88",
+   "target_title": "happy88",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/พนันและบ่อนผิดกฎหมาย",
+   "target_title": "พนันและบ่อนผิดกฎหมาย",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261119-gamble-01.svg"
+}

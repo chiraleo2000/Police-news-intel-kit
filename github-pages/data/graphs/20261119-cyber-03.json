@@ -1,0 +1,22 @@
+{
+ "case_id": "20261119-cyber-03",
+ "title": "ThaiCERT เตือนการโจมตีผ่านบริการ Optimizely แทรกสคริปต์อันตรายในเว็บไซต์ เสี่ยงขโมยข้อมูลบัตรและสับเปลี่ยนที่อยู่กระเป๋าคริปโต",
+ "generated_at": "2026-11-19T01:22:54.640Z",
+ "node_count": 3,
+ "edge_count": 2,
+ "relations": [
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/ThaiCERT",
+   "target_title": "ThaiCERT",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261119-cyber-03.svg"
+}

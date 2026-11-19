@@ -1,0 +1,46 @@
+{
+ "case_id": "20261119-cyber-01",
+ "title": "ตำรวจ ปพ. ปลอมตัวเป็นลูกค้าร้านเสริมสวยจับหญิงอายุ 32 ปีที่บางบัวทอง ตามหมายจับ 2 หมาย คดีฉ้อโกงออนไลน์และเปิดบัญชีให้ผู้อื่นใช้",
+ "generated_at": "2026-11-19T01:22:54.640Z",
+ "node_count": 7,
+ "edge_count": 6,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/บก.ปพ.",
+   "target_title": "บก.ปพ.",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บช.ก.",
+   "target_title": "บช.ก.",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลจังหวัดสมุทรปราการ",
+   "target_title": "ศาลจังหวัดสมุทรปราการ",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลอาญา",
+   "target_title": "ศาลอาญา",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/อ.บางบัวทอง จ.นนทบุรี",
+   "target_title": "อ.บางบัวทอง จ.นนทบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261119-cyber-01.svg"
+}

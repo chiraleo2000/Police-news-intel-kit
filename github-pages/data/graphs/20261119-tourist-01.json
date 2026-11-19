@@ -1,0 +1,46 @@
+{
+ "case_id": "20261119-tourist-01",
+ "title": "ตำรวจป่าตองจับผู้ต้องสงสัยล้วงกระเป๋านักท่องเที่ยวต่างชาติ หลังคลิปเผยแพร่ว่าเข้าโอบกอดก่อนฉกทรัพย์",
+ "generated_at": "2026-11-19T01:22:54.640Z",
+ "node_count": 7,
+ "edge_count": 6,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/สภ.ป่าตอง",
+   "target_title": "สภ.ป่าตอง",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ป่าตอง จ.ภูเก็ต",
+   "target_title": "ป่าตอง จ.ภูเก็ต",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/พ.ต.อ.กรกฤช ขันธ์เครือ",
+   "target_title": "พ.ต.อ.กรกฤช ขันธ์เครือ",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/บุคคล/กรกฤช ขันธ์เครือ",
+   "target_title": "กรกฤช ขันธ์เครือ",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ป่าตอง",
+   "target_title": "ป่าตอง",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมที่เกี่ยวข้องกับนักท่องเที่ยวและชาวต่างชาติ",
+   "target_title": "อาชญากรรมที่เกี่ยวข้องกับนักท่องเที่ยวและชาวต่างชาติ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261119-tourist-01.svg"
+}

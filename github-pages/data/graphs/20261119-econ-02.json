@@ -1,0 +1,58 @@
+{
+ "case_id": "20261119-econ-02",
+ "title": "กรรมการมูลนิธิองค์กรทำดีรายแรกเข้ารับทราบ 3 ข้อหาที่ บก.ปอศ. ส่วนอีก 5 คนถูกนัดทยอยเข้าพบ 19–20 พ.ย.",
+ "generated_at": "2026-11-19T01:22:54.640Z",
+ "node_count": 9,
+ "edge_count": 8,
+ "relations": [
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/บก.ปอศ.",
+   "target_title": "บก.ปอศ.",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บช.ก.",
+   "target_title": "บช.ก.",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/บก.ปอศ.",
+   "target_title": "บก.ปอศ.",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/พล.ต.ต.ทัศน์ภูมิ จารุปรัชญ์",
+   "target_title": "พล.ต.ต.ทัศน์ภูมิ จารุปรัชญ์",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/บุคคล/ทัศน์ภูมิ จารุปรัชญ์",
+   "target_title": "ทัศน์ภูมิ จารุปรัชญ์",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/บุคคล/จำนาญ จันทร์เทศ",
+   "target_title": "จำนาญ จันทร์เทศ",
+   "direction": "out"
+  },
+  {
+   "label": "ติดตามจาก",
+   "target_id": "20_Cases/20261118-econ-01",
+   "target_title": "บก.ปอศ. ออกหมายเรียกกรรมการมูลนิธิองค์กรทำดี 4 คนและช่าง 2 คนให้มารับทราบข้อกล่าวหาภายในสัปดาห์ และเตรียมเชิญบิดาประธานมูลนิธิชี้แจงเส้นเงินสัปดาห์หน้า",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/คดีเศรษฐกิจ การเงิน และฟอกเงิน",
+   "target_title": "คดีเศรษฐกิจ การเงิน และฟอกเงิน",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261119-econ-02.svg"
+}

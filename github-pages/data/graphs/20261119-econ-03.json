@@ -1,0 +1,28 @@
+{
+ "case_id": "20261119-econ-03",
+ "title": "ศาลอาญาพิพากษาคดีนอมินีบริษัทร่วมสร้างตึก สตง. จำคุกกรรมการชาวจีน 3 ปี ปรับบริษัท 1 ล้านบาท และลงโทษผู้ถือหุ้นไทย 3 คน",
+ "generated_at": "2026-11-19T01:22:54.640Z",
+ "node_count": 4,
+ "edge_count": 3,
+ "relations": [
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/สำนักงานอัยการสูงสุด",
+   "target_title": "สำนักงานอัยการสูงสุด",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ศาลอาญา กรุงเทพมหานคร",
+   "target_title": "ศาลอาญา กรุงเทพมหานคร",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/คดีเศรษฐกิจ การเงิน และฟอกเงิน",
+   "target_title": "คดีเศรษฐกิจ การเงิน และฟอกเงิน",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261119-econ-03.svg"
+}

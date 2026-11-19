@@ -1,0 +1,46 @@
+{
+ "case_id": "20261119-police-02",
+ "title": "รอง ผบ.ตร. ขึ้นเวที World Police Summit 2026 ที่ดูไบ ถ่ายทอดยุทธศาสตร์ไทยปราบแก๊งคอลเซ็นเตอร์และค้ามนุษย์ชายแดน",
+ "generated_at": "2026-11-19T01:22:54.640Z",
+ "node_count": 7,
+ "edge_count": 6,
+ "relations": [
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/ตร.",
+   "target_title": "ตร.",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/ศตคม.ตร.",
+   "target_title": "ศตคม.ตร.",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/Dubai World Trade Centre",
+   "target_title": "Dubai World Trade Centre",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/พล.ต.อ.ธัชชัย ปิตะนีละบุตร",
+   "target_title": "พล.ต.อ.ธัชชัย ปิตะนีละบุตร",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/บุคคล/ธัชชัย ปิตะนีละบุตร",
+   "target_title": "ธัชชัย ปิตะนีละบุตร",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/การปฏิบัติหน้าที่ ประชาสัมพันธ์ และนโยบายตำรวจ",
+   "target_title": "การปฏิบัติหน้าที่ ประชาสัมพันธ์ และนโยบายตำรวจ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261119-police-02.svg"
+}

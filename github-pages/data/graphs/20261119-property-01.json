@@ -1,0 +1,40 @@
+{
+ "case_id": "20261119-property-01",
+ "title": "ตำรวจอุดรธานีตามตัววัยรุ่น 6 คน ถูกกล่าวหาขี่จักรยานยนต์ประกบถีบ รุมทำร้าย และชิงกระเป๋าชายอายุ 29 ปีกลางเมือง",
+ "generated_at": "2026-11-19T01:22:54.640Z",
+ "node_count": 6,
+ "edge_count": 5,
+ "relations": [
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/สภ.เมืองอุดรธานี",
+   "target_title": "สภ.เมืองอุดรธานี",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ซอยต้อยลาบเป็ด ถนนศรีชมชื่น อุดรธานี",
+   "target_title": "ซอยต้อยลาบเป็ด ถนนศรีชมชื่น อุดรธานี",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/พ.ต.ต.บรรเทิง ทัพโยธา",
+   "target_title": "พ.ต.ต.บรรเทิง ทัพโยธา",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/บุคคล/บรรเทิง ทัพโยธา",
+   "target_title": "บรรเทิง ทัพโยธา",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/คดีทรัพย์สิน",
+   "target_title": "คดีทรัพย์สิน",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261119-property-01.svg"
+}

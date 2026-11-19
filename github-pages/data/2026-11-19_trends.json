@@ -1,0 +1,229 @@
+{
+ "baseline": "ok",
+ "window_days": 7,
+ "days_available": 7,
+ "note": "baseline 7 วันย้อนหลัง (<7 วัน: แนวโน้มเป็นข้อมูลบ่งชี้เท่านั้น) surge = วันนี้ >=3 เรื่อง และสูงกว่าค่าเฉลี่ย >=50 เปอร์เซ็นต์",
+ "by_crime_type": [
+  {
+   "type": "คดีเศรษฐกิจ การเงิน และฟอกเงิน",
+   "today": 4,
+   "avg_prev_7d": 2.57,
+   "delta_pct": 55.6,
+   "surge": true
+  },
+  {
+   "type": "อาชญากรรมไซเบอร์และออนไลน์",
+   "today": 4,
+   "avg_prev_7d": 4.43,
+   "delta_pct": -9.7,
+   "surge": false
+  },
+  {
+   "type": "ทุจริตและประพฤติมิชอบของเจ้าหน้าที่รัฐ",
+   "today": 3,
+   "avg_prev_7d": 0.29,
+   "delta_pct": 950.0,
+   "surge": true
+  },
+  {
+   "type": "พนันและบ่อนผิดกฎหมาย",
+   "today": 2,
+   "avg_prev_7d": 1.0,
+   "delta_pct": 100.0,
+   "surge": false
+  },
+  {
+   "type": "อาชญากรรมข้ามชาติและความร่วมมือระหว่างประเทศ",
+   "today": 2,
+   "avg_prev_7d": 1.71,
+   "delta_pct": 16.7,
+   "surge": false
+  },
+  {
+   "type": "อาชญากรรมที่เกี่ยวข้องกับนักท่องเที่ยวและชาวต่างชาติ",
+   "today": 2,
+   "avg_prev_7d": 1.14,
+   "delta_pct": 75.0,
+   "surge": false
+  },
+  {
+   "type": "การปฏิบัติหน้าที่ ประชาสัมพันธ์ และนโยบายตำรวจ",
+   "today": 2,
+   "avg_prev_7d": 2.43,
+   "delta_pct": -17.6,
+   "surge": false
+  },
+  {
+   "type": "สิ่งแวดล้อม ทรัพยากร และสัตว์ป่า",
+   "today": 1,
+   "avg_prev_7d": 0.43,
+   "delta_pct": 133.3,
+   "surge": false
+  },
+  {
+   "type": "ยาเสพติด",
+   "today": 1,
+   "avg_prev_7d": 2.57,
+   "delta_pct": -61.1,
+   "surge": false
+  },
+  {
+   "type": "คดีทรัพย์สิน",
+   "today": 1,
+   "avg_prev_7d": 0.71,
+   "delta_pct": 40.0,
+   "surge": false
+  },
+  {
+   "type": "คุ้มครองผู้บริโภคและสินค้าผิดกฎหมาย",
+   "today": 1,
+   "avg_prev_7d": 0.57,
+   "delta_pct": 75.0,
+   "surge": false
+  },
+  {
+   "type": "ค้ามนุษย์ แรงงานผิดกฎหมาย และคุ้มครองเด็ก",
+   "today": 1,
+   "avg_prev_7d": 1.43,
+   "delta_pct": -30.0,
+   "surge": false
+  }
+ ],
+ "by_mo": [
+  {
+   "mo": "พนันออนไลน์",
+   "today": 3,
+   "avg_prev_7d": 0.0,
+   "surge": true
+  },
+  {
+   "mo": "ลำเลียงยาเสพติด",
+   "today": 2,
+   "avg_prev_7d": 0.0,
+   "surge": false
+  },
+  {
+   "mo": "นอมินีธุรกิจต่างชาติ",
+   "today": 1,
+   "avg_prev_7d": 0.0,
+   "surge": false
+  },
+  {
+   "mo": "ลิงก์ปลอม/ฟิชชิง",
+   "today": 1,
+   "avg_prev_7d": 0.0,
+   "surge": false
+  },
+  {
+   "mo": "แชร์ลูกโซ่",
+   "today": 1,
+   "avg_prev_7d": 0.0,
+   "surge": false
+  },
+  {
+   "mo": "ฟอกเงิน",
+   "today": 1,
+   "avg_prev_7d": 0.0,
+   "surge": false
+  },
+  {
+   "mo": "บัญชีม้า/ซิมม้า",
+   "today": 1,
+   "avg_prev_7d": 0.0,
+   "surge": false
+  },
+  {
+   "mo": "แรงงานต่างด้าวผิดกฎหมาย",
+   "today": 1,
+   "avg_prev_7d": 0.0,
+   "surge": false
+  }
+ ],
+ "by_province": [
+  {
+   "province": "กรุงเทพมหานคร",
+   "today": 6,
+   "avg_prev_7d": 9.0
+  },
+  {
+   "province": "เชียงใหม่",
+   "today": 3,
+   "avg_prev_7d": 0.86
+  },
+  {
+   "province": "ภูเก็ต",
+   "today": 2,
+   "avg_prev_7d": 1.0
+  },
+  {
+   "province": "สมุทรสงคราม",
+   "today": 1,
+   "avg_prev_7d": 0.0
+  },
+  {
+   "province": "ตาก",
+   "today": 1,
+   "avg_prev_7d": 0.43
+  },
+  {
+   "province": "พะเยา",
+   "today": 1,
+   "avg_prev_7d": 0.14
+  },
+  {
+   "province": "ฉะเชิงเทรา",
+   "today": 1,
+   "avg_prev_7d": 0.0
+  },
+  {
+   "province": "สระบุรี",
+   "today": 1,
+   "avg_prev_7d": 0.43
+  },
+  {
+   "province": "นนทบุรี",
+   "today": 1,
+   "avg_prev_7d": 1.86
+  },
+  {
+   "province": "จันทบุรี",
+   "today": 1,
+   "avg_prev_7d": 0.29
+  },
+  {
+   "province": "นครราชสีมา",
+   "today": 1,
+   "avg_prev_7d": 0.43
+  },
+  {
+   "province": "ปราจีนบุรี",
+   "today": 1,
+   "avg_prev_7d": 0.14
+  },
+  {
+   "province": "อุดรธานี",
+   "today": 1,
+   "avg_prev_7d": 0.14
+  },
+  {
+   "province": "สมุทรปราการ",
+   "today": 1,
+   "avg_prev_7d": 1.0
+  },
+  {
+   "province": "ยะลา",
+   "today": 1,
+   "avg_prev_7d": 0.14
+  },
+  {
+   "province": "ต่างประเทศ",
+   "today": 1,
+   "avg_prev_7d": 1.0
+  },
+  {
+   "province": "ระยอง",
+   "today": 1,
+   "avg_prev_7d": 0.14
+  }
+ ]
+}

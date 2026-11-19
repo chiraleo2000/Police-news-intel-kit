@@ -1,0 +1,46 @@
+{
+ "case_id": "20261119-drug-01",
+ "title": "สภ.เทพารักษ์จับผู้ต้องหา 5 คนในนครราชสีมา ถูกกล่าวหาใช้ร้านพระเครื่องบังหน้าขายยาบ้า ยึดยาบ้า 124 เม็ดและปืนไทยประดิษฐ์",
+ "generated_at": "2026-11-19T01:22:54.640Z",
+ "node_count": 7,
+ "edge_count": 6,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/สภ.เทพารักษ์",
+   "target_title": "สภ.เทพารักษ์",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/ตำรวจภูธรจังหวัดนครราชสีมา",
+   "target_title": "ตำรวจภูธรจังหวัดนครราชสีมา",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/อ.เทพารักษ์ จ.นครราชสีมา",
+   "target_title": "อ.เทพารักษ์ จ.นครราชสีมา",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/พ.ต.อ.หิรัณยสุทธิ์ อินทร์ใย",
+   "target_title": "พ.ต.อ.หิรัณยสุทธิ์ อินทร์ใย",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/บุคคล/หิรัณยสุทธิ์ อินทร์ใย",
+   "target_title": "หิรัณยสุทธิ์ อินทร์ใย",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/ยาเสพติด",
+   "target_title": "ยาเสพติด",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261119-drug-01.svg"
+}

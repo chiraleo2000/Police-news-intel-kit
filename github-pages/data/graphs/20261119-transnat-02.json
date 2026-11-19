@@ -1,0 +1,52 @@
+{
+ "case_id": "20261119-transnat-02",
+ "title": "ตม.ภูเก็ตจับหญิงจีนตามหมายจับทางการจีน ถูกกล่าวหาร่วมเครือข่ายแชร์ลูกโซ่ “Create Abundance” มูลค่ากว่า 300 ล้านบาท",
+ "generated_at": "2026-11-19T01:22:54.640Z",
+ "node_count": 8,
+ "edge_count": 7,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/ตม.จว.ภูเก็ต",
+   "target_title": "ตม.จว.ภูเก็ต",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บก.ตม.6",
+   "target_title": "บก.ตม.6",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/กองการต่างประเทศ สำนักงานตำรวจแห่งชาติ",
+   "target_title": "กองการต่างประเทศ สำนักงานตำรวจแห่งชาติ",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/จ.ภูเก็ต",
+   "target_title": "จ.ภูเก็ต",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/พ.ต.อ.เจริญพงษ์ ขันติโล",
+   "target_title": "พ.ต.อ.เจริญพงษ์ ขันติโล",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/บุคคล/เจริญพงษ์ ขันติโล",
+   "target_title": "เจริญพงษ์ ขันติโล",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมข้ามชาติและความร่วมมือระหว่างประเทศ",
+   "target_title": "อาชญากรรมข้ามชาติและความร่วมมือระหว่างประเทศ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261119-transnat-02.svg"
+}

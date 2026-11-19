@@ -1,0 +1,34 @@
+{
+ "case_id": "20261119-corrupt-01",
+ "title": "ศาลทุจริตภาค 7 จำคุกทนายความและอดีตตำรวจ 2 นาย คนละ 5 ปี คดีสร้างหลักฐานเท็จช่วยลดโทษคดียาเสพติด ให้ประกันระหว่างอุทธรณ์",
+ "generated_at": "2026-11-19T01:22:54.640Z",
+ "node_count": 5,
+ "edge_count": 4,
+ "relations": [
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/สำนักงานอัยการสูงสุด",
+   "target_title": "สำนักงานอัยการสูงสุด",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ศาลอาญาคดีทุจริตและประพฤติมิชอบภาค 7",
+   "target_title": "ศาลอาญาคดีทุจริตและประพฤติมิชอบภาค 7",
+   "direction": "out"
+  },
+  {
+   "label": "ผู้ต้องหา",
+   "target_id": "30_Entities/People/ษิทรา เบี้ยบังเกิด",
+   "target_title": "ษิทรา เบี้ยบังเกิด",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/ทุจริตและประพฤติมิชอบของเจ้าหน้าที่รัฐ",
+   "target_title": "ทุจริตและประพฤติมิชอบของเจ้าหน้าที่รัฐ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261119-corrupt-01.svg"
+}
