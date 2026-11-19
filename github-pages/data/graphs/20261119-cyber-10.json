@@ -1,0 +1,40 @@
+{
+ "case_id": "20261119-cyber-10",
+ "title": "NGINX ออกแพตช์ช่องโหว่ HTTP/2 อายุ 10 ปี \"nginx2root\" (CVE-2026-123007) เปิดทางรันโค้ดบนเซิร์ฟเวอร์โดยไม่ต้องล็อกอิน มีโค้ดสาธิตเผยแพร่แล้ว",
+ "generated_at": "2026-11-19T06:15:55.597Z",
+ "node_count": 6,
+ "edge_count": 5,
+ "relations": [
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/F5",
+   "target_title": "F5",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/Wiz",
+   "target_title": "Wiz",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/Rapid7",
+   "target_title": "Rapid7",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ทั่วโลก",
+   "target_title": "ทั่วโลก",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261119-cyber-10.svg"
+}

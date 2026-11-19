@@ -1,0 +1,52 @@
+{
+ "case_id": "20261119-cyber-07",
+ "title": "ตร.ไซเบอร์ บก.สอท.3 ค้นบ้านที่ยโสธร จับอินฟลูเอนเซอร์ \"เล็ก อาก้า\" ผู้ติดตาม 4.3 แสนคน ถูกกล่าวหาโพสต์สตอรี่แปะลิงก์โปรโมตเว็บพนันออนไลน์ราว 2 ปี",
+ "generated_at": "2026-11-19T06:15:55.597Z",
+ "node_count": 8,
+ "edge_count": 7,
+ "relations": [
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บช.สอท.",
+   "target_title": "บช.สอท.",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/บก.สอท.3",
+   "target_title": "บก.สอท.3",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลจังหวัดยโสธร",
+   "target_title": "ศาลจังหวัดยโสธร",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/สภ.เลิงนกทา",
+   "target_title": "สภ.เลิงนกทา",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ยโสธร",
+   "target_title": "ยโสธร",
+   "direction": "out"
+  },
+  {
+   "label": "ผู้ต้องหา",
+   "target_id": "30_Entities/People/เล็ก อาก้า",
+   "target_title": "เล็ก อาก้า",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261119-cyber-07.svg"
+}

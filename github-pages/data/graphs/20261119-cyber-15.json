@@ -1,0 +1,40 @@
+{
+ "case_id": "20261119-cyber-15",
+ "title": "แพ็กเกจ agent-framework ของ Microsoft บน PyPI ถูกฝังโค้ดขโมยข้อมูลรับรองคลาวด์ในรุ่น 1.26.1 และ 1.26.2 ทำงานทุกครั้งที่เปิด Python",
+ "generated_at": "2026-11-19T06:15:55.597Z",
+ "node_count": 6,
+ "edge_count": 5,
+ "relations": [
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/Socket",
+   "target_title": "Socket",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/SafeDep",
+   "target_title": "SafeDep",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/Units/PyPI",
+   "target_title": "PyPI",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ทั่วโลก",
+   "target_title": "ทั่วโลก",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261119-cyber-15.svg"
+}

@@ -1,0 +1,40 @@
+{
+ "case_id": "20261119-cyber-12",
+ "title": "ตำรวจยูเครนร่วม FBI จับ 4 ผู้ต้องสงสัยเครือข่ายแรนซัมแวร์ โยงค่าไถ่กว่า 40.5 ล้านดอลลาร์จากอย่างน้อย 28 บริษัท ใช้เสียง AI แอบอ้างฝ่ายไอที",
+ "generated_at": "2026-11-19T06:15:55.597Z",
+ "node_count": 6,
+ "edge_count": 5,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/ตำรวจแห่งชาติยูเครน",
+   "target_title": "ตำรวจแห่งชาติยูเครน",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/FBI",
+   "target_title": "FBI",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ยูเครน",
+   "target_title": "ยูเครน",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/สหรัฐอเมริกา",
+   "target_title": "สหรัฐอเมริกา",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261119-cyber-12.svg"
+}

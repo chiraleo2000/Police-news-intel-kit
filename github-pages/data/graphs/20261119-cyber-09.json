@@ -1,0 +1,40 @@
+{
+ "case_id": "20261119-cyber-09",
+ "title": "สกมช. ให้คำปรึกษาประเมินช่องโหว่ ทดสอบเจาะระบบ และมาตรฐานความปลอดภัยเว็บไซต์แก่ สพม.ปราจีนบุรี นครนายก",
+ "generated_at": "2026-11-19T06:15:55.597Z",
+ "node_count": 6,
+ "edge_count": 5,
+ "relations": [
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/สกมช.",
+   "target_title": "สกมช.",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/Units/สพม.ปราจีนบุรี นครนายก",
+   "target_title": "สพม.ปราจีนบุรี นครนายก",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ปราจีนบุรี",
+   "target_title": "ปราจีนบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/นครนายก",
+   "target_title": "นครนายก",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261119-cyber-09.svg"
+}

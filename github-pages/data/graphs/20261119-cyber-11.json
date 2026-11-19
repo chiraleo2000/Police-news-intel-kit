@@ -1,0 +1,28 @@
+{
+ "case_id": "20261119-cyber-11",
+ "title": "CISA เพิ่ม 4 ช่องโหว่ที่ถูกใช้โจมตีจริงเข้ารายการ KEV รวม Synology DSM, LiteLLM, Apache Axis และ REDCap",
+ "generated_at": "2026-11-19T06:15:55.597Z",
+ "node_count": 4,
+ "edge_count": 3,
+ "relations": [
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/CISA",
+   "target_title": "CISA",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/สหรัฐอเมริกา",
+   "target_title": "สหรัฐอเมริกา",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261119-cyber-11.svg"
+}

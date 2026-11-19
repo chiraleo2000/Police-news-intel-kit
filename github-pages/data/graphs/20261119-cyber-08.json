@@ -1,0 +1,46 @@
+{
+ "case_id": "20261119-cyber-08",
+ "title": "สกมช. ต้อนรับผู้บริหารไปรษณีย์ไทย ถ่ายทอดกลไกประสานงานรับมือภัยไซเบอร์และพาเยี่ยมชมศูนย์ปฏิบัติการ NSOC",
+ "generated_at": "2026-11-19T06:15:55.597Z",
+ "node_count": 7,
+ "edge_count": 6,
+ "relations": [
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/สกมช.",
+   "target_title": "สกมช.",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/Units/ThaiCERT",
+   "target_title": "ThaiCERT",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/Units/ไปรษณีย์ไทย",
+   "target_title": "ไปรษณีย์ไทย",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ประเทศไทย",
+   "target_title": "ประเทศไทย",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/Projects/NSOC",
+   "target_title": "NSOC",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261119-cyber-08.svg"
+}

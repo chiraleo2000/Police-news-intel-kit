@@ -1,43 +1,43 @@
 {
- "generated_at": "2026-11-19T02:30:06.469Z",
+ "generated_at": "2026-11-19T07:00:07.633Z",
  "schema_version": 2,
  "source": "vault/",
  "note": "Derived from Obsidian wikilinks. Local vault/ is the knowledge store; this file powers Pages ข้อมูลกราฟ.",
  "stats": {
-  "nodes": 2836,
-  "edges": 4516,
+  "nodes": 2871,
+  "edges": 4567,
   "unresolved": 65,
   "by_kind": {
    "daily": 27,
-   "case": 799,
-   "entity": 1924,
+   "case": 810,
+   "entity": 1948,
    "crime_type": 17,
    "other": 4,
    "unresolved": 65
   },
   "by_entity_group": {
-   "หน่วย": 1024,
-   "บุคคล": 289,
-   "สถานที่": 551,
+   "หน่วย": 1041,
+   "บุคคล": 290,
+   "สถานที่": 557,
    "ข่ายเครือข่าย": 34,
    "บัญชี": 16,
    "ผู้ต้องหา": 10
   },
   "by_label": {
-   "สืบสวนโดย": 427,
-   "จับโดย": 609,
-   "สั่งการโดย": 402,
-   "แจ้งโดย": 509,
+   "สืบสวนโดย": 429,
+   "จับโดย": 611,
+   "สั่งการโดย": 403,
+   "แจ้งโดย": 522,
    "บัญชี": 24,
-   "เกิดที่": 867,
+   "เกิดที่": 881,
    "เป้าหมายเครือข่าย": 34,
-   "เกี่ยวข้องกับบุคคล": 547,
-   "ผู้ต้องหา": 55,
-   "หมายจากศาล": 138,
+   "เกี่ยวข้องกับบุคคล": 553,
+   "ผู้ต้องหา": 56,
+   "หมายจากศาล": 139,
    "ภายใต้โครงการ": 1,
    "เกี่ยวข้องกับ": 24,
    "ติดตามจาก": 82,
-   "ประเภท": 797
+   "ประเภท": 808
   }
  },
  "unresolved_samples": [
@@ -14007,6 +14007,193 @@
    "degree": 2
   },
   {
+   "id": "20_Cases/20261119-cyber-05",
+   "title": "SPRC แจ้งตลาดหลักทรัพย์ฯ ถูกโจมตีทางไซเบอร์จนข้อมูลบริษัทถูกเข้าถึงโดยไม่ได้รับอนุญาต อยู่ระหว่างตรวจสอบขอบเขต ยังประเมินความเสียหายไม่ได้",
+   "kind": "case",
+   "folder": "20_Cases",
+   "entity_group": null,
+   "date": "2026-11-18",
+   "case_id": "20261119-cyber-05",
+   "crime_type": "อาชญากรรมไซเบอร์และออนไลน์",
+   "bureau": "-",
+   "area": "ประเทศไทย",
+   "status": "อยู่ระหว่างตรวจสอบ",
+   "tags": [],
+   "excerpt": "ประเภท: อาชญากรรมไซเบอร์และออนไลน์ หน่วย: บริษัท สตาร์ ปิโตรเลียม รีไฟน์นิ่ง จำกัด (มหาชน) หรือ SPRC ผู้ประกอบการโรงกลั่นน้ำมันที่จดทะเบียนในตลาดหลักทรัพย์แห่งประเทศไทย แจ้งต่อตลาดหลักทรัพย์ฯ ว่าบริษัทตกเป็นเป้าหมายของการโจมตีทางไซเบอร์เมื่อไม่นานมานี้ และเหตุดังกล่าวทำให้ข้อมูลของบริษัทถูกเข้าถึงโดยไม่ได้รับอนุญาต กรุงเทพธุรกิจรายงานเรื่องนี้เมื่อเช้าวันที…",
+   "path": "20_Cases/20261119-cyber-05.md",
+   "degree": 4
+  },
+  {
+   "id": "20_Cases/20261119-cyber-06",
+   "title": "ThaiCERT เตือนช่องโหว่ Critical ใน Apache Roller (CVE-2026-129448) ถูกใช้โจมตีจริง ผู้โจมตีรันคำสั่งระยะไกลได้โดยไม่ต้องยืนยันตัวตน",
+   "kind": "case",
+   "folder": "20_Cases",
+   "entity_group": null,
+   "date": "2026-11-19",
+   "case_id": "20261119-cyber-06",
+   "crime_type": "อาชญากรรมไซเบอร์และออนไลน์",
+   "bureau": "ThaiCERT",
+   "area": "ทั่วโลก",
+   "status": "เตือนภัย",
+   "tags": [],
+   "excerpt": "ประเภท: อาชญากรรมไซเบอร์และออนไลน์ หน่วย: ThaiCERT ศูนย์ประสานการรักษาความมั่นคงปลอดภัยระบบคอมพิวเตอร์แห่งชาติ (ThaiCERT) เผยแพร่ประกาศเมื่อ 19 พฤศจิกายน 2569 เตือนหน่วยงานที่ใช้ Apache Roller แพลตฟอร์มทำเว็บไซต์บล็อกแบบโอเพนซอร์สที่พัฒนาด้วยภาษา Java ให้เร่งอัปเดต หลังพบช่องโหว่ระดับ Critical หมายเลข CVE 2026 129448 คะแนน CVSS 9.8 และ Apache Software Found…",
+   "path": "20_Cases/20261119-cyber-06.md",
+   "degree": 4
+  },
+  {
+   "id": "20_Cases/20261119-cyber-07",
+   "title": "ตร.ไซเบอร์ บก.สอท.3 ค้นบ้านที่ยโสธร จับอินฟลูเอนเซอร์ \"เล็ก อาก้า\" ผู้ติดตาม 4.3 แสนคน ถูกกล่าวหาโพสต์สตอรี่แปะลิงก์โปรโมตเว็บพนันออนไลน์ราว 2 ปี",
+   "kind": "case",
+   "folder": "20_Cases",
+   "entity_group": null,
+   "date": "2026-11-19",
+   "case_id": "20261119-cyber-07",
+   "crime_type": "อาชญากรรมไซเบอร์และออนไลน์",
+   "bureau": "บช.สอท.",
+   "area": "ประเทศไทย",
+   "status": "จับกุม",
+   "tags": [],
+   "excerpt": "ประเภท: อาชญากรรมไซเบอร์และออนไลน์ หน่วย: บช.สอท. ตำรวจสอบสวนกลาง กองบัญชาการตำรวจสืบสวนสอบสวนอาชญากรรมทางเทคโนโลยี (บช.สอท.) แถลงผลการจับกุมอินฟลูเอนเซอร์สายบันเทิงเจ้าของบัญชีเฟซบุ๊ก \"เล็ก อาก้า\" เมื่อวันที่ 19 พฤศจิกายน 2569 ตามรายงานของไทยรัฐ โดยผู้บัญชาการตำรวจสืบสวนสอบสวนอาชญากรรมทางเทคโนโลยีสั่งการให้ชุดสืบสวน กองกำกับการ 2 กองบังคับการตำรวจสืบสวนสอบ…",
+   "path": "20_Cases/20261119-cyber-07.md",
+   "degree": 7
+  },
+  {
+   "id": "20_Cases/20261119-cyber-08",
+   "title": "สกมช. ต้อนรับผู้บริหารไปรษณีย์ไทย ถ่ายทอดกลไกประสานงานรับมือภัยไซเบอร์และพาเยี่ยมชมศูนย์ปฏิบัติการ NSOC",
+   "kind": "case",
+   "folder": "20_Cases",
+   "entity_group": null,
+   "date": "2026-11-18",
+   "case_id": "20261119-cyber-08",
+   "crime_type": "อาชญากรรมไซเบอร์และออนไลน์",
+   "bureau": "สกมช.",
+   "area": "ประเทศไทย",
+   "status": "เตรียมความพร้อม",
+   "tags": [],
+   "excerpt": "ประเภท: อาชญากรรมไซเบอร์และออนไลน์ หน่วย: สกมช. สำนักงานคณะกรรมการการรักษาความมั่นคงปลอดภัยไซเบอร์แห่งชาติ (สกมช.) เผยแพร่ข่าวเมื่อ 18 พฤศจิกายน 2569 ว่า ผู้ช่วยเลขาธิการคณะกรรมการการรักษาความมั่นคงปลอดภัยไซเบอร์แห่งชาติได้ต้อนรับคณะผู้บริหารและเจ้าหน้าที่จากบริษัท ไปรษณีย์ไทย จำกัด (ปณท) นำโดยผู้จัดการฝ่ายนโยบายความมั่นคงปลอดภัยดิจิทัล ซึ่งเข้าศึกษาดูงานแล…",
+   "path": "20_Cases/20261119-cyber-08.md",
+   "degree": 6
+  },
+  {
+   "id": "20_Cases/20261119-cyber-09",
+   "title": "สกมช. ให้คำปรึกษาประเมินช่องโหว่ ทดสอบเจาะระบบ และมาตรฐานความปลอดภัยเว็บไซต์แก่ สพม.ปราจีนบุรี นครนายก",
+   "kind": "case",
+   "folder": "20_Cases",
+   "entity_group": null,
+   "date": "2026-11-18",
+   "case_id": "20261119-cyber-09",
+   "crime_type": "อาชญากรรมไซเบอร์และออนไลน์",
+   "bureau": "สกมช.",
+   "area": "ประเทศไทย",
+   "status": "เตรียมความพร้อม",
+   "tags": [],
+   "excerpt": "ประเภท: อาชญากรรมไซเบอร์และออนไลน์ หน่วย: สกมช. สำนักงานคณะกรรมการการรักษาความมั่นคงปลอดภัยไซเบอร์แห่งชาติ (สกมช.) เผยแพร่ข่าวเมื่อ 18 พฤศจิกายน 2569 ว่า ผู้อำนวยการฝ่ายทดสอบเจาะระบบและประเมินความพร้อม สำนักบริหารโครงสร้างพื้นฐานสำคัญทางสารสนเทศ ได้ให้คำปรึกษาแก่สำนักงานเขตพื้นที่การศึกษามัธยมศึกษาปราจีนบุรี นครนายก ผ่านสื่ออิเล็กทรอนิกส์ เมื่อวันที่ 16 พฤศ…",
+   "path": "20_Cases/20261119-cyber-09.md",
+   "degree": 5
+  },
+  {
+   "id": "20_Cases/20261119-cyber-10",
+   "title": "NGINX ออกแพตช์ช่องโหว่ HTTP/2 อายุ 10 ปี \"nginx2root\" (CVE-2026-123007) เปิดทางรันโค้ดบนเซิร์ฟเวอร์โดยไม่ต้องล็อกอิน มีโค้ดสาธิตเผยแพร่แล้ว",
+   "kind": "case",
+   "folder": "20_Cases",
+   "entity_group": null,
+   "date": "2026-11-18",
+   "case_id": "20261119-cyber-10",
+   "crime_type": "อาชญากรรมไซเบอร์และออนไลน์",
+   "bureau": "-",
+   "area": "ทั่วโลก",
+   "status": "เตือนภัย",
+   "tags": [],
+   "excerpt": "ประเภท: อาชญากรรมไซเบอร์และออนไลน์ หน่วย: Blognone รายงานเมื่อคืนวันที่ 18 พฤศจิกายน 2569 ว่า นักวิจัยจากหลายทีม ได้แก่ Wiz, Ikotas Labs, Metnir, Rapid7 และ Xint รายงานช่องโหว่รันโค้ดระยะไกลบน NGINX ที่เปิดใช้ HTTP/2 ในช่วงเวลาใกล้เคียงกัน คือ CVE 2026 123633 ซึ่งเป็นช่องโหว่แบบ use after free และ CVE 2026 123007 ซึ่งเป็นบั๊ก integer underflow ทั้งสองเปิดทา…",
+   "path": "20_Cases/20261119-cyber-10.md",
+   "degree": 5
+  },
+  {
+   "id": "20_Cases/20261119-cyber-11",
+   "title": "CISA เพิ่ม 4 ช่องโหว่ที่ถูกใช้โจมตีจริงเข้ารายการ KEV รวม Synology DSM, LiteLLM, Apache Axis และ REDCap",
+   "kind": "case",
+   "folder": "20_Cases",
+   "entity_group": null,
+   "date": "2026-11-18",
+   "case_id": "20261119-cyber-11",
+   "crime_type": "อาชญากรรมไซเบอร์และออนไลน์",
+   "bureau": "-",
+   "area": "สหรัฐอเมริกา",
+   "status": "เตือนภัย",
+   "tags": [],
+   "excerpt": "ประเภท: อาชญากรรมไซเบอร์และออนไลน์ หน่วย: หน่วยงานความมั่นคงปลอดภัยไซเบอร์และโครงสร้างพื้นฐานของสหรัฐอเมริกา (CISA) ประกาศเมื่อวันที่ 18 พฤศจิกายน 2569 ตามเวลาสหรัฐฯ ว่าได้เพิ่มช่องโหว่ใหม่สี่รายการเข้าในรายการช่องโหว่ที่ทราบว่าถูกใช้โจมตี (Known Exploited Vulnerabilities หรือ KEV) โดยอาศัยหลักฐานว่ามีการนำช่องโหว่เหล่านี้ไปใช้โจมตีจริงแล้ว. ช่องโหว่ทั้งสี่…",
+   "path": "20_Cases/20261119-cyber-11.md",
+   "degree": 3
+  },
+  {
+   "id": "20_Cases/20261119-cyber-12",
+   "title": "ตำรวจยูเครนร่วม FBI จับ 4 ผู้ต้องสงสัยเครือข่ายแรนซัมแวร์ โยงค่าไถ่กว่า 40.5 ล้านดอลลาร์จากอย่างน้อย 28 บริษัท ใช้เสียง AI แอบอ้างฝ่ายไอที",
+   "kind": "case",
+   "folder": "20_Cases",
+   "entity_group": null,
+   "date": "2026-11-19",
+   "case_id": "20261119-cyber-12",
+   "crime_type": "อาชญากรรมไซเบอร์และออนไลน์",
+   "bureau": "-",
+   "area": "ยูเครน",
+   "status": "จับกุม",
+   "tags": [],
+   "excerpt": "ประเภท: อาชญากรรมไซเบอร์และออนไลน์ หน่วย: BleepingComputer รายงานเมื่อ 19 พฤศจิกายน 2569 ว่า เจ้าหน้าที่ยูเครนร่วมกับสำนักงานสอบสวนกลางสหรัฐฯ (FBI) จับกุมผู้ต้องสงสัย 4 คนที่ถูกกล่าวหาว่าเป็นสมาชิกองค์กรแรนซัมแวร์ระหว่างประเทศ ซึ่งเชื่อมโยงกับค่าไถ่ที่บริษัทเหยื่อจ่ายแล้วกว่า 40.5 ล้านดอลลาร์สหรัฐจากอย่างน้อย 28 บริษัททั่วโลก การจับกุมเป็นผลจากการสืบสวนนานส…",
+   "path": "20_Cases/20261119-cyber-12.md",
+   "degree": 5
+  },
+  {
+   "id": "20_Cases/20261119-cyber-13",
+   "title": "Coinbase บล็อกการโอนคริปโต 4.7 ล้านดอลลาร์ไปยังมิจฉาชีพที่ใช้ Deepfake อีลอน มัสก์ ในไลฟ์สดปลอมแจกคริปโตเพิ่มเป็นสองเท่า",
+   "kind": "case",
+   "folder": "20_Cases",
+   "entity_group": null,
+   "date": "2026-11-19",
+   "case_id": "20261119-cyber-13",
+   "crime_type": "อาชญากรรมไซเบอร์และออนไลน์",
+   "bureau": "-",
+   "area": "ทั่วโลก",
+   "status": "เตือนภัย",
+   "tags": [],
+   "excerpt": "ประเภท: อาชญากรรมไซเบอร์และออนไลน์ หน่วย: BleepingComputer รายงานเมื่อ 19 พฤศจิกายน 2569 ว่า Coinbase ตลาดซื้อขายคริปโตรายใหญ่ เปิดเผยว่าระบบของบริษัทบล็อกการโอนคริปโตมูลค่ารวมราว 4.7 ล้านดอลลาร์สหรัฐที่ลูกค้าพยายามส่งไปยังมิจฉาชีพ ซึ่งจัดไลฟ์สดปลอมบน YouTube ระหว่างงานสาธิต \"รถบินได้\" ของ Tesla โดยใช้วิดีโออีลอน มัสก์ ที่สร้างด้วยปัญญาประดิษฐ์ หรือ Deepfak…",
+   "path": "20_Cases/20261119-cyber-13.md",
+   "degree": 3
+  },
+  {
+   "id": "20_Cases/20261119-cyber-14",
+   "title": "Bitdefender พบกลุ่ม APT ผู้ใช้มัลแวร์ EggStreme ปรับเครื่องมือใหม่ให้เงียบขึ้น ยังโจมตีหน่วยงานรัฐฟิลิปปินส์ต่อเนื่อง",
+   "kind": "case",
+   "folder": "20_Cases",
+   "entity_group": null,
+   "date": "2026-11-18",
+   "case_id": "20261119-cyber-14",
+   "crime_type": "อาชญากรรมไซเบอร์และออนไลน์",
+   "bureau": "-",
+   "area": "ฟิลิปปินส์",
+   "status": "เตือนภัย",
+   "tags": [],
+   "excerpt": "ประเภท: อาชญากรรมไซเบอร์และออนไลน์ หน่วย: The Hacker News รายงานเมื่อ 18 พฤศจิกายน 2569 โดยอ้างรายงานทางเทคนิคของบริษัทความปลอดภัย Bitdefender ว่า กลุ่มภัยคุกคามขั้นสูง (APT) ที่ถูกสงสัยว่าเชื่อมโยงกับจีน ซึ่งอยู่เบื้องหลังมัลแวร์ EggStreme ได้สร้างชุดเครื่องมือใหม่ หลังถูกเปิดโปงครั้งแรกเมื่อเดือนกันยายน 2568 และยังคงมุ่งเป้าหน่วยงานรัฐบาลในฟิลิปปินส์ ประเ…",
+   "path": "20_Cases/20261119-cyber-14.md",
+   "degree": 4
+  },
+  {
+   "id": "20_Cases/20261119-cyber-15",
+   "title": "แพ็กเกจ agent-framework ของ Microsoft บน PyPI ถูกฝังโค้ดขโมยข้อมูลรับรองคลาวด์ในรุ่น 1.26.1 และ 1.26.2 ทำงานทุกครั้งที่เปิด Python",
+   "kind": "case",
+   "folder": "20_Cases",
+   "entity_group": null,
+   "date": "2026-11-18",
+   "case_id": "20261119-cyber-15",
+   "crime_type": "อาชญากรรมไซเบอร์และออนไลน์",
+   "bureau": "-",
+   "area": "ทั่วโลก",
+   "status": "เตือนภัย",
+   "tags": [],
+   "excerpt": "ประเภท: อาชญากรรมไซเบอร์และออนไลน์ หน่วย: The Hacker News รายงานเมื่อ 18 พฤศจิกายน 2569 โดยอ้างรายงานจากบริษัทความปลอดภัยหลายราย เช่น Aikido, Chainguard, Endor Labs, OX Security, SafeDep, Socket, StepSecurity และ Wiz ว่า ผู้โจมตีสามารถเผยแพร่แพ็กเกจ agent framework ของ Microsoft บนคลังแพ็กเกจ Python (PyPI) รุ่นที่ฝังโปรแกรมขโมยข้อมูลรับรอง แพ็กเกจนี้เป็นแพ็…",
+   "path": "20_Cases/20261119-cyber-15.md",
+   "degree": 5
+  },
+  {
    "id": "20_Cases/20261119-drug-01",
    "title": "สภ.เทพารักษ์จับผู้ต้องหา 5 คนในนครราชสีมา ถูกกล่าวหาใช้ร้านพระเครื่องบังหน้าขายยาบ้า ยึดยาบ้า 124 เม็ดและปืนไทยประดิษฐ์",
    "kind": "case",
@@ -19311,6 +19498,23 @@
    "degree": 2
   },
   {
+   "id": "30_Entities/People/เล็ก อาก้า",
+   "title": "เล็ก อาก้า",
+   "kind": "entity",
+   "folder": "30_Entities/People",
+   "entity_group": "บุคคล",
+   "date": null,
+   "case_id": null,
+   "crime_type": null,
+   "bureau": null,
+   "area": null,
+   "status": null,
+   "tags": [],
+   "excerpt": "20261119 cyber 07 — ตร.ไซเบอร์ บก.สอท.3 ค้นบ้านที่ยโสธร จับอินฟลูเอนเซอร์ \"เล็ก อาก้า\" ผู้ติดตาม 4.3 แสนคน ถูกกล่าวหาโพสต์สตอรี่แปะลิงก์โปรโมตเว็บพนันออนไลน์ราว 2 ปี",
+   "path": "30_Entities/People/เล็ก อาก้า.md",
+   "degree": 1
+  },
+  {
    "id": "30_Entities/People/เอกอัครราชทูตจีนประจำไทย",
    "title": "เอกอัครราชทูตจีนประจำไทย",
    "kind": "entity",
@@ -22997,7 +23201,7 @@
    "tags": [],
    "excerpt": "20261118 cyber 08 — ThaiCERT เตือนการโจมตีห่วงโซ่อุปทานผ่าน Optimizely แทรกสคริปต์อันตรายในเว็บไซต์ 178 องค์กร เสี่ยงถูกขโมยข้อมูลบัตรและสับเปลี่ยนกระเป๋าคริปโต 20261118 cyber 09 — CISA เร่งองค์กรแพตช์ช่องโหว่ Java4Shell (CVE 2026 114938) ใน Java เสี่ยงถูกสั่งรันโค้ดจากระยะไกลโดยไม่ต้องยืนยันตัวตน 20261118 cyber 12 — N able ออก Hotfix 3 แก้ 17 ช่องโหว่ใน N…",
    "path": "30_Entities/Places/ทั่วโลก.md",
-   "degree": 6
+   "degree": 10
   },
   {
    "id": "30_Entities/Places/ทางหลวงหมายเลข 103",
@@ -23507,6 +23711,23 @@
    "tags": [],
    "excerpt": "20261026 cyber line 01 บช.ก. บก.ป. จับหญิงวัย 32 ปี ตามหมายจับศาลเชียงใหม่ ปมบัญชีม้าแก๊งหลอกลงทุนออนไล",
    "path": "30_Entities/Places/ธัญบุรี.md",
+   "degree": 1
+  },
+  {
+   "id": "30_Entities/Places/นครนายก",
+   "title": "นครนายก",
+   "kind": "entity",
+   "folder": "30_Entities/Places",
+   "entity_group": "สถานที่",
+   "date": null,
+   "case_id": null,
+   "crime_type": null,
+   "bureau": null,
+   "area": null,
+   "status": null,
+   "tags": [],
+   "excerpt": "20261119 cyber 09 — สกมช. ให้คำปรึกษาประเมินช่องโหว่ ทดสอบเจาะระบบ และมาตรฐานความปลอดภัยเว็บไซต์แก่ สพม.ปราจีนบุรี นครนายก",
+   "path": "30_Entities/Places/นครนายก.md",
    "degree": 1
   },
   {
@@ -24119,7 +24340,24 @@
    "tags": [],
    "excerpt": "20261118 cyber 13 — สกมช. ประชุมหน่วยงานความมั่นคงและผู้ให้บริการโทรคมนาคม ทบทวนแผนความต่อเนื่องและเส้นทางสื่อสารสำรองรับมือเหตุขัดข้อง 20261118 cyber 14 — หอการค้าไทยห่วงภัยไซเบอร์กระทบธุรกิจ เสนอรัฐร่วมเอกชนเฝ้าระวัง แจ้งเตือนเร็ว และช่วย SMEs เข้าถึงเครื่องมือป้องกัน 20261115 cyber 05 — ดีอีและ สกมช. ชี้แจงหลังหารือ Apple การได้รับแจ้งเตือนภัยคุกคามไม่ได…",
    "path": "30_Entities/Places/ประเทศไทย.md",
-   "degree": 3
+   "degree": 5
+  },
+  {
+   "id": "30_Entities/Places/ปราจีนบุรี",
+   "title": "ปราจีนบุรี",
+   "kind": "entity",
+   "folder": "30_Entities/Places",
+   "entity_group": "สถานที่",
+   "date": null,
+   "case_id": null,
+   "crime_type": null,
+   "bureau": null,
+   "area": null,
+   "status": null,
+   "tags": [],
+   "excerpt": "20261119 cyber 09 — สกมช. ให้คำปรึกษาประเมินช่องโหว่ ทดสอบเจาะระบบ และมาตรฐานความปลอดภัยเว็บไซต์แก่ สพม.ปราจีนบุรี นครนายก",
+   "path": "30_Entities/Places/ปราจีนบุรี.md",
+   "degree": 1
   },
   {
    "id": "30_Entities/Places/ปั๊มน้ำมัน ถนนกาญจนาภิเษก เขตบางบอน",
@@ -24428,6 +24666,23 @@
    "degree": 2
   },
   {
+   "id": "30_Entities/Places/ฟิลิปปินส์",
+   "title": "ฟิลิปปินส์",
+   "kind": "entity",
+   "folder": "30_Entities/Places",
+   "entity_group": "สถานที่",
+   "date": null,
+   "case_id": null,
+   "crime_type": null,
+   "bureau": null,
+   "area": null,
+   "status": null,
+   "tags": [],
+   "excerpt": "20261119 cyber 14 — Bitdefender พบกลุ่ม APT ผู้ใช้มัลแวร์ EggStreme ปรับเครื่องมือใหม่ให้เงียบขึ้น ยังโจมตีหน่วยงานรัฐฟิลิปปินส์ต่อเนื่อง",
+   "path": "30_Entities/Places/ฟิลิปปินส์.md",
+   "degree": 1
+  },
+  {
    "id": "30_Entities/Places/ภาค 4 ส่วนหน้า",
    "title": "ภาค 4 ส่วนหน้า",
    "kind": "entity",
@@ -24561,6 +24816,40 @@
    "tags": [],
    "excerpt": "20261117 cyber 05 — แคมเปญ Trigram แอบอ้างแบรนด์ AI และบล็อกเชนราว 50 ราย หลอกนักพัฒนาให้รันมัลแวร์ขโมยข้อมูล",
    "path": "30_Entities/Places/ยุโรป.md",
+   "degree": 1
+  },
+  {
+   "id": "30_Entities/Places/ยูเครน",
+   "title": "ยูเครน",
+   "kind": "entity",
+   "folder": "30_Entities/Places",
+   "entity_group": "สถานที่",
+   "date": null,
+   "case_id": null,
+   "crime_type": null,
+   "bureau": null,
+   "area": null,
+   "status": null,
+   "tags": [],
+   "excerpt": "20261119 cyber 12 — ตำรวจยูเครนร่วม FBI จับ 4 ผู้ต้องสงสัยเครือข่ายแรนซัมแวร์ โยงค่าไถ่กว่า 40.5 ล้านดอลลาร์จากอย่างน้อย 28 บริษัท ใช้เสียง AI แอบอ้างฝ่ายไอที",
+   "path": "30_Entities/Places/ยูเครน.md",
+   "degree": 1
+  },
+  {
+   "id": "30_Entities/Places/ยโสธร",
+   "title": "ยโสธร",
+   "kind": "entity",
+   "folder": "30_Entities/Places",
+   "entity_group": "สถานที่",
+   "date": null,
+   "case_id": null,
+   "crime_type": null,
+   "bureau": null,
+   "area": null,
+   "status": null,
+   "tags": [],
+   "excerpt": "20261119 cyber 07 — ตร.ไซเบอร์ บก.สอท.3 ค้นบ้านที่ยโสธร จับอินฟลูเอนเซอร์ \"เล็ก อาก้า\" ผู้ติดตาม 4.3 แสนคน ถูกกล่าวหาโพสต์สตอรี่แปะลิงก์โปรโมตเว็บพนันออนไลน์ราว 2 ปี",
+   "path": "30_Entities/Places/ยโสธร.md",
    "degree": 1
   },
   {
@@ -25819,7 +26108,7 @@
    "tags": [],
    "excerpt": "20261118 cyber 15 — สหรัฐฯ รับตัวผู้ต้องหาชาวคาซัคสถานจากอิตาลี คดีแรนซัมแวร์ INC และ Lynx โจมตีโรงพยาบาลและโรงเรียน เรียกค่าไถ่รวมกว่า 500 ล้านดอลลาร์ 20261118 cyber 16 — ศาลสหรัฐฯ จำคุก 6 ปี แกนนำ Scattered Spider ชาวอังกฤษ คดีส่ง SMS ฟิชชิงและสลับซิมขโมยคริปโตกว่า 11.6 ล้านดอลลาร์ 20261117 cyber 05 — แคมเปญ Trigram แอบอ้างแบรนด์ AI และบล็อกเชนราว 50 ราย…",
    "path": "30_Entities/Places/สหรัฐอเมริกา.md",
-   "degree": 3
+   "degree": 5
   },
   {
    "id": "30_Entities/Places/สะพานข้ามแยกตากสิน",
@@ -29239,6 +29528,23 @@
    "degree": 1
   },
   {
+   "id": "30_Entities/Projects/NSOC",
+   "title": "NSOC",
+   "kind": "entity",
+   "folder": "30_Entities/Projects",
+   "entity_group": "หน่วย",
+   "date": null,
+   "case_id": null,
+   "crime_type": null,
+   "bureau": null,
+   "area": null,
+   "status": null,
+   "tags": [],
+   "excerpt": "20261119 cyber 08 — สกมช. ต้อนรับผู้บริหารไปรษณีย์ไทย ถ่ายทอดกลไกประสานงานรับมือภัยไซเบอร์และพาเยี่ยมชมศูนย์ปฏิบัติการ NSOC",
+   "path": "30_Entities/Projects/NSOC.md",
+   "degree": 1
+  },
+  {
    "id": "30_Entities/Projects/บัญชีนิติบุคคลรับโอนเงินเว็บ Siam855",
    "title": "บัญชีนิติบุคคลรับโอนเงินเว็บ Siam855",
    "kind": "entity",
@@ -29647,6 +29953,23 @@
    "degree": 1
   },
   {
+   "id": "30_Entities/Units/Apache Software Foundation",
+   "title": "Apache Software Foundation",
+   "kind": "entity",
+   "folder": "30_Entities/Units",
+   "entity_group": "หน่วย",
+   "date": null,
+   "case_id": null,
+   "crime_type": null,
+   "bureau": null,
+   "area": null,
+   "status": null,
+   "tags": [],
+   "excerpt": "20261119 cyber 06 — ThaiCERT เตือนช่องโหว่ Critical ใน Apache Roller (CVE 2026 129448) ถูกใช้โจมตีจริง ผู้โจมตีรันคำสั่งระยะไกลได้โดยไม่ต้องยืนยันตัวตน",
+   "path": "30_Entities/Units/Apache Software Foundation.md",
+   "degree": 1
+  },
+  {
    "id": "30_Entities/Units/BIMSTEC",
    "title": "BIMSTEC",
    "kind": "entity",
@@ -29664,6 +29987,23 @@
    "degree": 1
   },
   {
+   "id": "30_Entities/Units/Bitdefender",
+   "title": "Bitdefender",
+   "kind": "entity",
+   "folder": "30_Entities/Units",
+   "entity_group": "หน่วย",
+   "date": null,
+   "case_id": null,
+   "crime_type": null,
+   "bureau": null,
+   "area": null,
+   "status": null,
+   "tags": [],
+   "excerpt": "20261119 cyber 14 — Bitdefender พบกลุ่ม APT ผู้ใช้มัลแวร์ EggStreme ปรับเครื่องมือใหม่ให้เงียบขึ้น ยังโจมตีหน่วยงานรัฐฟิลิปปินส์ต่อเนื่อง",
+   "path": "30_Entities/Units/Bitdefender.md",
+   "degree": 1
+  },
+  {
    "id": "30_Entities/Units/CISA",
    "title": "CISA",
    "kind": "entity",
@@ -29676,9 +30016,9 @@
    "area": null,
    "status": null,
    "tags": [],
-   "excerpt": "20261118 cyber 09 — CISA เร่งองค์กรแพตช์ช่องโหว่ Java4Shell (CVE 2026 114938) ใน Java เสี่ยงถูกสั่งรันโค้ดจากระยะไกลโดยไม่ต้องยืนยันตัวตน",
+   "excerpt": "20261118 cyber 09 — CISA เร่งองค์กรแพตช์ช่องโหว่ Java4Shell (CVE 2026 114938) ใน Java เสี่ยงถูกสั่งรันโค้ดจากระยะไกลโดยไม่ต้องยืนยันตัวตน 20261119 cyber 11 — CISA เพิ่ม 4 ช่องโหว่ที่ถูกใช้โจมตีจริงเข้ารายการ KEV รวม Synology DSM, LiteLLM, Apache Axis และ REDCap",
    "path": "30_Entities/Units/CISA.md",
-   "degree": 1
+   "degree": 2
   },
   {
    "id": "30_Entities/Units/Cisco Talos",
@@ -29712,6 +30052,23 @@
    "tags": [],
    "excerpt": "20261116 cyber 08 — Amazon พบเอเจนต์ AI ของผู้โจมตีไล่ล่าคีย์ผู้ให้บริการ AI จากแอปที่เปิดสู่อินเทอร์เน็ต เช่น LiteLLM และ Dify",
    "path": "30_Entities/Units/Cloudflare.md",
+   "degree": 1
+  },
+  {
+   "id": "30_Entities/Units/Coinbase",
+   "title": "Coinbase",
+   "kind": "entity",
+   "folder": "30_Entities/Units",
+   "entity_group": "หน่วย",
+   "date": null,
+   "case_id": null,
+   "crime_type": null,
+   "bureau": null,
+   "area": null,
+   "status": null,
+   "tags": [],
+   "excerpt": "20261119 cyber 13 — Coinbase บล็อกการโอนคริปโต 4.7 ล้านดอลลาร์ไปยังมิจฉาชีพที่ใช้ Deepfake อีลอน มัสก์ ในไลฟ์สดปลอมแจกคริปโตเพิ่มเป็นสองเท่า",
+   "path": "30_Entities/Units/Coinbase.md",
    "degree": 1
   },
   {
@@ -29749,6 +30106,23 @@
    "degree": 1
   },
   {
+   "id": "30_Entities/Units/F5",
+   "title": "F5",
+   "kind": "entity",
+   "folder": "30_Entities/Units",
+   "entity_group": "หน่วย",
+   "date": null,
+   "case_id": null,
+   "crime_type": null,
+   "bureau": null,
+   "area": null,
+   "status": null,
+   "tags": [],
+   "excerpt": "20261119 cyber 10 — NGINX ออกแพตช์ช่องโหว่ HTTP/2 อายุ 10 ปี \"nginx2root\" (CVE 2026 123007) เปิดทางรันโค้ดบนเซิร์ฟเวอร์โดยไม่ต้องล็อกอิน มีโค้ดสาธิตเผยแพร่แล้ว",
+   "path": "30_Entities/Units/F5.md",
+   "degree": 1
+  },
+  {
    "id": "30_Entities/Units/FBI",
    "title": "FBI",
    "kind": "entity",
@@ -29761,9 +30135,9 @@
    "area": null,
    "status": null,
    "tags": [],
-   "excerpt": "20261118 cyber 10 — ThaiCERT สรุปคำเตือน FBI เรื่องเฟรมเวิร์ก AI \"ARTEX\" ช่วยผู้โจมตีเจาะระบบถึงสิทธิ์ขั้นสูงภายในไม่ถึง 3 ชั่วโมง 20261118 cyber 15 — สหรัฐฯ รับตัวผู้ต้องหาชาวคาซัคสถานจากอิตาลี คดีแรนซัมแวร์ INC และ Lynx โจมตีโรงพยาบาลและโรงเรียน เรียกค่าไถ่รวมกว่า 500 ล้านดอลลาร์",
+   "excerpt": "20261118 cyber 10 — ThaiCERT สรุปคำเตือน FBI เรื่องเฟรมเวิร์ก AI \"ARTEX\" ช่วยผู้โจมตีเจาะระบบถึงสิทธิ์ขั้นสูงภายในไม่ถึง 3 ชั่วโมง 20261118 cyber 15 — สหรัฐฯ รับตัวผู้ต้องหาชาวคาซัคสถานจากอิตาลี คดีแรนซัมแวร์ INC และ Lynx โจมตีโรงพยาบาลและโรงเรียน เรียกค่าไถ่รวมกว่า 500 ล้านดอลลาร์ 20261119 cyber 12 — ตำรวจยูเครนร่วม FBI จับ 4 ผู้ต้องสงสัยเครือข่ายแรนซัมแวร…",
    "path": "30_Entities/Units/FBI.md",
-   "degree": 2
+   "degree": 3
   },
   {
    "id": "30_Entities/Units/Federal Bureau of Investigation สหรัฐอเมริกา",
@@ -29868,6 +30242,57 @@
    "degree": 1
   },
   {
+   "id": "30_Entities/Units/Palo Alto Networks",
+   "title": "Palo Alto Networks",
+   "kind": "entity",
+   "folder": "30_Entities/Units",
+   "entity_group": "หน่วย",
+   "date": null,
+   "case_id": null,
+   "crime_type": null,
+   "bureau": null,
+   "area": null,
+   "status": null,
+   "tags": [],
+   "excerpt": "20261119 cyber 14 — Bitdefender พบกลุ่ม APT ผู้ใช้มัลแวร์ EggStreme ปรับเครื่องมือใหม่ให้เงียบขึ้น ยังโจมตีหน่วยงานรัฐฟิลิปปินส์ต่อเนื่อง",
+   "path": "30_Entities/Units/Palo Alto Networks.md",
+   "degree": 1
+  },
+  {
+   "id": "30_Entities/Units/PyPI",
+   "title": "PyPI",
+   "kind": "entity",
+   "folder": "30_Entities/Units",
+   "entity_group": "หน่วย",
+   "date": null,
+   "case_id": null,
+   "crime_type": null,
+   "bureau": null,
+   "area": null,
+   "status": null,
+   "tags": [],
+   "excerpt": "20261119 cyber 15 — แพ็กเกจ agent framework ของ Microsoft บน PyPI ถูกฝังโค้ดขโมยข้อมูลรับรองคลาวด์ในรุ่น 1.26.1 และ 1.26.2 ทำงานทุกครั้งที่เปิด Python",
+   "path": "30_Entities/Units/PyPI.md",
+   "degree": 1
+  },
+  {
+   "id": "30_Entities/Units/Rapid7",
+   "title": "Rapid7",
+   "kind": "entity",
+   "folder": "30_Entities/Units",
+   "entity_group": "หน่วย",
+   "date": null,
+   "case_id": null,
+   "crime_type": null,
+   "bureau": null,
+   "area": null,
+   "status": null,
+   "tags": [],
+   "excerpt": "20261119 cyber 10 — NGINX ออกแพตช์ช่องโหว่ HTTP/2 อายุ 10 ปี \"nginx2root\" (CVE 2026 123007) เปิดทางรันโค้ดบนเซิร์ฟเวอร์โดยไม่ต้องล็อกอิน มีโค้ดสาธิตเผยแพร่แล้ว",
+   "path": "30_Entities/Units/Rapid7.md",
+   "degree": 1
+  },
+  {
    "id": "30_Entities/Units/Report URI",
    "title": "Report URI",
    "kind": "entity",
@@ -29882,6 +30307,40 @@
    "tags": [],
    "excerpt": "20261118 cyber 08 — ThaiCERT เตือนการโจมตีห่วงโซ่อุปทานผ่าน Optimizely แทรกสคริปต์อันตรายในเว็บไซต์ 178 องค์กร เสี่ยงถูกขโมยข้อมูลบัตรและสับเปลี่ยนกระเป๋าคริปโต",
    "path": "30_Entities/Units/Report URI.md",
+   "degree": 1
+  },
+  {
+   "id": "30_Entities/Units/SafeDep",
+   "title": "SafeDep",
+   "kind": "entity",
+   "folder": "30_Entities/Units",
+   "entity_group": "หน่วย",
+   "date": null,
+   "case_id": null,
+   "crime_type": null,
+   "bureau": null,
+   "area": null,
+   "status": null,
+   "tags": [],
+   "excerpt": "20261119 cyber 15 — แพ็กเกจ agent framework ของ Microsoft บน PyPI ถูกฝังโค้ดขโมยข้อมูลรับรองคลาวด์ในรุ่น 1.26.1 และ 1.26.2 ทำงานทุกครั้งที่เปิด Python",
+   "path": "30_Entities/Units/SafeDep.md",
+   "degree": 1
+  },
+  {
+   "id": "30_Entities/Units/Socket",
+   "title": "Socket",
+   "kind": "entity",
+   "folder": "30_Entities/Units",
+   "entity_group": "หน่วย",
+   "date": null,
+   "case_id": null,
+   "crime_type": null,
+   "bureau": null,
+   "area": null,
+   "status": null,
+   "tags": [],
+   "excerpt": "20261119 cyber 15 — แพ็กเกจ agent framework ของ Microsoft บน PyPI ถูกฝังโค้ดขโมยข้อมูลรับรองคลาวด์ในรุ่น 1.26.1 และ 1.26.2 ทำงานทุกครั้งที่เปิด Python",
+   "path": "30_Entities/Units/Socket.md",
    "degree": 1
   },
   {
@@ -29916,7 +30375,7 @@
    "tags": [],
    "excerpt": "20261024 cyber 01 แจ้งเตือน ช่องโหว่ระดับ Critical ใน GitLab เสี่ยงถูกสั่งรันคำสั่งโดยไม่ต้องยืนยันตัวตน 20261024 cyber 02 แจ้งเตือน พบการโจมตีช่องโหว่ Plex2Shell ใน Plex Media Server เสี่ยงถูกควบคุมระบบและติดตั้ง Crypto Miner 20261029 cyber 03 ThaiCERT เตือนช่องโหว่ CVE 2026 80097 ใน Microsoft Authenticator บน Android เสี่ยงแอปอันตรายแอบอ้างขอ Token บัญชีอ…",
    "path": "30_Entities/Units/ThaiCERT.md",
-   "degree": 37
+   "degree": 39
   },
   {
    "id": "30_Entities/Units/TICAC",
@@ -29984,6 +30443,23 @@
    "tags": [],
    "excerpt": "20261116 cyber 06 — Unit 42 เปิดปฏิบัติการจารกรรมไซเบอร์ TGR STA 0049 มุ่งเป้าหน่วยงานรัฐในเอเชียตะวันออกเฉียงใต้ด้วยมัลแวร์ชุดใหม่",
    "path": "30_Entities/Units/Unit 42.md",
+   "degree": 1
+  },
+  {
+   "id": "30_Entities/Units/Wiz",
+   "title": "Wiz",
+   "kind": "entity",
+   "folder": "30_Entities/Units",
+   "entity_group": "หน่วย",
+   "date": null,
+   "case_id": null,
+   "crime_type": null,
+   "bureau": null,
+   "area": null,
+   "status": null,
+   "tags": [],
+   "excerpt": "20261119 cyber 10 — NGINX ออกแพตช์ช่องโหว่ HTTP/2 อายุ 10 ปี \"nginx2root\" (CVE 2026 123007) เปิดทางรันโค้ดบนเซิร์ฟเวอร์โดยไม่ต้องล็อกอิน มีโค้ดสาธิตเผยแพร่แล้ว",
+   "path": "30_Entities/Units/Wiz.md",
    "degree": 1
   },
   {
@@ -33421,6 +33897,23 @@
    "degree": 1
   },
   {
+   "id": "30_Entities/Units/ตลาดหลักทรัพย์แห่งประเทศไทย",
+   "title": "ตลาดหลักทรัพย์แห่งประเทศไทย",
+   "kind": "entity",
+   "folder": "30_Entities/Units",
+   "entity_group": "หน่วย",
+   "date": null,
+   "case_id": null,
+   "crime_type": null,
+   "bureau": null,
+   "area": null,
+   "status": null,
+   "tags": [],
+   "excerpt": "20261119 cyber 05 — SPRC แจ้งตลาดหลักทรัพย์ฯ ถูกโจมตีทางไซเบอร์จนข้อมูลบริษัทถูกเข้าถึงโดยไม่ได้รับอนุญาต อยู่ระหว่างตรวจสอบขอบเขต ยังประเมินความเสียหายไม่ได้",
+   "path": "30_Entities/Units/ตลาดหลักทรัพย์แห่งประเทศไทย.md",
+   "degree": 1
+  },
+  {
    "id": "30_Entities/Units/ตำรวจ ภ.จว.สุโขทัย",
    "title": "ตำรวจ ภ.จว.สุโขทัย",
    "kind": "entity",
@@ -34200,6 +34693,23 @@
    "tags": [],
    "excerpt": "20261029 drug 04 ตำรวจเชียงใหม่ตรวจค้นบ้านเช่า ต.ท่าวังตาล สารภี จับชาวจีน 4 คน พบไอซ์ 26.7 กรัม ยาบ้า 8 เม็ด ผลตรวจปัสสาวะบวกทุกราย แจ้งข้อหาครอบครองและเสพยาเสพติดประเภท 1",
    "path": "30_Entities/Units/ตำรวจเชียงใหม่.md",
+   "degree": 1
+  },
+  {
+   "id": "30_Entities/Units/ตำรวจแห่งชาติยูเครน",
+   "title": "ตำรวจแห่งชาติยูเครน",
+   "kind": "entity",
+   "folder": "30_Entities/Units",
+   "entity_group": "หน่วย",
+   "date": null,
+   "case_id": null,
+   "crime_type": null,
+   "bureau": null,
+   "area": null,
+   "status": null,
+   "tags": [],
+   "excerpt": "20261119 cyber 12 — ตำรวจยูเครนร่วม FBI จับ 4 ผู้ต้องสงสัยเครือข่ายแรนซัมแวร์ โยงค่าไถ่กว่า 40.5 ล้านดอลลาร์จากอย่างน้อย 28 บริษัท ใช้เสียง AI แอบอ้างฝ่ายไอที",
+   "path": "30_Entities/Units/ตำรวจแห่งชาติยูเครน.md",
    "degree": 1
   },
   {
@@ -35169,7 +35679,7 @@
    "tags": [],
    "excerpt": "โน้ตสำหรับค้นหาใน Obsidian ไม่ใส่รายชื่อคดีทั้งก้อน — ใช้ Bases หรือ backlink 20261108 gamble 01 — บก.สอท.3 ค้นหอพักในเมืองขอนแก่น จับอินฟลูเอนเซอร์หญิงอายุ 23 ปีที่ถูกกล่าวหาว่ารับจ้างแปะลิงก์เว็บพนันออนไลน์ในสตอรี่ และใช้โฆษณาไลฟ์ 18+ ลวงให้โอนค่าสมัครกลุ่ม VIP 20261109 cyber line 01 บช.สอท. แถลงทลายแก๊งหลอกลงทุนออนไลน์ 4.9 ล้านบาท ออกหมายจับ 12 ราย จับได…",
    "path": "30_Entities/Units/บก.สอท.3.md",
-   "degree": 4
+   "degree": 5
   },
   {
    "id": "30_Entities/Units/บก.สอท.4",
@@ -35373,7 +35883,7 @@
    "tags": [],
    "excerpt": "20261024 cyber 03 Cyber Police Arrest Scam Gang Targeting Retired Nurse, Posing as Comptroller Generals Department Officials, Defrauding Over 1.8 Million Baht 20261024 property 02 ตำรวจไซเบอร์ทลายแหล่งผลิตอาวุธปืนเถื่อนขายออนไลน์ ฉะเชิงเทรา จับผู้ต้องหา 1 ราย 20261025 cyber 02 บช.สอท. จับบัญชีม้าเครือข่ายกลุ่มลับแพร่คลิปลามก ชักชวนพนันออนไลน์ ตามหมายจับ ยัง…",
    "path": "30_Entities/Units/บช.สอท..md",
-   "degree": 51
+   "degree": 52
   },
   {
    "id": "30_Entities/Units/บมจ.ท่าอากาศยานไทย",
@@ -37297,6 +37807,23 @@
    "degree": 1
   },
   {
+   "id": "30_Entities/Units/ศาลจังหวัดยโสธร",
+   "title": "ศาลจังหวัดยโสธร",
+   "kind": "entity",
+   "folder": "30_Entities/Units",
+   "entity_group": "หน่วย",
+   "date": null,
+   "case_id": null,
+   "crime_type": null,
+   "bureau": null,
+   "area": null,
+   "status": null,
+   "tags": [],
+   "excerpt": "20261119 cyber 07 — ตร.ไซเบอร์ บก.สอท.3 ค้นบ้านที่ยโสธร จับอินฟลูเอนเซอร์ \"เล็ก อาก้า\" ผู้ติดตาม 4.3 แสนคน ถูกกล่าวหาโพสต์สตอรี่แปะลิงก์โปรโมตเว็บพนันออนไลน์ราว 2 ปี",
+   "path": "30_Entities/Units/ศาลจังหวัดยโสธร.md",
+   "degree": 1
+  },
+  {
    "id": "30_Entities/Units/ศาลจังหวัดระนอง",
    "title": "ศาลจังหวัดระนอง",
    "kind": "entity",
@@ -38416,7 +38943,7 @@
    "tags": [],
    "excerpt": "20261111 cyber 04 — รัฐบาลยกระดับมาตรการป้องกันภัยไซเบอร์หลังเหตุโจมตีหลายประเทศ คมนาคมสั่งหน่วยการบินเข้มงวดหลังการบินไทยแจ้งข้อมูลสำรองที่นั่งราว 60,529 รายการถูกเข้าถึงผ่านระบบผู้ให้บริการ ธปท. เรียกประชุม CIO สถาบันการเงิน 20261118 cyber 13 — สกมช. ประชุมหน่วยงานความมั่นคงและผู้ให้บริการโทรคมนาคม ทบทวนแผนความต่อเนื่องและเส้นทางสื่อสารสำรองรับมือเหตุขัดข…",
    "path": "30_Entities/Units/สกมช..md",
-   "degree": 6
+   "degree": 8
   },
   {
    "id": "30_Entities/Units/สตม.6",
@@ -39674,6 +40201,23 @@
    "tags": [],
    "excerpt": "20261024 consumer 02 กมธ.คุ้มครองผู้บริโภค จี้ สพฐ. ร่วมเยียวยา ผู้ปกครอง นักเรียนทัศนศึกษาจีนทิพย์",
    "path": "30_Entities/Units/สพฐ..md",
+   "degree": 1
+  },
+  {
+   "id": "30_Entities/Units/สพม.ปราจีนบุรี นครนายก",
+   "title": "สพม.ปราจีนบุรี นครนายก",
+   "kind": "entity",
+   "folder": "30_Entities/Units",
+   "entity_group": "หน่วย",
+   "date": null,
+   "case_id": null,
+   "crime_type": null,
+   "bureau": null,
+   "area": null,
+   "status": null,
+   "tags": [],
+   "excerpt": "20261119 cyber 09 — สกมช. ให้คำปรึกษาประเมินช่องโหว่ ทดสอบเจาะระบบ และมาตรฐานความปลอดภัยเว็บไซต์แก่ สพม.ปราจีนบุรี นครนายก",
+   "path": "30_Entities/Units/สพม.ปราจีนบุรี นครนายก.md",
    "degree": 1
   },
   {
@@ -41972,6 +42516,23 @@
    "degree": 3
   },
   {
+   "id": "30_Entities/Units/สภ.เลิงนกทา",
+   "title": "สภ.เลิงนกทา",
+   "kind": "entity",
+   "folder": "30_Entities/Units",
+   "entity_group": "หน่วย",
+   "date": null,
+   "case_id": null,
+   "crime_type": null,
+   "bureau": null,
+   "area": null,
+   "status": null,
+   "tags": [],
+   "excerpt": "20261119 cyber 07 — ตร.ไซเบอร์ บก.สอท.3 ค้นบ้านที่ยโสธร จับอินฟลูเอนเซอร์ \"เล็ก อาก้า\" ผู้ติดตาม 4.3 แสนคน ถูกกล่าวหาโพสต์สตอรี่แปะลิงก์โปรโมตเว็บพนันออนไลน์ราว 2 ปี",
+   "path": "30_Entities/Units/สภ.เลิงนกทา.md",
+   "degree": 1
+  },
+  {
    "id": "30_Entities/Units/สภ.เสม็ด",
    "title": "สภ.เสม็ด",
    "kind": "entity",
@@ -43179,6 +43740,23 @@
    "degree": 1
   },
   {
+   "id": "30_Entities/Units/ไปรษณีย์ไทย",
+   "title": "ไปรษณีย์ไทย",
+   "kind": "entity",
+   "folder": "30_Entities/Units",
+   "entity_group": "หน่วย",
+   "date": null,
+   "case_id": null,
+   "crime_type": null,
+   "bureau": null,
+   "area": null,
+   "status": null,
+   "tags": [],
+   "excerpt": "20261119 cyber 08 — สกมช. ต้อนรับผู้บริหารไปรษณีย์ไทย ถ่ายทอดกลไกประสานงานรับมือภัยไซเบอร์และพาเยี่ยมชมศูนย์ปฏิบัติการ NSOC",
+   "path": "30_Entities/Units/ไปรษณีย์ไทย.md",
+   "degree": 1
+  },
+  {
    "id": "40_CrimeTypes/การปฏิบัติหน้าที่ ประชาสัมพันธ์ และนโยบายตำรวจ",
    "title": "การปฏิบัติหน้าที่ ประชาสัมพันธ์ และนโยบายตำรวจ",
    "kind": "crime_type",
@@ -43448,7 +44026,7 @@
    "tags": [],
    "excerpt": "หน้ารวมประเภทคดี ใช้เป็นคุณสมบัติของคดี ไม่ฝังรายการ คดี ทั้งคลัง กรองใน Bases จาก crime type แทน 20261027 cyber 01 ตำรวจสันติบาลแจ้งความเจ้าของเพจ Godd Dam ปมภาพสลิปโอนเงิน 7 ล้านบาทที่ถูกระบุว่าเป็นข้อมูลเท็จ ผบช.สอท. ยืนยันยังไม่มีการจับกุม ตำรวจไซเบอร์ขอข้อมูลคดีจาก สน.บางเขน 20261026 cyber line 01 บช.ก. บก.ป. จับหญิงวัย 32 ปี ตามหมายจับศาลเชียงใหม่ ปมบ…",
    "path": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์.md",
-   "degree": 143
+   "degree": 154
   },
   {
    "id": "40_CrimeTypes/อื่น ๆ",
@@ -48437,6 +49015,23 @@
    "kind": "entity",
    "folder": "30_Entities/บุคคล",
    "entity_group": "บุคคล",
+   "date": null,
+   "case_id": null,
+   "crime_type": null,
+   "bureau": null,
+   "area": null,
+   "status": null,
+   "tags": [],
+   "excerpt": "",
+   "path": null,
+   "degree": 1
+  },
+  {
+   "id": "30_Entities/สถานที่/ยังประเมินคว",
+   "title": "ยังประเมินคว",
+   "kind": "entity",
+   "folder": "30_Entities/สถานที่",
+   "entity_group": "สถานที่",
    "date": null,
    "case_id": null,
    "crime_type": null,
@@ -63801,6 +64396,201 @@
    "label": "แจ้งโดย"
   },
   {
+   "source": "20_Cases/20261119-cyber-05",
+   "target": "30_Entities/Units/ตลาดหลักทรัพย์แห่งประเทศไทย",
+   "label": "แจ้งโดย"
+  },
+  {
+   "source": "20_Cases/20261119-cyber-05",
+   "target": "30_Entities/Places/ประเทศไทย",
+   "label": "เกิดที่"
+  },
+  {
+   "source": "20_Cases/20261119-cyber-06",
+   "target": "30_Entities/Units/ThaiCERT",
+   "label": "แจ้งโดย"
+  },
+  {
+   "source": "20_Cases/20261119-cyber-06",
+   "target": "30_Entities/Units/Apache Software Foundation",
+   "label": "แจ้งโดย"
+  },
+  {
+   "source": "20_Cases/20261119-cyber-06",
+   "target": "30_Entities/Places/ทั่วโลก",
+   "label": "เกิดที่"
+  },
+  {
+   "source": "20_Cases/20261119-cyber-07",
+   "target": "30_Entities/Units/บช.สอท.",
+   "label": "สั่งการโดย"
+  },
+  {
+   "source": "20_Cases/20261119-cyber-07",
+   "target": "30_Entities/Units/บก.สอท.3",
+   "label": "จับโดย"
+  },
+  {
+   "source": "20_Cases/20261119-cyber-07",
+   "target": "30_Entities/Units/ศาลจังหวัดยโสธร",
+   "label": "หมายจากศาล"
+  },
+  {
+   "source": "20_Cases/20261119-cyber-07",
+   "target": "30_Entities/Units/สภ.เลิงนกทา",
+   "label": "สืบสวนโดย"
+  },
+  {
+   "source": "20_Cases/20261119-cyber-07",
+   "target": "30_Entities/Places/ยโสธร",
+   "label": "เกิดที่"
+  },
+  {
+   "source": "20_Cases/20261119-cyber-07",
+   "target": "30_Entities/People/เล็ก อาก้า",
+   "label": "ผู้ต้องหา"
+  },
+  {
+   "source": "20_Cases/20261119-cyber-08",
+   "target": "30_Entities/Units/สกมช.",
+   "label": "แจ้งโดย"
+  },
+  {
+   "source": "20_Cases/20261119-cyber-08",
+   "target": "30_Entities/Units/ThaiCERT",
+   "label": "เกี่ยวข้องกับบุคคล"
+  },
+  {
+   "source": "20_Cases/20261119-cyber-08",
+   "target": "30_Entities/Units/ไปรษณีย์ไทย",
+   "label": "เกี่ยวข้องกับบุคคล"
+  },
+  {
+   "source": "20_Cases/20261119-cyber-08",
+   "target": "30_Entities/Places/ประเทศไทย",
+   "label": "เกิดที่"
+  },
+  {
+   "source": "20_Cases/20261119-cyber-08",
+   "target": "30_Entities/Projects/NSOC",
+   "label": "เกี่ยวข้องกับบุคคล"
+  },
+  {
+   "source": "20_Cases/20261119-cyber-09",
+   "target": "30_Entities/Units/สกมช.",
+   "label": "แจ้งโดย"
+  },
+  {
+   "source": "20_Cases/20261119-cyber-09",
+   "target": "30_Entities/Units/สพม.ปราจีนบุรี นครนายก",
+   "label": "เกี่ยวข้องกับบุคคล"
+  },
+  {
+   "source": "20_Cases/20261119-cyber-09",
+   "target": "30_Entities/Places/ปราจีนบุรี",
+   "label": "เกิดที่"
+  },
+  {
+   "source": "20_Cases/20261119-cyber-09",
+   "target": "30_Entities/Places/นครนายก",
+   "label": "เกิดที่"
+  },
+  {
+   "source": "20_Cases/20261119-cyber-10",
+   "target": "30_Entities/Units/F5",
+   "label": "แจ้งโดย"
+  },
+  {
+   "source": "20_Cases/20261119-cyber-10",
+   "target": "30_Entities/Units/Wiz",
+   "label": "แจ้งโดย"
+  },
+  {
+   "source": "20_Cases/20261119-cyber-10",
+   "target": "30_Entities/Units/Rapid7",
+   "label": "แจ้งโดย"
+  },
+  {
+   "source": "20_Cases/20261119-cyber-10",
+   "target": "30_Entities/Places/ทั่วโลก",
+   "label": "เกิดที่"
+  },
+  {
+   "source": "20_Cases/20261119-cyber-11",
+   "target": "30_Entities/Units/CISA",
+   "label": "แจ้งโดย"
+  },
+  {
+   "source": "20_Cases/20261119-cyber-11",
+   "target": "30_Entities/Places/สหรัฐอเมริกา",
+   "label": "เกิดที่"
+  },
+  {
+   "source": "20_Cases/20261119-cyber-12",
+   "target": "30_Entities/Units/ตำรวจแห่งชาติยูเครน",
+   "label": "จับโดย"
+  },
+  {
+   "source": "20_Cases/20261119-cyber-12",
+   "target": "30_Entities/Units/FBI",
+   "label": "สืบสวนโดย"
+  },
+  {
+   "source": "20_Cases/20261119-cyber-12",
+   "target": "30_Entities/Places/ยูเครน",
+   "label": "เกิดที่"
+  },
+  {
+   "source": "20_Cases/20261119-cyber-12",
+   "target": "30_Entities/Places/สหรัฐอเมริกา",
+   "label": "เกิดที่"
+  },
+  {
+   "source": "20_Cases/20261119-cyber-13",
+   "target": "30_Entities/Units/Coinbase",
+   "label": "แจ้งโดย"
+  },
+  {
+   "source": "20_Cases/20261119-cyber-13",
+   "target": "30_Entities/Places/ทั่วโลก",
+   "label": "เกิดที่"
+  },
+  {
+   "source": "20_Cases/20261119-cyber-14",
+   "target": "30_Entities/Units/Bitdefender",
+   "label": "แจ้งโดย"
+  },
+  {
+   "source": "20_Cases/20261119-cyber-14",
+   "target": "30_Entities/Units/Palo Alto Networks",
+   "label": "เกี่ยวข้องกับบุคคล"
+  },
+  {
+   "source": "20_Cases/20261119-cyber-14",
+   "target": "30_Entities/Places/ฟิลิปปินส์",
+   "label": "เกิดที่"
+  },
+  {
+   "source": "20_Cases/20261119-cyber-15",
+   "target": "30_Entities/Units/Socket",
+   "label": "แจ้งโดย"
+  },
+  {
+   "source": "20_Cases/20261119-cyber-15",
+   "target": "30_Entities/Units/SafeDep",
+   "label": "แจ้งโดย"
+  },
+  {
+   "source": "20_Cases/20261119-cyber-15",
+   "target": "30_Entities/Units/PyPI",
+   "label": "เกี่ยวข้องกับบุคคล"
+  },
+  {
+   "source": "20_Cases/20261119-cyber-15",
+   "target": "30_Entities/Places/ทั่วโลก",
+   "label": "เกิดที่"
+  },
+  {
    "source": "20_Cases/20261119-drug-01",
    "target": "30_Entities/Units/สภ.เทพารักษ์",
    "label": "จับโดย"
@@ -66579,6 +67369,11 @@
    "source": "20_Cases/20261119-police-02",
    "target": "30_Entities/บุคคล/ธัชชัย ปิตะนีละบุตร",
    "label": "เกี่ยวข้องกับบุคคล"
+  },
+  {
+   "source": "20_Cases/20261119-cyber-05",
+   "target": "30_Entities/สถานที่/ยังประเมินคว",
+   "label": "เกิดที่"
   },
   {
    "source": "20_Cases/20261022-drug-hatyai-etomidate",
@@ -70947,6 +71742,61 @@
   },
   {
    "source": "20_Cases/20261119-cyber-04",
+   "target": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "label": "ประเภท"
+  },
+  {
+   "source": "20_Cases/20261119-cyber-05",
+   "target": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "label": "ประเภท"
+  },
+  {
+   "source": "20_Cases/20261119-cyber-06",
+   "target": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "label": "ประเภท"
+  },
+  {
+   "source": "20_Cases/20261119-cyber-07",
+   "target": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "label": "ประเภท"
+  },
+  {
+   "source": "20_Cases/20261119-cyber-08",
+   "target": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "label": "ประเภท"
+  },
+  {
+   "source": "20_Cases/20261119-cyber-09",
+   "target": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "label": "ประเภท"
+  },
+  {
+   "source": "20_Cases/20261119-cyber-10",
+   "target": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "label": "ประเภท"
+  },
+  {
+   "source": "20_Cases/20261119-cyber-11",
+   "target": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "label": "ประเภท"
+  },
+  {
+   "source": "20_Cases/20261119-cyber-12",
+   "target": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "label": "ประเภท"
+  },
+  {
+   "source": "20_Cases/20261119-cyber-13",
+   "target": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "label": "ประเภท"
+  },
+  {
+   "source": "20_Cases/20261119-cyber-14",
+   "target": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "label": "ประเภท"
+  },
+  {
+   "source": "20_Cases/20261119-cyber-15",
    "target": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
    "label": "ประเภท"
   },

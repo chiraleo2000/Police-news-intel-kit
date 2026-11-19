@@ -1,0 +1,28 @@
+{
+ "case_id": "20261119-cyber-13",
+ "title": "Coinbase บล็อกการโอนคริปโต 4.7 ล้านดอลลาร์ไปยังมิจฉาชีพที่ใช้ Deepfake อีลอน มัสก์ ในไลฟ์สดปลอมแจกคริปโตเพิ่มเป็นสองเท่า",
+ "generated_at": "2026-11-19T06:15:55.597Z",
+ "node_count": 4,
+ "edge_count": 3,
+ "relations": [
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/Coinbase",
+   "target_title": "Coinbase",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ทั่วโลก",
+   "target_title": "ทั่วโลก",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261119-cyber-13.svg"
+}
