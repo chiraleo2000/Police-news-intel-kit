@@ -1,0 +1,40 @@
+{
+ "case_id": "20261120-drug-01",
+ "title": "ป.ป.ส. ขยายผลเบาะแสสายด่วน 1386 จับผู้ต้องหาส่งไอซ์ซุกในขนมขบเคี้ยวผ่านร้านรับส่งพัสดุย่านบางแค ยึดไอซ์ 26 ถุง รถ 2 คัน และเงินสดราว 408,000 บาท",
+ "generated_at": "2026-11-20T01:20:53.705Z",
+ "node_count": 6,
+ "edge_count": 5,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/ป.ป.ส.",
+   "target_title": "ป.ป.ส.",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/ศูนย์ปฏิบัติการกองทัพบก (ศปก.ทบ.)",
+   "target_title": "ศูนย์ปฏิบัติการกองทัพบก (ศปก.ทบ.)",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/สน.เพชรเกษม",
+   "target_title": "สน.เพชรเกษม",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/เขตบางแค กรุงเทพมหานคร",
+   "target_title": "เขตบางแค กรุงเทพมหานคร",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/ยาเสพติด",
+   "target_title": "ยาเสพติด",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261120-drug-01.svg"
+}

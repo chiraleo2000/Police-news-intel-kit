@@ -1,0 +1,46 @@
+{
+ "case_id": "20261120-drug-02",
+ "title": "DSI เผยศาลภาษีอากรกลางพิพากษาคดีครอบครองสารเคมีวัตถุอันตราย 805 ตันที่แม่สอด ปรับนิติบุคคลและกรรมการรวมกว่า 106 ล้านบาท จำคุกกรรมการ 72 เดือน 30 วันแต่รอลงอาญา",
+ "generated_at": "2026-11-20T01:20:53.705Z",
+ "node_count": 7,
+ "edge_count": 6,
+ "relations": [
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/ดีเอสไอ",
+   "target_title": "ดีเอสไอ",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/สำนักงาน ป.ป.ส. ภาค 6",
+   "target_title": "สำนักงาน ป.ป.ส. ภาค 6",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลภาษีอากรกลาง",
+   "target_title": "ศาลภาษีอากรกลาง",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/สำนักงานอัยการคดีภาษีอากร",
+   "target_title": "สำนักงานอัยการคดีภาษีอากร",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ต.แม่กาษา อ.แม่สอด จ.ตาก",
+   "target_title": "ต.แม่กาษา อ.แม่สอด จ.ตาก",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/ยาเสพติด",
+   "target_title": "ยาเสพติด",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261120-drug-02.svg"
+}

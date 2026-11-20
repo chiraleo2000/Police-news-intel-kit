@@ -1,0 +1,40 @@
+{
+ "case_id": "20261120-transnat-01",
+ "title": "ตม.3 ปลอมตัวเป็นพ่อครัวในร้านอาหารเกาหลีที่หนองปรือ จับชายชาวเกาหลีใต้อายุ 44 ปี ผู้ถูกประกาศสืบจับจากเกาหลีใต้ 2 หมาย และอยู่เกินกำหนดกว่า 1 ปี",
+ "generated_at": "2026-11-20T01:20:53.705Z",
+ "node_count": 6,
+ "edge_count": 5,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/บก.ตม.3",
+   "target_title": "บก.ตม.3",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/กก.สส.บก.ตม.3",
+   "target_title": "กก.สส.บก.ตม.3",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/สภ.เมืองพัทยา",
+   "target_title": "สภ.เมืองพัทยา",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ต.หนองปรือ อ.บางละมุง จ.ชลบุรี",
+   "target_title": "ต.หนองปรือ อ.บางละมุง จ.ชลบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมข้ามชาติและความร่วมมือระหว่างประเทศ",
+   "target_title": "อาชญากรรมข้ามชาติและความร่วมมือระหว่างประเทศ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261120-transnat-01.svg"
+}

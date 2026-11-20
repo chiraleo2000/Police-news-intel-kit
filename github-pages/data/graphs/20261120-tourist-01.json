@@ -1,0 +1,40 @@
+{
+ "case_id": "20261120-tourist-01",
+ "title": "ตม.1 ส่งสายลับเข้าใช้บริการแล้วจับชายชาวจีนเปิดร้านตัดผมลับในห้องเช่าแมนชั่นย่านรัชดาภิเษก รับเฉพาะลูกค้าชาวจีนที่จองผ่านแอป ข้อหาทำงานโดยไม่มีใบอนุญาตในอาชีพที่ห้ามคนต่างด้าวทำ",
+ "generated_at": "2026-11-20T01:20:53.705Z",
+ "node_count": 6,
+ "edge_count": 5,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/บก.ตม.1",
+   "target_title": "บก.ตม.1",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/ตม.",
+   "target_title": "ตม.",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/บก.สส.สตม.",
+   "target_title": "บก.สส.สตม.",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ย่านรัชดาภิเษก กรุงเทพมหานคร",
+   "target_title": "ย่านรัชดาภิเษก กรุงเทพมหานคร",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมที่เกี่ยวข้องกับนักท่องเที่ยวและชาวต่างชาติ",
+   "target_title": "อาชญากรรมที่เกี่ยวข้องกับนักท่องเที่ยวและชาวต่างชาติ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261120-tourist-01.svg"
+}

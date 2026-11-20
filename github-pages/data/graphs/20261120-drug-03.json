@@ -1,0 +1,52 @@
+{
+ "case_id": "20261120-drug-03",
+ "title": "สภ.โคกขาม สมุทรสาคร จับชายที่ตำรวจระบุว่าเป็นหัวหน้าแก๊งบ้านสันดาบ ผู้ต้องหาตามหมายจับฐานจำเลยหลบหนี ที่ห้องพักโรงแรม พร้อมยาบ้าและไอซ์",
+ "generated_at": "2026-11-20T01:20:53.705Z",
+ "node_count": 8,
+ "edge_count": 7,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/สภ.โคกขาม",
+   "target_title": "สภ.โคกขาม",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลจังหวัดสมุทรสาคร",
+   "target_title": "ศาลจังหวัดสมุทรสาคร",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ต.โคกขาม จ.สมุทรสาคร",
+   "target_title": "ต.โคกขาม จ.สมุทรสาคร",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/พ.ต.อ.จักรพงศ์ ตราบดี ผกก.สภ.โคกขาม",
+   "target_title": "พ.ต.อ.จักรพงศ์ ตราบดี ผกก.สภ.โคกขาม",
+   "direction": "out"
+  },
+  {
+   "label": "เป้าหมายเครือข่าย",
+   "target_id": "30_Entities/Projects/แก๊งบ้านสันดาบ",
+   "target_title": "แก๊งบ้านสันดาบ",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/บุคคล/จักรพงศ์ ตราบดี",
+   "target_title": "จักรพงศ์ ตราบดี",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/ยาเสพติด",
+   "target_title": "ยาเสพติด",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261120-drug-03.svg"
+}

@@ -1,0 +1,46 @@
+{
+ "case_id": "20261120-violent-01",
+ "title": "คนร้ายซุ่มยิงนายกเทศมนตรีตำบลบานา อ.เมืองปัตตานี หน้าบ้านพักหลังกลับจากมัสยิด บาดเจ็บ 1 นัด ตำรวจพบปลอกกระสุนปืนสงคราม 17 ปลอก",
+ "generated_at": "2026-11-20T01:20:53.705Z",
+ "node_count": 7,
+ "edge_count": 6,
+ "relations": [
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/สภ.เมืองปัตตานี",
+   "target_title": "สภ.เมืองปัตตานี",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/หน่วยเฉพาะกิจตำรวจปัตตานี 92",
+   "target_title": "หน่วยเฉพาะกิจตำรวจปัตตานี 92",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ต.บานา อ.เมืองปัตตานี จ.ปัตตานี",
+   "target_title": "ต.บานา อ.เมืองปัตตานี จ.ปัตตานี",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/พ.ต.อ.เจฟฟรีย์ ไศลมานกุล ผกก.สภ.เมืองปัตตานี",
+   "target_title": "พ.ต.อ.เจฟฟรีย์ ไศลมานกุล ผกก.สภ.เมืองปัตตานี",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/บุคคล/เจฟฟรีย์ ไศลมานกุล",
+   "target_title": "เจฟฟรีย์ ไศลมานกุล",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/คดีชีวิต ร่างกาย และเพศ",
+   "target_title": "คดีชีวิต ร่างกาย และเพศ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261120-violent-01.svg"
+}

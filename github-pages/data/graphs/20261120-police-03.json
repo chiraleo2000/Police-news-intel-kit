@@ -1,0 +1,52 @@
+{
+ "case_id": "20261120-police-03",
+ "title": "ตำรวจภูธรจังหวัดชลบุรีสั่งรองผู้กำกับการและสารวัตรสอบสวน สภ.ศรีราชา ออกจากราชการไว้ก่อน และเตรียมดำเนินคดีอาญา หลังพบหลักฐานเกี่ยวข้องกรณีผู้ต้องกักชาวจีนพ้นการควบคุม",
+ "generated_at": "2026-11-20T01:20:53.705Z",
+ "node_count": 8,
+ "edge_count": 7,
+ "relations": [
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/ตำรวจภูธรจังหวัดชลบุรี",
+   "target_title": "ตำรวจภูธรจังหวัดชลบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/ตำรวจภูธรภาค 2",
+   "target_title": "ตำรวจภูธรภาค 2",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/สภ.ศรีราชา",
+   "target_title": "สภ.ศรีราชา",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/สภ.ศรีราชา จ.ชลบุรี",
+   "target_title": "สภ.ศรีราชา จ.ชลบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/พล.ต.ต.ชาตรี สุขศิริ ผบก.ภ.จว.ชลบุรี",
+   "target_title": "พล.ต.ต.ชาตรี สุขศิริ ผบก.ภ.จว.ชลบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/บุคคล/ชาตรี สุขศิริ",
+   "target_title": "ชาตรี สุขศิริ",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/การปฏิบัติหน้าที่ ประชาสัมพันธ์ และนโยบายตำรวจ",
+   "target_title": "การปฏิบัติหน้าที่ ประชาสัมพันธ์ และนโยบายตำรวจ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261120-police-03.svg"
+}

@@ -1,0 +1,64 @@
+{
+ "case_id": "20261120-police-02",
+ "title": "ผบ.ตร. สั่งทุกกองบัญชาการระดมกวาดล้างอาชญากรรม 14–20 พ.ย. และดูแลความปลอดภัยวันลอยกระทง 24 พ.ย. 2569 คุมพลุ โคมลอย สถานบริการ และให้ตำรวจน้ำออกตรวจลำน้ำ",
+ "generated_at": "2026-11-20T01:20:53.705Z",
+ "node_count": 10,
+ "edge_count": 9,
+ "relations": [
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/ตร.",
+   "target_title": "ตร.",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บช.น.",
+   "target_title": "บช.น.",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/กองบังคับการตำรวจน้ำ",
+   "target_title": "กองบังคับการตำรวจน้ำ",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บช.ทท.",
+   "target_title": "บช.ทท.",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ทั่วประเทศ",
+   "target_title": "ทั่วประเทศ",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/พล.ต.ต.ศิริวัฒน์ ดีพอ โฆษก ตร.",
+   "target_title": "พล.ต.ต.ศิริวัฒน์ ดีพอ โฆษก ตร.",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/บุคคล/ศิริวัฒน์ ดีพอ",
+   "target_title": "ศิริวัฒน์ ดีพอ",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/บุคคล/สำราญ นวลมา",
+   "target_title": "สำราญ นวลมา",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/การปฏิบัติหน้าที่ ประชาสัมพันธ์ และนโยบายตำรวจ",
+   "target_title": "การปฏิบัติหน้าที่ ประชาสัมพันธ์ และนโยบายตำรวจ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261120-police-02.svg"
+}

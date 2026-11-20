@@ -1,0 +1,46 @@
+{
+ "case_id": "20261120-cyber-01",
+ "title": "บก.ปพ. จับชายอายุ 47 ปี เจ้าของบัญชีรับโอนเงินผู้เสียหายหญิงวัย 65 ปีที่ถูกทักไลน์อ้างแอดผิดแล้วชวนลงทุนธุรกิจความงาม สูญเงิน 194,000 บาท",
+ "generated_at": "2026-11-20T01:20:53.705Z",
+ "node_count": 7,
+ "edge_count": 6,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/บก.ปพ.",
+   "target_title": "บก.ปพ.",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลจังหวัดสระบุรี",
+   "target_title": "ศาลจังหวัดสระบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/สภ.เมืองสระบุรี",
+   "target_title": "สภ.เมืองสระบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/อ.ธัญบุรี จ.ปทุมธานี",
+   "target_title": "อ.ธัญบุรี จ.ปทุมธานี",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/บุคคล/ณัฐศักดิ์ เชาวนาศัย",
+   "target_title": "ณัฐศักดิ์ เชาวนาศัย",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261120-cyber-01.svg"
+}

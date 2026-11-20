@@ -1,0 +1,40 @@
+{
+ "case_id": "20261120-transnat-02",
+ "title": "ตม. จับชาวจีน 2 คนที่สันกำแพง เชียงใหม่ ตามข้อมูลประสานจากทางการจีน ผู้ถูกออกหมายจับศาลเมืองหางโจวคดีระดมเงินฝากจากประชาชนโดยผิดกฎหมาย ความเสียหายราว 20,000 ล้านบาท",
+ "generated_at": "2026-11-20T01:20:53.705Z",
+ "node_count": 6,
+ "edge_count": 5,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/กก.ปอพ.บก.สส.สตม.",
+   "target_title": "กก.ปอพ.บก.สส.สตม.",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/ตม.",
+   "target_title": "ตม.",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/กองการต่างประเทศ ตร.",
+   "target_title": "กองการต่างประเทศ ตร.",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ต.ต้นเปา อ.สันกำแพง จ.เชียงใหม่",
+   "target_title": "ต.ต้นเปา อ.สันกำแพง จ.เชียงใหม่",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมข้ามชาติและความร่วมมือระหว่างประเทศ",
+   "target_title": "อาชญากรรมข้ามชาติและความร่วมมือระหว่างประเทศ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261120-transnat-02.svg"
+}

@@ -1,0 +1,58 @@
+{
+ "case_id": "20261120-organized-01",
+ "title": "กองปราบเปิดปฏิบัติการหนุมานค้น 13 เป้าหมายใน 3 จังหวัด จับ 5 ผู้ต้องหาข้อหาช่วยซ่อนเร้นมือปืนคดียิงเจ้าของซุ้มวัวลานที่กำแพงแสน พร้อมยึดปืน 2 กระบอก รถจำนำ 20 คัน",
+ "generated_at": "2026-11-20T01:20:53.705Z",
+ "node_count": 9,
+ "edge_count": 8,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/บก.ป.",
+   "target_title": "บก.ป.",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/กก.5 บก.ป.",
+   "target_title": "กก.5 บก.ป.",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บช.ก.",
+   "target_title": "บช.ก.",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ต.ห้วยขวาง อ.กำแพงแสน จ.นครปฐม",
+   "target_title": "ต.ห้วยขวาง อ.กำแพงแสน จ.นครปฐม",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/พล.ต.ท.ณัฐศักดิ์ เชาวนาศัย ผบช.ก.",
+   "target_title": "พล.ต.ท.ณัฐศักดิ์ เชาวนาศัย ผบช.ก.",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/บุคคล/ณัฐศักดิ์ เชาวนาศัย",
+   "target_title": "ณัฐศักดิ์ เชาวนาศัย",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/สถานที่/กำแพงแสน",
+   "target_title": "กำแพงแสน",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/คดีอุกฉกรรจ์ ผู้มีอิทธิพล และอาวุธ",
+   "target_title": "คดีอุกฉกรรจ์ ผู้มีอิทธิพล และอาวุธ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261120-organized-01.svg"
+}

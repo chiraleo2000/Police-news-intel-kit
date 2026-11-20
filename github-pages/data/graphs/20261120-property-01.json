@@ -1,0 +1,46 @@
+{
+ "case_id": "20261120-property-01",
+ "title": "สภ.โพธิ์กลาง จับอดีตทหารและอดีตนักกีฬากาบัดดี้ทีมชาติ ตามหมายจับข้อหาลักทรัพย์เวลากลางคืนโดยปกปิดหน้าและใช้ยานพาหนะ ตำรวจเชื่อมโยงเหตุลักทรัพย์หลายจุดในโคราชช่วงต้น พ.ย.",
+ "generated_at": "2026-11-20T01:20:53.705Z",
+ "node_count": 7,
+ "edge_count": 6,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/สภ.โพธิ์กลาง",
+   "target_title": "สภ.โพธิ์กลาง",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลจังหวัดนครราชสีมา",
+   "target_title": "ศาลจังหวัดนครราชสีมา",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ต.โพธิ์กลาง อ.เมืองนครราชสีมา",
+   "target_title": "ต.โพธิ์กลาง อ.เมืองนครราชสีมา",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/พ.ต.อ.พัชรดนัย การินทร์ ผกก.สภ.โพธิ์กลาง",
+   "target_title": "พ.ต.อ.พัชรดนัย การินทร์ ผกก.สภ.โพธิ์กลาง",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/บุคคล/พัชรดนัย การินทร์",
+   "target_title": "พัชรดนัย การินทร์",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/คดีทรัพย์สิน",
+   "target_title": "คดีทรัพย์สิน",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261120-property-01.svg"
+}
