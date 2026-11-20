@@ -1,10 +1,12 @@
 // node gateway/server.mjs
-// One listener. /1234 and /8787 are proxied to localhost; /7988 and any other port return 404.
+// One listener. /1234 (LM Studio), /8787 (police MCP), /8788 (gov MCP) → localhost.
+// /7988 and any other port return 404.
 import http from "node:http";
 
 const HOST = "127.0.0.1";
 const DEFAULT_PORT = 8790;
-const ALLOWED_PORTS = new Set(["1234", "8787"]);
+// 1234=LMS · 8787=police MCP · 8788=gov MCP · 8789=ai-news MCP
+const ALLOWED_PORTS = new Set(["1234", "8787", "8788", "8789"]);
 
 const ALLOW_ORIGIN = "https://chiraleo2000.github.io";
 const CORS_HEADERS = {
