@@ -1,7 +1,7 @@
 {
-  "base": "https://chiraleo-rag.ngrok-free.app",
-  "mcp": "https://chiraleo-rag.ngrok-free.app/8787/mcp",
-  "llm": "https://chiraleo-rag.ngrok-free.app/1234/v1/chat/completions",
+  "base": "https://ai-pc-dev-rag.ngrok-free.app",
+  "mcp": "https://ai-pc-dev-rag.ngrok-free.app/8787/mcp",
+  "llm": "https://ai-pc-dev-rag.ngrok-free.app/1234/v1/chat/completions",
   "model": "google/gemma-4-e2b",
-  "updated_at": "2026-11-20T03:15:07.537Z"
+  "updated_at": "2026-11-20T04:16:06.118Z"
 }
