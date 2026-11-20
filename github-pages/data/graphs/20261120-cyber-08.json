@@ -1,0 +1,40 @@
+{
+ "case_id": "20261120-cyber-08",
+ "title": "สกมช. หารือสำนักงาน กสม. แลกเปลี่ยนสถานการณ์ภัยไซเบอร์ วางแนวทางประเมินตนเอง ประเมินช่องโหว่ และทดสอบเจาะระบบ เพื่อปกป้องข้อมูลส่วนบุคคลของผู้ร้องเรียน",
+ "generated_at": "2026-11-20T06:14:29.676Z",
+ "node_count": 6,
+ "edge_count": 5,
+ "relations": [
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/สกมช.",
+   "target_title": "สกมช.",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/Units/สำนักงาน กสม.",
+   "target_title": "สำนักงาน กสม.",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/Units/ThaiCERT",
+   "target_title": "ThaiCERT",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/กรุงเทพมหานคร",
+   "target_title": "กรุงเทพมหานคร",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261120-cyber-08.svg"
+}

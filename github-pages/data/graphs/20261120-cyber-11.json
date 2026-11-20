@@ -1,0 +1,34 @@
+{
+ "case_id": "20261120-cyber-11",
+ "title": "พบวิธีโจมตี Windows \"FastUnlock\" ยังไม่มีแพตช์ ผู้ที่ถือเครื่องที่ล็อกหน้าจออยู่สั่งรันโปรแกรมได้โดยไม่ต้องล็อกอิน แม้เปิด BitLocker แบบปลดล็อกด้วย TPM",
+ "generated_at": "2026-11-20T06:14:29.676Z",
+ "node_count": 5,
+ "edge_count": 4,
+ "relations": [
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/ThreatLocker",
+   "target_title": "ThreatLocker",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/Units/Microsoft",
+   "target_title": "Microsoft",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ทั่วโลก",
+   "target_title": "ทั่วโลก",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261120-cyber-11.svg"
+}

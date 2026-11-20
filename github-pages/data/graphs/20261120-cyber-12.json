@@ -1,0 +1,28 @@
+{
+ "case_id": "20261120-cyber-12",
+ "title": "N-able ยืนยันผู้โจมตีเข้าถึงเซิร์ฟเวอร์ Mail Assure และ SpamExperts Hosted Cloud ทำพอร์ทัลจัดการและ API ปิดใช้งาน ยังไม่พบหลักฐานข้อมูลลูกค้าถูกเข้าถึง",
+ "generated_at": "2026-11-20T06:14:29.676Z",
+ "node_count": 4,
+ "edge_count": 3,
+ "relations": [
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/N-able",
+   "target_title": "N-able",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ทั่วโลก",
+   "target_title": "ทั่วโลก",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261120-cyber-12.svg"
+}

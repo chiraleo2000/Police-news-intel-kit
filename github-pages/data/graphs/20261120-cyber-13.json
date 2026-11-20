@@ -1,0 +1,28 @@
+{
+ "case_id": "20261120-cyber-13",
+ "title": "SBC Medical Group กลุ่มคลินิกญี่ปุ่นแจ้ง ก.ล.ต. สหรัฐฯ ถูกเจาะฐานข้อมูล ข้อมูลส่วนบุคคลลูกค้า 1.6 ล้านคนและบัญชีพนักงานราว 2 หมื่นรายการรั่วไหล",
+ "generated_at": "2026-11-20T06:14:29.676Z",
+ "node_count": 4,
+ "edge_count": 3,
+ "relations": [
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/SBC Medical Group",
+   "target_title": "SBC Medical Group",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ญี่ปุ่น",
+   "target_title": "ญี่ปุ่น",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261120-cyber-13.svg"
+}

@@ -1,0 +1,40 @@
+{
+ "case_id": "20261120-cyber-10",
+ "title": "Broadcom แก้ช่องโหว่ VMware vCenter ข้ามการยืนยันตัวตน (CVE-2026-123890) Google ระบุกลุ่มจารกรรมที่สงสัยเชื่อมโยงจีนใช้โจมตีก่อนมีแพตช์กว่า 2 เดือน",
+ "generated_at": "2026-11-20T06:14:29.676Z",
+ "node_count": 6,
+ "edge_count": 5,
+ "relations": [
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/Broadcom",
+   "target_title": "Broadcom",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/Google Threat Intelligence Group",
+   "target_title": "Google Threat Intelligence Group",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/Mandiant",
+   "target_title": "Mandiant",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ทั่วโลก",
+   "target_title": "ทั่วโลก",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261120-cyber-10.svg"
+}

@@ -1,0 +1,34 @@
+{
+ "case_id": "20261120-cyber-05",
+ "title": "ThaiCERT เตือน F5 ออกประกาศ 22 รายการ ช่องโหว่ BIG-IP ทำระบบประมวลผลทราฟฟิกล่มได้โดยไม่ต้องยืนยันตัวตน บางรายการเสี่ยงถูกสั่งรันคำสั่ง",
+ "generated_at": "2026-11-20T06:14:29.676Z",
+ "node_count": 5,
+ "edge_count": 4,
+ "relations": [
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/ThaiCERT",
+   "target_title": "ThaiCERT",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/F5",
+   "target_title": "F5",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ทั่วโลก",
+   "target_title": "ทั่วโลก",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261120-cyber-05.svg"
+}

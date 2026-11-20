@@ -1,0 +1,34 @@
+{
+ "case_id": "20261120-cyber-07",
+ "title": "ThaiCERT แนะอัปเดต Chrome 158 หลัง Google แก้ช่องโหว่ 204 รายการ รวมระดับ Critical 6 รายการ เสี่ยงถูกโจมตีผ่านเว็บไซต์อันตราย",
+ "generated_at": "2026-11-20T06:14:29.676Z",
+ "node_count": 5,
+ "edge_count": 4,
+ "relations": [
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/ThaiCERT",
+   "target_title": "ThaiCERT",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/Google",
+   "target_title": "Google",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ทั่วโลก",
+   "target_title": "ทั่วโลก",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261120-cyber-07.svg"
+}

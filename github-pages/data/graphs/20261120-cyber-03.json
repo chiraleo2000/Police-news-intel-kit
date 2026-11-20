@@ -1,0 +1,34 @@
+{
+ "case_id": "20261120-cyber-03",
+ "title": "BBC ไทยชี้ช่องโหว่แอปกู้เงินออนไลน์ หลังอินฟลูเอนเซอร์ร้องถูกทวงหนี้-บัญชีถูกอายัดโยงบัญชีม้า คลังย้ำไม่เคยรับรองแอปเถื่อนที่แอบอ้างตรากระทรวง",
+ "generated_at": "2026-11-20T06:14:29.676Z",
+ "node_count": 5,
+ "edge_count": 4,
+ "relations": [
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/สศค. กระทรวงการคลัง",
+   "target_title": "สศค. กระทรวงการคลัง",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/BBC News ไทย",
+   "target_title": "BBC News ไทย",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ประเทศไทย",
+   "target_title": "ประเทศไทย",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261120-cyber-03.svg"
+}

@@ -1,24 +1,24 @@
 {
- "generated_at": "2026-11-20T02:30:06.208Z",
+ "generated_at": "2026-11-20T07:00:04.425Z",
  "schema_version": 2,
  "source": "vault/",
  "note": "Derived from Obsidian wikilinks. Local vault/ is the knowledge store; this file powers Pages ข้อมูลกราฟ.",
  "stats": {
-  "nodes": 2946,
-  "edges": 4714,
+  "nodes": 2973,
+  "edges": 4766,
   "unresolved": 65,
   "by_kind": {
    "daily": 28,
-   "case": 833,
-   "entity": 1999,
+   "case": 845,
+   "entity": 2014,
    "crime_type": 17,
    "other": 4,
    "unresolved": 65
   },
   "by_entity_group": {
-   "หน่วย": 1067,
-   "บุคคล": 297,
-   "สถานที่": 574,
+   "หน่วย": 1078,
+   "บุคคล": 300,
+   "สถานที่": 575,
    "ข่ายเครือข่าย": 35,
    "บัญชี": 16,
    "ผู้ต้องหา": 10
@@ -27,17 +27,17 @@
    "สืบสวนโดย": 441,
    "จับโดย": 630,
    "สั่งการโดย": 424,
-   "แจ้งโดย": 542,
+   "แจ้งโดย": 562,
    "บัญชี": 24,
-   "เกิดที่": 907,
+   "เกิดที่": 920,
    "เป้าหมายเครือข่าย": 35,
-   "เกี่ยวข้องกับบุคคล": 569,
+   "เกี่ยวข้องกับบุคคล": 576,
    "ผู้ต้องหา": 57,
    "หมายจากศาล": 146,
    "ภายใต้โครงการ": 1,
    "เกี่ยวข้องกับ": 24,
    "ติดตามจาก": 83,
-   "ประเภท": 831
+   "ประเภท": 843
   }
  },
  "unresolved_samples": [
@@ -14634,6 +14634,210 @@
    "degree": 6
   },
   {
+   "id": "20_Cases/20261120-cyber-02",
+   "title": "กสทช. ยกกล่อง Android TV ฝังมัลแวร์จากโรงงานเป็นภัยคุกคามไซเบอร์ สั่งสำนักงานเร่งศึกษาแนวทางกำกับดูแล หลัง Google พบอุปกรณ์ติดมัลแวร์กว่า 1.3 ล้านเครื่องทั่วโลก",
+   "kind": "case",
+   "folder": "20_Cases",
+   "entity_group": null,
+   "date": "2026-11-20",
+   "case_id": "20261120-cyber-02",
+   "crime_type": "อาชญากรรมไซเบอร์และออนไลน์",
+   "bureau": "กสทช.",
+   "area": "ประเทศไทย",
+   "status": "อยู่ระหว่างศึกษาแนวทางกำกับ",
+   "tags": [],
+   "excerpt": "ประเภท: อาชญากรรมไซเบอร์และออนไลน์ หน่วย: กสทช. ประชาชาติธุรกิจรายงานเมื่อ 20 พฤศจิกายน 2569 ว่าคณะกรรมการกิจการกระจายเสียง กิจการโทรทัศน์ และกิจการโทรคมนาคมแห่งชาติ (กสทช.) ยกประเด็นกล่องรับสัญญาณโทรทัศน์ระบบแอนดรอยด์ที่ถูกฝังมัลแวร์ตั้งแต่ขั้นตอนการผลิตขึ้นเป็น \"ภัยคุกคามทางไซเบอร์\" และมีมติให้สำนักงาน กสทช. เร่งศึกษาและจัดทำข้อเสนอแนวทางกำกับดูแลโดยด่วน…",
+   "path": "20_Cases/20261120-cyber-02.md",
+   "degree": 7
+  },
+  {
+   "id": "20_Cases/20261120-cyber-03",
+   "title": "BBC ไทยชี้ช่องโหว่แอปกู้เงินออนไลน์ หลังอินฟลูเอนเซอร์ร้องถูกทวงหนี้-บัญชีถูกอายัดโยงบัญชีม้า คลังย้ำไม่เคยรับรองแอปเถื่อนที่แอบอ้างตรากระทรวง",
+   "kind": "case",
+   "folder": "20_Cases",
+   "entity_group": null,
+   "date": "2026-11-19",
+   "case_id": "20261120-cyber-03",
+   "crime_type": "อาชญากรรมไซเบอร์และออนไลน์",
+   "bureau": "สศค. กระทรวงการคลัง",
+   "area": "ประเทศไทย",
+   "status": "เตือนภัย/อยู่ระหว่างตรวจสอบ",
+   "tags": [],
+   "excerpt": "ประเภท: อาชญากรรมไซเบอร์และออนไลน์ หน่วย: สศค. กระทรวงการคลัง BBC News ไทย เผยแพร่รายงานเมื่อ 19 พฤศจิกายน 2569 ว่าด้วยความเสี่ยงของการกู้เงินผ่านแอปพลิเคชัน หลังอินฟลูเอนเซอร์รายหนึ่งโพสต์เฟซบุ๊กเมื่อ 12 พฤศจิกายน เล่าว่ากู้เงินผ่านหลายแอปในอัตราดอกเบี้ยสูง รวมเกือบ 2 ล้านบาท ถูกข่มขู่ ตามทวงและประจานจนต้องไปให้ข้อมูลกับตำรวจ และบัญชีธนาคารของเขาถูกอายัดเพ…",
+   "path": "20_Cases/20261120-cyber-03.md",
+   "degree": 4
+  },
+  {
+   "id": "20_Cases/20261120-cyber-04",
+   "title": "ThaiCERT เตือน PHP ออกอัปเดตแก้ช่องโหว่ระดับ Critical 7 รายการ รวม HTTP Request Smuggling ใน PHP-FPM ที่อาจเปิดทางรันโค้ดโดยไม่ต้องยืนยันตัวตน",
+   "kind": "case",
+   "folder": "20_Cases",
+   "entity_group": null,
+   "date": "2026-11-20",
+   "case_id": "20261120-cyber-04",
+   "crime_type": "อาชญากรรมไซเบอร์และออนไลน์",
+   "bureau": "ThaiCERT",
+   "area": "ทั่วโลก",
+   "status": "เตือนภัย",
+   "tags": [],
+   "excerpt": "ประเภท: อาชญากรรมไซเบอร์และออนไลน์ หน่วย: ThaiCERT ศูนย์ประสานการรักษาความมั่นคงปลอดภัยระบบคอมพิวเตอร์แห่งชาติ (ThaiCERT) เผยแพร่ประกาศเมื่อเช้า 20 พฤศจิกายน 2569 แจ้งว่าทีมพัฒนา PHP ได้ออกอัปเดตความปลอดภัยเมื่อ 19 พฤศจิกายน ได้แก่ PHP 8.5.13, 8.4.28, 8.3.37 และ 8.2.36 เพื่อแก้ช่องโหว่หลายรายการ ในจำนวนนี้มีช่องโหว่ระดับ Critical ที่สำคัญ 7 รายการ PHP เป็นภ…",
+   "path": "20_Cases/20261120-cyber-04.md",
+   "degree": 4
+  },
+  {
+   "id": "20_Cases/20261120-cyber-05",
+   "title": "ThaiCERT เตือน F5 ออกประกาศ 22 รายการ ช่องโหว่ BIG-IP ทำระบบประมวลผลทราฟฟิกล่มได้โดยไม่ต้องยืนยันตัวตน บางรายการเสี่ยงถูกสั่งรันคำสั่ง",
+   "kind": "case",
+   "folder": "20_Cases",
+   "entity_group": null,
+   "date": "2026-11-20",
+   "case_id": "20261120-cyber-05",
+   "crime_type": "อาชญากรรมไซเบอร์และออนไลน์",
+   "bureau": "ThaiCERT",
+   "area": "ทั่วโลก",
+   "status": "เตือนภัย",
+   "tags": [],
+   "excerpt": "ประเภท: อาชญากรรมไซเบอร์และออนไลน์ หน่วย: ThaiCERT ศูนย์ประสานการรักษาความมั่นคงปลอดภัยระบบคอมพิวเตอร์แห่งชาติ (ThaiCERT) เผยแพร่ประกาศเมื่อ 20 พฤศจิกายน 2569 เตือนผู้ใช้อุปกรณ์ F5 ว่าผู้ผลิตออกประกาศแจ้งเตือนด้านความปลอดภัย 22 รายการ ช่องโหว่บางส่วนทำให้ผู้โจมตีทำให้ส่วนประมวลผลทราฟฟิกหยุดทำงานได้โดยไม่ต้องยืนยันตัวตน และอาจถึงขั้นเรียกใช้คำสั่งอันตราย อุป…",
+   "path": "20_Cases/20261120-cyber-05.md",
+   "degree": 4
+  },
+  {
+   "id": "20_Cases/20261120-cyber-06",
+   "title": "ThaiCERT เตือน CISA เพิ่มช่องโหว่ Critical ใน Perforce Puppet Enterprise (CVE-2026-115731) ลงบัญชี KEV เสี่ยงถูกสั่งรันโค้ดบน Puppet Server",
+   "kind": "case",
+   "folder": "20_Cases",
+   "entity_group": null,
+   "date": "2026-11-19",
+   "case_id": "20261120-cyber-06",
+   "crime_type": "อาชญากรรมไซเบอร์และออนไลน์",
+   "bureau": "ThaiCERT",
+   "area": "ทั่วโลก",
+   "status": "เตือนภัย",
+   "tags": [],
+   "excerpt": "ประเภท: อาชญากรรมไซเบอร์และออนไลน์ หน่วย: ThaiCERT ศูนย์ประสานการรักษาความมั่นคงปลอดภัยระบบคอมพิวเตอร์แห่งชาติ (ThaiCERT) เผยแพร่ประกาศที่ 638/69 เมื่อ 19 พฤศจิกายน 2569 แจ้งว่าสำนักงานความมั่นคงปลอดภัยไซเบอร์และโครงสร้างพื้นฐานของสหรัฐอเมริกา (CISA) ได้เพิ่มช่องโหว่ CVE 2026 115731 คะแนน CVSS 9.4 ในผลิตภัณฑ์ Perforce Puppet Enterprise ลงในบัญชีช่องโหว่ที่พ…",
+   "path": "20_Cases/20261120-cyber-06.md",
+   "degree": 4
+  },
+  {
+   "id": "20_Cases/20261120-cyber-07",
+   "title": "ThaiCERT แนะอัปเดต Chrome 158 หลัง Google แก้ช่องโหว่ 204 รายการ รวมระดับ Critical 6 รายการ เสี่ยงถูกโจมตีผ่านเว็บไซต์อันตราย",
+   "kind": "case",
+   "folder": "20_Cases",
+   "entity_group": null,
+   "date": "2026-11-19",
+   "case_id": "20261120-cyber-07",
+   "crime_type": "อาชญากรรมไซเบอร์และออนไลน์",
+   "bureau": "ThaiCERT",
+   "area": "ทั่วโลก",
+   "status": "เตือนภัย",
+   "tags": [],
+   "excerpt": "ประเภท: อาชญากรรมไซเบอร์และออนไลน์ หน่วย: ThaiCERT ศูนย์ประสานการรักษาความมั่นคงปลอดภัยระบบคอมพิวเตอร์แห่งชาติ (ThaiCERT) เผยแพร่ประกาศที่ 639/69 เมื่อ 19 พฤศจิกายน 2569 แจ้งว่า Google ออกอัปเดตความปลอดภัยสำหรับเว็บเบราว์เซอร์ Chrome รุ่น 158 แก้ไขช่องโหว่รวม 204 รายการ แบ่งเป็นระดับ Critical 6 รายการ ระดับ High 62 รายการ ระดับ Medium 82 รายการ และระดับ Low…",
+   "path": "20_Cases/20261120-cyber-07.md",
+   "degree": 4
+  },
+  {
+   "id": "20_Cases/20261120-cyber-08",
+   "title": "สกมช. หารือสำนักงาน กสม. แลกเปลี่ยนสถานการณ์ภัยไซเบอร์ วางแนวทางประเมินตนเอง ประเมินช่องโหว่ และทดสอบเจาะระบบ เพื่อปกป้องข้อมูลส่วนบุคคลของผู้ร้องเรียน",
+   "kind": "case",
+   "folder": "20_Cases",
+   "entity_group": null,
+   "date": "2026-11-19",
+   "case_id": "20261120-cyber-08",
+   "crime_type": "อาชญากรรมไซเบอร์และออนไลน์",
+   "bureau": "สกมช.",
+   "area": "ประเทศไทย",
+   "status": "เตรียมความพร้อม",
+   "tags": [],
+   "excerpt": "ประเภท: อาชญากรรมไซเบอร์และออนไลน์ หน่วย: สกมช. สำนักงานคณะกรรมการการรักษาความมั่นคงปลอดภัยไซเบอร์แห่งชาติ (สกมช.) เผยแพร่ข่าวเมื่อ 19 พฤศจิกายน 2569 ว่าได้ร่วมหารือกับสำนักงานคณะกรรมการสิทธิมนุษยชนแห่งชาติ (สำนักงาน กสม.) ณ สำนักงาน กสม. เมื่อ 18 พฤศจิกายน 2569 เพื่อแลกเปลี่ยนข้อมูลสถานการณ์ภัยคุกคามทางไซเบอร์ และหารือแนวทางยกระดับความมั่นคงปลอดภัยของระบบส…",
+   "path": "20_Cases/20261120-cyber-08.md",
+   "degree": 5
+  },
+  {
+   "id": "20_Cases/20261120-cyber-09",
+   "title": "สกมช. ร่วมเวที Secutech Thailand 2026 ผลักดันแนวปฏิบัติความปลอดภัย CCTV และ AI CCTV สำหรับเมืองอัจฉริยะ เตือนความเสี่ยงภาพและข้อมูลถูกเข้าถึงโดยไม่ได้รับอนุญาต",
+   "kind": "case",
+   "folder": "20_Cases",
+   "entity_group": null,
+   "date": "2026-11-19",
+   "case_id": "20261120-cyber-09",
+   "crime_type": "อาชญากรรมไซเบอร์และออนไลน์",
+   "bureau": "สกมช.",
+   "area": "ประเทศไทย",
+   "status": "เตรียมความพร้อม",
+   "tags": [],
+   "excerpt": "ประเภท: อาชญากรรมไซเบอร์และออนไลน์ หน่วย: สกมช. สำนักงานคณะกรรมการการรักษาความมั่นคงปลอดภัยไซเบอร์แห่งชาติ (สกมช.) เผยแพร่ข่าวเมื่อ 19 พฤศจิกายน 2569 ว่า ผศ. ดร.ประเสริฐ ลือโขง ผู้อำนวยการศูนย์วิจัยความมั่นคงปลอดภัยไซเบอร์ ได้ร่วมเป็นวิทยากรเสวนาเรื่องการยกระดับความปลอดภัยกล้องวงจรปิดเมืองอัจฉริยะ ภายในงาน Secutech Thailand 2026 และ Thailand Smart City Expo…",
+   "path": "20_Cases/20261120-cyber-09.md",
+   "degree": 5
+  },
+  {
+   "id": "20_Cases/20261120-cyber-10",
+   "title": "Broadcom แก้ช่องโหว่ VMware vCenter ข้ามการยืนยันตัวตน (CVE-2026-123890) Google ระบุกลุ่มจารกรรมที่สงสัยเชื่อมโยงจีนใช้โจมตีก่อนมีแพตช์กว่า 2 เดือน",
+   "kind": "case",
+   "folder": "20_Cases",
+   "entity_group": null,
+   "date": "2026-11-19",
+   "case_id": "20261120-cyber-10",
+   "crime_type": "อาชญากรรมไซเบอร์และออนไลน์",
+   "bureau": "-",
+   "area": "ทั่วโลก",
+   "status": "เตือนภัย · มีแพตช์แล้ว",
+   "tags": [],
+   "excerpt": "ประเภท: อาชญากรรมไซเบอร์และออนไลน์ หน่วย: The Hacker News รายงานเมื่อ 19 พฤศจิกายน 2569 ว่า Broadcom เจ้าของ VMware ออกประกาศแก้ช่องโหว่ร้ายแรงใน VMware vCenter หมายเลข CVE 2026 123890 คะแนน CVSS 9.8 ซึ่งทำให้ผู้โจมตีที่เข้าถึงเครือข่ายได้ข้ามการยืนยันตัวตนและเข้าถึงระบบโดยไม่ได้รับอนุญาต ช่องโหว่อยู่ใน VMware Directory Service vCenter คือคอนโซลกลางที่องค์ก…",
+   "path": "20_Cases/20261120-cyber-10.md",
+   "degree": 5
+  },
+  {
+   "id": "20_Cases/20261120-cyber-11",
+   "title": "พบวิธีโจมตี Windows \"FastUnlock\" ยังไม่มีแพตช์ ผู้ที่ถือเครื่องที่ล็อกหน้าจออยู่สั่งรันโปรแกรมได้โดยไม่ต้องล็อกอิน แม้เปิด BitLocker แบบปลดล็อกด้วย TPM",
+   "kind": "case",
+   "folder": "20_Cases",
+   "entity_group": null,
+   "date": "2026-11-20",
+   "case_id": "20261120-cyber-11",
+   "crime_type": "อาชญากรรมไซเบอร์และออนไลน์",
+   "bureau": "-",
+   "area": "ทั่วโลก",
+   "status": "เตือนภัย · ยังไม่มีแพตช์",
+   "tags": [],
+   "excerpt": "ประเภท: อาชญากรรมไซเบอร์และออนไลน์ หน่วย: The Hacker News รายงานเมื่อ 20 พฤศจิกายน 2569 ถึงเทคนิคโจมตี Windows ที่ยังไม่มีแพตช์ชื่อ FastUnlock ซึ่งทำให้ผู้ที่เข้าถึงคอมพิวเตอร์ Windows ที่ล็อกหน้าจออยู่ทางกายภาพ สามารถเปิดโปรแกรมได้โดยไม่ต้องลงชื่อเข้าใช้ แต่ได้เพียงบัญชีสิทธิ์จำกัด ไม่ใช่สิทธิ์ผู้ดูแลเครื่อง. ตามรายงาน นักวิจัยที่ใช้ชื่อ MSNightmare และ Ni…",
+   "path": "20_Cases/20261120-cyber-11.md",
+   "degree": 4
+  },
+  {
+   "id": "20_Cases/20261120-cyber-12",
+   "title": "N-able ยืนยันผู้โจมตีเข้าถึงเซิร์ฟเวอร์ Mail Assure และ SpamExperts Hosted Cloud ทำพอร์ทัลจัดการและ API ปิดใช้งาน ยังไม่พบหลักฐานข้อมูลลูกค้าถูกเข้าถึง",
+   "kind": "case",
+   "folder": "20_Cases",
+   "entity_group": null,
+   "date": "2026-11-19",
+   "case_id": "20261120-cyber-12",
+   "crime_type": "อาชญากรรมไซเบอร์และออนไลน์",
+   "bureau": "-",
+   "area": "ทั่วโลก",
+   "status": "อยู่ระหว่างกู้ระบบและสอบสวน",
+   "tags": [],
+   "excerpt": "ประเภท: อาชญากรรมไซเบอร์และออนไลน์ หน่วย: The Hacker News รายงานเมื่อ 19 พฤศจิกายน 2569 ว่าบริษัท N able ผู้ให้บริการซอฟต์แวร์บริหารระบบไอทีและความปลอดภัยอีเมล เปิดเผยว่าผู้กระทำที่ยังไม่ทราบตัวตนเข้าถึงเซิร์ฟเวอร์หนึ่งในระบบ Mail Assure และ SpamExperts Hosted Cloud โดยไม่ได้รับอนุญาต จนบริษัทต้องปิดส่วนติดต่อจัดการและ API. ตามรายงาน N able เริ่มสอบสวนการหย…",
+   "path": "20_Cases/20261120-cyber-12.md",
+   "degree": 3
+  },
+  {
+   "id": "20_Cases/20261120-cyber-13",
+   "title": "SBC Medical Group กลุ่มคลินิกญี่ปุ่นแจ้ง ก.ล.ต. สหรัฐฯ ถูกเจาะฐานข้อมูล ข้อมูลส่วนบุคคลลูกค้า 1.6 ล้านคนและบัญชีพนักงานราว 2 หมื่นรายการรั่วไหล",
+   "kind": "case",
+   "folder": "20_Cases",
+   "entity_group": null,
+   "date": "2026-11-20",
+   "case_id": "20261120-cyber-13",
+   "crime_type": "อาชญากรรมไซเบอร์และออนไลน์",
+   "bureau": "-",
+   "area": "ญี่ปุ่น",
+   "status": "อยู่ระหว่างสอบสวน",
+   "tags": [],
+   "excerpt": "ประเภท: อาชญากรรมไซเบอร์และออนไลน์ หน่วย: BleepingComputer รายงานเมื่อ 19 พฤศจิกายน 2569 ตามเวลาสหรัฐฯ ว่า SBC Medical Group บริษัทบริหารคลินิกที่ทำธุรกิจหลักในญี่ปุ่นและจดทะเบียนในตลาด Nasdaq ยื่นแบบรายงานต่อคณะกรรมการกำกับหลักทรัพย์และตลาดหลักทรัพย์สหรัฐฯ (SEC) แจ้งเหตุด้านความปลอดภัยไซเบอร์สองเหตุ ทำให้ข้อมูลลูกค้าและพนักงานรั่วไหล รวมข้อมูลส่วนบุคคลของล…",
+   "path": "20_Cases/20261120-cyber-13.md",
+   "degree": 3
+  },
+  {
    "id": "20_Cases/20261120-drug-01",
    "title": "ป.ป.ส. ขยายผลเบาะแสสายด่วน 1386 จับผู้ต้องหาส่งไอซ์ซุกในขนมขบเคี้ยวผ่านร้านรับส่งพัสดุย่านบางแค ยึดไอซ์ 26 ถุง รถ 2 คัน และเงินสดราว 408,000 บาท",
    "kind": "case",
@@ -16230,6 +16434,23 @@
    "excerpt": "20261101 econ 01 \"ออยศรี\" เข้าให้ปากคำเพิ่มที่ บช.ก. ปมเส้นทางเงินบริจาคมูลนิธิองค์กรทำดี พร้อมมอ 20261102 econ 02 บก.ปอศ. รับคดีร้องเรียนมูลนิธิองค์กรทำดีไว้สอบสวน เบื้องต้นอาจเข้าข่ายฉ้อโกงประช",
    "path": "30_Entities/People/ประธานมูลนิธิองค์กรทำดี.md",
    "degree": 2
+  },
+  {
+   "id": "30_Entities/People/ประเสริฐ ลือโขง",
+   "title": "ประเสริฐ ลือโขง",
+   "kind": "entity",
+   "folder": "30_Entities/People",
+   "entity_group": "บุคคล",
+   "date": null,
+   "case_id": null,
+   "crime_type": null,
+   "bureau": null,
+   "area": null,
+   "status": null,
+   "tags": [],
+   "excerpt": "20261120 cyber 09 — สกมช. ร่วมเวที Secutech Thailand 2026 ผลักดันแนวปฏิบัติความปลอดภัย CCTV และ AI CCTV สำหรับเมืองอัจฉริยะ เตือนความเสี่ยงภาพและข้อมูลถูกเข้าถึงโดยไม่ได้รับอนุญาต",
+   "path": "30_Entities/People/ประเสริฐ ลือโขง.md",
+   "degree": 1
   },
   {
    "id": "30_Entities/People/ปรัชญา (เติร์ก)",
@@ -18969,6 +19190,23 @@
    "degree": 1
   },
   {
+   "id": "30_Entities/People/พิรงรอง รามสูต",
+   "title": "พิรงรอง รามสูต",
+   "kind": "entity",
+   "folder": "30_Entities/People",
+   "entity_group": "บุคคล",
+   "date": null,
+   "case_id": null,
+   "crime_type": null,
+   "bureau": null,
+   "area": null,
+   "status": null,
+   "tags": [],
+   "excerpt": "20261120 cyber 02 — กสทช. ยกกล่อง Android TV ฝังมัลแวร์จากโรงงานเป็นภัยคุกคามไซเบอร์ สั่งสำนักงานเร่งศึกษาแนวทางกำกับดูแล หลัง Google พบอุปกรณ์ติดมัลแวร์กว่า 1.3 ล้านเครื่องทั่วโลก",
+   "path": "30_Entities/People/พิรงรอง รามสูต.md",
+   "degree": 1
+  },
+  {
    "id": "30_Entities/People/ภ.1–ภ.9",
    "title": "ภ.1–ภ.9",
    "kind": "entity",
@@ -19561,6 +19799,23 @@
    "tags": [],
    "excerpt": "โน้ตสำหรับค้นหาใน Obsidian ไม่ใส่รายชื่อคดีทั้งก้อน — ใช้ Bases หรือ backlink",
    "path": "30_Entities/People/ศปก.ตร.สน..md",
+   "degree": 1
+  },
+  {
+   "id": "30_Entities/People/ศุภัช ศุภชลาศัย",
+   "title": "ศุภัช ศุภชลาศัย",
+   "kind": "entity",
+   "folder": "30_Entities/People",
+   "entity_group": "บุคคล",
+   "date": null,
+   "case_id": null,
+   "crime_type": null,
+   "bureau": null,
+   "area": null,
+   "status": null,
+   "tags": [],
+   "excerpt": "20261120 cyber 02 — กสทช. ยกกล่อง Android TV ฝังมัลแวร์จากโรงงานเป็นภัยคุกคามไซเบอร์ สั่งสำนักงานเร่งศึกษาแนวทางกำกับดูแล หลัง Google พบอุปกรณ์ติดมัลแวร์กว่า 1.3 ล้านเครื่องทั่วโลก",
+   "path": "30_Entities/People/ศุภัช ศุภชลาศัย.md",
    "degree": 1
   },
   {
@@ -20394,7 +20649,7 @@
    "tags": [],
    "excerpt": "20261026 cyber line 02 ผู้เสียหายกว่า 30 คน รวมตัวร้อง บก.ป. เร่งรัดคดีพรีออเดอร์การ์ด ONE PIECE ไม่ได้ 20261029 police 02 ศอ.ปส.ตร. มอบโล่เชิดชู 107 รางวัลผลงานปราบปรามและป้องกันยาเสพติดดีเด่น ปี 2569 ภ 20261031 cyber 02 กองปราบจับ 14 ผู้ต้องหาตามหมายจับศาลอาญา เครือข่ายโรแมนซ์สแกมชักชวนเทรดหุ้นผ่านแ 20261031 tourist 02 ตม.1 จับชาวเกาหลีใต้ที่พักอาศัยเกินก…",
    "path": "30_Entities/Places/กรุงเทพมหานคร.md",
-   "degree": 35
+   "degree": 37
   },
   {
    "id": "30_Entities/Places/กองบังคับการปราบปราม กรุงเทพฯ",
@@ -21584,6 +21839,23 @@
    "tags": [],
    "excerpt": "20261117 property 01 — สภ.คลองหลวง จับชาวเมียนมา 3 คน ถูกกล่าวหาขี่จักรยานยนต์ใช้ปืนและมีดจี้ชิงไอโฟนนั",
    "path": "30_Entities/Places/ซอยแก้วนิมิตร 11 ต.คลองหนึ่ง อ.คลองหลวง จ.ปทุมธานี.md",
+   "degree": 1
+  },
+  {
+   "id": "30_Entities/Places/ญี่ปุ่น",
+   "title": "ญี่ปุ่น",
+   "kind": "entity",
+   "folder": "30_Entities/Places",
+   "entity_group": "สถานที่",
+   "date": null,
+   "case_id": null,
+   "crime_type": null,
+   "bureau": null,
+   "area": null,
+   "status": null,
+   "tags": [],
+   "excerpt": "20261120 cyber 13 — SBC Medical Group กลุ่มคลินิกญี่ปุ่นแจ้ง ก.ล.ต. สหรัฐฯ ถูกเจาะฐานข้อมูล ข้อมูลส่วนบุคคลลูกค้า 1.6 ล้านคนและบัญชีพนักงานราว 2 หมื่นรายการรั่วไหล",
+   "path": "30_Entities/Places/ญี่ปุ่น.md",
    "degree": 1
   },
   {
@@ -23879,7 +24151,7 @@
    "tags": [],
    "excerpt": "20261118 cyber 08 — ThaiCERT เตือนการโจมตีห่วงโซ่อุปทานผ่าน Optimizely แทรกสคริปต์อันตรายในเว็บไซต์ 178 องค์กร เสี่ยงถูกขโมยข้อมูลบัตรและสับเปลี่ยนกระเป๋าคริปโต 20261118 cyber 09 — CISA เร่งองค์กรแพตช์ช่องโหว่ Java4Shell (CVE 2026 114938) ใน Java เสี่ยงถูกสั่งรันโค้ดจากระยะไกลโดยไม่ต้องยืนยันตัวตน 20261118 cyber 12 — N able ออก Hotfix 3 แก้ 17 ช่องโหว่ใน N…",
    "path": "30_Entities/Places/ทั่วโลก.md",
-   "degree": 10
+   "degree": 18
   },
   {
    "id": "30_Entities/Places/ทางหลวงหมายเลข 103",
@@ -25035,7 +25307,7 @@
    "tags": [],
    "excerpt": "20261118 cyber 13 — สกมช. ประชุมหน่วยงานความมั่นคงและผู้ให้บริการโทรคมนาคม ทบทวนแผนความต่อเนื่องและเส้นทางสื่อสารสำรองรับมือเหตุขัดข้อง 20261118 cyber 14 — หอการค้าไทยห่วงภัยไซเบอร์กระทบธุรกิจ เสนอรัฐร่วมเอกชนเฝ้าระวัง แจ้งเตือนเร็ว และช่วย SMEs เข้าถึงเครื่องมือป้องกัน 20261115 cyber 05 — ดีอีและ สกมช. ชี้แจงหลังหารือ Apple การได้รับแจ้งเตือนภัยคุกคามไม่ได…",
    "path": "30_Entities/Places/ประเทศไทย.md",
-   "degree": 5
+   "degree": 7
   },
   {
    "id": "30_Entities/Places/ปราจีนบุรี",
@@ -30801,6 +31073,23 @@
    "degree": 1
   },
   {
+   "id": "30_Entities/Units/BBC News ไทย",
+   "title": "BBC News ไทย",
+   "kind": "entity",
+   "folder": "30_Entities/Units",
+   "entity_group": "หน่วย",
+   "date": null,
+   "case_id": null,
+   "crime_type": null,
+   "bureau": null,
+   "area": null,
+   "status": null,
+   "tags": [],
+   "excerpt": "20261120 cyber 03 — BBC ไทยชี้ช่องโหว่แอปกู้เงินออนไลน์ หลังอินฟลูเอนเซอร์ร้องถูกทวงหนี้ บัญชีถูกอายัดโยงบัญชีม้า คลังย้ำไม่เคยรับรองแอปเถื่อนที่แอบอ้างตรากระทรวง",
+   "path": "30_Entities/Units/BBC News ไทย.md",
+   "degree": 1
+  },
+  {
    "id": "30_Entities/Units/BIMSTEC",
    "title": "BIMSTEC",
    "kind": "entity",
@@ -30835,6 +31124,23 @@
    "degree": 1
   },
   {
+   "id": "30_Entities/Units/Broadcom",
+   "title": "Broadcom",
+   "kind": "entity",
+   "folder": "30_Entities/Units",
+   "entity_group": "หน่วย",
+   "date": null,
+   "case_id": null,
+   "crime_type": null,
+   "bureau": null,
+   "area": null,
+   "status": null,
+   "tags": [],
+   "excerpt": "20261120 cyber 10 — Broadcom แก้ช่องโหว่ VMware vCenter ข้ามการยืนยันตัวตน (CVE 2026 123890) Google ระบุกลุ่มจารกรรมที่สงสัยเชื่อมโยงจีนใช้โจมตีก่อนมีแพตช์กว่า 2 เดือน",
+   "path": "30_Entities/Units/Broadcom.md",
+   "degree": 1
+  },
+  {
    "id": "30_Entities/Units/CISA",
    "title": "CISA",
    "kind": "entity",
@@ -30847,9 +31153,9 @@
    "area": null,
    "status": null,
    "tags": [],
-   "excerpt": "20261118 cyber 09 — CISA เร่งองค์กรแพตช์ช่องโหว่ Java4Shell (CVE 2026 114938) ใน Java เสี่ยงถูกสั่งรันโค้ดจากระยะไกลโดยไม่ต้องยืนยันตัวตน 20261119 cyber 11 — CISA เพิ่ม 4 ช่องโหว่ที่ถูกใช้โจมตีจริงเข้ารายการ KEV รวม Synology DSM, LiteLLM, Apache Axis และ REDCap",
+   "excerpt": "20261118 cyber 09 — CISA เร่งองค์กรแพตช์ช่องโหว่ Java4Shell (CVE 2026 114938) ใน Java เสี่ยงถูกสั่งรันโค้ดจากระยะไกลโดยไม่ต้องยืนยันตัวตน 20261119 cyber 11 — CISA เพิ่ม 4 ช่องโหว่ที่ถูกใช้โจมตีจริงเข้ารายการ KEV รวม Synology DSM, LiteLLM, Apache Axis และ REDCap 20261120 cyber 06 — ThaiCERT เตือน CISA เพิ่มช่องโหว่ Critical ใน Perforce Puppet Enterprise (CVE…",
    "path": "30_Entities/Units/CISA.md",
-   "degree": 2
+   "degree": 3
   },
   {
    "id": "30_Entities/Units/Cisco Talos",
@@ -30949,9 +31255,9 @@
    "area": null,
    "status": null,
    "tags": [],
-   "excerpt": "20261119 cyber 10 — NGINX ออกแพตช์ช่องโหว่ HTTP/2 อายุ 10 ปี \"nginx2root\" (CVE 2026 123007) เปิดทางรันโค้ดบนเซิร์ฟเวอร์โดยไม่ต้องล็อกอิน มีโค้ดสาธิตเผยแพร่แล้ว",
+   "excerpt": "20261119 cyber 10 — NGINX ออกแพตช์ช่องโหว่ HTTP/2 อายุ 10 ปี \"nginx2root\" (CVE 2026 123007) เปิดทางรันโค้ดบนเซิร์ฟเวอร์โดยไม่ต้องล็อกอิน มีโค้ดสาธิตเผยแพร่แล้ว 20261120 cyber 05 — ThaiCERT เตือน F5 ออกประกาศ 22 รายการ ช่องโหว่ BIG IP ทำระบบประมวลผลทราฟฟิกล่มได้โดยไม่ต้องยืนยันตัวตน บางรายการเสี่ยงถูกสั่งรันคำสั่ง",
    "path": "30_Entities/Units/F5.md",
-   "degree": 1
+   "degree": 2
   },
   {
    "id": "30_Entities/Units/FBI",
@@ -30988,6 +31294,23 @@
    "degree": 1
   },
   {
+   "id": "30_Entities/Units/Google Threat Intelligence Group",
+   "title": "Google Threat Intelligence Group",
+   "kind": "entity",
+   "folder": "30_Entities/Units",
+   "entity_group": "หน่วย",
+   "date": null,
+   "case_id": null,
+   "crime_type": null,
+   "bureau": null,
+   "area": null,
+   "status": null,
+   "tags": [],
+   "excerpt": "20261120 cyber 02 — กสทช. ยกกล่อง Android TV ฝังมัลแวร์จากโรงงานเป็นภัยคุกคามไซเบอร์ สั่งสำนักงานเร่งศึกษาแนวทางกำกับดูแล หลัง Google พบอุปกรณ์ติดมัลแวร์กว่า 1.3 ล้านเครื่องทั่วโลก 20261120 cyber 10 — Broadcom แก้ช่องโหว่ VMware vCenter ข้ามการยืนยันตัวตน (CVE 2026 123890) Google ระบุกลุ่มจารกรรมที่สงสัยเชื่อมโยงจีนใช้โจมตีก่อนมีแพตช์กว่า 2 เดือน",
+   "path": "30_Entities/Units/Google Threat Intelligence Group.md",
+   "degree": 2
+  },
+  {
    "id": "30_Entities/Units/Google",
    "title": "Google",
    "kind": "entity",
@@ -31000,9 +31323,9 @@
    "area": null,
    "status": null,
    "tags": [],
-   "excerpt": "20261118 cyber 17 — Google เผยผู้โจมตีหันใช้เฟรมเวิร์ก AI อัตโนมัติมากขึ้น พบกลุ่มรัฐจีนพัฒนาเครื่องมือคล้าย Artex และมีการสแกนองค์กรในเอเชีย",
+   "excerpt": "20261118 cyber 17 — Google เผยผู้โจมตีหันใช้เฟรมเวิร์ก AI อัตโนมัติมากขึ้น พบกลุ่มรัฐจีนพัฒนาเครื่องมือคล้าย Artex และมีการสแกนองค์กรในเอเชีย 20261120 cyber 07 — ThaiCERT แนะอัปเดต Chrome 158 หลัง Google แก้ช่องโหว่ 204 รายการ รวมระดับ Critical 6 รายการ เสี่ยงถูกโจมตีผ่านเว็บไซต์อันตราย",
    "path": "30_Entities/Units/Google.md",
-   "degree": 1
+   "degree": 2
   },
   {
    "id": "30_Entities/Units/Kaspersky",
@@ -31022,6 +31345,23 @@
    "degree": 1
   },
   {
+   "id": "30_Entities/Units/Mandiant",
+   "title": "Mandiant",
+   "kind": "entity",
+   "folder": "30_Entities/Units",
+   "entity_group": "หน่วย",
+   "date": null,
+   "case_id": null,
+   "crime_type": null,
+   "bureau": null,
+   "area": null,
+   "status": null,
+   "tags": [],
+   "excerpt": "20261120 cyber 10 — Broadcom แก้ช่องโหว่ VMware vCenter ข้ามการยืนยันตัวตน (CVE 2026 123890) Google ระบุกลุ่มจารกรรมที่สงสัยเชื่อมโยงจีนใช้โจมตีก่อนมีแพตช์กว่า 2 เดือน",
+   "path": "30_Entities/Units/Mandiant.md",
+   "degree": 1
+  },
+  {
    "id": "30_Entities/Units/Microsoft",
    "title": "Microsoft",
    "kind": "entity",
@@ -31034,8 +31374,25 @@
    "area": null,
    "status": null,
    "tags": [],
-   "excerpt": "20261118 cyber 10 — ThaiCERT สรุปคำเตือน FBI เรื่องเฟรมเวิร์ก AI \"ARTEX\" ช่วยผู้โจมตีเจาะระบบถึงสิทธิ์ขั้นสูงภายในไม่ถึง 3 ชั่วโมง",
+   "excerpt": "20261118 cyber 10 — ThaiCERT สรุปคำเตือน FBI เรื่องเฟรมเวิร์ก AI \"ARTEX\" ช่วยผู้โจมตีเจาะระบบถึงสิทธิ์ขั้นสูงภายในไม่ถึง 3 ชั่วโมง 20261120 cyber 11 — พบวิธีโจมตี Windows \"FastUnlock\" ยังไม่มีแพตช์ ผู้ที่ถือเครื่องที่ล็อกหน้าจออยู่สั่งรันโปรแกรมได้โดยไม่ต้องล็อกอิน แม้เปิด BitLocker แบบปลดล็อกด้วย TPM",
    "path": "30_Entities/Units/Microsoft.md",
+   "degree": 2
+  },
+  {
+   "id": "30_Entities/Units/N-able",
+   "title": "N-able",
+   "kind": "entity",
+   "folder": "30_Entities/Units",
+   "entity_group": "หน่วย",
+   "date": null,
+   "case_id": null,
+   "crime_type": null,
+   "bureau": null,
+   "area": null,
+   "status": null,
+   "tags": [],
+   "excerpt": "20261120 cyber 12 — N able ยืนยันผู้โจมตีเข้าถึงเซิร์ฟเวอร์ Mail Assure และ SpamExperts Hosted Cloud ทำพอร์ทัลจัดการและ API ปิดใช้งาน ยังไม่พบหลักฐานข้อมูลลูกค้าถูกเข้าถึง",
+   "path": "30_Entities/Units/N-able.md",
    "degree": 1
   },
   {
@@ -31087,6 +31444,23 @@
    "tags": [],
    "excerpt": "20261119 cyber 14 — Bitdefender พบกลุ่ม APT ผู้ใช้มัลแวร์ EggStreme ปรับเครื่องมือใหม่ให้เงียบขึ้น ยังโจมตีหน่วยงานรัฐฟิลิปปินส์ต่อเนื่อง",
    "path": "30_Entities/Units/Palo Alto Networks.md",
+   "degree": 1
+  },
+  {
+   "id": "30_Entities/Units/PHP Development Team",
+   "title": "PHP Development Team",
+   "kind": "entity",
+   "folder": "30_Entities/Units",
+   "entity_group": "หน่วย",
+   "date": null,
+   "case_id": null,
+   "crime_type": null,
+   "bureau": null,
+   "area": null,
+   "status": null,
+   "tags": [],
+   "excerpt": "20261120 cyber 04 — ThaiCERT เตือน PHP ออกอัปเดตแก้ช่องโหว่ระดับ Critical 7 รายการ รวม HTTP Request Smuggling ใน PHP FPM ที่อาจเปิดทางรันโค้ดโดยไม่ต้องยืนยันตัวตน",
+   "path": "30_Entities/Units/PHP Development Team.md",
    "degree": 1
   },
   {
@@ -31158,6 +31532,23 @@
    "degree": 1
   },
   {
+   "id": "30_Entities/Units/SBC Medical Group",
+   "title": "SBC Medical Group",
+   "kind": "entity",
+   "folder": "30_Entities/Units",
+   "entity_group": "หน่วย",
+   "date": null,
+   "case_id": null,
+   "crime_type": null,
+   "bureau": null,
+   "area": null,
+   "status": null,
+   "tags": [],
+   "excerpt": "20261120 cyber 13 — SBC Medical Group กลุ่มคลินิกญี่ปุ่นแจ้ง ก.ล.ต. สหรัฐฯ ถูกเจาะฐานข้อมูล ข้อมูลส่วนบุคคลลูกค้า 1.6 ล้านคนและบัญชีพนักงานราว 2 หมื่นรายการรั่วไหล",
+   "path": "30_Entities/Units/SBC Medical Group.md",
+   "degree": 1
+  },
+  {
    "id": "30_Entities/Units/Socket",
    "title": "Socket",
    "kind": "entity",
@@ -31206,7 +31597,24 @@
    "tags": [],
    "excerpt": "20261024 cyber 01 แจ้งเตือน ช่องโหว่ระดับ Critical ใน GitLab เสี่ยงถูกสั่งรันคำสั่งโดยไม่ต้องยืนยันตัวตน 20261024 cyber 02 แจ้งเตือน พบการโจมตีช่องโหว่ Plex2Shell ใน Plex Media Server เสี่ยงถูกควบคุมระบบและติดตั้ง Crypto Miner 20261029 cyber 03 ThaiCERT เตือนช่องโหว่ CVE 2026 80097 ใน Microsoft Authenticator บน Android เสี่ยงแอปอันตรายแอบอ้างขอ Token บัญชีอ…",
    "path": "30_Entities/Units/ThaiCERT.md",
-   "degree": 39
+   "degree": 44
+  },
+  {
+   "id": "30_Entities/Units/ThreatLocker",
+   "title": "ThreatLocker",
+   "kind": "entity",
+   "folder": "30_Entities/Units",
+   "entity_group": "หน่วย",
+   "date": null,
+   "case_id": null,
+   "crime_type": null,
+   "bureau": null,
+   "area": null,
+   "status": null,
+   "tags": [],
+   "excerpt": "20261120 cyber 11 — พบวิธีโจมตี Windows \"FastUnlock\" ยังไม่มีแพตช์ ผู้ที่ถือเครื่องที่ล็อกหน้าจออยู่สั่งรันโปรแกรมได้โดยไม่ต้องล็อกอิน แม้เปิด BitLocker แบบปลดล็อกด้วย TPM",
+   "path": "30_Entities/Units/ThreatLocker.md",
+   "degree": 1
   },
   {
    "id": "30_Entities/Units/TICAC",
@@ -32479,9 +32887,9 @@
    "area": null,
    "status": null,
    "tags": [],
-   "excerpt": "โหนดมาตรฐาน (Task 3). aliases: NBTC 20261118 cyber 13 — สกมช. ประชุมหน่วยงานความมั่นคงและผู้ให้บริการโทรคมนาคม ทบทวนแผนความต่อเนื่องและเส้นทางสื่อสารสำรองรับมือเหตุขัดข้อง",
+   "excerpt": "โหนดมาตรฐาน (Task 3). aliases: NBTC 20261118 cyber 13 — สกมช. ประชุมหน่วยงานความมั่นคงและผู้ให้บริการโทรคมนาคม ทบทวนแผนความต่อเนื่องและเส้นทางสื่อสารสำรองรับมือเหตุขัดข้อง 20261120 cyber 02 — กสทช. ยกกล่อง Android TV ฝังมัลแวร์จากโรงงานเป็นภัยคุกคามไซเบอร์ สั่งสำนักงานเร่งศึกษาแนวทางกำกับดูแล หลัง Google พบอุปกรณ์ติดมัลแวร์กว่า 1.3 ล้านเครื่องทั่วโลก",
    "path": "30_Entities/Units/กสทช..md",
-   "degree": 1
+   "degree": 2
   },
   {
    "id": "30_Entities/Units/กอ.รมน.",
@@ -39961,7 +40369,7 @@
    "tags": [],
    "excerpt": "20261111 cyber 04 — รัฐบาลยกระดับมาตรการป้องกันภัยไซเบอร์หลังเหตุโจมตีหลายประเทศ คมนาคมสั่งหน่วยการบินเข้มงวดหลังการบินไทยแจ้งข้อมูลสำรองที่นั่งราว 60,529 รายการถูกเข้าถึงผ่านระบบผู้ให้บริการ ธปท. เรียกประชุม CIO สถาบันการเงิน 20261118 cyber 13 — สกมช. ประชุมหน่วยงานความมั่นคงและผู้ให้บริการโทรคมนาคม ทบทวนแผนความต่อเนื่องและเส้นทางสื่อสารสำรองรับมือเหตุขัดข…",
    "path": "30_Entities/Units/สกมช..md",
-   "degree": 8
+   "degree": 10
   },
   {
    "id": "30_Entities/Units/สตม.6",
@@ -43976,6 +44384,40 @@
    "degree": 1
   },
   {
+   "id": "30_Entities/Units/สมาคมระบบกล้องวงจรปิดอัจฉริยะไทย",
+   "title": "สมาคมระบบกล้องวงจรปิดอัจฉริยะไทย",
+   "kind": "entity",
+   "folder": "30_Entities/Units",
+   "entity_group": "หน่วย",
+   "date": null,
+   "case_id": null,
+   "crime_type": null,
+   "bureau": null,
+   "area": null,
+   "status": null,
+   "tags": [],
+   "excerpt": "20261120 cyber 09 — สกมช. ร่วมเวที Secutech Thailand 2026 ผลักดันแนวปฏิบัติความปลอดภัย CCTV และ AI CCTV สำหรับเมืองอัจฉริยะ เตือนความเสี่ยงภาพและข้อมูลถูกเข้าถึงโดยไม่ได้รับอนุญาต",
+   "path": "30_Entities/Units/สมาคมระบบกล้องวงจรปิดอัจฉริยะไทย.md",
+   "degree": 1
+  },
+  {
+   "id": "30_Entities/Units/สศค. กระทรวงการคลัง",
+   "title": "สศค. กระทรวงการคลัง",
+   "kind": "entity",
+   "folder": "30_Entities/Units",
+   "entity_group": "หน่วย",
+   "date": null,
+   "case_id": null,
+   "crime_type": null,
+   "bureau": null,
+   "area": null,
+   "status": null,
+   "tags": [],
+   "excerpt": "20261120 cyber 03 — BBC ไทยชี้ช่องโหว่แอปกู้เงินออนไลน์ หลังอินฟลูเอนเซอร์ร้องถูกทวงหนี้ บัญชีถูกอายัดโยงบัญชีม้า คลังย้ำไม่เคยรับรองแอปเถื่อนที่แอบอ้างตรากระทรวง",
+   "path": "30_Entities/Units/สศค. กระทรวงการคลัง.md",
+   "degree": 1
+  },
+  {
    "id": "30_Entities/Units/สสจ.เชียงใหม่",
    "title": "สสจ.เชียงใหม่",
    "kind": "entity",
@@ -44007,6 +44449,23 @@
    "tags": [],
    "excerpt": "20261118 cyber 01 — กองปราบร่วม กสทช. ค้น 5 จุดใน 4 จังหวัด ทลายแหล่งผลิตและขายเครื่อง Box Phone ที่ควบคุมมือถือได้สูงสุด 1,000 เครื่อง จับผู้ต้องหา 1 คนที่ปทุมธานี",
    "path": "30_Entities/Units/สำนักงาน กสทช..md",
+   "degree": 1
+  },
+  {
+   "id": "30_Entities/Units/สำนักงาน กสม.",
+   "title": "สำนักงาน กสม.",
+   "kind": "entity",
+   "folder": "30_Entities/Units",
+   "entity_group": "หน่วย",
+   "date": null,
+   "case_id": null,
+   "crime_type": null,
+   "bureau": null,
+   "area": null,
+   "status": null,
+   "tags": [],
+   "excerpt": "20261120 cyber 08 — สกมช. หารือสำนักงาน กสม. แลกเปลี่ยนสถานการณ์ภัยไซเบอร์ วางแนวทางประเมินตนเอง ประเมินช่องโหว่ และทดสอบเจาะระบบ เพื่อปกป้องข้อมูลส่วนบุคคลของผู้ร้องเรียน",
+   "path": "30_Entities/Units/สำนักงาน กสม..md",
    "degree": 1
   },
   {
@@ -45214,7 +45673,7 @@
    "tags": [],
    "excerpt": "หน้ารวมประเภทคดี ใช้เป็นคุณสมบัติของคดี ไม่ฝังรายการ คดี ทั้งคลัง กรองใน Bases จาก crime type แทน 20261027 cyber 01 ตำรวจสันติบาลแจ้งความเจ้าของเพจ Godd Dam ปมภาพสลิปโอนเงิน 7 ล้านบาทที่ถูกระบุว่าเป็นข้อมูลเท็จ ผบช.สอท. ยืนยันยังไม่มีการจับกุม ตำรวจไซเบอร์ขอข้อมูลคดีจาก สน.บางเขน 20261026 cyber line 01 บช.ก. บก.ป. จับหญิงวัย 32 ปี ตามหมายจับศาลเชียงใหม่ ปมบ…",
    "path": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์.md",
-   "degree": 159
+   "degree": 171
   },
   {
    "id": "40_CrimeTypes/อื่น ๆ",
@@ -66366,6 +66825,206 @@
    "label": "เกิดที่"
   },
   {
+   "source": "20_Cases/20261120-cyber-02",
+   "target": "30_Entities/Units/กสทช.",
+   "label": "แจ้งโดย"
+  },
+  {
+   "source": "20_Cases/20261120-cyber-02",
+   "target": "30_Entities/Units/Google Threat Intelligence Group",
+   "label": "แจ้งโดย"
+  },
+  {
+   "source": "20_Cases/20261120-cyber-02",
+   "target": "30_Entities/Places/ประเทศไทย",
+   "label": "เกิดที่"
+  },
+  {
+   "source": "20_Cases/20261120-cyber-02",
+   "target": "30_Entities/Places/ทั่วโลก",
+   "label": "เกิดที่"
+  },
+  {
+   "source": "20_Cases/20261120-cyber-02",
+   "target": "30_Entities/People/ศุภัช ศุภชลาศัย",
+   "label": "เกี่ยวข้องกับบุคคล"
+  },
+  {
+   "source": "20_Cases/20261120-cyber-02",
+   "target": "30_Entities/People/พิรงรอง รามสูต",
+   "label": "เกี่ยวข้องกับบุคคล"
+  },
+  {
+   "source": "20_Cases/20261120-cyber-03",
+   "target": "30_Entities/Units/สศค. กระทรวงการคลัง",
+   "label": "แจ้งโดย"
+  },
+  {
+   "source": "20_Cases/20261120-cyber-03",
+   "target": "30_Entities/Units/BBC News ไทย",
+   "label": "แจ้งโดย"
+  },
+  {
+   "source": "20_Cases/20261120-cyber-03",
+   "target": "30_Entities/Places/ประเทศไทย",
+   "label": "เกิดที่"
+  },
+  {
+   "source": "20_Cases/20261120-cyber-04",
+   "target": "30_Entities/Units/ThaiCERT",
+   "label": "แจ้งโดย"
+  },
+  {
+   "source": "20_Cases/20261120-cyber-04",
+   "target": "30_Entities/Units/PHP Development Team",
+   "label": "แจ้งโดย"
+  },
+  {
+   "source": "20_Cases/20261120-cyber-04",
+   "target": "30_Entities/Places/ทั่วโลก",
+   "label": "เกิดที่"
+  },
+  {
+   "source": "20_Cases/20261120-cyber-05",
+   "target": "30_Entities/Units/ThaiCERT",
+   "label": "แจ้งโดย"
+  },
+  {
+   "source": "20_Cases/20261120-cyber-05",
+   "target": "30_Entities/Units/F5",
+   "label": "แจ้งโดย"
+  },
+  {
+   "source": "20_Cases/20261120-cyber-05",
+   "target": "30_Entities/Places/ทั่วโลก",
+   "label": "เกิดที่"
+  },
+  {
+   "source": "20_Cases/20261120-cyber-06",
+   "target": "30_Entities/Units/ThaiCERT",
+   "label": "แจ้งโดย"
+  },
+  {
+   "source": "20_Cases/20261120-cyber-06",
+   "target": "30_Entities/Units/CISA",
+   "label": "แจ้งโดย"
+  },
+  {
+   "source": "20_Cases/20261120-cyber-06",
+   "target": "30_Entities/Places/ทั่วโลก",
+   "label": "เกิดที่"
+  },
+  {
+   "source": "20_Cases/20261120-cyber-07",
+   "target": "30_Entities/Units/ThaiCERT",
+   "label": "แจ้งโดย"
+  },
+  {
+   "source": "20_Cases/20261120-cyber-07",
+   "target": "30_Entities/Units/Google",
+   "label": "แจ้งโดย"
+  },
+  {
+   "source": "20_Cases/20261120-cyber-07",
+   "target": "30_Entities/Places/ทั่วโลก",
+   "label": "เกิดที่"
+  },
+  {
+   "source": "20_Cases/20261120-cyber-08",
+   "target": "30_Entities/Units/สกมช.",
+   "label": "แจ้งโดย"
+  },
+  {
+   "source": "20_Cases/20261120-cyber-08",
+   "target": "30_Entities/Units/สำนักงาน กสม.",
+   "label": "เกี่ยวข้องกับบุคคล"
+  },
+  {
+   "source": "20_Cases/20261120-cyber-08",
+   "target": "30_Entities/Units/ThaiCERT",
+   "label": "เกี่ยวข้องกับบุคคล"
+  },
+  {
+   "source": "20_Cases/20261120-cyber-08",
+   "target": "30_Entities/Places/กรุงเทพมหานคร",
+   "label": "เกิดที่"
+  },
+  {
+   "source": "20_Cases/20261120-cyber-09",
+   "target": "30_Entities/Units/สกมช.",
+   "label": "แจ้งโดย"
+  },
+  {
+   "source": "20_Cases/20261120-cyber-09",
+   "target": "30_Entities/Units/สมาคมระบบกล้องวงจรปิดอัจฉริยะไทย",
+   "label": "เกี่ยวข้องกับบุคคล"
+  },
+  {
+   "source": "20_Cases/20261120-cyber-09",
+   "target": "30_Entities/Places/กรุงเทพมหานคร",
+   "label": "เกิดที่"
+  },
+  {
+   "source": "20_Cases/20261120-cyber-09",
+   "target": "30_Entities/People/ประเสริฐ ลือโขง",
+   "label": "เกี่ยวข้องกับบุคคล"
+  },
+  {
+   "source": "20_Cases/20261120-cyber-10",
+   "target": "30_Entities/Units/Broadcom",
+   "label": "แจ้งโดย"
+  },
+  {
+   "source": "20_Cases/20261120-cyber-10",
+   "target": "30_Entities/Units/Google Threat Intelligence Group",
+   "label": "แจ้งโดย"
+  },
+  {
+   "source": "20_Cases/20261120-cyber-10",
+   "target": "30_Entities/Units/Mandiant",
+   "label": "แจ้งโดย"
+  },
+  {
+   "source": "20_Cases/20261120-cyber-10",
+   "target": "30_Entities/Places/ทั่วโลก",
+   "label": "เกิดที่"
+  },
+  {
+   "source": "20_Cases/20261120-cyber-11",
+   "target": "30_Entities/Units/ThreatLocker",
+   "label": "แจ้งโดย"
+  },
+  {
+   "source": "20_Cases/20261120-cyber-11",
+   "target": "30_Entities/Units/Microsoft",
+   "label": "เกี่ยวข้องกับบุคคล"
+  },
+  {
+   "source": "20_Cases/20261120-cyber-11",
+   "target": "30_Entities/Places/ทั่วโลก",
+   "label": "เกิดที่"
+  },
+  {
+   "source": "20_Cases/20261120-cyber-12",
+   "target": "30_Entities/Units/N-able",
+   "label": "แจ้งโดย"
+  },
+  {
+   "source": "20_Cases/20261120-cyber-12",
+   "target": "30_Entities/Places/ทั่วโลก",
+   "label": "เกิดที่"
+  },
+  {
+   "source": "20_Cases/20261120-cyber-13",
+   "target": "30_Entities/Units/SBC Medical Group",
+   "label": "แจ้งโดย"
+  },
+  {
+   "source": "20_Cases/20261120-cyber-13",
+   "target": "30_Entities/Places/ญี่ปุ่น",
+   "label": "เกิดที่"
+  },
+  {
    "source": "20_Cases/20261120-drug-01",
    "target": "30_Entities/Units/ป.ป.ส.",
    "label": "จับโดย"
@@ -73827,6 +74486,66 @@
   },
   {
    "source": "20_Cases/20261120-cyber-01",
+   "target": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "label": "ประเภท"
+  },
+  {
+   "source": "20_Cases/20261120-cyber-02",
+   "target": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "label": "ประเภท"
+  },
+  {
+   "source": "20_Cases/20261120-cyber-03",
+   "target": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "label": "ประเภท"
+  },
+  {
+   "source": "20_Cases/20261120-cyber-04",
+   "target": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "label": "ประเภท"
+  },
+  {
+   "source": "20_Cases/20261120-cyber-05",
+   "target": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "label": "ประเภท"
+  },
+  {
+   "source": "20_Cases/20261120-cyber-06",
+   "target": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "label": "ประเภท"
+  },
+  {
+   "source": "20_Cases/20261120-cyber-07",
+   "target": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "label": "ประเภท"
+  },
+  {
+   "source": "20_Cases/20261120-cyber-08",
+   "target": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "label": "ประเภท"
+  },
+  {
+   "source": "20_Cases/20261120-cyber-09",
+   "target": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "label": "ประเภท"
+  },
+  {
+   "source": "20_Cases/20261120-cyber-10",
+   "target": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "label": "ประเภท"
+  },
+  {
+   "source": "20_Cases/20261120-cyber-11",
+   "target": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "label": "ประเภท"
+  },
+  {
+   "source": "20_Cases/20261120-cyber-12",
+   "target": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "label": "ประเภท"
+  },
+  {
+   "source": "20_Cases/20261120-cyber-13",
    "target": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
    "label": "ประเภท"
   },

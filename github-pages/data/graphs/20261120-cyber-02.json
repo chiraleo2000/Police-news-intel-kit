@@ -1,0 +1,52 @@
+{
+ "case_id": "20261120-cyber-02",
+ "title": "กสทช. ยกกล่อง Android TV ฝังมัลแวร์จากโรงงานเป็นภัยคุกคามไซเบอร์ สั่งสำนักงานเร่งศึกษาแนวทางกำกับดูแล หลัง Google พบอุปกรณ์ติดมัลแวร์กว่า 1.3 ล้านเครื่องทั่วโลก",
+ "generated_at": "2026-11-20T06:14:29.676Z",
+ "node_count": 8,
+ "edge_count": 7,
+ "relations": [
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/กสทช.",
+   "target_title": "กสทช.",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/Google Threat Intelligence Group",
+   "target_title": "Google Threat Intelligence Group",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ประเทศไทย",
+   "target_title": "ประเทศไทย",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ทั่วโลก",
+   "target_title": "ทั่วโลก",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/ศุภัช ศุภชลาศัย",
+   "target_title": "ศุภัช ศุภชลาศัย",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/พิรงรอง รามสูต",
+   "target_title": "พิรงรอง รามสูต",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261120-cyber-02.svg"
+}
