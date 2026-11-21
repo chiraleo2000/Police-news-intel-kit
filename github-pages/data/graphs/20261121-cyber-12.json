@@ -1,0 +1,46 @@
+{
+ "case_id": "20261121-cyber-12",
+ "title": "ดีอี-สคส. ประกาศเปลี่ยนจากส่งเสริมเป็นบังคับใช้ PDPA เชิงรุก เข้มตรวจสอบองค์กรปล่อยข้อมูลรั่ว ผลักไทยเข้ากรอบ Global CBPR และดันเครือข่าย DPO รับมือ AI-ภัยไซเบอร์",
+ "generated_at": "2026-11-21T06:16:46.128Z",
+ "node_count": 7,
+ "edge_count": 6,
+ "relations": [
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/กระทรวงดีอี",
+   "target_title": "กระทรวงดีอี",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/สคส.",
+   "target_title": "สคส.",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/นนทบุรี",
+   "target_title": "นนทบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/People/บุณย์ธิดา สมชัย",
+   "target_title": "บุณย์ธิดา สมชัย",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/สุรพงศ์ เปล่งขำ",
+   "target_title": "สุรพงศ์ เปล่งขำ",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261121-cyber-12.svg"
+}

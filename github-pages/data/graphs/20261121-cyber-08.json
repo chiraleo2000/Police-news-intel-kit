@@ -1,0 +1,34 @@
+{
+ "case_id": "20261121-cyber-08",
+ "title": "ThaiCERT รายงานคณะกรรมาธิการยุโรปถูกโจมตีทางไซเบอร์ ระบบบุคคล-เงินเดือน-เบิกค่ารักษาขัดข้องกว่า 10 วัน CERT-EU สงสัยใช้เครื่องมือ AI ชื่อ ARTEX ยังไม่ยืนยันข้อมูลรั่ว",
+ "generated_at": "2026-11-21T06:16:46.128Z",
+ "node_count": 5,
+ "edge_count": 4,
+ "relations": [
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/ThaiCERT",
+   "target_title": "ThaiCERT",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/CERT-EU",
+   "target_title": "CERT-EU",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/สหภาพยุโรป",
+   "target_title": "สหภาพยุโรป",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261121-cyber-08.svg"
+}

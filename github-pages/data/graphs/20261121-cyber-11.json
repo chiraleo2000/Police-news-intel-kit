@@ -1,0 +1,40 @@
+{
+ "case_id": "20261121-cyber-11",
+ "title": "CISA เพิ่ม 4 ช่องโหว่ที่ถูกใช้โจมตีจริงลงบัญชี KEV รวม Cisco Expressway (CVE-2026-76466) ที่ถูกเจาะแล้วหลังมีโค้ดสาธิตเผยแพร่ และ SAP NetWeaver",
+ "generated_at": "2026-11-21T06:16:46.128Z",
+ "node_count": 6,
+ "edge_count": 5,
+ "relations": [
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/CISA",
+   "target_title": "CISA",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/F6",
+   "target_title": "F6",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ทั่วโลก",
+   "target_title": "ทั่วโลก",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/รัสเซีย",
+   "target_title": "รัสเซีย",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261121-cyber-11.svg"
+}

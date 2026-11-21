@@ -1,0 +1,28 @@
+{
+ "case_id": "20261121-cyber-17",
+ "title": "แพลตฟอร์มกระจายมัลแวร์ ROMULUS ใช้กลลวง ClickFix หลอกให้เหยื่อวางคำสั่งเอง ติดตั้งโทรจันควบคุมเครื่อง ดูหน้าจอ เปิดกล้อง-ไมโครโฟน บางสายล่อผ่าน Custom GPT",
+ "generated_at": "2026-11-21T06:16:46.128Z",
+ "node_count": 4,
+ "edge_count": 3,
+ "relations": [
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/Blackpoint Cyber",
+   "target_title": "Blackpoint Cyber",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ทั่วโลก",
+   "target_title": "ทั่วโลก",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261121-cyber-17.svg"
+}

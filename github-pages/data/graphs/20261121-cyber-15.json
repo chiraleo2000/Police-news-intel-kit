@@ -1,0 +1,28 @@
+{
+ "case_id": "20261121-cyber-15",
+ "title": "Amazon พบผู้โจมตีที่เชื่อมโยงจีนใช้แพลตฟอร์ม AI agent \"Cairn\" ค้นช่องโหว่ zero-day ในแอปภาพทางการแพทย์ MONAI Label แล้วยึดเซิร์ฟเวอร์มหาวิทยาลัยในเอเชียตะวันออก",
+ "generated_at": "2026-11-21T06:16:46.128Z",
+ "node_count": 4,
+ "edge_count": 3,
+ "relations": [
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/Amazon Threat Intelligence",
+   "target_title": "Amazon Threat Intelligence",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/เอเชียตะวันออก",
+   "target_title": "เอเชียตะวันออก",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261121-cyber-15.svg"
+}

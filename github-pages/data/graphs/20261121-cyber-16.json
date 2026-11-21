@@ -1,0 +1,28 @@
+{
+ "case_id": "20261121-cyber-16",
+ "title": "SonicWall เตือนลูกค้าเลิกใช้ไฟร์วอลล์ Gen 6 ทันที จะไม่มีแพตช์แม้ช่องโหว่ร้ายแรง คาดถูกโจมตีด้วยเครื่องมืออัตโนมัติและ AI ให้ย้ายไป Gen 8",
+ "generated_at": "2026-11-21T06:16:46.128Z",
+ "node_count": 4,
+ "edge_count": 3,
+ "relations": [
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/SonicWall",
+   "target_title": "SonicWall",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ทั่วโลก",
+   "target_title": "ทั่วโลก",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261121-cyber-16.svg"
+}

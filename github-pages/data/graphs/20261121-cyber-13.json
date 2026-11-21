@@ -1,0 +1,28 @@
+{
+ "case_id": "20261121-cyber-13",
+ "title": "WhatsApp แก้ 3 ช่องโหว่ หนึ่งในนั้นบนแอป Android (CVE-2026-23871) ถูกสงสัยว่ามิจฉาชีพใช้ทำให้ข้อความหลอกลวงดูน่าเชื่อและเผยที่อยู่ IP ของเหยื่อ แนะอัปเดตเป็น 2.26.17.4 ขึ้นไป",
+ "generated_at": "2026-11-21T06:16:46.128Z",
+ "node_count": 4,
+ "edge_count": 3,
+ "relations": [
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/WhatsApp (Meta)",
+   "target_title": "WhatsApp (Meta)",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ทั่วโลก",
+   "target_title": "ทั่วโลก",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261121-cyber-13.svg"
+}

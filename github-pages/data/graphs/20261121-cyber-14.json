@@ -1,0 +1,28 @@
+{
+ "case_id": "20261121-cyber-14",
+ "title": "พบมัลแวร์ Android \"Bazuka\" ใช้ภาพหน้าจอปลอมบังการขโมยรหัส-ควบคุมเครื่อง ดักรหัส OTP และสลับที่อยู่กระเป๋าคริปโต แพร่ผ่านแอป TikTok ปลอมและ Google Play แผงควบคุมใช้ AI คัดเหยื่อ",
+ "generated_at": "2026-11-21T06:16:46.128Z",
+ "node_count": 4,
+ "edge_count": 3,
+ "relations": [
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/ThreatFabric",
+   "target_title": "ThreatFabric",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ทั่วโลก",
+   "target_title": "ทั่วโลก",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261121-cyber-14.svg"
+}

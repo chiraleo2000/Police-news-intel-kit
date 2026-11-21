@@ -1,0 +1,40 @@
+{
+ "case_id": "20261121-cyber-10",
+ "title": "สกมช. ส่งวิทยากรอบรมบุคลากรสาธารณสุขเชียงรายเรื่องความตระหนักภัยไซเบอร์และการประเมินช่องโหว่ระบบเครือข่าย เสริมความพร้อมป้องกันระบบบริการสุขภาพ",
+ "generated_at": "2026-11-21T06:16:46.128Z",
+ "node_count": 6,
+ "edge_count": 5,
+ "relations": [
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/สกมช.",
+   "target_title": "สกมช.",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/Units/สำนักงานสาธารณสุขจังหวัดเชียงราย",
+   "target_title": "สำนักงานสาธารณสุขจังหวัดเชียงราย",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/เชียงราย",
+   "target_title": "เชียงราย",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/นพรัตน์ สุจินดา",
+   "target_title": "นพรัตน์ สุจินดา",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261121-cyber-10.svg"
+}
