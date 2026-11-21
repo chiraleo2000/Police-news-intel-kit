@@ -1,0 +1,46 @@
+{
+ "case_id": "20261121-organized-01",
+ "title": "ตชด.437 จับอดีตตำรวจชายแดนใต้ที่หาดใหญ่ ตามหมายจับศาลจังหวัดปัตตานีข้อหาเจ้าพนักงานเบียดบังทรัพย์ กรณีถูกกล่าวหานำปืน M16 และปืนพกของหลวงไปขายและจำนำ",
+ "generated_at": "2026-11-21T01:23:02.033Z",
+ "node_count": 7,
+ "edge_count": 6,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/ร้อย ตชด.437",
+   "target_title": "ร้อย ตชด.437",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลจังหวัดปัตตานี",
+   "target_title": "ศาลจังหวัดปัตตานี",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/สภ.เมืองปัตตานี",
+   "target_title": "สภ.เมืองปัตตานี",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ถนนนิพัทธ์สงเคราะห์ 4 เขตเทศบาลนครหาดใหญ่ จ.สงขลา",
+   "target_title": "ถนนนิพัทธ์สงเคราะห์ 4 เขตเทศบาลนครหาดใหญ่ จ.สงขลา",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/สถานที่/หาดใหญ่",
+   "target_title": "หาดใหญ่",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/คดีอุกฉกรรจ์ ผู้มีอิทธิพล และอาวุธ",
+   "target_title": "คดีอุกฉกรรจ์ ผู้มีอิทธิพล และอาวุธ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261121-organized-01.svg"
+}

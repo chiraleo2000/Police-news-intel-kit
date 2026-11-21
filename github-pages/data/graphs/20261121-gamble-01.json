@@ -1,0 +1,64 @@
+{
+ "case_id": "20261121-gamble-01",
+ "title": "DSI ร่วม ปปง. ค้น 2 จุดในภาษีเจริญและรัตนาธิเบศร์ ขยายผลเครือข่ายเว็บพนันออนไลน์แม่มนต์ พบเอกสารธุรกิจรีสอร์ทกว่า 140 ล้านบาท โฉนดที่ดิน และบัญชีรับเงินพนัน",
+ "generated_at": "2026-11-21T01:23:02.033Z",
+ "node_count": 10,
+ "edge_count": 9,
+ "relations": [
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/ดีเอสไอ",
+   "target_title": "ดีเอสไอ",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/ปปง.",
+   "target_title": "ปปง.",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลอาญา",
+   "target_title": "ศาลอาญา",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ย่านภาษีเจริญ กรุงเทพมหานคร",
+   "target_title": "ย่านภาษีเจริญ กรุงเทพมหานคร",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ย่านรัตนาธิเบศร์ จ.นนทบุรี",
+   "target_title": "ย่านรัตนาธิเบศร์ จ.นนทบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/ร.ต.อ.ปิยะ รักสกุล อธิบดีกรมสอบสวนคดีพิเศษ",
+   "target_title": "ร.ต.อ.ปิยะ รักสกุล อธิบดีกรมสอบสวนคดีพิเศษ",
+   "direction": "out"
+  },
+  {
+   "label": "เป้าหมายเครือข่าย",
+   "target_id": "30_Entities/Projects/เครือข่ายเว็บไซต์พนันออนไลน์แม่มนต์",
+   "target_title": "เครือข่ายเว็บไซต์พนันออนไลน์แม่มนต์",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ภาษีเจริญ",
+   "target_title": "ภาษีเจริญ",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/พนันและบ่อนผิดกฎหมาย",
+   "target_title": "พนันและบ่อนผิดกฎหมาย",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261121-gamble-01.svg"
+}

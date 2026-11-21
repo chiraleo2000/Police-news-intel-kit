@@ -1,0 +1,46 @@
+{
+ "case_id": "20261121-drug-03",
+ "title": "ชุดปฏิบัติการปราบปรามยาเสพติด ภ.จว.บุรีรัมย์ ร่วม ตชด. ทหาร และฝ่ายปกครอง จับผู้ต้องหา 2 คน ยึดยาบ้า 16,013 เม็ดที่ซุกใต้ฐานศาลพระภูมิ อ.ประโคนชัย",
+ "generated_at": "2026-11-21T01:23:02.033Z",
+ "node_count": 7,
+ "edge_count": 6,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/ภ.จว.บุรีรัมย์",
+   "target_title": "ภ.จว.บุรีรัมย์",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/กก.ตชด.21",
+   "target_title": "กก.ตชด.21",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/กอ.รมน.",
+   "target_title": "กอ.รมน.",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ต.บ้านไทร อ.ประโคนชัย จ.บุรีรัมย์",
+   "target_title": "ต.บ้านไทร อ.ประโคนชัย จ.บุรีรัมย์",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/พล.ต.ต.เอนก ศรีกิจรัตน์ ผบก.ภ.จว.บุรีรัมย์",
+   "target_title": "พล.ต.ต.เอนก ศรีกิจรัตน์ ผบก.ภ.จว.บุรีรัมย์",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/ยาเสพติด",
+   "target_title": "ยาเสพติด",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261121-drug-03.svg"
+}

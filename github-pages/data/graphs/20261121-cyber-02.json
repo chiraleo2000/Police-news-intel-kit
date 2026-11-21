@@ -1,0 +1,70 @@
+{
+ "case_id": "20261121-cyber-02",
+ "title": "ตำรวจไซเบอร์ค้นร้านแลกเงินบนถนนนิมมานเหมินท์และบ้านพักที่ดอยสะเก็ด เชียงใหม่ ดำเนินคดีหญิงจีนและนอมินีไทย ฐานความผิดธุรกิจคนต่างด้าว ขณะที่ชายจีนผู้ถูกระบุว่าเป็นบอสหนีออกนอกประเทศ",
+ "generated_at": "2026-11-21T01:23:02.033Z",
+ "node_count": 11,
+ "edge_count": 10,
+ "relations": [
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/บก.สอท.4",
+   "target_title": "บก.สอท.4",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บช.สอท.",
+   "target_title": "บช.สอท.",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลจังหวัดน่าน",
+   "target_title": "ศาลจังหวัดน่าน",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลจังหวัดเชียงใหม่",
+   "target_title": "ศาลจังหวัดเชียงใหม่",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/ตม.",
+   "target_title": "ตม.",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ถนนนิมมานเหมินท์ ต.สุเทพ อ.เมืองเชียงใหม่",
+   "target_title": "ถนนนิมมานเหมินท์ ต.สุเทพ อ.เมืองเชียงใหม่",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ต.สันปูเลย อ.ดอยสะเก็ด จ.เชียงใหม่",
+   "target_title": "ต.สันปูเลย อ.ดอยสะเก็ด จ.เชียงใหม่",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/พล.ต.ต.อรุษ แสงจันทร์ รอง ผบช.สอท.",
+   "target_title": "พล.ต.ต.อรุษ แสงจันทร์ รอง ผบช.สอท.",
+   "direction": "out"
+  },
+  {
+   "label": "ผู้ต้องหา",
+   "target_id": "30_Entities/People/MR WENJUN FENG (ไทเกอร์)",
+   "target_title": "MR WENJUN FENG (ไทเกอร์)",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261121-cyber-02.svg"
+}

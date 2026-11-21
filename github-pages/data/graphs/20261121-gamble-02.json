@@ -1,0 +1,52 @@
+{
+ "case_id": "20261121-gamble-02",
+ "title": "ฝ่ายปกครองอำเภอบางใหญ่และ อส. บุกบ่อตกปลาใน ต.บางแม่นาง นนทบุรี จับนักพนันกัดปลา 19 คนและผู้จัดอายุ 24 ปี หลังมีผู้ร้องเรียนผ่านศูนย์ดำรงธรรม",
+ "generated_at": "2026-11-21T01:23:02.033Z",
+ "node_count": 8,
+ "edge_count": 7,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/ที่ว่าการอำเภอบางใหญ่",
+   "target_title": "ที่ว่าการอำเภอบางใหญ่",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/สภ.บางแม่นาง",
+   "target_title": "สภ.บางแม่นาง",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/หมู่ 5 ต.บางแม่นาง อ.บางใหญ่ จ.นนทบุรี",
+   "target_title": "หมู่ 5 ต.บางแม่นาง อ.บางใหญ่ จ.นนทบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/บุคคล/นนทบุรี จับนักพนันกัดปลา",
+   "target_title": "นนทบุรี จับนักพนันกัดปลา",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/บุคคล/ดำเนินคดี การจับกุมครั้งนี้ด",
+   "target_title": "ดำเนินคดี การจับกุมครั้งนี้ด",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/สถานที่/บางใหญ่",
+   "target_title": "บางใหญ่",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/พนันและบ่อนผิดกฎหมาย",
+   "target_title": "พนันและบ่อนผิดกฎหมาย",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261121-gamble-02.svg"
+}

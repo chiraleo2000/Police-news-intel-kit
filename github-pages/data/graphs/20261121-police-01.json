@@ -1,0 +1,52 @@
+{
+ "case_id": "20261121-police-01",
+ "title": "รอง ผบ.ตร. ประชุมขับเคลื่อนงานสืบสวนสอบสวนครั้งที่ 1/2569 มอบนโยบาย 15 ข้อ ระบุคดีอุกฉกรรจ์ที่รายงานถึง ตร. ตั้งแต่ 1 ตุลาคมกว่า 200 คดี และสั่งให้ บช.–บก. ประชุมกำหนดทิศทางคดีอย่างน้อยสัปดาห์ละครั้ง",
+ "generated_at": "2026-11-21T01:23:02.033Z",
+ "node_count": 8,
+ "edge_count": 7,
+ "relations": [
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/ตร.",
+   "target_title": "ตร.",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/บช.สอท.",
+   "target_title": "บช.สอท.",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/สพฐ.ตร.",
+   "target_title": "สพฐ.ตร.",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/สำนักงานตำรวจแห่งชาติ กรุงเทพมหานคร",
+   "target_title": "สำนักงานตำรวจแห่งชาติ กรุงเทพมหานคร",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/พล.ต.อ.นิรันดร เหลื่อมศรี รอง ผบ.ตร.",
+   "target_title": "พล.ต.อ.นิรันดร เหลื่อมศรี รอง ผบ.ตร.",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/บุคคล/นิรันดร เหลื่อมศรี",
+   "target_title": "นิรันดร เหลื่อมศรี",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/การปฏิบัติหน้าที่ ประชาสัมพันธ์ และนโยบายตำรวจ",
+   "target_title": "การปฏิบัติหน้าที่ ประชาสัมพันธ์ และนโยบายตำรวจ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261121-police-01.svg"
+}

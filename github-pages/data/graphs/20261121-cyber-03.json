@@ -1,0 +1,58 @@
+{
+ "case_id": "20261121-cyber-03",
+ "title": "ตำรวจไซเบอร์แถลงปฏิบัติการล่าม้าทองลุ่มน้ำโขง ค้น 3 จุดในนครพนม จับผู้ต้องหาที่ถูกกล่าวหาว่ารับหน้าที่ซื้อทองฟอกเงินจากคดีหลอกลงทุน และพบโกดังเพาะกัญชาที่ใช้บังหน้า ยึดทรัพย์กว่า 3.5 ล้านบาท",
+ "generated_at": "2026-11-21T01:23:02.033Z",
+ "node_count": 9,
+ "edge_count": 8,
+ "relations": [
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/บก.สอท.3",
+   "target_title": "บก.สอท.3",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บช.สอท.",
+   "target_title": "บช.สอท.",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลจังหวัดพล",
+   "target_title": "ศาลจังหวัดพล",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ต.นาทราย อ.เมืองนครพนม จ.นครพนม",
+   "target_title": "ต.นาทราย อ.เมืองนครพนม จ.นครพนม",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ต.หนองญาติ อ.เมืองนครพนม จ.นครพนม",
+   "target_title": "ต.หนองญาติ อ.เมืองนครพนม จ.นครพนม",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/พ.ต.อ.อดิชาต อมรประดิษฐ ผกก.วิเคราะห์ข่าวและเครื่องมือพิเศษ บก.สอท.3",
+   "target_title": "พ.ต.อ.อดิชาต อมรประดิษฐ ผกก.วิเคราะห์ข่าวและเครื่องมือพิเศษ บก.สอท.3",
+   "direction": "out"
+  },
+  {
+   "label": "ผู้ต้องหา",
+   "target_id": "30_Entities/People/นายปัณณพัฒน์ ลุนลักษณ์",
+   "target_title": "นายปัณณพัฒน์ ลุนลักษณ์",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261121-cyber-03.svg"
+}

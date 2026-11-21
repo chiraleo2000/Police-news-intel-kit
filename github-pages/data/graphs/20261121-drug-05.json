@@ -1,0 +1,40 @@
+{
+ "case_id": "20261121-drug-05",
+ "title": "กรมศุลกากรร่วมหน่วย AITF ยึดไอซ์ 7.8 กิโลกรัมซุกในลำไยอบแห้งปลายทางนิวซีแลนด์ และเฮโรอีน 2.65 กิโลกรัมในขวดโลชันปลายทางออสเตรเลีย รวมมูลค่ากว่า 20.6 ล้านบาท",
+ "generated_at": "2026-11-21T01:23:02.033Z",
+ "node_count": 6,
+ "edge_count": 5,
+ "relations": [
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/กองสืบสวนและปราบปราม กรมศุลกากร",
+   "target_title": "กองสืบสวนและปราบปราม กรมศุลกากร",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/หน่วยปฏิบัติการ AITF",
+   "target_title": "หน่วยปฏิบัติการ AITF",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ต่างประเทศ",
+   "target_title": "ต่างประเทศ",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/นายพันธ์ทอง ลอยกุลนันท์ อธิบดีกรมศุลกากร",
+   "target_title": "นายพันธ์ทอง ลอยกุลนันท์ อธิบดีกรมศุลกากร",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/ยาเสพติด",
+   "target_title": "ยาเสพติด",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261121-drug-05.svg"
+}

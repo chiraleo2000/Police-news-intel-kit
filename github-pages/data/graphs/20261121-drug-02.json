@@ -1,0 +1,70 @@
+{
+ "case_id": "20261121-drug-02",
+ "title": "กรุงเทพมหานคร บช.น. บช.ปส. และ ปปส.กทม. เปิดยุทธการล้างบางริมคลองก่อนน้ำนองเต็มตลิ่ง ค้น 12 จุดในเขตหลักสี่และจตุจักร จับผู้ค้า 4 คน พบผู้เสพ 13 คนส่งบำบัด",
+ "generated_at": "2026-11-21T01:23:02.033Z",
+ "node_count": 11,
+ "edge_count": 10,
+ "relations": [
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/สำนักงาน ปปส.กทม.",
+   "target_title": "สำนักงาน ปปส.กทม.",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/บช.น.",
+   "target_title": "บช.น.",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/บก.ปส.1 บช.ปส.",
+   "target_title": "บก.ปส.1 บช.ปส.",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/กรุงเทพมหานคร",
+   "target_title": "กรุงเทพมหานคร",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/เขตหลักสี่ กรุงเทพมหานคร",
+   "target_title": "เขตหลักสี่ กรุงเทพมหานคร",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/เขตจตุจักร กรุงเทพมหานคร",
+   "target_title": "เขตจตุจักร กรุงเทพมหานคร",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/นายชัชชาติ สิทธิพันธุ์ ผู้ว่าราชการกรุงเทพมหานคร",
+   "target_title": "นายชัชชาติ สิทธิพันธุ์ ผู้ว่าราชการกรุงเทพมหานคร",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/นายปฤณ เมฆานันท์ ผอ.ปปส.กทม.",
+   "target_title": "นายปฤณ เมฆานันท์ ผอ.ปปส.กทม.",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/พล.ต.ต.ธีรเดช ธรรมสุธีร์ รอง ผบช.น.",
+   "target_title": "พล.ต.ต.ธีรเดช ธรรมสุธีร์ รอง ผบช.น.",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/ยาเสพติด",
+   "target_title": "ยาเสพติด",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261121-drug-02.svg"
+}

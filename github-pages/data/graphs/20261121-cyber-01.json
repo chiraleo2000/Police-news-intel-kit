@@ -1,0 +1,40 @@
+{
+ "case_id": "20261121-cyber-01",
+ "title": "DSI จับชายเจ้าของบัญชีที่แก๊งคอลเซ็นเตอร์ใช้รับโอนเงินผู้เสียหาย ตามหมายจับศาลอาญา ที่หน้าทัณฑสถานวัยหนุ่มพระนครศรีอยุธยา แล้วยื่นฝากขัง",
+ "generated_at": "2026-11-21T01:23:02.033Z",
+ "node_count": 6,
+ "edge_count": 5,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/ศูนย์สืบสวนสะกดรอยและการข่าว DSI",
+   "target_title": "ศูนย์สืบสวนสะกดรอยและการข่าว DSI",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/กองคดีเทคโนโลยีและสารสนเทศ DSI",
+   "target_title": "กองคดีเทคโนโลยีและสารสนเทศ DSI",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลอาญา",
+   "target_title": "ศาลอาญา",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ทัณฑสถานวัยหนุ่มพระนครศรีอยุธยา",
+   "target_title": "ทัณฑสถานวัยหนุ่มพระนครศรีอยุธยา",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261121-cyber-01.svg"
+}

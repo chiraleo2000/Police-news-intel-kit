@@ -1,0 +1,46 @@
+{
+ "case_id": "20261121-drug-01",
+ "title": "ตำรวจทางหลวงชุมพรสกัดกระบะดัดแปลงบนถนนเพชรเกษม อ.ท่าแซะ พบไอซ์ 90 ก้อนราว 90 กิโลกรัม ซุกในถังน้ำมันและช่องลับใต้พื้นกระบะ",
+ "generated_at": "2026-11-21T01:23:02.033Z",
+ "node_count": 7,
+ "edge_count": 6,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/ส.ทล.4 กก.2 บก.ทล.",
+   "target_title": "ส.ทล.4 กก.2 บก.ทล.",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บก.ทล.",
+   "target_title": "บก.ทล.",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/สภ.เมืองชุมพร",
+   "target_title": "สภ.เมืองชุมพร",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ทางหลวงหมายเลข 4 กม.464–465 อ.ท่าแซะ จ.ชุมพร",
+   "target_title": "ทางหลวงหมายเลข 4 กม.464–465 อ.ท่าแซะ จ.ชุมพร",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/พล.ต.ต.บุญลือ ผดุงถิ่น ผบก.ทล.",
+   "target_title": "พล.ต.ต.บุญลือ ผดุงถิ่น ผบก.ทล.",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/ยาเสพติด",
+   "target_title": "ยาเสพติด",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261121-drug-01.svg"
+}

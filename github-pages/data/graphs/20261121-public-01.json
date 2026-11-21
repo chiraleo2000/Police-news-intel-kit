@@ -1,0 +1,52 @@
+{
+ "case_id": "20261121-public-01",
+ "title": "คนร้ายก่อเหตุหลายจุดในหลายอำเภอของนราธิวาสช่วงเช้ามืด 20 พฤศจิกายน ทั้งวางระเบิด เผายาง เผาศาลาริมทาง ทำลายกล้องวงจรปิด และแขวนป้ายผ้า ไม่มีรายงานผู้บาดเจ็บ",
+ "generated_at": "2026-11-21T01:23:02.033Z",
+ "node_count": 8,
+ "edge_count": 7,
+ "relations": [
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/สภ.จะแนะ",
+   "target_title": "สภ.จะแนะ",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/กอ.รมน.ภาค 4 ส่วนหน้า",
+   "target_title": "กอ.รมน.ภาค 4 ส่วนหน้า",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/อ.จะแนะ จ.นราธิวาส",
+   "target_title": "อ.จะแนะ จ.นราธิวาส",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/อ.ระแงะ จ.นราธิวาส",
+   "target_title": "อ.ระแงะ จ.นราธิวาส",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/อ.แว้ง จ.นราธิวาส",
+   "target_title": "อ.แว้ง จ.นราธิวาส",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/อ.ตากใบ จ.นราธิวาส",
+   "target_title": "อ.ตากใบ จ.นราธิวาส",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/ความสงบเรียบร้อยและความมั่นคงภายใน",
+   "target_title": "ความสงบเรียบร้อยและความมั่นคงภายใน",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261121-public-01.svg"
+}

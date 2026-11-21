@@ -1,0 +1,46 @@
+{
+ "case_id": "20261121-human-02",
+ "title": "กก.สส.บก.ตม.3 ค้นแคมป์คนงานก่อสร้าง 2 จุดที่ ต.หนองบัว อ.บ้านค่าย ระยอง พบแรงงานเมียนมา 293 คน จับผู้หลบหนีเข้าเมือง 15 คน และปรับผู้ไม่แจ้งที่พัก 70 คน รวม 140,000 บาท",
+ "generated_at": "2026-11-21T01:23:02.033Z",
+ "node_count": 7,
+ "edge_count": 6,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/กก.สส.บก.ตม.3",
+   "target_title": "กก.สส.บก.ตม.3",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บก.ตม.3",
+   "target_title": "บก.ตม.3",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/สภ.บ้านค่าย",
+   "target_title": "สภ.บ้านค่าย",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/แคมป์คนงานก่อสร้าง ต.หนองบัว อ.บ้านค่าย จ.ระยอง",
+   "target_title": "แคมป์คนงานก่อสร้าง ต.หนองบัว อ.บ้านค่าย จ.ระยอง",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/พล.ต.ต.ทรงโปรด สิริสุขะ ผบก.ตม.3",
+   "target_title": "พล.ต.ต.ทรงโปรด สิริสุขะ ผบก.ตม.3",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/ค้ามนุษย์ แรงงานผิดกฎหมาย และคุ้มครองเด็ก",
+   "target_title": "ค้ามนุษย์ แรงงานผิดกฎหมาย และคุ้มครองเด็ก",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261121-human-02.svg"
+}
