@@ -1,0 +1,64 @@
+{
+ "case_id": "20261122-drug-01",
+ "title": "DSI ร่วม บช.ปส. บก.สส.ภ.5 และ ปปส.ภาค 5 ค้น 7 เป้าหมายใน อ.แม่แตงและเชียงดาว เชียงใหม่ ยึดบ้านและที่ดินกว่า 4 ล้านบาทของเครือข่ายฝู่จิโปะ หลังจับผู้ลำเลียงยาบ้า 589,800 เม็ด",
+ "generated_at": "2026-11-22T01:18:16.938Z",
+ "node_count": 10,
+ "edge_count": 9,
+ "relations": [
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/กองคดียาเสพติด DSI",
+   "target_title": "กองคดียาเสพติด DSI",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/บก.สกส. บช.ปส.",
+   "target_title": "บก.สกส. บช.ปส.",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/บก.สส.ภ.5",
+   "target_title": "บก.สส.ภ.5",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/สำนักงาน ปปส. ภาค 5",
+   "target_title": "สำนักงาน ปปส. ภาค 5",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/อ.แม่แตง จ.เชียงใหม่",
+   "target_title": "อ.แม่แตง จ.เชียงใหม่",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/อ.เชียงดาว จ.เชียงใหม่",
+   "target_title": "อ.เชียงดาว จ.เชียงใหม่",
+   "direction": "out"
+  },
+  {
+   "label": "เป้าหมายเครือข่าย",
+   "target_id": "30_Entities/Projects/เครือข่ายฝู่จิโปะ",
+   "target_title": "เครือข่ายฝู่จิโปะ",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/สถานที่/เชียงดาว",
+   "target_title": "เชียงดาว",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/ยาเสพติด",
+   "target_title": "ยาเสพติด",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261122-drug-01.svg"
+}

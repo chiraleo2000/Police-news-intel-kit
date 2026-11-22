@@ -1,0 +1,46 @@
+{
+ "case_id": "20261122-cyber-01",
+ "title": "ตำรวจไซเบอร์ กก.4 บก.สอท.1 ซุ่มจับเยาวชนอายุ 17 ปีที่ห้วยขวาง ผู้ถูกกล่าวหาแต่งกายคล้ายตำรวจรับทองคำจากผู้เสียหายวัย 56 ปีที่ถูกแก๊งคอลเซ็นเตอร์ข่มขู่ สูญทองแท่ง 25 บาท",
+ "generated_at": "2026-11-22T01:18:16.938Z",
+ "node_count": 7,
+ "edge_count": 6,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/กก.4 บก.สอท.1",
+   "target_title": "กก.4 บก.สอท.1",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บช.สอท.",
+   "target_title": "บช.สอท.",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/แขวงห้วยขวาง กรุงเทพมหานคร",
+   "target_title": "แขวงห้วยขวาง กรุงเทพมหานคร",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/พล.ต.ท.ทินกร รังมาตย์ ผบช.สอท.",
+   "target_title": "พล.ต.ท.ทินกร รังมาตย์ ผบช.สอท.",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/สถานที่/ห้วยขวาง",
+   "target_title": "ห้วยขวาง",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261122-cyber-01.svg"
+}

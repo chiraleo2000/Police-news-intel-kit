@@ -1,0 +1,46 @@
+{
+ "case_id": "20261122-drug-04",
+ "title": "ชุดเฉพาะกิจฝ่ายปกครองภูเก็ต อส. และสาธารณสุข ตรวจร้านกัญชา 3 ร้านในป่าตอง พบ 2 ร้านไม่มีใบอนุญาต ยึดกัญชาและอุปกรณ์มูลค่ากว่า 1.5 ล้านบาท และเสนอพักใบอนุญาตอีกร้าน 30 วัน",
+ "generated_at": "2026-11-22T01:18:16.938Z",
+ "node_count": 7,
+ "edge_count": 6,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/ฝ่ายปกครองจังหวัดภูเก็ต",
+   "target_title": "ฝ่ายปกครองจังหวัดภูเก็ต",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/สภ.ป่าตอง",
+   "target_title": "สภ.ป่าตอง",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/สำนักงานสาธารณสุขจังหวัดภูเก็ต",
+   "target_title": "สำนักงานสาธารณสุขจังหวัดภูเก็ต",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ป่าตอง อ.กะทู้ จ.ภูเก็ต",
+   "target_title": "ป่าตอง อ.กะทู้ จ.ภูเก็ต",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ป่าตอง",
+   "target_title": "ป่าตอง",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/ยาเสพติด",
+   "target_title": "ยาเสพติด",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261122-drug-04.svg"
+}

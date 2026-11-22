@@ -1,0 +1,46 @@
+{
+ "case_id": "20261122-tourist-01",
+ "title": "กก.สส.บก.ตม.3 จับชายชาวอินเดียอายุ 39 ปีที่บ้านพักใน ต.เนินพระ ระยอง หลังคลิปปล่อยเงินกู้นอกระบบและท้าทายตำรวจแพร่ในโซเชียล พบอยู่เกินกำหนด 1,047 วัน",
+ "generated_at": "2026-11-22T01:18:16.938Z",
+ "node_count": 7,
+ "edge_count": 6,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/กก.สส.บก.ตม.3",
+   "target_title": "กก.สส.บก.ตม.3",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บช.สตม.",
+   "target_title": "บช.สตม.",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/สภ.เมืองระยอง",
+   "target_title": "สภ.เมืองระยอง",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ต.เนินพระ อ.เมือง จ.ระยอง",
+   "target_title": "ต.เนินพระ อ.เมือง จ.ระยอง",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/พล.ต.ต.ทรงโปรด สิริสุขะ ผบก.ตม.3",
+   "target_title": "พล.ต.ต.ทรงโปรด สิริสุขะ ผบก.ตม.3",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมที่เกี่ยวข้องกับนักท่องเที่ยวและชาวต่างชาติ",
+   "target_title": "อาชญากรรมที่เกี่ยวข้องกับนักท่องเที่ยวและชาวต่างชาติ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261122-tourist-01.svg"
+}

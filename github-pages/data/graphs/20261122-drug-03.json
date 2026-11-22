@@ -1,0 +1,40 @@
+{
+ "case_id": "20261122-drug-03",
+ "title": "หน่วยเฉพาะกิจไชยานุภาพ กองกำลังผาเมือง ปะทะกลุ่มลำเลียงยาเสพติดราว 10–15 คนที่ ต.แม่งอน อ.ฝาง เชียงใหม่ พบผู้เสียชีวิต 1 คน และยาบ้าราว 1.2 ล้านเม็ดใน 12 เป้",
+ "generated_at": "2026-11-22T01:18:16.938Z",
+ "node_count": 6,
+ "edge_count": 5,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/หน่วยเฉพาะกิจไชยานุภาพ กองกำลังผาเมือง",
+   "target_title": "หน่วยเฉพาะกิจไชยานุภาพ กองกำลังผาเมือง",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/สภ.ฝาง",
+   "target_title": "สภ.ฝาง",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ต.แม่งอน อ.ฝาง จ.เชียงใหม่",
+   "target_title": "ต.แม่งอน อ.ฝาง จ.เชียงใหม่",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/พล.ต.สาธิต ไวยนนท์ ผบ.กองกำลังผาเมือง",
+   "target_title": "พล.ต.สาธิต ไวยนนท์ ผบ.กองกำลังผาเมือง",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/ยาเสพติด",
+   "target_title": "ยาเสพติด",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261122-drug-03.svg"
+}

@@ -1,0 +1,40 @@
+{
+ "case_id": "20261122-police-02",
+ "title": "ผบช.สทส. นำคณะตรวจเยี่ยม สน.เพชรเกษม สถานีนำร่องระบบ One Police ที่รวม 6 โมดูลงานหลัก ตั้งแต่ศูนย์วิทยุถึงงานสอบสวน เพื่อนำข้อเสนอไปขยายผลทั่วประเทศ",
+ "generated_at": "2026-11-22T01:18:16.938Z",
+ "node_count": 6,
+ "edge_count": 5,
+ "relations": [
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/สทส.",
+   "target_title": "สทส.",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/สน.เพชรเกษม",
+   "target_title": "สน.เพชรเกษม",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/สน.เพชรเกษม กรุงเทพมหานคร",
+   "target_title": "สน.เพชรเกษม กรุงเทพมหานคร",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/พล.ต.ท.พันธนะ นุชนารถ ผบช.สทส.",
+   "target_title": "พล.ต.ท.พันธนะ นุชนารถ ผบช.สทส.",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/การปฏิบัติหน้าที่ ประชาสัมพันธ์ และนโยบายตำรวจ",
+   "target_title": "การปฏิบัติหน้าที่ ประชาสัมพันธ์ และนโยบายตำรวจ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261122-police-02.svg"
+}

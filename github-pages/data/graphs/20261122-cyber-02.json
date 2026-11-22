@@ -1,0 +1,64 @@
+{
+ "case_id": "20261122-cyber-02",
+ "title": "ตำรวจไซเบอร์ กก.2 บก.สอท.2 ค้นบริษัทรับแลกเงินที่ อ.เขาย้อย เพชรบุรี ตามหมายค้นศาลจังหวัดเพชรบุรี ตรวจเส้นทางเงินเครือข่ายบัญชีม้าหมุนเวียนกว่า 350 ล้านบาท และจับผู้ถอนฝากเงินเพิ่ม 2 คน",
+ "generated_at": "2026-11-22T01:18:16.938Z",
+ "node_count": 10,
+ "edge_count": 9,
+ "relations": [
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/กก.2 บก.สอท.2",
+   "target_title": "กก.2 บก.สอท.2",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บช.สอท.",
+   "target_title": "บช.สอท.",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลจังหวัดเพชรบุรี",
+   "target_title": "ศาลจังหวัดเพชรบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลจังหวัดนนทบุรี",
+   "target_title": "ศาลจังหวัดนนทบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ต.สระพัง อ.เขาย้อย จ.เพชรบุรี",
+   "target_title": "ต.สระพัง อ.เขาย้อย จ.เพชรบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/เขตตลิ่งชัน กรุงเทพมหานคร",
+   "target_title": "เขตตลิ่งชัน กรุงเทพมหานคร",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/พล.ต.ท.ทินกร รังมาตย์ ผบช.สอท.",
+   "target_title": "พล.ต.ท.ทินกร รังมาตย์ ผบช.สอท.",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/สถานที่/เขาย้อย",
+   "target_title": "เขาย้อย",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261122-cyber-02.svg"
+}

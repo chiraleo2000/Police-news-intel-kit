@@ -1,0 +1,740 @@
+{
+ "date": "2026-11-22",
+ "generated_at": "2026-11-22T08:17:18+07:00",
+ "run": "partial",
+ "stats": {
+  "total": 20,
+  "direct": 5,
+  "indirect": 15,
+  "priority_A": 5,
+  "priority_B": 12,
+  "priority_C": 3,
+  "alerts": 4,
+  "official_confirmed": 5,
+  "by_crime_type": {
+   "ยาเสพติด": 4,
+   "การปฏิบัติหน้าที่ ประชาสัมพันธ์ และนโยบายตำรวจ": 3,
+   "อาชญากรรมข้ามชาติและความร่วมมือระหว่างประเทศ": 2,
+   "อาชญากรรมไซเบอร์และออนไลน์": 2,
+   "คุ้มครองผู้บริโภคและสินค้าผิดกฎหมาย": 1,
+   "ความสงบเรียบร้อยและความมั่นคงภายใน": 1,
+   "ทุจริตและประพฤติมิชอบของเจ้าหน้าที่รัฐ": 1,
+   "คดีชีวิต ร่างกาย และเพศ": 1,
+   "ค้ามนุษย์ แรงงานผิดกฎหมาย และคุ้มครองเด็ก": 1,
+   "อาชญากรรมที่เกี่ยวข้องกับนักท่องเที่ยวและชาวต่างชาติ": 1,
+   "คดีเศรษฐกิจ การเงิน และฟอกเงิน": 1,
+   "คดีทรัพย์สิน": 1,
+   "พนันและบ่อนผิดกฎหมาย": 1
+  },
+  "total_loss_thb": 65946750,
+  "total_seized_value_thb": 205500000,
+  "total_arrested": 22
+ },
+ "articles_scraped_pass": 385,
+ "articles_in_window": 107,
+ "official_pr_articles": 7,
+ "official_articles_all_batches": 7,
+ "posts_published_after_merge": 20,
+ "fetch_count_approx": 446,
+ "skipped_out_of_scope": 87,
+ "sources_status_counts": {
+  "stale": 9,
+  "ok_no_news": 33,
+  "ok_with_news": 19,
+  "blocked": 4,
+  "parser_failed": 1
+ },
+ "chrome_unavailable": false,
+ "chrome_listing_sources": 5,
+ "chrome_article_opens": 0,
+ "chrome_tool": "Claude built-in browser (preferred browser); Claude in Chrome not used",
+ "partial_reasons": [
+  "PARTIAL: Batch A แถวค้นหาอย่างเดียว (phak1-9, idmb, highway, ecd, cppd, pct, tcsd, border_patrol) มีเพียง WebSearch จำกัดโดเมน 2 ครั้งรวม ไม่พบรายการลงวันที่ในหน้าต่าง",
+  "PARTIAL: official_pr_articles = 5 ต่ำกว่าเป้า 8 (COP'S 4, DSI 1); saranitet/ONCB/OAG/tourist police รายการล่าสุดลงวันที่ 20 พ.ย. ก่อนหน้าต่าง",
+  "PARTIAL: C:28_dailynews 403 + Cloudflare ใน browser ไม่หลบ; D:55_reuters 401; D:51_aseannow 404; ใช้ built-in browser ของ Claude 5 แหล่ง แทน Claude in Chrome",
+  "PARTIAL: brain_search/brain_timeline เข้าถึงไม่ได้จาก shell ของรอบนี้ จึงเทียบข่าวเก่าจาก github-pages/data/*_crime.json (คำค้น: กัน จอมพลัง, ผาเมือง, ยาแก้ไอ, Red Notice ฯลฯ)",
+  "PARTIAL: content บางโพสต์ (ข่าวสั้นจากแหล่งเดียว เช่น drug-04 transnat-01) ยาวต่ำกว่าเกณฑ์ 350 คำ เพราะต้นฉบับมีข้อเท็จจริงจำกัด ไม่เติมแต่ง",
+  "NOTE: เหตุการณ์ที่โพสต์แล้ว (ปากีสถานพัทยา, ล้างบางริมคลอง ปปส.กทม., แม่มนต์ DSI) ไม่สร้างซ้ำ; econ-01 ติดตามจาก 20261121-econ-01; police-03 ติดตามจาก drug-02"
+ ],
+ "files": [
+  "2026-11-22_crime.html",
+  "2026-11-22_crime.json",
+  "2026-11-22_crime.md",
+  "2026-11-22_crime.pdf",
+  "2026-11-22_infographic.png"
+ ],
+ "no_news_today": false,
+ "source_health": {
+  "A:royalthaipolice": {
+   "status": "stale",
+   "url": "https://saranitet.police.go.th/commander-mission/",
+   "tool": "chrome",
+   "result": "browser listing; newest permalinks dated 20112026 (before window 21 พ.ย.) | http: listing http 200; 1 listing page(s); in-window permalinks 0; undated candidates 0",
+   "in_window_link_count": 0
+  },
+  "A:ccid1": {
+   "status": "ok_no_news",
+   "url": "https://ccid1.ccib.go.th/",
+   "tool": "http",
+   "result": "listing http 200; 1 listing page(s); in-window permalinks 0; undated candidates 0",
+   "in_window_link_count": 0
+  },
+  "A:cib": {
+   "status": "ok_no_news",
+   "url": "https://www.cib.go.th/news?category=general",
+   "tool": "http",
+   "result": "listing http 200; 2 listing page(s); in-window permalinks 0; undated candidates 0",
+   "in_window_link_count": 0
+  },
+  "A:csd": {
+   "status": "ok_no_news",
+   "url": "https://csd.go.th/",
+   "tool": "http",
+   "result": "listing http 200; 1 listing page(s); in-window permalinks 0; undated candidates 0",
+   "in_window_link_count": 0
+  },
+  "A:idmb": {
+   "status": "ok_no_news",
+   "url": "WebSearch allowed_domains=metro.police.go.th,police.go.th",
+   "tool": "search",
+   "result": "WebSearch \"ปคบ. ปอศ. ตำรวจทางหลวง ปอท. สืบนครบาล แถลง พฤศจิกายน 2569\" (police.go.th, ccib.go.th, highwaypolice.go.th, metro.police.go.th): results: station homepages, pages not dated in window and undated station pages; no separate in-window item for this unit (media-reported in-window items credited in posts where the unit appears)",
+   "in_window_link_count": 0
+  },
+  "A:highway": {
+   "status": "ok_no_news",
+   "url": "WebSearch allowed_domains=police.go.th",
+   "tool": "search",
+   "result": "WebSearch \"ปคบ. ปอศ. ตำรวจทางหลวง ปอท. สืบนครบาล แถลง พฤศจิกายน 2569\" (police.go.th, ccib.go.th, highwaypolice.go.th, metro.police.go.th): results: station homepages, pages not dated in window and undated station pages; no separate in-window item for this unit (media-reported in-window items credited in posts where the unit appears)",
+   "in_window_link_count": 0
+  },
+  "A:ecd": {
+   "status": "ok_no_news",
+   "url": "WebSearch allowed_domains=police.go.th",
+   "tool": "search",
+   "result": "WebSearch \"ปคบ. ปอศ. ตำรวจทางหลวง ปอท. สืบนครบาล แถลง พฤศจิกายน 2569\" (police.go.th, ccib.go.th, highwaypolice.go.th, metro.police.go.th): results: station homepages, pages not dated in window and undated station pages; no separate in-window item for this unit (media-reported in-window items credited in posts where the unit appears)",
+   "in_window_link_count": 0
+  },
+  "A:cppd": {
+   "status": "ok_no_news",
+   "url": "WebSearch allowed_domains=police.go.th",
+   "tool": "search",
+   "result": "WebSearch \"ปคบ. ปอศ. ตำรวจทางหลวง ปอท. สืบนครบาล แถลง พฤศจิกายน 2569\" (police.go.th, ccib.go.th, highwaypolice.go.th, metro.police.go.th): results: station homepages, pages not dated in window and undated station pages; no separate in-window item for this unit (media-reported in-window items credited in posts where the unit appears)",
+   "in_window_link_count": 0
+  },
+  "A:atpd": {
+   "status": "stale",
+   "url": "https://humantrafficking.police.go.th/",
+   "tool": "http",
+   "result": "listing http 200; 1 listing page(s); in-window permalinks 0; undated candidates 5",
+   "in_window_link_count": 0
+  },
+  "A:tourist_police": {
+   "status": "stale",
+   "url": "https://www.touristpolice.go.th/tpb-news",
+   "tool": "http",
+   "result": "listing http 200; 2 listing page(s); in-window permalinks 0; undated candidates 7; รายการล่าสุด 20 พ.ย. เป็นภารกิจต้อนรับ ก่อนหน้าต่าง",
+   "in_window_link_count": 0
+  },
+  "A:pct": {
+   "status": "ok_no_news",
+   "url": "WebSearch allowed_domains=police.go.th",
+   "tool": "search",
+   "result": "WebSearch \"ปคบ. ปอศ. ตำรวจทางหลวง ปอท. สืบนครบาล แถลง พฤศจิกายน 2569\" (police.go.th, ccib.go.th, highwaypolice.go.th, metro.police.go.th): results: station homepages, pages not dated in window and undated station pages; no separate in-window item for this unit (media-reported in-window items credited in posts where the unit appears)",
+   "in_window_link_count": 0
+  },
+  "A:tcsd": {
+   "status": "ok_no_news",
+   "url": "WebSearch allowed_domains=police.go.th",
+   "tool": "search",
+   "result": "WebSearch \"ปคบ. ปอศ. ตำรวจทางหลวง ปอท. สืบนครบาล แถลง พฤศจิกายน 2569\" (police.go.th, ccib.go.th, highwaypolice.go.th, metro.police.go.th): results: station homepages, pages not dated in window and undated station pages; no separate in-window item for this unit (media-reported in-window items credited in posts where the unit appears)",
+   "in_window_link_count": 0
+  },
+  "A:immigration": {
+   "status": "ok_no_news",
+   "url": "https://www.immigration.go.th/",
+   "tool": "http",
+   "result": "listing http 200; 1 listing page(s); in-window permalinks 0; undated candidates 0",
+   "in_window_link_count": 0
+  },
+  "A:cops_magazine": {
+   "status": "ok_with_news",
+   "url": "https://www.cops-magazine.com/",
+   "tool": "http",
+   "result": "listing http 200; 2 listing page(s); in-window permalinks 7; undated candidates 45; ใช้เป็นโพสต์ cyber-01 human-01 police-01 police-02; รายการที่เหลือเป็นกิจกรรม/บทความ",
+   "in_window_link_count": 7
+  },
+  "A:metro": {
+   "status": "ok_no_news",
+   "url": "https://www.metro.police.go.th/",
+   "tool": "http",
+   "result": "listing http 200; 1 listing page(s); in-window permalinks 0; undated candidates 0",
+   "in_window_link_count": 0
+  },
+  "A:phak1": {
+   "status": "ok_no_news",
+   "url": "WebSearch allowed_domains=police.go.th",
+   "tool": "search",
+   "result": "WebSearch \"ตำรวจภูธรภาค แถลงจับกุม 21 พฤศจิกายน 2569\" (police.go.th, royalthaipolice.go.th, bpp.go.th): results: station homepages, pages not dated in window and undated station pages; no separate in-window item for this unit (media-reported in-window items credited in posts where the unit appears)",
+   "in_window_link_count": 0
+  },
+  "A:phak2": {
+   "status": "ok_no_news",
+   "url": "WebSearch allowed_domains=police.go.th",
+   "tool": "search",
+   "result": "WebSearch \"ตำรวจภูธรภาค แถลงจับกุม 21 พฤศจิกายน 2569\" (police.go.th, royalthaipolice.go.th, bpp.go.th): results: station homepages, pages not dated in window and undated station pages; no separate in-window item for this unit (media-reported in-window items credited in posts where the unit appears)",
+   "in_window_link_count": 0
+  },
+  "A:phak3": {
+   "status": "ok_no_news",
+   "url": "WebSearch allowed_domains=police.go.th",
+   "tool": "search",
+   "result": "WebSearch \"ตำรวจภูธรภาค แถลงจับกุม 21 พฤศจิกายน 2569\" (police.go.th, royalthaipolice.go.th, bpp.go.th): results: station homepages, pages not dated in window and undated station pages; no separate in-window item for this unit (media-reported in-window items credited in posts where the unit appears)",
+   "in_window_link_count": 0
+  },
+  "A:phak4": {
+   "status": "ok_no_news",
+   "url": "WebSearch allowed_domains=police.go.th",
+   "tool": "search",
+   "result": "WebSearch \"ตำรวจภูธรภาค แถลงจับกุม 21 พฤศจิกายน 2569\" (police.go.th, royalthaipolice.go.th, bpp.go.th): results: station homepages, pages not dated in window and undated station pages; no separate in-window item for this unit (media-reported in-window items credited in posts where the unit appears)",
+   "in_window_link_count": 0
+  },
+  "A:phak5": {
+   "status": "ok_no_news",
+   "url": "WebSearch allowed_domains=police.go.th",
+   "tool": "search",
+   "result": "WebSearch \"ตำรวจภูธรภาค แถลงจับกุม 21 พฤศจิกายน 2569\" (police.go.th, royalthaipolice.go.th, bpp.go.th): results: station homepages, pages not dated in window and undated station pages; no separate in-window item for this unit (media-reported in-window items credited in posts where the unit appears)",
+   "in_window_link_count": 0
+  },
+  "A:phak6": {
+   "status": "ok_no_news",
+   "url": "WebSearch allowed_domains=police.go.th",
+   "tool": "search",
+   "result": "WebSearch \"ตำรวจภูธรภาค แถลงจับกุม 21 พฤศจิกายน 2569\" (police.go.th, royalthaipolice.go.th, bpp.go.th): results: station homepages, pages not dated in window and undated station pages; no separate in-window item for this unit (media-reported in-window items credited in posts where the unit appears)",
+   "in_window_link_count": 0
+  },
+  "A:phak7": {
+   "status": "ok_no_news",
+   "url": "WebSearch allowed_domains=police.go.th",
+   "tool": "search",
+   "result": "WebSearch \"ตำรวจภูธรภาค แถลงจับกุม 21 พฤศจิกายน 2569\" (police.go.th, royalthaipolice.go.th, bpp.go.th): results: station homepages, pages not dated in window and undated station pages; no separate in-window item for this unit (media-reported in-window items credited in posts where the unit appears)",
+   "in_window_link_count": 0
+  },
+  "A:phak8": {
+   "status": "ok_no_news",
+   "url": "WebSearch allowed_domains=police.go.th",
+   "tool": "search",
+   "result": "WebSearch \"ตำรวจภูธรภาค แถลงจับกุม 21 พฤศจิกายน 2569\" (police.go.th, royalthaipolice.go.th, bpp.go.th): results: station homepages, pages not dated in window and undated station pages; no separate in-window item for this unit (media-reported in-window items credited in posts where the unit appears)",
+   "in_window_link_count": 0
+  },
+  "A:phak9": {
+   "status": "ok_no_news",
+   "url": "WebSearch allowed_domains=police.go.th",
+   "tool": "search",
+   "result": "WebSearch \"ตำรวจภูธรภาค แถลงจับกุม 21 พฤศจิกายน 2569\" (police.go.th, royalthaipolice.go.th, bpp.go.th): results: station homepages, pages not dated in window and undated station pages; no separate in-window item for this unit (media-reported in-window items credited in posts where the unit appears)",
+   "in_window_link_count": 0
+  },
+  "A:border_patrol": {
+   "status": "ok_no_news",
+   "url": "WebSearch allowed_domains=police.go.th",
+   "tool": "search",
+   "result": "WebSearch \"ปคบ. ปอศ. ตำรวจทางหลวง ปอท. สืบนครบาล แถลง พฤศจิกายน 2569\" (police.go.th, ccib.go.th, highwaypolice.go.th, metro.police.go.th): results: station homepages, pages not dated in window and undated station pages; no separate in-window item for this unit (media-reported in-window items credited in posts where the unit appears)",
+   "in_window_link_count": 0
+  },
+  "B:DSI": {
+   "status": "ok_with_news",
+   "url": "https://www.dsi.go.th/th/Type/Mission-News",
+   "tool": "chrome",
+   "result": "browser listing with dates; 1 item in window: 21 พ.ย. 2569 15:17 ฝู่จิโปะ เชียงใหม่ (2 permalinks same story) | http: listing http 200; 1 listing page(s); in-window permalinks 1; undated candidates 19; ใช้ /Detail/076a8287… เป็นโพสต์ drug-01 (ฝู่จิโปะ)",
+   "in_window_link_count": 1
+  },
+  "B:ONCB": {
+   "status": "stale",
+   "url": "https://www.oncb.go.th/",
+   "tool": "http",
+   "result": "listing http 200; 2 listing page(s); in-window permalinks 0; undated candidates 10; permalink ล่าสุด /news/26837 ลงวันที่ 20 พ.ย. (ก่อนหน้าต่าง) และ /news/26836 โพสต์แล้วเมื่อวาน",
+   "in_window_link_count": 0
+  },
+  "B:AMLO": {
+   "status": "ok_no_news",
+   "url": "https://www.amlo.go.th/",
+   "tool": "http",
+   "result": "listing http 200; 1 listing page(s); in-window permalinks 0; undated candidates 0",
+   "in_window_link_count": 0
+  },
+  "B:OAG": {
+   "status": "stale",
+   "url": "https://www.ago.go.th/",
+   "tool": "http",
+   "result": "listing http 200; 1 listing page(s); in-window permalinks 0; undated candidates 16; รายการล่าสุดลงวันที่ 19–20 พ.ย. เป็นกิจกรรมองค์กร ก่อนหน้าต่าง",
+   "in_window_link_count": 0
+  },
+  "B:Corrections": {
+   "status": "blocked",
+   "url": "https://www.correct.go.th/",
+   "tool": "http",
+   "result": "listing http 200; 1 listing page(s); in-window permalinks 0; undated candidates 0; robots disallow, not circumvented",
+   "in_window_link_count": 0
+  },
+  "B:MDES": {
+   "status": "ok_no_news",
+   "url": "https://www.mdes.go.th/news",
+   "tool": "chrome",
+   "result": "http 403 but browser loaded listing; 21/11 items = SLUSH/hackathon events, no crime/alert item | http: listing http 403; 2 listing page(s); in-window permalinks 0; undated candidates 0",
+   "in_window_link_count": 0
+  },
+  "B:ThaiPoliceOnline": {
+   "status": "ok_no_news",
+   "url": "https://www.thaipoliceonline.go.th/",
+   "tool": "chrome",
+   "result": "JS page rendered; news/alert carousel without dated in-window items; no form used | http: listing http 200; 1 listing page(s); in-window permalinks 0; undated candidates 0",
+   "in_window_link_count": 0
+  },
+  "B:ThaiCERT": {
+   "status": "stale",
+   "url": "https://www.thaicert.or.th/",
+   "tool": "http",
+   "result": "listing http 200; 1 listing page(s); in-window permalinks 0; undated candidates 6; รายการเป็นช่องโหว่ซอฟต์แวร์ทั่วไป ลงวันที่ 20 พ.ย. ก่อนหน้าต่าง ไม่ใช่คดี",
+   "in_window_link_count": 0
+  },
+  "B:SEC": {
+   "status": "ok_no_news",
+   "url": "https://www.sec.or.th/",
+   "tool": "http",
+   "result": "listing http 200; 1 listing page(s); in-window permalinks 0; undated candidates 0",
+   "in_window_link_count": 0
+  },
+  "B:NACC": {
+   "status": "ok_no_news",
+   "url": "https://www.nacc.go.th",
+   "tool": "http",
+   "result": "listing http 200; 1 listing page(s); in-window permalinks 0; undated candidates 0",
+   "in_window_link_count": 0
+  },
+  "B:PACC": {
+   "status": "stale",
+   "url": "https://www.pacc.go.th/home1",
+   "tool": "http",
+   "result": "listing http 200; 2 listing page(s); in-window permalinks 0; undated candidates 5",
+   "in_window_link_count": 0
+  },
+  "B:OCPB": {
+   "status": "ok_no_news",
+   "url": "https://www.ocpb.go.th/",
+   "tool": "http",
+   "result": "listing http 200; 1 listing page(s); in-window permalinks 0; undated candidates 0",
+   "in_window_link_count": 0
+  },
+  "C:27_thairath": {
+   "status": "ok_with_news",
+   "url": "https://www.thairath.co.th/news/crime",
+   "tool": "http",
+   "result": "listing http 200; 2 listing page(s); in-window permalinks 4; undated candidates 15",
+   "in_window_link_count": 4
+  },
+  "C:28_dailynews": {
+   "status": "blocked",
+   "url": "https://www.dailynews.co.th/crime/",
+   "tool": "chrome",
+   "result": "http 403 + browser Cloudflare challenge 403; not circumvented | http: listing http 403; 2 listing page(s); in-window permalinks 0; undated candidates 0",
+   "in_window_link_count": 0
+  },
+  "C:29_mgr": {
+   "status": "ok_with_news",
+   "url": "https://mgronline.com/crime",
+   "tool": "http",
+   "result": "listing http 200; 2 listing page(s); in-window permalinks 12; undated candidates 44",
+   "in_window_link_count": 12
+  },
+  "C:30_matichon": {
+   "status": "ok_with_news",
+   "url": "https://www.matichon.co.th/local/crime",
+   "tool": "http",
+   "result": "listing http 200; 2 listing page(s); in-window permalinks 8; undated candidates 27",
+   "in_window_link_count": 8
+  },
+  "C:31_khaosod": {
+   "status": "ok_with_news",
+   "url": "https://www.khaosod.co.th/crime",
+   "tool": "http",
+   "result": "listing http 200; 2 listing page(s); in-window permalinks 10; undated candidates 31",
+   "in_window_link_count": 10
+  },
+  "C:32_thaipbs": {
+   "status": "ok_with_news",
+   "url": "https://www.thaipbs.or.th/news/categories/crime",
+   "tool": "http",
+   "result": "listing http 200; 2 listing page(s); in-window permalinks 3; undated candidates 24",
+   "in_window_link_count": 3
+  },
+  "C:33_amarintv": {
+   "status": "ok_with_news",
+   "url": "https://www.amarintv.com/news/crime",
+   "tool": "http",
+   "result": "listing http 200; 2 listing page(s); in-window permalinks 7; undated candidates 21",
+   "in_window_link_count": 7
+  },
+  "C:34_nationtv": {
+   "status": "ok_no_news",
+   "url": "https://www.nationtv.tv/crime",
+   "tool": "http",
+   "result": "listing http 200; 1 listing page(s); in-window permalinks 0; undated candidates 0",
+   "in_window_link_count": 0
+  },
+  "C:35_ch7": {
+   "status": "blocked",
+   "url": "https://news.ch7.com/crime",
+   "tool": "http",
+   "result": "listing http 200; 1 listing page(s); in-window permalinks 0; undated candidates 0; robots disallow, not circumvented",
+   "in_window_link_count": 0
+  },
+  "C:36_pptv": {
+   "status": "ok_no_news",
+   "url": "https://www.pptvhd36.com/news/อาชญากรรม",
+   "tool": "http",
+   "result": "listing http 200; 1 listing page(s); in-window permalinks 0; undated candidates 0",
+   "in_window_link_count": 0
+  },
+  "C:37_komchad": {
+   "status": "ok_no_news",
+   "url": "https://www.komchadluek.net/crime",
+   "tool": "http",
+   "result": "listing http 200; 1 listing page(s); in-window permalinks 0; undated candidates 0",
+   "in_window_link_count": 0
+  },
+  "C:38_isra": {
+   "status": "ok_no_news",
+   "url": "https://www.isranews.org/",
+   "tool": "http",
+   "result": "listing http 200; 1 listing page(s); in-window permalinks 0; undated candidates 0",
+   "in_window_link_count": 0
+  },
+  "C:39_naewna": {
+   "status": "ok_with_news",
+   "url": "https://www.naewna.com/",
+   "tool": "http",
+   "result": "listing http 200; 1 listing page(s); in-window permalinks 1; undated candidates 1",
+   "in_window_link_count": 1
+  },
+  "C:40_thaipost": {
+   "status": "ok_with_news",
+   "url": "https://www.thaipost.net/",
+   "tool": "http",
+   "result": "listing http 200; 1 listing page(s); in-window permalinks 5; undated candidates 8",
+   "in_window_link_count": 5
+  },
+  "C:41_bangkokbiz": {
+   "status": "ok_with_news",
+   "url": "https://www.bangkokbiznews.com/",
+   "tool": "http",
+   "result": "listing http 200; 1 listing page(s); in-window permalinks 1; undated candidates 2",
+   "in_window_link_count": 1
+  },
+  "C:42_thaiger_th": {
+   "status": "ok_with_news",
+   "url": "https://thethaiger.com/th/news",
+   "tool": "http",
+   "result": "listing http 200; 1 listing page(s); in-window permalinks 15; undated candidates 45",
+   "in_window_link_count": 15
+  },
+  "D:43_bkkpost": {
+   "status": "ok_with_news",
+   "url": "https://www.bangkokpost.com/thailand/general/",
+   "tool": "http",
+   "result": "listing http 200; 1 listing page(s); in-window permalinks 9; undated candidates 9",
+   "in_window_link_count": 9
+  },
+  "D:44_thaiger": {
+   "status": "stale",
+   "url": "https://thethaiger.com/hot-news/crime",
+   "tool": "http",
+   "result": "listing http 200; 1 listing page(s); in-window permalinks 0; undated candidates 35",
+   "in_window_link_count": 0
+  },
+  "D:45_nation": {
+   "status": "ok_with_news",
+   "url": "https://www.nationthailand.com/",
+   "tool": "http",
+   "result": "listing http 200; 1 listing page(s); in-window permalinks 2; undated candidates 3",
+   "in_window_link_count": 2
+  },
+  "D:46_khaosodeng": {
+   "status": "ok_with_news",
+   "url": "https://www.khaosodenglish.com/",
+   "tool": "http",
+   "result": "listing http 200; 1 listing page(s); in-window permalinks 1; undated candidates 1",
+   "in_window_link_count": 1
+  },
+  "D:47_thairath_en": {
+   "status": "ok_with_news",
+   "url": "https://en.thairath.co.th/news/crime",
+   "tool": "http",
+   "result": "listing http 200; 1 listing page(s); in-window permalinks 4; undated candidates 5",
+   "in_window_link_count": 4
+  },
+  "D:48_pattaya": {
+   "status": "ok_with_news",
+   "url": "https://www.pattayamail.com/",
+   "tool": "http",
+   "result": "listing http 200; 1 listing page(s); in-window permalinks 13; undated candidates 25",
+   "in_window_link_count": 13
+  },
+  "D:49_phuketnews": {
+   "status": "ok_with_news",
+   "url": "https://www.thephuketnews.com/",
+   "tool": "http",
+   "result": "listing http 200; 1 listing page(s); in-window permalinks 3; undated candidates 41",
+   "in_window_link_count": 3
+  },
+  "D:50_thaipbsworld": {
+   "status": "ok_with_news",
+   "url": "https://www.thaipbsworld.com/",
+   "tool": "http",
+   "result": "listing http 200; 1 listing page(s); in-window permalinks 1; undated candidates 12",
+   "in_window_link_count": 1
+  },
+  "D:51_aseannow": {
+   "status": "parser_failed",
+   "url": "https://aseannow.com/forum/163-thailand-crime-news/",
+   "tool": "http",
+   "result": "listing http 404; 1 listing page(s); in-window permalinks 0; undated candidates 0; forum = lead only, not used",
+   "in_window_link_count": 0
+  },
+  "D:52_interpol": {
+   "status": "ok_no_news",
+   "url": "https://www.interpol.int/en/News-and-Events/News",
+   "tool": "http",
+   "result": "listing http 200; 1 listing page(s); in-window permalinks 0; undated candidates 0",
+   "in_window_link_count": 0
+  },
+  "D:53_unodc": {
+   "status": "ok_no_news",
+   "url": "https://www.unodc.org/southeastasiaandpacific/",
+   "tool": "http",
+   "result": "listing http 200; 1 listing page(s); in-window permalinks 0; undated candidates 0",
+   "in_window_link_count": 0
+  },
+  "D:54_occrp": {
+   "status": "stale",
+   "url": "https://www.occrp.org/",
+   "tool": "http",
+   "result": "listing http 200; 1 listing page(s); in-window permalinks 0; undated candidates 28",
+   "in_window_link_count": 0
+  },
+  "D:55_reuters": {
+   "status": "blocked",
+   "url": "https://www.reuters.com/legal/",
+   "tool": "http",
+   "result": "listing http 401; 1 listing page(s); in-window permalinks 0; undated candidates 0",
+   "in_window_link_count": 0
+  }
+ },
+ "registry_issues": [
+  {
+   "key": "saranitet_police",
+   "url": "https://saranitet.police.go.th/",
+   "problem": "Listing snapshot stops at 22 Oct 2026; no 23/24 Oct items",
+   "suggested_action": "Re-check later in day; may be fetch cache lag"
+  },
+  {
+   "key": "ccid1-4",
+   "url": "https://ccid1.ccib.go.th/",
+   "problem": "Sites mainly link to Facebook, undated, empty read-more links",
+   "suggested_action": "Use media corroboration; mark no_listing"
+  },
+  {
+   "key": "cib",
+   "url": "https://cib.go.th/",
+   "problem": "client_error",
+   "suggested_action": "search_only"
+  },
+  {
+   "key": "metro_police",
+   "url": "https://www.metro.police.go.th/",
+   "problem": "client_error",
+   "suggested_action": "search_only"
+  },
+  {
+   "key": "immigration",
+   "url": "https://www.immigration.go.th/",
+   "problem": "client_error",
+   "suggested_action": "use sub-sites; tak is stale since Jul 2026"
+  },
+  {
+   "key": "p7_p8_p9",
+   "url": "https://p8.police.go.th/index.php",
+   "problem": "client_error",
+   "suggested_action": "search_only"
+  },
+  {
+   "key": "p1",
+   "url": "https://p1.police.go.th/",
+   "problem": "content appears to be 2014-era",
+   "suggested_action": "mark stale"
+  },
+  {
+   "key": "OCPB",
+   "url": "https://www.ocpb.go.th/",
+   "problem": "No news list rendered; /news.php server error",
+   "suggested_action": "try more_news.php?cid=N or news_view.php?nid=N probing"
+  },
+  {
+   "key": "OAG",
+   "url": "https://www.ago.go.th/pr/",
+   "problem": "client_error",
+   "suggested_action": "use permalink search"
+  },
+  {
+   "key": "ONCB",
+   "url": "https://www.oncb.go.th/information-news",
+   "problem": "registry hint /news=404 outdated",
+   "suggested_action": "use /information-news (works, dated, with permalinks /news/{id})"
+  },
+  {
+   "key": "27_thairath",
+   "url": "https://www.thairath.co.th/news/crime/{id}",
+   "problem": "permalinks return client_error for most ids; only some fetch",
+   "suggested_action": "use listing titles+timestamps or allowed_domains search; consider alternative AMP/other path"
+  },
+  {
+   "key": "31_khaosod",
+   "url": "https://www.khaosod.co.th/crime",
+   "problem": "page 1 client_error",
+   "suggested_action": "use /crime/page/2 and homepage featured list; /around-thailand/ permalinks work"
+  },
+  {
+   "key": "37_komchadluek",
+   "url": "https://www.komchadluek.net/news/crime",
+   "problem": "no dated listing; search returns old items",
+   "suggested_action": "find dated listing path"
+  },
+  {
+   "key": "38_isranews",
+   "url": "https://www.isranews.org",
+   "problem": "no usable listing; search undated",
+   "suggested_action": "find RSS/listing"
+  },
+  {
+   "key": "36_pptv",
+   "url": "https://www.pptvhd36.com/news/อาชญากรรม",
+   "problem": "listing stale (newest 19 Oct)",
+   "suggested_action": "check alternate listing/latest path"
+  },
+  {
+   "key": "40_thaipost",
+   "url": "https://www.thaipost.net/criminality/",
+   "problem": "stale listing (newest 22 Oct)",
+   "suggested_action": "verify update frequency"
+  },
+  {
+   "key": "35_ch7hd",
+   "url": "news.ch7.com",
+   "problem": "robots disallow",
+   "suggested_action": "keep blocked"
+  },
+  {
+   "key": "43",
+   "url": "https://www.bangkokpost.com/thailand/crime",
+   "problem": "client_error on listing and permalinks; search results undated",
+   "suggested_action": "use Thai-language Bangkok Post/RSS or accept search_only"
+  },
+  {
+   "key": "51",
+   "url": "https://aseannow.com/forum/72-thailand-news/",
+   "problem": "client_error",
+   "suggested_action": "drop or mark lead-only"
+  },
+  {
+   "key": "53",
+   "url": "https://www.unodc.org/roseap/en/",
+   "problem": "client_error",
+   "suggested_action": "try /roseap/en/2026/10/ paths or press-release page"
+  },
+  {
+   "key": "55",
+   "url": "reuters.com search",
+   "problem": "WebSearch proxy HTTP 400 for allowed_domains reuters.com",
+   "suggested_action": "treat as error; do not bypass paywall"
+  },
+  {
+   "key": "50",
+   "url": "https://www.thaipbsworld.com/crime/",
+   "problem": "listing 404; article permalinks /crime/{id} work",
+   "suggested_action": "use homepage listing"
+  },
+  {
+   "key": "48",
+   "url": "https://www.pattayamail.com/category/news/crime",
+   "problem": "client_error",
+   "suggested_action": "use homepage"
+  },
+  {
+   "key": "D:51_aseannow",
+   "url": "https://aseannow.com/forum/163-thailand-crime-news/",
+   "problem": "HTTP 404",
+   "suggested_action": "หา path ฟอรัมใหม่"
+  },
+  {
+   "key": "B:MDES",
+   "url": "https://www.mdes.go.th/news",
+   "problem": "HTTP 403",
+   "suggested_action": "ใช้ Chrome เมื่อพร้อม"
+  },
+  {
+   "key": "D:55_reuters",
+   "url": "https://www.reuters.com/legal/",
+   "problem": "HTTP 401 paywall",
+   "suggested_action": "ไม่หลบ paywall"
+  },
+  {
+   "key": "A:csd",
+   "url": "https://csd.go.th/",
+   "problem": "connection error",
+   "suggested_action": "ลองใหม่/Chrome"
+  }
+ ],
+ "discovered_paths": [
+  "A:tourist_police_category",
+  "A:saranitet_investigation",
+  "A:highway_station_sites",
+  "A:bpp",
+  "A:ccid4_activities",
+  "A:humantrafficking_partners",
+  "B:ONCB",
+  "B:PACC",
+  "B:MDES",
+  "B:SEC",
+  "B:DSI",
+  "C:mgr_detail",
+  "C:dailynews_news",
+  "C:amarintv",
+  "C:naewna",
+  "C:thaipost",
+  "C:bangkokbiznews",
+  "C:khaosod_featured",
+  "C:thaiger",
+  "D:47",
+  "D:44",
+  "D:49",
+  "chonburi.police.go.th/2026/11/",
+  "karaket.nakhonsithammarat.police.go.th",
+  "buriram.police.go.th (latest crime item 21 Oct = out of window)",
+  "https://saranitet.police.go.th/",
+  "https://www.royalthaipolice.go.th/th/executive-mission",
+  "https://www.oncb.go.th/information-news",
+  "https://www.ago.go.th/category/oagnews/",
+  "https://pct.police.go.th/",
+  "https://tcsd.cib.go.th/home",
+  "https://www.thaipoliceonline.go.th/news",
+  "https://saranitet.police.go.th/commander-mission/",
+  "https://mdes.go.th/news (chrome only)",
+  "https://www.cops-magazine.com/topic/{id}/ (เรียงตาม id ใหม่สุด)",
+  "https://www.thaicert.or.th/cyber-threat-news-th/",
+  "https://www.dsi.go.th/th/Type/Mission-News (chrome มีวันที่)",
+  "https://www.touristpolice.go.th/tpb-news (in-app browser ok)",
+  "https://saranitet.police.go.th/commander-mission/ (http ok, permalink มีวันที่ใน slug)",
+  "https://www.touristpolice.go.th/tpb-news (rendered, relative dates)",
+  "https://csd.cib.go.th/home (ปลายทางใหม่ของ csd.go.th)",
+  "https://www.royalthaipolice.go.th/th/main"
+ ],
+ "note": "ดึงด้วย requests/bs4 บน device shell + Claude in Chrome; ไม่มี git; Facebook ไม่ถูกดึง; แหล่งที่บล็อกไม่ถูกหลีกเลี่ยง"
+}

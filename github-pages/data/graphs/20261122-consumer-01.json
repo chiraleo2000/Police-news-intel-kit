@@ -1,0 +1,76 @@
+{
+ "case_id": "20261122-consumer-01",
+ "title": "บก.ปคบ. ร่วม อย. และ สสจ. 4 จังหวัด ค้น 6 จุดในพังงา ภูเก็ต สมุทรสาคร และปทุมธานี ทลายเครือข่ายผลิตยาแก้ไอปลอม ยึดยากว่า 122,300 ขวดและฉลากกว่า 2.28 ล้านดวง มูลค่ากว่า 200 ล้านบาท",
+ "generated_at": "2026-11-22T01:18:16.938Z",
+ "node_count": 12,
+ "edge_count": 11,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/กก.4 บก.ปคบ.",
+   "target_title": "กก.4 บก.ปคบ.",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บก.ปคบ.",
+   "target_title": "บก.ปคบ.",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/สำนักงานคณะกรรมการอาหารและยา",
+   "target_title": "สำนักงานคณะกรรมการอาหารและยา",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลอาญา",
+   "target_title": "ศาลอาญา",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ต.หล่อยูง อ.ตะกั่วทุ่ง จ.พังงา",
+   "target_title": "ต.หล่อยูง อ.ตะกั่วทุ่ง จ.พังงา",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ต.รัษฎา อ.เมืองภูเก็ต จ.ภูเก็ต",
+   "target_title": "ต.รัษฎา อ.เมืองภูเก็ต จ.ภูเก็ต",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ต.ดอนไก่ดี อ.กระทุ่มแบน จ.สมุทรสาคร",
+   "target_title": "ต.ดอนไก่ดี อ.กระทุ่มแบน จ.สมุทรสาคร",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/อ.ลำลูกกา จ.ปทุมธานี",
+   "target_title": "อ.ลำลูกกา จ.ปทุมธานี",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/พล.ต.ต.กฤษฎาพร ปานโปร่ง ผบก.ปคบ.",
+   "target_title": "พล.ต.ต.กฤษฎาพร ปานโปร่ง ผบก.ปคบ.",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/ภญ.สุภัทรา บุญเสริม เลขาธิการ อย.",
+   "target_title": "ภญ.สุภัทรา บุญเสริม เลขาธิการ อย.",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/คุ้มครองผู้บริโภคและสินค้าผิดกฎหมาย",
+   "target_title": "คุ้มครองผู้บริโภคและสินค้าผิดกฎหมาย",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261122-consumer-01.svg"
+}

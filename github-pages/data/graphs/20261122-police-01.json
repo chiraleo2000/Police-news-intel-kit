@@ -1,0 +1,40 @@
+{
+ "case_id": "20261122-police-01",
+ "title": "ตำรวจท่องเที่ยว บก.ทท.2 ใช้รถควบคุมสั่งการเคลื่อนที่ CCOC และโดรนดูแลความปลอดภัยงานมหัศจรรย์งานช้างสุรินทร์ ที่สนามแสดงช้างจังหวัดสุรินทร์",
+ "generated_at": "2026-11-22T01:18:16.938Z",
+ "node_count": 6,
+ "edge_count": 5,
+ "relations": [
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/ส.ทท.2 กก.1 บก.ทท.2",
+   "target_title": "ส.ทท.2 กก.1 บก.ทท.2",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บช.ทท.",
+   "target_title": "บช.ทท.",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/สนามแสดงช้าง จ.สุรินทร์",
+   "target_title": "สนามแสดงช้าง จ.สุรินทร์",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/พล.ต.ท.พงษ์สยาม มีขันทอง ผบช.ทท.",
+   "target_title": "พล.ต.ท.พงษ์สยาม มีขันทอง ผบช.ทท.",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/การปฏิบัติหน้าที่ ประชาสัมพันธ์ และนโยบายตำรวจ",
+   "target_title": "การปฏิบัติหน้าที่ ประชาสัมพันธ์ และนโยบายตำรวจ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261122-police-01.svg"
+}
