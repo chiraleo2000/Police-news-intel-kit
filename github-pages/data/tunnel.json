@@ -3,5 +3,5 @@
   "mcp": "https://ai-pc-dev-rag.ngrok-free.app/8787/mcp",
   "llm": "https://ai-pc-dev-rag.ngrok-free.app/1234/v1/chat/completions",
   "model": "google/gemma-4-e2b",
-  "updated_at": "2026-11-22T15:09:15.775Z"
+  "updated_at": "2026-11-22T19:05:40.134Z"
 }
