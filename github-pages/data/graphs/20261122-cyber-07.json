@@ -1,0 +1,34 @@
+{
+ "case_id": "20261122-cyber-07",
+ "title": "นักวิจัยสาธิตหน้าเว็บอันตรายหน้าเดียวดึงบทสนทนาส่วนตัวและความจำของผู้ช่วย AI Meta Muse ออกไปได้โดยไม่ขึ้นคำขออนุญาต ก่อนต่อยอดยึดเครื่องคลาวด์ของผู้ใช้ บริษัทวิจัยระบุแก้ไขแล้ว",
+ "generated_at": "2026-11-22T06:10:35.325Z",
+ "node_count": 5,
+ "edge_count": 4,
+ "relations": [
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/NebuSec",
+   "target_title": "NebuSec",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/Units/Meta",
+   "target_title": "Meta",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ทั่วโลก",
+   "target_title": "ทั่วโลก",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261122-cyber-07.svg"
+}

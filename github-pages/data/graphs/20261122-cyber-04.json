@@ -1,0 +1,28 @@
+{
+ "case_id": "20261122-cyber-04",
+ "title": "FBI สอบสวนเหตุสงสัยถูกเจาะระบบฐานข้อมูลอาชญากรรมแห่งชาติ NCIC ที่ตำรวจทั่วสหรัฐฯ ใช้ตรวจหมายจับ-ประวัติ ยังไม่ทราบว่าข้อมูลถูกขโมยหรือไม่ เป็นเหตุครั้งที่สองในรอบสองเดือน",
+ "generated_at": "2026-11-22T06:10:35.325Z",
+ "node_count": 4,
+ "edge_count": 3,
+ "relations": [
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/FBI",
+   "target_title": "FBI",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/สหรัฐอเมริกา",
+   "target_title": "สหรัฐอเมริกา",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261122-cyber-04.svg"
+}

@@ -1,0 +1,28 @@
+{
+ "case_id": "20261122-cyber-06",
+ "title": "Rackspace แจ้งลูกค้าแพลตฟอร์มคลาวด์ Rackspace Spot ถูกเจาะด้วยรหัสผ่านที่รั่ว ผู้บุกรุกอ่าน Kubernetes Secrets ในคลัสเตอร์ลูกค้าได้ เร่งให้ออกโทเคนใหม่และเปลี่ยนรหัสลับทั้งหมด",
+ "generated_at": "2026-11-22T06:10:35.325Z",
+ "node_count": 4,
+ "edge_count": 3,
+ "relations": [
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/Rackspace",
+   "target_title": "Rackspace",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ทั่วโลก",
+   "target_title": "ทั่วโลก",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261122-cyber-06.svg"
+}

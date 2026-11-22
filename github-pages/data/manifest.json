@@ -1,12 +1,12 @@
 {
- "generated_at": "2026-11-22T01:19:59.391Z",
+ "generated_at": "2026-11-22T06:12:10.160Z",
  "schema_version": 1,
  "default_range": "all",
  "days": [
   {
    "date": "2026-11-22",
    "status": "published",
-   "total": 20,
+   "total": 25,
    "crime_file": "2026-11-22_crime.json",
    "downloads": [
     {
@@ -17,6 +17,16 @@
     {
      "label": "Infographic 2026-11-22",
      "path": "downloads/2026-11-22_infographic.png",
+     "kind": "image"
+    },
+    {
+     "label": "PDF ข่าวไซเบอร์ 2026-11-22",
+     "path": "downloads/2026-11-22_cyber.pdf",
+     "kind": "pdf"
+    },
+    {
+     "label": "Infographic ไซเบอร์ 2026-11-22",
+     "path": "downloads/2026-11-22_infographic_cyber.png",
      "kind": "image"
     }
    ]

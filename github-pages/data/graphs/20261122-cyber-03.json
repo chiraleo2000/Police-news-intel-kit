@@ -1,0 +1,46 @@
+{
+ "case_id": "20261122-cyber-03",
+ "title": "บก.สอท.4 จับเซียนพระชื่อดังวัย 56 ปีที่ตลาดพระย่านงามวงศ์วาน นนทบุรี ถูกกล่าวหาโพสต์เฟซบุ๊กเปิดรับซื้อเลขท้าย 2 ตัวสลากกินแบ่งรัฐบาล หมายเลขละ 1,250 บาท ลุ้นรับพระเครื่องเป็นรางวัล",
+ "generated_at": "2026-11-22T06:10:35.325Z",
+ "node_count": 7,
+ "edge_count": 6,
+ "relations": [
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บช.สอท.",
+   "target_title": "บช.สอท.",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/บก.สอท.4",
+   "target_title": "บก.สอท.4",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/สภ.รัตนาธิเบศร์",
+   "target_title": "สภ.รัตนาธิเบศร์",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/นนทบุรี",
+   "target_title": "นนทบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/People/ทินกร รังมาตย์",
+   "target_title": "ทินกร รังมาตย์",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261122-cyber-03.svg"
+}
