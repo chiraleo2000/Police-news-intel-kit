@@ -1,0 +1,82 @@
+{
+ "case_id": "20261123-tourist-01",
+ "title": "สตม. และ ตม.3 ขยายผลคดีกักขังหญิงจีนที่บางละมุง ค้นบริษัทรับจัดตั้งบริษัทและจัดหาคนไทยถือหุ้นแทน ออกหมายจับ 26 หมาย จับแล้ว 7 คน พบเชื่อมโยงบ้าน 6 หลังมูลค่ากว่า 35.28 ล้านบาท",
+ "generated_at": "2026-11-23T01:19:31.399Z",
+ "node_count": 13,
+ "edge_count": 12,
+ "relations": [
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/ตม.",
+   "target_title": "ตม.",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/กก.สส.บก.ตม.3",
+   "target_title": "กก.สส.บก.ตม.3",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/ตม.จว.ชลบุรี",
+   "target_title": "ตม.จว.ชลบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลจังหวัดพัทยา",
+   "target_title": "ศาลจังหวัดพัทยา",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ต.ตะเคียนเตี้ย อ.บางละมุง จ.ชลบุรี",
+   "target_title": "ต.ตะเคียนเตี้ย อ.บางละมุง จ.ชลบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ต.บ่อวิน อ.ศรีราชา จ.ชลบุรี",
+   "target_title": "ต.บ่อวิน อ.ศรีราชา จ.ชลบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/พล.ต.ท.นพศิลป์ พูลสวัสดิ์ ผบช.สตม.",
+   "target_title": "พล.ต.ท.นพศิลป์ พูลสวัสดิ์ ผบช.สตม.",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/พล.ต.ต.ทรงโปรด สิริสุขะ ผบก.ตม.3",
+   "target_title": "พล.ต.ต.ทรงโปรด สิริสุขะ ผบก.ตม.3",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/บุคคล/นพศิลป์ พูลสวัสดิ์",
+   "target_title": "นพศิลป์ พูลสวัสดิ์",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/บุคคล/ทรงโปรด สิริสุขะ",
+   "target_title": "ทรงโปรด สิริสุขะ",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/บางละมุง",
+   "target_title": "บางละมุง",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมที่เกี่ยวข้องกับนักท่องเที่ยวและชาวต่างชาติ",
+   "target_title": "อาชญากรรมที่เกี่ยวข้องกับนักท่องเที่ยวและชาวต่างชาติ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261123-tourist-01.svg"
+}

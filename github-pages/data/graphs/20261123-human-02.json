@@ -1,0 +1,40 @@
+{
+ "case_id": "20261123-human-02",
+ "title": "กก.2 บก.ปคม. ร่วมมูลนิธิเดสทินี่ เรสคิว จับชายอายุ 29 ปีที่ อ.มะขาม จันทบุรี ตามหมายจับศาลอาญาข้อหาค้ามนุษย์และสื่อลามกเด็ก ตำรวจระบุว่าเปิดกลุ่มลับเทเลแกรมขายคลิปเด็กหญิงอายุต่ำกว่า 18 ปี สมาชิกกว่า 1,680 คน",
+ "generated_at": "2026-11-23T01:19:31.399Z",
+ "node_count": 6,
+ "edge_count": 5,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/กก.2 บก.ปคม.",
+   "target_title": "กก.2 บก.ปคม.",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บก.ปคม.",
+   "target_title": "บก.ปคม.",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลอาญา",
+   "target_title": "ศาลอาญา",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ต.ปัถวี อ.มะขาม จ.จันทบุรี",
+   "target_title": "ต.ปัถวี อ.มะขาม จ.จันทบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/ค้ามนุษย์ แรงงานผิดกฎหมาย และคุ้มครองเด็ก",
+   "target_title": "ค้ามนุษย์ แรงงานผิดกฎหมาย และคุ้มครองเด็ก",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261123-human-02.svg"
+}

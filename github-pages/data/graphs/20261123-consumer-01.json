@@ -1,0 +1,58 @@
+{
+ "case_id": "20261123-consumer-01",
+ "title": "กก.1 บก.ปอศ. ค้นโกดังใน ต.บางเพรียง อ.บางบ่อ สมุทรปราการ ยึดทรีทเมนต์บำรุงผมเลียนแบบเครื่องหมายการค้า “GREEN bio” 30,240 ชิ้น ที่เตรียมส่งขายผ่านแพลตฟอร์มออนไลน์ เตือนผู้บริโภคระวังสารอันตราย",
+ "generated_at": "2026-11-23T01:19:31.399Z",
+ "node_count": 9,
+ "edge_count": 8,
+ "relations": [
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/กก.1 บก.ปอศ.",
+   "target_title": "กก.1 บก.ปอศ.",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บก.ปอศ.",
+   "target_title": "บก.ปอศ.",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บช.ก.",
+   "target_title": "บช.ก.",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ต.บางเพรียง อ.บางบ่อ จ.สมุทรปราการ",
+   "target_title": "ต.บางเพรียง อ.บางบ่อ จ.สมุทรปราการ",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/พล.ต.ต.ทัศน์ภูมิ จารุปรัชญ์ ผบก.ปอศ.",
+   "target_title": "พล.ต.ต.ทัศน์ภูมิ จารุปรัชญ์ ผบก.ปอศ.",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/บุคคล/ณัฐศักดิ์ เชาวนาศัย",
+   "target_title": "ณัฐศักดิ์ เชาวนาศัย",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/บุคคล/ทัศน์ภูมิ จารุปรัชญ์",
+   "target_title": "ทัศน์ภูมิ จารุปรัชญ์",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/คุ้มครองผู้บริโภคและสินค้าผิดกฎหมาย",
+   "target_title": "คุ้มครองผู้บริโภคและสินค้าผิดกฎหมาย",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261123-consumer-01.svg"
+}

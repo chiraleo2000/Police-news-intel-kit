@@ -1,0 +1,58 @@
+{
+ "case_id": "20261123-gamble-02",
+ "title": "บก.สอท.4 จับเซียนพระเครื่องอายุ 56 ปีชาวนนทบุรีที่ใช้เฟซบุ๊ก “เต เซเว่น” โพสต์ขายเลขท้าย 2 ตัวตัวละ 1,250 บาท ให้ลุ้นรับพระเครื่องหลวงปู่ทวดเป็นรางวัล",
+ "generated_at": "2026-11-23T01:19:31.399Z",
+ "node_count": 9,
+ "edge_count": 8,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/กก.2 บก.สอท.4",
+   "target_title": "กก.2 บก.สอท.4",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บช.สอท.",
+   "target_title": "บช.สอท.",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/จ.นนทบุรี",
+   "target_title": "จ.นนทบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/พล.ต.ต.กฤตัชญ์ บำรุงรัตนยศ ผบก.สอท.4",
+   "target_title": "พล.ต.ต.กฤตัชญ์ บำรุงรัตนยศ ผบก.สอท.4",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/People/ทินกร รังมาตย์",
+   "target_title": "ทินกร รังมาตย์",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/บุคคล/กฤตัชญ์ บำรุงรัตนยศ",
+   "target_title": "กฤตัชญ์ บำรุงรัตนยศ",
+   "direction": "out"
+  },
+  {
+   "label": "ผู้ต้องหา",
+   "target_id": "30_Entities/ผู้ต้องหา/เต เซเว่น",
+   "target_title": "เต เซเว่น",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/พนันและบ่อนผิดกฎหมาย",
+   "target_title": "พนันและบ่อนผิดกฎหมาย",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261123-gamble-02.svg"
+}

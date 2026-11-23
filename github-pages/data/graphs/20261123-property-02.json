@@ -1,0 +1,46 @@
+{
+ "case_id": "20261123-property-02",
+ "title": "สภ.คลองหลวง แจ้งเตือนนักศึกษาธรรมศาสตร์รังสิตระวังเหตุจี้ชิงทรัพย์ช่วงหลัง 23.00 น. บนถนนเชียงรากและพหลโยธิน ผบก.ภ.จว.ปทุมธานี เรียกประชุมด่วนสั่งกวาดล้างกลุ่มที่ก่อเหตุ",
+ "generated_at": "2026-11-23T01:19:31.399Z",
+ "node_count": 7,
+ "edge_count": 6,
+ "relations": [
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/สภ.คลองหลวง",
+   "target_title": "สภ.คลองหลวง",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/ภ.จว.ปทุมธานี",
+   "target_title": "ภ.จว.ปทุมธานี",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ถนนเชียงราก อ.คลองหลวง จ.ปทุมธานี",
+   "target_title": "ถนนเชียงราก อ.คลองหลวง จ.ปทุมธานี",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/พล.ต.ต.พีรพล โชติกเสถียร ผบก.ภ.จว.ปทุมธานี",
+   "target_title": "พล.ต.ต.พีรพล โชติกเสถียร ผบก.ภ.จว.ปทุมธานี",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/บุคคล/พีรพล โชติกเสถียร",
+   "target_title": "พีรพล โชติกเสถียร",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/คดีทรัพย์สิน",
+   "target_title": "คดีทรัพย์สิน",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261123-property-02.svg"
+}

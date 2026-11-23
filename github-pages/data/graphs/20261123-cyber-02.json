@@ -1,0 +1,64 @@
+{
+ "case_id": "20261123-cyber-02",
+ "title": "บก.สอท.1 จับชายอายุ 47 ปีชาวสมุทรปราการ ตามหมายจับศาลอาญา ตำรวจระบุว่าเป็น “หัวหน้าคอกม้า” คุมบัญชีม้าถอนเงินและซื้อทองให้แก๊งคอลเซ็นเตอร์ที่หลอกข้าราชการบำนาญหญิงอายุ 62 ปีโอนเงินกว่า 4 ล้านบาท",
+ "generated_at": "2026-11-23T01:19:31.399Z",
+ "node_count": 10,
+ "edge_count": 9,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/กก.4 บก.สอท.1",
+   "target_title": "กก.4 บก.สอท.1",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บช.สอท.",
+   "target_title": "บช.สอท.",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลอาญา",
+   "target_title": "ศาลอาญา",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/จ.สมุทรปราการ",
+   "target_title": "จ.สมุทรปราการ",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/พล.ต.ต.ประสงค์ เฉลิมพันธ์ ผบก.สอท.1",
+   "target_title": "พล.ต.ต.ประสงค์ เฉลิมพันธ์ ผบก.สอท.1",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/People/ทินกร รังมาตย์",
+   "target_title": "ทินกร รังมาตย์",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/บุคคล/ประสงค์ เฉลิมพันธ์",
+   "target_title": "ประสงค์ เฉลิมพันธ์",
+   "direction": "out"
+  },
+  {
+   "label": "เป้าหมายเครือข่าย",
+   "target_id": "30_Entities/ข่ายเครือข่าย/หัวหน้าคอกม้า",
+   "target_title": "หัวหน้าคอกม้า",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261123-cyber-02.svg"
+}

@@ -1,0 +1,46 @@
+{
+ "case_id": "20261123-property-01",
+ "title": "สภ.นาจอมเทียน ร่วม สภ.บ้านฉาง ตามจับกลุ่มวัยรุ่น 4 คนจาก อ.บ้านฉาง ระยอง ที่ถูกกล่าวหาลักรถจักรยานยนต์ข้ามจังหวัด ในกลุ่มมีเด็กอายุ 14–15 ปี 3 คน รับว่าก่อเหตุอย่างน้อย 8 ครั้งในนาจอมเทียนและพัทยา",
+ "generated_at": "2026-11-23T01:19:31.399Z",
+ "node_count": 7,
+ "edge_count": 6,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/สภ.นาจอมเทียน",
+   "target_title": "สภ.นาจอมเทียน",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/สภ.บ้านฉาง",
+   "target_title": "สภ.บ้านฉาง",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ต.นาจอมเทียน อ.สัตหีบ จ.ชลบุรี",
+   "target_title": "ต.นาจอมเทียน อ.สัตหีบ จ.ชลบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ต.สำนักท้อน อ.บ้านฉาง จ.ระยอง",
+   "target_title": "ต.สำนักท้อน อ.บ้านฉาง จ.ระยอง",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/พัทยา",
+   "target_title": "พัทยา",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/คดีทรัพย์สิน",
+   "target_title": "คดีทรัพย์สิน",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261123-property-01.svg"
+}

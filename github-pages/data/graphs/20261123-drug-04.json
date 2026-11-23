@@ -1,0 +1,64 @@
+{
+ "case_id": "20261123-drug-04",
+ "title": "บก.ปส.3 สกัดรถเก๋งที่ ต.แม่ไร่ อ.แม่จัน เชียงราย พบไอซ์ 12 กระสอบราว 300 กก. จับคนขับอายุ 32 ปี ขณะที่ ภ.จว.เชียงราย ยึดยาบ้ากว่า 8 ล้านเม็ดใน 40 กระสอบ จับชายอายุ 69 ปี",
+ "generated_at": "2026-11-23T01:19:31.399Z",
+ "node_count": 10,
+ "edge_count": 9,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/กก.2 บก.ปส.3",
+   "target_title": "กก.2 บก.ปส.3",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บช.ปส.",
+   "target_title": "บช.ปส.",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/ภ.จว.เชียงราย",
+   "target_title": "ภ.จว.เชียงราย",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ต.แม่ไร่ อ.แม่จัน จ.เชียงราย",
+   "target_title": "ต.แม่ไร่ อ.แม่จัน จ.เชียงราย",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/อ.เชียงแสน จ.เชียงราย",
+   "target_title": "อ.เชียงแสน จ.เชียงราย",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/พล.ต.ท.ภูมินทร์ พุ่มพันธุ์ม่วง ผบช.ปส.",
+   "target_title": "พล.ต.ท.ภูมินทร์ พุ่มพันธุ์ม่วง ผบช.ปส.",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/บุคคล/ภูมินทร์ พุ่มพันธุ์ม่วง",
+   "target_title": "ภูมินทร์ พุ่มพันธุ์ม่วง",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/บุคคล/ภูมิพัฒน์ ภัทรศรีวงษ์ชัย",
+   "target_title": "ภูมิพัฒน์ ภัทรศรีวงษ์ชัย",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/ยาเสพติด",
+   "target_title": "ยาเสพติด",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261123-drug-04.svg"
+}

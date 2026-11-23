@@ -1,0 +1,58 @@
+{
+ "case_id": "20261123-drug-01",
+ "title": "ศูนย์ยาเสพติด บช.น. จับชาย 2 คนที่ลานจอดรถแฟลตย่านวังบูรพาภิรมย์ เขตพระนคร ยึดไอซ์ราว 20 กก. และเคตามีน 1 กก. หลังตำรวจที่พาครอบครัวเที่ยวงานภูเขาทองพบผู้ต้องสงสัยในเครือข่ายที่กำลังติดตาม",
+ "generated_at": "2026-11-23T01:19:31.399Z",
+ "node_count": 9,
+ "edge_count": 8,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/ศอ.ปส.บช.น.",
+   "target_title": "ศอ.ปส.บช.น.",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/กก.สืบสวน 3 บก.สส.บช.น.",
+   "target_title": "กก.สืบสวน 3 บก.สส.บช.น.",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/สน.สำราญราษฎร์",
+   "target_title": "สน.สำราญราษฎร์",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บช.น.",
+   "target_title": "บช.น.",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/แขวงวังบูรพาภิรมย์ เขตพระนคร กรุงเทพมหานคร",
+   "target_title": "แขวงวังบูรพาภิรมย์ เขตพระนคร กรุงเทพมหานคร",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/พล.ต.ต.ธีรเดช ธรรมสุธีร์ รอง ผบช.น.",
+   "target_title": "พล.ต.ต.ธีรเดช ธรรมสุธีร์ รอง ผบช.น.",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/บุคคล/ธีรเดช ธรรมสุธีร์",
+   "target_title": "ธีรเดช ธรรมสุธีร์",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/ยาเสพติด",
+   "target_title": "ยาเสพติด",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261123-drug-01.svg"
+}

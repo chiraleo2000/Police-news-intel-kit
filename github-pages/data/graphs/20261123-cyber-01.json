@@ -1,0 +1,70 @@
+{
+ "case_id": "20261123-cyber-01",
+ "title": "กก.4 บก.ปพ. จับชายอายุ 38 ปีที่ ต.ประชาธิปัตย์ อ.ธัญบุรี ตามหมายจับศาลอาญาคดีบัญชีม้า ผู้เสียหายถูกแก๊งคอลเซ็นเตอร์แอบอ้างเป็นตำรวจ CIB หลอกให้โอนเงินเพื่อ “ทดสอบระบบธนาคาร”",
+ "generated_at": "2026-11-23T01:19:31.399Z",
+ "node_count": 11,
+ "edge_count": 10,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/กก.4 บก.ปพ.",
+   "target_title": "กก.4 บก.ปพ.",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บช.ก.",
+   "target_title": "บช.ก.",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/สน.พญาไท",
+   "target_title": "สน.พญาไท",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลอาญา",
+   "target_title": "ศาลอาญา",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ต.ประชาธิปัตย์ อ.ธัญบุรี จ.ปทุมธานี",
+   "target_title": "ต.ประชาธิปัตย์ อ.ธัญบุรี จ.ปทุมธานี",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/พล.ต.ต.อรุณ วชิรศรีสุกัญญา ผบก.ปพ.",
+   "target_title": "พล.ต.ต.อรุณ วชิรศรีสุกัญญา ผบก.ปพ.",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/บุคคล/ณัฐศักดิ์ เชาวนาศัย",
+   "target_title": "ณัฐศักดิ์ เชาวนาศัย",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/บุคคล/อรุณ วชิรศรีสุกัญญา",
+   "target_title": "อรุณ วชิรศรีสุกัญญา",
+   "direction": "out"
+  },
+  {
+   "label": "เป้าหมายเครือข่าย",
+   "target_id": "30_Entities/ข่ายเครือข่าย/ทดสอบระบบธนาคาร",
+   "target_title": "ทดสอบระบบธนาคาร",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261123-cyber-01.svg"
+}

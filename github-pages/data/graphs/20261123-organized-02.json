@@ -1,0 +1,64 @@
+{
+ "case_id": "20261123-organized-02",
+ "title": "กก.5 บก.ป. จับชายอายุ 47 ปีที่ศาลเจ้าพ่อทรงเมือง เมืองนนทบุรี ตามหมายจับศาลจังหวัดเวียงสระ ข้อหาพยายามฆ่าและลักทรัพย์ในเคหสถาน ตำรวจระบุว่าใช้ปืนลูกซองดักยิงพ่อเลี้ยงในสวนยางที่บ้านนาสาร สุราษฎร์ธานี",
+ "generated_at": "2026-11-23T01:19:31.399Z",
+ "node_count": 10,
+ "edge_count": 9,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/กก.5 บก.ป.",
+   "target_title": "กก.5 บก.ป.",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บก.ป.",
+   "target_title": "บก.ป.",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลจังหวัดเวียงสระ",
+   "target_title": "ศาลจังหวัดเวียงสระ",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ต.ทุ่งเตาใหม่ อ.บ้านนาสาร จ.สุราษฎร์ธานี",
+   "target_title": "ต.ทุ่งเตาใหม่ อ.บ้านนาสาร จ.สุราษฎร์ธานี",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ต.บางกระสอ อ.เมืองนนทบุรี จ.นนทบุรี",
+   "target_title": "ต.บางกระสอ อ.เมืองนนทบุรี จ.นนทบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/พล.ต.ต.พัฒนศักดิ์ บุบผาสุวรรณ ผบก.ป.",
+   "target_title": "พล.ต.ต.พัฒนศักดิ์ บุบผาสุวรรณ ผบก.ป.",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/บุคคล/ณัฐศักดิ์ เชาวนาศัย",
+   "target_title": "ณัฐศักดิ์ เชาวนาศัย",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/บุคคล/พัฒนศักดิ์ บุบผาสุวรรณ",
+   "target_title": "พัฒนศักดิ์ บุบผาสุวรรณ",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/คดีอุกฉกรรจ์ ผู้มีอิทธิพล และอาวุธ",
+   "target_title": "คดีอุกฉกรรจ์ ผู้มีอิทธิพล และอาวุธ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261123-organized-02.svg"
+}
