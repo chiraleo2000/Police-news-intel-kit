@@ -1,0 +1,34 @@
+{
+ "case_id": "20261123-cyber-06",
+ "title": "GL.iNet ยืนยันแฮกเกอร์ใช้ช่องโหว่ระบบจัดการระยะไกลบนคลาวด์ GoodCloud ฝังมัลแวร์ในเราเตอร์และอุปกรณ์ KVM ของลูกค้า บางเครื่องพบประตูหลังให้ควบคุมจากระยะไกล",
+ "generated_at": "2026-11-23T06:09:46.378Z",
+ "node_count": 5,
+ "edge_count": 4,
+ "relations": [
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/BleepingComputer",
+   "target_title": "BleepingComputer",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/Units/GL.iNet",
+   "target_title": "GL.iNet",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ทั่วโลก",
+   "target_title": "ทั่วโลก",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261123-cyber-06.svg"
+}

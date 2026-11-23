@@ -1,0 +1,40 @@
+{
+ "case_id": "20261123-cyber-04",
+ "title": "ThaiCERT เตือน Splunk ออกแพตช์แก้ช่องโหว่ 139 รายการใน Splunk Enterprise, Enterprise Security และ SOAR มีระดับวิกฤต 5 รายการ เสี่ยงถูกข้ามการยืนยันตัวตนและสั่งรันคำสั่งบนระบบเฝ้าระวังความปลอดภัยขององค์กร",
+ "generated_at": "2026-11-23T06:09:46.378Z",
+ "node_count": 6,
+ "edge_count": 5,
+ "relations": [
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/ThaiCERT",
+   "target_title": "ThaiCERT",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/สกมช.",
+   "target_title": "สกมช.",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/Units/Splunk",
+   "target_title": "Splunk",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ทั่วโลก",
+   "target_title": "ทั่วโลก",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261123-cyber-04.svg"
+}

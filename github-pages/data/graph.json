@@ -1,22 +1,22 @@
 {
- "generated_at": "2026-11-23T02:30:09.948Z",
+ "generated_at": "2026-11-23T07:00:08.630Z",
  "schema_version": 2,
  "source": "vault/",
  "note": "Derived from Obsidian wikilinks. Local vault/ is the knowledge store; this file powers Pages ข้อมูลกราฟ.",
  "stats": {
-  "nodes": 3288,
-  "edges": 5326,
+  "nodes": 3301,
+  "edges": 5347,
   "unresolved": 65,
   "by_kind": {
    "daily": 31,
-   "case": 936,
-   "entity": 2235,
+   "case": 941,
+   "entity": 2243,
    "crime_type": 17,
    "other": 4,
    "unresolved": 65
   },
   "by_entity_group": {
-   "หน่วย": 1187,
+   "หน่วย": 1195,
    "บุคคล": 326,
    "สถานที่": 655,
    "ข่ายเครือข่าย": 39,
@@ -27,17 +27,17 @@
    "สืบสวนโดย": 501,
    "จับโดย": 683,
    "สั่งการโดย": 493,
-   "แจ้งโดย": 599,
+   "แจ้งโดย": 605,
    "บัญชี": 28,
-   "เกิดที่": 1053,
+   "เกิดที่": 1058,
    "เป้าหมายเครือข่าย": 39,
-   "เกี่ยวข้องกับบุคคล": 655,
+   "เกี่ยวข้องกับบุคคล": 660,
    "ผู้ต้องหา": 60,
    "หมายจากศาล": 168,
    "ภายใต้โครงการ": 1,
    "เกี่ยวข้องกับ": 24,
    "ติดตามจาก": 88,
-   "ประเภท": 934
+   "ประเภท": 939
   }
  },
  "unresolved_samples": [
@@ -16346,6 +16346,91 @@
    "degree": 2
   },
   {
+   "id": "20_Cases/20261123-cyber-04",
+   "title": "ThaiCERT เตือน Splunk ออกแพตช์แก้ช่องโหว่ 139 รายการใน Splunk Enterprise, Enterprise Security และ SOAR มีระดับวิกฤต 5 รายการ เสี่ยงถูกข้ามการยืนยันตัวตนและสั่งรันคำสั่งบนระบบเฝ้าระวังความปลอดภัยขององค์กร",
+   "kind": "case",
+   "folder": "20_Cases",
+   "entity_group": null,
+   "date": "2026-11-22",
+   "case_id": "20261123-cyber-04",
+   "crime_type": "อาชญากรรมไซเบอร์และออนไลน์",
+   "bureau": "ThaiCERT (สกมช.)",
+   "area": "ทั่วโลก",
+   "status": "ผู้ผลิตออกแพตช์แล้ว · ThaiCERT แนะนำให้อัปเดตทันที",
+   "tags": [],
+   "excerpt": "ประเภท: อาชญากรรมไซเบอร์และออนไลน์ หน่วย: ThaiCERT (สกมช.) ศูนย์ประสานการรักษาความมั่นคงปลอดภัยระบบคอมพิวเตอร์แห่งชาติ (ThaiCERT) ภายใต้ สกมช. เผยแพร่ประกาศแจ้งเตือนเมื่อ 22 พฤศจิกายน 2569 ว่าบริษัท Splunk ได้ออกอัปเดตด้านความมั่นคงปลอดภัยแก้ไขช่องโหว่รวม 139 รายการ ในผลิตภัณฑ์หลักสามตัว คือ Splunk Enterprise, Splunk Enterprise Security และ Splunk SOAR ผลิต…",
+   "path": "20_Cases/20261123-cyber-04.md",
+   "degree": 5
+  },
+  {
+   "id": "20_Cases/20261123-cyber-05",
+   "title": "OpenRouter ถอดผู้ให้บริการ AI 3 รายออกจากแพลตฟอร์ม หลังนักวิจัย Dragos พบคนร้ายแอบดักขโมยพรอมต์ลูกค้าในระบบผู้ให้บริการนานหลายเดือน รวมถึงคำขอที่ตั้งค่าไม่เก็บข้อมูล และนำกุญแจ AWS ในพรอมต์ไปใช้จริง",
+   "kind": "case",
+   "folder": "20_Cases",
+   "entity_group": null,
+   "date": "2026-11-22",
+   "case_id": "20261123-cyber-05",
+   "crime_type": "อาชญากรรมไซเบอร์และออนไลน์",
+   "bureau": "Dragos / OpenRouter",
+   "area": "ทั่วโลก",
+   "status": "OpenRouter ถอดผู้ให้บริการ 3 ราย และแจ้งลูกค้าที่อาจได้รับผลกระทบแล้ว",
+   "tags": [],
+   "excerpt": "ประเภท: อาชญากรรมไซเบอร์และออนไลน์ หน่วย: Dragos / OpenRouter The Hacker News รายงานเมื่อ 22 พฤศจิกายน 2569 ว่าบริษัทความปลอดภัยไซเบอร์ Dragos เปิดเผยผลวิจัยว่า มีผู้โจมตีขโมยข้อมูลจากภายในระบบของผู้ให้บริการประมวลผลโมเดล AI (inference provider) สามราย ต่อเนื่องนานหลายเดือนโดยที่ผู้ให้บริการไม่ทราบจนนักวิจัยแจ้ง เหตุที่เก่าที่สุดเริ่มราวกลางเดือนกรกฎาคม Blo…",
+   "path": "20_Cases/20261123-cyber-05.md",
+   "degree": 4
+  },
+  {
+   "id": "20_Cases/20261123-cyber-06",
+   "title": "GL.iNet ยืนยันแฮกเกอร์ใช้ช่องโหว่ระบบจัดการระยะไกลบนคลาวด์ GoodCloud ฝังมัลแวร์ในเราเตอร์และอุปกรณ์ KVM ของลูกค้า บางเครื่องพบประตูหลังให้ควบคุมจากระยะไกล",
+   "kind": "case",
+   "folder": "20_Cases",
+   "entity_group": null,
+   "date": "2026-11-23",
+   "case_id": "20261123-cyber-06",
+   "crime_type": "อาชญากรรมไซเบอร์และออนไลน์",
+   "bureau": "GL.iNet",
+   "area": "ทั่วโลก",
+   "status": "ปิดช่องโหว่คลาวด์แล้ว · เครื่องที่ติดมัลแวร์แล้วต้องตรวจและล้างเอง",
+   "tags": [],
+   "excerpt": "ประเภท: อาชญากรรมไซเบอร์และออนไลน์ หน่วย: GL.iNet BleepingComputer รายงานเมื่อ 22 พฤศจิกายน 2569 (ตามเวลาสหรัฐฯ) ว่า GL.iNet ผู้ผลิตอุปกรณ์เครือข่าย ทั้งเราเตอร์สำหรับบ้านและสำหรับพกพาเดินทาง รวมถึงอุปกรณ์ KVM ที่ใช้เข้าถึงและควบคุมคอมพิวเตอร์จากระยะไกล ได้ยืนยันในประกาศความปลอดภัยลงวันที่ 20 พฤศจิกายนว่า มีบุคคลที่ไม่ได้รับอนุญาตใช้ช่องโหว่ในบริการจัดการอุ…",
+   "path": "20_Cases/20261123-cyber-06.md",
+   "degree": 4
+  },
+  {
+   "id": "20_Cases/20261123-cyber-07",
+   "title": "Cleverbridge แพลตฟอร์มขายซอฟต์แวร์ออนไลน์แจ้งลูกค้าว่าแฮกเกอร์คัดลอกข้อมูลบัตรชำระเงินรวมเลขบัตร วันหมดอายุ และรหัส CVV ที่เก็บไว้บนแพลตฟอร์ม เสี่ยงถูกนำไปใช้รูดซื้อออนไลน์",
+   "kind": "case",
+   "folder": "20_Cases",
+   "entity_group": null,
+   "date": "2026-11-22",
+   "case_id": "20261123-cyber-07",
+   "crime_type": "อาชญากรรมไซเบอร์และออนไลน์",
+   "bureau": "Cleverbridge",
+   "area": "ทั่วโลก",
+   "status": "แจ้งลูกค้าที่ได้รับผลกระทบตั้งแต่ 20 พ.ย. · แจ้งหน่วยงานกำกับและบังคับใช้กฎหมายแล้ว",
+   "tags": [],
+   "excerpt": "ประเภท: อาชญากรรมไซเบอร์และออนไลน์ หน่วย: Cleverbridge BleepingComputer รายงานเมื่อ 22 พฤศจิกายน 2569 ว่า Cleverbridge แพลตฟอร์มอีคอมเมิร์ซที่ให้บริการรับชำระเงินและจัดการการสมัครสมาชิกให้บริษัทซอฟต์แวร์และ SaaS จำนวนมาก ออกคำเตือนว่าระบบถูกเจาะและข้อมูลบัตรชำระเงินของลูกค้าถูกขโมย บริษัทระบุรายชื่อลูกค้าองค์กรที่ใช้บริการหลายแบรนด์ด้านเทคโนโลยี แต่ไม่ได้เป…",
+   "path": "20_Cases/20261123-cyber-07.md",
+   "degree": 4
+  },
+  {
+   "id": "20_Cases/20261123-cyber-08",
+   "title": "นักวิจัยสาธิตไฟล์อัปโหลดที่ประดิษฐ์ขึ้นเจาะช่องโหว่ Ghostscript หลุดแซนด์บ็อกซ์และสั่งรันคำสั่งบนเซิร์ฟเวอร์ผ่านแอปยอดนิยมราว 10 ตัว รวมถึงปลั๊กอิน WordPress และเว็บเมล Roundcube",
+   "kind": "case",
+   "folder": "20_Cases",
+   "entity_group": null,
+   "date": "2026-11-22",
+   "case_id": "20261123-cyber-08",
+   "crime_type": "อาชญากรรมไซเบอร์และออนไลน์",
+   "bureau": "pwn.ai / Artifex",
+   "area": "ทั่วโลก",
+   "status": "ผู้พัฒนาแก้ไขแล้วในเวอร์ชัน 10.08.0 · ยังไม่มีรายงานการโจมตีจริง",
+   "tags": [],
+   "excerpt": "ประเภท: อาชญากรรมไซเบอร์และออนไลน์ หน่วย: pwn.ai / Artifex The Hacker News รายงานเมื่อ 22 พฤศจิกายน 2569 ว่าบริษัทความปลอดภัย pwn.ai สาธิตการใช้ช่องโหว่ใน Ghostscript ซึ่งแก้ไขแล้ว (CVE 2026 125396) ให้ไฟล์ที่ประดิษฐ์ขึ้นหลุดจากแซนด์บ็อกซ์ความปลอดภัยของโปรแกรมและสั่งรันคำสั่งบนเซิร์ฟเวอร์ที่ประมวลผลไฟล์นั้น Ghostscript เป็นตัวแปลภาษาที่เซิร์ฟเวอร์ลินุกซ์จำน…",
+   "path": "20_Cases/20261123-cyber-08.md",
+   "degree": 4
+  },
+  {
    "id": "20_Cases/20261123-drug-01",
    "title": "ศูนย์ยาเสพติด บช.น. จับชาย 2 คนที่ลานจอดรถแฟลตย่านวังบูรพาภิรมย์ เขตพระนคร ยึดไอซ์ราว 20 กก. และเคตามีน 1 กก. หลังตำรวจที่พาครอบครัวเที่ยวงานภูเขาทองพบผู้ต้องสงสัยในเครือข่ายที่กำลังติดตาม",
    "kind": "case",
@@ -27087,7 +27172,7 @@
    "tags": [],
    "excerpt": "20261118 cyber 08 — ThaiCERT เตือนการโจมตีห่วงโซ่อุปทานผ่าน Optimizely แทรกสคริปต์อันตรายในเว็บไซต์ 178 องค์กร เสี่ยงถูกขโมยข้อมูลบัตรและสับเปลี่ยนกระเป๋าคริปโต 20261118 cyber 09 — CISA เร่งองค์กรแพตช์ช่องโหว่ Java4Shell (CVE 2026 114938) ใน Java เสี่ยงถูกสั่งรันโค้ดจากระยะไกลโดยไม่ต้องยืนยันตัวตน 20261118 cyber 12 — N able ออก Hotfix 3 แก้ 17 ช่องโหว่ใน N…",
    "path": "30_Entities/Places/ทั่วโลก.md",
-   "degree": 27
+   "degree": 32
   },
   {
    "id": "30_Entities/Places/ทางหลวงหมายเลข 103",
@@ -34808,6 +34893,23 @@
    "degree": 1
   },
   {
+   "id": "30_Entities/Units/Artifex",
+   "title": "Artifex",
+   "kind": "entity",
+   "folder": "30_Entities/Units",
+   "entity_group": "หน่วย",
+   "date": null,
+   "case_id": null,
+   "crime_type": null,
+   "bureau": null,
+   "area": null,
+   "status": null,
+   "tags": [],
+   "excerpt": "20261123 cyber 08 — นักวิจัยสาธิตไฟล์อัปโหลดที่ประดิษฐ์ขึ้นเจาะช่องโหว่ Ghostscript หลุดแซนด์บ็อกซ์และสั่งรันคำสั่งบนเซิร์ฟเวอร์ผ่านแอปยอดนิยมราว 10 ตัว รวมถึงปลั๊กอิน WordPress และเว็บเมล Roundcube",
+   "path": "30_Entities/Units/Artifex.md",
+   "degree": 1
+  },
+  {
    "id": "30_Entities/Units/BBC News ไทย",
    "title": "BBC News ไทย",
    "kind": "entity",
@@ -34874,6 +34976,23 @@
    "excerpt": "20261121 cyber 17 — แพลตฟอร์มกระจายมัลแวร์ ROMULUS ใช้กลลวง ClickFix หลอกให้เหยื่อวางคำสั่งเอง ติดตั้งโทรจันควบคุมเครื่อง ดูหน้าจอ เปิดกล้อง ไมโครโฟน บางสายล่อผ่าน Custom GPT",
    "path": "30_Entities/Units/Blackpoint Cyber.md",
    "degree": 1
+  },
+  {
+   "id": "30_Entities/Units/BleepingComputer",
+   "title": "BleepingComputer",
+   "kind": "entity",
+   "folder": "30_Entities/Units",
+   "entity_group": "หน่วย",
+   "date": null,
+   "case_id": null,
+   "crime_type": null,
+   "bureau": null,
+   "area": null,
+   "status": null,
+   "tags": [],
+   "excerpt": "20261123 cyber 06 — GL.iNet ยืนยันแฮกเกอร์ใช้ช่องโหว่ระบบจัดการระยะไกลบนคลาวด์ GoodCloud ฝังมัลแวร์ในเราเตอร์และอุปกรณ์ KVM ของลูกค้า บางเครื่องพบประตูหลังให้ควบคุมจากระยะไกล 20261123 cyber 07 — Cleverbridge แพลตฟอร์มขายซอฟต์แวร์ออนไลน์แจ้งลูกค้าว่าแฮกเกอร์คัดลอกข้อมูลบัตรชำระเงินรวมเลขบัตร วันหมดอายุ และรหัส CVV ที่เก็บไว้บนแพลตฟอร์ม เสี่ยงถูกนำไปใช้รูดซื้…",
+   "path": "30_Entities/Units/BleepingComputer.md",
+   "degree": 2
   },
   {
    "id": "30_Entities/Units/Broadcom",
@@ -34944,6 +35063,23 @@
    "degree": 1
   },
   {
+   "id": "30_Entities/Units/Cleverbridge",
+   "title": "Cleverbridge",
+   "kind": "entity",
+   "folder": "30_Entities/Units",
+   "entity_group": "หน่วย",
+   "date": null,
+   "case_id": null,
+   "crime_type": null,
+   "bureau": null,
+   "area": null,
+   "status": null,
+   "tags": [],
+   "excerpt": "20261123 cyber 07 — Cleverbridge แพลตฟอร์มขายซอฟต์แวร์ออนไลน์แจ้งลูกค้าว่าแฮกเกอร์คัดลอกข้อมูลบัตรชำระเงินรวมเลขบัตร วันหมดอายุ และรหัส CVV ที่เก็บไว้บนแพลตฟอร์ม เสี่ยงถูกนำไปใช้รูดซื้อออนไลน์",
+   "path": "30_Entities/Units/Cleverbridge.md",
+   "degree": 1
+  },
+  {
    "id": "30_Entities/Units/Cloudflare",
    "title": "Cloudflare",
    "kind": "entity",
@@ -35009,6 +35145,23 @@
    "tags": [],
    "excerpt": "โน้ตสำหรับค้นหาใน Obsidian ไม่ใส่รายชื่อคดีทั้งก้อน — ใช้ Bases หรือ backlink",
    "path": "30_Entities/Units/DOPA SWAT.md",
+   "degree": 1
+  },
+  {
+   "id": "30_Entities/Units/Dragos",
+   "title": "Dragos",
+   "kind": "entity",
+   "folder": "30_Entities/Units",
+   "entity_group": "หน่วย",
+   "date": null,
+   "case_id": null,
+   "crime_type": null,
+   "bureau": null,
+   "area": null,
+   "status": null,
+   "tags": [],
+   "excerpt": "20261123 cyber 05 — OpenRouter ถอดผู้ให้บริการ AI 3 รายออกจากแพลตฟอร์ม หลังนักวิจัย Dragos พบคนร้ายแอบดักขโมยพรอมต์ลูกค้าในระบบผู้ให้บริการนานหลายเดือน รวมถึงคำขอที่ตั้งค่าไม่เก็บข้อมูล และนำกุญแจ AWS ในพรอมต์ไปใช้จริง",
+   "path": "30_Entities/Units/Dragos.md",
    "degree": 1
   },
   {
@@ -35094,6 +35247,23 @@
    "tags": [],
    "excerpt": "20261115 human 01 — ตม.จว.ภูเก็ต ควบคุมตัวชายอเมริกันอายุ 33 ปีที่วิลล่าใน ต.ฉลอง อ.เมืองภูเก็ต ตามการประสานของ FBI ว่ามีหมายจับสหรัฐฯ และเกี่ยวข้องคดีค้ามนุษย์ ผบก.ตม.6 เพิกถอนการอนุญาตให้อยู่ในราชอาณาจักร",
    "path": "30_Entities/Units/Federal Bureau of Investigation สหรัฐอเมริกา.md",
+   "degree": 1
+  },
+  {
+   "id": "30_Entities/Units/GL.iNet",
+   "title": "GL.iNet",
+   "kind": "entity",
+   "folder": "30_Entities/Units",
+   "entity_group": "หน่วย",
+   "date": null,
+   "case_id": null,
+   "crime_type": null,
+   "bureau": null,
+   "area": null,
+   "status": null,
+   "tags": [],
+   "excerpt": "20261123 cyber 06 — GL.iNet ยืนยันแฮกเกอร์ใช้ช่องโหว่ระบบจัดการระยะไกลบนคลาวด์ GoodCloud ฝังมัลแวร์ในเราเตอร์และอุปกรณ์ KVM ของลูกค้า บางเครื่องพบประตูหลังให้ควบคุมจากระยะไกล",
+   "path": "30_Entities/Units/GL.iNet.md",
    "degree": 1
   },
   {
@@ -35284,6 +35454,23 @@
    "degree": 1
   },
   {
+   "id": "30_Entities/Units/OpenRouter",
+   "title": "OpenRouter",
+   "kind": "entity",
+   "folder": "30_Entities/Units",
+   "entity_group": "หน่วย",
+   "date": null,
+   "case_id": null,
+   "crime_type": null,
+   "bureau": null,
+   "area": null,
+   "status": null,
+   "tags": [],
+   "excerpt": "20261123 cyber 05 — OpenRouter ถอดผู้ให้บริการ AI 3 รายออกจากแพลตฟอร์ม หลังนักวิจัย Dragos พบคนร้ายแอบดักขโมยพรอมต์ลูกค้าในระบบผู้ให้บริการนานหลายเดือน รวมถึงคำขอที่ตั้งค่าไม่เก็บข้อมูล และนำกุญแจ AWS ในพรอมต์ไปใช้จริง",
+   "path": "30_Entities/Units/OpenRouter.md",
+   "degree": 1
+  },
+  {
    "id": "30_Entities/Units/Palo Alto Networks",
    "title": "Palo Alto Networks",
    "kind": "entity",
@@ -35315,6 +35502,23 @@
    "tags": [],
    "excerpt": "20261120 cyber 04 — ThaiCERT เตือน PHP ออกอัปเดตแก้ช่องโหว่ระดับ Critical 7 รายการ รวม HTTP Request Smuggling ใน PHP FPM ที่อาจเปิดทางรันโค้ดโดยไม่ต้องยืนยันตัวตน",
    "path": "30_Entities/Units/PHP Development Team.md",
+   "degree": 1
+  },
+  {
+   "id": "30_Entities/Units/pwn.ai",
+   "title": "pwn.ai",
+   "kind": "entity",
+   "folder": "30_Entities/Units",
+   "entity_group": "หน่วย",
+   "date": null,
+   "case_id": null,
+   "crime_type": null,
+   "bureau": null,
+   "area": null,
+   "status": null,
+   "tags": [],
+   "excerpt": "20261123 cyber 08 — นักวิจัยสาธิตไฟล์อัปโหลดที่ประดิษฐ์ขึ้นเจาะช่องโหว่ Ghostscript หลุดแซนด์บ็อกซ์และสั่งรันคำสั่งบนเซิร์ฟเวอร์ผ่านแอปยอดนิยมราว 10 ตัว รวมถึงปลั๊กอิน WordPress และเว็บเมล Roundcube",
+   "path": "30_Entities/Units/pwn.ai.md",
    "degree": 1
   },
   {
@@ -35454,6 +35658,23 @@
    "degree": 1
   },
   {
+   "id": "30_Entities/Units/Splunk",
+   "title": "Splunk",
+   "kind": "entity",
+   "folder": "30_Entities/Units",
+   "entity_group": "หน่วย",
+   "date": null,
+   "case_id": null,
+   "crime_type": null,
+   "bureau": null,
+   "area": null,
+   "status": null,
+   "tags": [],
+   "excerpt": "20261123 cyber 04 — ThaiCERT เตือน Splunk ออกแพตช์แก้ช่องโหว่ 139 รายการใน Splunk Enterprise, Enterprise Security และ SOAR มีระดับวิกฤต 5 รายการ เสี่ยงถูกข้ามการยืนยันตัวตนและสั่งรันคำสั่งบนระบบเฝ้าระวังความปลอดภัยขององค์กร",
+   "path": "30_Entities/Units/Splunk.md",
+   "degree": 1
+  },
+  {
    "id": "30_Entities/Units/Stormshield",
    "title": "Stormshield",
    "kind": "entity",
@@ -35485,7 +35706,7 @@
    "tags": [],
    "excerpt": "20261024 cyber 01 แจ้งเตือน ช่องโหว่ระดับ Critical ใน GitLab เสี่ยงถูกสั่งรันคำสั่งโดยไม่ต้องยืนยันตัวตน 20261024 cyber 02 แจ้งเตือน พบการโจมตีช่องโหว่ Plex2Shell ใน Plex Media Server เสี่ยงถูกควบคุมระบบและติดตั้ง Crypto Miner 20261029 cyber 03 ThaiCERT เตือนช่องโหว่ CVE 2026 80097 ใน Microsoft Authenticator บน Android เสี่ยงแอปอันตรายแอบอ้างขอ Token บัญชีอ…",
    "path": "30_Entities/Units/ThaiCERT.md",
-   "degree": 47
+   "degree": 48
   },
   {
    "id": "30_Entities/Units/ThreatFabric",
@@ -44971,7 +45192,7 @@
    "tags": [],
    "excerpt": "20261111 cyber 04 — รัฐบาลยกระดับมาตรการป้องกันภัยไซเบอร์หลังเหตุโจมตีหลายประเทศ คมนาคมสั่งหน่วยการบินเข้มงวดหลังการบินไทยแจ้งข้อมูลสำรองที่นั่งราว 60,529 รายการถูกเข้าถึงผ่านระบบผู้ให้บริการ ธปท. เรียกประชุม CIO สถาบันการเงิน 20261118 cyber 13 — สกมช. ประชุมหน่วยงานความมั่นคงและผู้ให้บริการโทรคมนาคม ทบทวนแผนความต่อเนื่องและเส้นทางสื่อสารสำรองรับมือเหตุขัดข…",
    "path": "30_Entities/Units/สกมช..md",
-   "degree": 12
+   "degree": 13
   },
   {
    "id": "30_Entities/Units/สคส.",
@@ -50751,7 +50972,7 @@
    "tags": [],
    "excerpt": "หน้ารวมประเภทคดี ใช้เป็นคุณสมบัติของคดี ไม่ฝังรายการ คดี ทั้งคลัง กรองใน Bases จาก crime type แทน 20261027 cyber 01 ตำรวจสันติบาลแจ้งความเจ้าของเพจ Godd Dam ปมภาพสลิปโอนเงิน 7 ล้านบาทที่ถูกระบุว่าเป็นข้อมูลเท็จ ผบช.สอท. ยืนยันยังไม่มีการจับกุม ตำรวจไซเบอร์ขอข้อมูลคดีจาก สน.บางเขน 20261026 cyber line 01 บช.ก. บก.ป. จับหญิงวัย 32 ปี ตามหมายจับศาลเชียงใหม่ ปมบ…",
    "path": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์.md",
-   "degree": 201
+   "degree": 206
   },
   {
    "id": "40_CrimeTypes/อื่น ๆ",
@@ -74262,6 +74483,86 @@
    "label": "แจ้งโดย"
   },
   {
+   "source": "20_Cases/20261123-cyber-04",
+   "target": "30_Entities/Units/ThaiCERT",
+   "label": "แจ้งโดย"
+  },
+  {
+   "source": "20_Cases/20261123-cyber-04",
+   "target": "30_Entities/Units/สกมช.",
+   "label": "แจ้งโดย"
+  },
+  {
+   "source": "20_Cases/20261123-cyber-04",
+   "target": "30_Entities/Units/Splunk",
+   "label": "เกี่ยวข้องกับบุคคล"
+  },
+  {
+   "source": "20_Cases/20261123-cyber-04",
+   "target": "30_Entities/Places/ทั่วโลก",
+   "label": "เกิดที่"
+  },
+  {
+   "source": "20_Cases/20261123-cyber-05",
+   "target": "30_Entities/Units/Dragos",
+   "label": "แจ้งโดย"
+  },
+  {
+   "source": "20_Cases/20261123-cyber-05",
+   "target": "30_Entities/Units/OpenRouter",
+   "label": "เกี่ยวข้องกับบุคคล"
+  },
+  {
+   "source": "20_Cases/20261123-cyber-05",
+   "target": "30_Entities/Places/ทั่วโลก",
+   "label": "เกิดที่"
+  },
+  {
+   "source": "20_Cases/20261123-cyber-06",
+   "target": "30_Entities/Units/BleepingComputer",
+   "label": "แจ้งโดย"
+  },
+  {
+   "source": "20_Cases/20261123-cyber-06",
+   "target": "30_Entities/Units/GL.iNet",
+   "label": "เกี่ยวข้องกับบุคคล"
+  },
+  {
+   "source": "20_Cases/20261123-cyber-06",
+   "target": "30_Entities/Places/ทั่วโลก",
+   "label": "เกิดที่"
+  },
+  {
+   "source": "20_Cases/20261123-cyber-07",
+   "target": "30_Entities/Units/BleepingComputer",
+   "label": "แจ้งโดย"
+  },
+  {
+   "source": "20_Cases/20261123-cyber-07",
+   "target": "30_Entities/Units/Cleverbridge",
+   "label": "เกี่ยวข้องกับบุคคล"
+  },
+  {
+   "source": "20_Cases/20261123-cyber-07",
+   "target": "30_Entities/Places/ทั่วโลก",
+   "label": "เกิดที่"
+  },
+  {
+   "source": "20_Cases/20261123-cyber-08",
+   "target": "30_Entities/Units/pwn.ai",
+   "label": "แจ้งโดย"
+  },
+  {
+   "source": "20_Cases/20261123-cyber-08",
+   "target": "30_Entities/Units/Artifex",
+   "label": "เกี่ยวข้องกับบุคคล"
+  },
+  {
+   "source": "20_Cases/20261123-cyber-08",
+   "target": "30_Entities/Places/ทั่วโลก",
+   "label": "เกิดที่"
+  },
+  {
    "source": "20_Cases/20261123-drug-01",
    "target": "30_Entities/Units/ศอ.ปส.บช.น.",
    "label": "จับโดย"
@@ -82683,6 +82984,31 @@
   },
   {
    "source": "20_Cases/20261123-cyber-03",
+   "target": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "label": "ประเภท"
+  },
+  {
+   "source": "20_Cases/20261123-cyber-04",
+   "target": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "label": "ประเภท"
+  },
+  {
+   "source": "20_Cases/20261123-cyber-05",
+   "target": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "label": "ประเภท"
+  },
+  {
+   "source": "20_Cases/20261123-cyber-06",
+   "target": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "label": "ประเภท"
+  },
+  {
+   "source": "20_Cases/20261123-cyber-07",
+   "target": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "label": "ประเภท"
+  },
+  {
+   "source": "20_Cases/20261123-cyber-08",
    "target": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
    "label": "ประเภท"
   },

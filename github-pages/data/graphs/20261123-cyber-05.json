@@ -1,0 +1,34 @@
+{
+ "case_id": "20261123-cyber-05",
+ "title": "OpenRouter ถอดผู้ให้บริการ AI 3 รายออกจากแพลตฟอร์ม หลังนักวิจัย Dragos พบคนร้ายแอบดักขโมยพรอมต์ลูกค้าในระบบผู้ให้บริการนานหลายเดือน รวมถึงคำขอที่ตั้งค่าไม่เก็บข้อมูล และนำกุญแจ AWS ในพรอมต์ไปใช้จริง",
+ "generated_at": "2026-11-23T06:09:46.378Z",
+ "node_count": 5,
+ "edge_count": 4,
+ "relations": [
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/Dragos",
+   "target_title": "Dragos",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/Units/OpenRouter",
+   "target_title": "OpenRouter",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ทั่วโลก",
+   "target_title": "ทั่วโลก",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261123-cyber-05.svg"
+}
