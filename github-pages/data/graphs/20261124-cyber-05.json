@@ -1,0 +1,34 @@
+{
+ "case_id": "20261124-cyber-05",
+ "title": "CERT-In เตือนการโจมตีไซเบอร์ที่ใช้ AI ช่วยเจาะระบบธนาคาร ฟินเทค และผู้ให้บริการระบบจ่ายเงินในอินเดีย ทำให้เกิดธุรกรรมโอนเงินโดยไม่ได้รับอนุญาตผ่านระบบที่ถูกต้อง แล้วโอนต่อเข้าบัญชีม้าหลายธนาคาร",
+ "generated_at": "2026-11-24T06:13:28.197Z",
+ "node_count": 5,
+ "edge_count": 4,
+ "relations": [
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/CERT-In",
+   "target_title": "CERT-In",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/I4C",
+   "target_title": "I4C",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/อินเดีย",
+   "target_title": "อินเดีย",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261124-cyber-05.svg"
+}

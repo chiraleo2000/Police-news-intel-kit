@@ -1,0 +1,28 @@
+{
+ "case_id": "20261124-cyber-10",
+ "title": "Mandiant เตือนช่องโหว่วิกฤต CVE-2026-131914 ในไลบรารีป้องกัน CSRF รุ่นเก่า Idunno.AntiCsrf ของ ASP.NET WebForms ถูกใช้โจมตีจริง ส่งคำขอ POST ครั้งเดียวยึดเว็บเซิร์ฟเวอร์ได้ ไม่มีแพตช์ แนะนำเลิกใช้",
+ "generated_at": "2026-11-24T06:13:28.197Z",
+ "node_count": 4,
+ "edge_count": 3,
+ "relations": [
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/Google Mandiant",
+   "target_title": "Google Mandiant",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ทั่วโลก",
+   "target_title": "ทั่วโลก",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261124-cyber-10.svg"
+}

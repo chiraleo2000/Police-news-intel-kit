@@ -1,0 +1,34 @@
+{
+ "case_id": "20261124-cyber-07",
+ "title": "Rapid7 พบกลุ่ม Webworm ที่ฝักใฝ่จีนต้องสงสัยดัดแปลง SoftEther VPN Bridge ปลอมเป็นซอฟต์แวร์เฝ้าระวังเครือข่าย \"NtMonitor VPN\" เพื่อซ่อนช่องทางเข้าถึงระยะไกลในเครือข่ายที่ถูกเจาะ",
+ "generated_at": "2026-11-24T06:13:28.197Z",
+ "node_count": 5,
+ "edge_count": 4,
+ "relations": [
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/Rapid7",
+   "target_title": "Rapid7",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/Symantec",
+   "target_title": "Symantec",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/เอเชีย",
+   "target_title": "เอเชีย",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261124-cyber-07.svg"
+}

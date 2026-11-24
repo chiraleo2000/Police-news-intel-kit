@@ -1,0 +1,34 @@
+{
+ "case_id": "20261124-cyber-06",
+ "title": "การไฟฟ้าเกาหลีใต้ KEPCO ยืนยันถูกเจาะเครือข่ายภายใน ข้อมูลลูกค้า พนักงาน และผู้รับเหมากว่า 1.5 ล้านรายรั่วจากแพลตฟอร์มชำระค่าไฟและระบบจัดซื้อ เตือนระวังฟิชชิงและการแอบอ้าง",
+ "generated_at": "2026-11-24T06:13:28.197Z",
+ "node_count": 5,
+ "edge_count": 4,
+ "relations": [
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/Units/KEPCO",
+   "target_title": "KEPCO",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/PIPC เกาหลีใต้",
+   "target_title": "PIPC เกาหลีใต้",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/เกาหลีใต้",
+   "target_title": "เกาหลีใต้",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261124-cyber-06.svg"
+}

@@ -1,0 +1,46 @@
+{
+ "case_id": "20261124-cyber-09",
+ "title": "ศาลสหรัฐฯ ลงโทษจำคุก 8 ปีผู้บริหารคอลเซ็นเตอร์ชาวเปรูวัย 45 ปี คดีแอบอ้างเป็นเจ้าหน้าที่รัฐและทนายข่มขู่ชาวอเมริกันที่พูดภาษาสเปนกว่า 30,000 ราย เสียหายราว 15 ล้านดอลลาร์",
+ "generated_at": "2026-11-24T06:13:28.197Z",
+ "node_count": 7,
+ "edge_count": 6,
+ "relations": [
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/กระทรวงยุติธรรมสหรัฐฯ",
+   "target_title": "กระทรวงยุติธรรมสหรัฐฯ",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลสหรัฐฯ",
+   "target_title": "ศาลสหรัฐฯ",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/เปรู",
+   "target_title": "เปรู",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/สหรัฐอเมริกา",
+   "target_title": "สหรัฐอเมริกา",
+   "direction": "out"
+  },
+  {
+   "label": "เป้าหมายเครือข่าย",
+   "target_id": "30_Entities/Projects/เครือข่ายคอลเซ็นเตอร์เปรู",
+   "target_title": "เครือข่ายคอลเซ็นเตอร์เปรู",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261124-cyber-09.svg"
+}

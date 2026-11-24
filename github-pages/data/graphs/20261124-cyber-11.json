@@ -1,0 +1,40 @@
+{
+ "case_id": "20261124-cyber-11",
+ "title": "Microsoft เตือนช่องโหว่ใน Azure API Management รุ่น Classic ถูกใช้ขโมยรหัสลับและโทเคน API ของลูกค้า หน่วยงานความมั่นคงนอร์เวย์เชื่อมโยงกับการโจมตีบริษัทพลังงาน Equinor และ Skagerak Energi",
+ "generated_at": "2026-11-24T06:13:28.197Z",
+ "node_count": 6,
+ "edge_count": 5,
+ "relations": [
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/Microsoft",
+   "target_title": "Microsoft",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/NSM นอร์เวย์",
+   "target_title": "NSM นอร์เวย์",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/Units/Equinor",
+   "target_title": "Equinor",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/นอร์เวย์",
+   "target_title": "นอร์เวย์",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261124-cyber-11.svg"
+}

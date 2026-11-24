@@ -1,0 +1,40 @@
+{
+ "case_id": "20261124-cyber-03",
+ "title": "ThaiCERT เตือนช่องโหว่ CVE-2026-99312 ใน Linux KVM บนซีพียู AMD ที่เปิด Nested Virtualization ผู้ควบคุม VM อาจอ่านหรือแก้หน่วยความจำของเครื่อง Host และ VM อื่นได้ แนะนำอัปเดต Kernel",
+ "generated_at": "2026-11-24T06:13:28.197Z",
+ "node_count": 6,
+ "edge_count": 5,
+ "relations": [
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/ThaiCERT",
+   "target_title": "ThaiCERT",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/สกมช.",
+   "target_title": "สกมช.",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/Units/Terra Security",
+   "target_title": "Terra Security",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ทั่วโลก",
+   "target_title": "ทั่วโลก",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261124-cyber-03.svg"
+}

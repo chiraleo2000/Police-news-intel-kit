@@ -1,0 +1,42 @@
+{
+ "baseline": "ok",
+ "window_days": 7,
+ "days_available": 7,
+ "history": [
+  {
+   "date": "2026-11-23",
+   "count": 9
+  },
+  {
+   "date": "2026-11-22",
+   "count": 7
+  },
+  {
+   "date": "2026-11-21",
+   "count": 17
+  },
+  {
+   "date": "2026-11-20",
+   "count": 16
+  },
+  {
+   "date": "2026-11-19",
+   "count": 19
+  },
+  {
+   "date": "2026-11-18",
+   "count": 18
+  },
+  {
+   "date": "2026-11-17",
+   "count": 5
+  }
+ ],
+ "today_task4": 9,
+ "today_task1": 2,
+ "today_total": 11,
+ "avg_prev_7d": 13.0,
+ "delta_pct": -15.4,
+ "surge": false,
+ "note": "ข่าวประเภทอาชญากรรมไซเบอร์วันนี้ 11 เรื่อง (Task 1 2 + Task 4 9) เทียบเฉลี่ย 7 วันก่อน 13.00 เรื่อง เปลี่ยนแปลง -15.4% · baseline รวม Task 1/2/4 ตามไฟล์ที่มี (Task 4 เริ่ม 15 พ.ย. 2569 จึงยอดช่วงต้นต่ำกว่า) · รอบนี้ข่าวซ้ำเหตุการณ์เดิม (GL.iNet, Ghostscript, FastUnlock, CISA KEV, Amazon AI agent, N-able, OpenRouter, หัวหน้าคอกม้า, สถิติศูนย์ต่อต้านการฉ้อโกงฯ) ถูกรวมเข้าโพสต์ก่อนหน้า ไม่นับเป็นข่าวใหม่"
+}
