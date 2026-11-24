@@ -1,0 +1,76 @@
+{
+ "case_id": "20261124-violent-01",
+ "title": "ตำรวจนครบาลจับชายสัญชาติเมียนมาอายุ 21 ปีที่ อ.กระทุ่มแบน สมุทรสาคร ตามหมายจับศาลอาญาข้อหาฆ่าผู้อื่นโดยไตร่ตรองไว้ก่อนและซ่อนเร้นศพ ในคดีพบศพหญิงในกระสอบที่ซอยลาดพร้าว 109 ตำรวจระบุว่าผู้ต้องหารับสารภาพ",
+ "generated_at": "2026-11-24T01:18:10.294Z",
+ "node_count": 12,
+ "edge_count": 11,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/บก.สส.บช.น.",
+   "target_title": "บก.สส.บช.น.",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/กก.สส.บก.น.4",
+   "target_title": "กก.สส.บก.น.4",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/สน.ลาดพร้าว",
+   "target_title": "สน.ลาดพร้าว",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บช.น.",
+   "target_title": "บช.น.",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลอาญา",
+   "target_title": "ศาลอาญา",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ซอยลาดพร้าว 109 เขตบางกะปิ",
+   "target_title": "ซอยลาดพร้าว 109 เขตบางกะปิ",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/อ.กระทุ่มแบน จ.สมุทรสาคร",
+   "target_title": "อ.กระทุ่มแบน จ.สมุทรสาคร",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/ผบช.น.",
+   "target_title": "ผบช.น.",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/สถานที่/ลาดพร้าว",
+   "target_title": "ลาดพร้าว",
+   "direction": "out"
+  },
+  {
+   "label": "ติดตามจาก",
+   "target_id": "20_Cases/20261123-violent-01",
+   "target_title": "ตำรวจ สน.ลาดพร้าว และ บช.น. เร่งสืบคดีพบชิ้นส่วนศพหญิงถูกยัดกระสอบทิ้งที่ดินรกร้างในซอยลาดพร้าว 109 แยก 5 ผบช.น. ระบุถูกฆาตกรรมจากที่อื่นแล้วนำมาทิ้ง มีพยานเห็นชายต้องสงสัยแบกกระสอบเข้าซอย",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/คดีชีวิต ร่างกาย และเพศ",
+   "target_title": "คดีชีวิต ร่างกาย และเพศ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261124-violent-01.svg"
+}

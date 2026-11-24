@@ -1,0 +1,46 @@
+{
+ "case_id": "20261124-tourist-02",
+ "title": "กก.สืบสวน บก.ตม.1 ค้นสตูดิโอถ่ายภาพชุดจีนโบราณย่านเจริญกรุงที่ข่าวระบุว่าบริหารโดยบริษัทจีนจดทะเบียนในมาเลเซีย จับช่างแต่งหน้าทำผมชาวจีน 3 คนข้อหาทำงานโดยไม่มีใบอนุญาตทำงาน ส่ง สน.วัดพระยาไกร",
+ "generated_at": "2026-11-24T01:18:10.294Z",
+ "node_count": 7,
+ "edge_count": 6,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/กก.สืบสวน บก.ตม.1",
+   "target_title": "กก.สืบสวน บก.ตม.1",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/ตม.",
+   "target_title": "ตม.",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/สน.วัดพระยาไกร",
+   "target_title": "สน.วัดพระยาไกร",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ย่านเจริญกรุง",
+   "target_title": "ย่านเจริญกรุง",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/ผบช.สตม.",
+   "target_title": "ผบช.สตม.",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมที่เกี่ยวข้องกับนักท่องเที่ยวและชาวต่างชาติ",
+   "target_title": "อาชญากรรมที่เกี่ยวข้องกับนักท่องเที่ยวและชาวต่างชาติ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261124-tourist-02.svg"
+}

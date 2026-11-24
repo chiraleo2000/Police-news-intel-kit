@@ -1,0 +1,173 @@
+{
+ "baseline": "ok",
+ "window_days": 7,
+ "days_available": 7,
+ "note": "baseline 7 วันย้อนหลัง (<7 วัน: แนวโน้มเป็นข้อมูลบ่งชี้เท่านั้น) surge = วันนี้ >=3 เรื่อง และสูงกว่าค่าเฉลี่ย >=50 เปอร์เซ็นต์",
+ "by_crime_type": [
+  {
+   "type": "คดีอุกฉกรรจ์ ผู้มีอิทธิพล และอาวุธ",
+   "today": 3,
+   "avg_prev_7d": 0.86,
+   "delta_pct": 250.0,
+   "surge": true
+  },
+  {
+   "type": "คดีชีวิต ร่างกาย และเพศ",
+   "today": 3,
+   "avg_prev_7d": 0.71,
+   "delta_pct": 320.0,
+   "surge": true
+  },
+  {
+   "type": "อาชญากรรมที่เกี่ยวข้องกับนักท่องเที่ยวและชาวต่างชาติ",
+   "today": 3,
+   "avg_prev_7d": 1.14,
+   "delta_pct": 162.5,
+   "surge": true
+  },
+  {
+   "type": "อาชญากรรมไซเบอร์และออนไลน์",
+   "today": 2,
+   "avg_prev_7d": 3.57,
+   "delta_pct": -44.0,
+   "surge": false
+  },
+  {
+   "type": "การปฏิบัติหน้าที่ ประชาสัมพันธ์ และนโยบายตำรวจ",
+   "today": 2,
+   "avg_prev_7d": 2.86,
+   "delta_pct": -30.0,
+   "surge": false
+  },
+  {
+   "type": "คดีเศรษฐกิจ การเงิน และฟอกเงิน",
+   "today": 1,
+   "avg_prev_7d": 1.71,
+   "delta_pct": -41.7,
+   "surge": false
+  },
+  {
+   "type": "ความสงบเรียบร้อยและความมั่นคงภายใน",
+   "today": 1,
+   "avg_prev_7d": 0.43,
+   "delta_pct": 133.3,
+   "surge": false
+  },
+  {
+   "type": "ทุจริตและประพฤติมิชอบของเจ้าหน้าที่รัฐ",
+   "today": 1,
+   "avg_prev_7d": 0.71,
+   "delta_pct": 40.0,
+   "surge": false
+  },
+  {
+   "type": "คดีทรัพย์สิน",
+   "today": 1,
+   "avg_prev_7d": 0.86,
+   "delta_pct": 16.7,
+   "surge": false
+  }
+ ],
+ "by_mo": [
+  {
+   "mo": "แอบอ้างเจ้าหน้าที่รัฐ/ตำรวจ",
+   "today": 2,
+   "avg_prev_7d": 0.0,
+   "surge": false
+  },
+  {
+   "mo": "หลอกซื้อขายออนไลน์",
+   "today": 1,
+   "avg_prev_7d": 0.0,
+   "surge": false
+  },
+  {
+   "mo": "นอมินีธุรกิจต่างชาติ",
+   "today": 1,
+   "avg_prev_7d": 0.0,
+   "surge": false
+  },
+  {
+   "mo": "บัญชีม้า/ซิมม้า",
+   "today": 1,
+   "avg_prev_7d": 0.0,
+   "surge": false
+  },
+  {
+   "mo": "หลอกลงทุนหุ้น/ฟอเร็กซ์",
+   "today": 1,
+   "avg_prev_7d": 0.0,
+   "surge": false
+  },
+  {
+   "mo": "ปล่อยกู้นอกระบบ",
+   "today": 1,
+   "avg_prev_7d": 0.0,
+   "surge": false
+  },
+  {
+   "mo": "ศูนย์/แก๊งสแกมชายแดน",
+   "today": 1,
+   "avg_prev_7d": 0.0,
+   "surge": false
+  },
+  {
+   "mo": "แรงงานต่างด้าวผิดกฎหมาย",
+   "today": 1,
+   "avg_prev_7d": 0.0,
+   "surge": false
+  }
+ ],
+ "by_province": [
+  {
+   "province": "กรุงเทพมหานคร",
+   "today": 11,
+   "avg_prev_7d": 8.57
+  },
+  {
+   "province": "ปทุมธานี",
+   "today": 4,
+   "avg_prev_7d": 1.43
+  },
+  {
+   "province": "เชียงใหม่",
+   "today": 2,
+   "avg_prev_7d": 1.14
+  },
+  {
+   "province": "นนทบุรี",
+   "today": 1,
+   "avg_prev_7d": 1.43
+  },
+  {
+   "province": "จันทบุรี",
+   "today": 1,
+   "avg_prev_7d": 0.57
+  },
+  {
+   "province": "ชลบุรี",
+   "today": 1,
+   "avg_prev_7d": 2.14
+  },
+  {
+   "province": "สมุทรสาคร",
+   "today": 1,
+   "avg_prev_7d": 0.43
+  },
+  {
+   "province": "น่าน",
+   "today": 1,
+   "avg_prev_7d": 0.0
+  },
+  {
+   "province": "อุบลราชธานี",
+   "today": 1,
+   "avg_prev_7d": 0.0
+  },
+  {
+   "province": "สุราษฎร์ธานี",
+   "today": 1,
+   "avg_prev_7d": 0.43
+  }
+ ]
+}

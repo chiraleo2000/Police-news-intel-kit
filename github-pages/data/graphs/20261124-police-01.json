@@ -1,0 +1,40 @@
+{
+ "case_id": "20261124-police-01",
+ "title": "ผบช.ทท. มอบนโยบาย กก.สืบสวน บช.ทท. เน้นสืบสวนเชิงรุกกลุ่มอาชญากรต่างชาติย่านสุขุมวิท และสกัดกั้นกลุ่มบุคคลที่ใช้ไทยเป็นทางผ่านไปแก๊งสแกมเมอร์ในประเทศเพื่อนบ้าน",
+ "generated_at": "2026-11-24T01:18:10.294Z",
+ "node_count": 6,
+ "edge_count": 5,
+ "relations": [
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บช.ทท.",
+   "target_title": "บช.ทท.",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/กก.สืบสวน บช.ทท.",
+   "target_title": "กก.สืบสวน บช.ทท.",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ย่านสุขุมวิท",
+   "target_title": "ย่านสุขุมวิท",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/ผบช.ทท.",
+   "target_title": "ผบช.ทท.",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/การปฏิบัติหน้าที่ ประชาสัมพันธ์ และนโยบายตำรวจ",
+   "target_title": "การปฏิบัติหน้าที่ ประชาสัมพันธ์ และนโยบายตำรวจ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261124-police-01.svg"
+}

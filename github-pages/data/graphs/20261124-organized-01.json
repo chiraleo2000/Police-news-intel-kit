@@ -1,0 +1,76 @@
+{
+ "case_id": "20261124-organized-01",
+ "title": "ผู้กำกับละครที่ถูกออกหมายจับเข้ามอบตัวต่อ กก.ดส. ในคดีกลุ่มอ้างเป็นตำรวจ ดส. อุ้มแม่ค้าดอกไม้และลูกวัย 5 ขวบเรียกเงิน 500,000 บาท ตำรวจได้ตัวผู้ต้องหาอีกคน ขณะที่ สภ.ชัยพฤกษ์ ตั้งกรรมการสอบตำรวจ 5 นายที่เกี่ยวข้องกับเหตุที่ซอยเสรีไทย 67",
+ "generated_at": "2026-11-24T01:18:10.294Z",
+ "node_count": 12,
+ "edge_count": 11,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/กก.ดส.บช.น.",
+   "target_title": "กก.ดส.บช.น.",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/สน.มักกะสัน",
+   "target_title": "สน.มักกะสัน",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/ภ.1",
+   "target_title": "ภ.1",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/สภ.ชัยพฤกษ์",
+   "target_title": "สภ.ชัยพฤกษ์",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/สน.บึงกุ่ม",
+   "target_title": "สน.บึงกุ่ม",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ย่าน RCA",
+   "target_title": "ย่าน RCA",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ซอยเสรีไทย 67 เขตคันนายาว",
+   "target_title": "ซอยเสรีไทย 67 เขตคันนายาว",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/โฆษก ตร.ภ.1",
+   "target_title": "โฆษก ตร.ภ.1",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/บุคคล/ได้แก่ สารวัตรสอบสวน",
+   "target_title": "ได้แก่ สารวัตรสอบสวน",
+   "direction": "out"
+  },
+  {
+   "label": "ติดตามจาก",
+   "target_id": "20_Cases/20261123-organized-01",
+   "target_title": "กก.ดส.บช.น. จับ 2 ผู้ต้องหาย่านบางเขน ในคดีกลุ่มชาย 7 คนอ้างเป็นตำรวจ ดส. บังคับพาตัวแม่ค้าขายดอกไม้ย่าน RCA กับลูกวัย 5 ขวบขึ้นรถ แล้วเรียกเงิน 500,000 บาท ตำรวจระบุว่าผู้ถูกจับไม่ใช่ตำรวจ",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/คดีอุกฉกรรจ์ ผู้มีอิทธิพล และอาวุธ",
+   "target_title": "คดีอุกฉกรรจ์ ผู้มีอิทธิพล และอาวุธ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261124-organized-01.svg"
+}

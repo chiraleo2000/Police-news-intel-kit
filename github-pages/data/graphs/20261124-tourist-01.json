@@ -1,0 +1,64 @@
+{
+ "case_id": "20261124-tourist-01",
+ "title": "สตม. ตำรวจสืบสวนภาค 2 และตำรวจนครบาล ช่วยหญิงชาวจีน 2 คนที่ถูกชายชาวจีนกักตัวเรียกค่าไถ่รวม 2 ล้านบาท ในซอยนาจอมเทียน 38 อ.สัตหีบ ชลบุรี ได้อย่างปลอดภัย และควบคุมตัวผู้ก่อเหตุส่ง สภ.นาจอมเทียน",
+ "generated_at": "2026-11-24T01:18:10.294Z",
+ "node_count": 10,
+ "edge_count": 9,
+ "relations": [
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/ตม.",
+   "target_title": "ตม.",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/ตม.จว.ชลบุรี",
+   "target_title": "ตม.จว.ชลบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/บก.สส.ภ.2",
+   "target_title": "บก.สส.ภ.2",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/สน.ปทุมวัน",
+   "target_title": "สน.ปทุมวัน",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/สภ.นาจอมเทียน",
+   "target_title": "สภ.นาจอมเทียน",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ซอยนาจอมเทียน 38 อ.สัตหีบ",
+   "target_title": "ซอยนาจอมเทียน 38 อ.สัตหีบ",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/ผบช.สตม.",
+   "target_title": "ผบช.สตม.",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/สถานที่/สัตหีบ",
+   "target_title": "สัตหีบ",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมที่เกี่ยวข้องกับนักท่องเที่ยวและชาวต่างชาติ",
+   "target_title": "อาชญากรรมที่เกี่ยวข้องกับนักท่องเที่ยวและชาวต่างชาติ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261124-tourist-01.svg"
+}
