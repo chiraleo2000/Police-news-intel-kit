@@ -1,0 +1,34 @@
+{
+ "case_id": "20261125-cyber-11",
+ "title": "Rackspace ตัดสินใจปิดบริการคลาวด์ Rackspace Spot ถาวร 8 ธ.ค. 2569 หลังผู้บุกรุกเข้าถึง Kubernetes Secrets ของลูกค้า สั่งลูกค้าถือว่าโทเคนและ kubeconfig ทั้งหมดอาจรั่ว",
+ "generated_at": "2026-11-25T06:13:48.916Z",
+ "node_count": 5,
+ "edge_count": 4,
+ "relations": [
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/Rackspace",
+   "target_title": "Rackspace",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/สหรัฐอเมริกา",
+   "target_title": "สหรัฐอเมริกา",
+   "direction": "out"
+  },
+  {
+   "label": "ติดตามจาก",
+   "target_id": "20_Cases/20261122-cyber-06",
+   "target_title": "Rackspace แจ้งลูกค้าแพลตฟอร์มคลาวด์ Rackspace Spot ถูกเจาะด้วยรหัสผ่านที่รั่ว ผู้บุกรุกอ่าน Kubernetes Secrets ในคลัสเตอร์ลูกค้าได้ เร่งให้ออกโทเคนใหม่และเปลี่ยนรหัสลับทั้งหมด",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261125-cyber-11.svg"
+}

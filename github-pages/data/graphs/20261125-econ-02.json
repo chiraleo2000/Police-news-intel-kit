@@ -1,0 +1,46 @@
+{
+ "case_id": "20261125-econ-02",
+ "title": "DSI ประชุมร่วมอัยการสำนักงานการสอบสวน ก.ล.ต. และ ปปง. เดินหน้าคดีพิเศษที่ 43/2568 กรณี ZIPMEX หลังอัยการสูงสุดมอบหมายให้อัยการร่วมสอบสวนเพราะมีการกระทำบางส่วนนอกราชอาณาจักร",
+ "generated_at": "2026-11-25T01:22:01.190Z",
+ "node_count": 7,
+ "edge_count": 6,
+ "relations": [
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/กองคดีธุรกิจการเงินนอกระบบ DSI",
+   "target_title": "กองคดีธุรกิจการเงินนอกระบบ DSI",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/สำนักงานการสอบสวน สำนักงานอัยการสูงสุด",
+   "target_title": "สำนักงานการสอบสวน สำนักงานอัยการสูงสุด",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/ก.ล.ต.",
+   "target_title": "ก.ล.ต.",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/ปปง.",
+   "target_title": "ปปง.",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/สำนักงาน ก.ล.ต.",
+   "target_title": "สำนักงาน ก.ล.ต.",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/คดีเศรษฐกิจ การเงิน และฟอกเงิน",
+   "target_title": "คดีเศรษฐกิจ การเงิน และฟอกเงิน",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261125-econ-02.svg"
+}

@@ -1,0 +1,64 @@
+{
+ "case_id": "20261125-violent-02",
+ "title": "บก.สส.ภ.1 และ สภ.หนองเสือ จับอดีตลูกจ้างอายุ 24 ปีตามหมายจับศาลจังหวัดธัญบุรี ในคดียิงเจ้าของร้านรับซื้อแอร์มือสองเสียชีวิตและชิงเงินสด 600,000 บาท ตำรวจยึดเงินคืนได้บางส่วน",
+ "generated_at": "2026-11-25T01:22:01.190Z",
+ "node_count": 10,
+ "edge_count": 9,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/บก.สส.ภ.1",
+   "target_title": "บก.สส.ภ.1",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/สภ.หนองเสือ",
+   "target_title": "สภ.หนองเสือ",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/ภ.จว.ปทุมธานี",
+   "target_title": "ภ.จว.ปทุมธานี",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลจังหวัดธัญบุรี",
+   "target_title": "ศาลจังหวัดธัญบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ซอยบึงบอน 16 ต.บึงบอน อ.หนองเสือ",
+   "target_title": "ซอยบึงบอน 16 ต.บึงบอน อ.หนองเสือ",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/ผบก.สส.ภ.1",
+   "target_title": "ผบก.สส.ภ.1",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/รอง ผบช.ภ.1",
+   "target_title": "รอง ผบช.ภ.1",
+   "direction": "out"
+  },
+  {
+   "label": "ติดตามจาก",
+   "target_id": "20_Cases/20261124-violent-03",
+   "target_title": "สภ.หนองเสือ สืบหาคนร้ายยิงชายอายุ 42 ปีผู้รับซื้อเครื่องปรับอากาศมือสองเสียชีวิตในรถ และลูกน้องบาดเจ็บสาหัส ที่ทุ่งนา ต.บึงบอน ปทุมธานี ภรรยาระบุว่าเงินสด 600,000 บาทและสร้อยคอทอง 5 บาทหายไป รถถูกเผา",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/คดีชีวิต ร่างกาย และเพศ",
+   "target_title": "คดีชีวิต ร่างกาย และเพศ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261125-violent-02.svg"
+}

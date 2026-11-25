@@ -1,0 +1,40 @@
+{
+ "case_id": "20261125-econ-05",
+ "title": "บก.ปอศ. ออกหมายเรียกพยาน 6 ปาก รวมบิดา มารดา และบุตรของบุ๋ม ปนัดดา ในคดีมูลนิธิองค์กรทำดี เพื่อตรวจเส้นทางการเงิน พร้อมเชิญผู้เชี่ยวชาญตรวจมูลค่าเครื่องเพชรราว 45 ล้านบาทที่มีใบเสร็จยืนยัน",
+ "generated_at": "2026-11-25T01:22:01.190Z",
+ "node_count": 6,
+ "edge_count": 5,
+ "relations": [
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/บก.ปอศ.",
+   "target_title": "บก.ปอศ.",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/ผบก.ปอศ.",
+   "target_title": "ผบก.ปอศ.",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/บุ๋ม ปนัดดา",
+   "target_title": "บุ๋ม ปนัดดา",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/บุคคล/ทัศน์ภูมิ จารุปรัชญ์",
+   "target_title": "ทัศน์ภูมิ จารุปรัชญ์",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/คดีเศรษฐกิจ การเงิน และฟอกเงิน",
+   "target_title": "คดีเศรษฐกิจ การเงิน และฟอกเงิน",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261125-econ-05.svg"
+}

@@ -1,0 +1,34 @@
+{
+ "case_id": "20261125-violent-04",
+ "title": "สภ.เวฬุวัน ขอนแก่น คุมตัวชายอายุ 40 ปีทำแผนในคดีที่ถูกกล่าวหาว่าบุกบ้านหญิงสูงอายุวัย 82 ปีที่อยู่ลำพัง กระทำอนาจาร พยายามข่มขืน และทำร้ายจนบาดเจ็บ หลังตำรวจพบข้อมูลจากโซเชียลก่อนมีการแจ้งความ",
+ "generated_at": "2026-11-25T01:22:01.190Z",
+ "node_count": 5,
+ "edge_count": 4,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/สภ.เวฬุวัน",
+   "target_title": "สภ.เวฬุวัน",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ต.สำราญ อ.เมือง จ.ขอนแก่น",
+   "target_title": "ต.สำราญ อ.เมือง จ.ขอนแก่น",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/ผกก.สภ.เวฬุวัน",
+   "target_title": "ผกก.สภ.เวฬุวัน",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/คดีชีวิต ร่างกาย และเพศ",
+   "target_title": "คดีชีวิต ร่างกาย และเพศ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261125-violent-04.svg"
+}

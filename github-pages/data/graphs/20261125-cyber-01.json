@@ -1,0 +1,52 @@
+{
+ "case_id": "20261125-cyber-01",
+ "title": "ตำรวจสืบสวนภาค 1 ซ้อนแผนจับม้าตระเวนกดเงินและผู้คุมม้าของแก๊งสแกมเมอร์ 5 คน ที่ห้างย่านบางเขน ยึดเงินสดรวม 850,000 บาท ขยายผลจากการจับกุมในพระนครศรีอยุธยา",
+ "generated_at": "2026-11-25T01:22:01.190Z",
+ "node_count": 8,
+ "edge_count": 7,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/บก.สส.ภ.1",
+   "target_title": "บก.สส.ภ.1",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/ภ.1",
+   "target_title": "ภ.1",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/ศอตส.ตร.",
+   "target_title": "ศอตส.ตร.",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ห้างสรรพสินค้าย่านบางเขน",
+   "target_title": "ห้างสรรพสินค้าย่านบางเขน",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/ผบช.ภ.1",
+   "target_title": "ผบช.ภ.1",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/ผบก.สส.ภ.1",
+   "target_title": "ผบก.สส.ภ.1",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261125-cyber-01.svg"
+}

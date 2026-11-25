@@ -1,0 +1,34 @@
+{
+ "case_id": "20261125-cyber-04",
+ "title": "Google Threat Intelligence Group เตือนผู้โจมตีใช้ AI เร่งการเจาะช่องโหว่จนเวลาเฉลี่ยเหลือราว 1 วัน พบภัย LLMjacking ขโมยสิทธิ์ใช้ AI องค์กร ชี้องค์กรไทยต้องใช้ AI ป้องกัน เสนอ 4 แนวทางต่อรัฐบาลไทย",
+ "generated_at": "2026-11-25T06:13:48.916Z",
+ "node_count": 5,
+ "edge_count": 4,
+ "relations": [
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/Google Threat Intelligence Group",
+   "target_title": "Google Threat Intelligence Group",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/Mandiant",
+   "target_title": "Mandiant",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ประเทศไทย",
+   "target_title": "ประเทศไทย",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261125-cyber-04.svg"
+}

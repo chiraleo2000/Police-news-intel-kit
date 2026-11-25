@@ -1,0 +1,34 @@
+{
+ "case_id": "20261125-cyber-05",
+ "title": "รายงาน Sumsub ชี้การฉ้อโกงด้วย Deepfake ในไทยปี 2569 เพิ่มขึ้น 44% ความซับซ้อนของกลโกงเพิ่ม 18% และพบเครือข่ายฉ้อโกงเชื่อมโยงผู้ใช้ 3,018 รายใหญ่สุดในเอเชียแปซิฟิก เตือนบัญชีที่ยืนยันตัวตนแล้วยังถูกใช้เป็นบัญชีม้าได้",
+ "generated_at": "2026-11-25T06:13:48.916Z",
+ "node_count": 5,
+ "edge_count": 4,
+ "relations": [
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/Sumsub",
+   "target_title": "Sumsub",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ประเทศไทย",
+   "target_title": "ประเทศไทย",
+   "direction": "out"
+  },
+  {
+   "label": "บัญชี",
+   "target_id": "30_Entities/Projects/เครือข่ายฉ้อโกง 3,018 บัญชี",
+   "target_title": "เครือข่ายฉ้อโกง 3,018 บัญชี",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261125-cyber-05.svg"
+}

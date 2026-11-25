@@ -1,0 +1,40 @@
+{
+ "case_id": "20261125-cyber-13",
+ "title": "เจ้าหน้าที่สหรัฐฯ สงสัยแฮกเกอร์อิหร่านอยู่เบื้องหลังการโจมตีไซเบอร์เรือบรรทุกน้ำมันและสารเคมีราว 50 ครั้งในหลายสัปดาห์ ขณะเดินเรือผ่านเอเชียและยุโรป อาจใช้ช่องโหว่เราเตอร์ Fortinet บนเรือ",
+ "generated_at": "2026-11-25T06:13:48.916Z",
+ "node_count": 6,
+ "edge_count": 5,
+ "relations": [
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/FBI",
+   "target_title": "FBI",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/หน่วยยามฝั่งสหรัฐฯ",
+   "target_title": "หน่วยยามฝั่งสหรัฐฯ",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/เอเชีย",
+   "target_title": "เอเชีย",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ยุโรป",
+   "target_title": "ยุโรป",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261125-cyber-13.svg"
+}

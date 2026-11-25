@@ -1,0 +1,46 @@
+{
+ "case_id": "20261125-drug-01",
+ "title": "ตำรวจนครบาล 6 ร่วมหน่วยข่าวกรองทางทหาร กองทัพบก สะกดรอยกระบะบนถนนบายพาสสระบุรี จับชายอายุ 40 ปีพร้อมไอซ์ 200 กก. ผู้ต้องหารับว่ารับจ้างขนครั้งละ 100,000 บาท",
+ "generated_at": "2026-11-25T01:22:01.190Z",
+ "node_count": 7,
+ "edge_count": 6,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/กก.สส.บก.น.6",
+   "target_title": "กก.สส.บก.น.6",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บช.น.",
+   "target_title": "บช.น.",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/หน่วยข่าวกรองทางทหาร กองทัพบก",
+   "target_title": "หน่วยข่าวกรองทางทหาร กองทัพบก",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ถนนบายพาสสระบุรี ต.ตลิ่งชัน",
+   "target_title": "ถนนบายพาสสระบุรี ต.ตลิ่งชัน",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/ผบช.น.",
+   "target_title": "ผบช.น.",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/ยาเสพติด",
+   "target_title": "ยาเสพติด",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261125-drug-01.svg"
+}

@@ -1,0 +1,28 @@
+{
+ "case_id": "20261125-cyber-08",
+ "title": "Broadcom ออกแพตช์ 23 ช่องโหว่ใน VMware รวมช่องโหว่วิกฤต CVE-2026-123903 (CVSS 9.8) ข้ามการยืนยันตัวตน vCenter เป็นรายการที่สองในบริการ vmdir ภายในไม่กี่วัน",
+ "generated_at": "2026-11-25T06:13:48.916Z",
+ "node_count": 4,
+ "edge_count": 3,
+ "relations": [
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/Broadcom (VMware)",
+   "target_title": "Broadcom (VMware)",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ทั่วโลก",
+   "target_title": "ทั่วโลก",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261125-cyber-08.svg"
+}

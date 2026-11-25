@@ -1,0 +1,64 @@
+{
+ "case_id": "20261125-police-02",
+ "title": "ตร. ระดมกำลังตำรวจ ทหาร และฝ่ายปกครองกว่า 63,000 นาย ดูแลงานลอยกระทง 2569 ที่จัด 3,273 แห่งทั่วประเทศ รวมงานขนาดใหญ่ 42 แห่ง พร้อมเตือนผู้ปกครองดูแลเด็กพลัดหลงและระวังลิงก์ลอยกระทงออนไลน์ปลอม",
+ "generated_at": "2026-11-25T01:22:01.190Z",
+ "node_count": 10,
+ "edge_count": 9,
+ "relations": [
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/ตร.",
+   "target_title": "ตร.",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/บช.ทท.",
+   "target_title": "บช.ทท.",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/ภ.7",
+   "target_title": "ภ.7",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/ศจร.ตร.",
+   "target_title": "ศจร.ตร.",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/โฆษกสำนักงานตำรวจแห่งชาติ",
+   "target_title": "โฆษกสำนักงานตำรวจแห่งชาติ",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/ผบช.ทท.",
+   "target_title": "ผบช.ทท.",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/ผบช.ภ.7",
+   "target_title": "ผบช.ภ.7",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/บุคคล/ศิริวัฒน์ ดีพอ",
+   "target_title": "ศิริวัฒน์ ดีพอ",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/การปฏิบัติหน้าที่ ประชาสัมพันธ์ และนโยบายตำรวจ",
+   "target_title": "การปฏิบัติหน้าที่ ประชาสัมพันธ์ และนโยบายตำรวจ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261125-police-02.svg"
+}

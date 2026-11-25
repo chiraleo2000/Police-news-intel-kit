@@ -1,0 +1,28 @@
+{
+ "case_id": "20261125-cyber-09",
+ "title": "Radware ผู้ให้บริการป้องกัน DDoS และ WAF เผยถูกเข้าถึง API จัดการภายในที่เปิดสู่อินเทอร์เน็ตโดยไม่ต้องยืนยันตัวตน ข้อมูลติดต่อลูกค้าและคีย์ส่งออก log ไปคลาวด์บางรายอาจรั่ว แนะลูกค้าเปลี่ยนคีย์ด่วน",
+ "generated_at": "2026-11-25T06:13:48.916Z",
+ "node_count": 4,
+ "edge_count": 3,
+ "relations": [
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/Radware",
+   "target_title": "Radware",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ทั่วโลก",
+   "target_title": "ทั่วโลก",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261125-cyber-09.svg"
+}

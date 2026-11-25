@@ -1,0 +1,46 @@
+{
+ "case_id": "20261125-police-01",
+ "title": "รอง ผบ.ตร. ในฐานะ ผอ.ศปทส.ตร. สั่ง บช.น. ภ.1–9 และ บช.ก. สืบสวนเชิงรุกคดีขยะอิเล็กทรอนิกส์และสารพิษปนเปื้อนแหล่งน้ำ ให้ดำเนินคดีถึงเจ้าของกิจการตัวจริง ไม่ใช่เฉพาะลูกจ้างหรือนอมินี",
+ "generated_at": "2026-11-25T01:22:01.190Z",
+ "node_count": 7,
+ "edge_count": 6,
+ "relations": [
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/ศปทส.ตร.",
+   "target_title": "ศปทส.ตร.",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/บช.น.",
+   "target_title": "บช.น.",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/บช.ก.",
+   "target_title": "บช.ก.",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/รองผู้บัญชาการตำรวจแห่งชาติ (ผอ.ศปทส.ตร.)",
+   "target_title": "รองผู้บัญชาการตำรวจแห่งชาติ (ผอ.ศปทส.ตร.)",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/บุคคล/นิรันดร เหลื่อมศรี",
+   "target_title": "นิรันดร เหลื่อมศรี",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/การปฏิบัติหน้าที่ ประชาสัมพันธ์ และนโยบายตำรวจ",
+   "target_title": "การปฏิบัติหน้าที่ ประชาสัมพันธ์ และนโยบายตำรวจ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261125-police-01.svg"
+}

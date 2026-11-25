@@ -1,0 +1,40 @@
+{
+ "case_id": "20261125-tourist-01",
+ "title": "ตม.3 จับชายชาวจีนอายุ 48 ปีที่ อ.พระสมุทรเจดีย์ สมุทรปราการ ตามหมายจับทางการจีนข้อหาฉ้อโกงการขอคืนภาษีส่งออกราว 6.6 ล้านหยวน หรือประมาณ 33 ล้านบาท ก่อนส่งตัวกลับไปดำเนินคดี",
+ "generated_at": "2026-11-25T01:22:01.190Z",
+ "node_count": 6,
+ "edge_count": 5,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/กก.สส.บก.ตม.3",
+   "target_title": "กก.สส.บก.ตม.3",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/ตม.",
+   "target_title": "ตม.",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/อ.พระสมุทรเจดีย์ จ.สมุทรปราการ",
+   "target_title": "อ.พระสมุทรเจดีย์ จ.สมุทรปราการ",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/ผบก.ตม.3",
+   "target_title": "ผบก.ตม.3",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมที่เกี่ยวข้องกับนักท่องเที่ยวและชาวต่างชาติ",
+   "target_title": "อาชญากรรมที่เกี่ยวข้องกับนักท่องเที่ยวและชาวต่างชาติ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261125-tourist-01.svg"
+}

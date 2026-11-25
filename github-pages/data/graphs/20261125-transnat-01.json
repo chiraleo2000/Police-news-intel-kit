@@ -1,0 +1,58 @@
+{
+ "case_id": "20261125-transnat-01",
+ "title": "ผบช.สตม. นำชุดสืบสวนเข้าช่วยชายชาวอินเดีย 2 คนที่ถูกกักขังและทำร้ายในทาวน์โฮมย่านพัฒนาการ 38 เพื่อเรียกค่าไถ่ 4 ล้านรูปี จับผู้ต้องหาชาวอินเดีย 5 คน พบดอกกัญชาที่ข่าวระบุว่าเตรียมขนออกนอกประเทศ",
+ "generated_at": "2026-11-25T01:22:01.190Z",
+ "node_count": 9,
+ "edge_count": 8,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/บก.สส.สตม.",
+   "target_title": "บก.สส.สตม.",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/ตม.",
+   "target_title": "ตม.",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/สน.คลองตัน",
+   "target_title": "สน.คลองตัน",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ทาวน์โฮมย่านพัฒนาการ 38",
+   "target_title": "ทาวน์โฮมย่านพัฒนาการ 38",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/ผบช.สตม.",
+   "target_title": "ผบช.สตม.",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/บุคคล/นพศิลป์ พูลสวัสดิ์",
+   "target_title": "นพศิลป์ พูลสวัสดิ์",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/บุคคล/นำชุดสืบสวน บก",
+   "target_title": "นำชุดสืบสวน บก",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมข้ามชาติและความร่วมมือระหว่างประเทศ",
+   "target_title": "อาชญากรรมข้ามชาติและความร่วมมือระหว่างประเทศ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261125-transnat-01.svg"
+}

@@ -1,0 +1,46 @@
+{
+ "case_id": "20261125-drug-02",
+ "title": "ตำรวจทางหลวง ส.ทล.3 กก.2 สกัดกระบะตู้ทึบที่หน่วยบริการเกาะหลัก ประจวบคีรีขันธ์ พบช่อดอกกัญชาอัดสุญญากาศ 448 กก. ใน 13 กระเป๋า คนขับอ้างเป็นผู้รับจ้างขนและแสดงใบอนุญาตจำหน่ายที่หมดอายุ",
+ "generated_at": "2026-11-25T01:22:01.190Z",
+ "node_count": 7,
+ "edge_count": 6,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/ส.ทล.3 กก.2 บก.ทล.",
+   "target_title": "ส.ทล.3 กก.2 บก.ทล.",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บช.ก.",
+   "target_title": "บช.ก.",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/สภ.เมืองประจวบคีรีขันธ์",
+   "target_title": "สภ.เมืองประจวบคีรีขันธ์",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/หน่วยบริการประชาชนตำรวจทางหลวงเกาะหลัก ถนนเพชรเกษม",
+   "target_title": "หน่วยบริการประชาชนตำรวจทางหลวงเกาะหลัก ถนนเพชรเกษม",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/ผบก.ทล.",
+   "target_title": "ผบก.ทล.",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/ยาเสพติด",
+   "target_title": "ยาเสพติด",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261125-drug-02.svg"
+}

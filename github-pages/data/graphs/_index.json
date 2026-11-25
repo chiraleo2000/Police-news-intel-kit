@@ -1,6 +1,6 @@
 {
- "generated_at": "2026-11-24T06:13:28.197Z",
- "count": 970,
+ "generated_at": "2026-11-25T06:13:48.916Z",
+ "count": 1007,
  "cases": [
   {
    "case_id": "20261022-consumer-chiangmai-matcha-customs",
@@ -4285,7 +4285,7 @@
   {
    "case_id": "20261121-cyber-08",
    "svg": "graphs/20261121-cyber-08.svg",
-   "relations": 4
+   "relations": 5
   },
   {
    "case_id": "20261121-cyber-09",
@@ -4470,7 +4470,7 @@
   {
    "case_id": "20261122-cyber-06",
    "svg": "graphs/20261122-cyber-06.svg",
-   "relations": 3
+   "relations": 4
   },
   {
    "case_id": "20261122-cyber-07",
@@ -4715,7 +4715,7 @@
   {
    "case_id": "20261123-violent-01",
    "svg": "graphs/20261123-violent-01.svg",
-   "relations": 9
+   "relations": 10
   },
   {
    "case_id": "20261123-violent-02",
@@ -4783,14 +4783,19 @@
    "relations": 5
   },
   {
+   "case_id": "20261124-drug-line-01",
+   "svg": "graphs/20261124-drug-line-01.svg",
+   "relations": 9
+  },
+  {
    "case_id": "20261124-econ-01",
    "svg": "graphs/20261124-econ-01.svg",
-   "relations": 6
+   "relations": 7
   },
   {
    "case_id": "20261124-organized-01",
    "svg": "graphs/20261124-organized-01.svg",
-   "relations": 11
+   "relations": 12
   },
   {
    "case_id": "20261124-organized-02",
@@ -4840,17 +4845,197 @@
   {
    "case_id": "20261124-violent-01",
    "svg": "graphs/20261124-violent-01.svg",
-   "relations": 11
+   "relations": 12
   },
   {
    "case_id": "20261124-violent-02",
    "svg": "graphs/20261124-violent-02.svg",
-   "relations": 5
+   "relations": 6
   },
   {
    "case_id": "20261124-violent-03",
    "svg": "graphs/20261124-violent-03.svg",
+   "relations": 4
+  },
+  {
+   "case_id": "20261125-corrupt-01",
+   "svg": "graphs/20261125-corrupt-01.svg",
+   "relations": 4
+  },
+  {
+   "case_id": "20261125-cyber-01",
+   "svg": "graphs/20261125-cyber-01.svg",
+   "relations": 7
+  },
+  {
+   "case_id": "20261125-cyber-02",
+   "svg": "graphs/20261125-cyber-02.svg",
    "relations": 3
+  },
+  {
+   "case_id": "20261125-cyber-03",
+   "svg": "graphs/20261125-cyber-03.svg",
+   "relations": 4
+  },
+  {
+   "case_id": "20261125-cyber-04",
+   "svg": "graphs/20261125-cyber-04.svg",
+   "relations": 4
+  },
+  {
+   "case_id": "20261125-cyber-05",
+   "svg": "graphs/20261125-cyber-05.svg",
+   "relations": 4
+  },
+  {
+   "case_id": "20261125-cyber-06",
+   "svg": "graphs/20261125-cyber-06.svg",
+   "relations": 4
+  },
+  {
+   "case_id": "20261125-cyber-07",
+   "svg": "graphs/20261125-cyber-07.svg",
+   "relations": 4
+  },
+  {
+   "case_id": "20261125-cyber-08",
+   "svg": "graphs/20261125-cyber-08.svg",
+   "relations": 3
+  },
+  {
+   "case_id": "20261125-cyber-09",
+   "svg": "graphs/20261125-cyber-09.svg",
+   "relations": 3
+  },
+  {
+   "case_id": "20261125-cyber-10",
+   "svg": "graphs/20261125-cyber-10.svg",
+   "relations": 1
+  },
+  {
+   "case_id": "20261125-cyber-11",
+   "svg": "graphs/20261125-cyber-11.svg",
+   "relations": 4
+  },
+  {
+   "case_id": "20261125-cyber-12",
+   "svg": "graphs/20261125-cyber-12.svg",
+   "relations": 4
+  },
+  {
+   "case_id": "20261125-cyber-13",
+   "svg": "graphs/20261125-cyber-13.svg",
+   "relations": 5
+  },
+  {
+   "case_id": "20261125-cyber-14",
+   "svg": "graphs/20261125-cyber-14.svg",
+   "relations": 4
+  },
+  {
+   "case_id": "20261125-drug-01",
+   "svg": "graphs/20261125-drug-01.svg",
+   "relations": 6
+  },
+  {
+   "case_id": "20261125-drug-02",
+   "svg": "graphs/20261125-drug-02.svg",
+   "relations": 6
+  },
+  {
+   "case_id": "20261125-econ-01",
+   "svg": "graphs/20261125-econ-01.svg",
+   "relations": 4
+  },
+  {
+   "case_id": "20261125-econ-02",
+   "svg": "graphs/20261125-econ-02.svg",
+   "relations": 6
+  },
+  {
+   "case_id": "20261125-econ-03",
+   "svg": "graphs/20261125-econ-03.svg",
+   "relations": 4
+  },
+  {
+   "case_id": "20261125-econ-04",
+   "svg": "graphs/20261125-econ-04.svg",
+   "relations": 6
+  },
+  {
+   "case_id": "20261125-econ-05",
+   "svg": "graphs/20261125-econ-05.svg",
+   "relations": 5
+  },
+  {
+   "case_id": "20261125-env-01",
+   "svg": "graphs/20261125-env-01.svg",
+   "relations": 6
+  },
+  {
+   "case_id": "20261125-env-02",
+   "svg": "graphs/20261125-env-02.svg",
+   "relations": 4
+  },
+  {
+   "case_id": "20261125-gamble-01",
+   "svg": "graphs/20261125-gamble-01.svg",
+   "relations": 6
+  },
+  {
+   "case_id": "20261125-organized-01",
+   "svg": "graphs/20261125-organized-01.svg",
+   "relations": 7
+  },
+  {
+   "case_id": "20261125-police-01",
+   "svg": "graphs/20261125-police-01.svg",
+   "relations": 6
+  },
+  {
+   "case_id": "20261125-police-02",
+   "svg": "graphs/20261125-police-02.svg",
+   "relations": 9
+  },
+  {
+   "case_id": "20261125-police-03",
+   "svg": "graphs/20261125-police-03.svg",
+   "relations": 4
+  },
+  {
+   "case_id": "20261125-public-01",
+   "svg": "graphs/20261125-public-01.svg",
+   "relations": 4
+  },
+  {
+   "case_id": "20261125-tourist-01",
+   "svg": "graphs/20261125-tourist-01.svg",
+   "relations": 5
+  },
+  {
+   "case_id": "20261125-transnat-01",
+   "svg": "graphs/20261125-transnat-01.svg",
+   "relations": 8
+  },
+  {
+   "case_id": "20261125-violent-01",
+   "svg": "graphs/20261125-violent-01.svg",
+   "relations": 11
+  },
+  {
+   "case_id": "20261125-violent-02",
+   "svg": "graphs/20261125-violent-02.svg",
+   "relations": 9
+  },
+  {
+   "case_id": "20261125-violent-03",
+   "svg": "graphs/20261125-violent-03.svg",
+   "relations": 6
+  },
+  {
+   "case_id": "20261125-violent-04",
+   "svg": "graphs/20261125-violent-04.svg",
+   "relations": 4
   }
  ]
 }

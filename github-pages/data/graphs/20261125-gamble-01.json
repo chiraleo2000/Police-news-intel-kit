@@ -1,0 +1,46 @@
+{
+ "case_id": "20261125-gamble-01",
+ "title": "สายตรวจ บก.สปพ. ร่วม สน.วังทองหลาง จับนักพนันไฮโล 24 คนในห้องคอนโดแขวงพลับพลา เขตวังทองหลาง ผู้ถูกจับอายุเฉลี่ยราว 60 ปี สูงสุด 76 ปี ยึดเงินสด 2,017 บาทและอุปกรณ์",
+ "generated_at": "2026-11-25T01:22:01.190Z",
+ "node_count": 7,
+ "edge_count": 6,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/กก.สายตรวจ บก.สปพ.",
+   "target_title": "กก.สายตรวจ บก.สปพ.",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/สน.วังทองหลาง",
+   "target_title": "สน.วังทองหลาง",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/คอนโดแขวงพลับพลา เขตวังทองหลาง",
+   "target_title": "คอนโดแขวงพลับพลา เขตวังทองหลาง",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/ผบก.สปพ.",
+   "target_title": "ผบก.สปพ.",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/สถานที่/วังทองหลาง",
+   "target_title": "วังทองหลาง",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/พนันและบ่อนผิดกฎหมาย",
+   "target_title": "พนันและบ่อนผิดกฎหมาย",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261125-gamble-01.svg"
+}

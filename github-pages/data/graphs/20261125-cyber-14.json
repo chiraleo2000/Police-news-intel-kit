@@ -1,0 +1,34 @@
+{
+ "case_id": "20261125-cyber-14",
+ "title": "ธนาคารไต้หวันเผชิญการโจมตีไซเบอร์ถี่ขึ้นเกือบเท่าตัว Bank SinoPac ถูกโอนเงินออกโดยไม่ได้รับอนุญาตราว 44 ล้านบาท ผู้เชี่ยวชาญชี้ AI ช่วยแฮกเกอร์หาช่องโหว่ง่ายขึ้น ทางการสั่งเร่งอุดช่องโหว่",
+ "generated_at": "2026-11-25T06:13:48.916Z",
+ "node_count": 5,
+ "edge_count": 4,
+ "relations": [
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/คณะกรรมการกำกับดูแลทางการเงินไต้หวัน (FSC)",
+   "target_title": "คณะกรรมการกำกับดูแลทางการเงินไต้หวัน (FSC)",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/Taiwan Cooperative Bank",
+   "target_title": "Taiwan Cooperative Bank",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ไต้หวัน",
+   "target_title": "ไต้หวัน",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261125-cyber-14.svg"
+}
