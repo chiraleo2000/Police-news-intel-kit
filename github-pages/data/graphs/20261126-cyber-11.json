@@ -1,0 +1,40 @@
+{
+ "case_id": "20261126-cyber-11",
+ "title": "WordPress.org ปิดถาวรปลั๊กอิน 6 ตัวของ WP Connect ที่ถูกฝังประตูหลังเมื่อ 22 พ.ย. 2569 หลังบัญชีนักพัฒนาถูกสงสัยว่าถูกยึด ระบบหน่วงเวลาสกัดรุ่นอันตรายไว้ก่อนเผยแพร่ ติดตั้งรวมกว่า 3,600 เว็บไซต์",
+ "generated_at": "2026-11-26T06:17:21.465Z",
+ "node_count": 6,
+ "edge_count": 5,
+ "relations": [
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/WordPress.org Plugins Team",
+   "target_title": "WordPress.org Plugins Team",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/Wordfence",
+   "target_title": "Wordfence",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ทั่วโลก",
+   "target_title": "ทั่วโลก",
+   "direction": "out"
+  },
+  {
+   "label": "บัญชี",
+   "target_id": "30_Entities/บัญชี/urlscan.io",
+   "target_title": "urlscan.io",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261126-cyber-11.svg"
+}

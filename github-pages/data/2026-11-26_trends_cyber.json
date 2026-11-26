@@ -1,0 +1,42 @@
+{
+ "baseline": "ok",
+ "window_days": 7,
+ "days_available": 7,
+ "history": [
+  {
+   "date": "2026-11-25",
+   "count": 14
+  },
+  {
+   "date": "2026-11-24",
+   "count": 11
+  },
+  {
+   "date": "2026-11-23",
+   "count": 9
+  },
+  {
+   "date": "2026-11-22",
+   "count": 7
+  },
+  {
+   "date": "2026-11-21",
+   "count": 17
+  },
+  {
+   "date": "2026-11-20",
+   "count": 16
+  },
+  {
+   "date": "2026-11-19",
+   "count": 19
+  }
+ ],
+ "today_task4": 13,
+ "today_task1": 2,
+ "today_total": 15,
+ "avg_prev_7d": 13.29,
+ "delta_pct": 12.9,
+ "surge": false,
+ "note": "ข่าวประเภทอาชญากรรมไซเบอร์วันนี้ 15 เรื่อง (Task 1 2 + Task 4 13) เทียบเฉลี่ย 7 วันก่อน 13.29 เรื่อง เปลี่ยนแปลง +12.9% · baseline รวม Task 1/2/4 ตามไฟล์ที่มี (Task 4 เริ่ม 15 พ.ย. 2569 จึงยอดช่วงต้นต่ำกว่า) · รอบนี้ข่าวซ้ำเหตุการณ์เดิม (VMware vCenter 23 ช่องโหว่, Check Point GT13, binary-parser, Chrome CVE-2026-134401, Rackspace Spot, Radware, เรือบรรทุกน้ำมัน) ถูกรวมเข้าโพสต์ก่อนหน้า ไม่นับเป็นข่าวใหม่"
+}

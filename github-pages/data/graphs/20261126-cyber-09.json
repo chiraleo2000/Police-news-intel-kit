@@ -1,0 +1,28 @@
+{
+ "case_id": "20261126-cyber-09",
+ "title": "ผู้โจมตีใช้ช่องโหว่ CVSS 10.0 ที่ซ่อนอยู่ในโค้ดตั้งแต่ปี 2559 สั่งรันคำสั่งบนเซิร์ฟเวอร์ 6 เครื่องของ Hex.pm คลังแพ็กเกจภาษา Elixir/Erlang ทีมแก้ครบใน 15 นาที บังคับออกจากระบบผู้ใช้ทุกบัญชี",
+ "generated_at": "2026-11-26T06:17:21.465Z",
+ "node_count": 4,
+ "edge_count": 3,
+ "relations": [
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/Hex.pm",
+   "target_title": "Hex.pm",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ทั่วโลก",
+   "target_title": "ทั่วโลก",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261126-cyber-09.svg"
+}

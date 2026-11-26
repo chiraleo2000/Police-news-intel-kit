@@ -1,0 +1,40 @@
+{
+ "case_id": "20261126-cyber-08",
+ "title": "watchTowr พบผู้โจมตีหลาย IP ใช้ช่องโหว่ GeoServer ที่เพิ่งออกแพตช์ 24 พ.ย. 2569 สำรวจเซิร์ฟเวอร์จริงตั้งแต่เช้า 25 พ.ย. นักวิจัยเตือนต่อช่องโหว่เป็นลำดับขั้นยึดเครื่องได้โดยไม่ต้องล็อกอิน",
+ "generated_at": "2026-11-26T06:17:21.465Z",
+ "node_count": 6,
+ "edge_count": 5,
+ "relations": [
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/watchTowr",
+   "target_title": "watchTowr",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/Eye Security",
+   "target_title": "Eye Security",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/Rapid7",
+   "target_title": "Rapid7",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ทั่วโลก",
+   "target_title": "ทั่วโลก",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261126-cyber-08.svg"
+}

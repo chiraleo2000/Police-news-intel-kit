@@ -1,0 +1,34 @@
+{
+ "case_id": "20261126-cyber-15",
+ "title": "Palo Alto Networks ออก PAN-OS รุ่นใหม่แก้ช่องโหว่ Fragnesia (CVE-2026-46300) ในเคอร์เนล Linux ที่กลุ่มผู้โจมตีใช้ภาษาจีนใช้ร่วม PHP2Shell ยึดสิทธิ์ root บนไฟร์วอลล์ 24 เครื่องขององค์กรเกี่ยวข้องรัฐบาลสหรัฐฯ",
+ "generated_at": "2026-11-26T06:17:21.465Z",
+ "node_count": 5,
+ "edge_count": 4,
+ "relations": [
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/Palo Alto Networks",
+   "target_title": "Palo Alto Networks",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/Dream",
+   "target_title": "Dream",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/สหรัฐอเมริกา",
+   "target_title": "สหรัฐอเมริกา",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261126-cyber-15.svg"
+}

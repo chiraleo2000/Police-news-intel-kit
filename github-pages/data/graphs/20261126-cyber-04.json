@@ -1,0 +1,28 @@
+{
+ "case_id": "20261126-cyber-04",
+ "title": "1Password ยืนยันผู้โจมตียึดบัญชี GitHub ขององค์กรที่พนักงานใช้ ฝังโค้ดอันตรายในระบบหลังบ้านดึงชื่อ อีเมล และโทเคนลิงก์คำเชิญ/กู้บัญชีของลูกค้าบางส่วน ยืนยันคลังรหัสผ่านไม่ถูกเข้าถึง",
+ "generated_at": "2026-11-26T06:17:21.465Z",
+ "node_count": 4,
+ "edge_count": 3,
+ "relations": [
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/Units/1Password",
+   "target_title": "1Password",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ทั่วโลก",
+   "target_title": "ทั่วโลก",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261126-cyber-04.svg"
+}

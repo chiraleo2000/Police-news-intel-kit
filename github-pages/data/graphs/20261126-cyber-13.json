@@ -1,0 +1,40 @@
+{
+ "case_id": "20261126-cyber-13",
+ "title": "กระทรวงยุติธรรมสหรัฐฯ ฟ้องอดีต CTO บริษัทกู้ข้อมูลแรนซัมแวร์ วัย 52 ปี ข้อหาฉ้อโกงทางสาย 3 กระทง ถูกกล่าวหาว่าอ้างมีเทคโนโลยีถอดรหัสแต่แอบจ่ายค่าไถ่ให้แฮกเกอร์แล้วเก็บส่วนต่าง",
+ "generated_at": "2026-11-26T06:17:21.465Z",
+ "node_count": 6,
+ "edge_count": 5,
+ "relations": [
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/กระทรวงยุติธรรมสหรัฐฯ",
+   "target_title": "กระทรวงยุติธรรมสหรัฐฯ",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/FBI",
+   "target_title": "FBI",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/สหรัฐอเมริกา",
+   "target_title": "สหรัฐอเมริกา",
+   "direction": "out"
+  },
+  {
+   "label": "ผู้ต้องหา",
+   "target_id": "30_Entities/People/อดีต CTO RansomwareHelp",
+   "target_title": "อดีต CTO RansomwareHelp",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261126-cyber-13.svg"
+}

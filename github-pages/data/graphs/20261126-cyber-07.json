@@ -1,0 +1,40 @@
+{
+ "case_id": "20261126-cyber-07",
+ "title": "FinCEN หน่วยข่าวกรองทางการเงินของกระทรวงการคลังสหรัฐฯ ถูกบุกรุกระบบบางส่วน ต้องปิดบางระบบชั่วคราว ขยายเส้นตายส่งรายงานธุรกรรมต้องสงสัยถึง 30 ธ.ค. 2569 ร่วม FBI และ CISA สอบสวน",
+ "generated_at": "2026-11-26T06:17:21.465Z",
+ "node_count": 6,
+ "edge_count": 5,
+ "relations": [
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/Units/FinCEN",
+   "target_title": "FinCEN",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/FBI",
+   "target_title": "FBI",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/CISA",
+   "target_title": "CISA",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/สหรัฐอเมริกา",
+   "target_title": "สหรัฐอเมริกา",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261126-cyber-07.svg"
+}

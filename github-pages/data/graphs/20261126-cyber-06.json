@@ -1,0 +1,40 @@
+{
+ "case_id": "20261126-cyber-06",
+ "title": "รายงานข่าวระบุผู้โจมตีเจาะระบบวิเคราะห์ข่าวกรองจากแหล่งเปิด (OSINT) ของ CIA โดยใช้เครื่องมือเจาะระบบอัตโนมัติด้วย AI ชื่อ ARTEX กระทบ ODNI และ NGA ด้วย แหล่งข่าวยืนยันเครือข่ายลับไม่ถูกเข้าถึง",
+ "generated_at": "2026-11-26T06:17:21.465Z",
+ "node_count": 6,
+ "edge_count": 5,
+ "relations": [
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/Units/CIA",
+   "target_title": "CIA",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/Units/ODNI",
+   "target_title": "ODNI",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/Units/NGA",
+   "target_title": "NGA",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/สหรัฐอเมริกา",
+   "target_title": "สหรัฐอเมริกา",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261126-cyber-06.svg"
+}

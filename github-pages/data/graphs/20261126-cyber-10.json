@@ -1,0 +1,40 @@
+{
+ "case_id": "20261126-cyber-10",
+ "title": "Unit 42 ติดตามกลุ่มผู้โจมตีเครือข่าย Com หลอกทางโทรศัพท์แอบอ้างเป็นฝ่ายไอที ดักรหัสและ MFA ผ่านหน้าเว็บตัวกลาง ยึดบัญชีคลาวด์องค์กรการเงิน สาธารณสุข และกฎหมาย แล้วขโมยข้อมูลเรียกค่าไถ่",
+ "generated_at": "2026-11-26T06:17:21.465Z",
+ "node_count": 6,
+ "edge_count": 5,
+ "relations": [
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/Palo Alto Networks Unit 42",
+   "target_title": "Palo Alto Networks Unit 42",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/สหรัฐอเมริกา",
+   "target_title": "สหรัฐอเมริกา",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/สหราชอาณาจักร",
+   "target_title": "สหราชอาณาจักร",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ออสเตรเลีย",
+   "target_title": "ออสเตรเลีย",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261126-cyber-10.svg"
+}

@@ -1,43 +1,43 @@
 {
- "generated_at": "2026-11-26T02:30:55.610Z",
+ "generated_at": "2026-11-26T07:00:49.101Z",
  "schema_version": 2,
  "source": "vault/",
  "note": "Derived from Obsidian wikilinks. Local vault/ is the knowledge store; this file powers Pages ข้อมูลกราฟ.",
  "stats": {
-  "nodes": 3558,
-  "edges": 5835,
+  "nodes": 3588,
+  "edges": 5890,
   "unresolved": 65,
   "by_kind": {
    "daily": 34,
-   "case": 1027,
-   "entity": 2411,
+   "case": 1040,
+   "entity": 2428,
    "crime_type": 17,
    "other": 4,
    "unresolved": 65
   },
   "by_entity_group": {
-   "หน่วย": 1282,
-   "บุคคล": 356,
-   "สถานที่": 704,
+   "หน่วย": 1296,
+   "บุคคล": 357,
+   "สถานที่": 705,
    "ข่ายเครือข่าย": 41,
-   "บัญชี": 17,
+   "บัญชี": 18,
    "ผู้ต้องหา": 11
   },
   "by_label": {
-   "สืบสวนโดย": 547,
+   "สืบสวนโดย": 558,
    "จับโดย": 725,
-   "สั่งการโดย": 538,
-   "แจ้งโดย": 659,
-   "บัญชี": 29,
-   "เกิดที่": 1150,
+   "สั่งการโดย": 539,
+   "แจ้งโดย": 665,
+   "บัญชี": 30,
+   "เกิดที่": 1165,
    "เป้าหมายเครือข่าย": 40,
-   "เกี่ยวข้องกับบุคคล": 742,
-   "ผู้ต้องหา": 63,
+   "เกี่ยวข้องกับบุคคล": 749,
+   "ผู้ต้องหา": 64,
    "หมายจากศาล": 188,
    "ภายใต้โครงการ": 1,
    "เกี่ยวข้องกับ": 24,
    "ติดตามจาก": 104,
-   "ประเภท": 1025
+   "ประเภท": 1038
   }
  },
  "unresolved_samples": [
@@ -18080,6 +18080,227 @@
    "degree": 8
   },
   {
+   "id": "20_Cases/20261126-cyber-03",
+   "title": "ThaiCERT เตือนช่องโหว่ระดับ Critical CVE-2026-134624 (CVSS 9.3) ใน N-able Mail Assure และ SpamExperts ผู้มีบัญชี API สิทธิ์สูงอาจสั่งเซิร์ฟเวอร์กรองอีเมลเชื่อมต่อเข้าระบบภายในองค์กร แนะอัปเดต Build 20261121.1943",
+   "kind": "case",
+   "folder": "20_Cases",
+   "entity_group": null,
+   "date": "2026-11-26",
+   "case_id": "20261126-cyber-03",
+   "crime_type": "อาชญากรรมไซเบอร์และออนไลน์",
+   "bureau": "ThaiCERT (สกมช.)",
+   "area": "ทั่วโลก",
+   "status": "N-able แก้ไขบริการ Hosted Cloud แล้ว · ระบบ Local Cloud ต้องอัปเดตเป็น Build 20261121.1943 ขึ้นไป",
+   "tags": [],
+   "excerpt": "ประเภท: อาชญากรรมไซเบอร์และออนไลน์ หน่วย: ThaiCERT (สกมช.) ศูนย์ประสานการรักษาความมั่นคงปลอดภัยระบบคอมพิวเตอร์แห่งชาติ (ThaiCERT) ออกประกาศแจ้งเตือนเช้าวันที่ 26 พฤศจิกายน 2569 ว่าบริษัท N able เปิดเผยช่องโหว่ระดับ Critical รหัส CVE 2026 134624 ในผลิตภัณฑ์ Mail Assure หรือชื่อเดิม SpamExperts ซึ่งเป็นบริการกรองอีเมลและสแปมที่องค์กรใช้คั่นหน้าระบบอีเมลหลัก ช…",
+   "path": "20_Cases/20261126-cyber-03.md",
+   "degree": 4
+  },
+  {
+   "id": "20_Cases/20261126-cyber-04",
+   "title": "1Password ยืนยันผู้โจมตียึดบัญชี GitHub ขององค์กรที่พนักงานใช้ ฝังโค้ดอันตรายในระบบหลังบ้านดึงชื่อ อีเมล และโทเคนลิงก์คำเชิญ/กู้บัญชีของลูกค้าบางส่วน ยืนยันคลังรหัสผ่านไม่ถูกเข้าถึง",
+   "kind": "case",
+   "folder": "20_Cases",
+   "entity_group": null,
+   "date": "2026-11-26",
+   "case_id": "20261126-cyber-04",
+   "crime_type": "อาชญากรรมไซเบอร์และออนไลน์",
+   "bureau": "1Password",
+   "area": "ทั่วโลก",
+   "status": "ปิดบัญชี GitHub ที่ถูกยึด เพิกถอนโทเคน กู้บริการและเปลี่ยนรหัสภายในแล้ว · แจ้งผู้ใช้ที่ได้รับผลกระทบเป็นรายบุคคล",
+   "tags": [],
+   "excerpt": "ประเภท: อาชญากรรมไซเบอร์และออนไลน์ หน่วย: 1Password 1Password ผู้ให้บริการโปรแกรมจัดการรหัสผ่านซึ่งมีสำนักงานใหญ่ที่โตรอนโต แคนาดา เปิดเผยเหตุข้อมูลรั่วเมื่อวันที่ 25 พฤศจิกายน 2569 ตามเวลาสหรัฐฯ หลังพบว่าบัญชี GitHub ขององค์กรที่พนักงานคนหนึ่งใช้ถูกผู้โจมตียึด BleepingComputer รายงานว่าบริษัทเริ่มสอบสวนตั้งแต่ 19 พฤศจิกายน 2569 เมื่อพบสัญญาณผิดปกติ. ตามคำช…",
+   "path": "20_Cases/20261126-cyber-04.md",
+   "degree": 3
+  },
+  {
+   "id": "20_Cases/20261126-cyber-05",
+   "title": "ทีมความปลอดภัย Drupal ยืนยันช่องโหว่วิกฤต CVE-2026-132165 (Fail2Install) ในตัวติดตั้ง install.php ถูกใช้ยึดเว็บไซต์จริงตั้งแต่ 19 พ.ย. 2569 CISA สั่งหน่วยงานรัฐบาลกลางแก้ภายใน 27 พ.ย.",
+   "kind": "case",
+   "folder": "20_Cases",
+   "entity_group": null,
+   "date": "2026-11-25",
+   "case_id": "20261126-cyber-05",
+   "crime_type": "อาชญากรรมไซเบอร์และออนไลน์",
+   "bureau": "Drupal Security Team",
+   "area": "ทั่วโลก",
+   "status": "มีแพตช์แล้ว · ถูกโจมตีจริง · อยู่ในรายการ KEV ของ CISA",
+   "tags": [],
+   "excerpt": "ประเภท: อาชญากรรมไซเบอร์และออนไลน์ หน่วย: Drupal Security Team BleepingComputer รายงานเมื่อวันที่ 25 พฤศจิกายน 2569 ว่าทีมความปลอดภัยของ Drupal ระบบจัดการเนื้อหาเว็บไซต์ที่หน่วยงานรัฐ มหาวิทยาลัย และองค์กรสื่อขนาดใหญ่นิยมใช้ ยืนยันว่าช่องโหว่ระดับวิกฤตรหัส CVE 2026 132165 ถูกนำไปใช้โจมตีเว็บไซต์จริงแล้ว โดยพบการโจมตีบนเว็บไซต์ที่ใช้งานอยู่ตั้งแต่ 19 พฤศจิกา…",
+   "path": "20_Cases/20261126-cyber-05.md",
+   "degree": 5
+  },
+  {
+   "id": "20_Cases/20261126-cyber-06",
+   "title": "รายงานข่าวระบุผู้โจมตีเจาะระบบวิเคราะห์ข่าวกรองจากแหล่งเปิด (OSINT) ของ CIA โดยใช้เครื่องมือเจาะระบบอัตโนมัติด้วย AI ชื่อ ARTEX กระทบ ODNI และ NGA ด้วย แหล่งข่าวยืนยันเครือข่ายลับไม่ถูกเข้าถึง",
+   "kind": "case",
+   "folder": "20_Cases",
+   "entity_group": null,
+   "date": "2026-11-25",
+   "case_id": "20261126-cyber-06",
+   "crime_type": "อาชญากรรมไซเบอร์และออนไลน์",
+   "bureau": "CIA",
+   "area": "สหรัฐอเมริกา",
+   "status": "อยู่ระหว่างตรวจสอบ · CIA และ ODNI ยังไม่ให้ความเห็น",
+   "tags": [],
+   "excerpt": "ประเภท: อาชญากรรมไซเบอร์และออนไลน์ หน่วย: CIA BleepingComputer รายงานเมื่อวันที่ 25 พฤศจิกายน 2569 โดยอ้างการรายงานของ The New York Times และแหล่งข่าวผู้รู้เรื่อง ว่าผู้โจมตีที่ยังไม่ทราบตัวตนเจาะเข้าระบบวิเคราะห์ข่าวกรองจากแหล่งเปิด (OSINT) ของสำนักข่าวกรองกลางสหรัฐฯ (CIA) ได้ เหตุนี้ยังกระทบสำนักงานผู้อำนวยการข่าวกรองแห่งชาติ (ODNI) และสำนักงานข่าวกรองภูม…",
+   "path": "20_Cases/20261126-cyber-06.md",
+   "degree": 5
+  },
+  {
+   "id": "20_Cases/20261126-cyber-07",
+   "title": "FinCEN หน่วยข่าวกรองทางการเงินของกระทรวงการคลังสหรัฐฯ ถูกบุกรุกระบบบางส่วน ต้องปิดบางระบบชั่วคราว ขยายเส้นตายส่งรายงานธุรกรรมต้องสงสัยถึง 30 ธ.ค. 2569 ร่วม FBI และ CISA สอบสวน",
+   "kind": "case",
+   "folder": "20_Cases",
+   "entity_group": null,
+   "date": "2026-11-25",
+   "case_id": "20261126-cyber-07",
+   "crime_type": "อาชญากรรมไซเบอร์และออนไลน์",
+   "bureau": "FinCEN",
+   "area": "สหรัฐอเมริกา",
+   "status": "ปิดบางระบบชั่วคราว · ขยายเส้นตายรายงาน · สอบสวนร่วม FBI/CISA",
+   "tags": [],
+   "excerpt": "ประเภท: อาชญากรรมไซเบอร์และออนไลน์ หน่วย: FinCEN The Hacker News รายงานเมื่อวันที่ 25 พฤศจิกายน 2569 ว่าเครือข่ายบังคับใช้กฎหมายอาชญากรรมทางการเงิน (FinCEN) ของกระทรวงการคลังสหรัฐฯ ซึ่งทำหน้าที่หน่วยข่าวกรองทางการเงินของประเทศ เปิดเผยว่าเกิดเหตุด้านความปลอดภัยไซเบอร์ที่ทำให้มีการเข้าถึงระบบบางส่วนโดยไม่ได้รับอนุญาต และได้ปิดบางระบบชั่วคราวเพื่อป้องกันไว้ก่อ…",
+   "path": "20_Cases/20261126-cyber-07.md",
+   "degree": 5
+  },
+  {
+   "id": "20_Cases/20261126-cyber-08",
+   "title": "watchTowr พบผู้โจมตีหลาย IP ใช้ช่องโหว่ GeoServer ที่เพิ่งออกแพตช์ 24 พ.ย. 2569 สำรวจเซิร์ฟเวอร์จริงตั้งแต่เช้า 25 พ.ย. นักวิจัยเตือนต่อช่องโหว่เป็นลำดับขั้นยึดเครื่องได้โดยไม่ต้องล็อกอิน",
+   "kind": "case",
+   "folder": "20_Cases",
+   "entity_group": null,
+   "date": "2026-11-25",
+   "case_id": "20261126-cyber-08",
+   "crime_type": "อาชญากรรมไซเบอร์และออนไลน์",
+   "bureau": "watchTowr",
+   "area": "ทั่วโลก",
+   "status": "มีแพตช์ GeoServer 2.27.7 / 2.28.6 / 3.0.2 · ถูกสำรวจโจมตีจริง",
+   "tags": [],
+   "excerpt": "ประเภท: อาชญากรรมไซเบอร์และออนไลน์ หน่วย: watchTowr The Hacker News รายงานเมื่อวันที่ 25 พฤศจิกายน 2569 ว่าบริษัท watchTowr ตรวจพบผู้โจมตีใช้ช่องโหว่สองรายการใน GeoServer ซอฟต์แวร์โอเพนซอร์สสำหรับเผยแพร่ข้อมูลแผนที่และภูมิสารสนเทศ ซึ่งเพิ่งมีประกาศแก้ไขเมื่อ 24 พฤศจิกายน 2569 ช่องโหว่ที่รายงานอ้างถึงคือ CVE 2026 120705 และช่องโหว่อีกรายการในชุดเดียวกัน. ตาม…",
+   "path": "20_Cases/20261126-cyber-08.md",
+   "degree": 5
+  },
+  {
+   "id": "20_Cases/20261126-cyber-09",
+   "title": "ผู้โจมตีใช้ช่องโหว่ CVSS 10.0 ที่ซ่อนอยู่ในโค้ดตั้งแต่ปี 2559 สั่งรันคำสั่งบนเซิร์ฟเวอร์ 6 เครื่องของ Hex.pm คลังแพ็กเกจภาษา Elixir/Erlang ทีมแก้ครบใน 15 นาที บังคับออกจากระบบผู้ใช้ทุกบัญชี",
+   "kind": "case",
+   "folder": "20_Cases",
+   "entity_group": null,
+   "date": "2026-11-25",
+   "case_id": "20261126-cyber-09",
+   "crime_type": "อาชญากรรมไซเบอร์และออนไลน์",
+   "bureau": "Hex.pm",
+   "area": "ทั่วโลก",
+   "status": "แก้ช่องโหว่แล้ว · ไม่พบแพ็กเกจถูกแก้ · ยังตัดไม่ได้ว่าข้อมูลบัญชีถูกอ่าน · ยังไม่เปลี่ยนกุญแจลงนามคลัง",
+   "tags": [],
+   "excerpt": "ประเภท: อาชญากรรมไซเบอร์และออนไลน์ หน่วย: Hex.pm The Hacker News รายงานเมื่อวันที่ 25 พฤศจิกายน 2569 ว่าผู้โจมตีสั่งรันคำสั่งระบบปฏิบัติการบนเซิร์ฟเวอร์ใช้งานจริง 6 เครื่องของ Hex.pm ซึ่งเป็นคลังแพ็กเกจที่นักพัฒนาภาษา Elixir และ Erlang ใช้ดาวน์โหลดไลบรารี เหตุเกิดเมื่อวันจันทร์ที่ 23 พฤศจิกายน 2569 ตามเวลาสากล. ตามรายงานเหตุของทีมผู้ดูแล บันทึกของตัวกระจายโ…",
+   "path": "20_Cases/20261126-cyber-09.md",
+   "degree": 3
+  },
+  {
+   "id": "20_Cases/20261126-cyber-10",
+   "title": "Unit 42 ติดตามกลุ่มผู้โจมตีเครือข่าย Com หลอกทางโทรศัพท์แอบอ้างเป็นฝ่ายไอที ดักรหัสและ MFA ผ่านหน้าเว็บตัวกลาง ยึดบัญชีคลาวด์องค์กรการเงิน สาธารณสุข และกฎหมาย แล้วขโมยข้อมูลเรียกค่าไถ่",
+   "kind": "case",
+   "folder": "20_Cases",
+   "entity_group": null,
+   "date": "2026-11-25",
+   "case_id": "20261126-cyber-10",
+   "crime_type": "อาชญากรรมไซเบอร์และออนไลน์",
+   "bureau": "Palo Alto Networks Unit 42",
+   "area": "ทั่วโลก",
+   "status": "แคมเปญต่อเนื่องตั้งแต่ ส.ค. 2569 · Unit 42 ติดตามและตอบสนองเหตุหลายระลอก",
+   "tags": [],
+   "excerpt": "ประเภท: อาชญากรรมไซเบอร์และออนไลน์ หน่วย: Palo Alto Networks Unit 42 The Hacker News รายงานเมื่อวันที่ 25 พฤศจิกายน 2569 ว่าทีมข่าวกรองภัยคุกคาม Unit 42 ของ Palo Alto Networks เปิดเผยว่าได้ติดตามและเข้าตอบสนองเหตุ \"การหลอกทางโทรศัพท์หลายระลอก\" ของกลุ่มผู้โจมตีที่สังกัดเครือข่ายอาชญากรออนไลน์ที่เรียกว่า Com มาตั้งแต่สิงหาคม 2569 ซึ่งนำไปสู่การขโมยข้อมูลและกา…",
+   "path": "20_Cases/20261126-cyber-10.md",
+   "degree": 5
+  },
+  {
+   "id": "20_Cases/20261126-cyber-11",
+   "title": "WordPress.org ปิดถาวรปลั๊กอิน 6 ตัวของ WP Connect ที่ถูกฝังประตูหลังเมื่อ 22 พ.ย. 2569 หลังบัญชีนักพัฒนาถูกสงสัยว่าถูกยึด ระบบหน่วงเวลาสกัดรุ่นอันตรายไว้ก่อนเผยแพร่ ติดตั้งรวมกว่า 3,600 เว็บไซต์",
+   "kind": "case",
+   "folder": "20_Cases",
+   "entity_group": null,
+   "date": "2026-11-25",
+   "case_id": "20261126-cyber-11",
+   "crime_type": "อาชญากรรมไซเบอร์และออนไลน์",
+   "bureau": "WordPress.org Plugins Team",
+   "area": "ทั่วโลก",
+   "status": "ปลั๊กอินถูกปิดถาวร · รุ่นอันตรายไม่ได้เผยแพร่ · ยังไม่มีแพตช์",
+   "tags": [],
+   "excerpt": "ประเภท: อาชญากรรมไซเบอร์และออนไลน์ หน่วย: WordPress.org Plugins Team The Hacker News รายงานเมื่อวันที่ 25 พฤศจิกายน 2569 ว่าทีมปลั๊กอินของ WordPress.org ปิดถาวรปลั๊กอิน 6 ตัวที่พัฒนาโดย WP Connect หลังพบว่ารุ่นใหม่ที่ส่งขึ้นคลังเมื่อ 22 พฤศจิกายน 2569 ถูกฝังประตูหลังที่ทำให้สั่งรันโค้ดใดก็ได้บนเว็บไซต์ที่ติดตั้ง บริษัท Wordfence ระบุว่าปลั๊กอินชุดนี้ติดตั้ง…",
+   "path": "20_Cases/20261126-cyber-11.md",
+   "degree": 5
+  },
+  {
+   "id": "20_Cases/20261126-cyber-12",
+   "title": "Socket พบแพ็กเกจ NuGet อันตราย 13 รายการปลอมเป็นปุ่มควบคุม WinUI/WPF ใช้หลอกนักพัฒนา .NET ผ่าน \"แบบทดสอบงานทำที่บ้าน\" ปลอม เมื่อคอมไพล์โปรเจกต์จะดาวน์โหลดและรันไฟล์อันตราย",
+   "kind": "case",
+   "folder": "20_Cases",
+   "entity_group": null,
+   "date": "2026-11-26",
+   "case_id": "20261126-cyber-12",
+   "crime_type": "อาชญากรรมไซเบอร์และออนไลน์",
+   "bureau": "Socket",
+   "area": "ทั่วโลก",
+   "status": "แพ็กเกจทั้งหมดถูกลบจาก NuGet แล้ว · แคมเปญเริ่มตั้งแต่ ก.ค. 2569",
+   "tags": [],
+   "excerpt": "ประเภท: อาชญากรรมไซเบอร์และออนไลน์ หน่วย: Socket The Hacker News รายงานเมื่อวันที่ 26 พฤศจิกายน 2569 ว่านักวิจัยของบริษัท Socket พบแพ็กเกจอันตราย 13 รายการบนคลัง NuGet ซึ่งเป็นคลังไลบรารีของนักพัฒนา .NET บน Windows แพ็กเกจส่วนใหญ่ปลอมเป็นส่วนควบคุมปุ่มของ WinUI 3 และ WPF และถูกใช้ร่วมกับ \"แบบทดสอบงานทำที่บ้าน\" ปลอมที่ส่งให้ผู้สมัครงาน. ตามรายงาน จุดเริ่มต้น…",
+   "path": "20_Cases/20261126-cyber-12.md",
+   "degree": 3
+  },
+  {
+   "id": "20_Cases/20261126-cyber-13",
+   "title": "กระทรวงยุติธรรมสหรัฐฯ ฟ้องอดีต CTO บริษัทกู้ข้อมูลแรนซัมแวร์ วัย 52 ปี ข้อหาฉ้อโกงทางสาย 3 กระทง ถูกกล่าวหาว่าอ้างมีเทคโนโลยีถอดรหัสแต่แอบจ่ายค่าไถ่ให้แฮกเกอร์แล้วเก็บส่วนต่าง",
+   "kind": "case",
+   "folder": "20_Cases",
+   "entity_group": null,
+   "date": "2026-11-26",
+   "case_id": "20261126-cyber-13",
+   "crime_type": "อาชญากรรมไซเบอร์และออนไลน์",
+   "bureau": "กระทรวงยุติธรรมสหรัฐฯ",
+   "area": "สหรัฐอเมริกา",
+   "status": "ถูกฟ้องข้อหาฉ้อโกงทางสาย 3 กระทง · ยังไม่มีคำพิพากษา",
+   "tags": [],
+   "excerpt": "ประเภท: อาชญากรรมไซเบอร์และออนไลน์ หน่วย: กระทรวงยุติธรรมสหรัฐฯ TechCrunch รายงานเมื่อวันที่ 25 พฤศจิกายน 2569 ว่ากระทรวงยุติธรรมสหรัฐฯ ยื่นฟ้องอดีตประธานเจ้าหน้าที่ฝ่ายเทคโนโลยี (CTO) อายุ 52 ปี ของบริษัท RansomwareHelp ซึ่งอ้างว่าให้บริการกู้ข้อมูลแก่ผู้ถูกโจมตีด้วยแรนซัมแวร์ ตามคำฟ้อง ผู้ต้องหาฉ้อโกงผู้เสียหายจากการโจมตีไซเบอร์ด้วยการอ้างว่าบริษัทถอดรหัส…",
+   "path": "20_Cases/20261126-cyber-13.md",
+   "degree": 5
+  },
+  {
+   "id": "20_Cases/20261126-cyber-14",
+   "title": "Todoist ยืนยันแฮกเกอร์ใช้รหัสที่ถูกขโมยเข้าระบบซอร์สโค้ดและคลาวด์ 22–23 พ.ย. 2569 ได้อีเมลและค่าแฮชรหัสผ่านลูกค้าราว 6% รวมโทเคน API และ Slack ขอให้ผู้ได้รับผลกระทบเปลี่ยนรหัส",
+   "kind": "case",
+   "folder": "20_Cases",
+   "entity_group": null,
+   "date": "2026-11-25",
+   "case_id": "20261126-cyber-14",
+   "crime_type": "อาชญากรรมไซเบอร์และออนไลน์",
+   "bureau": "Todoist",
+   "area": "ทั่วโลก",
+   "status": "ปิดเส้นทางโจมตี รีเซ็ตรหัสผ่าน ปิดส่วนเสริม Outlook · แจ้งผู้ได้รับผลกระทบแล้ว",
+   "tags": [],
+   "excerpt": "ประเภท: อาชญากรรมไซเบอร์และออนไลน์ หน่วย: Todoist TechCrunch รายงานเมื่อวันที่ 25 พฤศจิกายน 2569 ว่า Todoist แอปจัดการงานที่มีผู้ใช้ทั่วโลก ยืนยันว่าแฮกเกอร์เข้าถึงระบบใช้งานจริงและขโมยข้อมูลลูกค้า ได้แก่ อีเมล ค่าแฮชรหัสผ่าน และวันที่สร้างบัญชี บริษัทระบุว่าผู้ใช้ราว 6% ได้รับผลกระทบ และสาเหตุมาจากรหัสเข้าระบบที่ถูกขโมย. ตามคำชี้แจงของบริษัท ผู้โจมตีใช้รหั…",
+   "path": "20_Cases/20261126-cyber-14.md",
+   "degree": 3
+  },
+  {
+   "id": "20_Cases/20261126-cyber-15",
+   "title": "Palo Alto Networks ออก PAN-OS รุ่นใหม่แก้ช่องโหว่ Fragnesia (CVE-2026-46300) ในเคอร์เนล Linux ที่กลุ่มผู้โจมตีใช้ภาษาจีนใช้ร่วม PHP2Shell ยึดสิทธิ์ root บนไฟร์วอลล์ 24 เครื่องขององค์กรเกี่ยวข้องรัฐบาลสหรัฐฯ",
+   "kind": "case",
+   "folder": "20_Cases",
+   "entity_group": null,
+   "date": "2026-11-26",
+   "case_id": "20261126-cyber-15",
+   "crime_type": "อาชญากรรมไซเบอร์และออนไลน์",
+   "bureau": "Palo Alto Networks",
+   "area": "ทั่วโลก",
+   "status": "มีแพตช์ PAN-OS แก้ CVE-2026-46300 · ยืนยันถูกโจมตีจริงผ่าน Management Interface ที่เปิดสู่อินเทอร์เน็ต",
+   "tags": [],
+   "excerpt": "ประเภท: อาชญากรรมไซเบอร์และออนไลน์ หน่วย: Palo Alto Networks TechTalkThai รายงานเมื่อวันที่ 26 พฤศจิกายน 2569 โดยอ้าง SecurityWeek ว่า Palo Alto Networks ปล่อยระบบปฏิบัติการไฟร์วอลล์ PAN OS รุ่นใหม่ที่แก้ช่องโหว่ Fragnesia รหัส CVE 2026 46300 ในเคอร์เนล Linux ซึ่งกลุ่มแฮกเกอร์ที่เชื่อมโยงกับจีนนำไปใช้ร่วมกับช่องโหว่ PHP2Shell เพื่อยึดสิทธิ์สูงสุด (root) บนไ…",
+   "path": "20_Cases/20261126-cyber-15.md",
+   "degree": 4
+  },
+  {
    "id": "20_Cases/20261126-drug-01",
    "title": "ตำรวจร่วมฝ่ายปกครองและ ตม.จว.ชลบุรี ตรวจบ้านพักที่ ต.ห้วยใหญ่ บางละมุง พบอุปกรณ์และสารเคมีต้องสงสัยใช้ผลิต 4-MMC (เมเฟโดรน) ควบคุมตัวชายชาวรัสเซีย 1 คน",
    "kind": "case",
@@ -24166,6 +24387,23 @@
    "degree": 1
   },
   {
+   "id": "30_Entities/People/อดีต CTO RansomwareHelp",
+   "title": "อดีต CTO RansomwareHelp",
+   "kind": "entity",
+   "folder": "30_Entities/People",
+   "entity_group": "บุคคล",
+   "date": null,
+   "case_id": null,
+   "crime_type": null,
+   "bureau": null,
+   "area": null,
+   "status": null,
+   "tags": [],
+   "excerpt": "20261126 cyber 13 — กระทรวงยุติธรรมสหรัฐฯ ฟ้องอดีต CTO บริษัทกู้ข้อมูลแรนซัมแวร์ วัย 52 ปี ข้อหาฉ้อโกงทางสาย 3 กระทง ถูกกล่าวหาว่าอ้างมีเทคโนโลยีถอดรหัสแต่แอบจ่ายค่าไถ่ให้แฮกเกอร์แล้วเก็บส่วนต่าง",
+   "path": "30_Entities/People/อดีต CTO RansomwareHelp.md",
+   "degree": 1
+  },
+  {
    "id": "30_Entities/People/อธิบดี DSI",
    "title": "อธิบดี DSI",
    "kind": "entity",
@@ -29552,7 +29790,7 @@
    "tags": [],
    "excerpt": "20261118 cyber 08 — ThaiCERT เตือนการโจมตีห่วงโซ่อุปทานผ่าน Optimizely แทรกสคริปต์อันตรายในเว็บไซต์ 178 องค์กร เสี่ยงถูกขโมยข้อมูลบัตรและสับเปลี่ยนกระเป๋าคริปโต 20261118 cyber 09 — CISA เร่งองค์กรแพตช์ช่องโหว่ Java4Shell (CVE 2026 114938) ใน Java เสี่ยงถูกสั่งรันโค้ดจากระยะไกลโดยไม่ต้องยืนยันตัวตน 20261118 cyber 12 — N able ออก Hotfix 3 แก้ 17 ช่องโหว่ใน N…",
    "path": "30_Entities/Places/ทั่วโลก.md",
-   "degree": 41
+   "degree": 49
   },
   {
    "id": "30_Entities/Places/ทางหลวงพิเศษ M6 กม.70+122 ต.ทับกวาง อ.แก่งคอย",
@@ -33173,7 +33411,24 @@
    "tags": [],
    "excerpt": "20261118 cyber 15 — สหรัฐฯ รับตัวผู้ต้องหาชาวคาซัคสถานจากอิตาลี คดีแรนซัมแวร์ INC และ Lynx โจมตีโรงพยาบาลและโรงเรียน เรียกค่าไถ่รวมกว่า 500 ล้านดอลลาร์ 20261118 cyber 16 — ศาลสหรัฐฯ จำคุก 6 ปี แกนนำ Scattered Spider ชาวอังกฤษ คดีส่ง SMS ฟิชชิงและสลับซิมขโมยคริปโตกว่า 11.6 ล้านดอลลาร์ 20261117 cyber 05 — แคมเปญ Trigram แอบอ้างแบรนด์ AI และบล็อกเชนราว 50 ราย…",
    "path": "30_Entities/Places/สหรัฐอเมริกา.md",
-   "degree": 8
+   "degree": 13
+  },
+  {
+   "id": "30_Entities/Places/สหราชอาณาจักร",
+   "title": "สหราชอาณาจักร",
+   "kind": "entity",
+   "folder": "30_Entities/Places",
+   "entity_group": "สถานที่",
+   "date": null,
+   "case_id": null,
+   "crime_type": null,
+   "bureau": null,
+   "area": null,
+   "status": null,
+   "tags": [],
+   "excerpt": "20261126 cyber 10 — Unit 42 ติดตามกลุ่มผู้โจมตีเครือข่าย Com หลอกทางโทรศัพท์แอบอ้างเป็นฝ่ายไอที ดักรหัสและ MFA ผ่านหน้าเว็บตัวกลาง ยึดบัญชีคลาวด์องค์กรการเงิน สาธารณสุข และกฎหมาย แล้วขโมยข้อมูลเรียกค่าไถ่",
+   "path": "30_Entities/Places/สหราชอาณาจักร.md",
+   "degree": 1
   },
   {
    "id": "30_Entities/Places/สะพานข้ามแยกตากสิน",
@@ -35007,9 +35262,9 @@
    "area": null,
    "status": null,
    "tags": [],
-   "excerpt": "20261027 human 02 รองอัยการสูงสุดนำคณะอัยการไทยและผู้แทน สปป.ลาวศึกษาดูงานต่อต้านการแสวงหาประโยชน์",
+   "excerpt": "20261027 human 02 รองอัยการสูงสุดนำคณะอัยการไทยและผู้แทน สปป.ลาวศึกษาดูงานต่อต้านการแสวงหาประโยชน์ 20261126 cyber 10 — Unit 42 ติดตามกลุ่มผู้โจมตีเครือข่าย Com หลอกทางโทรศัพท์แอบอ้างเป็นฝ่ายไอที ดักรหัสและ MFA ผ่านหน้าเว็บตัวกลาง ยึดบัญชีคลาวด์องค์กรการเงิน สาธารณสุข และกฎหมาย แล้วขโมยข้อมูลเรียกค่าไถ่",
    "path": "30_Entities/Places/ออสเตรเลีย.md",
-   "degree": 1
+   "degree": 2
   },
   {
    "id": "30_Entities/Places/อาคารถนนบ้านทุ่ง ต.แม่สอด",
@@ -37919,6 +38174,23 @@
    "degree": 1
   },
   {
+   "id": "30_Entities/Units/1Password",
+   "title": "1Password",
+   "kind": "entity",
+   "folder": "30_Entities/Units",
+   "entity_group": "หน่วย",
+   "date": null,
+   "case_id": null,
+   "crime_type": null,
+   "bureau": null,
+   "area": null,
+   "status": null,
+   "tags": [],
+   "excerpt": "20261126 cyber 04 — 1Password ยืนยันผู้โจมตียึดบัญชี GitHub ขององค์กรที่พนักงานใช้ ฝังโค้ดอันตรายในระบบหลังบ้านดึงชื่อ อีเมล และโทเคนลิงก์คำเชิญ/กู้บัญชีของลูกค้าบางส่วน ยืนยันคลังรหัสผ่านไม่ถูกเข้าถึง",
+   "path": "30_Entities/Units/1Password.md",
+   "degree": 1
+  },
+  {
    "id": "30_Entities/Units/Amazon Threat Intelligence",
    "title": "Amazon Threat Intelligence",
    "kind": "entity",
@@ -38140,6 +38412,23 @@
    "degree": 1
   },
   {
+   "id": "30_Entities/Units/CIA",
+   "title": "CIA",
+   "kind": "entity",
+   "folder": "30_Entities/Units",
+   "entity_group": "หน่วย",
+   "date": null,
+   "case_id": null,
+   "crime_type": null,
+   "bureau": null,
+   "area": null,
+   "status": null,
+   "tags": [],
+   "excerpt": "20261126 cyber 06 — รายงานข่าวระบุผู้โจมตีเจาะระบบวิเคราะห์ข่าวกรองจากแหล่งเปิด (OSINT) ของ CIA โดยใช้เครื่องมือเจาะระบบอัตโนมัติด้วย AI ชื่อ ARTEX กระทบ ODNI และ NGA ด้วย แหล่งข่าวยืนยันเครือข่ายลับไม่ถูกเข้าถึง",
+   "path": "30_Entities/Units/CIA.md",
+   "degree": 1
+  },
+  {
    "id": "30_Entities/Units/CISA",
    "title": "CISA",
    "kind": "entity",
@@ -38154,7 +38443,7 @@
    "tags": [],
    "excerpt": "20261118 cyber 09 — CISA เร่งองค์กรแพตช์ช่องโหว่ Java4Shell (CVE 2026 114938) ใน Java เสี่ยงถูกสั่งรันโค้ดจากระยะไกลโดยไม่ต้องยืนยันตัวตน 20261119 cyber 11 — CISA เพิ่ม 4 ช่องโหว่ที่ถูกใช้โจมตีจริงเข้ารายการ KEV รวม Synology DSM, LiteLLM, Apache Axis และ REDCap 20261120 cyber 06 — ThaiCERT เตือน CISA เพิ่มช่องโหว่ Critical ใน Perforce Puppet Enterprise (CVE…",
    "path": "30_Entities/Units/CISA.md",
-   "degree": 4
+   "degree": 6
   },
   {
    "id": "30_Entities/Units/Cisco Talos",
@@ -38293,6 +38582,23 @@
    "degree": 1
   },
   {
+   "id": "30_Entities/Units/Dream",
+   "title": "Dream",
+   "kind": "entity",
+   "folder": "30_Entities/Units",
+   "entity_group": "หน่วย",
+   "date": null,
+   "case_id": null,
+   "crime_type": null,
+   "bureau": null,
+   "area": null,
+   "status": null,
+   "tags": [],
+   "excerpt": "20261126 cyber 15 — Palo Alto Networks ออก PAN OS รุ่นใหม่แก้ช่องโหว่ Fragnesia (CVE 2026 46300) ในเคอร์เนล Linux ที่กลุ่มผู้โจมตีใช้ภาษาจีนใช้ร่วม PHP2Shell ยึดสิทธิ์ root บนไฟร์วอลล์ 24 เครื่องขององค์กรเกี่ยวข้องรัฐบาลสหรัฐฯ",
+   "path": "30_Entities/Units/Dream.md",
+   "degree": 1
+  },
+  {
    "id": "30_Entities/Units/Drupal Security Team",
    "title": "Drupal Security Team",
    "kind": "entity",
@@ -38305,9 +38611,9 @@
    "area": null,
    "status": null,
    "tags": [],
-   "excerpt": "20261121 cyber 07 — ThaiCERT เตือนช่องโหว่ระดับ Critical ใน Drupal (CVE 2026 132165) ผู้โจมตีไม่ต้องยืนยันตัวตนอาจเรียกติดตั้งระบบใหม่และยึดเว็บไซต์ แนะอัปเดตเป็น 10.6.22 / 11.3.22 / 11.4.13",
+   "excerpt": "20261121 cyber 07 — ThaiCERT เตือนช่องโหว่ระดับ Critical ใน Drupal (CVE 2026 132165) ผู้โจมตีไม่ต้องยืนยันตัวตนอาจเรียกติดตั้งระบบใหม่และยึดเว็บไซต์ แนะอัปเดตเป็น 10.6.22 / 11.3.22 / 11.4.13 20261126 cyber 05 — ทีมความปลอดภัย Drupal ยืนยันช่องโหว่วิกฤต CVE 2026 132165 (Fail2Install) ในตัวติดตั้ง install.php ถูกใช้ยึดเว็บไซต์จริงตั้งแต่ 19 พ.ย. 2569 CISA สั่…",
    "path": "30_Entities/Units/Drupal Security Team.md",
-   "degree": 1
+   "degree": 2
   },
   {
    "id": "30_Entities/Units/Equinor",
@@ -38324,6 +38630,23 @@
    "tags": [],
    "excerpt": "20261124 cyber 11 — Microsoft เตือนช่องโหว่ใน Azure API Management รุ่น Classic ถูกใช้ขโมยรหัสลับและโทเคน API ของลูกค้า หน่วยงานความมั่นคงนอร์เวย์เชื่อมโยงกับการโจมตีบริษัทพลังงาน Equinor และ Skagerak Energi",
    "path": "30_Entities/Units/Equinor.md",
+   "degree": 1
+  },
+  {
+   "id": "30_Entities/Units/Eye Security",
+   "title": "Eye Security",
+   "kind": "entity",
+   "folder": "30_Entities/Units",
+   "entity_group": "หน่วย",
+   "date": null,
+   "case_id": null,
+   "crime_type": null,
+   "bureau": null,
+   "area": null,
+   "status": null,
+   "tags": [],
+   "excerpt": "20261126 cyber 08 — watchTowr พบผู้โจมตีหลาย IP ใช้ช่องโหว่ GeoServer ที่เพิ่งออกแพตช์ 24 พ.ย. 2569 สำรวจเซิร์ฟเวอร์จริงตั้งแต่เช้า 25 พ.ย. นักวิจัยเตือนต่อช่องโหว่เป็นลำดับขั้นยึดเครื่องได้โดยไม่ต้องล็อกอิน",
+   "path": "30_Entities/Units/Eye Security.md",
    "degree": 1
   },
   {
@@ -38375,7 +38698,7 @@
    "tags": [],
    "excerpt": "20261118 cyber 10 — ThaiCERT สรุปคำเตือน FBI เรื่องเฟรมเวิร์ก AI \"ARTEX\" ช่วยผู้โจมตีเจาะระบบถึงสิทธิ์ขั้นสูงภายในไม่ถึง 3 ชั่วโมง 20261118 cyber 15 — สหรัฐฯ รับตัวผู้ต้องหาชาวคาซัคสถานจากอิตาลี คดีแรนซัมแวร์ INC และ Lynx โจมตีโรงพยาบาลและโรงเรียน เรียกค่าไถ่รวมกว่า 500 ล้านดอลลาร์ 20261119 cyber 12 — ตำรวจยูเครนร่วม FBI จับ 4 ผู้ต้องสงสัยเครือข่ายแรนซัมแวร…",
    "path": "30_Entities/Units/FBI.md",
-   "degree": 5
+   "degree": 7
   },
   {
    "id": "30_Entities/Units/Federal Bureau of Investigation สหรัฐอเมริกา",
@@ -38392,6 +38715,23 @@
    "tags": [],
    "excerpt": "20261115 human 01 — ตม.จว.ภูเก็ต ควบคุมตัวชายอเมริกันอายุ 33 ปีที่วิลล่าใน ต.ฉลอง อ.เมืองภูเก็ต ตามการประสานของ FBI ว่ามีหมายจับสหรัฐฯ และเกี่ยวข้องคดีค้ามนุษย์ ผบก.ตม.6 เพิกถอนการอนุญาตให้อยู่ในราชอาณาจักร",
    "path": "30_Entities/Units/Federal Bureau of Investigation สหรัฐอเมริกา.md",
+   "degree": 1
+  },
+  {
+   "id": "30_Entities/Units/FinCEN",
+   "title": "FinCEN",
+   "kind": "entity",
+   "folder": "30_Entities/Units",
+   "entity_group": "หน่วย",
+   "date": null,
+   "case_id": null,
+   "crime_type": null,
+   "bureau": null,
+   "area": null,
+   "status": null,
+   "tags": [],
+   "excerpt": "20261126 cyber 07 — FinCEN หน่วยข่าวกรองทางการเงินของกระทรวงการคลังสหรัฐฯ ถูกบุกรุกระบบบางส่วน ต้องปิดบางระบบชั่วคราว ขยายเส้นตายส่งรายงานธุรกรรมต้องสงสัยถึง 30 ธ.ค. 2569 ร่วม FBI และ CISA สอบสวน",
+   "path": "30_Entities/Units/FinCEN.md",
    "degree": 1
   },
   {
@@ -38494,6 +38834,23 @@
    "tags": [],
    "excerpt": "20261125 cyber 06 — GreyNoise พบกลุ่มผู้โจมตี GT13 ยึดเซิร์ฟเวอร์จัดการ Check Point 24 เครื่องใน 22 องค์กร 17 ประเทศ ทั้งหน่วยงานรัฐ การเงิน พลังงาน คาดเป็นปฏิบัติการจารกรรมที่อาจยังดำเนินอยู่",
    "path": "30_Entities/Units/GreyNoise.md",
+   "degree": 1
+  },
+  {
+   "id": "30_Entities/Units/Hex.pm",
+   "title": "Hex.pm",
+   "kind": "entity",
+   "folder": "30_Entities/Units",
+   "entity_group": "หน่วย",
+   "date": null,
+   "case_id": null,
+   "crime_type": null,
+   "bureau": null,
+   "area": null,
+   "status": null,
+   "tags": [],
+   "excerpt": "20261126 cyber 09 — ผู้โจมตีใช้ช่องโหว่ CVSS 10.0 ที่ซ่อนอยู่ในโค้ดตั้งแต่ปี 2559 สั่งรันคำสั่งบนเซิร์ฟเวอร์ 6 เครื่องของ Hex.pm คลังแพ็กเกจภาษา Elixir/Erlang ทีมแก้ครบใน 15 นาที บังคับออกจากระบบผู้ใช้ทุกบัญชี",
+   "path": "30_Entities/Units/Hex.pm.md",
    "degree": 1
   },
   {
@@ -38628,9 +38985,9 @@
    "area": null,
    "status": null,
    "tags": [],
-   "excerpt": "20261120 cyber 12 — N able ยืนยันผู้โจมตีเข้าถึงเซิร์ฟเวอร์ Mail Assure และ SpamExperts Hosted Cloud ทำพอร์ทัลจัดการและ API ปิดใช้งาน ยังไม่พบหลักฐานข้อมูลลูกค้าถูกเข้าถึง",
+   "excerpt": "20261120 cyber 12 — N able ยืนยันผู้โจมตีเข้าถึงเซิร์ฟเวอร์ Mail Assure และ SpamExperts Hosted Cloud ทำพอร์ทัลจัดการและ API ปิดใช้งาน ยังไม่พบหลักฐานข้อมูลลูกค้าถูกเข้าถึง 20261126 cyber 03 — ThaiCERT เตือนช่องโหว่ระดับ Critical CVE 2026 134624 (CVSS 9.3) ใน N able Mail Assure และ SpamExperts ผู้มีบัญชี API สิทธิ์สูงอาจสั่งเซิร์ฟเวอร์กรองอีเมลเชื่อมต่อเข้าร…",
    "path": "30_Entities/Units/N-able.md",
-   "degree": 1
+   "degree": 2
   },
   {
    "id": "30_Entities/Units/National Crime Agency สหราชอาณาจักร",
@@ -38664,6 +39021,23 @@
    "tags": [],
    "excerpt": "20261122 cyber 07 — นักวิจัยสาธิตหน้าเว็บอันตรายหน้าเดียวดึงบทสนทนาส่วนตัวและความจำของผู้ช่วย AI Meta Muse ออกไปได้โดยไม่ขึ้นคำขออนุญาต ก่อนต่อยอดยึดเครื่องคลาวด์ของผู้ใช้ บริษัทวิจัยระบุแก้ไขแล้ว",
    "path": "30_Entities/Units/NebuSec.md",
+   "degree": 1
+  },
+  {
+   "id": "30_Entities/Units/NGA",
+   "title": "NGA",
+   "kind": "entity",
+   "folder": "30_Entities/Units",
+   "entity_group": "หน่วย",
+   "date": null,
+   "case_id": null,
+   "crime_type": null,
+   "bureau": null,
+   "area": null,
+   "status": null,
+   "tags": [],
+   "excerpt": "20261126 cyber 06 — รายงานข่าวระบุผู้โจมตีเจาะระบบวิเคราะห์ข่าวกรองจากแหล่งเปิด (OSINT) ของ CIA โดยใช้เครื่องมือเจาะระบบอัตโนมัติด้วย AI ชื่อ ARTEX กระทบ ODNI และ NGA ด้วย แหล่งข่าวยืนยันเครือข่ายลับไม่ถูกเข้าถึง",
+   "path": "30_Entities/Units/NGA.md",
    "degree": 1
   },
   {
@@ -38701,6 +39075,23 @@
    "degree": 1
   },
   {
+   "id": "30_Entities/Units/ODNI",
+   "title": "ODNI",
+   "kind": "entity",
+   "folder": "30_Entities/Units",
+   "entity_group": "หน่วย",
+   "date": null,
+   "case_id": null,
+   "crime_type": null,
+   "bureau": null,
+   "area": null,
+   "status": null,
+   "tags": [],
+   "excerpt": "20261126 cyber 06 — รายงานข่าวระบุผู้โจมตีเจาะระบบวิเคราะห์ข่าวกรองจากแหล่งเปิด (OSINT) ของ CIA โดยใช้เครื่องมือเจาะระบบอัตโนมัติด้วย AI ชื่อ ARTEX กระทบ ODNI และ NGA ด้วย แหล่งข่าวยืนยันเครือข่ายลับไม่ถูกเข้าถึง",
+   "path": "30_Entities/Units/ODNI.md",
+   "degree": 1
+  },
+  {
    "id": "30_Entities/Units/Okta",
    "title": "Okta",
    "kind": "entity",
@@ -38735,6 +39126,23 @@
    "degree": 1
   },
   {
+   "id": "30_Entities/Units/Palo Alto Networks Unit 42",
+   "title": "Palo Alto Networks Unit 42",
+   "kind": "entity",
+   "folder": "30_Entities/Units",
+   "entity_group": "หน่วย",
+   "date": null,
+   "case_id": null,
+   "crime_type": null,
+   "bureau": null,
+   "area": null,
+   "status": null,
+   "tags": [],
+   "excerpt": "20261126 cyber 10 — Unit 42 ติดตามกลุ่มผู้โจมตีเครือข่าย Com หลอกทางโทรศัพท์แอบอ้างเป็นฝ่ายไอที ดักรหัสและ MFA ผ่านหน้าเว็บตัวกลาง ยึดบัญชีคลาวด์องค์กรการเงิน สาธารณสุข และกฎหมาย แล้วขโมยข้อมูลเรียกค่าไถ่",
+   "path": "30_Entities/Units/Palo Alto Networks Unit 42.md",
+   "degree": 1
+  },
+  {
    "id": "30_Entities/Units/Palo Alto Networks",
    "title": "Palo Alto Networks",
    "kind": "entity",
@@ -38747,9 +39155,9 @@
    "area": null,
    "status": null,
    "tags": [],
-   "excerpt": "20261119 cyber 14 — Bitdefender พบกลุ่ม APT ผู้ใช้มัลแวร์ EggStreme ปรับเครื่องมือใหม่ให้เงียบขึ้น ยังโจมตีหน่วยงานรัฐฟิลิปปินส์ต่อเนื่อง",
+   "excerpt": "20261119 cyber 14 — Bitdefender พบกลุ่ม APT ผู้ใช้มัลแวร์ EggStreme ปรับเครื่องมือใหม่ให้เงียบขึ้น ยังโจมตีหน่วยงานรัฐฟิลิปปินส์ต่อเนื่อง 20261126 cyber 15 — Palo Alto Networks ออก PAN OS รุ่นใหม่แก้ช่องโหว่ Fragnesia (CVE 2026 46300) ในเคอร์เนล Linux ที่กลุ่มผู้โจมตีใช้ภาษาจีนใช้ร่วม PHP2Shell ยึดสิทธิ์ root บนไฟร์วอลล์ 24 เครื่องขององค์กรเกี่ยวข้องรัฐบาลส…",
    "path": "30_Entities/Units/Palo Alto Networks.md",
-   "degree": 1
+   "degree": 2
   },
   {
    "id": "30_Entities/Units/PHP Development Team",
@@ -38866,9 +39274,9 @@
    "area": null,
    "status": null,
    "tags": [],
-   "excerpt": "20261119 cyber 10 — NGINX ออกแพตช์ช่องโหว่ HTTP/2 อายุ 10 ปี \"nginx2root\" (CVE 2026 123007) เปิดทางรันโค้ดบนเซิร์ฟเวอร์โดยไม่ต้องล็อกอิน มีโค้ดสาธิตเผยแพร่แล้ว 20261124 cyber 07 — Rapid7 พบกลุ่ม Webworm ที่ฝักใฝ่จีนต้องสงสัยดัดแปลง SoftEther VPN Bridge ปลอมเป็นซอฟต์แวร์เฝ้าระวังเครือข่าย \"NtMonitor VPN\" เพื่อซ่อนช่องทางเข้าถึงระยะไกลในเครือข่ายที่ถูกเจาะ",
+   "excerpt": "20261119 cyber 10 — NGINX ออกแพตช์ช่องโหว่ HTTP/2 อายุ 10 ปี \"nginx2root\" (CVE 2026 123007) เปิดทางรันโค้ดบนเซิร์ฟเวอร์โดยไม่ต้องล็อกอิน มีโค้ดสาธิตเผยแพร่แล้ว 20261124 cyber 07 — Rapid7 พบกลุ่ม Webworm ที่ฝักใฝ่จีนต้องสงสัยดัดแปลง SoftEther VPN Bridge ปลอมเป็นซอฟต์แวร์เฝ้าระวังเครือข่าย \"NtMonitor VPN\" เพื่อซ่อนช่องทางเข้าถึงระยะไกลในเครือข่ายที่ถูกเจาะ 20…",
    "path": "30_Entities/Units/Rapid7.md",
-   "degree": 2
+   "degree": 3
   },
   {
    "id": "30_Entities/Units/Report URI",
@@ -38922,6 +39330,23 @@
    "degree": 1
   },
   {
+   "id": "30_Entities/Units/Searchlight Cyber",
+   "title": "Searchlight Cyber",
+   "kind": "entity",
+   "folder": "30_Entities/Units",
+   "entity_group": "หน่วย",
+   "date": null,
+   "case_id": null,
+   "crime_type": null,
+   "bureau": null,
+   "area": null,
+   "status": null,
+   "tags": [],
+   "excerpt": "20261126 cyber 05 — ทีมความปลอดภัย Drupal ยืนยันช่องโหว่วิกฤต CVE 2026 132165 (Fail2Install) ในตัวติดตั้ง install.php ถูกใช้ยึดเว็บไซต์จริงตั้งแต่ 19 พ.ย. 2569 CISA สั่งหน่วยงานรัฐบาลกลางแก้ภายใน 27 พ.ย.",
+   "path": "30_Entities/Units/Searchlight Cyber.md",
+   "degree": 1
+  },
+  {
    "id": "30_Entities/Units/Socket",
    "title": "Socket",
    "kind": "entity",
@@ -38934,9 +39359,9 @@
    "area": null,
    "status": null,
    "tags": [],
-   "excerpt": "20261119 cyber 15 — แพ็กเกจ agent framework ของ Microsoft บน PyPI ถูกฝังโค้ดขโมยข้อมูลรับรองคลาวด์ในรุ่น 1.26.1 และ 1.26.2 ทำงานทุกครั้งที่เปิด Python",
+   "excerpt": "20261119 cyber 15 — แพ็กเกจ agent framework ของ Microsoft บน PyPI ถูกฝังโค้ดขโมยข้อมูลรับรองคลาวด์ในรุ่น 1.26.1 และ 1.26.2 ทำงานทุกครั้งที่เปิด Python 20261126 cyber 12 — Socket พบแพ็กเกจ NuGet อันตราย 13 รายการปลอมเป็นปุ่มควบคุม WinUI/WPF ใช้หลอกนักพัฒนา .NET ผ่าน \"แบบทดสอบงานทำที่บ้าน\" ปลอม เมื่อคอมไพล์โปรเจกต์จะดาวน์โหลดและรันไฟล์อันตราย",
    "path": "30_Entities/Units/Socket.md",
-   "degree": 1
+   "degree": 2
   },
   {
    "id": "30_Entities/Units/SonicWall",
@@ -39072,7 +39497,7 @@
    "tags": [],
    "excerpt": "20261125 cyber 02 — ThaiCERT เตือนช่องโหว่ระดับ Critical CVE 2026 134814 ในไลบรารี binary parser ของ Node.js ก่อนเวอร์ชัน 2.3.1 ผู้โจมตีที่กำหนดโครงสร้างตัวแปลงข้อมูลได้อาจแทรกโค้ดและยึดเซิร์ฟเวอร์ แนะนำอัปเดตทันที 20261125 cyber 03 — ThaiCERT แนะอัปเดต Google Chrome ด่วน หลัง Google แก้ช่องโหว่ CVE 2026 134401 (CVSS 9.6) ในองค์ประกอบ Variations กระทบ Windo…",
    "path": "30_Entities/Units/ThaiCERT (สกมช.).md",
-   "degree": 2
+   "degree": 3
   },
   {
    "id": "30_Entities/Units/ThaiCERT",
@@ -39140,6 +39565,23 @@
    "tags": [],
    "excerpt": "20261025 cyber 02 บช.สอท. จับบัญชีม้าเครือข่ายกลุ่มลับแพร่คลิปลามก ชักชวนพนันออนไลน์ ตามหมายจับ ยังตามล่าแอดมิน",
    "path": "30_Entities/Units/TICAC.md",
+   "degree": 1
+  },
+  {
+   "id": "30_Entities/Units/Todoist",
+   "title": "Todoist",
+   "kind": "entity",
+   "folder": "30_Entities/Units",
+   "entity_group": "หน่วย",
+   "date": null,
+   "case_id": null,
+   "crime_type": null,
+   "bureau": null,
+   "area": null,
+   "status": null,
+   "tags": [],
+   "excerpt": "20261126 cyber 14 — Todoist ยืนยันแฮกเกอร์ใช้รหัสที่ถูกขโมยเข้าระบบซอร์สโค้ดและคลาวด์ 22–23 พ.ย. 2569 ได้อีเมลและค่าแฮชรหัสผ่านลูกค้าราว 6% รวมโทเคน API และ Slack ขอให้ผู้ได้รับผลกระทบเปลี่ยนรหัส",
+   "path": "30_Entities/Units/Todoist.md",
    "degree": 1
   },
   {
@@ -39211,6 +39653,23 @@
    "degree": 1
   },
   {
+   "id": "30_Entities/Units/watchTowr",
+   "title": "watchTowr",
+   "kind": "entity",
+   "folder": "30_Entities/Units",
+   "entity_group": "หน่วย",
+   "date": null,
+   "case_id": null,
+   "crime_type": null,
+   "bureau": null,
+   "area": null,
+   "status": null,
+   "tags": [],
+   "excerpt": "20261126 cyber 08 — watchTowr พบผู้โจมตีหลาย IP ใช้ช่องโหว่ GeoServer ที่เพิ่งออกแพตช์ 24 พ.ย. 2569 สำรวจเซิร์ฟเวอร์จริงตั้งแต่เช้า 25 พ.ย. นักวิจัยเตือนต่อช่องโหว่เป็นลำดับขั้นยึดเครื่องได้โดยไม่ต้องล็อกอิน",
+   "path": "30_Entities/Units/watchTowr.md",
+   "degree": 1
+  },
+  {
    "id": "30_Entities/Units/WhatsApp (Meta)",
    "title": "WhatsApp (Meta)",
    "kind": "entity",
@@ -39242,6 +39701,40 @@
    "tags": [],
    "excerpt": "20261119 cyber 10 — NGINX ออกแพตช์ช่องโหว่ HTTP/2 อายุ 10 ปี \"nginx2root\" (CVE 2026 123007) เปิดทางรันโค้ดบนเซิร์ฟเวอร์โดยไม่ต้องล็อกอิน มีโค้ดสาธิตเผยแพร่แล้ว",
    "path": "30_Entities/Units/Wiz.md",
+   "degree": 1
+  },
+  {
+   "id": "30_Entities/Units/Wordfence",
+   "title": "Wordfence",
+   "kind": "entity",
+   "folder": "30_Entities/Units",
+   "entity_group": "หน่วย",
+   "date": null,
+   "case_id": null,
+   "crime_type": null,
+   "bureau": null,
+   "area": null,
+   "status": null,
+   "tags": [],
+   "excerpt": "20261126 cyber 11 — WordPress.org ปิดถาวรปลั๊กอิน 6 ตัวของ WP Connect ที่ถูกฝังประตูหลังเมื่อ 22 พ.ย. 2569 หลังบัญชีนักพัฒนาถูกสงสัยว่าถูกยึด ระบบหน่วงเวลาสกัดรุ่นอันตรายไว้ก่อนเผยแพร่ ติดตั้งรวมกว่า 3,600 เว็บไซต์",
+   "path": "30_Entities/Units/Wordfence.md",
+   "degree": 1
+  },
+  {
+   "id": "30_Entities/Units/WordPress.org Plugins Team",
+   "title": "WordPress.org Plugins Team",
+   "kind": "entity",
+   "folder": "30_Entities/Units",
+   "entity_group": "หน่วย",
+   "date": null,
+   "case_id": null,
+   "crime_type": null,
+   "bureau": null,
+   "area": null,
+   "status": null,
+   "tags": [],
+   "excerpt": "20261126 cyber 11 — WordPress.org ปิดถาวรปลั๊กอิน 6 ตัวของ WP Connect ที่ถูกฝังประตูหลังเมื่อ 22 พ.ย. 2569 หลังบัญชีนักพัฒนาถูกสงสัยว่าถูกยึด ระบบหน่วงเวลาสกัดรุ่นอันตรายไว้ก่อนเผยแพร่ ติดตั้งรวมกว่า 3,600 เว็บไซต์",
+   "path": "30_Entities/Units/WordPress.org Plugins Team.md",
    "degree": 1
   },
   {
@@ -40789,7 +41282,7 @@
    "tags": [],
    "excerpt": "20261118 cyber 15 — สหรัฐฯ รับตัวผู้ต้องหาชาวคาซัคสถานจากอิตาลี คดีแรนซัมแวร์ INC และ Lynx โจมตีโรงพยาบาลและโรงเรียน เรียกค่าไถ่รวมกว่า 500 ล้านดอลลาร์ 20261118 cyber 16 — ศาลสหรัฐฯ จำคุก 6 ปี แกนนำ Scattered Spider ชาวอังกฤษ คดีส่ง SMS ฟิชชิงและสลับซิมขโมยคริปโตกว่า 11.6 ล้านดอลลาร์ 20261124 cyber 09 — ศาลสหรัฐฯ ลงโทษจำคุก 8 ปีผู้บริหารคอลเซ็นเตอร์ชาวเปรูว…",
    "path": "30_Entities/Units/กระทรวงยุติธรรมสหรัฐฯ.md",
-   "degree": 3
+   "degree": 4
   },
   {
    "id": "30_Entities/Units/กระทรวงอุตสาหกรรม",
@@ -55137,7 +55630,7 @@
    "tags": [],
    "excerpt": "หน้ารวมประเภทคดี ใช้เป็นคุณสมบัติของคดี ไม่ฝังรายการ คดี ทั้งคลัง กรองใน Bases จาก crime type แทน 20261027 cyber 01 ตำรวจสันติบาลแจ้งความเจ้าของเพจ Godd Dam ปมภาพสลิปโอนเงิน 7 ล้านบาทที่ถูกระบุว่าเป็นข้อมูลเท็จ ผบช.สอท. ยืนยันยังไม่มีการจับกุม ตำรวจไซเบอร์ขอข้อมูลคดีจาก สน.บางเขน 20261026 cyber line 01 บช.ก. บก.ป. จับหญิงวัย 32 ปี ตามหมายจับศาลเชียงใหม่ ปมบ…",
    "path": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์.md",
-   "degree": 234
+   "degree": 247
   },
   {
    "id": "40_CrimeTypes/อื่น ๆ",
@@ -60755,6 +61248,23 @@
    "kind": "entity",
    "folder": "30_Entities/บุคคล",
    "entity_group": "บุคคล",
+   "date": null,
+   "case_id": null,
+   "crime_type": null,
+   "bureau": null,
+   "area": null,
+   "status": null,
+   "tags": [],
+   "excerpt": "",
+   "path": null,
+   "degree": 1
+  },
+  {
+   "id": "30_Entities/บัญชี/urlscan.io",
+   "title": "urlscan.io",
+   "kind": "entity",
+   "folder": "30_Entities/บัญชี",
+   "entity_group": "บัญชี",
    "date": null,
    "case_id": null,
    "crime_type": null,
@@ -80849,6 +81359,211 @@
    "label": "เกี่ยวข้องกับบุคคล"
   },
   {
+   "source": "20_Cases/20261126-cyber-03",
+   "target": "30_Entities/Units/ThaiCERT (สกมช.)",
+   "label": "แจ้งโดย"
+  },
+  {
+   "source": "20_Cases/20261126-cyber-03",
+   "target": "30_Entities/Units/N-able",
+   "label": "เกี่ยวข้องกับบุคคล"
+  },
+  {
+   "source": "20_Cases/20261126-cyber-03",
+   "target": "30_Entities/Places/ทั่วโลก",
+   "label": "เกิดที่"
+  },
+  {
+   "source": "20_Cases/20261126-cyber-04",
+   "target": "30_Entities/Units/1Password",
+   "label": "เกี่ยวข้องกับบุคคล"
+  },
+  {
+   "source": "20_Cases/20261126-cyber-04",
+   "target": "30_Entities/Places/ทั่วโลก",
+   "label": "เกิดที่"
+  },
+  {
+   "source": "20_Cases/20261126-cyber-05",
+   "target": "30_Entities/Units/Drupal Security Team",
+   "label": "แจ้งโดย"
+  },
+  {
+   "source": "20_Cases/20261126-cyber-05",
+   "target": "30_Entities/Units/CISA",
+   "label": "แจ้งโดย"
+  },
+  {
+   "source": "20_Cases/20261126-cyber-05",
+   "target": "30_Entities/Units/Searchlight Cyber",
+   "label": "สืบสวนโดย"
+  },
+  {
+   "source": "20_Cases/20261126-cyber-05",
+   "target": "30_Entities/Places/ทั่วโลก",
+   "label": "เกิดที่"
+  },
+  {
+   "source": "20_Cases/20261126-cyber-06",
+   "target": "30_Entities/Units/CIA",
+   "label": "เกี่ยวข้องกับบุคคล"
+  },
+  {
+   "source": "20_Cases/20261126-cyber-06",
+   "target": "30_Entities/Units/ODNI",
+   "label": "เกี่ยวข้องกับบุคคล"
+  },
+  {
+   "source": "20_Cases/20261126-cyber-06",
+   "target": "30_Entities/Units/NGA",
+   "label": "เกี่ยวข้องกับบุคคล"
+  },
+  {
+   "source": "20_Cases/20261126-cyber-06",
+   "target": "30_Entities/Places/สหรัฐอเมริกา",
+   "label": "เกิดที่"
+  },
+  {
+   "source": "20_Cases/20261126-cyber-07",
+   "target": "30_Entities/Units/FinCEN",
+   "label": "เกี่ยวข้องกับบุคคล"
+  },
+  {
+   "source": "20_Cases/20261126-cyber-07",
+   "target": "30_Entities/Units/FBI",
+   "label": "สืบสวนโดย"
+  },
+  {
+   "source": "20_Cases/20261126-cyber-07",
+   "target": "30_Entities/Units/CISA",
+   "label": "สืบสวนโดย"
+  },
+  {
+   "source": "20_Cases/20261126-cyber-07",
+   "target": "30_Entities/Places/สหรัฐอเมริกา",
+   "label": "เกิดที่"
+  },
+  {
+   "source": "20_Cases/20261126-cyber-08",
+   "target": "30_Entities/Units/watchTowr",
+   "label": "สืบสวนโดย"
+  },
+  {
+   "source": "20_Cases/20261126-cyber-08",
+   "target": "30_Entities/Units/Eye Security",
+   "label": "สืบสวนโดย"
+  },
+  {
+   "source": "20_Cases/20261126-cyber-08",
+   "target": "30_Entities/Units/Rapid7",
+   "label": "สืบสวนโดย"
+  },
+  {
+   "source": "20_Cases/20261126-cyber-08",
+   "target": "30_Entities/Places/ทั่วโลก",
+   "label": "เกิดที่"
+  },
+  {
+   "source": "20_Cases/20261126-cyber-09",
+   "target": "30_Entities/Units/Hex.pm",
+   "label": "แจ้งโดย"
+  },
+  {
+   "source": "20_Cases/20261126-cyber-09",
+   "target": "30_Entities/Places/ทั่วโลก",
+   "label": "เกิดที่"
+  },
+  {
+   "source": "20_Cases/20261126-cyber-10",
+   "target": "30_Entities/Units/Palo Alto Networks Unit 42",
+   "label": "สืบสวนโดย"
+  },
+  {
+   "source": "20_Cases/20261126-cyber-10",
+   "target": "30_Entities/Places/สหรัฐอเมริกา",
+   "label": "เกิดที่"
+  },
+  {
+   "source": "20_Cases/20261126-cyber-10",
+   "target": "30_Entities/Places/สหราชอาณาจักร",
+   "label": "เกิดที่"
+  },
+  {
+   "source": "20_Cases/20261126-cyber-10",
+   "target": "30_Entities/Places/ออสเตรเลีย",
+   "label": "เกิดที่"
+  },
+  {
+   "source": "20_Cases/20261126-cyber-11",
+   "target": "30_Entities/Units/WordPress.org Plugins Team",
+   "label": "แจ้งโดย"
+  },
+  {
+   "source": "20_Cases/20261126-cyber-11",
+   "target": "30_Entities/Units/Wordfence",
+   "label": "สืบสวนโดย"
+  },
+  {
+   "source": "20_Cases/20261126-cyber-11",
+   "target": "30_Entities/Places/ทั่วโลก",
+   "label": "เกิดที่"
+  },
+  {
+   "source": "20_Cases/20261126-cyber-12",
+   "target": "30_Entities/Units/Socket",
+   "label": "สืบสวนโดย"
+  },
+  {
+   "source": "20_Cases/20261126-cyber-12",
+   "target": "30_Entities/Places/ทั่วโลก",
+   "label": "เกิดที่"
+  },
+  {
+   "source": "20_Cases/20261126-cyber-13",
+   "target": "30_Entities/Units/กระทรวงยุติธรรมสหรัฐฯ",
+   "label": "สั่งการโดย"
+  },
+  {
+   "source": "20_Cases/20261126-cyber-13",
+   "target": "30_Entities/Units/FBI",
+   "label": "สืบสวนโดย"
+  },
+  {
+   "source": "20_Cases/20261126-cyber-13",
+   "target": "30_Entities/Places/สหรัฐอเมริกา",
+   "label": "เกิดที่"
+  },
+  {
+   "source": "20_Cases/20261126-cyber-13",
+   "target": "30_Entities/People/อดีต CTO RansomwareHelp",
+   "label": "ผู้ต้องหา"
+  },
+  {
+   "source": "20_Cases/20261126-cyber-14",
+   "target": "30_Entities/Units/Todoist",
+   "label": "เกี่ยวข้องกับบุคคล"
+  },
+  {
+   "source": "20_Cases/20261126-cyber-14",
+   "target": "30_Entities/Places/ทั่วโลก",
+   "label": "เกิดที่"
+  },
+  {
+   "source": "20_Cases/20261126-cyber-15",
+   "target": "30_Entities/Units/Palo Alto Networks",
+   "label": "แจ้งโดย"
+  },
+  {
+   "source": "20_Cases/20261126-cyber-15",
+   "target": "30_Entities/Units/Dream",
+   "label": "สืบสวนโดย"
+  },
+  {
+   "source": "20_Cases/20261126-cyber-15",
+   "target": "30_Entities/Places/สหรัฐอเมริกา",
+   "label": "เกิดที่"
+  },
+  {
    "source": "20_Cases/20261126-drug-01",
    "target": "30_Entities/Units/ตม.จว.ชลบุรี",
    "label": "จับโดย"
@@ -84242,6 +84957,11 @@
    "source": "20_Cases/20261126-police-01",
    "target": "30_Entities/บุคคล/ขณะที่ ผบ",
    "label": "เกี่ยวข้องกับบุคคล"
+  },
+  {
+   "source": "20_Cases/20261126-cyber-11",
+   "target": "30_Entities/บัญชี/urlscan.io",
+   "label": "บัญชี"
   },
   {
    "source": "20_Cases/20261022-drug-hatyai-etomidate",
@@ -89870,6 +90590,71 @@
   },
   {
    "source": "20_Cases/20261126-cyber-02",
+   "target": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "label": "ประเภท"
+  },
+  {
+   "source": "20_Cases/20261126-cyber-03",
+   "target": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "label": "ประเภท"
+  },
+  {
+   "source": "20_Cases/20261126-cyber-04",
+   "target": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "label": "ประเภท"
+  },
+  {
+   "source": "20_Cases/20261126-cyber-05",
+   "target": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "label": "ประเภท"
+  },
+  {
+   "source": "20_Cases/20261126-cyber-06",
+   "target": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "label": "ประเภท"
+  },
+  {
+   "source": "20_Cases/20261126-cyber-07",
+   "target": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "label": "ประเภท"
+  },
+  {
+   "source": "20_Cases/20261126-cyber-08",
+   "target": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "label": "ประเภท"
+  },
+  {
+   "source": "20_Cases/20261126-cyber-09",
+   "target": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "label": "ประเภท"
+  },
+  {
+   "source": "20_Cases/20261126-cyber-10",
+   "target": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "label": "ประเภท"
+  },
+  {
+   "source": "20_Cases/20261126-cyber-11",
+   "target": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "label": "ประเภท"
+  },
+  {
+   "source": "20_Cases/20261126-cyber-12",
+   "target": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "label": "ประเภท"
+  },
+  {
+   "source": "20_Cases/20261126-cyber-13",
+   "target": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "label": "ประเภท"
+  },
+  {
+   "source": "20_Cases/20261126-cyber-14",
+   "target": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "label": "ประเภท"
+  },
+  {
+   "source": "20_Cases/20261126-cyber-15",
    "target": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
    "label": "ประเภท"
   },

@@ -1,0 +1,28 @@
+{
+ "case_id": "20261126-cyber-14",
+ "title": "Todoist ยืนยันแฮกเกอร์ใช้รหัสที่ถูกขโมยเข้าระบบซอร์สโค้ดและคลาวด์ 22–23 พ.ย. 2569 ได้อีเมลและค่าแฮชรหัสผ่านลูกค้าราว 6% รวมโทเคน API และ Slack ขอให้ผู้ได้รับผลกระทบเปลี่ยนรหัส",
+ "generated_at": "2026-11-26T06:17:21.465Z",
+ "node_count": 4,
+ "edge_count": 3,
+ "relations": [
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/Units/Todoist",
+   "target_title": "Todoist",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ทั่วโลก",
+   "target_title": "ทั่วโลก",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261126-cyber-14.svg"
+}

@@ -1,0 +1,28 @@
+{
+ "case_id": "20261126-cyber-12",
+ "title": "Socket พบแพ็กเกจ NuGet อันตราย 13 รายการปลอมเป็นปุ่มควบคุม WinUI/WPF ใช้หลอกนักพัฒนา .NET ผ่าน \"แบบทดสอบงานทำที่บ้าน\" ปลอม เมื่อคอมไพล์โปรเจกต์จะดาวน์โหลดและรันไฟล์อันตราย",
+ "generated_at": "2026-11-26T06:17:21.465Z",
+ "node_count": 4,
+ "edge_count": 3,
+ "relations": [
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/Socket",
+   "target_title": "Socket",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ทั่วโลก",
+   "target_title": "ทั่วโลก",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261126-cyber-12.svg"
+}
