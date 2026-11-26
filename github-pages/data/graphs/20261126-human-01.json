@@ -1,0 +1,58 @@
+{
+ "case_id": "20261126-human-01",
+ "title": "ตำรวจทางหลวง กก.1 บก.ทล. ร่วม ตม.จว.พระนครศรีอยุธยา สกัดรถตู้บนทางหลวง 32 อ.ไชโย อ่างทอง จับคนขับชาวเมียนมาและแรงงานเมียนมาไม่มีเอกสาร 19 คน ที่ถูกขนจากเชียงใหม่มุ่งกรุงเทพฯ",
+ "generated_at": "2026-11-26T01:26:21.167Z",
+ "node_count": 9,
+ "edge_count": 8,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/กก.1 บก.ทล.",
+   "target_title": "กก.1 บก.ทล.",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/ตม.จว.พระนครศรีอยุธยา",
+   "target_title": "ตม.จว.พระนครศรีอยุธยา",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/กก.1 บก.สส.สตม.",
+   "target_title": "กก.1 บก.สส.สตม.",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/กก.2 บก.ปทส.",
+   "target_title": "กก.2 บก.ปทส.",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/สภ.ไชโย",
+   "target_title": "สภ.ไชโย",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ทางหลวงหมายเลข 32 กม.63 อ.ไชโย จ.อ่างทอง",
+   "target_title": "ทางหลวงหมายเลข 32 กม.63 อ.ไชโย จ.อ่างทอง",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/ผบก.ทล.",
+   "target_title": "ผบก.ทล.",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/ค้ามนุษย์ แรงงานผิดกฎหมาย และคุ้มครองเด็ก",
+   "target_title": "ค้ามนุษย์ แรงงานผิดกฎหมาย และคุ้มครองเด็ก",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261126-human-01.svg"
+}

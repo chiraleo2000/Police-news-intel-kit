@@ -1,0 +1,179 @@
+{
+ "baseline": "ok",
+ "window_days": 7,
+ "days_available": 7,
+ "note": "baseline 7 วันย้อนหลัง (<7 วัน: แนวโน้มเป็นข้อมูลบ่งชี้เท่านั้น) surge = วันนี้ >=3 เรื่อง และสูงกว่าค่าเฉลี่ย >=50 เปอร์เซ็นต์",
+ "by_crime_type": [
+  {
+   "type": "คดีชีวิต ร่างกาย และเพศ",
+   "today": 2,
+   "avg_prev_7d": 1.71,
+   "delta_pct": 16.7,
+   "surge": false
+  },
+  {
+   "type": "ยาเสพติด",
+   "today": 2,
+   "avg_prev_7d": 3.14,
+   "delta_pct": -36.4,
+   "surge": false
+  },
+  {
+   "type": "สิ่งแวดล้อม ทรัพยากร และสัตว์ป่า",
+   "today": 2,
+   "avg_prev_7d": 0.57,
+   "delta_pct": 250.0,
+   "surge": false
+  },
+  {
+   "type": "ทุจริตและประพฤติมิชอบของเจ้าหน้าที่รัฐ",
+   "today": 2,
+   "avg_prev_7d": 1.0,
+   "delta_pct": 100.0,
+   "surge": false
+  },
+  {
+   "type": "อาชญากรรมไซเบอร์และออนไลน์",
+   "today": 2,
+   "avg_prev_7d": 2.71,
+   "delta_pct": -26.3,
+   "surge": false
+  },
+  {
+   "type": "คดีเศรษฐกิจ การเงิน และฟอกเงิน",
+   "today": 2,
+   "avg_prev_7d": 2.29,
+   "delta_pct": -12.5,
+   "surge": false
+  },
+  {
+   "type": "การปฏิบัติหน้าที่ ประชาสัมพันธ์ และนโยบายตำรวจ",
+   "today": 2,
+   "avg_prev_7d": 2.43,
+   "delta_pct": -17.6,
+   "surge": false
+  },
+  {
+   "type": "อาชญากรรมข้ามชาติและความร่วมมือระหว่างประเทศ",
+   "today": 1,
+   "avg_prev_7d": 1.0,
+   "delta_pct": 0.0,
+   "surge": false
+  },
+  {
+   "type": "ค้ามนุษย์ แรงงานผิดกฎหมาย และคุ้มครองเด็ก",
+   "today": 1,
+   "avg_prev_7d": 0.86,
+   "delta_pct": 16.7,
+   "surge": false
+  },
+  {
+   "type": "คดีทรัพย์สิน",
+   "today": 1,
+   "avg_prev_7d": 0.86,
+   "delta_pct": 16.7,
+   "surge": false
+  },
+  {
+   "type": "อาชญากรรมที่เกี่ยวข้องกับนักท่องเที่ยวและชาวต่างชาติ",
+   "today": 1,
+   "avg_prev_7d": 1.71,
+   "delta_pct": -41.7,
+   "surge": false
+  }
+ ],
+ "by_mo": [
+  {
+   "mo": "บัญชีม้า/ซิมม้า",
+   "today": 2,
+   "avg_prev_7d": 0.0,
+   "surge": false
+  },
+  {
+   "mo": "ลำเลียงยาเสพติด",
+   "today": 1,
+   "avg_prev_7d": 0.0,
+   "surge": false
+  },
+  {
+   "mo": "หลอกหางาน",
+   "today": 1,
+   "avg_prev_7d": 0.0,
+   "surge": false
+  },
+  {
+   "mo": "แรงงานต่างด้าวผิดกฎหมาย",
+   "today": 1,
+   "avg_prev_7d": 0.0,
+   "surge": false
+  },
+  {
+   "mo": "หลอกซื้อขายออนไลน์",
+   "today": 1,
+   "avg_prev_7d": 0.0,
+   "surge": false
+  }
+ ],
+ "by_province": [
+  {
+   "province": "กรุงเทพมหานคร",
+   "today": 10,
+   "avg_prev_7d": 9.0
+  },
+  {
+   "province": "นครปฐม",
+   "today": 2,
+   "avg_prev_7d": 0.43
+  },
+  {
+   "province": "กาญจนบุรี",
+   "today": 2,
+   "avg_prev_7d": 0.14
+  },
+  {
+   "province": "ชลบุรี",
+   "today": 2,
+   "avg_prev_7d": 1.57
+  },
+  {
+   "province": "ระยอง",
+   "today": 1,
+   "avg_prev_7d": 0.57
+  },
+  {
+   "province": "นครพนม",
+   "today": 1,
+   "avg_prev_7d": 0.14
+  },
+  {
+   "province": "ต่างประเทศ",
+   "today": 1,
+   "avg_prev_7d": 0.71
+  },
+  {
+   "province": "อ่างทอง",
+   "today": 1,
+   "avg_prev_7d": 0.0
+  },
+  {
+   "province": "เชียงใหม่",
+   "today": 1,
+   "avg_prev_7d": 1.43
+  },
+  {
+   "province": "ฉะเชิงเทรา",
+   "today": 1,
+   "avg_prev_7d": 0.29
+  },
+  {
+   "province": "ศรีสะเกษ",
+   "today": 1,
+   "avg_prev_7d": 0.0
+  },
+  {
+   "province": "สระบุรี",
+   "today": 1,
+   "avg_prev_7d": 0.43
+  }
+ ]
+}

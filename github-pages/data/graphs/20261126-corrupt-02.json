@@ -1,0 +1,76 @@
+{
+ "case_id": "20261126-corrupt-02",
+ "title": "รัฐมนตรีช่วยว่าการกระทรวงมหาดไทยแถลงปฏิบัติการ ถอนสิทธิ์ไทรโยค กาญจนบุรี จับคนต่างด้าว 13 จาก 14 หมายจับ ข้อหาใช้หนังสือรับรองการเกิดเท็จสวมสิทธิ์สัญชาติไทย ขยายผลจากคดีนายวีระ แสงทอง",
+ "generated_at": "2026-11-26T01:26:21.167Z",
+ "node_count": 12,
+ "edge_count": 11,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/ภ.จว.กาญจนบุรี",
+   "target_title": "ภ.จว.กาญจนบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/กรมการปกครอง DOPA N.I.C.E.",
+   "target_title": "กรมการปกครอง DOPA N.I.C.E.",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/ดีเอสไอ",
+   "target_title": "ดีเอสไอ",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลจังหวัดกาญจนบุรี",
+   "target_title": "ศาลจังหวัดกาญจนบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/กรมการปกครอง",
+   "target_title": "กรมการปกครอง",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/สำนักทะเบียนอำเภอไทรโยค จ.กาญจนบุรี",
+   "target_title": "สำนักทะเบียนอำเภอไทรโยค จ.กาญจนบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/รัฐมนตรีช่วยว่าการกระทรวงมหาดไทย",
+   "target_title": "รัฐมนตรีช่วยว่าการกระทรวงมหาดไทย",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/อธิบดีกรมการปกครอง",
+   "target_title": "อธิบดีกรมการปกครอง",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/นายวีระ แสงทอง",
+   "target_title": "นายวีระ แสงทอง",
+   "direction": "out"
+  },
+  {
+   "label": "ติดตามจาก",
+   "target_id": "20_Cases/20261114-tourist-01",
+   "target_title": "ตำรวจสันติบาลกาญจนบุรีคุมตัวนักเคลื่อนไหวสิทธิแรงงานเมียนมา แกนนำกลุ่ม Bright Future ที่เข้ามอบตัวตามหมายจับศาลจังหวัดกาญจนบุรี ข้อหาแสดงหลักฐานอันเป็นเท็จเพื่อให้มีชื่อในทะเบียนราษฎรโดยมิชอบ",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/ทุจริตและประพฤติมิชอบของเจ้าหน้าที่รัฐ",
+   "target_title": "ทุจริตและประพฤติมิชอบของเจ้าหน้าที่รัฐ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261126-corrupt-02.svg"
+}

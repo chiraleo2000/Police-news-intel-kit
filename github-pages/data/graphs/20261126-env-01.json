@@ -1,0 +1,58 @@
+{
+ "case_id": "20261126-env-01",
+ "title": "DSI รับคดีพิเศษที่ 165/2569 กรณีบริษัท ระยอง อินดัสเทรียล จำกัด กับพวก ลักลอบนำเข้ากากของเสียอุตสาหกรรมที่เป็นวัตถุอันตรายต้องห้าม ไม่น้อยกว่า 10,000 ตัน เก็บไว้ใน 15 อาคารที่ อ.นิคมพัฒนา ระยอง",
+ "generated_at": "2026-11-26T01:26:21.167Z",
+ "node_count": 9,
+ "edge_count": 8,
+ "relations": [
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/กองคดีทรัพยากรธรรมชาติและสิ่งแวดล้อม DSI",
+   "target_title": "กองคดีทรัพยากรธรรมชาติและสิ่งแวดล้อม DSI",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/ดีเอสไอ",
+   "target_title": "ดีเอสไอ",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/สำนักงานอุตสาหกรรมจังหวัดระยอง",
+   "target_title": "สำนักงานอุตสาหกรรมจังหวัดระยอง",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/กรมควบคุมมลพิษ",
+   "target_title": "กรมควบคุมมลพิษ",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/อาคารให้เช่า 15 หลัง อ.นิคมพัฒนา จ.ระยอง",
+   "target_title": "อาคารให้เช่า 15 หลัง อ.นิคมพัฒนา จ.ระยอง",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ท่าเรือแหลมฉบัง",
+   "target_title": "ท่าเรือแหลมฉบัง",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/อธิบดีกรมสอบสวนคดีพิเศษ",
+   "target_title": "อธิบดีกรมสอบสวนคดีพิเศษ",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/สิ่งแวดล้อม ทรัพยากร และสัตว์ป่า",
+   "target_title": "สิ่งแวดล้อม ทรัพยากร และสัตว์ป่า",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261126-env-01.svg"
+}

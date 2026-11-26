@@ -1,0 +1,46 @@
+{
+ "case_id": "20261126-cyber-01",
+ "title": "กก.4 บก.ปพ. จับหญิงอายุ 27 ปีตามหมายจับศาลจังหวัดนครปฐม ข้อหาสนับสนุนฉ้อโกงประชาชนและเปิดบัญชีม้า คดีหลอกขายวิตามินเสียหาย 556,978 บาท ผู้ต้องหาอ้างถูกหลอกส่งข้อมูลผ่านเพจหางานเสริม",
+ "generated_at": "2026-11-26T01:26:21.167Z",
+ "node_count": 7,
+ "edge_count": 6,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/กก.4 บก.ปพ.",
+   "target_title": "กก.4 บก.ปพ.",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลจังหวัดนครปฐม",
+   "target_title": "ศาลจังหวัดนครปฐม",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/สภ.เมืองนครปฐม",
+   "target_title": "สภ.เมืองนครปฐม",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ซอยเจษฎา ถนนกำแพงเพชร เขตจตุจักร",
+   "target_title": "ซอยเจษฎา ถนนกำแพงเพชร เขตจตุจักร",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/ผบช.ก.",
+   "target_title": "ผบช.ก.",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261126-cyber-01.svg"
+}

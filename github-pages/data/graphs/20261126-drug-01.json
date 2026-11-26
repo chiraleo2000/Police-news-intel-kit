@@ -1,0 +1,40 @@
+{
+ "case_id": "20261126-drug-01",
+ "title": "ตำรวจร่วมฝ่ายปกครองและ ตม.จว.ชลบุรี ตรวจบ้านพักที่ ต.ห้วยใหญ่ บางละมุง พบอุปกรณ์และสารเคมีต้องสงสัยใช้ผลิต 4-MMC (เมเฟโดรน) ควบคุมตัวชายชาวรัสเซีย 1 คน",
+ "generated_at": "2026-11-26T01:26:21.167Z",
+ "node_count": 6,
+ "edge_count": 5,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/ตม.จว.ชลบุรี",
+   "target_title": "ตม.จว.ชลบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/ภ.2",
+   "target_title": "ภ.2",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/บ้านพักหมู่ 10 ต.ห้วยใหญ่ อ.บางละมุง",
+   "target_title": "บ้านพักหมู่ 10 ต.ห้วยใหญ่ อ.บางละมุง",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/บางละมุง",
+   "target_title": "บางละมุง",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/ยาเสพติด",
+   "target_title": "ยาเสพติด",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261126-drug-01.svg"
+}

@@ -1,0 +1,46 @@
+{
+ "case_id": "20261126-transnat-01",
+ "title": "กก.สืบสวน บก.ตม.1 จับชายเวียดนามอายุ 29 ปีที่ย่านราษฎร์บูรณะ หลังพบมีหมายจับตำรวจกรุงฮานอยคดียาเสพติดตั้งแต่ปี 2565 ผู้ต้องหาเข้ามาทำธุรกิจขายและนำเข้าดอกไม้ในไทย",
+ "generated_at": "2026-11-26T01:26:21.167Z",
+ "node_count": 7,
+ "edge_count": 6,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/กก.สืบสวน บก.ตม.1",
+   "target_title": "กก.สืบสวน บก.ตม.1",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บก.ตม.1",
+   "target_title": "บก.ตม.1",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/ตม.",
+   "target_title": "ตม.",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ย่านราษฎร์บูรณะ กรุงเทพฯ",
+   "target_title": "ย่านราษฎร์บูรณะ กรุงเทพฯ",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/ผบช.สตม.",
+   "target_title": "ผบช.สตม.",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมข้ามชาติและความร่วมมือระหว่างประเทศ",
+   "target_title": "อาชญากรรมข้ามชาติและความร่วมมือระหว่างประเทศ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261126-transnat-01.svg"
+}

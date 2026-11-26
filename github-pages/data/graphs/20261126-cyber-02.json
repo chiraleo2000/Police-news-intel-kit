@@ -1,0 +1,58 @@
+{
+ "case_id": "20261126-cyber-02",
+ "title": "กก.3 บก.ปพ. จับชายอายุ 50 ปีตามหมายจับศาลอาญาพระโขนงในคดีหลอกขายเสื้อผ้ามือสองเสียหาย 2,127,119 บาท ผู้ต้องหาให้การว่ารับเงินเปิดบัญชี 3 บัญชีและถูกพาข้ามแดนไปสแกนหน้าที่ปอยเปต",
+ "generated_at": "2026-11-26T01:26:21.167Z",
+ "node_count": 9,
+ "edge_count": 8,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/กก.3 บก.ปพ.",
+   "target_title": "กก.3 บก.ปพ.",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลอาญาพระโขนง",
+   "target_title": "ศาลอาญาพระโขนง",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/สน.พระโขนง",
+   "target_title": "สน.พระโขนง",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/เขตบางกอกน้อย กรุงเทพฯ",
+   "target_title": "เขตบางกอกน้อย กรุงเทพฯ",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ปอยเปต ประเทศกัมพูชา",
+   "target_title": "ปอยเปต ประเทศกัมพูชา",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/ผบก.ปพ.",
+   "target_title": "ผบก.ปพ.",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/สถานที่/พระโขนง",
+   "target_title": "พระโขนง",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261126-cyber-02.svg"
+}
