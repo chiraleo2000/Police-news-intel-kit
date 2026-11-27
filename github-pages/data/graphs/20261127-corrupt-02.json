@@ -1,0 +1,40 @@
+{
+ "case_id": "20261127-corrupt-02",
+ "title": "ศาลแพ่งสั่งยึดและอายัดชั่วคราวทรัพย์สิน 105 รายการมูลค่าราว 320 ล้านบาท ตามคำร้องอัยการ ในคดีข้าราชการกรมส่งเสริมการปกครองท้องถิ่นกับพวกถูกกล่าวหาว่าแก้คะแนนสอบและเรียกรับเงินผู้สมัครสอบท้องถิ่น พ.ศ. 2568",
+ "generated_at": "2026-11-27T01:18:53.503Z",
+ "node_count": 6,
+ "edge_count": 5,
+ "relations": [
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลแพ่ง",
+   "target_title": "ศาลแพ่ง",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/สำนักงานอัยการพิเศษฝ่ายคดีพิเศษ 3",
+   "target_title": "สำนักงานอัยการพิเศษฝ่ายคดีพิเศษ 3",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/ปปง.",
+   "target_title": "ปปง.",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ศาลแพ่ง",
+   "target_title": "ศาลแพ่ง",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/ทุจริตและประพฤติมิชอบของเจ้าหน้าที่รัฐ",
+   "target_title": "ทุจริตและประพฤติมิชอบของเจ้าหน้าที่รัฐ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261127-corrupt-02.svg"
+}

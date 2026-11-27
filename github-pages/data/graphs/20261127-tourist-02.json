@@ -1,0 +1,40 @@
+{
+ "case_id": "20261127-tourist-02",
+ "title": "สภ.กะทู้ ภูเก็ต ควบคุมคนขับรถตุ๊กตุ๊กอายุ 48 ปีที่ถูกกล่าวหาว่าลงจากรถไปทำร้ายชายชาวต่างชาติในรถยนต์ หลังไม่พอใจที่ถูกบีบแตร ตรวจพบแอลกอฮอล์ 250 มิลลิกรัมเปอร์เซ็นต์ และแจ้งข้อหาเมาแล้วขับก่อน",
+ "generated_at": "2026-11-27T01:18:53.503Z",
+ "node_count": 6,
+ "edge_count": 5,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/สภ.กะทู้",
+   "target_title": "สภ.กะทู้",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/อ.กะทู้ จ.ภูเก็ต",
+   "target_title": "อ.กะทู้ จ.ภูเก็ต",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/ผกก.สภ.กะทู้",
+   "target_title": "ผกก.สภ.กะทู้",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/สถานที่/กะทู้",
+   "target_title": "กะทู้",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมที่เกี่ยวข้องกับนักท่องเที่ยวและชาวต่างชาติ",
+   "target_title": "อาชญากรรมที่เกี่ยวข้องกับนักท่องเที่ยวและชาวต่างชาติ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261127-tourist-02.svg"
+}

@@ -1,0 +1,58 @@
+{
+ "case_id": "20261127-tourist-01",
+ "title": "กก.สส.บช.ทท. ร่วมนายทะเบียนธุรกิจนำเที่ยว จับชายสัญชาติจีนอายุ 52 ปีที่วัดปากน้ำ ภาษีเจริญ ขณะบรรยายให้นักท่องเที่ยวจีน 7 คนโดยไม่มีใบอนุญาตมัคคุเทศก์และใบอนุญาตทำงาน ทั้งยังขับรถตู้พาทัวร์เอง",
+ "generated_at": "2026-11-27T01:18:53.503Z",
+ "node_count": 9,
+ "edge_count": 8,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/กก.สส.บช.ทท.",
+   "target_title": "กก.สส.บช.ทท.",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บช.ทท.",
+   "target_title": "บช.ทท.",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/กรมการท่องเที่ยว",
+   "target_title": "กรมการท่องเที่ยว",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/สน.ภาษีเจริญ",
+   "target_title": "สน.ภาษีเจริญ",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/วัดปากน้ำ ภาษีเจริญ",
+   "target_title": "วัดปากน้ำ ภาษีเจริญ",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/ผบช.ทท.",
+   "target_title": "ผบช.ทท.",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ภาษีเจริญ",
+   "target_title": "ภาษีเจริญ",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมที่เกี่ยวข้องกับนักท่องเที่ยวและชาวต่างชาติ",
+   "target_title": "อาชญากรรมที่เกี่ยวข้องกับนักท่องเที่ยวและชาวต่างชาติ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261127-tourist-01.svg"
+}

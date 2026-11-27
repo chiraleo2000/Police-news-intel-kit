@@ -1,0 +1,46 @@
+{
+ "case_id": "20261127-transnat-02",
+ "title": "ตม.จว.มุกดาหาร ประสานทางการลาวติดตามชายไทยอายุ 35 ปีผู้ต้องหาตามหมายจับศาลจังหวัดภูเขียวข้อหาพยายามฆ่าและอาวุธปืน ที่หนีข้ามไป สปป.ลาว แล้วรับตัวกลับเมื่อ 26 พ.ย. 2569 หลังพ้นโทษคดีฝั่งลาว",
+ "generated_at": "2026-11-27T01:18:53.503Z",
+ "node_count": 7,
+ "edge_count": 6,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/ตม.จว.มุกดาหาร",
+   "target_title": "ตม.จว.มุกดาหาร",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/ภ.จว.ชัยภูมิ",
+   "target_title": "ภ.จว.ชัยภูมิ",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลจังหวัดภูเขียว",
+   "target_title": "ศาลจังหวัดภูเขียว",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/จ.มุกดาหาร",
+   "target_title": "จ.มุกดาหาร",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/ผกก.ตม.จว.มุกดาหาร",
+   "target_title": "ผกก.ตม.จว.มุกดาหาร",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมข้ามชาติและความร่วมมือระหว่างประเทศ",
+   "target_title": "อาชญากรรมข้ามชาติและความร่วมมือระหว่างประเทศ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261127-transnat-02.svg"
+}

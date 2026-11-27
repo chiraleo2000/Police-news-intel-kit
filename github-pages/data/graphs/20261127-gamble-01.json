@@ -1,0 +1,64 @@
+{
+ "case_id": "20261127-gamble-01",
+ "title": "บก.สอท.1 จับแอดมินเว็บพนันออนไลน์ Member999 3 คนที่ท่าอากาศยานดอนเมืองขณะเดินทางกลับจากกัมพูชา ตำรวจระบุเว็บมีเงินหมุนเวียนเดือนละกว่า 30 ล้านบาท และออกหมายจับผู้เกี่ยวข้องรวม 11 คน",
+ "generated_at": "2026-11-27T01:21:58.402Z",
+ "node_count": 10,
+ "edge_count": 9,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/กก.วิเคราะห์ข่าวและเครื่องมือพิเศษ บก.สอท.1",
+   "target_title": "กก.วิเคราะห์ข่าวและเครื่องมือพิเศษ บก.สอท.1",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/บก.สอท.1",
+   "target_title": "บก.สอท.1",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บช.สอท.",
+   "target_title": "บช.สอท.",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลอาญา",
+   "target_title": "ศาลอาญา",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ท่าอากาศยานดอนเมือง",
+   "target_title": "ท่าอากาศยานดอนเมือง",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/ผบช.สอท.",
+   "target_title": "ผบช.สอท.",
+   "direction": "out"
+  },
+  {
+   "label": "เป้าหมายเครือข่าย",
+   "target_id": "30_Entities/Projects/เครือข่ายเว็บพนันออนไลน์ Member999",
+   "target_title": "เครือข่ายเว็บพนันออนไลน์ Member999",
+   "direction": "out"
+  },
+  {
+   "label": "บัญชี",
+   "target_id": "30_Entities/บัญชี/Member999",
+   "target_title": "Member999",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/พนันและบ่อนผิดกฎหมาย",
+   "target_title": "พนันและบ่อนผิดกฎหมาย",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261127-gamble-01.svg"
+}

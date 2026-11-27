@@ -1,0 +1,52 @@
+{
+ "case_id": "20261127-cyber-01",
+ "title": "บก.สอท.3 จับชาย 3 คนที่ถูกกล่าวหาว่าเป็นนายหน้าขับรถตระเวนหมู่บ้านใน อ.สีชมพู ขอนแก่น ชวนชาวบ้านเปิดบัญชีธนาคารแลกค่าจ้างบัญชีละ 1,500 บาท ตามข้อมูลผู้ใหญ่บ้าน ตำรวจระบุว่าบัญชีถูกส่งต่อให้แก๊งสแกมเมอร์ชายแดนสระแก้ว",
+ "generated_at": "2026-11-27T01:18:53.503Z",
+ "node_count": 8,
+ "edge_count": 7,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/กก.3 บก.สอท.3",
+   "target_title": "กก.3 บก.สอท.3",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/บก.สอท.3",
+   "target_title": "บก.สอท.3",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บช.สอท.",
+   "target_title": "บช.สอท.",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ต.ดงลาน อ.สีชมพู จ.ขอนแก่น",
+   "target_title": "ต.ดงลาน อ.สีชมพู จ.ขอนแก่น",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/ผบช.สอท.",
+   "target_title": "ผบช.สอท.",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/ผู้ใหญ่บ้านหมู่ 3 บ้านวังขอนแดง",
+   "target_title": "ผู้ใหญ่บ้านหมู่ 3 บ้านวังขอนแดง",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261127-cyber-01.svg"
+}

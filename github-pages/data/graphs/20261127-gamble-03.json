@@ -1,0 +1,46 @@
+{
+ "case_id": "20261127-gamble-03",
+ "title": "ชุดสืบสวน ภ.จว.นนทบุรีร่วม สภ.เมืองนนทบุรี จับนักพนันไฮโล 21 คนในบ้านพักซอยเรวดี 62 ต.ตลาดขวัญ รวมเจ้าบ้านอายุ 68 ปีที่รับว่าเป็นเจ้ามือ ยึดเงินสด 7,380 บาท และไม่ให้ประกันในชั้นสอบสวน",
+ "generated_at": "2026-11-27T01:18:53.503Z",
+ "node_count": 7,
+ "edge_count": 6,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/กก.สส.ภ.จว.นนทบุรี",
+   "target_title": "กก.สส.ภ.จว.นนทบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/สภ.เมืองนนทบุรี",
+   "target_title": "สภ.เมืองนนทบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/ศาลแขวงนนทบุรี",
+   "target_title": "ศาลแขวงนนทบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ซอยเรวดี 62 ต.ตลาดขวัญ อ.เมือง จ.นนทบุรี",
+   "target_title": "ซอยเรวดี 62 ต.ตลาดขวัญ อ.เมือง จ.นนทบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/ผกก.สส.ภ.จว.นนทบุรี",
+   "target_title": "ผกก.สส.ภ.จว.นนทบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/พนันและบ่อนผิดกฎหมาย",
+   "target_title": "พนันและบ่อนผิดกฎหมาย",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261127-gamble-03.svg"
+}

@@ -1,0 +1,46 @@
+{
+ "case_id": "20261127-corrupt-03",
+ "title": "ป.ป.ช. แถลงคำพิพากษาศาลฎีกาให้ยึดทรัพย์ 51 รายการมูลค่า 296.3 ล้านบาทของ พล.อ.เสถียร เพิ่มทองอินทร์ อดีตปลัดกระทรวงกลาโหม ในคดีร่ำรวยผิดปกติ ซึ่งกลับคำพิพากษาศาลอุทธรณ์ที่เคยยกเว้นเงินฝากสหกรณ์ 2 บัญชี",
+ "generated_at": "2026-11-27T01:18:53.503Z",
+ "node_count": 7,
+ "edge_count": 6,
+ "relations": [
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/ป.ป.ช.",
+   "target_title": "ป.ป.ช.",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลฎีกา",
+   "target_title": "ศาลฎีกา",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ศาลฎีกา",
+   "target_title": "ศาลฎีกา",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/พล.อ.เสถียร เพิ่มทองอินทร์ อดีตปลัดกระทรวงกลาโหม",
+   "target_title": "พล.อ.เสถียร เพิ่มทองอินทร์ อดีตปลัดกระทรวงกลาโหม",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/เลขาธิการ ป.ป.ช.",
+   "target_title": "เลขาธิการ ป.ป.ช.",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/ทุจริตและประพฤติมิชอบของเจ้าหน้าที่รัฐ",
+   "target_title": "ทุจริตและประพฤติมิชอบของเจ้าหน้าที่รัฐ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261127-corrupt-03.svg"
+}

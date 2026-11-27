@@ -1,0 +1,52 @@
+{
+ "case_id": "20261127-transnat-01",
+ "title": "ตม.จว.ขอนแก่น บก.ตม.4 ควบคุมชายสัญชาติเกาหลีใต้อายุ 70 ปีที่ อ.กระนวน หลังระบบ Biometrics แจ้งว่ามีหมายจับศาลแขวงโซลเหนือข้อหาฉ้อโกงและหมายแดงอินเตอร์โพล แล้วเพิกถอนการอนุญาตให้อยู่ในราชอาณาจักร",
+ "generated_at": "2026-11-27T01:18:53.503Z",
+ "node_count": 8,
+ "edge_count": 7,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/ตม.จว.ขอนแก่น",
+   "target_title": "ตม.จว.ขอนแก่น",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บก.ตม.4",
+   "target_title": "บก.ตม.4",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/กก.1 บก.ทท.2",
+   "target_title": "กก.1 บก.ทท.2",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/INTERPOL",
+   "target_title": "INTERPOL",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ต.หนองโก อ.กระนวน จ.ขอนแก่น",
+   "target_title": "ต.หนองโก อ.กระนวน จ.ขอนแก่น",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/ผบก.ตม.4",
+   "target_title": "ผบก.ตม.4",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมข้ามชาติและความร่วมมือระหว่างประเทศ",
+   "target_title": "อาชญากรรมข้ามชาติและความร่วมมือระหว่างประเทศ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261127-transnat-01.svg"
+}

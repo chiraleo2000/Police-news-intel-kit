@@ -1,0 +1,52 @@
+{
+ "case_id": "20261127-drug-03",
+ "title": "ศอ.ปส.บช.น. จับชายอายุ 31 ปีอาชีพขับรถรับจ้างผ่านแอปฯ ที่ถูกกล่าวหาว่าขายยาเสพติดออนไลน์โดยซุกไอซ์ในโมเดลรถของเล่นแล้วจ้างไรเดอร์ส่ง ยึดไอซ์ 109 กรัม ยาบ้าราว 830 เม็ด พบเงินค่ายาหมุนเวียนเกือบ 7 แสนบาท",
+ "generated_at": "2026-11-27T01:18:53.503Z",
+ "node_count": 8,
+ "edge_count": 7,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/ศอ.ปส.บช.น.",
+   "target_title": "ศอ.ปส.บช.น.",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/บก.สส.บช.น.",
+   "target_title": "บก.สส.บช.น.",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บช.น.",
+   "target_title": "บช.น.",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/สน.พระโขนง",
+   "target_title": "สน.พระโขนง",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ปากซอยสุขุมวิท 62 แยก 17",
+   "target_title": "ปากซอยสุขุมวิท 62 แยก 17",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/รอง ผบช.น. (รอง ผอ.ศอ.ปส.บช.น.)",
+   "target_title": "รอง ผบช.น. (รอง ผอ.ศอ.ปส.บช.น.)",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/ยาเสพติด",
+   "target_title": "ยาเสพติด",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261127-drug-03.svg"
+}

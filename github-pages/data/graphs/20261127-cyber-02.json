@@ -1,0 +1,40 @@
+{
+ "case_id": "20261127-cyber-02",
+ "title": "ตำรวจ สภ.ประตูน้ำจุฬาลงกรณ์ เข้าช่วยนักศึกษาหญิงอายุ 21 ปีที่ถูกแก๊งคอลเซ็นเตอร์อ้างเป็นตำรวจ สภ.นางรอง หลอกให้กักตัวในโรงแรมย่านรังสิตและเปิดวิดีโอคอลตลอดเวลา หลังโอนเงินไปแล้วรวม 173,000 บาท",
+ "generated_at": "2026-11-27T01:18:53.503Z",
+ "node_count": 6,
+ "edge_count": 5,
+ "relations": [
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/สภ.ประตูน้ำจุฬาลงกรณ์",
+   "target_title": "สภ.ประตูน้ำจุฬาลงกรณ์",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/สน.พหลโยธิน",
+   "target_title": "สน.พหลโยธิน",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/โรงแรมย่านรังสิต",
+   "target_title": "โรงแรมย่านรังสิต",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/สถานที่/ประตูน้ำ",
+   "target_title": "ประตูน้ำ",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261127-cyber-02.svg"
+}

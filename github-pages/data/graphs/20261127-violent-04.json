@@ -1,0 +1,52 @@
+{
+ "case_id": "20261127-violent-04",
+ "title": "ศาลแขวงพระนครเหนือพิพากษาจำคุกคนขับวินจักรยานยนต์อายุ 47 ปีที่ชกผู้ค้าส้มตำอายุ 57 ปีขณะข้ามทางม้าลาย ถ.ลาดพร้าววังหิน หลังถูกตำหนิเรื่องฝ่าไฟแดง โดยไม่รอการลงโทษ",
+ "generated_at": "2026-11-27T01:18:53.503Z",
+ "node_count": 8,
+ "edge_count": 7,
+ "relations": [
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/สน.โชคชัย",
+   "target_title": "สน.โชคชัย",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลแขวงพระนครเหนือ",
+   "target_title": "ศาลแขวงพระนครเหนือ",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บก.น.4",
+   "target_title": "บก.น.4",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ถ.ลาดพร้าววังหิน เขตลาดพร้าว",
+   "target_title": "ถ.ลาดพร้าววังหิน เขตลาดพร้าว",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/ผกก.สน.โชคชัย",
+   "target_title": "ผกก.สน.โชคชัย",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/สถานที่/ลาดพร้าว",
+   "target_title": "ลาดพร้าว",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/คดีชีวิต ร่างกาย และเพศ",
+   "target_title": "คดีชีวิต ร่างกาย และเพศ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261127-violent-04.svg"
+}

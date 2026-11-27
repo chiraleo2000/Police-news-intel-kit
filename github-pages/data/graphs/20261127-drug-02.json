@@ -1,0 +1,40 @@
+{
+ "case_id": "20261127-drug-02",
+ "title": "สำนักงาน ปปส.กทม. ตรวจหน่วยงานรัฐแห่งหนึ่งในกรุงเทพฯ ตามเบาะแสสายด่วน 1386 ในปฏิบัติการ ตัดเนื้อร้าย ครั้งที่ 35 พบลูกจ้าง 4 คนมีสารเสพติดในปัสสาวะ ทั้งหมดสมัครใจเข้ารับการบำบัด",
+ "generated_at": "2026-11-27T01:18:53.503Z",
+ "node_count": 6,
+ "edge_count": 5,
+ "relations": [
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/สำนักงาน ปปส.กทม.",
+   "target_title": "สำนักงาน ปปส.กทม.",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/ป.ป.ส.",
+   "target_title": "ป.ป.ส.",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/หน่วยงานรัฐแห่งหนึ่งในกรุงเทพมหานคร",
+   "target_title": "หน่วยงานรัฐแห่งหนึ่งในกรุงเทพมหานคร",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/ผู้อำนวยการสำนักงาน ปปส.กทม.",
+   "target_title": "ผู้อำนวยการสำนักงาน ปปส.กทม.",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/ยาเสพติด",
+   "target_title": "ยาเสพติด",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261127-drug-02.svg"
+}

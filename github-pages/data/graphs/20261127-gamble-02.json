@@ -1,0 +1,46 @@
+{
+ "case_id": "20261127-gamble-02",
+ "title": "กก.สส.ภ.จว.จันทบุรี ร่วม สภ.เกาะเปริด ค้นบ้านสองชั้นใน ต.หนองชิ่ม อ.แหลมสิงห์ ตามเบาะแส จับนักพนันไพ่ป๊อกเด้ง 21 คน รวมเจ้ามือและเจ้าบ้าน ยึดไพ่ 2 สำรับและเงินสด 2,900 บาท",
+ "generated_at": "2026-11-27T01:18:53.503Z",
+ "node_count": 7,
+ "edge_count": 6,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/กก.สส.ภ.จว.จันทบุรี",
+   "target_title": "กก.สส.ภ.จว.จันทบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/สภ.เกาะเปริด",
+   "target_title": "สภ.เกาะเปริด",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/ภ.จว.จันทบุรี",
+   "target_title": "ภ.จว.จันทบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ต.หนองชิ่ม อ.แหลมสิงห์ จ.จันทบุรี",
+   "target_title": "ต.หนองชิ่ม อ.แหลมสิงห์ จ.จันทบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/ผบก.ภ.จว.จันทบุรี",
+   "target_title": "ผบก.ภ.จว.จันทบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/พนันและบ่อนผิดกฎหมาย",
+   "target_title": "พนันและบ่อนผิดกฎหมาย",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261127-gamble-02.svg"
+}

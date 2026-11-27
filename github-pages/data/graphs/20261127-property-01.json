@@ -1,0 +1,64 @@
+{
+ "case_id": "20261127-property-01",
+ "title": "ตำรวจน้ำ กก.12 บก.รน. จับชายผู้ต้องหาตามหมายจับศาลจังหวัดเชียงราย ที่ไม่มาฟังคำพิพากษาคดีร่วมงัดตู้เอทีเอ็มที่สี่แยกแม่กรณ์เมื่อ 21 มิ.ย. 2569 ความเสียหายกว่า 500,000 บาท โดยพบตัวที่คอนโดมิเนียมใน ต.สันทราย",
+ "generated_at": "2026-11-27T01:18:53.503Z",
+ "node_count": 10,
+ "edge_count": 9,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/กก.12 บก.รน.",
+   "target_title": "กก.12 บก.รน.",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บก.รน.",
+   "target_title": "บก.รน.",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บช.ก.",
+   "target_title": "บช.ก.",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลจังหวัดเชียงราย",
+   "target_title": "ศาลจังหวัดเชียงราย",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/สภ.เมืองเชียงราย",
+   "target_title": "สภ.เมืองเชียงราย",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/สี่แยกแม่กรณ์ จ.เชียงราย",
+   "target_title": "สี่แยกแม่กรณ์ จ.เชียงราย",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/คอนโดมิเนียม ต.สันทราย อ.เมือง จ.เชียงราย",
+   "target_title": "คอนโดมิเนียม ต.สันทราย อ.เมือง จ.เชียงราย",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/ผบก.รน.",
+   "target_title": "ผบก.รน.",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/คดีทรัพย์สิน",
+   "target_title": "คดีทรัพย์สิน",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261127-property-01.svg"
+}

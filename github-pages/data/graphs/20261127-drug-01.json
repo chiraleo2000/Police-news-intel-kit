@@ -1,0 +1,52 @@
+{
+ "case_id": "20261127-drug-01",
+ "title": "นปส.เชียงราย กก.2 บก.ปส.3 จับผู้ต้องหา 5 คนพร้อมยาบ้า 1,184,606 เม็ดที่ซุกในกระสอบ 6 ใบบนรถกระบะ ใน ต.นางแล อ.เมืองเชียงราย ตำรวจระบุว่าเตรียมส่งต่อเข้าภาคกลาง",
+ "generated_at": "2026-11-27T01:18:53.503Z",
+ "node_count": 8,
+ "edge_count": 7,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/กก.2 บก.ปส.3",
+   "target_title": "กก.2 บก.ปส.3",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/บก.ปส.3",
+   "target_title": "บก.ปส.3",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บช.ปส.",
+   "target_title": "บช.ปส.",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ต.นางแล อ.เมือง จ.เชียงราย",
+   "target_title": "ต.นางแล อ.เมือง จ.เชียงราย",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/ผบช.ปส.",
+   "target_title": "ผบช.ปส.",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/ผบก.ปส.3",
+   "target_title": "ผบก.ปส.3",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/ยาเสพติด",
+   "target_title": "ยาเสพติด",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261127-drug-01.svg"
+}
