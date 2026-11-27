@@ -1,0 +1,42 @@
+{
+ "baseline": "ok",
+ "window_days": 7,
+ "days_available": 7,
+ "history": [
+  {
+   "date": "2026-11-26",
+   "count": 15
+  },
+  {
+   "date": "2026-11-25",
+   "count": 14
+  },
+  {
+   "date": "2026-11-24",
+   "count": 11
+  },
+  {
+   "date": "2026-11-23",
+   "count": 9
+  },
+  {
+   "date": "2026-11-22",
+   "count": 7
+  },
+  {
+   "date": "2026-11-21",
+   "count": 17
+  },
+  {
+   "date": "2026-11-20",
+   "count": 16
+  }
+ ],
+ "today_task4": 6,
+ "today_task1": 2,
+ "today_total": 8,
+ "avg_prev_7d": 12.71,
+ "delta_pct": -37.1,
+ "surge": false,
+ "note": "ข่าวประเภทอาชญากรรมไซเบอร์วันนี้ 8 เรื่อง (Task 1 2 + Task 4 6) เทียบเฉลี่ย 7 วันก่อน 12.71 เรื่อง เปลี่ยนแปลง -37.1% · baseline รวม Task 1/2/4 ตามไฟล์ที่มี (Task 4 เริ่ม 15 พ.ย. 2569 จึงยอดช่วงต้นต่ำกว่า) · รอบนี้ข่าวซ้ำเหตุการณ์เดิม (ThaiCERT: VMware vCenter/ESX VMSA-2026-0011, PAN-OS Fragnesia, ภัยไซเบอร์เรือพาณิชย์, GT13 Check Point, 1Password) ถูกรวมเข้าโพสต์ก่อนหน้า ไม่นับเป็นข่าวใหม่"
+}

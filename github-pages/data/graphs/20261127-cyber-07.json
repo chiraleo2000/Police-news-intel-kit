@@ -1,0 +1,40 @@
+{
+ "case_id": "20261127-cyber-07",
+ "title": "CISA เพิ่ม 10 ช่องโหว่ที่ถูกใช้โจมตีจริงเข้าบัญชี KEV รวม 5 รายการใน Mitel MiCollab ที่ Accenture พบผู้โจมตีใช้เป็น zero-day ยึดสิทธิ์ root ใน 30 นาที และช่องโหว่ตัวควบคุมตู้แช่ Danfoss ที่อาจเกี่ยวกับการโจมตีซูเปอร์มาร์เก็ตยุโรป",
+ "generated_at": "2026-11-27T06:13:50.288Z",
+ "node_count": 6,
+ "edge_count": 5,
+ "relations": [
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/CISA",
+   "target_title": "CISA",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/Accenture",
+   "target_title": "Accenture",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/สหรัฐอเมริกา",
+   "target_title": "สหรัฐอเมริกา",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ยุโรป",
+   "target_title": "ยุโรป",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261127-cyber-07.svg"
+}

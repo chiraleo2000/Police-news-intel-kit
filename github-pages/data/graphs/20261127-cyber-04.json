@@ -1,0 +1,40 @@
+{
+ "case_id": "20261127-cyber-04",
+ "title": "Bitdefender พบมัลแวร์ SYS010 ปลอมเป็นแอปวอลเปเปอร์เคลื่อนไหวผ่านโฆษณาบน Meta บังคับเบราว์เซอร์เข้าระบบจัดการแบบองค์กรเพื่อติดตั้งส่วนขยายขโมยคุกกี้ อ่านอีเมล Gmail/Outlook และข้อมูลบัญชีโฆษณา Facebook ไทยอยู่ในกลุ่มประเทศที่มีคำขอมากที่สุด",
+ "generated_at": "2026-11-27T06:13:50.288Z",
+ "node_count": 6,
+ "edge_count": 5,
+ "relations": [
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/Bitdefender",
+   "target_title": "Bitdefender",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/Units/Meta",
+   "target_title": "Meta",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ประเทศไทย",
+   "target_title": "ประเทศไทย",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ฟิลิปปินส์",
+   "target_title": "ฟิลิปปินส์",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261127-cyber-04.svg"
+}

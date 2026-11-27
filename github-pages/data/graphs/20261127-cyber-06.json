@@ -1,0 +1,40 @@
+{
+ "case_id": "20261127-cyber-06",
+ "title": "แคมเปญ PolinRider ที่เชื่อมโยงเกาหลีเหนือฝังตัวโหลดมัลแวร์ในคลังโค้ด GitHub กว่า 7,600 แห่งของบัญชีนักพัฒนา 2,330 บัญชี ใช้ธุรกรรมบนบล็อกเชน Ethereum ชี้ทางเซิร์ฟเวอร์สั่งการ",
+ "generated_at": "2026-11-27T06:13:50.288Z",
+ "node_count": 6,
+ "edge_count": 5,
+ "relations": [
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/SafeDep",
+   "target_title": "SafeDep",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/Apiiro",
+   "target_title": "Apiiro",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/Unit 42",
+   "target_title": "Unit 42",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/เกาหลีเหนือ",
+   "target_title": "เกาหลีเหนือ",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261127-cyber-06.svg"
+}

@@ -1,0 +1,40 @@
+{
+ "case_id": "20261127-cyber-05",
+ "title": "นักวิจัย GenDigital เผย \"ช่องโหว่ zero-day ใน Gmail\" ที่ผู้ขายมัลแวร์ Remus โฆษณา แท้จริงคือส่วนขยาย Chrome ปลอมชื่อ Google Sheets ที่ฝังลงโปรไฟล์เบราว์เซอร์ อ่านอีเมลที่ยังไม่เปิดทุกนาทีแม้เหยื่อเปลี่ยนรหัสผ่านแล้ว",
+ "generated_at": "2026-11-27T06:13:50.288Z",
+ "node_count": 6,
+ "edge_count": 5,
+ "relations": [
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/GenDigital",
+   "target_title": "GenDigital",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/Invoke RE",
+   "target_title": "Invoke RE",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/Hudson Rock",
+   "target_title": "Hudson Rock",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ทั่วโลก",
+   "target_title": "ทั่วโลก",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261127-cyber-05.svg"
+}

@@ -1,0 +1,28 @@
+{
+ "case_id": "20261127-cyber-08",
+ "title": "Push Security พบแคมเปญฟิชชิง GoodGuys แอบอ้าง 8 แบรนด์ดังรวม Google, Nvidia, Accenture และ SpaceX เชิญสัมภาษณ์ผู้เชี่ยวชาญแบบมีค่าตอบแทนสูงสุด 600 ดอลลาร์ หลอกให้ล็อกอินด้วยบัญชี Google/Okta ของที่ทำงานเพื่อขโมยรหัสและรหัส MFA",
+ "generated_at": "2026-11-27T06:13:50.288Z",
+ "node_count": 4,
+ "edge_count": 3,
+ "relations": [
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/Push Security",
+   "target_title": "Push Security",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ทั่วโลก",
+   "target_title": "ทั่วโลก",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261127-cyber-08.svg"
+}

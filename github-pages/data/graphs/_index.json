@@ -1,6 +1,6 @@
 {
- "generated_at": "2026-11-27T01:21:58.402Z",
- "count": 1067,
+ "generated_at": "2026-11-27T06:13:50.288Z",
+ "count": 1073,
  "cases": [
   {
    "case_id": "20261022-consumer-chiangmai-matcha-customs",
@@ -5231,6 +5231,36 @@
    "case_id": "20261127-cyber-02",
    "svg": "graphs/20261127-cyber-02.svg",
    "relations": 5
+  },
+  {
+   "case_id": "20261127-cyber-03",
+   "svg": "graphs/20261127-cyber-03.svg",
+   "relations": 4
+  },
+  {
+   "case_id": "20261127-cyber-04",
+   "svg": "graphs/20261127-cyber-04.svg",
+   "relations": 5
+  },
+  {
+   "case_id": "20261127-cyber-05",
+   "svg": "graphs/20261127-cyber-05.svg",
+   "relations": 5
+  },
+  {
+   "case_id": "20261127-cyber-06",
+   "svg": "graphs/20261127-cyber-06.svg",
+   "relations": 5
+  },
+  {
+   "case_id": "20261127-cyber-07",
+   "svg": "graphs/20261127-cyber-07.svg",
+   "relations": 5
+  },
+  {
+   "case_id": "20261127-cyber-08",
+   "svg": "graphs/20261127-cyber-08.svg",
+   "relations": 3
   },
   {
    "case_id": "20261127-drug-01",

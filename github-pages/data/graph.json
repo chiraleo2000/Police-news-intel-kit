@@ -1,43 +1,43 @@
 {
- "generated_at": "2026-11-27T02:31:47.098Z",
+ "generated_at": "2026-11-27T07:00:07.224Z",
  "schema_version": 2,
  "source": "vault/",
  "note": "Derived from Obsidian wikilinks. Local vault/ is the knowledge store; this file powers Pages ข้อมูลกราฟ.",
  "stats": {
-  "nodes": 3677,
-  "edges": 6058,
+  "nodes": 3691,
+  "edges": 6085,
   "unresolved": 65,
   "by_kind": {
    "daily": 35,
-   "case": 1067,
-   "entity": 2489,
+   "case": 1073,
+   "entity": 2497,
    "crime_type": 17,
    "other": 4,
    "unresolved": 65
   },
   "by_entity_group": {
-   "หน่วย": 1331,
+   "หน่วย": 1338,
    "บุคคล": 360,
-   "สถานที่": 726,
+   "สถานที่": 727,
    "ข่ายเครือข่าย": 42,
    "บัญชี": 19,
    "ผู้ต้องหา": 11
   },
   "by_label": {
-   "สืบสวนโดย": 575,
+   "สืบสวนโดย": 584,
    "จับโดย": 743,
    "สั่งการโดย": 554,
-   "แจ้งโดย": 677,
+   "แจ้งโดย": 679,
    "บัญชี": 31,
-   "เกิดที่": 1198,
+   "เกิดที่": 1206,
    "เป้าหมายเครือข่าย": 41,
-   "เกี่ยวข้องกับบุคคล": 779,
+   "เกี่ยวข้องกับบุคคล": 781,
    "ผู้ต้องหา": 64,
    "หมายจากศาล": 197,
    "ภายใต้โครงการ": 1,
    "เกี่ยวข้องกับ": 24,
    "ติดตามจาก": 109,
-   "ประเภท": 1065
+   "ประเภท": 1071
   }
  },
  "unresolved_samples": [
@@ -18658,6 +18658,108 @@
    "degree": 5
   },
   {
+   "id": "20_Cases/20261127-cyber-03",
+   "title": "ThaiCERT เตือนช่องโหว่ SQL Injection CVE-2026-82981 (CVSS v4.0 8.7) ในระบบ WHMCS ของผู้ให้บริการเว็บโฮสติง ผู้โจมตีไม่ต้องล็อกอินก็อาจดึงข้อมูลลูกค้าและค่าแฮชรหัสผ่านผู้ดูแลได้ แนะอัปเดต 9.0.10 / 9.1.2",
+   "kind": "case",
+   "folder": "20_Cases",
+   "entity_group": null,
+   "date": "2026-11-27",
+   "case_id": "20261127-cyber-03",
+   "crime_type": "อาชญากรรมไซเบอร์และออนไลน์",
+   "bureau": "ThaiCERT (สกมช.)",
+   "area": "ทั่วโลก",
+   "status": "ผู้พัฒนาออกรุ่นแก้ไขแล้ว (9.0.10 / 9.1.2) · ThaiCERT แนะเร่งอัปเดตและเปลี่ยนรหัสผ่านผู้ดูแล",
+   "tags": [],
+   "excerpt": "ประเภท: อาชญากรรมไซเบอร์และออนไลน์ หน่วย: ThaiCERT (สกมช.) ศูนย์ประสานการรักษาความมั่นคงปลอดภัยระบบคอมพิวเตอร์แห่งชาติ (ThaiCERT) ออกประกาศแจ้งเตือนเมื่อวันที่ 27 พฤศจิกายน 2569 เกี่ยวกับช่องโหว่ในซอฟต์แวร์ WHMCS ซึ่งเป็นแพลตฟอร์มที่ผู้ให้บริการเว็บโฮสติงจำนวนมากใช้บริหารลูกค้า ออกใบแจ้งหนี้ และรับเรื่องแจ้งปัญหา ช่องโหว่นี้มีรหัส CVE 2026 82981 ได้คะแนน CV…",
+   "path": "20_Cases/20261127-cyber-03.md",
+   "degree": 4
+  },
+  {
+   "id": "20_Cases/20261127-cyber-04",
+   "title": "Bitdefender พบมัลแวร์ SYS010 ปลอมเป็นแอปวอลเปเปอร์เคลื่อนไหวผ่านโฆษณาบน Meta บังคับเบราว์เซอร์เข้าระบบจัดการแบบองค์กรเพื่อติดตั้งส่วนขยายขโมยคุกกี้ อ่านอีเมล Gmail/Outlook และข้อมูลบัญชีโฆษณา Facebook ไทยอยู่ในกลุ่มประเทศที่มีคำขอมากที่สุด",
+   "kind": "case",
+   "folder": "20_Cases",
+   "entity_group": null,
+   "date": "2026-11-26",
+   "case_id": "20261127-cyber-04",
+   "crime_type": "อาชญากรรมไซเบอร์และออนไลน์",
+   "bureau": "Bitdefender",
+   "area": "ประเทศไทย",
+   "status": "แคมเปญยังดำเนินอยู่ (พบโฆษณาหลายร้อยรายการ) · Bitdefender เผยแพร่รายงาน 26 พ.ย. 2569",
+   "tags": [],
+   "excerpt": "ประเภท: อาชญากรรมไซเบอร์และออนไลน์ หน่วย: Bitdefender BleepingComputer รายงานเมื่อวันที่ 26 พฤศจิกายน 2569 ตามรายงานของ Bitdefender Labs ว่าพบมัลแวร์ขโมยข้อมูลรุ่นใหม่ชื่อ SYS010 ซึ่งนักวิจัยประเมินว่าเป็นรุ่นพัฒนาต่อจากมัลแวร์ SYS01 ที่พบในโฆษณาบน Facebook มาตั้งแต่อย่างน้อยปี 2565 แคมเปญนี้ใช้โฆษณาบนแพลตฟอร์มของ Meta ชวนผู้ใช้ Windows ดาวน์โหลดแอปวอลเปเปอ…",
+   "path": "20_Cases/20261127-cyber-04.md",
+   "degree": 5
+  },
+  {
+   "id": "20_Cases/20261127-cyber-05",
+   "title": "นักวิจัย GenDigital เผย \"ช่องโหว่ zero-day ใน Gmail\" ที่ผู้ขายมัลแวร์ Remus โฆษณา แท้จริงคือส่วนขยาย Chrome ปลอมชื่อ Google Sheets ที่ฝังลงโปรไฟล์เบราว์เซอร์ อ่านอีเมลที่ยังไม่เปิดทุกนาทีแม้เหยื่อเปลี่ยนรหัสผ่านแล้ว",
+   "kind": "case",
+   "folder": "20_Cases",
+   "entity_group": null,
+   "date": "2026-11-26",
+   "case_id": "20261127-cyber-05",
+   "crime_type": "อาชญากรรมไซเบอร์และออนไลน์",
+   "bureau": "GenDigital",
+   "area": "ทั่วโลก",
+   "status": "นักวิจัยเผยแพร่ผลวิเคราะห์ 25–26 พ.ย. 2569 · ไม่มีช่องโหว่ใน Gmail ตามที่ผู้ขายอ้าง",
+   "tags": [],
+   "excerpt": "ประเภท: อาชญากรรมไซเบอร์และออนไลน์ หน่วย: GenDigital BleepingComputer รายงานเมื่อวันที่ 26 พฤศจิกายน 2569 ว่ามัลแวร์ขโมยข้อมูลชื่อ Remus กำลังขโมยอีเมล Gmail ของเหยื่อผ่านส่วนขยายเบราว์เซอร์ Chrome ที่เป็นอันตราย ความสามารถนี้ผู้พัฒนามัลแวร์เคยโฆษณาขายตั้งแต่วันที่ 8 พฤศจิกายน 2569 ว่าเป็นการใช้ \"ช่องโหว่ zero day ใน Gmail\" ที่เก็บอีเมลได้ต่อเนื่องแม้เหยื่อ…",
+   "path": "20_Cases/20261127-cyber-05.md",
+   "degree": 5
+  },
+  {
+   "id": "20_Cases/20261127-cyber-06",
+   "title": "แคมเปญ PolinRider ที่เชื่อมโยงเกาหลีเหนือฝังตัวโหลดมัลแวร์ในคลังโค้ด GitHub กว่า 7,600 แห่งของบัญชีนักพัฒนา 2,330 บัญชี ใช้ธุรกรรมบนบล็อกเชน Ethereum ชี้ทางเซิร์ฟเวอร์สั่งการ",
+   "kind": "case",
+   "folder": "20_Cases",
+   "entity_group": null,
+   "date": "2026-11-26",
+   "case_id": "20261127-cyber-06",
+   "crime_type": "อาชญากรรมไซเบอร์และออนไลน์",
+   "bureau": "SafeDep",
+   "area": "ทั่วโลก",
+   "status": "แคมเปญยังดำเนินอยู่ · ฝังตัวโหลด 2,040 คลังโค้ดช่วง 27 ต.ค.–6 พ.ย. 2569",
+   "tags": [],
+   "excerpt": "ประเภท: อาชญากรรมไซเบอร์และออนไลน์ หน่วย: SafeDep The Hacker News รายงานเมื่อวันที่ 26 พฤศจิกายน 2569 ว่ากลุ่มผู้อยู่เบื้องหลังแคมเปญ PolinRider ซึ่งนักวิจัยหลายรายเชื่อมโยงกับผู้โจมตีจากเกาหลีเหนือ ฝังตัวโหลดมัลแวร์ภาษา Python ไว้ในคลังโค้ดบน GitHub โดยมีหลักฐานว่ากิจกรรมนี้อาจเริ่มตั้งแต่ปี 2568 บริษัทความปลอดภัยห่วงโซ่อุปทานซอฟต์แวร์ SafeDep พบตัวโหลดในค…",
+   "path": "20_Cases/20261127-cyber-06.md",
+   "degree": 5
+  },
+  {
+   "id": "20_Cases/20261127-cyber-07",
+   "title": "CISA เพิ่ม 10 ช่องโหว่ที่ถูกใช้โจมตีจริงเข้าบัญชี KEV รวม 5 รายการใน Mitel MiCollab ที่ Accenture พบผู้โจมตีใช้เป็น zero-day ยึดสิทธิ์ root ใน 30 นาที และช่องโหว่ตัวควบคุมตู้แช่ Danfoss ที่อาจเกี่ยวกับการโจมตีซูเปอร์มาร์เก็ตยุโรป",
+   "kind": "case",
+   "folder": "20_Cases",
+   "entity_group": null,
+   "date": "2026-11-26",
+   "case_id": "20261127-cyber-07",
+   "crime_type": "อาชญากรรมไซเบอร์และออนไลน์",
+   "bureau": "CISA",
+   "area": "ทั่วโลก",
+   "status": "CISA กำหนดหน่วยงานพลเรือนสหรัฐฯ แก้ไข 8 รายการภายใน 28 พ.ย. และ 2 รายการภายใน 9 ธ.ค. 2569",
+   "tags": [],
+   "excerpt": "ประเภท: อาชญากรรมไซเบอร์และออนไลน์ หน่วย: CISA สำนักงานความมั่นคงปลอดภัยไซเบอร์และโครงสร้างพื้นฐานสหรัฐฯ (CISA) เพิ่มช่องโหว่ 10 รายการเข้าบัญชีช่องโหว่ที่ถูกใช้โจมตีจริง (Known Exploited Vulnerabilities หรือ KEV) เมื่อวันที่ 25 พฤศจิกายน 2569 ตามเวลาสหรัฐฯ ตามที่หน้าประกาศของ CISA และ The Hacker News รายงาน ในจำนวนนี้มี 5 รายการในระบบสื่อสารองค์กร Mitel Mi…",
+   "path": "20_Cases/20261127-cyber-07.md",
+   "degree": 5
+  },
+  {
+   "id": "20_Cases/20261127-cyber-08",
+   "title": "Push Security พบแคมเปญฟิชชิง GoodGuys แอบอ้าง 8 แบรนด์ดังรวม Google, Nvidia, Accenture และ SpaceX เชิญสัมภาษณ์ผู้เชี่ยวชาญแบบมีค่าตอบแทนสูงสุด 600 ดอลลาร์ หลอกให้ล็อกอินด้วยบัญชี Google/Okta ของที่ทำงานเพื่อขโมยรหัสและรหัส MFA",
+   "kind": "case",
+   "folder": "20_Cases",
+   "entity_group": null,
+   "date": "2026-11-27",
+   "case_id": "20261127-cyber-08",
+   "crime_type": "อาชญากรรมไซเบอร์และออนไลน์",
+   "bureau": "Push Security",
+   "area": "ทั่วโลก",
+   "status": "แคมเปญดำเนินอยู่ ติดตามตั้งแต่ 13 ต.ค. 2569",
+   "tags": [],
+   "excerpt": "ประเภท: อาชญากรรมไซเบอร์และออนไลน์ หน่วย: Push Security BleepingComputer รายงานเมื่อวันที่ 26 พฤศจิกายน 2569 ตามข้อมูลของบริษัทความปลอดภัย Push Security ว่ามีแคมเปญฟิชชิงที่นักวิจัยตั้งชื่อว่า GoodGuys กำลังแอบอ้างแบรนด์ใหญ่ 8 แบรนด์ ได้แก่ Accenture, American Express, Coca Cola, Culver's, Google Cloud, Nvidia, SpaceX และ Spotify เพื่อขโมยรหัสบัญชี Google แ…",
+   "path": "20_Cases/20261127-cyber-08.md",
+   "degree": 3
+  },
+  {
    "id": "20_Cases/20261127-drug-01",
    "title": "นปส.เชียงราย กก.2 บก.ปส.3 จับผู้ต้องหา 5 คนพร้อมยาบ้า 1,184,606 เม็ดที่ซุกในกระสอบ 6 ใบบนรถกระบะ ใน ต.นางแล อ.เมืองเชียงราย ตำรวจระบุว่าเตรียมส่งต่อเข้าภาคกลาง",
    "kind": "case",
@@ -30776,7 +30878,7 @@
    "tags": [],
    "excerpt": "20261118 cyber 08 — ThaiCERT เตือนการโจมตีห่วงโซ่อุปทานผ่าน Optimizely แทรกสคริปต์อันตรายในเว็บไซต์ 178 องค์กร เสี่ยงถูกขโมยข้อมูลบัตรและสับเปลี่ยนกระเป๋าคริปโต 20261118 cyber 09 — CISA เร่งองค์กรแพตช์ช่องโหว่ Java4Shell (CVE 2026 114938) ใน Java เสี่ยงถูกสั่งรันโค้ดจากระยะไกลโดยไม่ต้องยืนยันตัวตน 20261118 cyber 12 — N able ออก Hotfix 3 แก้ 17 ช่องโหว่ใน N…",
    "path": "30_Entities/Places/ทั่วโลก.md",
-   "degree": 49
+   "degree": 52
   },
   {
    "id": "30_Entities/Places/ทางหลวงพิเศษ M6 กม.70+122 ต.ทับกวาง อ.แก่งคอย",
@@ -32136,7 +32238,7 @@
    "tags": [],
    "excerpt": "20261118 cyber 13 — สกมช. ประชุมหน่วยงานความมั่นคงและผู้ให้บริการโทรคมนาคม ทบทวนแผนความต่อเนื่องและเส้นทางสื่อสารสำรองรับมือเหตุขัดข้อง 20261118 cyber 14 — หอการค้าไทยห่วงภัยไซเบอร์กระทบธุรกิจ เสนอรัฐร่วมเอกชนเฝ้าระวัง แจ้งเตือนเร็ว และช่วย SMEs เข้าถึงเครื่องมือป้องกัน 20261115 cyber 05 — ดีอีและ สกมช. ชี้แจงหลังหารือ Apple การได้รับแจ้งเตือนภัยคุกคามไม่ได…",
    "path": "30_Entities/Places/ประเทศไทย.md",
-   "degree": 9
+   "degree": 10
   },
   {
    "id": "30_Entities/Places/ปราจีนบุรี",
@@ -32542,9 +32644,9 @@
    "area": null,
    "status": null,
    "tags": [],
-   "excerpt": "20261119 cyber 14 — Bitdefender พบกลุ่ม APT ผู้ใช้มัลแวร์ EggStreme ปรับเครื่องมือใหม่ให้เงียบขึ้น ยังโจมตีหน่วยงานรัฐฟิลิปปินส์ต่อเนื่อง",
+   "excerpt": "20261119 cyber 14 — Bitdefender พบกลุ่ม APT ผู้ใช้มัลแวร์ EggStreme ปรับเครื่องมือใหม่ให้เงียบขึ้น ยังโจมตีหน่วยงานรัฐฟิลิปปินส์ต่อเนื่อง 20261127 cyber 04 — Bitdefender พบมัลแวร์ SYS010 ปลอมเป็นแอปวอลเปเปอร์เคลื่อนไหวผ่านโฆษณาบน Meta บังคับเบราว์เซอร์เข้าระบบจัดการแบบองค์กรเพื่อติดตั้งส่วนขยายขโมยคุกกี้ อ่านอีเมล Gmail/Outlook และข้อมูลบัญชีโฆษณา Facebook…",
    "path": "30_Entities/Places/ฟิลิปปินส์.md",
-   "degree": 1
+   "degree": 2
   },
   {
    "id": "30_Entities/Places/ภาค 4 ส่วนหน้า",
@@ -32695,9 +32797,9 @@
    "area": null,
    "status": null,
    "tags": [],
-   "excerpt": "20261117 cyber 05 — แคมเปญ Trigram แอบอ้างแบรนด์ AI และบล็อกเชนราว 50 ราย หลอกนักพัฒนาให้รันมัลแวร์ขโมยข้อมูล 20261125 cyber 13 — เจ้าหน้าที่สหรัฐฯ สงสัยแฮกเกอร์อิหร่านอยู่เบื้องหลังการโจมตีไซเบอร์เรือบรรทุกน้ำมันและสารเคมีราว 50 ครั้งในหลายสัปดาห์ ขณะเดินเรือผ่านเอเชียและยุโรป อาจใช้ช่องโหว่เราเตอร์ Fortinet บนเรือ",
+   "excerpt": "20261117 cyber 05 — แคมเปญ Trigram แอบอ้างแบรนด์ AI และบล็อกเชนราว 50 ราย หลอกนักพัฒนาให้รันมัลแวร์ขโมยข้อมูล 20261125 cyber 13 — เจ้าหน้าที่สหรัฐฯ สงสัยแฮกเกอร์อิหร่านอยู่เบื้องหลังการโจมตีไซเบอร์เรือบรรทุกน้ำมันและสารเคมีราว 50 ครั้งในหลายสัปดาห์ ขณะเดินเรือผ่านเอเชียและยุโรป อาจใช้ช่องโหว่เราเตอร์ Fortinet บนเรือ 20261127 cyber 07 — CISA เพิ่ม 10 ช่องโหว…",
    "path": "30_Entities/Places/ยุโรป.md",
-   "degree": 2
+   "degree": 3
   },
   {
    "id": "30_Entities/Places/ยูเครน",
@@ -34516,7 +34618,7 @@
    "tags": [],
    "excerpt": "20261118 cyber 15 — สหรัฐฯ รับตัวผู้ต้องหาชาวคาซัคสถานจากอิตาลี คดีแรนซัมแวร์ INC และ Lynx โจมตีโรงพยาบาลและโรงเรียน เรียกค่าไถ่รวมกว่า 500 ล้านดอลลาร์ 20261118 cyber 16 — ศาลสหรัฐฯ จำคุก 6 ปี แกนนำ Scattered Spider ชาวอังกฤษ คดีส่ง SMS ฟิชชิงและสลับซิมขโมยคริปโตกว่า 11.6 ล้านดอลลาร์ 20261117 cyber 05 — แคมเปญ Trigram แอบอ้างแบรนด์ AI และบล็อกเชนราว 50 ราย…",
    "path": "30_Entities/Places/สหรัฐอเมริกา.md",
-   "degree": 13
+   "degree": 14
   },
   {
    "id": "30_Entities/Places/สหราชอาณาจักร",
@@ -37341,6 +37443,23 @@
    "degree": 1
   },
   {
+   "id": "30_Entities/Places/เกาหลีเหนือ",
+   "title": "เกาหลีเหนือ",
+   "kind": "entity",
+   "folder": "30_Entities/Places",
+   "entity_group": "สถานที่",
+   "date": null,
+   "case_id": null,
+   "crime_type": null,
+   "bureau": null,
+   "area": null,
+   "status": null,
+   "tags": [],
+   "excerpt": "20261127 cyber 06 — แคมเปญ PolinRider ที่เชื่อมโยงเกาหลีเหนือฝังตัวโหลดมัลแวร์ในคลังโค้ด GitHub กว่า 7,600 แห่งของบัญชีนักพัฒนา 2,330 บัญชี ใช้ธุรกรรมบนบล็อกเชน Ethereum ชี้ทางเซิร์ฟเวอร์สั่งการ",
+   "path": "30_Entities/Places/เกาหลีเหนือ.md",
+   "degree": 1
+  },
+  {
    "id": "30_Entities/Places/เกาหลีใต้",
    "title": "เกาหลีใต้",
    "kind": "entity",
@@ -39415,6 +39534,23 @@
    "degree": 1
   },
   {
+   "id": "30_Entities/Units/Accenture",
+   "title": "Accenture",
+   "kind": "entity",
+   "folder": "30_Entities/Units",
+   "entity_group": "หน่วย",
+   "date": null,
+   "case_id": null,
+   "crime_type": null,
+   "bureau": null,
+   "area": null,
+   "status": null,
+   "tags": [],
+   "excerpt": "20261127 cyber 07 — CISA เพิ่ม 10 ช่องโหว่ที่ถูกใช้โจมตีจริงเข้าบัญชี KEV รวม 5 รายการใน Mitel MiCollab ที่ Accenture พบผู้โจมตีใช้เป็น zero day ยึดสิทธิ์ root ใน 30 นาที และช่องโหว่ตัวควบคุมตู้แช่ Danfoss ที่อาจเกี่ยวกับการโจมตีซูเปอร์มาร์เก็ตยุโรป",
+   "path": "30_Entities/Units/Accenture.md",
+   "degree": 1
+  },
+  {
    "id": "30_Entities/Units/Amazon Threat Intelligence",
    "title": "Amazon Threat Intelligence",
    "kind": "entity",
@@ -39446,6 +39582,23 @@
    "tags": [],
    "excerpt": "20261119 cyber 06 — ThaiCERT เตือนช่องโหว่ Critical ใน Apache Roller (CVE 2026 129448) ถูกใช้โจมตีจริง ผู้โจมตีรันคำสั่งระยะไกลได้โดยไม่ต้องยืนยันตัวตน",
    "path": "30_Entities/Units/Apache Software Foundation.md",
+   "degree": 1
+  },
+  {
+   "id": "30_Entities/Units/Apiiro",
+   "title": "Apiiro",
+   "kind": "entity",
+   "folder": "30_Entities/Units",
+   "entity_group": "หน่วย",
+   "date": null,
+   "case_id": null,
+   "crime_type": null,
+   "bureau": null,
+   "area": null,
+   "status": null,
+   "tags": [],
+   "excerpt": "20261127 cyber 06 — แคมเปญ PolinRider ที่เชื่อมโยงเกาหลีเหนือฝังตัวโหลดมัลแวร์ในคลังโค้ด GitHub กว่า 7,600 แห่งของบัญชีนักพัฒนา 2,330 บัญชี ใช้ธุรกรรมบนบล็อกเชน Ethereum ชี้ทางเซิร์ฟเวอร์สั่งการ",
+   "path": "30_Entities/Units/Apiiro.md",
    "degree": 1
   },
   {
@@ -39512,9 +39665,9 @@
    "area": null,
    "status": null,
    "tags": [],
-   "excerpt": "20261119 cyber 14 — Bitdefender พบกลุ่ม APT ผู้ใช้มัลแวร์ EggStreme ปรับเครื่องมือใหม่ให้เงียบขึ้น ยังโจมตีหน่วยงานรัฐฟิลิปปินส์ต่อเนื่อง",
+   "excerpt": "20261119 cyber 14 — Bitdefender พบกลุ่ม APT ผู้ใช้มัลแวร์ EggStreme ปรับเครื่องมือใหม่ให้เงียบขึ้น ยังโจมตีหน่วยงานรัฐฟิลิปปินส์ต่อเนื่อง 20261127 cyber 04 — Bitdefender พบมัลแวร์ SYS010 ปลอมเป็นแอปวอลเปเปอร์เคลื่อนไหวผ่านโฆษณาบน Meta บังคับเบราว์เซอร์เข้าระบบจัดการแบบองค์กรเพื่อติดตั้งส่วนขยายขโมยคุกกี้ อ่านอีเมล Gmail/Outlook และข้อมูลบัญชีโฆษณา Facebook…",
    "path": "30_Entities/Units/Bitdefender.md",
-   "degree": 1
+   "degree": 2
   },
   {
    "id": "30_Entities/Units/Blackpoint Cyber",
@@ -39667,7 +39820,7 @@
    "tags": [],
    "excerpt": "20261118 cyber 09 — CISA เร่งองค์กรแพตช์ช่องโหว่ Java4Shell (CVE 2026 114938) ใน Java เสี่ยงถูกสั่งรันโค้ดจากระยะไกลโดยไม่ต้องยืนยันตัวตน 20261119 cyber 11 — CISA เพิ่ม 4 ช่องโหว่ที่ถูกใช้โจมตีจริงเข้ารายการ KEV รวม Synology DSM, LiteLLM, Apache Axis และ REDCap 20261120 cyber 06 — ThaiCERT เตือน CISA เพิ่มช่องโหว่ Critical ใน Perforce Puppet Enterprise (CVE…",
    "path": "30_Entities/Units/CISA.md",
-   "degree": 6
+   "degree": 7
   },
   {
    "id": "30_Entities/Units/Cisco Talos",
@@ -39959,6 +40112,23 @@
    "degree": 1
   },
   {
+   "id": "30_Entities/Units/GenDigital",
+   "title": "GenDigital",
+   "kind": "entity",
+   "folder": "30_Entities/Units",
+   "entity_group": "หน่วย",
+   "date": null,
+   "case_id": null,
+   "crime_type": null,
+   "bureau": null,
+   "area": null,
+   "status": null,
+   "tags": [],
+   "excerpt": "20261127 cyber 05 — นักวิจัย GenDigital เผย \"ช่องโหว่ zero day ใน Gmail\" ที่ผู้ขายมัลแวร์ Remus โฆษณา แท้จริงคือส่วนขยาย Chrome ปลอมชื่อ Google Sheets ที่ฝังลงโปรไฟล์เบราว์เซอร์ อ่านอีเมลที่ยังไม่เปิดทุกนาทีแม้เหยื่อเปลี่ยนรหัสผ่านแล้ว",
+   "path": "30_Entities/Units/GenDigital.md",
+   "degree": 1
+  },
+  {
    "id": "30_Entities/Units/GL.iNet",
    "title": "GL.iNet",
    "kind": "entity",
@@ -40078,6 +40248,23 @@
    "degree": 1
   },
   {
+   "id": "30_Entities/Units/Hudson Rock",
+   "title": "Hudson Rock",
+   "kind": "entity",
+   "folder": "30_Entities/Units",
+   "entity_group": "หน่วย",
+   "date": null,
+   "case_id": null,
+   "crime_type": null,
+   "bureau": null,
+   "area": null,
+   "status": null,
+   "tags": [],
+   "excerpt": "20261127 cyber 05 — นักวิจัย GenDigital เผย \"ช่องโหว่ zero day ใน Gmail\" ที่ผู้ขายมัลแวร์ Remus โฆษณา แท้จริงคือส่วนขยาย Chrome ปลอมชื่อ Google Sheets ที่ฝังลงโปรไฟล์เบราว์เซอร์ อ่านอีเมลที่ยังไม่เปิดทุกนาทีแม้เหยื่อเปลี่ยนรหัสผ่านแล้ว",
+   "path": "30_Entities/Units/Hudson Rock.md",
+   "degree": 1
+  },
+  {
    "id": "30_Entities/Units/Huntress",
    "title": "Huntress",
    "kind": "entity",
@@ -40126,6 +40313,23 @@
    "tags": [],
    "excerpt": "20261127 transnat 01 — ตม.จว.ขอนแก่น บก.ตม.4 ควบคุมชายสัญชาติเกาหลีใต้อายุ 70 ปีที่ อ.กระนวน หลังระบบ Biometrics แจ้งว่ามีหมายจับศาลแขวงโซลเหนือข้อหาฉ้อโกงและหมายแดงอินเตอร์โพล แล้วเพิกถอนการอนุญาตให้อยู่ในราชอาณาจักร",
    "path": "30_Entities/Units/INTERPOL.md",
+   "degree": 1
+  },
+  {
+   "id": "30_Entities/Units/Invoke RE",
+   "title": "Invoke RE",
+   "kind": "entity",
+   "folder": "30_Entities/Units",
+   "entity_group": "หน่วย",
+   "date": null,
+   "case_id": null,
+   "crime_type": null,
+   "bureau": null,
+   "area": null,
+   "status": null,
+   "tags": [],
+   "excerpt": "20261127 cyber 05 — นักวิจัย GenDigital เผย \"ช่องโหว่ zero day ใน Gmail\" ที่ผู้ขายมัลแวร์ Remus โฆษณา แท้จริงคือส่วนขยาย Chrome ปลอมชื่อ Google Sheets ที่ฝังลงโปรไฟล์เบราว์เซอร์ อ่านอีเมลที่ยังไม่เปิดทุกนาทีแม้เหยื่อเปลี่ยนรหัสผ่านแล้ว",
+   "path": "30_Entities/Units/Invoke RE.md",
    "degree": 1
   },
   {
@@ -40192,9 +40396,9 @@
    "area": null,
    "status": null,
    "tags": [],
-   "excerpt": "20261024 cyber 04 DE ผนึก Meta ยกระดับยืนยันตัวตนผู้ลงโฆษณาออนไลน์ เตรียมใช้ No ID, No Ads ต้นเดือน พ.ย. 20261122 cyber 07 — นักวิจัยสาธิตหน้าเว็บอันตรายหน้าเดียวดึงบทสนทนาส่วนตัวและความจำของผู้ช่วย AI Meta Muse ออกไปได้โดยไม่ขึ้นคำขออนุญาต ก่อนต่อยอดยึดเครื่องคลาวด์ของผู้ใช้ บริษัทวิจัยระบุแก้ไขแล้ว",
+   "excerpt": "20261024 cyber 04 DE ผนึก Meta ยกระดับยืนยันตัวตนผู้ลงโฆษณาออนไลน์ เตรียมใช้ No ID, No Ads ต้นเดือน พ.ย. 20261122 cyber 07 — นักวิจัยสาธิตหน้าเว็บอันตรายหน้าเดียวดึงบทสนทนาส่วนตัวและความจำของผู้ช่วย AI Meta Muse ออกไปได้โดยไม่ขึ้นคำขออนุญาต ก่อนต่อยอดยึดเครื่องคลาวด์ของผู้ใช้ บริษัทวิจัยระบุแก้ไขแล้ว 20261127 cyber 04 — Bitdefender พบมัลแวร์ SYS010 ปลอมเป็น…",
    "path": "30_Entities/Units/Meta.md",
-   "degree": 1
+   "degree": 2
   },
   {
    "id": "30_Entities/Units/Microsoft",
@@ -40435,6 +40639,23 @@
    "degree": 1
   },
   {
+   "id": "30_Entities/Units/Push Security",
+   "title": "Push Security",
+   "kind": "entity",
+   "folder": "30_Entities/Units",
+   "entity_group": "หน่วย",
+   "date": null,
+   "case_id": null,
+   "crime_type": null,
+   "bureau": null,
+   "area": null,
+   "status": null,
+   "tags": [],
+   "excerpt": "20261127 cyber 08 — Push Security พบแคมเปญฟิชชิง GoodGuys แอบอ้าง 8 แบรนด์ดังรวม Google, Nvidia, Accenture และ SpaceX เชิญสัมภาษณ์ผู้เชี่ยวชาญแบบมีค่าตอบแทนสูงสุด 600 ดอลลาร์ หลอกให้ล็อกอินด้วยบัญชี Google/Okta ของที่ทำงานเพื่อขโมยรหัสและรหัส MFA",
+   "path": "30_Entities/Units/Push Security.md",
+   "degree": 1
+  },
+  {
    "id": "30_Entities/Units/pwn.ai",
    "title": "pwn.ai",
    "kind": "entity",
@@ -40549,9 +40770,9 @@
    "area": null,
    "status": null,
    "tags": [],
-   "excerpt": "20261119 cyber 15 — แพ็กเกจ agent framework ของ Microsoft บน PyPI ถูกฝังโค้ดขโมยข้อมูลรับรองคลาวด์ในรุ่น 1.26.1 และ 1.26.2 ทำงานทุกครั้งที่เปิด Python",
+   "excerpt": "20261119 cyber 15 — แพ็กเกจ agent framework ของ Microsoft บน PyPI ถูกฝังโค้ดขโมยข้อมูลรับรองคลาวด์ในรุ่น 1.26.1 และ 1.26.2 ทำงานทุกครั้งที่เปิด Python 20261127 cyber 06 — แคมเปญ PolinRider ที่เชื่อมโยงเกาหลีเหนือฝังตัวโหลดมัลแวร์ในคลังโค้ด GitHub กว่า 7,600 แห่งของบัญชีนักพัฒนา 2,330 บัญชี ใช้ธุรกรรมบนบล็อกเชน Ethereum ชี้ทางเซิร์ฟเวอร์สั่งการ",
    "path": "30_Entities/Units/SafeDep.md",
-   "degree": 1
+   "degree": 2
   },
   {
    "id": "30_Entities/Units/SBC Medical Group",
@@ -40738,7 +40959,7 @@
    "tags": [],
    "excerpt": "20261125 cyber 02 — ThaiCERT เตือนช่องโหว่ระดับ Critical CVE 2026 134814 ในไลบรารี binary parser ของ Node.js ก่อนเวอร์ชัน 2.3.1 ผู้โจมตีที่กำหนดโครงสร้างตัวแปลงข้อมูลได้อาจแทรกโค้ดและยึดเซิร์ฟเวอร์ แนะนำอัปเดตทันที 20261125 cyber 03 — ThaiCERT แนะอัปเดต Google Chrome ด่วน หลัง Google แก้ช่องโหว่ CVE 2026 134401 (CVSS 9.6) ในองค์ประกอบ Variations กระทบ Windo…",
    "path": "30_Entities/Units/ThaiCERT (สกมช.).md",
-   "degree": 3
+   "degree": 4
   },
   {
    "id": "30_Entities/Units/ThaiCERT",
@@ -40889,9 +41110,9 @@
    "area": null,
    "status": null,
    "tags": [],
-   "excerpt": "20261116 cyber 06 — Unit 42 เปิดปฏิบัติการจารกรรมไซเบอร์ TGR STA 0049 มุ่งเป้าหน่วยงานรัฐในเอเชียตะวันออกเฉียงใต้ด้วยมัลแวร์ชุดใหม่",
+   "excerpt": "20261116 cyber 06 — Unit 42 เปิดปฏิบัติการจารกรรมไซเบอร์ TGR STA 0049 มุ่งเป้าหน่วยงานรัฐในเอเชียตะวันออกเฉียงใต้ด้วยมัลแวร์ชุดใหม่ 20261127 cyber 06 — แคมเปญ PolinRider ที่เชื่อมโยงเกาหลีเหนือฝังตัวโหลดมัลแวร์ในคลังโค้ด GitHub กว่า 7,600 แห่งของบัญชีนักพัฒนา 2,330 บัญชี ใช้ธุรกรรมบนบล็อกเชน Ethereum ชี้ทางเซิร์ฟเวอร์สั่งการ",
    "path": "30_Entities/Units/Unit 42.md",
-   "degree": 1
+   "degree": 2
   },
   {
    "id": "30_Entities/Units/watchTowr",
@@ -40925,6 +41146,23 @@
    "tags": [],
    "excerpt": "20261121 cyber 13 — WhatsApp แก้ 3 ช่องโหว่ หนึ่งในนั้นบนแอป Android (CVE 2026 23871) ถูกสงสัยว่ามิจฉาชีพใช้ทำให้ข้อความหลอกลวงดูน่าเชื่อและเผยที่อยู่ IP ของเหยื่อ แนะอัปเดตเป็น 2.26.17.4 ขึ้นไป",
    "path": "30_Entities/Units/WhatsApp (Meta).md",
+   "degree": 1
+  },
+  {
+   "id": "30_Entities/Units/WHMCS",
+   "title": "WHMCS",
+   "kind": "entity",
+   "folder": "30_Entities/Units",
+   "entity_group": "หน่วย",
+   "date": null,
+   "case_id": null,
+   "crime_type": null,
+   "bureau": null,
+   "area": null,
+   "status": null,
+   "tags": [],
+   "excerpt": "20261127 cyber 03 — ThaiCERT เตือนช่องโหว่ SQL Injection CVE 2026 82981 (CVSS v4.0 8.7) ในระบบ WHMCS ของผู้ให้บริการเว็บโฮสติง ผู้โจมตีไม่ต้องล็อกอินก็อาจดึงข้อมูลลูกค้าและค่าแฮชรหัสผ่านผู้ดูแลได้ แนะอัปเดต 9.0.10 / 9.1.2",
+   "path": "30_Entities/Units/WHMCS.md",
    "degree": 1
   },
   {
@@ -57126,7 +57364,7 @@
    "tags": [],
    "excerpt": "หน้ารวมประเภทคดี ใช้เป็นคุณสมบัติของคดี ไม่ฝังรายการ คดี ทั้งคลัง กรองใน Bases จาก crime type แทน 20261027 cyber 01 ตำรวจสันติบาลแจ้งความเจ้าของเพจ Godd Dam ปมภาพสลิปโอนเงิน 7 ล้านบาทที่ถูกระบุว่าเป็นข้อมูลเท็จ ผบช.สอท. ยืนยันยังไม่มีการจับกุม ตำรวจไซเบอร์ขอข้อมูลคดีจาก สน.บางเขน 20261026 cyber line 01 บช.ก. บก.ป. จับหญิงวัย 32 ปี ตามหมายจับศาลเชียงใหม่ ปมบ…",
    "path": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์.md",
-   "degree": 249
+   "degree": 255
   },
   {
    "id": "40_CrimeTypes/อื่น ๆ",
@@ -83547,6 +83785,111 @@
    "label": "เกิดที่"
   },
   {
+   "source": "20_Cases/20261127-cyber-03",
+   "target": "30_Entities/Units/ThaiCERT (สกมช.)",
+   "label": "แจ้งโดย"
+  },
+  {
+   "source": "20_Cases/20261127-cyber-03",
+   "target": "30_Entities/Units/WHMCS",
+   "label": "เกี่ยวข้องกับบุคคล"
+  },
+  {
+   "source": "20_Cases/20261127-cyber-03",
+   "target": "30_Entities/Places/ทั่วโลก",
+   "label": "เกิดที่"
+  },
+  {
+   "source": "20_Cases/20261127-cyber-04",
+   "target": "30_Entities/Units/Bitdefender",
+   "label": "สืบสวนโดย"
+  },
+  {
+   "source": "20_Cases/20261127-cyber-04",
+   "target": "30_Entities/Units/Meta",
+   "label": "เกี่ยวข้องกับบุคคล"
+  },
+  {
+   "source": "20_Cases/20261127-cyber-04",
+   "target": "30_Entities/Places/ประเทศไทย",
+   "label": "เกิดที่"
+  },
+  {
+   "source": "20_Cases/20261127-cyber-04",
+   "target": "30_Entities/Places/ฟิลิปปินส์",
+   "label": "เกิดที่"
+  },
+  {
+   "source": "20_Cases/20261127-cyber-05",
+   "target": "30_Entities/Units/GenDigital",
+   "label": "สืบสวนโดย"
+  },
+  {
+   "source": "20_Cases/20261127-cyber-05",
+   "target": "30_Entities/Units/Invoke RE",
+   "label": "สืบสวนโดย"
+  },
+  {
+   "source": "20_Cases/20261127-cyber-05",
+   "target": "30_Entities/Units/Hudson Rock",
+   "label": "สืบสวนโดย"
+  },
+  {
+   "source": "20_Cases/20261127-cyber-05",
+   "target": "30_Entities/Places/ทั่วโลก",
+   "label": "เกิดที่"
+  },
+  {
+   "source": "20_Cases/20261127-cyber-06",
+   "target": "30_Entities/Units/SafeDep",
+   "label": "สืบสวนโดย"
+  },
+  {
+   "source": "20_Cases/20261127-cyber-06",
+   "target": "30_Entities/Units/Apiiro",
+   "label": "สืบสวนโดย"
+  },
+  {
+   "source": "20_Cases/20261127-cyber-06",
+   "target": "30_Entities/Units/Unit 42",
+   "label": "สืบสวนโดย"
+  },
+  {
+   "source": "20_Cases/20261127-cyber-06",
+   "target": "30_Entities/Places/เกาหลีเหนือ",
+   "label": "เกิดที่"
+  },
+  {
+   "source": "20_Cases/20261127-cyber-07",
+   "target": "30_Entities/Units/CISA",
+   "label": "แจ้งโดย"
+  },
+  {
+   "source": "20_Cases/20261127-cyber-07",
+   "target": "30_Entities/Units/Accenture",
+   "label": "สืบสวนโดย"
+  },
+  {
+   "source": "20_Cases/20261127-cyber-07",
+   "target": "30_Entities/Places/สหรัฐอเมริกา",
+   "label": "เกิดที่"
+  },
+  {
+   "source": "20_Cases/20261127-cyber-07",
+   "target": "30_Entities/Places/ยุโรป",
+   "label": "เกิดที่"
+  },
+  {
+   "source": "20_Cases/20261127-cyber-08",
+   "target": "30_Entities/Units/Push Security",
+   "label": "สืบสวนโดย"
+  },
+  {
+   "source": "20_Cases/20261127-cyber-08",
+   "target": "30_Entities/Places/ทั่วโลก",
+   "label": "เกิดที่"
+  },
+  {
    "source": "20_Cases/20261127-drug-01",
    "target": "30_Entities/Units/กก.2 บก.ปส.3",
    "label": "จับโดย"
@@ -92973,6 +93316,36 @@
   },
   {
    "source": "20_Cases/20261127-cyber-02",
+   "target": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "label": "ประเภท"
+  },
+  {
+   "source": "20_Cases/20261127-cyber-03",
+   "target": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "label": "ประเภท"
+  },
+  {
+   "source": "20_Cases/20261127-cyber-04",
+   "target": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "label": "ประเภท"
+  },
+  {
+   "source": "20_Cases/20261127-cyber-05",
+   "target": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "label": "ประเภท"
+  },
+  {
+   "source": "20_Cases/20261127-cyber-06",
+   "target": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "label": "ประเภท"
+  },
+  {
+   "source": "20_Cases/20261127-cyber-07",
+   "target": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "label": "ประเภท"
+  },
+  {
+   "source": "20_Cases/20261127-cyber-08",
    "target": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
    "label": "ประเภท"
   },
