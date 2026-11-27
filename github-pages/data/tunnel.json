@@ -6,6 +6,6 @@
   "catalog": "https://ai-pc-dev-rag.ngrok-free.app/",
   "llm": "https://ai-pc-dev-rag.ngrok-free.app/1234/v1/chat/completions",
   "model": "google/gemma-4-e2b",
-  "updated_at": "2026-11-27T18:09:08.814Z",
+  "updated_at": "2026-11-27T18:35:34.285Z",
   "note": "Shared ngrok catalog at / ; MCP=/8787 police archive; files via /files/police/"
 }
