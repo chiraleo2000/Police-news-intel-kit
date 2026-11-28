@@ -1,0 +1,58 @@
+{
+ "case_id": "20261128-transnat-02",
+ "title": "ภ.2 และ ตม.จ.ชลบุรี ตรวจค้นบ้านเช่าและคอนโดในพัทยาตามหมายค้นศาลแขวงพัทยา ควบคุมชาวจีน 6 คนที่ตำรวจเชื่อว่าแลกเปลี่ยนเงินดิจิทัล USDT ให้เงินจากสแกมเมอร์และพนันออนไลน์ หมุนเวียนราว 200 ล้านบาทต่อเดือน",
+ "generated_at": "2026-11-28T02:04:35.657Z",
+ "node_count": 9,
+ "edge_count": 8,
+ "relations": [
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/ภ.2",
+   "target_title": "ภ.2",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/สภ.เมืองพัทยา",
+   "target_title": "สภ.เมืองพัทยา",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/ตม.จ.ชลบุรี",
+   "target_title": "ตม.จ.ชลบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลแขวงพัทยา",
+   "target_title": "ศาลแขวงพัทยา",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ถนนชัยพฤกษ์ ต.หนองปรือ อ.บางละมุง",
+   "target_title": "ถนนชัยพฤกษ์ ต.หนองปรือ อ.บางละมุง",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/ผบช.ภ.2",
+   "target_title": "ผบช.ภ.2",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/พัทยา",
+   "target_title": "พัทยา",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมข้ามชาติและความร่วมมือระหว่างประเทศ",
+   "target_title": "อาชญากรรมข้ามชาติและความร่วมมือระหว่างประเทศ",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261128-transnat-02.svg"
+}

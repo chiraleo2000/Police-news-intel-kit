@@ -1,0 +1,34 @@
+{
+ "case_id": "20261128-drug-03",
+ "title": "ตม.จว.มุกดาหาร ตรวจพบชายชาวลาวอายุ 34 ปีที่ด่านขาออกผ่านระบบไบโอเมตริกซ์ และจับตามหมายจับศาลจังหวัดบุรีรัมย์ในคดีสมคบค้ายาบ้า",
+ "generated_at": "2026-11-28T02:04:35.657Z",
+ "node_count": 5,
+ "edge_count": 4,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/ตม.จว.มุกดาหาร",
+   "target_title": "ตม.จว.มุกดาหาร",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลจังหวัดบุรีรัมย์",
+   "target_title": "ศาลจังหวัดบุรีรัมย์",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ด่านขาออก จ.มุกดาหาร",
+   "target_title": "ด่านขาออก จ.มุกดาหาร",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/ยาเสพติด",
+   "target_title": "ยาเสพติด",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261128-drug-03.svg"
+}

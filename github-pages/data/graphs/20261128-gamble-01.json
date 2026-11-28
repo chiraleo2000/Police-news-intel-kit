@@ -1,0 +1,76 @@
+{
+ "case_id": "20261128-gamble-01",
+ "title": "บก.สอท.5 เปิดปฏิบัติการปิดเกมเว็บพนันลุ่มน้ำตาปี จับแอดมินและผู้จัดการการเงินเว็บพนัน wth168.net 5 คนในสุราษฎร์ธานีและนครศรีธรรมราช พบบัญชีรับฝากเพียงบัญชีเดียวมีเงินเข้ากว่า 26 ล้านบาทใน 5 เดือน",
+ "generated_at": "2026-11-28T02:04:35.657Z",
+ "node_count": 12,
+ "edge_count": 11,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/กก.3 บก.สอท.5",
+   "target_title": "กก.3 บก.สอท.5",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/บก.สอท.5",
+   "target_title": "บก.สอท.5",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บช.สอท.",
+   "target_title": "บช.สอท.",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลจังหวัดสุราษฎร์ธานี",
+   "target_title": "ศาลจังหวัดสุราษฎร์ธานี",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลจังหวัดนครศรีธรรมราช",
+   "target_title": "ศาลจังหวัดนครศรีธรรมราช",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/อ.เมืองนครศรีธรรมราช",
+   "target_title": "อ.เมืองนครศรีธรรมราช",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/อ.เมืองสุราษฎร์ธานี",
+   "target_title": "อ.เมืองสุราษฎร์ธานี",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/รอง ผบช.สอท.",
+   "target_title": "รอง ผบช.สอท.",
+   "direction": "out"
+  },
+  {
+   "label": "เป้าหมายเครือข่าย",
+   "target_id": "30_Entities/Projects/เครือข่ายเว็บพนันออนไลน์ wth168.net",
+   "target_title": "เครือข่ายเว็บพนันออนไลน์ wth168.net",
+   "direction": "out"
+  },
+  {
+   "label": "บัญชี",
+   "target_id": "30_Entities/บัญชี/wth168.net",
+   "target_title": "wth168.net",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/พนันและบ่อนผิดกฎหมาย",
+   "target_title": "พนันและบ่อนผิดกฎหมาย",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261128-gamble-01.svg"
+}

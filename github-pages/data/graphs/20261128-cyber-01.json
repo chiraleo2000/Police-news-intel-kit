@@ -1,0 +1,52 @@
+{
+ "case_id": "20261128-cyber-01",
+ "title": "ACSC และ กก.5 บก.ป. ตรวจค้นรีสอร์ทใน อ.คลองหลวง จ.ปทุมธานี ยึดเครื่องซิมบ็อกซ์ 2 เครื่องและอุปกรณ์ปล่อยสัญญาณที่ตำรวจระบุว่าแก๊งคอลเซ็นเตอร์ใช้โทรหลอกประชาชนในชลบุรีและนครนายก",
+ "generated_at": "2026-11-28T02:04:35.657Z",
+ "node_count": 8,
+ "edge_count": 7,
+ "relations": [
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/กก.5 บก.ป.",
+   "target_title": "กก.5 บก.ป.",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/ศูนย์ต่อต้านการฉ้อโกงออนไลน์ (ACSC)",
+   "target_title": "ศูนย์ต่อต้านการฉ้อโกงออนไลน์ (ACSC)",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/บก.สส.ภ.1",
+   "target_title": "บก.สส.ภ.1",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/สภ.คลองห้า",
+   "target_title": "สภ.คลองห้า",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/รีสอร์ท ต.คลองหก อ.คลองหลวง",
+   "target_title": "รีสอร์ท ต.คลองหก อ.คลองหลวง",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/ผู้อำนวยการ ศตฉอ.ตร. (รอง ผบ.ตร.)",
+   "target_title": "ผู้อำนวยการ ศตฉอ.ตร. (รอง ผบ.ตร.)",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261128-cyber-01.svg"
+}

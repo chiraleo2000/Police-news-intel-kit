@@ -1,0 +1,46 @@
+{
+ "case_id": "20261128-public-01",
+ "title": "คนร้ายยิงจากฝั่งตรงข้ามคลองระหว่างงาน มากันริมคลอง ที่ ต.ลำใหม่ อ.เมืองยะลา ทำให้ตำรวจ สภ.ลำใหม่ 1 นายและประชาชน 1 คนบาดเจ็บ ตำรวจภูธรภาค 9 เร่งตรวจที่เกิดเหตุและติดตามผู้ก่อเหตุ",
+ "generated_at": "2026-11-28T02:04:35.657Z",
+ "node_count": 7,
+ "edge_count": 6,
+ "relations": [
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/สภ.ลำใหม่",
+   "target_title": "สภ.ลำใหม่",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/ภ.9",
+   "target_title": "ภ.9",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/ศูนย์พิสูจน์หลักฐาน 10",
+   "target_title": "ศูนย์พิสูจน์หลักฐาน 10",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/คลองคูบากา ต.ลำใหม่ อ.เมือง จ.ยะลา",
+   "target_title": "คลองคูบากา ต.ลำใหม่ อ.เมือง จ.ยะลา",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/ผบช.ภ.9",
+   "target_title": "ผบช.ภ.9",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/ความสงบเรียบร้อยและความมั่นคงภายใน",
+   "target_title": "ความสงบเรียบร้อยและความมั่นคงภายใน",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261128-public-01.svg"
+}

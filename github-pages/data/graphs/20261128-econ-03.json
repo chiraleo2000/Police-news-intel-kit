@@ -1,0 +1,52 @@
+{
+ "case_id": "20261128-econ-03",
+ "title": "บก.สอท.5 จับหญิงอายุ 42 ปีที่ตำรวจระบุว่าเปิดเพจรับแลกวงเงินผ่อนสินค้าออนไลน์และ Pay Later เป็นเงินสด ด้วยการสร้างรายการซื้อขายเท็จ แล้วหักส่วนแบ่งครั้งละ 7–11 เปอร์เซ็นต์",
+ "generated_at": "2026-11-28T02:04:35.657Z",
+ "node_count": 8,
+ "edge_count": 7,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/กก.3 บก.สอท.5",
+   "target_title": "กก.3 บก.สอท.5",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/บก.สอท.5",
+   "target_title": "บก.สอท.5",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บช.สอท.",
+   "target_title": "บช.สอท.",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลจังหวัดสุราษฎร์ธานี",
+   "target_title": "ศาลจังหวัดสุราษฎร์ธานี",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ต.ท่าข้าม อ.พุนพิน จ.สุราษฎร์ธานี",
+   "target_title": "ต.ท่าข้าม อ.พุนพิน จ.สุราษฎร์ธานี",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/รอง ผบช.สอท.",
+   "target_title": "รอง ผบช.สอท.",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/คดีเศรษฐกิจ การเงิน และฟอกเงิน",
+   "target_title": "คดีเศรษฐกิจ การเงิน และฟอกเงิน",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261128-econ-03.svg"
+}

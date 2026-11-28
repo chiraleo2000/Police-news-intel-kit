@@ -1,0 +1,46 @@
+{
+ "case_id": "20261128-human-01",
+ "title": "DSI ร่วมกับ ตม.สุวรรณภูมิ จับหญิงที่ถูกกล่าวหาว่าเป็นนายหน้าจัดหาหญิงไทยให้นายจ้างชาวจีนบังคับค้าประเวณีที่เมืองอัจมาน สหรัฐอาหรับเอมิเรตส์ ตามหมายจับศาลอาญาในคดีพิเศษที่ 279/2565",
+ "generated_at": "2026-11-28T02:04:35.657Z",
+ "node_count": 7,
+ "edge_count": 6,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/ศูนย์สืบสวนสะกดรอยและการข่าว DSI",
+   "target_title": "ศูนย์สืบสวนสะกดรอยและการข่าว DSI",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/ตม.ท่าอากาศยานสุวรรณภูมิ",
+   "target_title": "ตม.ท่าอากาศยานสุวรรณภูมิ",
+   "direction": "out"
+  },
+  {
+   "label": "สืบสวนโดย",
+   "target_id": "30_Entities/Units/กองคดีการค้ามนุษย์ DSI",
+   "target_title": "กองคดีการค้ามนุษย์ DSI",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลอาญา",
+   "target_title": "ศาลอาญา",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ท่าอากาศยานสุวรรณภูมิ",
+   "target_title": "ท่าอากาศยานสุวรรณภูมิ",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/ค้ามนุษย์ แรงงานผิดกฎหมาย และคุ้มครองเด็ก",
+   "target_title": "ค้ามนุษย์ แรงงานผิดกฎหมาย และคุ้มครองเด็ก",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261128-human-01.svg"
+}

@@ -1,0 +1,46 @@
+{
+ "case_id": "20261128-human-02",
+ "title": "หน่วยเฉพาะกิจราชมนู ตม.จว.ตาก และ สภ.แม่สอด ควบคุมตัวคนไทย 41 คนที่ลักลอบข้ามแดนกลับเข้าไทยนอกช่องทางที่กำหนด หลังทหารเมียนมาเข้าตรวจค้นบ่อนคาสิโนแกรนด์เมียวดี",
+ "generated_at": "2026-11-28T02:04:35.657Z",
+ "node_count": 7,
+ "edge_count": 6,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/หน่วยเฉพาะกิจราชมนู",
+   "target_title": "หน่วยเฉพาะกิจราชมนู",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/ตม.จว.ตาก",
+   "target_title": "ตม.จว.ตาก",
+   "direction": "out"
+  },
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/สภ.แม่สอด",
+   "target_title": "สภ.แม่สอด",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/อ.แม่สอด จ.ตาก",
+   "target_title": "อ.แม่สอด จ.ตาก",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/บ่อนคาสิโนแกรนด์เมียวดี (เมียนมา)",
+   "target_title": "บ่อนคาสิโนแกรนด์เมียวดี (เมียนมา)",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/ค้ามนุษย์ แรงงานผิดกฎหมาย และคุ้มครองเด็ก",
+   "target_title": "ค้ามนุษย์ แรงงานผิดกฎหมาย และคุ้มครองเด็ก",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261128-human-02.svg"
+}

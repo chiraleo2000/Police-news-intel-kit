@@ -1,0 +1,52 @@
+{
+ "case_id": "20261128-cyber-03",
+ "title": "กก.3 บก.ปคบ. จับหญิงอายุ 43 ปีตามหมายจับ 3 ศาลที่ อ.พระสมุทรเจดีย์ ตำรวจพบบัญชีของผู้ต้องหาเชื่อมกับ 24 เคสหลอกลวงออนไลน์ ผู้เสียหาย 15 ราย ความเสียหายรวม 9,198,905 บาท",
+ "generated_at": "2026-11-28T02:04:35.657Z",
+ "node_count": 8,
+ "edge_count": 7,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/กก.3 บก.ปคบ.",
+   "target_title": "กก.3 บก.ปคบ.",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/ศูนย์ต่อต้านการฉ้อโกงออนไลน์ (ACSC)",
+   "target_title": "ศูนย์ต่อต้านการฉ้อโกงออนไลน์ (ACSC)",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลจังหวัดธัญบุรี",
+   "target_title": "ศาลจังหวัดธัญบุรี",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลจังหวัดอุบลราชธานี",
+   "target_title": "ศาลจังหวัดอุบลราชธานี",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลจังหวัดกระบี่",
+   "target_title": "ศาลจังหวัดกระบี่",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/อ.พระสมุทรเจดีย์ จ.สมุทรปราการ",
+   "target_title": "อ.พระสมุทรเจดีย์ จ.สมุทรปราการ",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261128-cyber-03.svg"
+}

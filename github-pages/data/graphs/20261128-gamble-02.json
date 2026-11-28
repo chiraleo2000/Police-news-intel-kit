@@ -1,0 +1,52 @@
+{
+ "case_id": "20261128-gamble-02",
+ "title": "กองปราบปรามจับจ่าสิบตำรวจอายุ 41 ปีตามหมายจับศาลอาญา ตำรวจระบุว่าห้างหุ้นส่วนที่ผู้ต้องหาเป็นหุ้นส่วนผู้จัดการใช้จ่ายเงินรางวัลให้เว็บพนันที่ตัดต่อคลิปนักร้อง ฮาย อาภาพร ทำโฆษณาชวนเล่นบาคาร่า",
+ "generated_at": "2026-11-28T02:04:35.657Z",
+ "node_count": 8,
+ "edge_count": 7,
+ "relations": [
+  {
+   "label": "จับโดย",
+   "target_id": "30_Entities/Units/กก.สนับสนุน บก.ป.",
+   "target_title": "กก.สนับสนุน บก.ป.",
+   "direction": "out"
+  },
+  {
+   "label": "สั่งการโดย",
+   "target_id": "30_Entities/Units/บก.ป.",
+   "target_title": "บก.ป.",
+   "direction": "out"
+  },
+  {
+   "label": "หมายจากศาล",
+   "target_id": "30_Entities/Units/ศาลอาญา",
+   "target_title": "ศาลอาญา",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/สน.พญาไท",
+   "target_title": "สน.พญาไท",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ย่านถนนพหลโยธิน เขตจตุจักร",
+   "target_title": "ย่านถนนพหลโยธิน เขตจตุจักร",
+   "direction": "out"
+  },
+  {
+   "label": "เกี่ยวข้องกับบุคคล",
+   "target_id": "30_Entities/People/ผบช.ก.",
+   "target_title": "ผบช.ก.",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/พนันและบ่อนผิดกฎหมาย",
+   "target_title": "พนันและบ่อนผิดกฎหมาย",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261128-gamble-02.svg"
+}
