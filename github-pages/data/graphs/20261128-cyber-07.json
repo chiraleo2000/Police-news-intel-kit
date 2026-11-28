@@ -1,0 +1,28 @@
+{
+ "case_id": "20261128-cyber-07",
+ "title": "นักวิจัยเผย zero-day ใน Cacti 1.2.31 ระบบเฝ้าระวังเครือข่าย ยังไม่มีแพตช์ เปิดทางสั่งรันคำสั่งบนเซิร์ฟเวอร์ด้วยคำขอ HTTP เพียง 4 ครั้งเมื่อเปิดบัญชี guest แนะปิดบัญชี guest และจำกัดการเข้าถึง",
+ "generated_at": "2026-11-28T06:14:35.942Z",
+ "node_count": 4,
+ "edge_count": 3,
+ "relations": [
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/watchTowr",
+   "target_title": "watchTowr",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ทั่วโลก",
+   "target_title": "ทั่วโลก",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261128-cyber-07.svg"
+}

@@ -1,0 +1,46 @@
+{
+ "case_id": "20261128-cyber-05",
+ "title": "ThaiCERT เตือนช่องโหว่ Path Traversal CVE-2026-133968 (CVSS 9.8) ใน MONAI Label ซอฟต์แวร์ทำป้ายกำกับภาพทางการแพทย์ ถูกใช้โจมตีจริงและอยู่ในบัญชี KEV ของ CISA แนะอัปเดต 0.8.6",
+ "generated_at": "2026-11-28T06:14:35.942Z",
+ "node_count": 7,
+ "edge_count": 6,
+ "relations": [
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/ThaiCERT",
+   "target_title": "ThaiCERT",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/CISA",
+   "target_title": "CISA",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/Amazon Threat Intelligence",
+   "target_title": "Amazon Threat Intelligence",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ทั่วโลก",
+   "target_title": "ทั่วโลก",
+   "direction": "out"
+  },
+  {
+   "label": "ติดตามจาก",
+   "target_id": "20_Cases/20261121-cyber-15",
+   "target_title": "Amazon พบผู้โจมตีที่เชื่อมโยงจีนใช้แพลตฟอร์ม AI agent \"Cairn\" ค้นช่องโหว่ zero-day ในแอปภาพทางการแพทย์ MONAI Label แล้วยึดเซิร์ฟเวอร์มหาวิทยาลัยในเอเชียตะวันออก",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261128-cyber-05.svg"
+}

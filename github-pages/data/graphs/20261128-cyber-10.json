@@ -1,0 +1,40 @@
+{
+ "case_id": "20261128-cyber-10",
+ "title": "ศูนย์ความมั่นคงไซเบอร์สวิตเซอร์แลนด์ยืนยันผู้โจมตีใช้ AI agent เจาะองค์กรสำเร็จ 4 ใน 5 กรณี รวมผู้ให้บริการโครงสร้างพื้นฐานสำคัญ 2 ราย ขณะอิตาลีและสหราชอาณาจักรเตือนการโจมตีด้วย AI เพิ่มขึ้น",
+ "generated_at": "2026-11-28T06:14:35.942Z",
+ "node_count": 6,
+ "edge_count": 5,
+ "relations": [
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/NCSC สวิตเซอร์แลนด์",
+   "target_title": "NCSC สวิตเซอร์แลนด์",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/CSIRT Italia",
+   "target_title": "CSIRT Italia",
+   "direction": "out"
+  },
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/NCSC สหราชอาณาจักร",
+   "target_title": "NCSC สหราชอาณาจักร",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/สวิตเซอร์แลนด์",
+   "target_title": "สวิตเซอร์แลนด์",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261128-cyber-10.svg"
+}

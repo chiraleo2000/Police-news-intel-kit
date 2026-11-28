@@ -1,0 +1,40 @@
+{
+ "case_id": "20261128-cyber-04",
+ "title": "SOCRadar เผยกลุ่ม WeaveLotus ที่สงสัยว่าเชื่อมโยงเวียดนาม เจาะระบบหน่วยงานรัฐ ทหาร และฝ่ายนิติบัญญัติในไทยและฟิลิปปินส์ 5 ครั้งช่วง ส.ค.–ก.ย. 2569 เพื่อล้วงข้อมูลข้อตกลงทางทหารเรื่องทะเลจีนใต้",
+ "generated_at": "2026-11-28T06:14:35.942Z",
+ "node_count": 6,
+ "edge_count": 5,
+ "relations": [
+  {
+   "label": "แจ้งโดย",
+   "target_id": "30_Entities/Units/SOCRadar",
+   "target_title": "SOCRadar",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ประเทศไทย",
+   "target_title": "ประเทศไทย",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/ฟิลิปปินส์",
+   "target_title": "ฟิลิปปินส์",
+   "direction": "out"
+  },
+  {
+   "label": "เกิดที่",
+   "target_id": "30_Entities/Places/อินโดนีเซีย",
+   "target_title": "อินโดนีเซีย",
+   "direction": "out"
+  },
+  {
+   "label": "ประเภท",
+   "target_id": "40_CrimeTypes/อาชญากรรมไซเบอร์และออนไลน์",
+   "target_title": "อาชญากรรมไซเบอร์และออนไลน์",
+   "direction": "out"
+  }
+ ],
+ "svg": "graphs/20261128-cyber-04.svg"
+}

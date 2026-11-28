@@ -1,6 +1,6 @@
 {
- "generated_at": "2026-11-28T02:30:05.596Z",
- "count": 1098,
+ "generated_at": "2026-11-28T06:14:35.942Z",
+ "count": 1108,
  "cases": [
   {
    "case_id": "20261022-consumer-chiangmai-matcha-customs",
@@ -4320,7 +4320,7 @@
   {
    "case_id": "20261121-cyber-15",
    "svg": "graphs/20261121-cyber-15.svg",
-   "relations": 3
+   "relations": 4
   },
   {
    "case_id": "20261121-cyber-16",
@@ -5080,7 +5080,7 @@
   {
    "case_id": "20261126-cyber-05",
    "svg": "graphs/20261126-cyber-05.svg",
-   "relations": 5
+   "relations": 6
   },
   {
    "case_id": "20261126-cyber-06",
@@ -5401,6 +5401,56 @@
    "case_id": "20261128-cyber-03",
    "svg": "graphs/20261128-cyber-03.svg",
    "relations": 7
+  },
+  {
+   "case_id": "20261128-cyber-04",
+   "svg": "graphs/20261128-cyber-04.svg",
+   "relations": 5
+  },
+  {
+   "case_id": "20261128-cyber-05",
+   "svg": "graphs/20261128-cyber-05.svg",
+   "relations": 6
+  },
+  {
+   "case_id": "20261128-cyber-06",
+   "svg": "graphs/20261128-cyber-06.svg",
+   "relations": 5
+  },
+  {
+   "case_id": "20261128-cyber-07",
+   "svg": "graphs/20261128-cyber-07.svg",
+   "relations": 3
+  },
+  {
+   "case_id": "20261128-cyber-08",
+   "svg": "graphs/20261128-cyber-08.svg",
+   "relations": 4
+  },
+  {
+   "case_id": "20261128-cyber-09",
+   "svg": "graphs/20261128-cyber-09.svg",
+   "relations": 4
+  },
+  {
+   "case_id": "20261128-cyber-10",
+   "svg": "graphs/20261128-cyber-10.svg",
+   "relations": 5
+  },
+  {
+   "case_id": "20261128-cyber-11",
+   "svg": "graphs/20261128-cyber-11.svg",
+   "relations": 4
+  },
+  {
+   "case_id": "20261128-cyber-12",
+   "svg": "graphs/20261128-cyber-12.svg",
+   "relations": 4
+  },
+  {
+   "case_id": "20261128-cyber-13",
+   "svg": "graphs/20261128-cyber-13.svg",
+   "relations": 4
   },
   {
    "case_id": "20261128-drug-01",
